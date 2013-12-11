@@ -1,0 +1,3 @@
+[submodule "algselbench/makeR"]
+	path = algselbench/makeR
+	url = https://github.com/tudo-r/makeR.git

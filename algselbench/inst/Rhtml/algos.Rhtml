@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>A minimal knitr example in HTML</title>
+</head>
+<body>
+
+<!--begin.rcode, echo = FALSE
+  opts_chunk$set(echo = FALSE, fig.width = 10, fig.height = 10)
+  library(xtable)
+  library(ggplot2)
+  path = "~/cos/coseal/data/maxsat12-pms"
+  astask = parseASTask(path)
+  theme_set(theme_gray(base_size = 18))
+end.rcode-->
+
+
+<h2> Overview of mean performance values </h2>
+<!--begin.rcode, results = "asis"
+  res = exploreAlgos(astask)
+  print(xtable(res), "html")
+end.rcode-->
+
+<h2> Boxplots of performance values </h2>
+<!--begin.rcode, message=FALSE, 
+  plotAlgoPerfBoxplots(astask)
+end.rcode-->
+
+<h2> Estimated densitities of performance values </h2>
+<!--begin.rcode, message=FALSE, 
+  plotAlgoPerfDensities(astask)
+end.rcode-->
+
+</body>
+</html>

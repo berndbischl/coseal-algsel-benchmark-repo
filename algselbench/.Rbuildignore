@@ -1,0 +1,9 @@
+makeR
+^.*tar.gz$
+^.*\.swp$
+.Rproj.user
+.travis.yml
+Makefile
+README.md
+test_all.R
+test_src.R
