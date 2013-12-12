@@ -17,20 +17,10 @@ clean:
 
 render-task-pages: clean
 	echo "Creating task html pages"
-	${RSCRIPT} algselbench/renderKnitRPages.R
-	# sed $(SED_OPTION) s/\`\`\`r/\`\`\`splus/ doc/knitted/*.md
-	# sed $(SED_OPTION) s/\`\`\`r/\`\`\`splus/ doc/knitted/tutorial/*.md
-	# mv doc/figure doc/knitted/tutorial/figur
+	${RSCRIPT} renderKnitRPages.R
 
-	# printf "\nGenerating html docs...\n"
-	# mkdir staticdocs
-	# ${DELETE} /tmp/pkgdocs
-	# mkdir /tmp/pkgdocs
-	# mv README.md README.xxx
-	# ${RSCRIPT} ./makeR/generate-html-docs
-	# mv README.xxx README.md
-	# ${DELETE} Rplots*.pdf
-	# git checkout gh-pages
+push-task-pages: render-task-pages
+	git checkout gh-pages
 	# ${DELETE} man
 	# mv /tmp/pkgdocs man
 	# git add man

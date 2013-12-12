@@ -7,8 +7,8 @@ load_all("~/cos/coseal-algsel-benchmark-repo/algselbench")
 
 data.dir =  "~/cos/coseal/data"
 task.dirs = list.files(data.dir, full = TRUE)[c(2)]
-rhtml.dir = "Rhtml"
-html.dir = "html"
+rhtml.dir = normalizePath("Rhtml")
+html.dir = normalizePath("html")
 url.prefix = "file:///home/bischl/cos/coseal-algsel-benchmark-repo/html"
 
 ee = new.env()
