@@ -10,7 +10,7 @@ task.dirs = list.files(data.dir, full = TRUE)[c(2)]
 rhtml.dir = normalizePath("Rhtml")
 html.dir = normalizePath("html")
 # url.prefix = "file:///home/bischl/cos/coseal-algsel-benchmark-repo/html"
-url.prefix = "http://berndbischl.github.io/coseal-algsel-benchmark-repo/task-pages/"
+url.prefix = "http://berndbischl.github.io/coseal-algsel-benchmark-repo/task-pages"
 
 ee = new.env()
 ee$data.dir = data.dir
