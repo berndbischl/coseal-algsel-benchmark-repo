@@ -14,3 +14,7 @@ To run the validator:
 `python trunk/data_check_tool_python/src/main.py --dir trunk/data/maxsat12-pms/`
 
 
+## Available algorithm selection tasks
+
+http://berndbischl.github.io/coseal-algsel-benchmark-repo/index.html
+
