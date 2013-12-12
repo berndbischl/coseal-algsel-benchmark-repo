@@ -71,11 +71,13 @@
 <h1>Algorithm selection tasks</h1>
 
 <div class="chunk" id="unnamed-chunk-1"><div class="rcode"><div class="source"><pre class="knitr r"><span class="hl kwa">for</span> <span class="hl std">(i</span> <span class="hl kwa">in</span> <span class="hl kwd">seq_along</span><span class="hl std">(task.dirs)) {</span>
-    <span class="hl std">url</span> <span class="hl kwb">=</span> <span class="hl kwd">sprintf</span><span class="hl std">(</span><span class="hl str">&quot;%s/%s/index.html&quot;</span><span class="hl std">, url.prefix, task.name)</span>
-    <span class="hl kwd">catf</span><span class="hl std">(</span><span class="hl str">&quot;&lt;a href='%s'&gt;%s&lt;/a&gt;&quot;</span><span class="hl std">, url, task.name)</span>
+    <span class="hl std">task.dir</span> <span class="hl kwb">=</span> <span class="hl std">task.dirs[i]</span>
+    <span class="hl std">bn</span> <span class="hl kwb">=</span> <span class="hl kwd">basename</span><span class="hl std">(task.dir)</span>
+    <span class="hl std">url</span> <span class="hl kwb">=</span> <span class="hl kwd">sprintf</span><span class="hl std">(</span><span class="hl str">&quot;%s/%s/index.html&quot;</span><span class="hl std">, url.prefix, bn)</span>
+    <span class="hl kwd">catf</span><span class="hl std">(</span><span class="hl str">&quot;&lt;a href='%s'&gt;%s&lt;/a&gt;&quot;</span><span class="hl std">, url, bn)</span>
 <span class="hl std">}</span>
 </pre></div>
-<div class="error"><pre class="knitr r">## Error: object 'task.name' not found
+<div class="output"><pre class="knitr r">## <a href='file:///home/bischl/cos/coseal-algsel-benchmark-repo/html/maxsat12-pms/index.html'>maxsat12-pms</a>
 </pre></div>
 </div></div>
 
