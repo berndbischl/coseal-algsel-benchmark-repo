@@ -6,7 +6,7 @@ library(devtools)
 load_all("~/cos/coseal-algsel-benchmark-repo/algselbench")
 
 data.dir =  "~/cos/coseal/data"
-task.dirs = list.files(data.dir, full = TRUE)[c(3, 4)]
+task.dirs = list.files(data.dir, full = TRUE)[c(2, 3, 4, 5)]
 rhtml.dir = normalizePath("Rhtml")
 html.dir = normalizePath("html")
 if (interactive()) { 
