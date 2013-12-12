@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style type="text/css">
+.knitr.inline {
+  background-color: #f7f7f7;
+  border:solid 1px #B0B0B0;
+}
+.error {
+	font-weight: bold;
+	color: #FF0000;
+},
+.warning {
+	font-weight: bold;
+}
+.message {
+	font-style: italic;
+}
+.source, .output, .warning, .error, .message {
+	padding: 0em 1em;
+  border:solid 1px #F7F7F7;
+}
+.source {
+  background-color: #f5f5f5;
+}
+.rimage.left {
+  text-align: left;
+}
+.rimage.right {
+  text-align: right;
+}
+.rimage.center {
+  text-align: center;
+}
+.hl.num {
+  color: #AF0F91;
+}
+.hl.str {
+  color: #317ECC;
+}
+.hl.com {
+  color: #AD95AF;
+  font-style: italic;
+}
+.hl.opt {
+  color: #000000;
+}
+.hl.std {
+  color: #585858;
+}
+.hl.kwa {
+  color: #295F94;
+  font-weight: bold;
+}
+.hl.kwb {
+  color: #B05A65;
+}
+.hl.kwc {
+  color: #55aa55;
+}
+.hl.kwd {
+  color: #BC5A65;
+  font-weight: bold;
+}
+</style>
+  <title>Algorithm performance overview</title>
+</head>
+<body>
+
+
+<h2> Overview of median performance values </h2>
+
+<!-- html table generated in R 3.0.2 by xtable 1.7-1 package -->
+<!-- Thu Dec 12 14:56:25 2013 -->
+<TABLE border=1>
+<TR> <TH>  </TH> <TH> runtime </TH> <TH> runtime.nas </TH>  </TR>
+  <TR> <TD align="right"> CryptoMiniSat_StrangeNight2stfixed </TD> <TD align="right"> 96.69 </TD> <TD align="right"> 31.00 </TD> </TR>
+  <TR> <TD align="right"> EBGlucose_1.0 </TD> <TD align="right"> 59.44 </TD> <TD align="right"> 33.67 </TD> </TR>
+  <TR> <TD align="right"> glucose_2 </TD> <TD align="right"> 80.17 </TD> <TD align="right"> 28.33 </TD> </TR>
+  <TR> <TD align="right"> glueminisat_2.2.5 </TD> <TD align="right"> 56.28 </TD> <TD align="right"> 29.67 </TD> </TR>
+  <TR> <TD align="right"> Lingeling_587ffixed </TD> <TD align="right"> 71.82 </TD> <TD align="right"> 30.67 </TD> </TR>
+  <TR> <TD align="right"> minisathackcir_minisat_20110513simp </TD> <TD align="right"> 69.99 </TD> <TD align="right"> 32.67 </TD> </TR>
+  <TR> <TD align="right"> minisathackcontrasat_20110302 </TD> <TD align="right"> 79.05 </TD> <TD align="right"> 33.67 </TD> </TR>
+  <TR> <TD align="right"> minisathackEBMiniSAT_20110302 </TD> <TD align="right"> 67.01 </TD> <TD align="right"> 34.67 </TD> </TR>
+  <TR> <TD align="right"> minisathackLR_GL_SHR_20110302 </TD> <TD align="right"> 60.94 </TD> <TD align="right"> 36.33 </TD> </TR>
+  <TR> <TD align="right"> minisathackMiniSAT_2.2.0agile26 </TD> <TD align="right"> 49.63 </TD> <TD align="right"> 37.00 </TD> </TR>
+  <TR> <TD align="right"> minisathackminisat_psm_20110401 </TD> <TD align="right"> 59.63 </TD> <TD align="right"> 34.33 </TD> </TR>
+  <TR> <TD align="right"> minisathackreferenceminisat_2.2.0 </TD> <TD align="right"> 62.12 </TD> <TD align="right"> 35.33 </TD> </TR>
+  <TR> <TD align="right"> MPhaseSAT64_20110514fixed </TD> <TD align="right"> 104.29 </TD> <TD align="right"> 33.00 </TD> </TR>
+  <TR> <TD align="right"> QuteRSat_20110512fixed </TD> <TD align="right"> 93.79 </TD> <TD align="right"> 31.33 </TD> </TR>
+  <TR> <TD align="right"> rcl_20110401 </TD> <TD align="right"> 67.98 </TD> <TD align="right"> 38.67 </TD> </TR>
+  <TR> <TD align="right"> RestartSAT_B95 </TD> <TD align="right"> 83.48 </TD> <TD align="right"> 33.00 </TD> </TR>
+  <TR> <TD align="right"> SAT09referencesolverglucose_1.0 </TD> <TD align="right"> 97.47 </TD> <TD align="right"> 34.33 </TD> </TR>
+  <TR> <TD align="right"> SAT09referencesolverprecosat_236 </TD> <TD align="right"> 113.43 </TD> <TD align="right"> 31.33 </TD> </TR>
+   </TABLE>
+
+
+
+<h2> Boxplots of performance values </h2>
+
+<div class="chunk" id="unnamed-chunk-2"><div class="rcode"><div class="warning"><pre class="knitr r">## Warning: Removed 1797 rows containing non-finite values (stat_boxplot).
+</pre></div>
+</div><div class="rimage default"><img src="figure/unnamed-chunk-2.png" title="plot of chunk unnamed-chunk-2" alt="plot of chunk unnamed-chunk-2" class="plot" /></div></div>
+
+
+<h2> Estimated densitities of performance values </h2>
+
+<div class="chunk" id="unnamed-chunk-3"><div class="rcode"><div class="warning"><pre class="knitr r">## Warning: Removed 93 rows containing non-finite values (stat_density).
+## Warning: Removed 101 rows containing non-finite values (stat_density).
+## Warning: Removed 85 rows containing non-finite values (stat_density).
+## Warning: Removed 89 rows containing non-finite values (stat_density).
+## Warning: Removed 92 rows containing non-finite values (stat_density).
+## Warning: Removed 98 rows containing non-finite values (stat_density).
+## Warning: Removed 101 rows containing non-finite values (stat_density).
+## Warning: Removed 104 rows containing non-finite values (stat_density).
+## Warning: Removed 109 rows containing non-finite values (stat_density).
+## Warning: Removed 111 rows containing non-finite values (stat_density).
+## Warning: Removed 103 rows containing non-finite values (stat_density).
+## Warning: Removed 106 rows containing non-finite values (stat_density).
+## Warning: Removed 99 rows containing non-finite values (stat_density).
+## Warning: Removed 94 rows containing non-finite values (stat_density).
+## Warning: Removed 116 rows containing non-finite values (stat_density).
+## Warning: Removed 99 rows containing non-finite values (stat_density).
+## Warning: Removed 103 rows containing non-finite values (stat_density).
+## Warning: Removed 94 rows containing non-finite values (stat_density).
+</pre></div>
+</div><div class="rimage default"><img src="figure/unnamed-chunk-3.png" title="plot of chunk unnamed-chunk-3" alt="plot of chunk unnamed-chunk-3" class="plot" /></div></div>
+
+
+</body>
+</html>
