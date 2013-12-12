@@ -13,10 +13,10 @@ parseDescription = function(path) {
   
   convertField = function(name, cast = as.character) {
     val = str_trim(desc[[name]])
-    val = if (val == "?")
-      NA
-    else if (val == "")
+    val = if (length(val) == 0L || val == "")
       character(0)
+    else if (val == "?")
+      NA
     else
       str_trim(str_split(val, ",")[[1]])
     desc[[name]] <<- cast(val)

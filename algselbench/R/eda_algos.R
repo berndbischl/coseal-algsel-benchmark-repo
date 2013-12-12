@@ -5,20 +5,34 @@
 #' @param aggr [\code{function}]\cr
 #'   Agregation function.
 #'   Default is \code{mean}
-#' @return [\code{data.frame}]. First column is algorithm names, further columns are aggregated performance values.
+#' @return [\code{data.frame}]. Rows correspond to algorithms and are named in this fashion.
+#'   For each performance measure two columns are created: One for the aggregated performance values,
+#'   one for the percentage of missing values.
 #' @export
-#FIXME waht to aggregtae?
-calcAggrPerfValues = function(astask, aggr = median) {
+
+calcAggrPerfValues = function(astask, aggr) {
   checkArg(astask, "ASTask")
-  checkArg(aggr, "function")
+  if (missing(aggr))
+    aggr = function(x) median(x, na.rm = TRUE)
+  else
+    checkArg(aggr, "function")
 
   ars = astask$algo.runs
-  perfs = astask$desc$performance_measures
+  measures = astask$desc$performance_measures
   res = ddply(ars, c("algorithm"), function(d) {
-    p = d[, perfs, drop = FALSE]
-    apply(p, 2, aggr)
+    row = list()
+    row = lapply(measures, function(m) {
+      p = d[, m]
+      setNames(
+        c(aggr(p), nas = mean(is.na(p) * 100)),
+        c(m, sprintf("%s.nas", m))
+      )
+    })
+    as.data.frame(as.list(unlist(row)))
   })
-  res
+  rownames(res) = res$algorithm
+  res$algorithm = NULL
+  return(res)
 }
 
 #' Plot boxplots of performance values per algorithm across all instances.
