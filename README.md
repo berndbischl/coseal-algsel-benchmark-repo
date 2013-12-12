@@ -16,5 +16,5 @@ To run the validator:
 
 ## Available algorithm selection tasks
 
-http://berndbischl.github.io/coseal-algsel-benchmark-repo/task-pages/
+http://berndbischl.github.io/coseal-algsel-benchmark-repo/task-pages/index.html
 
