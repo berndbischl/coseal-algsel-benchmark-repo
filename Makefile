@@ -20,12 +20,15 @@ render-task-pages: clean
 	${RSCRIPT} renderKnitRPages.R
 
 push-task-pages: render-task-pages
+	rm -rf tmp/html
+	cp -r html tmp/
 	git checkout gh-pages
+	cp tmp/html/* . 
 	# ${DELETE} man
 	# mv /tmp/pkgdocs man
 	# git add man
 	# git commit -am "new html help"
 	# git push origin gh-pages
-	# git checkout master
+	git checkout master
 
 
