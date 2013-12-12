@@ -23,11 +23,10 @@ push-task-pages: render-task-pages
 	rm -rf /tmp/html
 	cp -r html /tmp/
 	git checkout gh-pages
-	cp /tmp/html/* . 
-	# ${DELETE} man
-	# mv /tmp/pkgdocs man
-	# git add man
-	# git commit -am "new html help"
+	${DELETE} task-pages
+	cp -r /tmp/html task-pages 
+	git add * 
+	# git commit -am "new task pages"
 	# git push origin gh-pages
 	git checkout master
 
