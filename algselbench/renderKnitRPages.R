@@ -2,7 +2,8 @@ library(BBmisc)
 library(knitr)
 library(xtable)
 library(ggplot2)
-load_all(".")
+library(devtools)
+load_all("~/cos/coseal-algsel-benchmark-repo/algselbench")
 
 data.dir =  "~/cos/coseal/data"
 task.dirs = list.files(data.dir, full = TRUE)[c(2)]
