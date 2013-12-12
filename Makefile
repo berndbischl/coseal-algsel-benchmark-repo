@@ -25,7 +25,7 @@ push-task-pages: render-task-pages
 	git checkout gh-pages
 	${DELETE} task-pages
 	cp -r /tmp/html task-pages 
-	git add * 
+	git add task-pages 
 	git commit -am "new task pages"
 	git push origin gh-pages
 	git checkout master

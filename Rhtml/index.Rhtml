@@ -11,8 +11,9 @@
 <!--begin.rcode
 
 for (i in seq_along(task.dirs)) {
-  url = sprintf("%s/%s/index.html", url.prefix, task.name)
-  catf("<a href='%s'>%s</a>", url, task.name)
+  bn = basename(task.name)
+  url = sprintf("%s/%s/index.html", url.prefix, bn)
+  catf("<a href='%s'>%s</a>", url, bn)
 }
 
 end.rcode-->
