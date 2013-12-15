@@ -3,18 +3,21 @@ library(knitr)
 library(xtable)
 library(ggplot2)
 library(devtools)
-load_all("~/cos/coseal-algsel-benchmark-repo/algselbench")
+load_all("algselbench")
+source("defs.R")
 
-data.dir =  "~/cos/coseal/data"
+data.dir =  file.path(coseal.svn.dir, "data")
 task.dirs = list.files(data.dir, full = TRUE)[c(2, 3, 4, 5)]
 rhtml.dir = normalizePath("Rhtml")
 html.dir = normalizePath("html")
+
+old.wd = getwd()
+
 if (interactive()) { 
-  url.prefix =  "file:///home/bischl/cos/coseal-algsel-benchmark-repo/html"
+  url.prefix =  sprintf("file://%s/html", old.wd)
 } else {
   url.prefix = "http://berndbischl.github.io/coseal-algsel-benchmark-repo/task-pages"
 }
-
 
 ee = new.env()
 ee$data.dir = data.dir
@@ -24,7 +27,6 @@ ee$url.prefix = url.prefix
 knit(file.path(rhtml.dir, "index.Rhtml"), output = file.path(html.dir, "index.html"),
   env = ee, quiet = TRUE)
 
-old.wd = getwd()
 
 try({
 
