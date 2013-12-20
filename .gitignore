@@ -2,3 +2,5 @@ algselbench/algselbench.Rcheck
 algselbench/algselbench*.tar.gz
 defs.R
 html
+.Rproj.user
+coseal-algsel-benchmark-repo.Rproj
