@@ -1,19 +1,16 @@
+library(devtools)
 library(foreign)
 library(stringr)
 library(plyr)
+load_all(".")
 
-source("parseDescription.R")
-source("parseAlgorithmRuns.R")
-source("parseASTask.R")
-source("eda_algos.R")
+dataset.dir = "~/cos/coseal/data/sat11-indu"
 
-dataset.dir = "~/cos/coseal/data/maxsat12-pms"
+astask = parseASTask(dataset.dir)
+summarizeFeatureRunStatus(astask)
 
-# astask = parseASTask(dataset.dir)
-# print(astask)
 
 # exploreAlgos(astask)
 
-print(plotAlgoPerfHist(astask, "TIME"))
-
+# print(plotAlgoPerfHist(astask, "TIME"))
 
