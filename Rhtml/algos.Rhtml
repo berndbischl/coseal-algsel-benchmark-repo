@@ -6,10 +6,17 @@
 <body>
 
 
-<h2> Overview of median performance values </h2>
+<h2> Overview of performance values </h2>
 
 <!--begin.rcode, results = "asis"
-  res = calcAggrPerfValues(astask)
+  res = summarizeAlgoRuns(astask)
+  print(xtable(res), "html")
+end.rcode-->
+
+<h2> Dominated Algorithms </h2>
+
+<!--begin.rcode, results = "asis"
+  res = dominatedAlgos(astask)
   print(xtable(res), "html")
 end.rcode-->
 

@@ -7,7 +7,7 @@ load_all("algselbench")
 source("defs.R")
 
 data.dir =  file.path(coseal.svn.dir, "data")
-task.dirs = list.files(data.dir, full = TRUE)[c(2, 3, 4, 5)]
+task.dirs = list.files(data.dir, full = TRUE)[c(3, 4, 5)]
 rhtml.dir = normalizePath("Rhtml")
 html.dir = normalizePath("html")
 
@@ -27,10 +27,10 @@ ee$url.prefix = url.prefix
 knit(file.path(rhtml.dir, "index.Rhtml"), output = file.path(html.dir, "index.html"),
   env = ee, quiet = TRUE)
 
-
 try({
 
   for (task.dir in task.dirs) {
+    setwd(old.wd)
     task.name = basename(task.dir)
     messagef("Create pages for: %s", task.name)
 
@@ -68,6 +68,7 @@ try({
     knitIt("task_index", "index")
     file.copy(file.path(task.dir, "readme.txt"), out.dir)
     knitIt("algos")
+    knitIt("features")
   }
 
 })

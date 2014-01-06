@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Feature performance overview</title>
+</head>
+<body>
+
+
+<h2> Overview of performance values </h2>
+
+<!--begin.rcode, results = "asis"
+  res = summarizeFeatureValues(astask)
+  print(xtable(res), "html")
+end.rcode-->
+
+<h2> Duplicated Features </h2>
+
+<!--begin.rcode, results = "asis"
+  checkDuplicates(astask)
+end.rcode-->
+
+</body>
+</html>
