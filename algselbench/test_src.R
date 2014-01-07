@@ -14,6 +14,7 @@ summarizeAlgoRuns(astask)
 summarizeFeatureValues(astask)
 dominatedAlgos(astask)
 checkDuplicates(astask)
+uselessInstances(astask)
 
 # exploreAlgos(astask)
 

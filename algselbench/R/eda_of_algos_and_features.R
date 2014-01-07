@@ -179,3 +179,48 @@ checkDuplicates = function(astask){
     }
   }
 }
+
+
+#' Checks algorithm and feature data sets for useless instances.
+#'
+#' @param astask [\code{\link{ASTask}}]\cr
+#'   Algorithm selection task.
+#' @return [\code{list}(3)]. 
+#'  List of data frames, which give an overview of instances that consist of only one single value
+#'  (and eventually some NAs) per instance.
+#'  There output consists of three data frames: one for the algo runs, the feature values and the
+#'  feature runstatus, respectively.
+#' @export
+uselessInstances = function(astask) {
+  checkArg(astask, "ASTask")
+  algoRuns = astask$algo.runs
+  featVals = astask$feature.values
+  featRuns = astask$feature.runstatus
+  splittedAlgos = split(algoRuns$runtime, algoRuns$algorithm)
+  checkedAlgos = check4uniques(splittedAlgos)
+  checkedAlgos = checkedAlgos[!((checkedAlgos$uniqueVal == -Inf) & (checkedAlgos$NAs == -Inf)),]
+  checkedFeatVals = check4uniques(featVals)
+  checkedFeatVals = checkedFeatVals[!((checkedFeatVals$uniqueVal == -Inf) & (checkedFeatVals$NAs == -Inf)),]
+  checkedFeatRuns = check4uniques(featRuns)
+  checkedFeatRuns = checkedFeatRuns[!((checkedFeatRuns$uniqueVal == -Inf) & (checkedFeatRuns$NAs == -Inf)),]
+  checkedFeatRuns = checkedFeatRuns[!((as.character(checkedFeatRuns$uniqueVal) == "ok") & 
+                                        (checkedFeatRuns$NAs == 0)),]
+  return(list(algo.runs = checkedAlgos, feature.values = checkedFeatVals, feature.runstatus = checkedFeatRuns))
+}
+
+
+check4uniques = function(data) {
+  result = t(sapply(data, function(x) {
+    if(is.factor(x)) x = as.character(x)
+    NAs = is.na(x)
+    woNAs = x[!NAs]
+    if(length(unique(woNAs)) <= 1) {
+      uniqueVal = unique(woNAs)
+      if(length(uniqueVal) == 0) uniqueVal = NA
+      return(c(uniqueValue = uniqueVal, NAs = sum(NAs)))
+    } else {
+      return(c(uniqueValue = -Inf, NAs = -Inf))
+    }
+  }))
+  return(as.data.frame(result))
+}

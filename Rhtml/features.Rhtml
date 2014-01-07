@@ -19,5 +19,24 @@ end.rcode-->
   checkDuplicates(astask)
 end.rcode-->
 
+<h2> Useless Features </h2>
+
+<!--begin.rcode, results = "asis"
+  res = uselessInstances(astask)
+  cat("Feature Values:\n")
+  if(nrow(res$feature.values) >= 1) {
+    print(xtable(res$feature.values), "html")
+  } else {
+    cat("There were no entirely useless feature values.")
+  }
+
+  cat("Feature Runstatus:\n")
+  if(nrow(res$feature.runstatus) >= 1) {
+    print(xtable(res$feature.runstatus), "html")
+  } else {
+    cat("None of the features consisted of unique values (except for 'ok').")
+  }
+end.rcode-->
+
 </body>
 </html>

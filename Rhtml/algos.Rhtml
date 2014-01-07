@@ -20,6 +20,17 @@ end.rcode-->
   print(xtable(res), "html")
 end.rcode-->
 
+<h2> Useless Algorithms </h2>
+
+<!--begin.rcode, results = "asis"
+  res = uselessInstances(astask)$algo.runs
+  if(nrow(res) >= 1) {
+    print(xtable(res), "html")
+  } else {
+    cat("There were no entirely useless algorithms.")
+  }
+end.rcode-->
+
 <h2> Boxplots of performance values </h2>
 
 <!--begin.rcode
