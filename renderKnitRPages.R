@@ -5,11 +5,13 @@ library(ggplot2)
 library(devtools)
 load_all("algselbench")
 source("defs.R")
+source("eda_config.R")
 
 data.dir =  file.path(coseal.svn.dir, "data")
 task.dirs = list.files(data.dir, full = TRUE)[-3]
 rhtml.dir = normalizePath("Rhtml")
 html.dir = normalizePath("html")
+config.dir = normalizePath("configs")
 
 old.wd = getwd()
 
@@ -29,7 +31,7 @@ knit(file.path(rhtml.dir, "index.Rhtml"), output = file.path(html.dir, "index.ht
 
 try({
 
-  for (task.dir in task.dirs) {
+  for (task.dir in task.dirs[1]) {
     setwd(old.wd)
     task.name = basename(task.dir)
     messagef("Create pages for: %s", task.name)
@@ -54,6 +56,9 @@ try({
 
     # set global ggplot options
     theme_set(theme_gray(base_size = 18))
+
+    # read EDA HTML config for task
+    config = readEDAConfig(config.dir, task.name)
 
     # helper to knit rhtml files
     knitIt = function(file, out = file) {
