@@ -7,7 +7,7 @@ load_all("algselbench")
 source("defs.R")
 
 data.dir =  file.path(coseal.svn.dir, "data")
-task.dirs = list.files(data.dir, full = TRUE)[c(3, 4, 5)]
+task.dirs = list.files(data.dir, full = TRUE)[-3]
 rhtml.dir = normalizePath("Rhtml")
 html.dir = normalizePath("html")
 

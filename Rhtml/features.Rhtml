@@ -10,7 +10,7 @@
 
 <!--begin.rcode, results = "asis"
   res = summarizeFeatureValues(astask)
-  print(xtable(res), "html")
+  print(xtable(res, digits = c(0, rep(3, 8), 0, 0, 4)), "html")
 end.rcode-->
 
 <h2> Duplicated Features </h2>
@@ -25,7 +25,7 @@ end.rcode-->
   res = uselessInstances(astask)
   cat("Feature Values:\n")
   if(nrow(res$feature.values) >= 1) {
-    print(xtable(res$feature.values), "html")
+    print(xtable(res$feature.values, digits = c(0, 4, 0)), "html")
   } else {
     cat("There were no entirely useless feature values.")
   }

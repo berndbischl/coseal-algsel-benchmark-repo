@@ -5,19 +5,23 @@
 #' @return [\code{data.frame}]. 
 #'  Data frame, which gives an overview of the performance values.
 #' @export
-summarizeAlgoRuns = function(astask) {
+summarizeAlgoRuns = function(astask, measure) {
   checkArg(astask, "ASTask")
   data = astask$algo.runs
-  return(summarizeAlgos(data))
+  if (missing(measure))
+    measure = astask$desc$performance_measures[1]
+  else
+    checkArg(measure, "character", len = 1L, na.ok = FALSE)
+  return(summarizeAlgos(data, measure))
 }
 
-summarizeAlgos = function(data) {
+summarizeAlgos = function(data, measure) {
   split_all = split(data, data$algorithm)
   split_all = c(split_all, allAlgorithms = list(data))
   var_coeff = function(x) sd(x) / mean(x)
   solved = function(x) 100 * mean(as.character(x) == "ok")
   foo = function(x, aggr) {
-    aggr(na.omit(x$runtime))
+    aggr(na.omit(x[[measure]]))
   }
   result = sapply(split_all, function(z) foo(z, min))
   result = cbind(result, sapply(split_all, function(z) foo(z, function(a) quantile(a, 0.25))))
@@ -27,7 +31,7 @@ summarizeAlgos = function(data) {
   result = cbind(result, sapply(split_all, function(z) foo(z, max)))
   result = cbind(result, sapply(split_all, function(z) foo(z, sd))) 
   result = cbind(result, sapply(split_all, function(z) foo(z, var_coeff))) 
-  result = cbind(result, sapply(split_all, function(z) sum(is.na(z$runtime)))) 
+  result = cbind(result, sapply(split_all, function(z) sum(is.na(z[[measure]])))) 
   result = cbind(result, sapply(split_all, nrow))
   result = cbind(result, sapply(split_all, function(z) solved(z$runstatus)))
   colnames(result) = c("Min.", "1st Qu.", "Median", "Mean", "3rd Qu.", "Max.", "SD", "VC", "NA's", 
@@ -141,7 +145,7 @@ checkDuplicates = function(astask){
   dupl = duplicated(data)
   totalDuplicates = sum(dupl)
   if(uniqueObsNr != origObsNr) 
-    catf("%i instances were used, although only %i different instances exist\n", origObsNr, uniqueObsNr)
+    catf("%i instances were used, although only %i different instances exist.\n", origObsNr, uniqueObsNr)
   if(totalDuplicates == 0) { 
     if(uniqueObsNr == origObsNr) {
       cat("Did not recognize any duplicated features.")
@@ -191,12 +195,16 @@ checkDuplicates = function(astask){
 #'  There output consists of three data frames: one for the algo runs, the feature values and the
 #'  feature runstatus, respectively.
 #' @export
-uselessInstances = function(astask) {
+uselessInstances = function(astask, measure) {
   checkArg(astask, "ASTask")
+  if (missing(measure))
+    measure = astask$desc$performance_measures[1]
+  else
+    checkArg(measure, "character", len = 1L, na.ok = FALSE)
   algoRuns = astask$algo.runs
   featVals = astask$feature.values
   featRuns = astask$feature.runstatus
-  splittedAlgos = split(algoRuns$runtime, algoRuns$algorithm)
+  splittedAlgos = split(algoRuns[[measure]], algoRuns$algorithm)
   checkedAlgos = check4uniques(splittedAlgos)
   checkedAlgos = checkedAlgos[!((checkedAlgos$uniqueVal == -Inf) & (checkedAlgos$NAs == -Inf)),]
   checkedFeatVals = check4uniques(featVals)
