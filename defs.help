@@ -1,0 +1,7 @@
+# Define a file "defs.R" in the main directory
+# This is ignored in .gitignore, as it only contains user-specific paths
+# Define the path to your coseal google code svn checkout dir, because the data sets live there
+# So my file looks like
+
+coseal.svn.dir = "~/cos/coseal"
+
