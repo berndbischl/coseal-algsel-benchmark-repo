@@ -6,20 +6,45 @@
 <body>
 
 
-<h2> Overview of performance values </h2>
+<h2> Overview of Feature Values </h2>
+
+The following measures were taken for the results of each feature:
+<ul>
+
+  <li> <a>Minimum:        Minimum</a>
+  <li> <a>1st Quartile:   1st Quartile = lower Quartile = 25%-Quantile</a>
+  <li> <a>Mean:           Arithmetic Mean</a>
+  <li> <a>Median:         Median = 50%-Quantile</a>
+  <li> <a>3rd Quartile:   3rd Quartile = upper Quartile = 75%-Quantile</a>
+  <li> <a>Maximum:        Maximum</a>
+  <li> <a>Standard Dev.:  Standard Deviation</a>
+  <li> <a>Coeff. of Var.: Coefficient of Variation = Standard Deviation / Arithmetic Mean</a>
+  <li> <a>NA's:           Number of NAs (missing values) within the feature set.</a>
+  <li> <a>Observations:   Number of Observations within the feature set.</a>
+  <li> <a>Run OK (%):     Percentage of feature computations without a crash.</a>
+
+</ul>
 
 <!--begin.rcode, results = "asis"
   res = summarizeFeatureValues(astask)
   print(xtable(res, digits = c(0, rep(3, 8), 0, 0, 4)), "html")
 end.rcode-->
 
+<br>
 <h2> Duplicated Features </h2>
 
 <!--begin.rcode, results = "asis"
-  checkDuplicates(astask)
+  res = checkDuplicates(astask)
+  if(!is.null(res)) {
+    print(xtable(res), include.rownames = FALSE, "html")
+  }
 end.rcode-->
 
+<br>
 <h2> Useless Features </h2>
+
+In this section, you'll find all features that adopted only one value (and eventually NA's).<br>
+<br>
 
 <!--begin.rcode, results = "asis"
   res = uselessInstances(astask)
@@ -29,7 +54,10 @@ end.rcode-->
   } else {
     cat("There were no entirely useless feature values.")
   }
+end.rcode-->
 
+<br>
+<!--begin.rcode, results = "asis"
   cat("Feature Runstatus:\n")
   if(nrow(res$feature.runstatus) >= 1) {
     print(xtable(res$feature.runstatus), "html")

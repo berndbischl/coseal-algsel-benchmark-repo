@@ -8,19 +8,41 @@
 
 <h2> Overview of performance values </h2>
 
+The following measures were taken from the performance values of each algorithm:
+<ul>
+
+  <li> <a>Minimum:        Minimum</a>
+  <li> <a>1st Quartile:   1st Quartile = lower Quartile = 25%-Quantile</a>
+  <li> <a>Mean:           Arithmetic Mean</a>
+  <li> <a>Median:         Median = 50%-Quantile</a>
+  <li> <a>3rd Quartile:   3rd Quartile = upper Quartile = 75%-Quantile</a>
+  <li> <a>Maximum:        Maximum</a>
+  <li> <a>Standard Dev.:  Standard Deviation</a>
+  <li> <a>Coeff. of Var.: Coefficient of Variation = Standard Deviation / Arithmetic Mean</a>
+  <li> <a>NA's:           Number of NAs (missing values) within the feature set.</a>
+  <li> <a>Observations:   Number of Observations within the feature set.</a>
+  <li> <a>Run OK (%):     Percentage of feature computations without a crash.</a>
+
+</ul>
+
 <!--begin.rcode, results = "asis"
   res = summarizeAlgoRuns(astask)
   print(xtable(res, digits = c(0, rep(3, 8), 0, 0, 3)), "html")
 end.rcode-->
 
+<br>
 <h2> Dominated Algorithms </h2>
 
 <!--begin.rcode, results = "asis"
   res = dominatedAlgos(astask)
-  print(xtable(res), "html")
+  print(xtable(res), include.rownames = FALSE, "html")
 end.rcode-->
 
+<br>
 <h2> Useless Algorithms </h2>
+
+In this section you'll find all the algorithms that always resulted in the same performance (and eventually NA's):<br>
+<br>
 
 <!--begin.rcode, results = "asis"
   res = uselessInstances(astask)$algo.runs
@@ -31,12 +53,15 @@ end.rcode-->
   }
 end.rcode-->
 
+<br>
+<br>
 <h2> Boxplots of performance values </h2>
 
 <!--begin.rcode
   plotAlgoPerfBoxplots(astask, log = config$algo.perf.boxplots.log)
 end.rcode-->
 
+<br>
 <h2> Estimated densitities of performance values </h2>
 
 <!--begin.rcode

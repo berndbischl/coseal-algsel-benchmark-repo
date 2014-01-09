@@ -34,7 +34,7 @@ summarizeAlgos = function(data, measure) {
   result = cbind(result, sapply(split_all, function(z) sum(is.na(z[[measure]])))) 
   result = cbind(result, sapply(split_all, nrow))
   result = cbind(result, sapply(split_all, function(z) solved(z$runstatus)))
-  colnames(result) = c("Min.", "1st Qu.", "Median", "Mean", "3rd Qu.", "Max.", "SD", "VC", "NA's", 
+  colnames(result) = c("Min.", "1st Qu.", "Median", "Mean", "3rd Qu.", "Max.", "Std. Dev.", "CoV.", "NA's", 
                        "Obs.", "Run OK (%)")
   return(as.data.frame(result))
 }
@@ -71,7 +71,7 @@ summarizeFeatures = function(values, status) {
   result = cbind(result, sapply(values, function(z) sum(is.na(z)))) 
   result = cbind(result, sapply(values, length))
   result = cbind(result, sapply(status, function(z) 100 * mean(as.character(z) == "ok")))
-  colnames(result) = c("Min.", "1st Qu.", "Median", "Mean", "3rd Qu.", "Max.", "SD", "VC", "NA's", 
+  colnames(result) = c("Min.", "1st Qu.", "Median", "Mean", "3rd Qu.", "Max.", "Std. Dev.", "CoV.", "NA's", 
                        "Obs.", "Run OK (%)")
   return(as.data.frame(result))
 }
@@ -138,9 +138,9 @@ checkDuplicates = function(astask){
   data = astask$feature.values
   origData = data
   origObsNr = nrow(origData)
-  data = data[!duplicated(data$id),]
-  label = as.character(data[,"id"])
-  data = data[, setdiff(colnames(data), "id")]
+  data = data[!duplicated(data[,"instance_id"]),]
+  label = as.character(data[,"instance_id"])
+  data = data[, setdiff(colnames(data), "instance_id")]
   uniqueObsNr = nrow(data)
   dupl = duplicated(data)
   totalDuplicates = sum(dupl)
@@ -150,11 +150,15 @@ checkDuplicates = function(astask){
     if(uniqueObsNr == origObsNr) {
       cat("Did not recognize any duplicated features.")
     } else {
-      cat("\nNo further duplicated features were recognized.")
+      cat("(Note: Those duplicates usually result from replications.)")
     }
+    return(NULL)
   } else {
     result = NULL
+    block = NULL
     blocks = 0
+    maxInst = 0
+    instNr = NULL
     existingNAs = any(is.na(data))
     while(any(dupl)){
       blocks = blocks + 1
@@ -162,13 +166,17 @@ checkDuplicates = function(astask){
       if(existingNAs) {
         x = as.character(data[compareTo, ])
         duplicates = logical(uniqueObsNr)
-        for(i in 1:uniqueObsNr) duplicates[i] = all(as.character(data[i,]) == x)  
+        for(i in 1:uniqueObsNr) 
+          duplicates[i] = all(as.character(data[i,]) == x)  
       } else {
         x = data[compareTo, ]
         duplicates = apply(data, 1, function(z) all(z == x))
       }
-      block = paste("\n(", blocks, ")", sep = "")
-      result = c(result, paste(block, label[duplicates], collapse = ", "))
+      block = c(block, rep(blocks, length = sum(duplicates)), "")
+      result = c(result, label[duplicates], "")
+      duplNr = sum(duplicates)
+      instNr = c(instNr, (maxInst + 1) : (maxInst + duplNr), "")
+      maxInst = maxInst + duplNr
       dupl[duplicates] = FALSE
     }
     if(blocks > 1){
@@ -178,9 +186,17 @@ checkDuplicates = function(astask){
       catf("The features of the following %i instances are duplicates of each other:", 
            blocks + totalDuplicates)
     }
-    for(response in result){
-      catf("%s", response)
-    }
+    #for(response in result){
+    #  catf("%s", response)
+    #}
+    result = cbind(block = block, instNr = instNr, duplicates = result)
+    result = result[-nrow(result),]
+    result = as.data.frame(result)
+    result$block = as.character(result$block)
+    result$instNr = as.character(result$instNr)
+    result$duplicates = as.character(result$duplicates)
+    colnames(result) = c("Block", "Inst. No.", "ID of duplicated feature")
+    return(result)
   }
 }
 
@@ -207,12 +223,15 @@ uselessInstances = function(astask, measure) {
   splittedAlgos = split(algoRuns[[measure]], algoRuns$algorithm)
   checkedAlgos = check4uniques(splittedAlgos)
   checkedAlgos = checkedAlgos[!((checkedAlgos$uniqueVal == -Inf) & (checkedAlgos$NAs == -Inf)),]
+  colnames(checkedAlgos) = c("unique Value(s)", "NA's")
   checkedFeatVals = check4uniques(featVals)
   checkedFeatVals = checkedFeatVals[!((checkedFeatVals$uniqueVal == -Inf) & (checkedFeatVals$NAs == -Inf)),]
+  colnames(checkedFeatVals) = c("unique Value(s)", "NA's")
   checkedFeatRuns = check4uniques(featRuns)
   checkedFeatRuns = checkedFeatRuns[!((checkedFeatRuns$uniqueVal == -Inf) & (checkedFeatRuns$NAs == -Inf)),]
   checkedFeatRuns = checkedFeatRuns[!((as.character(checkedFeatRuns$uniqueVal) == "ok") & 
                                         (checkedFeatRuns$NAs == 0)),]
+  colnames(checkedFeatRuns) = c("unique Value(s)", "NA's")
   return(list(algo.runs = checkedAlgos, feature.values = checkedFeatVals, feature.runstatus = checkedFeatRuns))
 }
 
