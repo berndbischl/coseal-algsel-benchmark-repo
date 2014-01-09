@@ -31,7 +31,7 @@ knit(file.path(rhtml.dir, "index.Rhtml"), output = file.path(html.dir, "index.ht
 
 try({
 
-  for (task.dir in task.dirs[1]) {
+  for (task.dir in task.dirs) {
     setwd(old.wd)
     task.name = basename(task.dir)
     messagef("Create pages for: %s", task.name)
@@ -59,6 +59,7 @@ try({
 
     # read EDA HTML config for task
     config = readEDAConfig(config.dir, task.name)
+    ee$config = config
 
     # helper to knit rhtml files
     knitIt = function(file, out = file) {

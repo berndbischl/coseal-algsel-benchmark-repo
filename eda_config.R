@@ -16,12 +16,12 @@ readEDAConfig = function(path, task.name) {
   if (file.exists(conffile)) {
     # source config into envir, then construct
     conf = new.env()
-    x = try(sys.source(fpath, envir=conf))
+    x = try(sys.source(conffile, envir=conf))
     if (is.error(x)) {
       stopf("There was an error in sourcing your configuration file '%s': %s!", 
         conffile, as.character(x))
     }
-    return(do.call(makeEDAConfig, conf))
+    return(do.call(makeEDAConfig, as.list(conf)))
   } else {
     # warn, then use default config
     warningf("Config file for task does not exist: %s", task.name)
