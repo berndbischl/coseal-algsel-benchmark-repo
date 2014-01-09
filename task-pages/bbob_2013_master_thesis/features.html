@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style type="text/css">
+.knitr.inline {
+  background-color: #f7f7f7;
+  border:solid 1px #B0B0B0;
+}
+.error {
+	font-weight: bold;
+	color: #FF0000;
+},
+.warning {
+	font-weight: bold;
+}
+.message {
+	font-style: italic;
+}
+.source, .output, .warning, .error, .message {
+	padding: 0em 1em;
+  border:solid 1px #F7F7F7;
+}
+.source {
+  background-color: #f5f5f5;
+}
+.rimage.left {
+  text-align: left;
+}
+.rimage.right {
+  text-align: right;
+}
+.rimage.center {
+  text-align: center;
+}
+.hl.num {
+  color: #AF0F91;
+}
+.hl.str {
+  color: #317ECC;
+}
+.hl.com {
+  color: #AD95AF;
+  font-style: italic;
+}
+.hl.opt {
+  color: #000000;
+}
+.hl.std {
+  color: #585858;
+}
+.hl.kwa {
+  color: #295F94;
+  font-weight: bold;
+}
+.hl.kwb {
+  color: #B05A65;
+}
+.hl.kwc {
+  color: #55aa55;
+}
+.hl.kwd {
+  color: #BC5A65;
+  font-weight: bold;
+}
+</style>
+  <title>Feature performance overview</title>
+</head>
+<body>
+
+
+<h2> Overview of performance values </h2>
+
+<!-- html table generated in R 3.0.2 by xtable 1.7-1 package -->
+<!-- Thu Jan  9 01:30:29 2014 -->
+<TABLE border=1>
+<TR> <TH>  </TH> <TH> Min. </TH> <TH> 1st Qu. </TH> <TH> Median </TH> <TH> Mean </TH> <TH> 3rd Qu. </TH> <TH> Max. </TH> <TH> SD </TH> <TH> VC </TH> <TH> NA's </TH> <TH> Obs. </TH> <TH> Run OK (%) </TH>  </TR>
+  <TR> <TD align="right"> dim </TD> <TD align="right"> 2.000 </TD> <TD align="right"> 3.000 </TD> <TD align="right"> 5.000 </TD> <TD align="right"> 8.000 </TD> <TD align="right"> 10.000 </TD> <TD align="right"> 20.000 </TD> <TD align="right"> 6.603 </TD> <TD align="right"> 0.825 </TD> <TD align="right"> 0 </TD> <TD align="right"> 12000 </TD> <TD align="right"> 100.0000 </TD> </TR>
+  <TR> <TD align="right"> fid </TD> <TD align="right"> 1.000 </TD> <TD align="right"> 6.750 </TD> <TD align="right"> 12.500 </TD> <TD align="right"> 12.500 </TD> <TD align="right"> 18.250 </TD> <TD align="right"> 24.000 </TD> <TD align="right"> 6.922 </TD> <TD align="right"> 0.554 </TD> <TD align="right"> 0 </TD> <TD align="right"> 12000 </TD> <TD align="right"> 100.0000 </TD> </TR>
+  <TR> <TD align="right"> iid </TD> <TD align="right"> 1.000 </TD> <TD align="right"> 3.000 </TD> <TD align="right"> 5.500 </TD> <TD align="right"> 5.500 </TD> <TD align="right"> 8.000 </TD> <TD align="right"> 10.000 </TD> <TD align="right"> 2.872 </TD> <TD align="right"> 0.522 </TD> <TD align="right"> 0 </TD> <TD align="right"> 12000 </TD> <TD align="right"> 100.0000 </TD> </TR>
+  <TR> <TD align="right"> approx.linear_ar2 </TD> <TD align="right"> 0.006 </TD> <TD align="right"> 0.109 </TD> <TD align="right"> 0.433 </TD> <TD align="right"> 0.419 </TD> <TD align="right"> 0.657 </TD> <TD align="right"> 1.000 </TD> <TD align="right"> 0.299 </TD> <TD align="right"> 0.715 </TD> <TD align="right"> 0 </TD> <TD align="right"> 12000 </TD> <TD align="right"> 100.0000 </TD> </TR>
+  <TR> <TD align="right"> approx.linear_min_coef </TD> <TD align="right"> 0.000 </TD> <TD align="right"> 0.526 </TD> <TD align="right"> 4.343 </TD> <TD align="right"> 7480969.447 </TD> <TD align="right"> 1007.210 </TD> <TD align="right"> 2955054484.031 </TD> <TD align="right"> 99681112.360 </TD> <TD align="right"> 13.325 </TD> <TD align="right"> 0 </TD> <TD align="right"> 12000 </TD> <TD align="right"> 100.0000 </TD> </TR>
+  <TR> <TD align="right"> approx.linear_max_coef </TD> <TD align="right"> 0.776 </TD> <TD align="right"> 158.950 </TD> <TD align="right"> 895.282 </TD> <TD align="right"> 190229120.779 </TD> <TD align="right"> 119434.141 </TD> <TD align="right"> 55682859942.671 </TD> <TD align="right"> 2034442423.834 </TD> <TD align="right"> 10.695 </TD> <TD align="right"> 0 </TD> <TD align="right"> 12000 </TD> <TD align="right"> 100.0000 </TD> </TR>
+  <TR> <TD align="right"> approx.lineari_ar2 </TD> <TD align="right"> 0.010 </TD> <TD align="right"> 0.323 </TD> <TD align="right"> 0.620 </TD> <TD align="right"> 0.563 </TD> <TD align="right"> 0.806 </TD> <TD align="right"> 1.000 </TD> <TD align="right"> 0.294 </TD> <TD align="right"> 0.522 </TD> <TD align="right"> 0 </TD> <TD align="right"> 12000 </TD> <TD align="right"> 100.0000 </TD> </TR>
+  <TR> <TD align="right"> approx.quadratic_ar2 </TD> <TD align="right"> 0.013 </TD> <TD align="right"> 0.418 </TD> <TD align="right"> 0.691 </TD> <TD align="right"> 0.630 </TD> <TD align="right"> 0.918 </TD> <TD align="right"> 1.000 </TD> <TD align="right"> 0.315 </TD> <TD align="right"> 0.500 </TD> <TD align="right"> 0 </TD> <TD align="right"> 12000 </TD> <TD align="right"> 100.0000 </TD> </TR>
+  <TR> <TD align="right"> approx.quadratic_cond </TD> <TD align="right"> 1.000 </TD> <TD align="right"> 2.334 </TD> <TD align="right"> 6.653 </TD> <TD align="right"> 1008.833 </TD> <TD align="right"> 32.706 </TD> <TD align="right"> 4597016.767 </TD> <TD align="right"> 44225.063 </TD> <TD align="right"> 43.838 </TD> <TD align="right"> 0 </TD> <TD align="right"> 12000 </TD> <TD align="right"> 100.0000 </TD> </TR>
+  <TR> <TD align="right"> approx.quadratici_ar2 </TD> <TD align="right"> 0.032 </TD> <TD align="right"> 0.778 </TD> <TD align="right"> 0.974 </TD> <TD align="right"> 0.827 </TD> <TD align="right"> 0.997 </TD> <TD align="right"> 1.000 </TD> <TD align="right"> 0.264 </TD> <TD align="right"> 0.319 </TD> <TD align="right"> 0 </TD> <TD align="right"> 12000 </TD> <TD align="right"> 100.0000 </TD> </TR>
+  <TR> <TD align="right"> convex.convex_p </TD> <TD align="right"> 0.000 </TD> <TD align="right"> 0.000 </TD> <TD align="right"> 0.000 </TD> <TD align="right"> 0.076 </TD> <TD align="right"> 0.000 </TD> <TD align="right"> 1.000 </TD> <TD align="right"> 0.212 </TD> <TD align="right"> 2.794 </TD> <TD align="right"> 0 </TD> <TD align="right"> 12000 </TD> <TD align="right"> 100.0000 </TD> </TR>
+  <TR> <TD align="right"> convex.linear_p </TD> <TD align="right"> 0.000 </TD> <TD align="right"> 0.000 </TD> <TD align="right"> 0.000 </TD> <TD align="right"> 0.000 </TD> <TD align="right"> 0.000 </TD> <TD align="right"> 0.000 </TD> <TD align="right"> 0.000 </TD> <TD align="right">  </TD> <TD align="right"> 0 </TD> <TD align="right"> 12000 </TD> <TD align="right"> 100.0000 </TD> </TR>
+  <TR> <TD align="right"> convex.linear_dev </TD> <TD align="right"> -964300942.304 </TD> <TD align="right"> 1021.984 </TD> <TD align="right"> 63295.205 </TD> <TD align="right">  Inf </TD> <TD align="right"> 107423399.088 </TD> <TD align="right">  Inf </TD> <TD align="right">  </TD> <TD align="right">  </TD> <TD align="right"> 0 </TD> <TD align="right"> 12000 </TD> <TD align="right"> 100.0000 </TD> </TR>
+  <TR> <TD align="right"> distr.skewness </TD> <TD align="right"> -9.388 </TD> <TD align="right"> 0.514 </TD> <TD align="right"> 1.241 </TD> <TD align="right"> 1.577 </TD> <TD align="right"> 2.095 </TD> <TD align="right"> 44.402 </TD> <TD align="right"> 2.635 </TD> <TD align="right"> 1.671 </TD> <TD align="right"> 0 </TD> <TD align="right"> 12000 </TD> <TD align="right"> 100.0000 </TD> </TR>
+  <TR> <TD align="right"> distr.kurtosis </TD> <TD align="right"> -1.440 </TD> <TD align="right"> -0.002 </TD> <TD align="right"> 1.675 </TD> <TD align="right"> 12.998 </TD> <TD align="right"> 6.777 </TD> <TD align="right"> 2382.195 </TD> <TD align="right"> 73.396 </TD> <TD align="right"> 5.647 </TD> <TD align="right"> 0 </TD> <TD align="right"> 12000 </TD> <TD align="right"> 100.0000 </TD> </TR>
+  <TR> <TD align="right"> distr.number_of_peaks </TD> <TD align="right"> 1.000 </TD> <TD align="right"> 2.000 </TD> <TD align="right"> 5.000 </TD> <TD align="right"> 5.996 </TD> <TD align="right"> 9.000 </TD> <TD align="right"> 49.000 </TD> <TD align="right"> 5.253 </TD> <TD align="right"> 0.876 </TD> <TD align="right"> 0 </TD> <TD align="right"> 12000 </TD> <TD align="right"> 100.0000 </TD> </TR>
+  <TR> <TD align="right"> levelset.lda_mmce_10 </TD> <TD align="right"> 0.020 </TD> <TD align="right"> 0.094 </TD> <TD align="right"> 0.100 </TD> <TD align="right"> 0.095 </TD> <TD align="right"> 0.100 </TD> <TD align="right"> 0.150 </TD> <TD align="right"> 0.016 </TD> <TD align="right"> 0.172 </TD> <TD align="right"> 0 </TD> <TD align="right"> 12000 </TD> <TD align="right"> 100.0000 </TD> </TR>
+  <TR> <TD align="right"> levelset.qda_mmce_10 </TD> <TD align="right"> 0.000 </TD> <TD align="right"> 0.055 </TD> <TD align="right"> 0.072 </TD> <TD align="right"> 0.072 </TD> <TD align="right"> 0.096 </TD> <TD align="right"> 0.142 </TD> <TD align="right"> 0.024 </TD> <TD align="right"> 0.337 </TD> <TD align="right"> 0 </TD> <TD align="right"> 12000 </TD> <TD align="right"> 100.0000 </TD> </TR>
+  <TR> <TD align="right"> levelset.mda_mmce_10 </TD> <TD align="right"> 0.010 </TD> <TD align="right"> 0.084 </TD> <TD align="right"> 0.100 </TD> <TD align="right"> 0.092 </TD> <TD align="right"> 0.102 </TD> <TD align="right"> 0.160 </TD> <TD align="right"> 0.020 </TD> <TD align="right"> 0.215 </TD> <TD align="right"> 0 </TD> <TD align="right"> 12000 </TD> <TD align="right"> 100.0000 </TD> </TR>
+  <TR> <TD align="right"> levelset.lda_vs_qda_10 </TD> <TD align="right"> 0.772 </TD> <TD align="right"> 1.039 </TD> <TD align="right"> 1.292 </TD> <TD align="right">  Inf </TD> <TD align="right"> 1.661 </TD> <TD align="right">  Inf </TD> <TD align="right">  </TD> <TD align="right">  </TD> <TD align="right"> 0 </TD> <TD align="right"> 12000 </TD> <TD align="right"> 100.0000 </TD> </TR>
+  <TR> <TD align="right"> levelset.lda_mmce_25 </TD> <TD align="right"> 0.005 </TD> <TD align="right"> 0.156 </TD> <TD align="right"> 0.229 </TD> <TD align="right"> 0.204 </TD> <TD align="right"> 0.250 </TD> <TD align="right"> 0.403 </TD> <TD align="right"> 0.074 </TD> <TD align="right"> 0.364 </TD> <TD align="right"> 0 </TD> <TD align="right"> 12000 </TD> <TD align="right"> 100.0000 </TD> </TR>
+  <TR> <TD align="right"> levelset.qda_mmce_25 </TD> <TD align="right"> 0.000 </TD> <TD align="right"> 0.090 </TD> <TD align="right"> 0.120 </TD> <TD align="right"> 0.137 </TD> <TD align="right"> 0.188 </TD> <TD align="right"> 0.307 </TD> <TD align="right"> 0.068 </TD> <TD align="right"> 0.493 </TD> <TD align="right"> 0 </TD> <TD align="right"> 12000 </TD> <TD align="right"> 100.0000 </TD> </TR>
+  <TR> <TD align="right"> levelset.mda_mmce_25 </TD> <TD align="right"> 0.010 </TD> <TD align="right"> 0.101 </TD> <TD align="right"> 0.150 </TD> <TD align="right"> 0.156 </TD> <TD align="right"> 0.217 </TD> <TD align="right"> 0.320 </TD> <TD align="right"> 0.069 </TD> <TD align="right"> 0.444 </TD> <TD align="right"> 0 </TD> <TD align="right"> 12000 </TD> <TD align="right"> 100.0000 </TD> </TR>
+  <TR> <TD align="right"> levelset.lda_vs_qda_25 </TD> <TD align="right"> 0.167 </TD> <TD align="right"> 1.177 </TD> <TD align="right"> 1.416 </TD> <TD align="right">  Inf </TD> <TD align="right"> 1.909 </TD> <TD align="right">  Inf </TD> <TD align="right">  </TD> <TD align="right">  </TD> <TD align="right"> 0 </TD> <TD align="right"> 12000 </TD> <TD align="right"> 100.0000 </TD> </TR>
+  <TR> <TD align="right"> levelset.lda_mmce_50 </TD> <TD align="right"> 0.003 </TD> <TD align="right"> 0.145 </TD> <TD align="right"> 0.223 </TD> <TD align="right"> 0.253 </TD> <TD align="right"> 0.387 </TD> <TD align="right"> 0.618 </TD> <TD align="right"> 0.149 </TD> <TD align="right"> 0.588 </TD> <TD align="right"> 0 </TD> <TD align="right"> 12000 </TD> <TD align="right"> 100.0000 </TD> </TR>
+  <TR> <TD align="right"> levelset.qda_mmce_50 </TD> <TD align="right"> 0.000 </TD> <TD align="right"> 0.092 </TD> <TD align="right"> 0.133 </TD> <TD align="right"> 0.171 </TD> <TD align="right"> 0.201 </TD> <TD align="right"> 0.623 </TD> <TD align="right"> 0.128 </TD> <TD align="right"> 0.750 </TD> <TD align="right"> 0 </TD> <TD align="right"> 12000 </TD> <TD align="right"> 100.0000 </TD> </TR>
+  <TR> <TD align="right"> levelset.mda_mmce_50 </TD> <TD align="right"> 0.005 </TD> <TD align="right"> 0.073 </TD> <TD align="right"> 0.143 </TD> <TD align="right"> 0.182 </TD> <TD align="right"> 0.255 </TD> <TD align="right"> 0.608 </TD> <TD align="right"> 0.139 </TD> <TD align="right"> 0.763 </TD> <TD align="right"> 0 </TD> <TD align="right"> 12000 </TD> <TD align="right"> 100.0000 </TD> </TR>
+  <TR> <TD align="right"> levelset.lda_vs_qda_50 </TD> <TD align="right"> 0.250 </TD> <TD align="right"> 1.116 </TD> <TD align="right"> 1.347 </TD> <TD align="right">  Inf </TD> <TD align="right"> 1.719 </TD> <TD align="right">  Inf </TD> <TD align="right">  </TD> <TD align="right">  </TD> <TD align="right"> 0 </TD> <TD align="right"> 12000 </TD> <TD align="right"> 100.0000 </TD> </TR>
+  <TR> <TD align="right"> ls.n_local_optima </TD> <TD align="right"> 1.000 </TD> <TD align="right"> 38.000 </TD> <TD align="right"> 243.500 </TD> <TD align="right"> 351.182 </TD> <TD align="right"> 500.000 </TD> <TD align="right"> 1000.000 </TD> <TD align="right"> 363.125 </TD> <TD align="right"> 1.034 </TD> <TD align="right"> 0 </TD> <TD align="right"> 12000 </TD> <TD align="right"> 100.0000 </TD> </TR>
+  <TR> <TD align="right"> ls.best_to_mean_contrast </TD> <TD align="right"> -472.777 </TD> <TD align="right"> 0.222 </TD> <TD align="right"> 0.895 </TD> <TD align="right"> 3.220 </TD> <TD align="right"> 1.013 </TD> <TD align="right"> 30057.559 </TD> <TD align="right"> 274.525 </TD> <TD align="right"> 85.251 </TD> <TD align="right"> 0 </TD> <TD align="right"> 12000 </TD> <TD align="right"> 100.0000 </TD> </TR>
+  <TR> <TD align="right"> ls.best_basin_size </TD> <TD align="right"> 0.001 </TD> <TD align="right"> 0.002 </TD> <TD align="right"> 0.007 </TD> <TD align="right"> 0.158 </TD> <TD align="right"> 0.060 </TD> <TD align="right"> 1.000 </TD> <TD align="right"> 0.320 </TD> <TD align="right"> 2.021 </TD> <TD align="right"> 0 </TD> <TD align="right"> 12000 </TD> <TD align="right"> 100.0000 </TD> </TR>
+  <TR> <TD align="right"> ls.mean_other_basin_size </TD> <TD align="right"> 0.000 </TD> <TD align="right"> 0.001 </TD> <TD align="right"> 0.004 </TD> <TD align="right"> 0.010 </TD> <TD align="right"> 0.011 </TD> <TD align="right"> 0.198 </TD> <TD align="right"> 0.016 </TD> <TD align="right"> 1.607 </TD> <TD align="right"> 0 </TD> <TD align="right"> 12000 </TD> <TD align="right"> 100.0000 </TD> </TR>
+  <TR> <TD align="right"> ls.worst_basin_size </TD> <TD align="right"> 0.001 </TD> <TD align="right"> 0.002 </TD> <TD align="right"> 0.004 </TD> <TD align="right"> 0.066 </TD> <TD align="right"> 0.010 </TD> <TD align="right"> 1.000 </TD> <TD align="right"> 0.230 </TD> <TD align="right"> 3.499 </TD> <TD align="right"> 0 </TD> <TD align="right"> 12000 </TD> <TD align="right"> 100.0000 </TD> </TR>
+  <TR> <TD align="right"> ls.min_feval </TD> <TD align="right"> 3.000 </TD> <TD align="right"> 43.000 </TD> <TD align="right"> 78.000 </TD> <TD align="right"> 242.639 </TD> <TD align="right"> 218.000 </TD> <TD align="right"> 1001.000 </TD> <TD align="right"> 327.787 </TD> <TD align="right"> 1.351 </TD> <TD align="right"> 0 </TD> <TD align="right"> 12000 </TD> <TD align="right"> 100.0000 </TD> </TR>
+  <TR> <TD align="right"> ls.lq_feval </TD> <TD align="right"> 5.000 </TD> <TD align="right"> 94.000 </TD> <TD align="right"> 258.000 </TD> <TD align="right"> 458.491 </TD> <TD align="right"> 1001.000 </TD> <TD align="right"> 1001.000 </TD> <TD align="right"> 408.209 </TD> <TD align="right"> 0.890 </TD> <TD align="right"> 0 </TD> <TD align="right"> 12000 </TD> <TD align="right"> 100.0000 </TD> </TR>
+  <TR> <TD align="right"> ls.med_feval </TD> <TD align="right"> 11.000 </TD> <TD align="right"> 111.000 </TD> <TD align="right"> 344.250 </TD> <TD align="right"> 491.186 </TD> <TD align="right"> 1001.000 </TD> <TD align="right"> 1001.000 </TD> <TD align="right"> 403.163 </TD> <TD align="right"> 0.821 </TD> <TD align="right"> 0 </TD> <TD align="right"> 12000 </TD> <TD align="right"> 100.0000 </TD> </TR>
+  <TR> <TD align="right"> ls.uq_feval </TD> <TD align="right"> 19.000 </TD> <TD align="right"> 132.000 </TD> <TD align="right"> 486.000 </TD> <TD align="right"> 537.820 </TD> <TD align="right"> 1001.000 </TD> <TD align="right"> 1002.000 </TD> <TD align="right"> 397.383 </TD> <TD align="right"> 0.739 </TD> <TD align="right"> 0 </TD> <TD align="right"> 12000 </TD> <TD align="right"> 100.0000 </TD> </TR>
+  <TR> <TD align="right"> ls.max_feval </TD> <TD align="right"> 23.000 </TD> <TD align="right"> 294.750 </TD> <TD align="right"> 1001.000 </TD> <TD align="right"> 703.331 </TD> <TD align="right"> 1001.000 </TD> <TD align="right"> 1021.000 </TD> <TD align="right"> 368.752 </TD> <TD align="right"> 0.524 </TD> <TD align="right"> 0 </TD> <TD align="right"> 12000 </TD> <TD align="right"> 100.0000 </TD> </TR>
+  <TR> <TD align="right"> numderiv.grad_norm_min </TD> <TD align="right"> 0.000 </TD> <TD align="right"> 6.626 </TD> <TD align="right"> 93.644 </TD> <TD align="right"> 364540.446 </TD> <TD align="right"> 1431.694 </TD> <TD align="right"> 45464282.936 </TD> <TD align="right"> 2711326.945 </TD> <TD align="right"> 7.438 </TD> <TD align="right"> 0 </TD> <TD align="right"> 12000 </TD> <TD align="right"> 100.0000 </TD> </TR>
+  <TR> <TD align="right"> numderiv.grad_norm_lq </TD> <TD align="right"> 0.000 </TD> <TD align="right"> 30.359 </TD> <TD align="right"> 639.051 </TD> <TD align="right"> 5145994.737 </TD> <TD align="right"> 29508.807 </TD> <TD align="right"> 862476034.170 </TD> <TD align="right"> 42378211.689 </TD> <TD align="right"> 8.235 </TD> <TD align="right"> 0 </TD> <TD align="right"> 12000 </TD> <TD align="right"> 100.0000 </TD> </TR>
+  <TR> <TD align="right"> numderiv.grad_norm_med </TD> <TD align="right"> 0.000 </TD> <TD align="right"> 48.361 </TD> <TD align="right"> 1052.162 </TD> <TD align="right"> 17547146.163 </TD> <TD align="right"> 48153.537 </TD> <TD align="right"> 2899908332.032 </TD> <TD align="right"> 143599007.273 </TD> <TD align="right"> 8.184 </TD> <TD align="right"> 0 </TD> <TD align="right"> 12000 </TD> <TD align="right"> 100.0000 </TD> </TR>
+  <TR> <TD align="right"> numderiv.grad_norm_uq </TD> <TD align="right"> 0.000 </TD> <TD align="right"> 86.062 </TD> <TD align="right"> 1622.976 </TD> <TD align="right"> 80833130.131 </TD> <TD align="right"> 91228.903 </TD> <TD align="right"> 18439720166.653 </TD> <TD align="right"> 764229506.797 </TD> <TD align="right"> 9.454 </TD> <TD align="right"> 0 </TD> <TD align="right"> 12000 </TD> <TD align="right"> 100.0000 </TD> </TR>
+  <TR> <TD align="right"> numderiv.grad_norm_max </TD> <TD align="right"> 0.000 </TD> <TD align="right"> 336.720 </TD> <TD align="right"> 10654.862 </TD> <TD align="right"> 10002894476.710 </TD> <TD align="right"> 334549.341 </TD> <TD align="right"> 6255141946892.330 </TD> <TD align="right"> 130330021831.267 </TD> <TD align="right"> 13.029 </TD> <TD align="right"> 0 </TD> <TD align="right"> 12000 </TD> <TD align="right"> 100.0000 </TD> </TR>
+  <TR> <TD align="right"> numderiv.grad_scale_min </TD> <TD align="right"> 1.000 </TD> <TD align="right"> 1.160 </TD> <TD align="right"> 2.150 </TD> <TD align="right">  Inf </TD> <TD align="right"> 4.883 </TD> <TD align="right">  Inf </TD> <TD align="right">  </TD> <TD align="right">  </TD> <TD align="right"> 81 </TD> <TD align="right"> 12000 </TD> <TD align="right"> 100.0000 </TD> </TR>
+  <TR> <TD align="right"> numderiv.grad_scale_lq </TD> <TD align="right"> 1.017 </TD> <TD align="right"> 3.155 </TD> <TD align="right"> 9.464 </TD> <TD align="right">  Inf </TD> <TD align="right"> 24.316 </TD> <TD align="right">  Inf </TD> <TD align="right">  </TD> <TD align="right">  </TD> <TD align="right"> 81 </TD> <TD align="right"> 12000 </TD> <TD align="right"> 100.0000 </TD> </TR>
+  <TR> <TD align="right"> numderiv.grad_scale_med </TD> <TD align="right"> 1.068 </TD> <TD align="right"> 5.170 </TD> <TD align="right"> 13.029 </TD> <TD align="right">  Inf </TD> <TD align="right"> 48.552 </TD> <TD align="right">  Inf </TD> <TD align="right">  </TD> <TD align="right">  </TD> <TD align="right"> 81 </TD> <TD align="right"> 12000 </TD> <TD align="right"> 100.0000 </TD> </TR>
+  <TR> <TD align="right"> numderiv.grad_scale_uq </TD> <TD align="right"> 1.068 </TD> <TD align="right"> 10.000 </TD> <TD align="right"> 29.589 </TD> <TD align="right">  Inf </TD> <TD align="right"> 117.545 </TD> <TD align="right">  Inf </TD> <TD align="right">  </TD> <TD align="right">  </TD> <TD align="right"> 81 </TD> <TD align="right"> 12000 </TD> <TD align="right"> 100.0000 </TD> </TR>
+  <TR> <TD align="right"> numderiv.grad_scale_max </TD> <TD align="right"> 1.068 </TD> <TD align="right"> 557.864 </TD> <TD align="right"> 7542.475 </TD> <TD align="right">  Inf </TD> <TD align="right"> 90583.380 </TD> <TD align="right">  Inf </TD> <TD align="right">  </TD> <TD align="right">  </TD> <TD align="right"> 81 </TD> <TD align="right"> 12000 </TD> <TD align="right"> 100.0000 </TD> </TR>
+  <TR> <TD align="right"> numderiv.hessian_cond_min </TD> <TD align="right"> 1.000 </TD> <TD align="right"> 1.329 </TD> <TD align="right"> 5.195 </TD> <TD align="right"> 6073477701822056665192595456.000 </TD> <TD align="right"> 33.338 </TD> <TD align="right"> 20151851715627299131141430181888.000 </TD> <TD align="right"> 213553922395498560538619674624.000 </TD> <TD align="right"> 35.162 </TD> <TD align="right"> 0 </TD> <TD align="right"> 12000 </TD> <TD align="right"> 100.0000 </TD> </TR>
+  <TR> <TD align="right"> numderiv.hessian_cond_lq </TD> <TD align="right"> 1.000 </TD> <TD align="right"> 11.389 </TD> <TD align="right"> 118.075 </TD> <TD align="right">  Inf </TD> <TD align="right"> 4904.486 </TD> <TD align="right">  Inf </TD> <TD align="right">  </TD> <TD align="right">  </TD> <TD align="right"> 0 </TD> <TD align="right"> 12000 </TD> <TD align="right"> 100.0000 </TD> </TR>
+  <TR> <TD align="right"> numderiv.hessian_cond_med </TD> <TD align="right"> 1.000 </TD> <TD align="right"> 26.882 </TD> <TD align="right"> 367.753 </TD> <TD align="right">  Inf </TD> <TD align="right"> 30140.090 </TD> <TD align="right">  Inf </TD> <TD align="right">  </TD> <TD align="right">  </TD> <TD align="right"> 0 </TD> <TD align="right"> 12000 </TD> <TD align="right"> 100.0000 </TD> </TR>
+  <TR> <TD align="right"> numderiv.hessian_cond_uq </TD> <TD align="right"> 1.000 </TD> <TD align="right"> 98.834 </TD> <TD align="right"> 968.248 </TD> <TD align="right">  Inf </TD> <TD align="right"> 561587.316 </TD> <TD align="right">  Inf </TD> <TD align="right">  </TD> <TD align="right">  </TD> <TD align="right"> 0 </TD> <TD align="right"> 12000 </TD> <TD align="right"> 100.0000 </TD> </TR>
+  <TR> <TD align="right"> numderiv.hessian_cond_max </TD> <TD align="right"> 1.000 </TD> <TD align="right"> 26498.729 </TD> <TD align="right"> 893396.926 </TD> <TD align="right">  Inf </TD> <TD align="right"> 369807078.509 </TD> <TD align="right">  Inf </TD> <TD align="right">  </TD> <TD align="right">  </TD> <TD align="right"> 0 </TD> <TD align="right"> 12000 </TD> <TD align="right"> 100.0000 </TD> </TR>
+   </TABLE>
+
+
+
+<h2> Duplicated Features </h2>
+
+12000 instances were used, although only 1200 different instances exist.
+
+
+No further duplicated features were recognized.
+
+
+<h2> Useless Features </h2>
+
+Feature Values:
+<!-- html table generated in R 3.0.2 by xtable 1.7-1 package -->
+<!-- Thu Jan  9 01:30:29 2014 -->
+<TABLE border=1>
+<TR> <TH>  </TH> <TH> uniqueValue </TH> <TH> NAs </TH>  </TR>
+  <TR> <TD align="right"> convex.linear_p </TD> <TD align="right"> 0.0000 </TD> <TD align="right"> 0 </TD> </TR>
+   </TABLE>
+Feature Runstatus:
+<!-- html table generated in R 3.0.2 by xtable 1.7-1 package -->
+<!-- Thu Jan  9 01:30:29 2014 -->
+<TABLE border=1>
+<TR> <TH>  </TH> <TH> uniqueValue </TH> <TH> NAs </TH>  </TR>
+  <TR> <TD align="right"> presolved </TD> <TD> FALSE </TD> <TD> 0 </TD> </TR>
+   </TABLE>
+
+
+
+</body>
+</html>

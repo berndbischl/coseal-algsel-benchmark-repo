@@ -1,26 +1,27 @@
 <!DOCTYPE html>
 <html>
 <head>
-<style type="text/css">.knitr.inline {
+<style type="text/css">
+.knitr.inline {
   background-color: #f7f7f7;
   border:solid 1px #B0B0B0;
 }
 .error {
 	font-weight: bold;
 	color: #FF0000;
-}, 
+},
 .warning {
 	font-weight: bold;
-} 
+}
 .message {
 	font-style: italic;
-} 
+}
 .source, .output, .warning, .error, .message {
 	padding: 0em 1em;
   border:solid 1px #F7F7F7;
 }
 .source {
-  background-color: #f7f7f7;
+  background-color: #f5f5f5;
 }
 .rimage.left {
   text-align: left;
@@ -31,71 +32,35 @@
 .rimage.center {
   text-align: center;
 }
-
-.source {
-  color: #333333;
+.hl.num {
+  color: #AF0F91;
 }
-.background {
-  color: #F7F7F7;
+.hl.str {
+  color: #317ECC;
 }
-
-.number {
-  color: #000000;
-}
-
-.functioncall {
-  color: #800054;
-  font-weight: bolder;
-}
-
-.string {
-  color: #9999FF;
-}
-
-.keyword {
-  font-weight: bolder;
-  color: black;
-}
-
-.argument {
-  color: #B04005;
-}
-
-.comment {
-  color: #2E9957;
-}
-
-.roxygencomment {
-  color: #707AB3;
-}
-
-.formalargs {
-  color: #B04005;
-}
-
-.eqformalargs {
-  color: #B04005;
-}
-
-.assignement {
-  font-weight: bolder;
-  color: #000000;
-}
-
-.package {
-  color: #96B525;
-}
-
-.slot {
+.hl.com {
+  color: #AD95AF;
   font-style: italic;
 }
-
-.symbol {
+.hl.opt {
   color: #000000;
 }
-
-.prompt {
-  color: #333333;
+.hl.std {
+  color: #585858;
+}
+.hl.kwa {
+  color: #295F94;
+  font-weight: bold;
+}
+.hl.kwb {
+  color: #B05A65;
+}
+.hl.kwc {
+  color: #55aa55;
+}
+.hl.kwd {
+  color: #BC5A65;
+  font-weight: bold;
 }
 </style>
   <title>Algorithm performance overview</title>
@@ -103,61 +68,80 @@
 <body>
 
 
-<h2> Overview of median performance values </h2>
+<h2> Overview of performance values </h2>
 
-<!-- html table generated in R 3.0.1 by xtable 1.7-1 package -->
-<!-- Sun Dec 15 16:54:06 2013 -->
+<!-- html table generated in R 3.0.2 by xtable 1.7-1 package -->
+<!-- Thu Jan  9 01:30:43 2014 -->
 <TABLE border=1>
-<TR> <TH>  </TH> <TH> runtime </TH> <TH> runtime.nas </TH>  </TR>
-  <TR> <TD align="right"> CryptoMiniSat_StrangeNight2stfixed </TD> <TD align="right"> 96.69 </TD> <TD align="right"> 31.00 </TD> </TR>
-  <TR> <TD align="right"> EBGlucose_1.0 </TD> <TD align="right"> 59.44 </TD> <TD align="right"> 33.67 </TD> </TR>
-  <TR> <TD align="right"> glucose_2 </TD> <TD align="right"> 80.17 </TD> <TD align="right"> 28.33 </TD> </TR>
-  <TR> <TD align="right"> glueminisat_2.2.5 </TD> <TD align="right"> 56.28 </TD> <TD align="right"> 29.67 </TD> </TR>
-  <TR> <TD align="right"> Lingeling_587ffixed </TD> <TD align="right"> 71.82 </TD> <TD align="right"> 30.67 </TD> </TR>
-  <TR> <TD align="right"> minisathackcir_minisat_20110513simp </TD> <TD align="right"> 69.99 </TD> <TD align="right"> 32.67 </TD> </TR>
-  <TR> <TD align="right"> minisathackcontrasat_20110302 </TD> <TD align="right"> 79.05 </TD> <TD align="right"> 33.67 </TD> </TR>
-  <TR> <TD align="right"> minisathackEBMiniSAT_20110302 </TD> <TD align="right"> 67.01 </TD> <TD align="right"> 34.67 </TD> </TR>
-  <TR> <TD align="right"> minisathackLR_GL_SHR_20110302 </TD> <TD align="right"> 60.94 </TD> <TD align="right"> 36.33 </TD> </TR>
-  <TR> <TD align="right"> minisathackMiniSAT_2.2.0agile26 </TD> <TD align="right"> 49.63 </TD> <TD align="right"> 37.00 </TD> </TR>
-  <TR> <TD align="right"> minisathackminisat_psm_20110401 </TD> <TD align="right"> 59.63 </TD> <TD align="right"> 34.33 </TD> </TR>
-  <TR> <TD align="right"> minisathackreferenceminisat_2.2.0 </TD> <TD align="right"> 62.12 </TD> <TD align="right"> 35.33 </TD> </TR>
-  <TR> <TD align="right"> MPhaseSAT64_20110514fixed </TD> <TD align="right"> 104.29 </TD> <TD align="right"> 33.00 </TD> </TR>
-  <TR> <TD align="right"> QuteRSat_20110512fixed </TD> <TD align="right"> 93.79 </TD> <TD align="right"> 31.33 </TD> </TR>
-  <TR> <TD align="right"> rcl_20110401 </TD> <TD align="right"> 67.98 </TD> <TD align="right"> 38.67 </TD> </TR>
-  <TR> <TD align="right"> RestartSAT_B95 </TD> <TD align="right"> 83.48 </TD> <TD align="right"> 33.00 </TD> </TR>
-  <TR> <TD align="right"> SAT09referencesolverglucose_1.0 </TD> <TD align="right"> 97.47 </TD> <TD align="right"> 34.33 </TD> </TR>
-  <TR> <TD align="right"> SAT09referencesolverprecosat_236 </TD> <TD align="right"> 113.43 </TD> <TD align="right"> 31.33 </TD> </TR>
+<TR> <TH>  </TH> <TH> Min. </TH> <TH> 1st Qu. </TH> <TH> Median </TH> <TH> Mean </TH> <TH> 3rd Qu. </TH> <TH> Max. </TH> <TH> SD </TH> <TH> VC </TH> <TH> NA's </TH> <TH> Obs. </TH> <TH> Run OK (%) </TH>  </TR>
+  <TR> <TD align="right"> CryptoMiniSat_Strange-Night2-st\(fixed\) </TD> <TD align="right"> 0.004 </TD> <TD align="right"> 21.292 </TD> <TD align="right"> 96.687 </TD> <TD align="right"> 512.568 </TD> <TD align="right"> 512.486 </TD> <TD align="right"> 4573.780 </TD> <TD align="right"> 872.647 </TD> <TD align="right"> 1.703 </TD> <TD align="right"> 93 </TD> <TD align="right"> 300 </TD> <TD align="right"> 69.000 </TD> </TR>
+  <TR> <TD align="right"> EBGlucose_1.0 </TD> <TD align="right"> 0.007 </TD> <TD align="right"> 8.248 </TD> <TD align="right"> 59.441 </TD> <TD align="right"> 715.775 </TD> <TD align="right"> 628.378 </TD> <TD align="right"> 4933.570 </TD> <TD align="right"> 1271.073 </TD> <TD align="right"> 1.776 </TD> <TD align="right"> 101 </TD> <TD align="right"> 300 </TD> <TD align="right"> 66.333 </TD> </TR>
+  <TR> <TD align="right"> glucose_2 </TD> <TD align="right"> 0.005 </TD> <TD align="right"> 7.667 </TD> <TD align="right"> 80.174 </TD> <TD align="right"> 612.890 </TD> <TD align="right"> 669.102 </TD> <TD align="right"> 4269.690 </TD> <TD align="right"> 1025.953 </TD> <TD align="right"> 1.674 </TD> <TD align="right"> 85 </TD> <TD align="right"> 300 </TD> <TD align="right"> 71.667 </TD> </TR>
+  <TR> <TD align="right"> glueminisat_2.2.5 </TD> <TD align="right"> 0.003 </TD> <TD align="right"> 5.891 </TD> <TD align="right"> 56.275 </TD> <TD align="right"> 672.689 </TD> <TD align="right"> 626.670 </TD> <TD align="right"> 4976.850 </TD> <TD align="right"> 1194.854 </TD> <TD align="right"> 1.776 </TD> <TD align="right"> 89 </TD> <TD align="right"> 300 </TD> <TD align="right"> 70.333 </TD> </TR>
+  <TR> <TD align="right"> Lingeling_587f\(fixed\) </TD> <TD align="right"> 0.009 </TD> <TD align="right"> 18.967 </TD> <TD align="right"> 71.818 </TD> <TD align="right"> 566.775 </TD> <TD align="right"> 591.495 </TD> <TD align="right"> 4860.350 </TD> <TD align="right"> 1023.886 </TD> <TD align="right"> 1.807 </TD> <TD align="right"> 92 </TD> <TD align="right"> 300 </TD> <TD align="right"> 69.333 </TD> </TR>
+  <TR> <TD align="right"> minisathackcir_minisat_2011-05-13\(simp\) </TD> <TD align="right"> 0.003 </TD> <TD align="right"> 6.443 </TD> <TD align="right"> 69.990 </TD> <TD align="right"> 634.286 </TD> <TD align="right"> 593.067 </TD> <TD align="right"> 4971.390 </TD> <TD align="right"> 1133.436 </TD> <TD align="right"> 1.787 </TD> <TD align="right"> 98 </TD> <TD align="right"> 300 </TD> <TD align="right"> 67.333 </TD> </TR>
+  <TR> <TD align="right"> minisathackcontrasat_2011-03-02 </TD> <TD align="right"> 0.002 </TD> <TD align="right"> 8.647 </TD> <TD align="right"> 79.051 </TD> <TD align="right"> 666.966 </TD> <TD align="right"> 627.861 </TD> <TD align="right"> 4923.530 </TD> <TD align="right"> 1183.608 </TD> <TD align="right"> 1.775 </TD> <TD align="right"> 101 </TD> <TD align="right"> 300 </TD> <TD align="right"> 66.333 </TD> </TR>
+  <TR> <TD align="right"> minisathackEBMiniSAT_2011-03-02 </TD> <TD align="right"> 0.001 </TD> <TD align="right"> 4.325 </TD> <TD align="right"> 67.014 </TD> <TD align="right"> 549.353 </TD> <TD align="right"> 455.512 </TD> <TD align="right"> 4962.990 </TD> <TD align="right"> 995.740 </TD> <TD align="right"> 1.813 </TD> <TD align="right"> 104 </TD> <TD align="right"> 300 </TD> <TD align="right"> 65.333 </TD> </TR>
+  <TR> <TD align="right"> minisathackLR_GL_SHR_2011-03-02 </TD> <TD align="right"> 0.002 </TD> <TD align="right"> 4.537 </TD> <TD align="right"> 60.942 </TD> <TD align="right"> 584.940 </TD> <TD align="right"> 613.238 </TD> <TD align="right"> 4999.770 </TD> <TD align="right"> 1058.203 </TD> <TD align="right"> 1.809 </TD> <TD align="right"> 109 </TD> <TD align="right"> 300 </TD> <TD align="right"> 63.667 </TD> </TR>
+  <TR> <TD align="right"> minisathackMiniSAT_2.2.0-agile-26 </TD> <TD align="right"> 0.003 </TD> <TD align="right"> 4.691 </TD> <TD align="right"> 49.630 </TD> <TD align="right"> 484.042 </TD> <TD align="right"> 403.722 </TD> <TD align="right"> 4986.020 </TD> <TD align="right"> 933.092 </TD> <TD align="right"> 1.928 </TD> <TD align="right"> 111 </TD> <TD align="right"> 300 </TD> <TD align="right"> 63.000 </TD> </TR>
+  <TR> <TD align="right"> minisathackminisat_psm_2011-04-01 </TD> <TD align="right"> 0.008 </TD> <TD align="right"> 7.209 </TD> <TD align="right"> 59.626 </TD> <TD align="right"> 587.730 </TD> <TD align="right"> 487.672 </TD> <TD align="right"> 4930.120 </TD> <TD align="right"> 1074.389 </TD> <TD align="right"> 1.828 </TD> <TD align="right"> 103 </TD> <TD align="right"> 300 </TD> <TD align="right"> 65.667 </TD> </TR>
+  <TR> <TD align="right"> minisathackreferenceminisat_2.2.0 </TD> <TD align="right"> 0.003 </TD> <TD align="right"> 4.577 </TD> <TD align="right"> 62.122 </TD> <TD align="right"> 523.191 </TD> <TD align="right"> 538.832 </TD> <TD align="right"> 4972.160 </TD> <TD align="right"> 943.145 </TD> <TD align="right"> 1.803 </TD> <TD align="right"> 106 </TD> <TD align="right"> 300 </TD> <TD align="right"> 64.667 </TD> </TR>
+  <TR> <TD align="right"> MPhaseSAT64_2011-05-14\(fixed\) </TD> <TD align="right"> 0.006 </TD> <TD align="right"> 16.186 </TD> <TD align="right"> 104.290 </TD> <TD align="right"> 630.668 </TD> <TD align="right"> 570.279 </TD> <TD align="right"> 4915.630 </TD> <TD align="right"> 1123.851 </TD> <TD align="right"> 1.782 </TD> <TD align="right"> 99 </TD> <TD align="right"> 300 </TD> <TD align="right"> 67.000 </TD> </TR>
+  <TR> <TD align="right"> QuteRSat_2011-05-12\(fixed\) </TD> <TD align="right"> 0.012 </TD> <TD align="right"> 16.708 </TD> <TD align="right"> 93.790 </TD> <TD align="right"> 553.981 </TD> <TD align="right"> 550.534 </TD> <TD align="right"> 4487.980 </TD> <TD align="right"> 967.455 </TD> <TD align="right"> 1.746 </TD> <TD align="right"> 94 </TD> <TD align="right"> 300 </TD> <TD align="right"> 68.667 </TD> </TR>
+  <TR> <TD align="right"> rcl_2011-04-01 </TD> <TD align="right"> 0.009 </TD> <TD align="right"> 9.596 </TD> <TD align="right"> 67.978 </TD> <TD align="right"> 533.866 </TD> <TD align="right"> 479.587 </TD> <TD align="right"> 4394.070 </TD> <TD align="right"> 1010.235 </TD> <TD align="right"> 1.892 </TD> <TD align="right"> 116 </TD> <TD align="right"> 300 </TD> <TD align="right"> 61.333 </TD> </TR>
+  <TR> <TD align="right"> RestartSAT_B95 </TD> <TD align="right"> 0.003 </TD> <TD align="right"> 6.282 </TD> <TD align="right"> 83.480 </TD> <TD align="right"> 514.646 </TD> <TD align="right"> 560.161 </TD> <TD align="right"> 4768.120 </TD> <TD align="right"> 906.466 </TD> <TD align="right"> 1.761 </TD> <TD align="right"> 99 </TD> <TD align="right"> 300 </TD> <TD align="right"> 67.000 </TD> </TR>
+  <TR> <TD align="right"> SAT09referencesolverglucose_1.0 </TD> <TD align="right"> 0.006 </TD> <TD align="right"> 9.665 </TD> <TD align="right"> 97.465 </TD> <TD align="right"> 651.730 </TD> <TD align="right"> 706.262 </TD> <TD align="right"> 4987.710 </TD> <TD align="right"> 1095.678 </TD> <TD align="right"> 1.681 </TD> <TD align="right"> 103 </TD> <TD align="right"> 300 </TD> <TD align="right"> 65.667 </TD> </TR>
+  <TR> <TD align="right"> SAT09referencesolverprecosat_236 </TD> <TD align="right"> 0.002 </TD> <TD align="right"> 14.651 </TD> <TD align="right"> 113.429 </TD> <TD align="right"> 592.742 </TD> <TD align="right"> 539.684 </TD> <TD align="right"> 4493.760 </TD> <TD align="right"> 996.844 </TD> <TD align="right"> 1.682 </TD> <TD align="right"> 94 </TD> <TD align="right"> 300 </TD> <TD align="right"> 68.667 </TD> </TR>
+  <TR> <TD align="right"> allAlgorithms </TD> <TD align="right"> 0.001 </TD> <TD align="right"> 9.279 </TD> <TD align="right"> 75.275 </TD> <TD align="right"> 589.011 </TD> <TD align="right"> 571.873 </TD> <TD align="right"> 4999.770 </TD> <TD align="right"> 1049.941 </TD> <TD align="right"> 1.783 </TD> <TD align="right"> 1797 </TD> <TD align="right"> 5400 </TD> <TD align="right"> 66.722 </TD> </TR>
    </TABLE>
 
 
 
+<h2> Dominated Algorithms </h2>
+
+<!-- html table generated in R 3.0.2 by xtable 1.7-1 package -->
+<!-- Thu Jan  9 01:30:43 2014 -->
+<TABLE border=1>
+<TR> <TH>  </TH> <TH> Superior </TH> <TH> Inferior </TH>  </TR>
+  <TR> <TD align="right"> 1 </TD> <TD> none </TD> <TD> none </TD> </TR>
+   </TABLE>
+
+
+
+<h2> Useless Algorithms </h2>
+
+There were no entirely useless algorithms.
+
+
 <h2> Boxplots of performance values </h2>
 
-<div class="chunk" id="unnamed-chunk-2"><div class="rcode"><div class="warning"><pre class="knitr r">## Warning: Removed 1797 rows containing non-finite values (stat_boxplot).
-</pre></div></div><div class="rimage default"><img src="figure/unnamed-chunk-2.png" title="plot of chunk unnamed-chunk-2" alt="plot of chunk unnamed-chunk-2" class="plot" /></div></div>
+<div class="chunk" id="unnamed-chunk-4"><div class="rcode"><div class="warning"><pre class="knitr r">## Warning: Removed 1797 rows containing non-finite values (stat_boxplot).
+</pre></div>
+</div><div class="rimage default"><img src="figure/unnamed-chunk-4.png" title="plot of chunk unnamed-chunk-4" alt="plot of chunk unnamed-chunk-4" class="plot" /></div></div>
 
 
 <h2> Estimated densitities of performance values </h2>
 
-<div class="chunk" id="unnamed-chunk-3"><div class="rcode"><div class="warning"><pre class="knitr r">## Warning: Removed 93 rows containing non-finite values (stat_density).
-</pre></div><div class="warning"><pre class="knitr r">## Warning: Removed 101 rows containing non-finite values (stat_density).
-</pre></div><div class="warning"><pre class="knitr r">## Warning: Removed 85 rows containing non-finite values (stat_density).
-</pre></div><div class="warning"><pre class="knitr r">## Warning: Removed 89 rows containing non-finite values (stat_density).
-</pre></div><div class="warning"><pre class="knitr r">## Warning: Removed 92 rows containing non-finite values (stat_density).
-</pre></div><div class="warning"><pre class="knitr r">## Warning: Removed 98 rows containing non-finite values (stat_density).
-</pre></div><div class="warning"><pre class="knitr r">## Warning: Removed 101 rows containing non-finite values (stat_density).
-</pre></div><div class="warning"><pre class="knitr r">## Warning: Removed 104 rows containing non-finite values (stat_density).
-</pre></div><div class="warning"><pre class="knitr r">## Warning: Removed 109 rows containing non-finite values (stat_density).
-</pre></div><div class="warning"><pre class="knitr r">## Warning: Removed 111 rows containing non-finite values (stat_density).
-</pre></div><div class="warning"><pre class="knitr r">## Warning: Removed 103 rows containing non-finite values (stat_density).
-</pre></div><div class="warning"><pre class="knitr r">## Warning: Removed 106 rows containing non-finite values (stat_density).
-</pre></div><div class="warning"><pre class="knitr r">## Warning: Removed 99 rows containing non-finite values (stat_density).
-</pre></div><div class="warning"><pre class="knitr r">## Warning: Removed 94 rows containing non-finite values (stat_density).
-</pre></div><div class="warning"><pre class="knitr r">## Warning: Removed 116 rows containing non-finite values (stat_density).
-</pre></div><div class="warning"><pre class="knitr r">## Warning: Removed 99 rows containing non-finite values (stat_density).
-</pre></div><div class="warning"><pre class="knitr r">## Warning: Removed 103 rows containing non-finite values (stat_density).
-</pre></div><div class="warning"><pre class="knitr r">## Warning: Removed 94 rows containing non-finite values (stat_density).
-</pre></div></div><div class="rimage default"><img src="figure/unnamed-chunk-3.png" title="plot of chunk unnamed-chunk-3" alt="plot of chunk unnamed-chunk-3" class="plot" /></div></div>
+<div class="chunk" id="unnamed-chunk-5"><div class="rcode"><div class="warning"><pre class="knitr r">## Warning: Removed 93 rows containing non-finite values (stat_density).
+## Warning: Removed 101 rows containing non-finite values (stat_density).
+## Warning: Removed 85 rows containing non-finite values (stat_density).
+## Warning: Removed 89 rows containing non-finite values (stat_density).
+## Warning: Removed 92 rows containing non-finite values (stat_density).
+## Warning: Removed 98 rows containing non-finite values (stat_density).
+## Warning: Removed 101 rows containing non-finite values (stat_density).
+## Warning: Removed 104 rows containing non-finite values (stat_density).
+## Warning: Removed 109 rows containing non-finite values (stat_density).
+## Warning: Removed 111 rows containing non-finite values (stat_density).
+## Warning: Removed 103 rows containing non-finite values (stat_density).
+## Warning: Removed 106 rows containing non-finite values (stat_density).
+## Warning: Removed 99 rows containing non-finite values (stat_density).
+## Warning: Removed 94 rows containing non-finite values (stat_density).
+## Warning: Removed 116 rows containing non-finite values (stat_density).
+## Warning: Removed 99 rows containing non-finite values (stat_density).
+## Warning: Removed 103 rows containing non-finite values (stat_density).
+## Warning: Removed 94 rows containing non-finite values (stat_density).
+</pre></div>
+</div><div class="rimage default"><img src="figure/unnamed-chunk-5.png" title="plot of chunk unnamed-chunk-5" alt="plot of chunk unnamed-chunk-5" class="plot" /></div></div>
 
 
 </body>

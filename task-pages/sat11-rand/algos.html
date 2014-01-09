@@ -1,26 +1,27 @@
 <!DOCTYPE html>
 <html>
 <head>
-<style type="text/css">.knitr.inline {
+<style type="text/css">
+.knitr.inline {
   background-color: #f7f7f7;
   border:solid 1px #B0B0B0;
 }
 .error {
 	font-weight: bold;
 	color: #FF0000;
-}, 
+},
 .warning {
 	font-weight: bold;
-} 
+}
 .message {
 	font-style: italic;
-} 
+}
 .source, .output, .warning, .error, .message {
 	padding: 0em 1em;
   border:solid 1px #F7F7F7;
 }
 .source {
-  background-color: #f7f7f7;
+  background-color: #f5f5f5;
 }
 .rimage.left {
   text-align: left;
@@ -31,71 +32,35 @@
 .rimage.center {
   text-align: center;
 }
-
-.source {
-  color: #333333;
+.hl.num {
+  color: #AF0F91;
 }
-.background {
-  color: #F7F7F7;
+.hl.str {
+  color: #317ECC;
 }
-
-.number {
-  color: #000000;
-}
-
-.functioncall {
-  color: #800054;
-  font-weight: bolder;
-}
-
-.string {
-  color: #9999FF;
-}
-
-.keyword {
-  font-weight: bolder;
-  color: black;
-}
-
-.argument {
-  color: #B04005;
-}
-
-.comment {
-  color: #2E9957;
-}
-
-.roxygencomment {
-  color: #707AB3;
-}
-
-.formalargs {
-  color: #B04005;
-}
-
-.eqformalargs {
-  color: #B04005;
-}
-
-.assignement {
-  font-weight: bolder;
-  color: #000000;
-}
-
-.package {
-  color: #96B525;
-}
-
-.slot {
+.hl.com {
+  color: #AD95AF;
   font-style: italic;
 }
-
-.symbol {
+.hl.opt {
   color: #000000;
 }
-
-.prompt {
-  color: #333333;
+.hl.std {
+  color: #585858;
+}
+.hl.kwa {
+  color: #295F94;
+  font-weight: bold;
+}
+.hl.kwb {
+  color: #B05A65;
+}
+.hl.kwc {
+  color: #55aa55;
+}
+.hl.kwd {
+  color: #BC5A65;
+  font-weight: bold;
 }
 </style>
   <title>Algorithm performance overview</title>
@@ -103,43 +68,62 @@
 <body>
 
 
-<h2> Overview of median performance values </h2>
+<h2> Overview of performance values </h2>
 
-<!-- html table generated in R 3.0.1 by xtable 1.7-1 package -->
-<!-- Sun Dec 15 16:54:08 2013 -->
+<!-- html table generated in R 3.0.2 by xtable 1.7-1 package -->
+<!-- Thu Jan  9 01:30:46 2014 -->
 <TABLE border=1>
-<TR> <TH>  </TH> <TH> runtime </TH> <TH> runtime.nas </TH>  </TR>
-  <TR> <TD align="right"> adaptg2wsat2011_20110302 </TD> <TD align="right"> 2.60 </TD> <TD align="right"> 45.33 </TD> </TR>
-  <TR> <TD align="right"> EagleUP_1.565.350 </TD> <TD align="right"> 1.32 </TD> <TD align="right"> 45.33 </TD> </TR>
-  <TR> <TD align="right"> march_rw_20110302 </TD> <TD align="right"> 36.10 </TD> <TD align="right"> 58.17 </TD> </TR>
-  <TR> <TD align="right"> MPhaseSAT_M_20110216 </TD> <TD align="right"> 9.36 </TD> <TD align="right"> 40.17 </TD> </TR>
-  <TR> <TD align="right"> SAT09referencesolvergnovelty+2_20090322 </TD> <TD align="right"> 1.42 </TD> <TD align="right"> 50.33 </TD> </TR>
-  <TR> <TD align="right"> SAT09referencesolvermarch_hi_hi </TD> <TD align="right"> 35.46 </TD> <TD align="right"> 58.17 </TD> </TR>
-  <TR> <TD align="right"> SAT09referencesolverTNM_20090322 </TD> <TD align="right"> 1.96 </TD> <TD align="right"> 46.00 </TD> </TR>
-  <TR> <TD align="right"> sattime2011_20110302 </TD> <TD align="right"> 2.84 </TD> <TD align="right"> 44.33 </TD> </TR>
-  <TR> <TD align="right"> sparrow2011_sparrow2011_ubcsat1.2_20110302 </TD> <TD align="right"> 4.48 </TD> <TD align="right"> 39.67 </TD> </TR>
+<TR> <TH>  </TH> <TH> Min. </TH> <TH> 1st Qu. </TH> <TH> Median </TH> <TH> Mean </TH> <TH> 3rd Qu. </TH> <TH> Max. </TH> <TH> SD </TH> <TH> VC </TH> <TH> NA's </TH> <TH> Obs. </TH> <TH> Run OK (%) </TH>  </TR>
+  <TR> <TD align="right"> adaptg2wsat2011_2011-03-02 </TD> <TD align="right"> 0.005 </TD> <TD align="right"> 0.115 </TD> <TD align="right"> 2.599 </TD> <TD align="right"> 270.542 </TD> <TD align="right"> 274.575 </TD> <TD align="right"> 4244.350 </TD> <TD align="right"> 636.173 </TD> <TD align="right"> 2.351 </TD> <TD align="right"> 272 </TD> <TD align="right"> 600 </TD> <TD align="right"> 54.667 </TD> </TR>
+  <TR> <TD align="right"> EagleUP_1.565.350 </TD> <TD align="right"> 0.006 </TD> <TD align="right"> 0.072 </TD> <TD align="right"> 1.320 </TD> <TD align="right"> 141.883 </TD> <TD align="right"> 32.963 </TD> <TD align="right"> 3727.610 </TD> <TD align="right"> 502.874 </TD> <TD align="right"> 3.544 </TD> <TD align="right"> 272 </TD> <TD align="right"> 600 </TD> <TD align="right"> 54.667 </TD> </TR>
+  <TR> <TD align="right"> march_rw_2011-03-02 </TD> <TD align="right"> 0.014 </TD> <TD align="right"> 3.745 </TD> <TD align="right"> 36.102 </TD> <TD align="right"> 518.727 </TD> <TD align="right"> 371.182 </TD> <TD align="right"> 4953.090 </TD> <TD align="right"> 1055.290 </TD> <TD align="right"> 2.034 </TD> <TD align="right"> 349 </TD> <TD align="right"> 600 </TD> <TD align="right"> 41.833 </TD> </TR>
+  <TR> <TD align="right"> MPhaseSAT_M_2011-02-16 </TD> <TD align="right"> 0.624 </TD> <TD align="right"> 1.058 </TD> <TD align="right"> 9.358 </TD> <TD align="right"> 217.233 </TD> <TD align="right"> 120.311 </TD> <TD align="right"> 4457.830 </TD> <TD align="right"> 586.531 </TD> <TD align="right"> 2.700 </TD> <TD align="right"> 241 </TD> <TD align="right"> 600 </TD> <TD align="right"> 59.833 </TD> </TR>
+  <TR> <TD align="right"> SAT09referencesolvergnovelty+2_2009-03-22 </TD> <TD align="right"> 0.003 </TD> <TD align="right"> 0.057 </TD> <TD align="right"> 1.421 </TD> <TD align="right"> 288.650 </TD> <TD align="right"> 57.766 </TD> <TD align="right"> 4903.520 </TD> <TD align="right"> 863.186 </TD> <TD align="right"> 2.990 </TD> <TD align="right"> 302 </TD> <TD align="right"> 600 </TD> <TD align="right"> 49.667 </TD> </TR>
+  <TR> <TD align="right"> SAT09referencesolvermarch_hi_hi </TD> <TD align="right"> 0.016 </TD> <TD align="right"> 3.969 </TD> <TD align="right"> 35.462 </TD> <TD align="right"> 540.368 </TD> <TD align="right"> 385.130 </TD> <TD align="right"> 4641.900 </TD> <TD align="right"> 1058.206 </TD> <TD align="right"> 1.958 </TD> <TD align="right"> 349 </TD> <TD align="right"> 600 </TD> <TD align="right"> 41.833 </TD> </TR>
+  <TR> <TD align="right"> SAT09referencesolverTNM_2009-03-22 </TD> <TD align="right"> 0.005 </TD> <TD align="right"> 0.097 </TD> <TD align="right"> 1.965 </TD> <TD align="right"> 350.066 </TD> <TD align="right"> 117.223 </TD> <TD align="right"> 4720.090 </TD> <TD align="right"> 872.776 </TD> <TD align="right"> 2.493 </TD> <TD align="right"> 276 </TD> <TD align="right"> 600 </TD> <TD align="right"> 54.000 </TD> </TR>
+  <TR> <TD align="right"> sattime2011_2011-03-02 </TD> <TD align="right"> 0.005 </TD> <TD align="right"> 0.125 </TD> <TD align="right"> 2.839 </TD> <TD align="right"> 359.208 </TD> <TD align="right"> 315.819 </TD> <TD align="right"> 4932.000 </TD> <TD align="right"> 847.435 </TD> <TD align="right"> 2.359 </TD> <TD align="right"> 266 </TD> <TD align="right"> 600 </TD> <TD align="right"> 55.667 </TD> </TR>
+  <TR> <TD align="right"> sparrow2011_sparrow2011_ubcsat1.2_2011-03-02 </TD> <TD align="right"> 0.003 </TD> <TD align="right"> 0.107 </TD> <TD align="right"> 4.481 </TD> <TD align="right"> 137.607 </TD> <TD align="right"> 77.799 </TD> <TD align="right"> 3906.440 </TD> <TD align="right"> 410.700 </TD> <TD align="right"> 2.985 </TD> <TD align="right"> 238 </TD> <TD align="right"> 600 </TD> <TD align="right"> 60.333 </TD> </TR>
+  <TR> <TD align="right"> allAlgorithms </TD> <TD align="right"> 0.003 </TD> <TD align="right"> 0.252 </TD> <TD align="right"> 5.165 </TD> <TD align="right"> 299.232 </TD> <TD align="right"> 158.184 </TD> <TD align="right"> 4953.090 </TD> <TD align="right"> 777.448 </TD> <TD align="right"> 2.598 </TD> <TD align="right"> 2565 </TD> <TD align="right"> 5400 </TD> <TD align="right"> 52.500 </TD> </TR>
    </TABLE>
 
 
 
+<h2> Dominated Algorithms </h2>
+
+<!-- html table generated in R 3.0.2 by xtable 1.7-1 package -->
+<!-- Thu Jan  9 01:30:46 2014 -->
+<TABLE border=1>
+<TR> <TH>  </TH> <TH> Superior </TH> <TH> Inferior </TH>  </TR>
+  <TR> <TD align="right"> 1 </TD> <TD> none </TD> <TD> none </TD> </TR>
+   </TABLE>
+
+
+
+<h2> Useless Algorithms </h2>
+
+There were no entirely useless algorithms.
+
+
 <h2> Boxplots of performance values </h2>
 
-<div class="chunk" id="unnamed-chunk-2"><div class="rcode"><div class="warning"><pre class="knitr r">## Warning: Removed 2565 rows containing non-finite values (stat_boxplot).
-</pre></div></div><div class="rimage default"><img src="figure/unnamed-chunk-2.png" title="plot of chunk unnamed-chunk-2" alt="plot of chunk unnamed-chunk-2" class="plot" /></div></div>
+<div class="chunk" id="unnamed-chunk-4"><div class="rcode"><div class="warning"><pre class="knitr r">## Warning: Removed 2565 rows containing non-finite values (stat_boxplot).
+</pre></div>
+</div><div class="rimage default"><img src="figure/unnamed-chunk-4.png" title="plot of chunk unnamed-chunk-4" alt="plot of chunk unnamed-chunk-4" class="plot" /></div></div>
 
 
 <h2> Estimated densitities of performance values </h2>
 
-<div class="chunk" id="unnamed-chunk-3"><div class="rcode"><div class="warning"><pre class="knitr r">## Warning: Removed 272 rows containing non-finite values (stat_density).
-</pre></div><div class="warning"><pre class="knitr r">## Warning: Removed 272 rows containing non-finite values (stat_density).
-</pre></div><div class="warning"><pre class="knitr r">## Warning: Removed 349 rows containing non-finite values (stat_density).
-</pre></div><div class="warning"><pre class="knitr r">## Warning: Removed 241 rows containing non-finite values (stat_density).
-</pre></div><div class="warning"><pre class="knitr r">## Warning: Removed 302 rows containing non-finite values (stat_density).
-</pre></div><div class="warning"><pre class="knitr r">## Warning: Removed 349 rows containing non-finite values (stat_density).
-</pre></div><div class="warning"><pre class="knitr r">## Warning: Removed 276 rows containing non-finite values (stat_density).
-</pre></div><div class="warning"><pre class="knitr r">## Warning: Removed 266 rows containing non-finite values (stat_density).
-</pre></div><div class="warning"><pre class="knitr r">## Warning: Removed 238 rows containing non-finite values (stat_density).
-</pre></div></div><div class="rimage default"><img src="figure/unnamed-chunk-3.png" title="plot of chunk unnamed-chunk-3" alt="plot of chunk unnamed-chunk-3" class="plot" /></div></div>
+<div class="chunk" id="unnamed-chunk-5"><div class="rcode"><div class="warning"><pre class="knitr r">## Warning: Removed 272 rows containing non-finite values (stat_density).
+## Warning: Removed 272 rows containing non-finite values (stat_density).
+## Warning: Removed 349 rows containing non-finite values (stat_density).
+## Warning: Removed 241 rows containing non-finite values (stat_density).
+## Warning: Removed 302 rows containing non-finite values (stat_density).
+## Warning: Removed 349 rows containing non-finite values (stat_density).
+## Warning: Removed 276 rows containing non-finite values (stat_density).
+## Warning: Removed 266 rows containing non-finite values (stat_density).
+## Warning: Removed 238 rows containing non-finite values (stat_density).
+</pre></div>
+</div><div class="rimage default"><img src="figure/unnamed-chunk-5.png" title="plot of chunk unnamed-chunk-5" alt="plot of chunk unnamed-chunk-5" class="plot" /></div></div>
 
 
 </body>
