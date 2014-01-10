@@ -13,6 +13,7 @@ Imports:
     plyr,
     stringr
 Suggests:
+    corrplot,
     testthat
 LazyData: yes
 ByteCompile: yes

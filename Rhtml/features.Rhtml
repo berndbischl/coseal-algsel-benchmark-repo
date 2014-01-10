@@ -13,8 +13,8 @@ The following measures were taken for the results of each feature:
 
   <li> <a>Min: Minimum</a>
   <li> <a>1st Qu.: 1st Quartile = lower Quartile = 25%-Quantile</a>
-  <li> <a>Mean: Arithmetic Mean</a>
   <li> <a>Median: Median = 50%-Quantile</a>
+  <li> <a>Mean: Arithmetic Mean</a>
   <li> <a>3rd Qu.: 3rd Quartile = upper Quartile = 75%-Quantile</a>
   <li> <a>Max.: Maximum</a>
   <li> <a>Std. Dev.: Standard Deviation</a>
@@ -34,7 +34,7 @@ end.rcode-->
 <h2> Duplicated Features </h2>
 
 <!--begin.rcode, results = "asis"
-  res = checkDuplicates(astask)
+  res = lookForDuplicates(astask)
   if(!is.null(res)) {
     print(xtable(res), include.rownames = FALSE, "html")
   }
@@ -47,7 +47,7 @@ In this section, you'll find all features that adopted only one value (and event
 <br>
 
 <!--begin.rcode, results = "asis"
-  res = uselessInstances(astask)
+  res = findUselessInstances(astask)
   cat("Feature Values:\n")
   if(nrow(res$feature.values) >= 1) {
     print(xtable(res$feature.values, digits = c(0, 4, 0)), "html")

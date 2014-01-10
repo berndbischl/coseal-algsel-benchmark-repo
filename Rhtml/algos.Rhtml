@@ -13,8 +13,8 @@ The following measures were taken from the performance values of each algorithm:
 
   <li> <a>Min: Minimum</a>
   <li> <a>1st Qu.: 1st Quartile = lower Quartile = 25%-Quantile</a>
-  <li> <a>Mean: Arithmetic Mean</a>
   <li> <a>Median: Median = 50%-Quantile</a>
+  <li> <a>Mean: Arithmetic Mean</a>
   <li> <a>3rd Qu.: 3rd Quartile = upper Quartile = 75%-Quantile</a>
   <li> <a>Max.: Maximum</a>
   <li> <a>Std. Dev.: Standard Deviation</a>
@@ -34,7 +34,7 @@ end.rcode-->
 <h2> Dominated Algorithms </h2>
 
 <!--begin.rcode, results = "asis"
-  res = dominatedAlgos(astask)
+  res = findDominatedAlgos(astask)
   print(xtable(res), include.rownames = FALSE, "html")
 end.rcode-->
 
@@ -45,7 +45,7 @@ In this section you'll find all the algorithms that always resulted in the same 
 <br>
 
 <!--begin.rcode, results = "asis"
-  res = uselessInstances(astask)$algo.runs
+  res = findUselessInstances(astask)$algo.runs
   if(nrow(res) >= 1) {
     print(xtable(res), "html")
   } else {
@@ -66,6 +66,15 @@ end.rcode-->
 
 <!--begin.rcode
   plotAlgoPerfDensities(astask, log = config$algo.perf.densities.log) 
+end.rcode-->
+
+<br>
+<h2> Correlation between performance values </h2>
+The default correlation is the correlation coefficient of pearson. <br>
+If NA's exist, they were removed pairwise. 
+
+<!--begin.rcode
+  plotAlgoCorMatrix(astask) 
 end.rcode-->
 
 </body>
