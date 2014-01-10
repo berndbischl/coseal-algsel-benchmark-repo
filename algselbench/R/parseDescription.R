@@ -35,6 +35,8 @@ parseDescription = function(path) {
   convertField("algorithms_stochastic")
   convertField("number_of_groups", as.integer)
 
+  desc$maximize = setNames(desc$maximize, desc$performance_measures)
+
   # handle groups
   ns = names(desc)
   f.groups = which(str_detect(ns, "^feature_group"))
