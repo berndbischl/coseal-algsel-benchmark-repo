@@ -1,8 +1,8 @@
-\name{dominatedAlgos}
-\alias{dominatedAlgos}
+\name{findDominatedAlgos}
+\alias{findDominatedAlgos}
 \title{Creates a table that shows the dominance of one algorithm over another one.}
 \usage{
-dominatedAlgos(astask)
+findDominatedAlgos(astask)
 }
 \arguments{
   \item{astask}{[\code{\link{ASTask}}]\cr Algorithm

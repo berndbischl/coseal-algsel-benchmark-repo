@@ -11,9 +11,11 @@ Imports:
     foreign,
     ggplot2,
     plyr,
+    reshape2,
     stringr
 Suggests:
     corrplot,
+    llama,
     testthat
 LazyData: yes
 ByteCompile: yes
