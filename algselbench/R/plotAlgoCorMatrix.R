@@ -60,7 +60,9 @@ plotAlgoCorMatrix = function(astask, measure, order.method, hclust.method, cor.m
   perf = x[,measure]
   data = matrix(perf, ncol = length(algos), byrow = TRUE)
   colnames(data) = sort(algos)
-  corMat = cor(data, use = "pairwise.complete.obs", method = cor.method)
+  covMat = cov(data, use = "pairwise.complete.obs", method = cor.method)
+  corMat = cov2cor(covMat)
+  #corMat = cor(data, use = "pairwise.complete.obs", method = cor.method)
   if(!is.na(hclust.method)) {
     ind = corrMatOrder(corMat, order = order.method, 
       hclust.method = hclust.method)    

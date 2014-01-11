@@ -5,30 +5,43 @@
 #' @return [\code{data.frame}]. 
 #'  Overview of the dominance between the algorithms.
 #' @export
-findDominatedAlgos = function(astask){
+findDominatedAlgos = function(astask, measure){
   checkArg(astask, "ASTask")
+  if (missing(measure))
+    measure = astask$desc$performance_measures[1]
+  else
+    checkArg(measure, "character", len = 1L, na.ok = FALSE)
   data = astask$algo.runs
   splitted.data = split(data, data$algorithm)
   algo.names = names(splitted.data)
-  algoNr = length(algo.names)
-  result = c(Superior = "none", Inferior = "none")
-  for (i in 1:(algoNr - 1)) {
-    alg1 = splitted.data[[i]]
-    for (j in (i+1):algoNr) {
-      alg2 = splitted.data[[j]]
-      result = rbind(result, 
-        checkDomination(x = alg1, y = alg2, names = algo.names[c(i, j)]))
+  nr.of.algos = length(algo.names)
+  result = matrix("", nrow = nr.of.algos, ncol = nr.of.algos)
+  rownames(result) = algo.names
+  colnames(result) = algo.names
+  for (i in 1:nr.of.algos) {
+    alg1 = splitted.data[[algo.names[i]]]
+    for (j in 1:nr.of.algos) {
+      if (j == i)
+        next
+      alg2 = splitted.data[[algo.names[j]]]
+      result[i, j] = checkDomination(x = alg1, y = alg2, measure = measure)
     }
   }
-  result = as.data.frame(result)
-  if (nrow(result) == 1) {
-    rownames(result) = 1
-    return(result)
+  if (all(result == ""))
+    return(NULL)
+  
+  ## VISUALISATION:
+  res.by.numbers = apply(result, 2, function(x) 
+    ifelse(x == "", 0, ifelse(x == "worse", -1, 1)))
+  corrplot(res.by.numbers, method = "square")
+  
+  for (i in nr.of.algos:1) {
+    if ( all(result[i, ] == "") )
+      result = result[-i, ]
+    if ( all(result[, i] == "") )
+      result = result[, -i]
   }
-  ## rm first line, in case there were dominated algorithms:
-  result = result[-1, ]
-  result = result[order(result[,1]), ]
-  rownames(result) = 1:nrow(result)
+  result = as.data.frame(result)
   return(result)
 }
 
@@ -39,21 +52,26 @@ findDominatedAlgos = function(astask){
 ## \code{character(2)} where the first element
 ## is the name of the superior algorithm and the
 ## second element of the inferior algorithm.
-checkDomination = function(x, y, names){
+checkDomination = function(x, y, measure){
   x$solved = (as.character(x$runstatus) == "ok")
   y$solved = (as.character(y$runstatus) == "ok")
   index = (x$solved | y$solved)
-  if(sum(index) == 0) return(NULL)
+  if (sum(index) == 0) 
+    return("")
   reduced.x = x[index,]
   reduced.y = y[index,]
-  supAlgo = NULL
-  infAlgo = NULL
-  result = NULL
-  if( all(reduced.x$solved) & 
-    (all(reduced.x[reduced.y$solved, "runtime"] <= reduced.y[reduced.y$solved, "runtime"])) )
-      return(c(supAlgo = names[1], infAlgo = names[2]))
-  if(all(reduced.y$solved) & 
-    (all(reduced.y[reduced.x$solved, "runtime"] <= reduced.x[reduced.x$solved, "runtime"])) )
-      return(c(supAlgo = names[2], infAlgo = names[1]))
-  return(result)
+  if ( all(reduced.x$solved) ) {
+    if ( all(reduced.x[reduced.y$solved, measure] <= reduced.y[reduced.y$solved, measure]) ) {
+      if ( any(reduced.x[reduced.y$solved, measure] < reduced.y[reduced.y$solved, measure]) ) {
+        return("better")
+      }
+      return("=")
+    }
+  }
+  if ( all(reduced.y$solved) ) {
+    if ( all(reduced.y[reduced.x$solved, measure] <= reduced.x[reduced.x$solved, measure]) ) {
+      return("worse")
+    }
+  }
+  return("")
 }

@@ -35,7 +35,11 @@ end.rcode-->
 
 <!--begin.rcode, results = "asis"
   res = findDominatedAlgos(astask)
-  print(xtable(res), include.rownames = FALSE, "html")
+  if (!is.null(res)) {
+    print(xtable(res), include.rownames = TRUE, "html")
+  } else {
+    cat("None of the algorithms was superior to any of the other.")
+  }  
 end.rcode-->
 
 <br>
