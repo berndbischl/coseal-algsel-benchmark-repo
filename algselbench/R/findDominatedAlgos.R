@@ -2,6 +2,9 @@
 #'
 #' @param astask [\code{\link{ASTask}}]\cr
 #'   Algorithm selection task.
+#' @param measure [\code{character(1)}]\cr
+#'   Measure that's been used for analyzing the algorithm performances.
+#'   Default is first measure in task.
 #' @return [\code{data.frame}]. 
 #'  Overview of the dominance between the algorithms.
 #' @export
