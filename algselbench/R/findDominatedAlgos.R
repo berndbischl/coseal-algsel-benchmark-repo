@@ -12,6 +12,9 @@ findDominatedAlgos = function(astask, measure){
   else
     checkArg(measure, "character", len = 1L, na.ok = FALSE)
   data = astask$algo.runs
+  ## convert maximization into minimization
+  if (as.vector(astask$desc$maximize[measure]))
+    data[, measure] = -1 * data[, measure]
   splitted.data = split(data, data$algorithm)
   algo.names = names(splitted.data)
   nr.of.algos = length(algo.names)

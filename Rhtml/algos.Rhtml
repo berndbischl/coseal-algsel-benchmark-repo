@@ -31,6 +31,17 @@ The following measures were taken from the performance values of each algorithm:
 end.rcode-->
 
 <br>
+<h2> Summary of the runstatus per algorithm </h2>
+
+The following table summarizes the runstatus of each algorithm over all instances (in %).<br>
+<br>
+
+<!--begin.rcode, results = "asis"
+  res = summarizeAlgoRunstatus(astask)
+  print(xtable(res, digits = 3), "html")
+end.rcode-->
+
+<br>
 <h2> Dominated Algorithms </h2>
 
 <!--begin.rcode, results = "asis"

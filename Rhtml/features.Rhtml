@@ -31,6 +31,17 @@ The following measures were taken for the results of each feature:
 end.rcode-->
 
 <br>
+<h2> Summary of the runstatus per feature </h2>
+
+The following table summarizes the runstatus of each feature over all instances (in %).<br>
+<br>
+
+<!--begin.rcode, results = "asis"
+  res = summarizeFeatureRunstatus(astask)
+  print(xtable(res), "html")
+end.rcode-->
+
+<br>
 <h2> Duplicated Features </h2>
 
 <!--begin.rcode, results = "asis"
