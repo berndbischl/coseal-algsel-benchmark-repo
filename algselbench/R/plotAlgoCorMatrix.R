@@ -52,22 +52,30 @@ plotAlgoCorMatrix = function(astask, measure, order.method, hclust.method, cor.m
     cor.method = "pearson"
   else
     checkArg(cor.method, choices = c("pearson", "kendall", "spearman"))
-
+  
   algo.perf = astask$algo.runs
   algos = unique(algo.perf$algorithm)
   x = algo.perf[order(algo.perf[, "instance_id"], algo.perf[, "repetition"],
-    algo.perf[, "algorithm"]),]
-  perf = x[,measure]
+                      algo.perf[, "algorithm"]),]
+  perf = x[, measure]
   data = matrix(perf, ncol = length(algos), byrow = TRUE)
   colnames(data) = sort(algos)
-  covMat = cov(data, use = "pairwise.complete.obs", method = cor.method)
-  corMat = cov2cor(covMat)
-  #corMat = cor(data, use = "pairwise.complete.obs", method = cor.method)
-  if(!is.na(hclust.method)) {
-    ind = corrMatOrder(corMat, order = order.method, 
-      hclust.method = hclust.method)    
-  } else {
-    ind = corrMatOrder(corMat, order = order.method)
+  suppressWarnings((cor.matrix = cor(data, use = "pairwise.complete.obs", 
+    method = cor.method)))
+  if (any(is.na(cor.matrix))) {
+    row.index = which(apply(cor.matrix, 1, function(x) any(is.na(x))))[1]
+    col.index = which(is.na(cor.matrix[row.index,]))[2]
+    warning.message = sprintf("The correlation matrix might be wrong, because some of the pairwise correlations, e.g. the correlation between %s and %s, could not be computed properly.",
+      colnames(data)[row.index], colnames(data)[col.index])
+    warning(warning.message)
+    cov.matrix = cov(data, use = "pairwise.complete.obs", method = cor.method)
+    cor.matrix = cov2cor(cov.matrix)
   }
-  corrplot(corMat[ind, ind], method = "shade")
+  if (!is.na(hclust.method)) {
+    ind = corrMatOrder(cor.matrix, order = order.method, 
+                       hclust.method = hclust.method)    
+  } else {
+    ind = corrMatOrder(cor.matrix, order = order.method)
+  }
+  corrplot(cor.matrix[ind, ind], method = "shade")
 }

@@ -36,11 +36,6 @@ findDominatedAlgos = function(astask, measure){
   if (all(result == ""))
     return(NULL)
   
-  ## VISUALISATION:
-  res.by.numbers = apply(result, 2, function(x) 
-    ifelse(x == "", 0, ifelse(x == "worse", -1, 1)))
-  corrplot(res.by.numbers, method = "square")
-  
   for (i in nr.of.algos:1) {
     if ( all(result[i, ] == "") )
       result = result[-i, ]
