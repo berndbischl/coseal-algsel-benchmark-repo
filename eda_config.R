@@ -5,10 +5,17 @@ makeEDAConfig = function(
   algo.perf.densities.log = FALSE
 ) {
   
-  list(
+  makeS3Obj("ASTaskHTMLConfig",
     algo.perf.boxplots.log = algo.perf.boxplots.log,
     algo.perf.densities.log = algo.perf.densities.log
   )
+}
+
+print.ASTaskHTMLConfig = function(x, ...) {
+  ns = names(x)
+  for (i in seq_along(x)) {
+   catf("%-30s : %s", ns[i], x[[i]]) 
+  }  
 }
 
 readEDAConfig = function(path, task.name) {
