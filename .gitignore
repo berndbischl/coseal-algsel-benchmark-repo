@@ -1,5 +1,6 @@
 algselbench/algselbench.Rcheck
 algselbench/algselbench*.tar.gz
+algselbench/test_src.R
 defs.R
 html
 .Rproj.user
