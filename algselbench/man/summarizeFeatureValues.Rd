@@ -1,6 +1,7 @@
 \name{summarizeFeatureValues}
 \alias{summarizeFeatureValues}
-\title{Creates a table that gives an overview of the feature values across all instances.}
+\title{Creates a table that gives an overview of the feature values
+across all instances.}
 \usage{
 summarizeFeatureValues(astask)
 }

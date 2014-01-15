@@ -5,3 +5,6 @@ defs.R
 html
 .Rproj.user
 coseal-algsel-benchmark-repo.Rproj
+.DS_Store
+.Rhistory
+algselbench/.DS_Store

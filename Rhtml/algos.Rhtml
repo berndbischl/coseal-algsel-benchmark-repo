@@ -13,8 +13,8 @@ The following measures were taken from the performance values of each algorithm:
 
   <li> <a>Min: Minimum</a>
   <li> <a>1st Qu.: 1st Quartile = lower Quartile = 25%-Quantile</a>
-  <li> <a>Mean: Arithmetic Mean</a>
   <li> <a>Median: Median = 50%-Quantile</a>
+  <li> <a>Mean: Arithmetic Mean</a>
   <li> <a>3rd Qu.: 3rd Quartile = upper Quartile = 75%-Quantile</a>
   <li> <a>Max.: Maximum</a>
   <li> <a>Std. Dev.: Standard Deviation</a>
@@ -31,21 +31,40 @@ The following measures were taken from the performance values of each algorithm:
 end.rcode-->
 
 <br>
-<h2> Dominated Algorithms </h2>
+<h2> Summary of the runstatus per algorithm </h2>
+
+The following table summarizes the runstatus of each algorithm over all instances (in %).<br>
+<br>
 
 <!--begin.rcode, results = "asis"
-  res = dominatedAlgos(astask)
-  print(xtable(res), include.rownames = FALSE, "html")
+  res = summarizeAlgoRunstatus(astask)
+  print(xtable(res, digits = 3), "html")
 end.rcode-->
 
 <br>
-<h2> Useless Algorithms </h2>
+<h2> Dominated Algorithms </h2>
 
-In this section you'll find all the algorithms that always resulted in the same performance (and eventually NA's):<br>
+Here, you'll find an overview of dominating/dominated algorithms: <br>
 <br>
 
 <!--begin.rcode, results = "asis"
-  res = uselessInstances(astask)$algo.runs
+  res = findDominatedAlgos(astask)
+  if (!is.null(res)) {
+    print(xtable(res), include.rownames = TRUE, "html")
+  } else {
+    cat("None of the algorithms was superior to any of the other.")
+  }  
+end.rcode-->
+
+<br>
+<br>
+<h2> Useless Algorithms </h2>
+
+Here, you'll find all the algorithms that always resulted in the same performance (and eventually NA's):<br>
+<br>
+
+<!--begin.rcode, results = "asis"
+  res = findUselessInstances(astask)$algo.runs
   if(nrow(res) >= 1) {
     print(xtable(res), "html")
   } else {
@@ -67,6 +86,44 @@ end.rcode-->
 <!--begin.rcode
   plotAlgoPerfDensities(astask, log = config$algo.perf.densities.log) 
 end.rcode-->
+
+<br>
+<h2> Scatterplot matrix of the performance values </h2>
+
+The following figure creates pairwise scatterplots of the performance values, 
+including a regression line (cf. upper panel), a histogram of each performance
+value (cf. diagonal), as well as the pairwise (pearson) correlation (cf. lower
+panel).<br>
+In order to facilitate the lucidity of the correlations, they are colored
+depending on their value. Thus, a high positive correlation (&ge; 0.8) is
+colored green, light correlations (between 0.3 and 0.8, or -0.8 and -0.3)
+are orange, little to no correlations (&ge; -0.3 and &le; 0.3) are written
+in black and high negative correlations (&le; -0.8) are shown red.
+
+<!--begin.rcode, results = "asis"
+  plotAlgoScattermatrix(astask, log = config$algo.perf.scatter.log)
+end.rcode-->
+
+
+<br>
+<h2> Clustering algorithms based on their correlations </h2>
+The following figure shows the correlations of the performance values. Per
+default it will show the correlation coefficient of pearson. If NA's exist,
+they were removed pairwise. <br>
+In addition, the algorithms are ordered in a way that similar (highly
+correlated) algorithms are close to each other. Per default the clustering
+is based on hierarchical clustering, using Ward's method. <br>
+<br>
+
+ATTENTION: <br>
+As the correlations from this figure always depend on the original performance
+values, they might be different to the values shown in the scatterplot matrix,
+which could be log-scaled (depending on the setting). <br>
+
+<!--begin.rcode
+  plotAlgoCorMatrix(astask) 
+end.rcode-->
+
 
 </body>
 </html>

@@ -1,12 +1,16 @@
-\name{uselessInstances}
-\alias{uselessInstances}
+\name{findUselessInstances}
+\alias{findUselessInstances}
 \title{Checks algorithm and feature data sets for useless instances.}
 \usage{
-uselessInstances(astask, measure)
+findUselessInstances(astask, measure)
 }
 \arguments{
   \item{astask}{[\code{\link{ASTask}}]\cr Algorithm
   selection task.}
+
+  \item{measure}{[\code{character(1)}]\cr Measure that's
+  been used for analyzing the algorithm performances.
+  Default is first measure in task.}
 }
 \value{
 [\code{list}(3)].  List of data frames, which give an
