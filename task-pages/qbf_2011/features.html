@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style type="text/css">
+.knitr.inline {
+  background-color: #f7f7f7;
+  border:solid 1px #B0B0B0;
+}
+.error {
+	font-weight: bold;
+	color: #FF0000;
+},
+.warning {
+	font-weight: bold;
+}
+.message {
+	font-style: italic;
+}
+.source, .output, .warning, .error, .message {
+	padding: 0em 1em;
+  border:solid 1px #F7F7F7;
+}
+.source {
+  background-color: #f5f5f5;
+}
+.rimage.left {
+  text-align: left;
+}
+.rimage.right {
+  text-align: right;
+}
+.rimage.center {
+  text-align: center;
+}
+.hl.num {
+  color: #AF0F91;
+}
+.hl.str {
+  color: #317ECC;
+}
+.hl.com {
+  color: #AD95AF;
+  font-style: italic;
+}
+.hl.opt {
+  color: #000000;
+}
+.hl.std {
+  color: #585858;
+}
+.hl.kwa {
+  color: #295F94;
+  font-weight: bold;
+}
+.hl.kwb {
+  color: #B05A65;
+}
+.hl.kwc {
+  color: #55aa55;
+}
+.hl.kwd {
+  color: #BC5A65;
+  font-weight: bold;
+}
+</style>
+  <title>Feature performance overview</title>
+</head>
+<body>
+
+
+<h2> Overview of Feature Values </h2>
+
+The following measures were taken for the results of each feature:
+<ul>
+
+  <li> <a>Min: Minimum</a>
+  <li> <a>1st Qu.: 1st Quartile = lower Quartile = 25%-Quantile</a>
+  <li> <a>Median: Median = 50%-Quantile</a>
+  <li> <a>Mean: Arithmetic Mean</a>
+  <li> <a>3rd Qu.: 3rd Quartile = upper Quartile = 75%-Quantile</a>
+  <li> <a>Max.: Maximum</a>
+  <li> <a>Std. Dev.: Standard Deviation</a>
+  <li> <a>CoV.: Coefficient of Variation = Standard Deviation / Arithmetic Mean</a>
+  <li> <a>NA's: Number of NAs (missing values) within the feature set.</a>
+  <li> <a>Obs.: Number of Observations within the feature set.</a>
+  <li> <a>Run OK (%): Percentage of feature computations without a crash.</a>
+
+</ul>
+
+<!-- html table generated in R 3.0.2 by xtable 1.7-1 package -->
+<!-- Thu Jan 23 11:55:46 2014 -->
+<TABLE border=1>
+<TR> <TH>  </TH> <TH> Min. </TH> <TH> 1st Qu. </TH> <TH> Median </TH> <TH> Mean </TH> <TH> 3rd Qu. </TH> <TH> Max. </TH> <TH> Std. Dev. </TH> <TH> CoV. </TH> <TH> NA's </TH> <TH> Obs. </TH> <TH> Run OK (%) </TH>  </TR>
+  <TR> <TD align="right"> EXIST_VARS </TD> <TD align="right"> 8.000 </TD> <TD align="right"> 280.000 </TD> <TD align="right"> 1356.000 </TD> <TD align="right"> 8707.718 </TD> <TD align="right"> 3604.000 </TD> <TD align="right"> 2202774.000 </TD> <TD align="right"> 81370.300 </TD> <TD align="right"> 9.345 </TD> <TD align="right"> 0 </TD> <TD align="right"> 1368 </TD> <TD align="right"> 100.0000 </TD> </TR>
+  <TR> <TD align="right"> FORALL_VARS </TD> <TD align="right"> 0.000 </TD> <TD align="right"> 20.000 </TD> <TD align="right"> 91.500 </TD> <TD align="right"> 168.802 </TD> <TD align="right"> 200.000 </TD> <TD align="right"> 15672.000 </TD> <TD align="right"> 539.043 </TD> <TD align="right"> 3.193 </TD> <TD align="right"> 0 </TD> <TD align="right"> 1368 </TD> <TD align="right"> 100.0000 </TD> </TR>
+  <TR> <TD align="right"> TOTAL_VARS </TD> <TD align="right"> 11.000 </TD> <TD align="right"> 321.250 </TD> <TD align="right"> 1475.000 </TD> <TD align="right"> 8876.520 </TD> <TD align="right"> 3724.000 </TD> <TD align="right"> 2202778.000 </TD> <TD align="right"> 81393.368 </TD> <TD align="right"> 9.170 </TD> <TD align="right"> 0 </TD> <TD align="right"> 1368 </TD> <TD align="right"> 100.0000 </TD> </TR>
+  <TR> <TD align="right"> CLAUSES </TD> <TD align="right"> 22.000 </TD> <TD align="right"> 1201.000 </TD> <TD align="right"> 4451.500 </TD> <TD align="right"> 26259.143 </TD> <TD align="right"> 11496.250 </TD> <TD align="right"> 5534890.000 </TD> <TD align="right"> 203588.602 </TD> <TD align="right"> 7.753 </TD> <TD align="right"> 0 </TD> <TD align="right"> 1368 </TD> <TD align="right"> 100.0000 </TD> </TR>
+  <TR> <TD align="right"> LITERALS </TD> <TD align="right"> 44.000 </TD> <TD align="right"> 4355.500 </TD> <TD align="right"> 12369.000 </TD> <TD align="right"> 87418.651 </TD> <TD align="right"> 33617.000 </TD> <TD align="right"> 12731986.000 </TD> <TD align="right"> 595524.398 </TD> <TD align="right"> 6.812 </TD> <TD align="right"> 0 </TD> <TD align="right"> 1368 </TD> <TD align="right"> 100.0000 </TD> </TR>
+  <TR> <TD align="right"> EXIST_SET </TD> <TD align="right"> 1.000 </TD> <TD align="right"> 1.000 </TD> <TD align="right"> 2.000 </TD> <TD align="right"> 10.088 </TD> <TD align="right"> 5.000 </TD> <TD align="right"> 487.000 </TD> <TD align="right"> 37.714 </TD> <TD align="right"> 3.739 </TD> <TD align="right"> 0 </TD> <TD align="right"> 1368 </TD> <TD align="right"> 100.0000 </TD> </TR>
+  <TR> <TD align="right"> FORALL_SET </TD> <TD align="right"> 0.000 </TD> <TD align="right"> 1.000 </TD> <TD align="right"> 1.000 </TD> <TD align="right"> 9.746 </TD> <TD align="right"> 4.000 </TD> <TD align="right"> 486.000 </TD> <TD align="right"> 37.587 </TD> <TD align="right"> 3.857 </TD> <TD align="right"> 0 </TD> <TD align="right"> 1368 </TD> <TD align="right"> 100.0000 </TD> </TR>
+  <TR> <TD align="right"> TOTAL_SET </TD> <TD align="right"> 1.000 </TD> <TD align="right"> 2.000 </TD> <TD align="right"> 3.000 </TD> <TD align="right"> 19.833 </TD> <TD align="right"> 9.000 </TD> <TD align="right"> 973.000 </TD> <TD align="right"> 75.299 </TD> <TD align="right"> 3.797 </TD> <TD align="right"> 0 </TD> <TD align="right"> 1368 </TD> <TD align="right"> 100.0000 </TD> </TR>
+  <TR> <TD align="right"> UNARY_CLAUSES </TD> <TD align="right"> 0.000 </TD> <TD align="right"> 0.000 </TD> <TD align="right"> 1.000 </TD> <TD align="right"> 70.130 </TD> <TD align="right"> 4.000 </TD> <TD align="right"> 23554.000 </TD> <TD align="right"> 824.671 </TD> <TD align="right"> 11.759 </TD> <TD align="right"> 0 </TD> <TD align="right"> 1368 </TD> <TD align="right"> 100.0000 </TD> </TR>
+  <TR> <TD align="right"> BINARY_CLAUSES </TD> <TD align="right"> 0.000 </TD> <TD align="right"> 318.000 </TD> <TD align="right"> 1456.000 </TD> <TD align="right"> 13419.739 </TD> <TD align="right"> 4470.000 </TD> <TD align="right"> 4146984.000 </TD> <TD align="right"> 134845.222 </TD> <TD align="right"> 10.048 </TD> <TD align="right"> 0 </TD> <TD align="right"> 1368 </TD> <TD align="right"> 100.0000 </TD> </TR>
+  <TR> <TD align="right"> TERNARY_MORE_CLAUSES </TD> <TD align="right"> 4.000 </TD> <TD align="right"> 512.750 </TD> <TD align="right"> 1400.000 </TD> <TD align="right"> 12769.274 </TD> <TD align="right"> 4344.500 </TD> <TD align="right"> 2851883.000 </TD> <TD align="right"> 95642.464 </TD> <TD align="right"> 7.490 </TD> <TD align="right"> 0 </TD> <TD align="right"> 1368 </TD> <TD align="right"> 100.0000 </TD> </TR>
+  <TR> <TD align="right"> POS_HORN </TD> <TD align="right"> 7.000 </TD> <TD align="right"> 697.500 </TD> <TD align="right"> 1930.500 </TD> <TD align="right"> 18109.795 </TD> <TD align="right"> 6155.000 </TD> <TD align="right"> 4602842.000 </TD> <TD align="right"> 174769.839 </TD> <TD align="right"> 9.651 </TD> <TD align="right"> 0 </TD> <TD align="right"> 1368 </TD> <TD align="right"> 100.0000 </TD> </TR>
+  <TR> <TD align="right"> NEG_HORN </TD> <TD align="right"> 4.000 </TD> <TD align="right"> 395.250 </TD> <TD align="right"> 1639.000 </TD> <TD align="right"> 13529.470 </TD> <TD align="right"> 4413.250 </TD> <TD align="right"> 4372826.000 </TD> <TD align="right"> 142371.015 </TD> <TD align="right"> 10.523 </TD> <TD align="right"> 0 </TD> <TD align="right"> 1368 </TD> <TD align="right"> 100.0000 </TD> </TR>
+  <TR> <TD align="right"> EXIST_LIT_PER_CLAUSE </TD> <TD align="right"> 1.000 </TD> <TD align="right"> 2.050 </TD> <TD align="right"> 2.238 </TD> <TD align="right"> 2.500 </TD> <TD align="right"> 3.000 </TD> <TD align="right"> 13.448 </TD> <TD align="right"> 0.818 </TD> <TD align="right"> 0.327 </TD> <TD align="right"> 0 </TD> <TD align="right"> 1368 </TD> <TD align="right"> 100.0000 </TD> </TR>
+  <TR> <TD align="right"> FORALL_LIT_PER_CLAUSE </TD> <TD align="right"> 0.000 </TD> <TD align="right"> 0.310 </TD> <TD align="right"> 0.610 </TD> <TD align="right"> 1.102 </TD> <TD align="right"> 0.962 </TD> <TD align="right"> 13.817 </TD> <TD align="right"> 1.420 </TD> <TD align="right"> 1.289 </TD> <TD align="right"> 0 </TD> <TD align="right"> 1368 </TD> <TD align="right"> 100.0000 </TD> </TR>
+  <TR> <TD align="right"> EXIST_VARS_PER_SET </TD> <TD align="right"> 2.947 </TD> <TD align="right"> 91.889 </TD> <TD align="right"> 319.929 </TD> <TD align="right"> 4155.325 </TD> <TD align="right"> 1914.000 </TD> <TD align="right"> 1101387.000 </TD> <TD align="right"> 40635.747 </TD> <TD align="right"> 9.779 </TD> <TD align="right"> 0 </TD> <TD align="right"> 1368 </TD> <TD align="right"> 100.0000 </TD> </TR>
+  <TR> <TD align="right"> FORALL_POS_LITS_PER_CLAUSE </TD> <TD align="right"> 0.000 </TD> <TD align="right"> 0.156 </TD> <TD align="right"> 0.360 </TD> <TD align="right"> 0.586 </TD> <TD align="right"> 0.536 </TD> <TD align="right"> 7.051 </TD> <TD align="right"> 0.714 </TD> <TD align="right"> 1.219 </TD> <TD align="right"> 0 </TD> <TD align="right"> 1368 </TD> <TD align="right"> 100.0000 </TD> </TR>
+  <TR> <TD align="right"> FORALL_NEG_LITS_PER_CLAUSE </TD> <TD align="right"> 0.000 </TD> <TD align="right"> 0.109 </TD> <TD align="right"> 0.215 </TD> <TD align="right"> 0.516 </TD> <TD align="right"> 0.436 </TD> <TD align="right"> 6.765 </TD> <TD align="right"> 0.714 </TD> <TD align="right"> 1.384 </TD> <TD align="right"> 0 </TD> <TD align="right"> 1368 </TD> <TD align="right"> 100.0000 </TD> </TR>
+  <TR> <TD align="right"> OCCS_POS_NO_PER_VAR </TD> <TD align="right"> 1.126 </TD> <TD align="right"> 2.773 </TD> <TD align="right"> 3.417 </TD> <TD align="right"> 12.401 </TD> <TD align="right"> 9.708 </TD> <TD align="right"> 2326.498 </TD> <TD align="right"> 79.745 </TD> <TD align="right"> 6.431 </TD> <TD align="right"> 0 </TD> <TD align="right"> 1368 </TD> <TD align="right"> 100.0000 </TD> </TR>
+  <TR> <TD align="right"> OCCS_FORALL_NO_PER_VAR </TD> <TD align="right"> 0.000 </TD> <TD align="right"> 10.059 </TD> <TD align="right"> 19.943 </TD> <TD align="right"> 1847.386 </TD> <TD align="right"> 60.000 </TD> <TD align="right"> 573440.000 </TD> <TD align="right"> 24627.946 </TD> <TD align="right"> 13.331 </TD> <TD align="right"> 0 </TD> <TD align="right"> 1368 </TD> <TD align="right"> 100.0000 </TD> </TR>
+  <TR> <TD align="right"> OCCS_FORALL_POS_NO_PER_VAR </TD> <TD align="right"> 0.000 </TD> <TD align="right"> 5.171 </TD> <TD align="right"> 11.374 </TD> <TD align="right"> 950.217 </TD> <TD align="right"> 30.015 </TD> <TD align="right"> 286720.000 </TD> <TD align="right"> 12364.603 </TD> <TD align="right"> 13.012 </TD> <TD align="right"> 0 </TD> <TD align="right"> 1368 </TD> <TD align="right"> 100.0000 </TD> </TR>
+  <TR> <TD align="right"> W_OCCS_POS_NO_PER_VAR </TD> <TD align="right"> 1.221 </TD> <TD align="right"> 6.991 </TD> <TD align="right"> 17.090 </TD> <TD align="right"> 58.572 </TD> <TD align="right"> 34.085 </TD> <TD align="right"> 4773.401 </TD> <TD align="right"> 215.488 </TD> <TD align="right"> 3.679 </TD> <TD align="right"> 0 </TD> <TD align="right"> 1368 </TD> <TD align="right"> 100.0000 </TD> </TR>
+  <TR> <TD align="right"> W_OCCS_FORALL_NO_PER_VAR </TD> <TD align="right"> 0.000 </TD> <TD align="right"> 18.587 </TD> <TD align="right"> 54.000 </TD> <TD align="right"> 4145.778 </TD> <TD align="right"> 201.005 </TD> <TD align="right"> 1146880.000 </TD> <TD align="right"> 51263.436 </TD> <TD align="right"> 12.365 </TD> <TD align="right"> 0 </TD> <TD align="right"> 1368 </TD> <TD align="right"> 100.0000 </TD> </TR>
+  <TR> <TD align="right"> W_OCCS_FORALL_POS_NO_PER_VAR </TD> <TD align="right"> 0.000 </TD> <TD align="right"> 9.181 </TD> <TD align="right"> 27.067 </TD> <TD align="right"> 2112.845 </TD> <TD align="right"> 125.697 </TD> <TD align="right"> 573440.000 </TD> <TD align="right"> 25729.088 </TD> <TD align="right"> 12.177 </TD> <TD align="right"> 0 </TD> <TD align="right"> 1368 </TD> <TD align="right"> 100.0000 </TD> </TR>
+  <TR> <TD align="right"> W_PRODUCTS </TD> <TD align="right"> 3.771 </TD> <TD align="right"> 39.685 </TD> <TD align="right"> 91.820 </TD> <TD align="right"> 4338.485 </TD> <TD align="right"> 875.080 </TD> <TD align="right"> 2717782.852 </TD> <TD align="right"> 74354.743 </TD> <TD align="right"> 17.138 </TD> <TD align="right"> 0 </TD> <TD align="right"> 1368 </TD> <TD align="right"> 100.0000 </TD> </TR>
+  <TR> <TD align="right"> LITN_LIT </TD> <TD align="right"> 0.366 </TD> <TD align="right"> 0.501 </TD> <TD align="right"> 0.546 </TD> <TD align="right"> 0.553 </TD> <TD align="right"> 0.599 </TD> <TD align="right"> 0.967 </TD> <TD align="right"> 0.074 </TD> <TD align="right"> 0.134 </TD> <TD align="right"> 0 </TD> <TD align="right"> 1368 </TD> <TD align="right"> 100.0000 </TD> </TR>
+  <TR> <TD align="right"> LITEP_LIT </TD> <TD align="right"> 0.022 </TD> <TD align="right"> 0.246 </TD> <TD align="right"> 0.271 </TD> <TD align="right"> 0.315 </TD> <TD align="right"> 0.407 </TD> <TD align="right"> 0.624 </TD> <TD align="right"> 0.100 </TD> <TD align="right"> 0.316 </TD> <TD align="right"> 0 </TD> <TD align="right"> 1368 </TD> <TD align="right"> 100.0000 </TD> </TR>
+  <TR> <TD align="right"> LITEN_LITE </TD> <TD align="right"> 0.366 </TD> <TD align="right"> 0.506 </TD> <TD align="right"> 0.556 </TD> <TD align="right"> 0.580 </TD> <TD align="right"> 0.644 </TD> <TD align="right"> 0.968 </TD> <TD align="right"> 0.093 </TD> <TD align="right"> 0.160 </TD> <TD align="right"> 0 </TD> <TD align="right"> 1368 </TD> <TD align="right"> 100.0000 </TD> </TR>
+  <TR> <TD align="right"> LITEN_LITN </TD> <TD align="right"> 0.085 </TD> <TD align="right"> 0.739 </TD> <TD align="right"> 0.863 </TD> <TD align="right"> 0.791 </TD> <TD align="right"> 0.933 </TD> <TD align="right"> 1.000 </TD> <TD align="right"> 0.187 </TD> <TD align="right"> 0.236 </TD> <TD align="right"> 0 </TD> <TD align="right"> 1368 </TD> <TD align="right"> 100.0000 </TD> </TR>
+  <TR> <TD align="right"> LITFN_LIT </TD> <TD align="right"> 0.000 </TD> <TD align="right"> 0.040 </TD> <TD align="right"> 0.079 </TD> <TD align="right"> 0.112 </TD> <TD align="right"> 0.159 </TD> <TD align="right"> 0.456 </TD> <TD align="right"> 0.093 </TD> <TD align="right"> 0.831 </TD> <TD align="right"> 0 </TD> <TD align="right"> 1368 </TD> <TD align="right"> 100.0000 </TD> </TR>
+  <TR> <TD align="right"> LITFP_LITFN </TD> <TD align="right"> 0.000 </TD> <TD align="right"> 1.000 </TD> <TD align="right"> 1.000 </TD> <TD align="right"> 1.702 </TD> <TD align="right"> 1.332 </TD> <TD align="right"> 7.286 </TD> <TD align="right"> 1.774 </TD> <TD align="right"> 1.043 </TD> <TD align="right"> 0 </TD> <TD align="right"> 1368 </TD> <TD align="right"> 100.0000 </TD> </TR>
+  <TR> <TD align="right"> OCCP_OCCN </TD> <TD align="right"> 0.034 </TD> <TD align="right"> 0.669 </TD> <TD align="right"> 0.831 </TD> <TD align="right"> 0.837 </TD> <TD align="right"> 0.998 </TD> <TD align="right"> 1.729 </TD> <TD align="right"> 0.230 </TD> <TD align="right"> 0.275 </TD> <TD align="right"> 0 </TD> <TD align="right"> 1368 </TD> <TD align="right"> 100.0000 </TD> </TR>
+  <TR> <TD align="right"> OCCE_OCC </TD> <TD align="right"> 0.070 </TD> <TD align="right"> 0.874 </TD> <TD align="right"> 0.937 </TD> <TD align="right"> 0.915 </TD> <TD align="right"> 0.998 </TD> <TD align="right"> 1.163 </TD> <TD align="right"> 0.125 </TD> <TD align="right"> 0.137 </TD> <TD align="right"> 0 </TD> <TD align="right"> 1368 </TD> <TD align="right"> 100.0000 </TD> </TR>
+  <TR> <TD align="right"> OCCEN_OCC </TD> <TD align="right"> 0.043 </TD> <TD align="right"> 0.483 </TD> <TD align="right"> 0.521 </TD> <TD align="right"> 0.528 </TD> <TD align="right"> 0.571 </TD> <TD align="right"> 1.058 </TD> <TD align="right"> 0.104 </TD> <TD align="right"> 0.198 </TD> <TD align="right"> 0 </TD> <TD align="right"> 1368 </TD> <TD align="right"> 100.0000 </TD> </TR>
+  <TR> <TD align="right"> OCCFP_OCCF </TD> <TD align="right"> 0.000 </TD> <TD align="right"> 0.500 </TD> <TD align="right"> 0.500 </TD> <TD align="right"> 0.557 </TD> <TD align="right"> 0.571 </TD> <TD align="right"> 0.879 </TD> <TD align="right"> 0.118 </TD> <TD align="right"> 0.213 </TD> <TD align="right"> 0 </TD> <TD align="right"> 1368 </TD> <TD align="right"> 100.0000 </TD> </TR>
+  <TR> <TD align="right"> OCCEN_OCCE </TD> <TD align="right"> 0.366 </TD> <TD align="right"> 0.506 </TD> <TD align="right"> 0.556 </TD> <TD align="right"> 0.580 </TD> <TD align="right"> 0.644 </TD> <TD align="right"> 0.968 </TD> <TD align="right"> 0.093 </TD> <TD align="right"> 0.160 </TD> <TD align="right"> 0 </TD> <TD align="right"> 1368 </TD> <TD align="right"> 100.0000 </TD> </TR>
+  <TR> <TD align="right"> OCCEN_OCCN </TD> <TD align="right"> 0.086 </TD> <TD align="right"> 0.939 </TD> <TD align="right"> 0.975 </TD> <TD align="right"> 0.952 </TD> <TD align="right"> 1.001 </TD> <TD align="right"> 1.320 </TD> <TD align="right"> 0.120 </TD> <TD align="right"> 0.126 </TD> <TD align="right"> 0 </TD> <TD align="right"> 1368 </TD> <TD align="right"> 100.0000 </TD> </TR>
+  <TR> <TD align="right"> OCCFP_OCCFN </TD> <TD align="right"> 0.000 </TD> <TD align="right"> 1.000 </TD> <TD align="right"> 1.000 </TD> <TD align="right"> 1.702 </TD> <TD align="right"> 1.332 </TD> <TD align="right"> 7.286 </TD> <TD align="right"> 1.774 </TD> <TD align="right"> 1.043 </TD> <TD align="right"> 0 </TD> <TD align="right"> 1368 </TD> <TD align="right"> 100.0000 </TD> </TR>
+  <TR> <TD align="right"> TERMORE_CLAUSE </TD> <TD align="right"> 0.006 </TD> <TD align="right"> 0.242 </TD> <TD align="right"> 0.510 </TD> <TD align="right"> 0.546 </TD> <TD align="right"> 0.955 </TD> <TD align="right"> 1.000 </TD> <TD align="right"> 0.338 </TD> <TD align="right"> 0.620 </TD> <TD align="right"> 0 </TD> <TD align="right"> 1368 </TD> <TD align="right"> 100.0000 </TD> </TR>
+  <TR> <TD align="right"> NEG_HORN_CLAUSE </TD> <TD align="right"> 0.000 </TD> <TD align="right"> 0.121 </TD> <TD align="right"> 0.502 </TD> <TD align="right"> 0.421 </TD> <TD align="right"> 0.627 </TD> <TD align="right"> 0.854 </TD> <TD align="right"> 0.248 </TD> <TD align="right"> 0.588 </TD> <TD align="right"> 0 </TD> <TD align="right"> 1368 </TD> <TD align="right"> 100.0000 </TD> </TR>
+  <TR> <TD align="right"> WOCCN_WOCC </TD> <TD align="right"> 0.368 </TD> <TD align="right"> 0.502 </TD> <TD align="right"> 0.546 </TD> <TD align="right"> 0.558 </TD> <TD align="right"> 0.591 </TD> <TD align="right"> 0.968 </TD> <TD align="right"> 0.076 </TD> <TD align="right"> 0.137 </TD> <TD align="right"> 0 </TD> <TD align="right"> 1368 </TD> <TD align="right"> 100.0000 </TD> </TR>
+  <TR> <TD align="right"> WOCCEP_WOCC </TD> <TD align="right"> 0.029 </TD> <TD align="right"> 0.334 </TD> <TD align="right"> 0.423 </TD> <TD align="right"> 0.437 </TD> <TD align="right"> 0.499 </TD> <TD align="right"> 0.733 </TD> <TD align="right"> 0.146 </TD> <TD align="right"> 0.333 </TD> <TD align="right"> 0 </TD> <TD align="right"> 1368 </TD> <TD align="right"> 100.0000 </TD> </TR>
+  <TR> <TD align="right"> WOCCFN_WOCC </TD> <TD align="right"> 0.000 </TD> <TD align="right"> 0.334 </TD> <TD align="right"> 0.498 </TD> <TD align="right"> 24.039 </TD> <TD align="right"> 1.618 </TD> <TD align="right"> 5438.590 </TD> <TD align="right"> 269.238 </TD> <TD align="right"> 11.200 </TD> <TD align="right"> 0 </TD> <TD align="right"> 1368 </TD> <TD align="right"> 100.0000 </TD> </TR>
+  <TR> <TD align="right"> WOCCEP_WOCCE </TD> <TD align="right"> 0.031 </TD> <TD align="right"> 0.356 </TD> <TD align="right"> 0.442 </TD> <TD align="right"> 0.422 </TD> <TD align="right"> 0.493 </TD> <TD align="right"> 0.640 </TD> <TD align="right"> 0.092 </TD> <TD align="right"> 0.219 </TD> <TD align="right"> 0 </TD> <TD align="right"> 1368 </TD> <TD align="right"> 100.0000 </TD> </TR>
+  <TR> <TD align="right"> WOCCEP_WOCCP </TD> <TD align="right"> 0.059 </TD> <TD align="right"> 0.872 </TD> <TD align="right"> 0.961 </TD> <TD align="right"> 0.974 </TD> <TD align="right"> 1.030 </TD> <TD align="right"> 1.373 </TD> <TD align="right"> 0.222 </TD> <TD align="right"> 0.228 </TD> <TD align="right"> 0 </TD> <TD align="right"> 1368 </TD> <TD align="right"> 100.0000 </TD> </TR>
+  <TR> <TD align="right"> WOCCFN_WOCCN </TD> <TD align="right"> 0.000 </TD> <TD align="right"> 0.653 </TD> <TD align="right"> 0.820 </TD> <TD align="right"> 47.178 </TD> <TD align="right"> 2.634 </TD> <TD align="right"> 10604.960 </TD> <TD align="right"> 528.166 </TD> <TD align="right"> 11.195 </TD> <TD align="right"> 0 </TD> <TD align="right"> 1368 </TD> <TD align="right"> 100.0000 </TD> </TR>
+   </TABLE>
+
+
+
+<br>
+<h2> Summary of the runstatus per feature </h2>
+
+The following table summarizes the runstatus of each feature over all instances (in %).<br>
+<br>
+
+<!-- html table generated in R 3.0.2 by xtable 1.7-1 package -->
+<!-- Thu Jan 23 11:55:46 2014 -->
+<TABLE border=1>
+<TR> <TH>  </TH> <TH> ok </TH> <TH> timeout </TH> <TH> memout </TH> <TH> presolved </TH> <TH> crash </TH> <TH> other </TH>  </TR>
+  <TR> <TD align="right"> EXIST_VARS </TD> <TD align="right"> 100.00 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.00 </TD> </TR>
+  <TR> <TD align="right"> FORALL_VARS </TD> <TD align="right"> 100.00 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.00 </TD> </TR>
+  <TR> <TD align="right"> TOTAL_VARS </TD> <TD align="right"> 100.00 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.00 </TD> </TR>
+  <TR> <TD align="right"> CLAUSES </TD> <TD align="right"> 100.00 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.00 </TD> </TR>
+  <TR> <TD align="right"> LITERALS </TD> <TD align="right"> 100.00 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.00 </TD> </TR>
+  <TR> <TD align="right"> EXIST_SET </TD> <TD align="right"> 100.00 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.00 </TD> </TR>
+  <TR> <TD align="right"> FORALL_SET </TD> <TD align="right"> 100.00 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.00 </TD> </TR>
+  <TR> <TD align="right"> TOTAL_SET </TD> <TD align="right"> 100.00 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.00 </TD> </TR>
+  <TR> <TD align="right"> UNARY_CLAUSES </TD> <TD align="right"> 100.00 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.00 </TD> </TR>
+  <TR> <TD align="right"> BINARY_CLAUSES </TD> <TD align="right"> 100.00 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.00 </TD> </TR>
+  <TR> <TD align="right"> TERNARY_MORE_CLAUSES </TD> <TD align="right"> 100.00 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.00 </TD> </TR>
+  <TR> <TD align="right"> POS_HORN </TD> <TD align="right"> 100.00 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.00 </TD> </TR>
+  <TR> <TD align="right"> NEG_HORN </TD> <TD align="right"> 100.00 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.00 </TD> </TR>
+  <TR> <TD align="right"> EXIST_LIT_PER_CLAUSE </TD> <TD align="right"> 100.00 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.00 </TD> </TR>
+  <TR> <TD align="right"> FORALL_LIT_PER_CLAUSE </TD> <TD align="right"> 100.00 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.00 </TD> </TR>
+  <TR> <TD align="right"> EXIST_VARS_PER_SET </TD> <TD align="right"> 100.00 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.00 </TD> </TR>
+  <TR> <TD align="right"> FORALL_POS_LITS_PER_CLAUSE </TD> <TD align="right"> 100.00 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.00 </TD> </TR>
+  <TR> <TD align="right"> FORALL_NEG_LITS_PER_CLAUSE </TD> <TD align="right"> 100.00 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.00 </TD> </TR>
+  <TR> <TD align="right"> OCCS_POS_NO_PER_VAR </TD> <TD align="right"> 100.00 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.00 </TD> </TR>
+  <TR> <TD align="right"> OCCS_FORALL_NO_PER_VAR </TD> <TD align="right"> 100.00 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.00 </TD> </TR>
+  <TR> <TD align="right"> OCCS_FORALL_POS_NO_PER_VAR </TD> <TD align="right"> 100.00 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.00 </TD> </TR>
+  <TR> <TD align="right"> W_OCCS_POS_NO_PER_VAR </TD> <TD align="right"> 100.00 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.00 </TD> </TR>
+  <TR> <TD align="right"> W_OCCS_FORALL_NO_PER_VAR </TD> <TD align="right"> 100.00 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.00 </TD> </TR>
+  <TR> <TD align="right"> W_OCCS_FORALL_POS_NO_PER_VAR </TD> <TD align="right"> 100.00 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.00 </TD> </TR>
+  <TR> <TD align="right"> W_PRODUCTS </TD> <TD align="right"> 100.00 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.00 </TD> </TR>
+  <TR> <TD align="right"> LITN_LIT </TD> <TD align="right"> 100.00 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.00 </TD> </TR>
+  <TR> <TD align="right"> LITEP_LIT </TD> <TD align="right"> 100.00 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.00 </TD> </TR>
+  <TR> <TD align="right"> LITEN_LITE </TD> <TD align="right"> 100.00 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.00 </TD> </TR>
+  <TR> <TD align="right"> LITEN_LITN </TD> <TD align="right"> 100.00 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.00 </TD> </TR>
+  <TR> <TD align="right"> LITFN_LIT </TD> <TD align="right"> 100.00 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.00 </TD> </TR>
+  <TR> <TD align="right"> LITFP_LITFN </TD> <TD align="right"> 100.00 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.00 </TD> </TR>
+  <TR> <TD align="right"> OCCP_OCCN </TD> <TD align="right"> 100.00 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.00 </TD> </TR>
+  <TR> <TD align="right"> OCCE_OCC </TD> <TD align="right"> 100.00 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.00 </TD> </TR>
+  <TR> <TD align="right"> OCCEN_OCC </TD> <TD align="right"> 100.00 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.00 </TD> </TR>
+  <TR> <TD align="right"> OCCFP_OCCF </TD> <TD align="right"> 100.00 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.00 </TD> </TR>
+  <TR> <TD align="right"> OCCEN_OCCE </TD> <TD align="right"> 100.00 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.00 </TD> </TR>
+  <TR> <TD align="right"> OCCEN_OCCN </TD> <TD align="right"> 100.00 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.00 </TD> </TR>
+  <TR> <TD align="right"> OCCFP_OCCFN </TD> <TD align="right"> 100.00 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.00 </TD> </TR>
+  <TR> <TD align="right"> TERMORE_CLAUSE </TD> <TD align="right"> 100.00 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.00 </TD> </TR>
+  <TR> <TD align="right"> NEG_HORN_CLAUSE </TD> <TD align="right"> 100.00 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.00 </TD> </TR>
+  <TR> <TD align="right"> WOCCN_WOCC </TD> <TD align="right"> 100.00 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.00 </TD> </TR>
+  <TR> <TD align="right"> WOCCEP_WOCC </TD> <TD align="right"> 100.00 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.00 </TD> </TR>
+  <TR> <TD align="right"> WOCCFN_WOCC </TD> <TD align="right"> 100.00 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.00 </TD> </TR>
+  <TR> <TD align="right"> WOCCEP_WOCCE </TD> <TD align="right"> 100.00 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.00 </TD> </TR>
+  <TR> <TD align="right"> WOCCEP_WOCCP </TD> <TD align="right"> 100.00 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.00 </TD> </TR>
+  <TR> <TD align="right"> WOCCFN_WOCCN </TD> <TD align="right"> 100.00 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.00 </TD> </TR>
+   </TABLE>
+
+
+
+<br>
+<h2> Duplicated Features </h2>
+
+The following 161 instances result in 47 blocks of duplicated features:
+<!-- html table generated in R 3.0.2 by xtable 1.7-1 package -->
+<!-- Thu Jan 23 11:59:07 2014 -->
+<TABLE border=1>
+<TR> <TH> Block </TH> <TH> Inst. No. </TH> <TH> ID of duplicated feature </TH>  </TR>
+  <TR> <TD> 1 </TD> <TD> 1 </TD> <TD> C880.blif_0.10_0.20_0_0_out_exact </TD> </TR>
+  <TR> <TD> 1 </TD> <TD> 2 </TD> <TD> C880.blif_0.10_0.20_0_1_out_exact </TD> </TR>
+  <TR> <TD>  </TD> <TD>  </TD> <TD>  </TD> </TR>
+  <TR> <TD> 2 </TD> <TD> 3 </TD> <TD> Core1108_tbm_02.tex.moduleQ3.2S.000007 </TD> </TR>
+  <TR> <TD> 2 </TD> <TD> 4 </TD> <TD> Core1108_tbm_02.tex.moduleQ3.2S.000077 </TD> </TR>
+  <TR> <TD>  </TD> <TD>  </TD> <TD>  </TD> </TR>
+  <TR> <TD> 3 </TD> <TD> 5 </TD> <TD> Core1108_tbm_02.tex.moduleQ3.2S.000099 </TD> </TR>
+  <TR> <TD> 3 </TD> <TD> 6 </TD> <TD> Core1108_tbm_02.tex.moduleQ3.2S.000108 </TD> </TR>
+  <TR> <TD>  </TD> <TD>  </TD> <TD>  </TD> </TR>
+  <TR> <TD> 4 </TD> <TD> 7 </TD> <TD> Core1108_tbm_03.tex.module.000038 </TD> </TR>
+  <TR> <TD> 4 </TD> <TD> 8 </TD> <TD> Core1108_tbm_03.tex.module.000039 </TD> </TR>
+  <TR> <TD>  </TD> <TD>  </TD> <TD>  </TD> </TR>
+  <TR> <TD> 5 </TD> <TD> 9 </TD> <TD> Core1108_tbm_03.tex.moduleQ3.2S.000002 </TD> </TR>
+  <TR> <TD> 5 </TD> <TD> 10 </TD> <TD> Core1108_tbm_03.tex.moduleQ3.2S.000018 </TD> </TR>
+  <TR> <TD>  </TD> <TD>  </TD> <TD>  </TD> </TR>
+  <TR> <TD> 6 </TD> <TD> 11 </TD> <TD> Core1108_tbm_03.tex.moduleQ3.2S.000009 </TD> </TR>
+  <TR> <TD> 6 </TD> <TD> 12 </TD> <TD> Core1108_tbm_03.tex.moduleQ3.2S.000048 </TD> </TR>
+  <TR> <TD>  </TD> <TD>  </TD> <TD>  </TD> </TR>
+  <TR> <TD> 7 </TD> <TD> 13 </TD> <TD> Core1108_tbm_09.tex.module.000008 </TD> </TR>
+  <TR> <TD> 7 </TD> <TD> 14 </TD> <TD> Core1108_tbm_09.tex.module.000010 </TD> </TR>
+  <TR> <TD>  </TD> <TD>  </TD> <TD>  </TD> </TR>
+  <TR> <TD> 8 </TD> <TD> 15 </TD> <TD> Core1108_tbm_09.tex.moduleQ3.10S.000001 </TD> </TR>
+  <TR> <TD> 8 </TD> <TD> 16 </TD> <TD> Core1108_tbm_09.tex.moduleQ3.2S.000005 </TD> </TR>
+  <TR> <TD> 8 </TD> <TD> 17 </TD> <TD> Core1108_tbm_09.tex.moduleQ3.2S.000011 </TD> </TR>
+  <TR> <TD> 8 </TD> <TD> 18 </TD> <TD> Core1108_tbm_09.tex.moduleQ3.9S.000001 </TD> </TR>
+  <TR> <TD>  </TD> <TD>  </TD> <TD>  </TD> </TR>
+  <TR> <TD> 9 </TD> <TD> 19 </TD> <TD> Core1108_tbm_21.tex.moduleQ3.2S.000011 </TD> </TR>
+  <TR> <TD> 9 </TD> <TD> 20 </TD> <TD> Core1108_tbm_21.tex.moduleQ3.2S.000015 </TD> </TR>
+  <TR> <TD> 9 </TD> <TD> 21 </TD> <TD> Core1108_tbm_21.tex.moduleQ3.2S.000019 </TD> </TR>
+  <TR> <TD> 9 </TD> <TD> 22 </TD> <TD> Core1108_tbm_21.tex.moduleQ3.2S.000024 </TD> </TR>
+  <TR> <TD>  </TD> <TD>  </TD> <TD>  </TD> </TR>
+  <TR> <TD> 10 </TD> <TD> 23 </TD> <TD> Core1108_tbm_21.tex.moduleQ3.2S.000007 </TD> </TR>
+  <TR> <TD> 10 </TD> <TD> 24 </TD> <TD> Core1108_tbm_21.tex.moduleQ3.2S.000027 </TD> </TR>
+  <TR> <TD>  </TD> <TD>  </TD> <TD>  </TD> </TR>
+  <TR> <TD> 11 </TD> <TD> 25 </TD> <TD> robots_1_5_2_10.2 </TD> </TR>
+  <TR> <TD> 11 </TD> <TD> 26 </TD> <TD> robots_1_5_2_14.2 </TD> </TR>
+  <TR> <TD> 11 </TD> <TD> 27 </TD> <TD> robots_1_5_2_47.2 </TD> </TR>
+  <TR> <TD>  </TD> <TD>  </TD> <TD>  </TD> </TR>
+  <TR> <TD> 12 </TD> <TD> 28 </TD> <TD> robots_1_5_2_100.4 </TD> </TR>
+  <TR> <TD> 12 </TD> <TD> 29 </TD> <TD> robots_1_5_2_21.4 </TD> </TR>
+  <TR> <TD> 12 </TD> <TD> 30 </TD> <TD> robots_1_5_2_3.4 </TD> </TR>
+  <TR> <TD> 12 </TD> <TD> 31 </TD> <TD> robots_1_5_2_39.4 </TD> </TR>
+  <TR> <TD> 12 </TD> <TD> 32 </TD> <TD> robots_1_5_2_45.4 </TD> </TR>
+  <TR> <TD> 12 </TD> <TD> 33 </TD> <TD> robots_1_5_2_80.4 </TD> </TR>
+  <TR> <TD> 12 </TD> <TD> 34 </TD> <TD> robots_1_5_2_85.4 </TD> </TR>
+  <TR> <TD> 12 </TD> <TD> 35 </TD> <TD> robots_1_5_2_99.4 </TD> </TR>
+  <TR> <TD>  </TD> <TD>  </TD> <TD>  </TD> </TR>
+  <TR> <TD> 13 </TD> <TD> 36 </TD> <TD> robots_1_5_2_100.2 </TD> </TR>
+  <TR> <TD> 13 </TD> <TD> 37 </TD> <TD> robots_1_5_2_31.2 </TD> </TR>
+  <TR> <TD> 13 </TD> <TD> 38 </TD> <TD> robots_1_5_2_85.2 </TD> </TR>
+  <TR> <TD>  </TD> <TD>  </TD> <TD>  </TD> </TR>
+  <TR> <TD> 14 </TD> <TD> 39 </TD> <TD> robots_1_5_2_100.8 </TD> </TR>
+  <TR> <TD> 14 </TD> <TD> 40 </TD> <TD> robots_1_5_2_40.8 </TD> </TR>
+  <TR> <TD> 14 </TD> <TD> 41 </TD> <TD> robots_1_5_2_54.8 </TD> </TR>
+  <TR> <TD> 14 </TD> <TD> 42 </TD> <TD> robots_1_5_2_61.8 </TD> </TR>
+  <TR> <TD> 14 </TD> <TD> 43 </TD> <TD> robots_1_5_2_9.8 </TD> </TR>
+  <TR> <TD>  </TD> <TD>  </TD> <TD>  </TD> </TR>
+  <TR> <TD> 15 </TD> <TD> 44 </TD> <TD> robots_1_5_2_33.2 </TD> </TR>
+  <TR> <TD> 15 </TD> <TD> 45 </TD> <TD> robots_1_5_2_49.2 </TD> </TR>
+  <TR> <TD> 15 </TD> <TD> 46 </TD> <TD> robots_1_5_2_81.2 </TD> </TR>
+  <TR> <TD>  </TD> <TD>  </TD> <TD>  </TD> </TR>
+  <TR> <TD> 16 </TD> <TD> 47 </TD> <TD> robots_1_5_2_32.8 </TD> </TR>
+  <TR> <TD> 16 </TD> <TD> 48 </TD> <TD> robots_1_5_2_75.8 </TD> </TR>
+  <TR> <TD>  </TD> <TD>  </TD> <TD>  </TD> </TR>
+  <TR> <TD> 17 </TD> <TD> 49 </TD> <TD> robots_1_5_2_67.8 </TD> </TR>
+  <TR> <TD> 17 </TD> <TD> 50 </TD> <TD> robots_1_5_2_82.8 </TD> </TR>
+  <TR> <TD>  </TD> <TD>  </TD> <TD>  </TD> </TR>
+  <TR> <TD> 18 </TD> <TD> 51 </TD> <TD> robots_1_5_3_100.4 </TD> </TR>
+  <TR> <TD> 18 </TD> <TD> 52 </TD> <TD> robots_1_5_3_16.4 </TD> </TR>
+  <TR> <TD> 18 </TD> <TD> 53 </TD> <TD> robots_1_5_3_44.4 </TD> </TR>
+  <TR> <TD> 18 </TD> <TD> 54 </TD> <TD> robots_1_5_3_66.4 </TD> </TR>
+  <TR> <TD>  </TD> <TD>  </TD> <TD>  </TD> </TR>
+  <TR> <TD> 19 </TD> <TD> 55 </TD> <TD> robots_1_5_3_100.8 </TD> </TR>
+  <TR> <TD> 19 </TD> <TD> 56 </TD> <TD> robots_1_5_3_16.8 </TD> </TR>
+  <TR> <TD> 19 </TD> <TD> 57 </TD> <TD> robots_1_5_3_27.8 </TD> </TR>
+  <TR> <TD> 19 </TD> <TD> 58 </TD> <TD> robots_1_5_3_39.8 </TD> </TR>
+  <TR> <TD> 19 </TD> <TD> 59 </TD> <TD> robots_1_5_3_44.8 </TD> </TR>
+  <TR> <TD>  </TD> <TD>  </TD> <TD>  </TD> </TR>
+  <TR> <TD> 20 </TD> <TD> 60 </TD> <TD> robots_1_5_3_20.4 </TD> </TR>
+  <TR> <TD> 20 </TD> <TD> 61 </TD> <TD> robots_1_5_3_2.4 </TD> </TR>
+  <TR> <TD> 20 </TD> <TD> 62 </TD> <TD> robots_1_5_3_52.4 </TD> </TR>
+  <TR> <TD>  </TD> <TD>  </TD> <TD>  </TD> </TR>
+  <TR> <TD> 21 </TD> <TD> 63 </TD> <TD> robots_1_5_3_25.2 </TD> </TR>
+  <TR> <TD> 21 </TD> <TD> 64 </TD> <TD> robots_1_5_3_26.2 </TD> </TR>
+  <TR> <TD> 21 </TD> <TD> 65 </TD> <TD> robots_1_5_3_30.2 </TD> </TR>
+  <TR> <TD> 21 </TD> <TD> 66 </TD> <TD> robots_1_5_3_52.2 </TD> </TR>
+  <TR> <TD>  </TD> <TD>  </TD> <TD>  </TD> </TR>
+  <TR> <TD> 22 </TD> <TD> 67 </TD> <TD> robots_1_5_3_100.2 </TD> </TR>
+  <TR> <TD> 22 </TD> <TD> 68 </TD> <TD> robots_1_5_3_51.2 </TD> </TR>
+  <TR> <TD> 22 </TD> <TD> 69 </TD> <TD> robots_1_5_3_62.2 </TD> </TR>
+  <TR> <TD> 22 </TD> <TD> 70 </TD> <TD> robots_1_5_3_80.2 </TD> </TR>
+  <TR> <TD> 22 </TD> <TD> 71 </TD> <TD> robots_1_5_3_91.2 </TD> </TR>
+  <TR> <TD>  </TD> <TD>  </TD> <TD>  </TD> </TR>
+  <TR> <TD> 23 </TD> <TD> 72 </TD> <TD> robots_1_5_3_24.4 </TD> </TR>
+  <TR> <TD> 23 </TD> <TD> 73 </TD> <TD> robots_1_5_3_57.4 </TD> </TR>
+  <TR> <TD>  </TD> <TD>  </TD> <TD>  </TD> </TR>
+  <TR> <TD> 24 </TD> <TD> 74 </TD> <TD> robots_1_5_3_55.8 </TD> </TR>
+  <TR> <TD> 24 </TD> <TD> 75 </TD> <TD> robots_1_5_3_64.8 </TD> </TR>
+  <TR> <TD> 24 </TD> <TD> 76 </TD> <TD> robots_1_5_3_8.8 </TD> </TR>
+  <TR> <TD>  </TD> <TD>  </TD> <TD>  </TD> </TR>
+  <TR> <TD> 25 </TD> <TD> 77 </TD> <TD> robots_1_5_3_70.8 </TD> </TR>
+  <TR> <TD> 25 </TD> <TD> 78 </TD> <TD> robots_1_5_3_90.8 </TD> </TR>
+  <TR> <TD>  </TD> <TD>  </TD> <TD>  </TD> </TR>
+  <TR> <TD> 26 </TD> <TD> 79 </TD> <TD> robots_1_5_4_100.2 </TD> </TR>
+  <TR> <TD> 26 </TD> <TD> 80 </TD> <TD> robots_1_5_4_22.2 </TD> </TR>
+  <TR> <TD> 26 </TD> <TD> 81 </TD> <TD> robots_1_5_4_32.2 </TD> </TR>
+  <TR> <TD> 26 </TD> <TD> 82 </TD> <TD> robots_1_5_4_71.2 </TD> </TR>
+  <TR> <TD> 26 </TD> <TD> 83 </TD> <TD> robots_1_5_4_73.2 </TD> </TR>
+  <TR> <TD>  </TD> <TD>  </TD> <TD>  </TD> </TR>
+  <TR> <TD> 27 </TD> <TD> 84 </TD> <TD> robots_1_5_4_17.8 </TD> </TR>
+  <TR> <TD> 27 </TD> <TD> 85 </TD> <TD> robots_1_5_4_24.8 </TD> </TR>
+  <TR> <TD> 27 </TD> <TD> 86 </TD> <TD> robots_1_5_4_56.8 </TD> </TR>
+  <TR> <TD> 27 </TD> <TD> 87 </TD> <TD> robots_1_5_4_75.8 </TD> </TR>
+  <TR> <TD> 27 </TD> <TD> 88 </TD> <TD> robots_1_5_4_91.8 </TD> </TR>
+  <TR> <TD>  </TD> <TD>  </TD> <TD>  </TD> </TR>
+  <TR> <TD> 28 </TD> <TD> 89 </TD> <TD> robots_1_5_4_30.4 </TD> </TR>
+  <TR> <TD> 28 </TD> <TD> 90 </TD> <TD> robots_1_5_4_31.4 </TD> </TR>
+  <TR> <TD> 28 </TD> <TD> 91 </TD> <TD> robots_1_5_4_87.4 </TD> </TR>
+  <TR> <TD>  </TD> <TD>  </TD> <TD>  </TD> </TR>
+  <TR> <TD> 29 </TD> <TD> 92 </TD> <TD> robots_1_5_4_100.4 </TD> </TR>
+  <TR> <TD> 29 </TD> <TD> 93 </TD> <TD> robots_1_5_4_46.4 </TD> </TR>
+  <TR> <TD> 29 </TD> <TD> 94 </TD> <TD> robots_1_5_4_50.4 </TD> </TR>
+  <TR> <TD>  </TD> <TD>  </TD> <TD>  </TD> </TR>
+  <TR> <TD> 30 </TD> <TD> 95 </TD> <TD> robots_1_5_4_100.8 </TD> </TR>
+  <TR> <TD> 30 </TD> <TD> 96 </TD> <TD> robots_1_5_4_46.8 </TD> </TR>
+  <TR> <TD> 30 </TD> <TD> 97 </TD> <TD> robots_1_5_4_96.8 </TD> </TR>
+  <TR> <TD> 30 </TD> <TD> 98 </TD> <TD> robots_1_5_4_99.8 </TD> </TR>
+  <TR> <TD>  </TD> <TD>  </TD> <TD>  </TD> </TR>
+  <TR> <TD> 31 </TD> <TD> 99 </TD> <TD> robots_1_5_4_2.4 </TD> </TR>
+  <TR> <TD> 31 </TD> <TD> 100 </TD> <TD> robots_1_5_4_51.4 </TD> </TR>
+  <TR> <TD> 31 </TD> <TD> 101 </TD> <TD> robots_1_5_4_91.4 </TD> </TR>
+  <TR> <TD> 31 </TD> <TD> 102 </TD> <TD> robots_1_5_4_98.4 </TD> </TR>
+  <TR> <TD>  </TD> <TD>  </TD> <TD>  </TD> </TR>
+  <TR> <TD> 32 </TD> <TD> 103 </TD> <TD> robots_1_5_4_44.2 </TD> </TR>
+  <TR> <TD> 32 </TD> <TD> 104 </TD> <TD> robots_1_5_4_52.2 </TD> </TR>
+  <TR> <TD> 32 </TD> <TD> 105 </TD> <TD> robots_1_5_4_81.2 </TD> </TR>
+  <TR> <TD>  </TD> <TD>  </TD> <TD>  </TD> </TR>
+  <TR> <TD> 33 </TD> <TD> 106 </TD> <TD> robots_1_5_4_59.2 </TD> </TR>
+  <TR> <TD> 33 </TD> <TD> 107 </TD> <TD> robots_1_5_4_75.2 </TD> </TR>
+  <TR> <TD>  </TD> <TD>  </TD> <TD>  </TD> </TR>
+  <TR> <TD> 34 </TD> <TD> 108 </TD> <TD> robots_1_5_5_100.8 </TD> </TR>
+  <TR> <TD> 34 </TD> <TD> 109 </TD> <TD> robots_1_5_5_10.8 </TD> </TR>
+  <TR> <TD> 34 </TD> <TD> 110 </TD> <TD> robots_1_5_5_12.8 </TD> </TR>
+  <TR> <TD> 34 </TD> <TD> 111 </TD> <TD> robots_1_5_5_14.8 </TD> </TR>
+  <TR> <TD> 34 </TD> <TD> 112 </TD> <TD> robots_1_5_5_33.8 </TD> </TR>
+  <TR> <TD> 34 </TD> <TD> 113 </TD> <TD> robots_1_5_5_50.8 </TD> </TR>
+  <TR> <TD> 34 </TD> <TD> 114 </TD> <TD> robots_1_5_5_5.8 </TD> </TR>
+  <TR> <TD> 34 </TD> <TD> 115 </TD> <TD> robots_1_5_5_66.8 </TD> </TR>
+  <TR> <TD> 34 </TD> <TD> 116 </TD> <TD> robots_1_5_5_95.8 </TD> </TR>
+  <TR> <TD> 34 </TD> <TD> 117 </TD> <TD> robots_1_5_5_99.8 </TD> </TR>
+  <TR> <TD>  </TD> <TD>  </TD> <TD>  </TD> </TR>
+  <TR> <TD> 35 </TD> <TD> 118 </TD> <TD> robots_1_5_5_100.4 </TD> </TR>
+  <TR> <TD> 35 </TD> <TD> 119 </TD> <TD> robots_1_5_5_12.4 </TD> </TR>
+  <TR> <TD> 35 </TD> <TD> 120 </TD> <TD> robots_1_5_5_26.4 </TD> </TR>
+  <TR> <TD> 35 </TD> <TD> 121 </TD> <TD> robots_1_5_5_30.4 </TD> </TR>
+  <TR> <TD> 35 </TD> <TD> 122 </TD> <TD> robots_1_5_5_34.4 </TD> </TR>
+  <TR> <TD> 35 </TD> <TD> 123 </TD> <TD> robots_1_5_5_45.4 </TD> </TR>
+  <TR> <TD> 35 </TD> <TD> 124 </TD> <TD> robots_1_5_5_66.4 </TD> </TR>
+  <TR> <TD> 35 </TD> <TD> 125 </TD> <TD> robots_1_5_5_8.4 </TD> </TR>
+  <TR> <TD> 35 </TD> <TD> 126 </TD> <TD> robots_1_5_5_87.4 </TD> </TR>
+  <TR> <TD> 35 </TD> <TD> 127 </TD> <TD> robots_1_5_5_93.4 </TD> </TR>
+  <TR> <TD>  </TD> <TD>  </TD> <TD>  </TD> </TR>
+  <TR> <TD> 36 </TD> <TD> 128 </TD> <TD> robots_1_5_5_100.2 </TD> </TR>
+  <TR> <TD> 36 </TD> <TD> 129 </TD> <TD> robots_1_5_5_15.2 </TD> </TR>
+  <TR> <TD> 36 </TD> <TD> 130 </TD> <TD> robots_1_5_5_24.2 </TD> </TR>
+  <TR> <TD> 36 </TD> <TD> 131 </TD> <TD> robots_1_5_5_31.2 </TD> </TR>
+  <TR> <TD> 36 </TD> <TD> 132 </TD> <TD> robots_1_5_5_38.2 </TD> </TR>
+  <TR> <TD> 36 </TD> <TD> 133 </TD> <TD> robots_1_5_5_56.2 </TD> </TR>
+  <TR> <TD> 36 </TD> <TD> 134 </TD> <TD> robots_1_5_5_61.2 </TD> </TR>
+  <TR> <TD> 36 </TD> <TD> 135 </TD> <TD> robots_1_5_5_62.2 </TD> </TR>
+  <TR> <TD> 36 </TD> <TD> 136 </TD> <TD> robots_1_5_5_75.2 </TD> </TR>
+  <TR> <TD> 36 </TD> <TD> 137 </TD> <TD> robots_1_5_5_97.2 </TD> </TR>
+  <TR> <TD>  </TD> <TD>  </TD> <TD>  </TD> </TR>
+  <TR> <TD> 37 </TD> <TD> 138 </TD> <TD> S-adeu-1 </TD> </TR>
+  <TR> <TD> 37 </TD> <TD> 139 </TD> <TD> S-adeu-3 </TD> </TR>
+  <TR> <TD>  </TD> <TD>  </TD> <TD>  </TD> </TR>
+  <TR> <TD> 38 </TD> <TD> 140 </TD> <TD> S-edau-1 </TD> </TR>
+  <TR> <TD> 38 </TD> <TD> 141 </TD> <TD> S-edau-3 </TD> </TR>
+  <TR> <TD>  </TD> <TD>  </TD> <TD>  </TD> </TR>
+  <TR> <TD> 39 </TD> <TD> 142 </TD> <TD> T-adeu-1 </TD> </TR>
+  <TR> <TD> 39 </TD> <TD> 143 </TD> <TD> T-adeu-3 </TD> </TR>
+  <TR> <TD>  </TD> <TD>  </TD> <TD>  </TD> </TR>
+  <TR> <TD> 40 </TD> <TD> 144 </TD> <TD> T-edau-1 </TD> </TR>
+  <TR> <TD> 40 </TD> <TD> 145 </TD> <TD> T-edau-3 </TD> </TR>
+  <TR> <TD>  </TD> <TD>  </TD> <TD>  </TD> </TR>
+  <TR> <TD> 41 </TD> <TD> 146 </TD> <TD> test1_quant2 </TD> </TR>
+  <TR> <TD> 41 </TD> <TD> 147 </TD> <TD> test1_quant_squaring2 </TD> </TR>
+  <TR> <TD>  </TD> <TD>  </TD> <TD>  </TD> </TR>
+  <TR> <TD> 42 </TD> <TD> 148 </TD> <TD> test4_quant2 </TD> </TR>
+  <TR> <TD> 42 </TD> <TD> 149 </TD> <TD> test4_quant_squaring2 </TD> </TR>
+  <TR> <TD>  </TD> <TD>  </TD> <TD>  </TD> </TR>
+  <TR> <TD> 43 </TD> <TD> 150 </TD> <TD> Umbrella_tbm_14.tex.moduleQ2.1S.000812 </TD> </TR>
+  <TR> <TD> 43 </TD> <TD> 151 </TD> <TD> Umbrella_tbm_14.tex.moduleQ2.2S.000003 </TD> </TR>
+  <TR> <TD>  </TD> <TD>  </TD> <TD>  </TD> </TR>
+  <TR> <TD> 44 </TD> <TD> 152 </TD> <TD> Umbrella_tbm_21.tex.module.000044 </TD> </TR>
+  <TR> <TD> 44 </TD> <TD> 153 </TD> <TD> Umbrella_tbm_21.tex.module.000049 </TD> </TR>
+  <TR> <TD>  </TD> <TD>  </TD> <TD>  </TD> </TR>
+  <TR> <TD> 45 </TD> <TD> 154 </TD> <TD> Umbrella_tbm_24.tex.moduleQ2.1S.000022 </TD> </TR>
+  <TR> <TD> 45 </TD> <TD> 155 </TD> <TD> Umbrella_tbm_24.tex.moduleQ2.1S.000136 </TD> </TR>
+  <TR> <TD> 45 </TD> <TD> 156 </TD> <TD> Umbrella_tbm_24.tex.moduleQ2.1S.000188 </TD> </TR>
+  <TR> <TD>  </TD> <TD>  </TD> <TD>  </TD> </TR>
+  <TR> <TD> 46 </TD> <TD> 157 </TD> <TD> Umbrella_tbm_25.tex.moduleQ3.2S.000052 </TD> </TR>
+  <TR> <TD> 46 </TD> <TD> 158 </TD> <TD> Umbrella_tbm_25.tex.moduleQ3.2S.000075 </TD> </TR>
+  <TR> <TD>  </TD> <TD>  </TD> <TD>  </TD> </TR>
+  <TR> <TD> 47 </TD> <TD> 159 </TD> <TD> Umbrella_tbm_26.tex.moduleQ3.2S.000009 </TD> </TR>
+  <TR> <TD> 47 </TD> <TD> 160 </TD> <TD> Umbrella_tbm_26.tex.moduleQ3.2S.000020 </TD> </TR>
+  <TR> <TD> 47 </TD> <TD> 161 </TD> <TD> Umbrella_tbm_26.tex.moduleQ3.2S.000037 </TD> </TR>
+   </TABLE>
+
+
+
+<br>
+<h2> Useless Features </h2>
+
+In this section, you'll find all features that adopted only one value (and eventually NA's).<br>
+<br>
+
+Feature Values:
+<!-- html table generated in R 3.0.2 by xtable 1.7-1 package -->
+<!-- Thu Jan 23 11:59:07 2014 -->
+<TABLE border=1>
+<TR> <TH>  </TH> <TH> unique Value(s) </TH> <TH> NA's </TH>  </TR>
+  <TR> <TD align="right"> repetition </TD> <TD align="right"> 1.0000 </TD> <TD align="right"> 0 </TD> </TR>
+   </TABLE>
+
+
+
+<br>
+Feature Runstatus:
+<!-- html table generated in R 3.0.2 by xtable 1.7-1 package -->
+<!-- Thu Jan 23 11:59:07 2014 -->
+<TABLE border=1>
+<TR> <TH>  </TH> <TH> unique Value(s) </TH> <TH> NA's </TH>  </TR>
+  <TR> <TD align="right"> repetition </TD> <TD> 1 </TD> <TD> 0 </TD> </TR>
+  <TR> <TD align="right"> presolved </TD> <TD> FALSE </TD> <TD> 0 </TD> </TR>
+   </TABLE>
+
+
+
+</body>
+</html>

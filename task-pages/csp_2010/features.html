@@ -68,12 +68,29 @@
 <body>
 
 
-<h2> Overview of performance values </h2>
+<h2> Overview of Feature Values </h2>
+
+The following measures were taken for the results of each feature:
+<ul>
+
+  <li> <a>Min: Minimum</a>
+  <li> <a>1st Qu.: 1st Quartile = lower Quartile = 25%-Quantile</a>
+  <li> <a>Median: Median = 50%-Quantile</a>
+  <li> <a>Mean: Arithmetic Mean</a>
+  <li> <a>3rd Qu.: 3rd Quartile = upper Quartile = 75%-Quantile</a>
+  <li> <a>Max.: Maximum</a>
+  <li> <a>Std. Dev.: Standard Deviation</a>
+  <li> <a>CoV.: Coefficient of Variation = Standard Deviation / Arithmetic Mean</a>
+  <li> <a>NA's: Number of NAs (missing values) within the feature set.</a>
+  <li> <a>Obs.: Number of Observations within the feature set.</a>
+  <li> <a>Run OK (%): Percentage of feature computations without a crash.</a>
+
+</ul>
 
 <!-- html table generated in R 3.0.2 by xtable 1.7-1 package -->
-<!-- Thu Jan  9 01:30:30 2014 -->
+<!-- Thu Jan 23 11:54:40 2014 -->
 <TABLE border=1>
-<TR> <TH>  </TH> <TH> Min. </TH> <TH> 1st Qu. </TH> <TH> Median </TH> <TH> Mean </TH> <TH> 3rd Qu. </TH> <TH> Max. </TH> <TH> SD </TH> <TH> VC </TH> <TH> NA's </TH> <TH> Obs. </TH> <TH> Run OK (%) </TH>  </TR>
+<TR> <TH>  </TH> <TH> Min. </TH> <TH> 1st Qu. </TH> <TH> Median </TH> <TH> Mean </TH> <TH> 3rd Qu. </TH> <TH> Max. </TH> <TH> Std. Dev. </TH> <TH> CoV. </TH> <TH> NA's </TH> <TH> Obs. </TH> <TH> Run OK (%) </TH>  </TR>
   <TR> <TD align="right"> clustering_coefficient </TD> <TD align="right"> 0.000 </TD> <TD align="right"> 0.354 </TD> <TD align="right"> 0.429 </TD> <TD align="right"> 0.514 </TD> <TD align="right"> 0.741 </TD> <TD align="right"> 1.000 </TD> <TD align="right"> 0.300 </TD> <TD align="right"> 0.583 </TD> <TD align="right"> 89 </TD> <TD align="right"> 2024 </TD> <TD align="right"> 95.6028 </TD> </TR>
   <TR> <TD align="right"> normalised_mean_degree </TD> <TD align="right"> 0.000 </TD> <TD align="right"> 0.093 </TD> <TD align="right"> 0.222 </TD> <TD align="right"> 0.375 </TD> <TD align="right"> 0.517 </TD> <TD align="right"> 0.997 </TD> <TD align="right"> 0.342 </TD> <TD align="right"> 0.914 </TD> <TD align="right"> 89 </TD> <TD align="right"> 2024 </TD> <TD align="right"> 95.6028 </TD> </TR>
   <TR> <TD align="right"> normalised_median_degree </TD> <TD align="right"> 0.000 </TD> <TD align="right"> 0.094 </TD> <TD align="right"> 0.205 </TD> <TD align="right"> 0.373 </TD> <TD align="right"> 0.531 </TD> <TD align="right"> 0.997 </TD> <TD align="right"> 0.348 </TD> <TD align="right"> 0.933 </TD> <TD align="right"> 89 </TD> <TD align="right"> 2024 </TD> <TD align="right"> 95.6028 </TD> </TR>
@@ -95,133 +112,177 @@
 
 
 
+<br>
+<h2> Summary of the runstatus per feature </h2>
+
+The following table summarizes the runstatus of each feature over all instances (in %).<br>
+<br>
+
+<!-- html table generated in R 3.0.2 by xtable 1.7-1 package -->
+<!-- Thu Jan 23 11:54:40 2014 -->
+<TABLE border=1>
+<TR> <TH>  </TH> <TH> ok </TH> <TH> timeout </TH> <TH> memout </TH> <TH> presolved </TH> <TH> crash </TH> <TH> other </TH>  </TR>
+  <TR> <TD align="right"> clustering_coefficient </TD> <TD align="right"> 95.60 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 4.40 </TD> </TR>
+  <TR> <TD align="right"> normalised_mean_degree </TD> <TD align="right"> 95.60 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 4.40 </TD> </TR>
+  <TR> <TD align="right"> normalised_median_degree </TD> <TD align="right"> 95.60 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 4.40 </TD> </TR>
+  <TR> <TD align="right"> normalised_SAC_literals </TD> <TD align="right"> 95.60 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 4.40 </TD> </TR>
+  <TR> <TD align="right"> normalised_std_dev_of_node_degree </TD> <TD align="right"> 95.60 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 4.40 </TD> </TR>
+  <TR> <TD align="right"> normalised_width_of_graph </TD> <TD align="right"> 95.60 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 4.40 </TD> </TR>
+  <TR> <TD align="right"> normalised_width_of_ordering </TD> <TD align="right"> 95.60 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 4.40 </TD> </TR>
+  <TR> <TD align="right"> stats_auxvar_branching_ratio </TD> <TD align="right"> 95.60 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 4.40 </TD> </TR>
+  <TR> <TD align="right"> stats_cts_per_var_mean_normalised </TD> <TD align="right"> 95.60 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 4.40 </TD> </TR>
+  <TR> <TD align="right"> stats_edge_density </TD> <TD align="right"> 95.60 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 4.40 </TD> </TR>
+  <TR> <TD align="right"> stats_literal_tightness_mean </TD> <TD align="right"> 87.99 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 12.01 </TD> </TR>
+  <TR> <TD align="right"> stats_literal_tightness_coeff_of_variation </TD> <TD align="right"> 87.99 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 12.01 </TD> </TR>
+  <TR> <TD align="right"> stats_tightness_mean </TD> <TD align="right"> 95.60 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 4.40 </TD> </TR>
+  <TR> <TD align="right"> stats_Local_Variance </TD> <TD align="right"> 95.60 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 4.40 </TD> </TR>
+  <TR> <TD align="right"> stats_multi_shared_vars </TD> <TD align="right"> 95.60 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 4.40 </TD> </TR>
+  <TR> <TD align="right"> width_of_ordering </TD> <TD align="right"> 95.60 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 4.40 </TD> </TR>
+  <TR> <TD align="right"> width_of_graph </TD> <TD align="right"> 95.60 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 4.40 </TD> </TR>
+   </TABLE>
+
+
+
+<br>
 <h2> Duplicated Features </h2>
 
 The following 91 instances result in 15 blocks of duplicated features:
+<!-- html table generated in R 3.0.2 by xtable 1.7-1 package -->
+<!-- Thu Jan 23 11:55:16 2014 -->
+<TABLE border=1>
+<TR> <TH> Block </TH> <TH> Inst. No. </TH> <TH> ID of duplicated feature </TH>  </TR>
+  <TR> <TD> 1 </TD> <TD> 1 </TD> <TD> BlackHole-4-13-e-0_ext.xml.minion.converted.minion.gz </TD> </TR>
+  <TR> <TD> 1 </TD> <TD> 2 </TD> <TD> BlackHole-4-13-e-1_ext.xml.minion.converted.minion.gz </TD> </TR>
+  <TR> <TD> 1 </TD> <TD> 3 </TD> <TD> BlackHole-4-13-e-2_ext.xml.minion.converted.minion.gz </TD> </TR>
+  <TR> <TD> 1 </TD> <TD> 4 </TD> <TD> BlackHole-4-13-e-3_ext.xml.minion.converted.minion.gz </TD> </TR>
+  <TR> <TD> 1 </TD> <TD> 5 </TD> <TD> BlackHole-4-13-m-0_ext.xml.minion.converted.minion.gz </TD> </TR>
+  <TR> <TD> 1 </TD> <TD> 6 </TD> <TD> BlackHole-4-13-m-1_ext.xml.minion.converted.minion.gz </TD> </TR>
+  <TR> <TD> 1 </TD> <TD> 7 </TD> <TD> BlackHole-4-13-m-2_ext.xml.minion.converted.minion.gz </TD> </TR>
+  <TR> <TD>  </TD> <TD>  </TD> <TD>  </TD> </TR>
+  <TR> <TD> 2 </TD> <TD> 8 </TD> <TD> BlackHole-4-4-e-0_ext.xml.minion.conv.minion </TD> </TR>
+  <TR> <TD> 2 </TD> <TD> 9 </TD> <TD> BlackHole-4-4-e-0_ext.xml.minion.converted.minion.gz </TD> </TR>
+  <TR> <TD> 2 </TD> <TD> 10 </TD> <TD> BlackHole-4-4-e-1_ext.xml.minion.conv.minion </TD> </TR>
+  <TR> <TD> 2 </TD> <TD> 11 </TD> <TD> BlackHole-4-4-e-1_ext.xml.minion.converted.minion.gz </TD> </TR>
+  <TR> <TD> 2 </TD> <TD> 12 </TD> <TD> BlackHole-4-4-e-2_ext.xml.minion.conv.minion </TD> </TR>
+  <TR> <TD> 2 </TD> <TD> 13 </TD> <TD> BlackHole-4-4-e-2_ext.xml.minion.converted.minion.gz </TD> </TR>
+  <TR> <TD> 2 </TD> <TD> 14 </TD> <TD> BlackHole-4-4-e-3_ext.xml.minion.conv.minion </TD> </TR>
+  <TR> <TD> 2 </TD> <TD> 15 </TD> <TD> BlackHole-4-4-e-3_ext.xml.minion.converted.minion.gz </TD> </TR>
+  <TR> <TD> 2 </TD> <TD> 16 </TD> <TD> BlackHole-4-4-e-4_ext.xml.minion.conv.minion </TD> </TR>
+  <TR> <TD> 2 </TD> <TD> 17 </TD> <TD> BlackHole-4-4-e-4_ext.xml.minion.converted.minion.gz </TD> </TR>
+  <TR> <TD> 2 </TD> <TD> 18 </TD> <TD> BlackHole-4-4-e-5_ext.xml.minion.conv.minion </TD> </TR>
+  <TR> <TD> 2 </TD> <TD> 19 </TD> <TD> BlackHole-4-4-e-5_ext.xml.minion.converted.minion.gz </TD> </TR>
+  <TR> <TD> 2 </TD> <TD> 20 </TD> <TD> BlackHole-4-4-e-6_ext.xml.minion.conv.minion </TD> </TR>
+  <TR> <TD> 2 </TD> <TD> 21 </TD> <TD> BlackHole-4-4-e-6_ext.xml.minion.converted.minion.gz </TD> </TR>
+  <TR> <TD> 2 </TD> <TD> 22 </TD> <TD> BlackHole-4-4-e-7_ext.xml.minion.conv.minion </TD> </TR>
+  <TR> <TD> 2 </TD> <TD> 23 </TD> <TD> BlackHole-4-4-e-7_ext.xml.minion.converted.minion.gz </TD> </TR>
+  <TR> <TD> 2 </TD> <TD> 24 </TD> <TD> BlackHole-4-4-e-8_ext.xml.minion.conv.minion </TD> </TR>
+  <TR> <TD> 2 </TD> <TD> 25 </TD> <TD> BlackHole-4-4-e-8_ext.xml.minion.converted.minion.gz </TD> </TR>
+  <TR> <TD> 2 </TD> <TD> 26 </TD> <TD> BlackHole-4-4-e-9_ext.xml.minion.conv.minion </TD> </TR>
+  <TR> <TD> 2 </TD> <TD> 27 </TD> <TD> BlackHole-4-4-e-9_ext.xml.minion.converted.minion.gz </TD> </TR>
+  <TR> <TD>  </TD> <TD>  </TD> <TD>  </TD> </TR>
+  <TR> <TD> 3 </TD> <TD> 28 </TD> <TD> BlackHole-4-7-e-0_ext.xml.minion.converted.minion.gz </TD> </TR>
+  <TR> <TD> 3 </TD> <TD> 29 </TD> <TD> BlackHole-4-7-e-1_ext.xml.minion.converted.minion.gz </TD> </TR>
+  <TR> <TD> 3 </TD> <TD> 30 </TD> <TD> BlackHole-4-7-e-2_ext.xml.minion.converted.minion.gz </TD> </TR>
+  <TR> <TD> 3 </TD> <TD> 31 </TD> <TD> BlackHole-4-7-e-3_ext.xml.minion.converted.minion.gz </TD> </TR>
+  <TR> <TD> 3 </TD> <TD> 32 </TD> <TD> BlackHole-4-7-e-4_ext.xml.minion.converted.minion.gz </TD> </TR>
+  <TR> <TD> 3 </TD> <TD> 33 </TD> <TD> BlackHole-4-7-e-5_ext.xml.minion.converted.minion.gz </TD> </TR>
+  <TR> <TD> 3 </TD> <TD> 34 </TD> <TD> BlackHole-4-7-e-6_ext.xml.minion.converted.minion.gz </TD> </TR>
+  <TR> <TD> 3 </TD> <TD> 35 </TD> <TD> BlackHole-4-7-e-7_ext.xml.minion.converted.minion.gz </TD> </TR>
+  <TR> <TD> 3 </TD> <TD> 36 </TD> <TD> BlackHole-4-7-e-8_ext.xml.minion.converted.minion.gz </TD> </TR>
+  <TR> <TD> 3 </TD> <TD> 37 </TD> <TD> BlackHole-4-7-e-9_ext.xml.minion.converted.minion.gz </TD> </TR>
+  <TR> <TD> 3 </TD> <TD> 38 </TD> <TD> BlackHole-4-7-h-0_ext.xml.minion.converted.minion.gz </TD> </TR>
+  <TR> <TD> 3 </TD> <TD> 39 </TD> <TD> BlackHole-4-7-h-1_ext.xml.minion.converted.minion.gz </TD> </TR>
+  <TR> <TD> 3 </TD> <TD> 40 </TD> <TD> BlackHole-4-7-h-2_ext.xml.minion.converted.minion.gz </TD> </TR>
+  <TR> <TD> 3 </TD> <TD> 41 </TD> <TD> BlackHole-4-7-h-3_ext.xml.minion.converted.minion.gz </TD> </TR>
+  <TR> <TD> 3 </TD> <TD> 42 </TD> <TD> BlackHole-4-7-h-4_ext.xml.minion.converted.minion.gz </TD> </TR>
+  <TR> <TD> 3 </TD> <TD> 43 </TD> <TD> BlackHole-4-7-h-5_ext.xml.minion.converted.minion.gz </TD> </TR>
+  <TR> <TD> 3 </TD> <TD> 44 </TD> <TD> BlackHole-4-7-h-6_ext.xml.minion.converted.minion.gz </TD> </TR>
+  <TR> <TD> 3 </TD> <TD> 45 </TD> <TD> BlackHole-4-7-h-7_ext.xml.minion.converted.minion.gz </TD> </TR>
+  <TR> <TD> 3 </TD> <TD> 46 </TD> <TD> BlackHole-4-7-h-8_ext.xml.minion.converted.minion.gz </TD> </TR>
+  <TR> <TD> 3 </TD> <TD> 47 </TD> <TD> BlackHole-4-7-h-9_ext.xml.minion.converted.minion.gz </TD> </TR>
+  <TR> <TD>  </TD> <TD>  </TD> <TD>  </TD> </TR>
+  <TR> <TD> 4 </TD> <TD> 48 </TD> <TD> bqwh-15-106-0_glb.xml.minion.conv.minion </TD> </TR>
+  <TR> <TD> 4 </TD> <TD> 49 </TD> <TD> bqwh-15-106-1_glb.xml.minion.conv.minion </TD> </TR>
+  <TR> <TD>  </TD> <TD>  </TD> <TD>  </TD> </TR>
+  <TR> <TD> 5 </TD> <TD> 50 </TD> <TD> cril-0_ext.xml.minion.converted.minion </TD> </TR>
+  <TR> <TD> 5 </TD> <TD> 51 </TD> <TD> cril-0_ext.xml.minion.converted.minion.gz </TD> </TR>
+  <TR> <TD>  </TD> <TD>  </TD> <TD>  </TD> </TR>
+  <TR> <TD> 6 </TD> <TD> 52 </TD> <TD> cril-6_ext.xml.minion.converted.minion </TD> </TR>
+  <TR> <TD> 6 </TD> <TD> 53 </TD> <TD> cril-6_ext.xml.minion.converted.minion.gz </TD> </TR>
+  <TR> <TD>  </TD> <TD>  </TD> <TD>  </TD> </TR>
+  <TR> <TD> 7 </TD> <TD> 54 </TD> <TD> cril-7.ext.xml.minion.converted.minion </TD> </TR>
+  <TR> <TD> 7 </TD> <TD> 55 </TD> <TD> cril-7.ext.xml.minion.converted.minion.gz </TD> </TR>
+  <TR> <TD>  </TD> <TD>  </TD> <TD>  </TD> </TR>
+  <TR> <TD> 8 </TD> <TD> 56 </TD> <TD> peg1.minion.converted.minion.gz </TD> </TR>
+  <TR> <TD> 8 </TD> <TD> 57 </TD> <TD> peg13.minion.converted.minion.gz </TD> </TR>
+  <TR> <TD> 8 </TD> <TD> 58 </TD> <TD> peg21.minion.converted.minion.gz </TD> </TR>
+  <TR> <TD> 8 </TD> <TD> 59 </TD> <TD> peg27.minion.converted.minion.gz </TD> </TR>
+  <TR> <TD> 8 </TD> <TD> 60 </TD> <TD> peg3.minion.converted.minion.gz </TD> </TR>
+  <TR> <TD> 8 </TD> <TD> 61 </TD> <TD> peg31.minion.converted.minion.gz </TD> </TR>
+  <TR> <TD> 8 </TD> <TD> 62 </TD> <TD> peg33.minion.converted.minion.gz </TD> </TR>
+  <TR> <TD> 8 </TD> <TD> 63 </TD> <TD> peg7.minion.converted.minion.gz </TD> </TR>
+  <TR> <TD>  </TD> <TD>  </TD> <TD>  </TD> </TR>
+  <TR> <TD> 9 </TD> <TD> 64 </TD> <TD> peg10.minion.converted.minion.gz </TD> </TR>
+  <TR> <TD> 9 </TD> <TD> 65 </TD> <TD> peg16.minion.converted.minion.gz </TD> </TR>
+  <TR> <TD> 9 </TD> <TD> 66 </TD> <TD> peg18.minion.converted.minion.gz </TD> </TR>
+  <TR> <TD> 9 </TD> <TD> 67 </TD> <TD> peg24.minion.converted.minion.gz </TD> </TR>
+  <TR> <TD>  </TD> <TD>  </TD> <TD>  </TD> </TR>
+  <TR> <TD> 10 </TD> <TD> 68 </TD> <TD> peg15.minion.converted.minion.gz </TD> </TR>
+  <TR> <TD> 10 </TD> <TD> 69 </TD> <TD> peg19.minion.converted.minion.gz </TD> </TR>
+  <TR> <TD> 10 </TD> <TD> 70 </TD> <TD> peg29.minion.converted.minion.gz </TD> </TR>
+  <TR> <TD> 10 </TD> <TD> 71 </TD> <TD> peg5.minion.converted.minion.gz </TD> </TR>
+  <TR> <TD>  </TD> <TD>  </TD> <TD>  </TD> </TR>
+  <TR> <TD> 11 </TD> <TD> 72 </TD> <TD> peg14.minion.converted.minion.gz </TD> </TR>
+  <TR> <TD> 11 </TD> <TD> 73 </TD> <TD> peg2.minion.converted.minion.gz </TD> </TR>
+  <TR> <TD> 11 </TD> <TD> 74 </TD> <TD> peg20.minion.converted.minion.gz </TD> </TR>
+  <TR> <TD> 11 </TD> <TD> 75 </TD> <TD> peg32.minion.converted.minion.gz </TD> </TR>
+  <TR> <TD>  </TD> <TD>  </TD> <TD>  </TD> </TR>
+  <TR> <TD> 12 </TD> <TD> 76 </TD> <TD> peg12.minion.converted.minion.gz </TD> </TR>
+  <TR> <TD> 12 </TD> <TD> 77 </TD> <TD> peg22.minion.converted.minion.gz </TD> </TR>
+  <TR> <TD> 12 </TD> <TD> 78 </TD> <TD> peg26.minion.converted.minion.gz </TD> </TR>
+  <TR> <TD> 12 </TD> <TD> 79 </TD> <TD> peg28.minion.converted.minion.gz </TD> </TR>
+  <TR> <TD> 12 </TD> <TD> 80 </TD> <TD> peg30.minion.converted.minion.gz </TD> </TR>
+  <TR> <TD> 12 </TD> <TD> 81 </TD> <TD> peg4.minion.converted.minion.gz </TD> </TR>
+  <TR> <TD> 12 </TD> <TD> 82 </TD> <TD> peg6.minion.converted.minion.gz </TD> </TR>
+  <TR> <TD> 12 </TD> <TD> 83 </TD> <TD> peg8.minion.converted.minion.gz </TD> </TR>
+  <TR> <TD>  </TD> <TD>  </TD> <TD>  </TD> </TR>
+  <TR> <TD> 13 </TD> <TD> 84 </TD> <TD> peg11.minion.converted.minion.gz </TD> </TR>
+  <TR> <TD> 13 </TD> <TD> 85 </TD> <TD> peg23.minion.converted.minion.gz </TD> </TR>
+  <TR> <TD> 13 </TD> <TD> 86 </TD> <TD> peg25.minion.converted.minion.gz </TD> </TR>
+  <TR> <TD> 13 </TD> <TD> 87 </TD> <TD> peg9.minion.converted.minion.gz </TD> </TR>
+  <TR> <TD>  </TD> <TD>  </TD> <TD>  </TD> </TR>
+  <TR> <TD> 14 </TD> <TD> 88 </TD> <TD> ruler-17-6-a3.xml.minion.conv.minion </TD> </TR>
+  <TR> <TD> 14 </TD> <TD> 89 </TD> <TD> ruler-17-6-a3.xml.minion.conv.minion.conv.minion </TD> </TR>
+  <TR> <TD>  </TD> <TD>  </TD> <TD>  </TD> </TR>
+  <TR> <TD> 15 </TD> <TD> 90 </TD> <TD> series-100.xml.minion.conv.minion </TD> </TR>
+  <TR> <TD> 15 </TD> <TD> 91 </TD> <TD> series-90.xml.minion.conv.minion </TD> </TR>
+   </TABLE>
 
-(1) BlackHole-4-13-e-0_ext.xml.minion.converted.minion.gz, 
-(1) BlackHole-4-13-e-1_ext.xml.minion.converted.minion.gz, 
-(1) BlackHole-4-13-e-2_ext.xml.minion.converted.minion.gz, 
-(1) BlackHole-4-13-e-3_ext.xml.minion.converted.minion.gz, 
-(1) BlackHole-4-13-m-0_ext.xml.minion.converted.minion.gz, 
-(1) BlackHole-4-13-m-1_ext.xml.minion.converted.minion.gz, 
-(1) BlackHole-4-13-m-2_ext.xml.minion.converted.minion.gz
-
-(2) BlackHole-4-4-e-0_ext.xml.minion.conv.minion, 
-(2) BlackHole-4-4-e-0_ext.xml.minion.converted.minion.gz, 
-(2) BlackHole-4-4-e-1_ext.xml.minion.conv.minion, 
-(2) BlackHole-4-4-e-1_ext.xml.minion.converted.minion.gz, 
-(2) BlackHole-4-4-e-2_ext.xml.minion.conv.minion, 
-(2) BlackHole-4-4-e-2_ext.xml.minion.converted.minion.gz, 
-(2) BlackHole-4-4-e-3_ext.xml.minion.conv.minion, 
-(2) BlackHole-4-4-e-3_ext.xml.minion.converted.minion.gz, 
-(2) BlackHole-4-4-e-4_ext.xml.minion.conv.minion, 
-(2) BlackHole-4-4-e-4_ext.xml.minion.converted.minion.gz, 
-(2) BlackHole-4-4-e-5_ext.xml.minion.conv.minion, 
-(2) BlackHole-4-4-e-5_ext.xml.minion.converted.minion.gz, 
-(2) BlackHole-4-4-e-6_ext.xml.minion.conv.minion, 
-(2) BlackHole-4-4-e-6_ext.xml.minion.converted.minion.gz, 
-(2) BlackHole-4-4-e-7_ext.xml.minion.conv.minion, 
-(2) BlackHole-4-4-e-7_ext.xml.minion.converted.minion.gz, 
-(2) BlackHole-4-4-e-8_ext.xml.minion.conv.minion, 
-(2) BlackHole-4-4-e-8_ext.xml.minion.converted.minion.gz, 
-(2) BlackHole-4-4-e-9_ext.xml.minion.conv.minion, 
-(2) BlackHole-4-4-e-9_ext.xml.minion.converted.minion.gz
-
-(3) BlackHole-4-7-e-0_ext.xml.minion.converted.minion.gz, 
-(3) BlackHole-4-7-e-1_ext.xml.minion.converted.minion.gz, 
-(3) BlackHole-4-7-e-2_ext.xml.minion.converted.minion.gz, 
-(3) BlackHole-4-7-e-3_ext.xml.minion.converted.minion.gz, 
-(3) BlackHole-4-7-e-4_ext.xml.minion.converted.minion.gz, 
-(3) BlackHole-4-7-e-5_ext.xml.minion.converted.minion.gz, 
-(3) BlackHole-4-7-e-6_ext.xml.minion.converted.minion.gz, 
-(3) BlackHole-4-7-e-7_ext.xml.minion.converted.minion.gz, 
-(3) BlackHole-4-7-e-8_ext.xml.minion.converted.minion.gz, 
-(3) BlackHole-4-7-e-9_ext.xml.minion.converted.minion.gz, 
-(3) BlackHole-4-7-h-0_ext.xml.minion.converted.minion.gz, 
-(3) BlackHole-4-7-h-1_ext.xml.minion.converted.minion.gz, 
-(3) BlackHole-4-7-h-2_ext.xml.minion.converted.minion.gz, 
-(3) BlackHole-4-7-h-3_ext.xml.minion.converted.minion.gz, 
-(3) BlackHole-4-7-h-4_ext.xml.minion.converted.minion.gz, 
-(3) BlackHole-4-7-h-5_ext.xml.minion.converted.minion.gz, 
-(3) BlackHole-4-7-h-6_ext.xml.minion.converted.minion.gz, 
-(3) BlackHole-4-7-h-7_ext.xml.minion.converted.minion.gz, 
-(3) BlackHole-4-7-h-8_ext.xml.minion.converted.minion.gz, 
-(3) BlackHole-4-7-h-9_ext.xml.minion.converted.minion.gz
-
-(4) bqwh-15-106-0_glb.xml.minion.conv.minion, 
-(4) bqwh-15-106-1_glb.xml.minion.conv.minion
-
-(5) cril-0_ext.xml.minion.converted.minion, 
-(5) cril-0_ext.xml.minion.converted.minion.gz
-
-(6) cril-6_ext.xml.minion.converted.minion, 
-(6) cril-6_ext.xml.minion.converted.minion.gz
-
-(7) cril-7.ext.xml.minion.converted.minion, 
-(7) cril-7.ext.xml.minion.converted.minion.gz
-
-(8) peg1.minion.converted.minion.gz, 
-(8) peg13.minion.converted.minion.gz, 
-(8) peg21.minion.converted.minion.gz, 
-(8) peg27.minion.converted.minion.gz, 
-(8) peg3.minion.converted.minion.gz, 
-(8) peg31.minion.converted.minion.gz, 
-(8) peg33.minion.converted.minion.gz, 
-(8) peg7.minion.converted.minion.gz
-
-(9) peg10.minion.converted.minion.gz, 
-(9) peg16.minion.converted.minion.gz, 
-(9) peg18.minion.converted.minion.gz, 
-(9) peg24.minion.converted.minion.gz
-
-(10) peg15.minion.converted.minion.gz, 
-(10) peg19.minion.converted.minion.gz, 
-(10) peg29.minion.converted.minion.gz, 
-(10) peg5.minion.converted.minion.gz
-
-(11) peg14.minion.converted.minion.gz, 
-(11) peg2.minion.converted.minion.gz, 
-(11) peg20.minion.converted.minion.gz, 
-(11) peg32.minion.converted.minion.gz
-
-(12) peg12.minion.converted.minion.gz, 
-(12) peg22.minion.converted.minion.gz, 
-(12) peg26.minion.converted.minion.gz, 
-(12) peg28.minion.converted.minion.gz, 
-(12) peg30.minion.converted.minion.gz, 
-(12) peg4.minion.converted.minion.gz, 
-(12) peg6.minion.converted.minion.gz, 
-(12) peg8.minion.converted.minion.gz
-
-(13) peg11.minion.converted.minion.gz, 
-(13) peg23.minion.converted.minion.gz, 
-(13) peg25.minion.converted.minion.gz, 
-(13) peg9.minion.converted.minion.gz
-
-(14) ruler-17-6-a3.xml.minion.conv.minion, 
-(14) ruler-17-6-a3.xml.minion.conv.minion.conv.minion
-
-(15) series-100.xml.minion.conv.minion, 
-(15) series-90.xml.minion.conv.minion
 
 
-
+<br>
 <h2> Useless Features </h2>
+
+In this section, you'll find all features that adopted only one value (and eventually NA's).<br>
+<br>
 
 Feature Values:
 <!-- html table generated in R 3.0.2 by xtable 1.7-1 package -->
-<!-- Thu Jan  9 01:30:41 2014 -->
+<!-- Thu Jan 23 11:55:16 2014 -->
 <TABLE border=1>
-<TR> <TH>  </TH> <TH> uniqueValue </TH> <TH> NAs </TH>  </TR>
+<TR> <TH>  </TH> <TH> unique Value(s) </TH> <TH> NA's </TH>  </TR>
   <TR> <TD align="right"> repetition </TD> <TD align="right"> 1.0000 </TD> <TD align="right"> 0 </TD> </TR>
   <TR> <TD align="right"> stats_auxvar_branching_ratio </TD> <TD align="right"> 0.0000 </TD> <TD align="right"> 89 </TD> </TR>
    </TABLE>
+
+
+
+<br>
 Feature Runstatus:
 <!-- html table generated in R 3.0.2 by xtable 1.7-1 package -->
-<!-- Thu Jan  9 01:30:41 2014 -->
+<!-- Thu Jan 23 11:55:16 2014 -->
 <TABLE border=1>
-<TR> <TH>  </TH> <TH> uniqueValue </TH> <TH> NAs </TH>  </TR>
+<TR> <TH>  </TH> <TH> unique Value(s) </TH> <TH> NA's </TH>  </TR>
   <TR> <TD align="right"> repetition </TD> <TD> 1 </TD> <TD> 0 </TD> </TR>
   <TR> <TD align="right"> presolved </TD> <TD> FALSE </TD> <TD> 0 </TD> </TR>
    </TABLE>

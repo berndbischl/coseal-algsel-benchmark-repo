@@ -70,10 +70,27 @@
 
 <h2> Overview of performance values </h2>
 
+The following measures were taken from the performance values of each algorithm:
+<ul>
+
+  <li> <a>Min: Minimum</a>
+  <li> <a>1st Qu.: 1st Quartile = lower Quartile = 25%-Quantile</a>
+  <li> <a>Median: Median = 50%-Quantile</a>
+  <li> <a>Mean: Arithmetic Mean</a>
+  <li> <a>3rd Qu.: 3rd Quartile = upper Quartile = 75%-Quantile</a>
+  <li> <a>Max.: Maximum</a>
+  <li> <a>Std. Dev.: Standard Deviation</a>
+  <li> <a>CoV.: Coefficient of Variation = Standard Deviation / Arithmetic Mean</a>
+  <li> <a>NA's: Number of NAs (missing values) within the feature set.</a>
+  <li> <a>Obs.: Number of Observations within the feature set.</a>
+  <li> <a>Run OK (%): Percentage of feature computations without a crash.</a>
+
+</ul>
+
 <!-- html table generated in R 3.0.2 by xtable 1.7-1 package -->
-<!-- Thu Jan  9 01:30:58 2014 -->
+<!-- Thu Jan 23 12:00:58 2014 -->
 <TABLE border=1>
-<TR> <TH>  </TH> <TH> Min. </TH> <TH> 1st Qu. </TH> <TH> Median </TH> <TH> Mean </TH> <TH> 3rd Qu. </TH> <TH> Max. </TH> <TH> SD </TH> <TH> VC </TH> <TH> NA's </TH> <TH> Obs. </TH> <TH> Run OK (%) </TH>  </TR>
+<TR> <TH>  </TH> <TH> Min. </TH> <TH> 1st Qu. </TH> <TH> Median </TH> <TH> Mean </TH> <TH> 3rd Qu. </TH> <TH> Max. </TH> <TH> Std. Dev. </TH> <TH> CoV. </TH> <TH> NA's </TH> <TH> Obs. </TH> <TH> Run OK (%) </TH>  </TR>
   <TR> <TD align="right"> clasp1 </TD> <TD align="right"> 0.000 </TD> <TD align="right"> 7.180 </TD> <TD align="right"> 47.300 </TD> <TD align="right"> 184.254 </TD> <TD align="right"> 245.840 </TD> <TD align="right"> 1200.999 </TD> <TD align="right"> 275.994 </TD> <TD align="right"> 1.498 </TD> <TD align="right"> 432 </TD> <TD align="right"> 1167 </TD> <TD align="right"> 62.982 </TD> </TR>
   <TR> <TD align="right"> clasp2 </TD> <TD align="right"> 0.000 </TD> <TD align="right"> 5.688 </TD> <TD align="right"> 43.735 </TD> <TD align="right"> 165.649 </TD> <TD align="right"> 203.600 </TD> <TD align="right"> 1200.999 </TD> <TD align="right"> 260.017 </TD> <TD align="right"> 1.570 </TD> <TD align="right"> 457 </TD> <TD align="right"> 1167 </TD> <TD align="right"> 60.840 </TD> </TR>
   <TR> <TD align="right"> cryptominisat2011 </TD> <TD align="right"> 0.000 </TD> <TD align="right"> 18.420 </TD> <TD align="right"> 70.760 </TD> <TD align="right"> 223.589 </TD> <TD align="right"> 263.970 </TD> <TD align="right"> 1200.999 </TD> <TD align="right"> 333.437 </TD> <TD align="right"> 1.491 </TD> <TD align="right"> 274 </TD> <TD align="right"> 1167 </TD> <TD align="right"> 76.521 </TD> </TR>
@@ -110,44 +127,102 @@
 
 
 
-<h2> Dominated Algorithms </h2>
+<br>
+<h2> Summary of the runstatus per algorithm </h2>
+
+The following table summarizes the runstatus of each algorithm over all instances (in %).<br>
+<br>
 
 <!-- html table generated in R 3.0.2 by xtable 1.7-1 package -->
-<!-- Thu Jan  9 01:30:58 2014 -->
+<!-- Thu Jan 23 12:00:58 2014 -->
 <TABLE border=1>
-<TR> <TH>  </TH> <TH> Superior </TH> <TH> Inferior </TH>  </TR>
-  <TR> <TD align="right"> 1 </TD> <TD> cryptominisat2011 </TD> <TD> eagleup </TD> </TR>
-  <TR> <TD align="right"> 2 </TD> <TD> ebminisat </TD> <TD> eagleup </TD> </TR>
-  <TR> <TD align="right"> 3 </TD> <TD> glueminisat </TD> <TD> eagleup </TD> </TR>
-  <TR> <TD align="right"> 4 </TD> <TD> lingeling </TD> <TD> eagleup </TD> </TR>
-  <TR> <TD align="right"> 5 </TD> <TD> lrglshr </TD> <TD> eagleup </TD> </TR>
-  <TR> <TD align="right"> 6 </TD> <TD> marchrw </TD> <TD> eagleup </TD> </TR>
-  <TR> <TD align="right"> 7 </TD> <TD> mphaseSAT64 </TD> <TD> eagleup </TD> </TR>
-  <TR> <TD align="right"> 8 </TD> <TD> mxc09 </TD> <TD> eagleup </TD> </TR>
-  <TR> <TD align="right"> 9 </TD> <TD> picosat </TD> <TD> eagleup </TD> </TR>
-  <TR> <TD align="right"> 10 </TD> <TD> precosat </TD> <TD> eagleup </TD> </TR>
-  <TR> <TD align="right"> 11 </TD> <TD> restartsat </TD> <TD> eagleup </TD> </TR>
-  <TR> <TD align="right"> 12 </TD> <TD> sapperlot </TD> <TD> eagleup </TD> </TR>
-  <TR> <TD align="right"> 13 </TD> <TD> spear-hw </TD> <TD> eagleup </TD> </TR>
+<TR> <TH>  </TH> <TH> ok </TH> <TH> timeout </TH> <TH> memout </TH> <TH> not_applicable </TH> <TH> crash </TH> <TH> other </TH>  </TR>
+  <TR> <TD align="right"> clasp1 </TD> <TD align="right"> 62.982 </TD> <TD align="right"> 37.018 </TD> <TD align="right"> 0.000 </TD> <TD align="right"> 0.000 </TD> <TD align="right"> 0.000 </TD> <TD align="right"> 0.000 </TD> </TR>
+  <TR> <TD align="right"> clasp2 </TD> <TD align="right"> 60.840 </TD> <TD align="right"> 39.160 </TD> <TD align="right"> 0.000 </TD> <TD align="right"> 0.000 </TD> <TD align="right"> 0.000 </TD> <TD align="right"> 0.000 </TD> </TR>
+  <TR> <TD align="right"> cryptominisat2011 </TD> <TD align="right"> 76.521 </TD> <TD align="right"> 23.479 </TD> <TD align="right"> 0.000 </TD> <TD align="right"> 0.000 </TD> <TD align="right"> 0.000 </TD> <TD align="right"> 0.000 </TD> </TR>
+  <TR> <TD align="right"> eagleup </TD> <TD align="right"> 0.771 </TD> <TD align="right"> 99.229 </TD> <TD align="right"> 0.000 </TD> <TD align="right"> 0.000 </TD> <TD align="right"> 0.000 </TD> <TD align="right"> 0.000 </TD> </TR>
+  <TR> <TD align="right"> ebglucose </TD> <TD align="right"> 70.266 </TD> <TD align="right"> 29.734 </TD> <TD align="right"> 0.000 </TD> <TD align="right"> 0.000 </TD> <TD align="right"> 0.000 </TD> <TD align="right"> 0.000 </TD> </TR>
+  <TR> <TD align="right"> ebminisat </TD> <TD align="right"> 71.380 </TD> <TD align="right"> 28.620 </TD> <TD align="right"> 0.000 </TD> <TD align="right"> 0.000 </TD> <TD align="right"> 0.000 </TD> <TD align="right"> 0.000 </TD> </TR>
+  <TR> <TD align="right"> glucose2 </TD> <TD align="right"> 73.950 </TD> <TD align="right"> 26.050 </TD> <TD align="right"> 0.000 </TD> <TD align="right"> 0.000 </TD> <TD align="right"> 0.000 </TD> <TD align="right"> 0.000 </TD> </TR>
+  <TR> <TD align="right"> glueminisat </TD> <TD align="right"> 72.494 </TD> <TD align="right"> 27.506 </TD> <TD align="right"> 0.000 </TD> <TD align="right"> 0.000 </TD> <TD align="right"> 0.000 </TD> <TD align="right"> 0.000 </TD> </TR>
+  <TR> <TD align="right"> gnoveltyp2 </TD> <TD align="right"> 1.114 </TD> <TD align="right"> 98.886 </TD> <TD align="right"> 0.000 </TD> <TD align="right"> 0.000 </TD> <TD align="right"> 0.000 </TD> <TD align="right"> 0.000 </TD> </TR>
+  <TR> <TD align="right"> lingeling </TD> <TD align="right"> 76.949 </TD> <TD align="right"> 23.051 </TD> <TD align="right"> 0.000 </TD> <TD align="right"> 0.000 </TD> <TD align="right"> 0.000 </TD> <TD align="right"> 0.000 </TD> </TR>
+  <TR> <TD align="right"> lrglshr </TD> <TD align="right"> 67.438 </TD> <TD align="right"> 32.562 </TD> <TD align="right"> 0.000 </TD> <TD align="right"> 0.000 </TD> <TD align="right"> 0.000 </TD> <TD align="right"> 0.000 </TD> </TR>
+  <TR> <TD align="right"> marchrw </TD> <TD align="right"> 6.684 </TD> <TD align="right"> 93.316 </TD> <TD align="right"> 0.000 </TD> <TD align="right"> 0.000 </TD> <TD align="right"> 0.000 </TD> <TD align="right"> 0.000 </TD> </TR>
+  <TR> <TD align="right"> minisatpsm </TD> <TD align="right"> 72.836 </TD> <TD align="right"> 27.164 </TD> <TD align="right"> 0.000 </TD> <TD align="right"> 0.000 </TD> <TD align="right"> 0.000 </TD> <TD align="right"> 0.000 </TD> </TR>
+  <TR> <TD align="right"> mphaseSAT </TD> <TD align="right"> 71.123 </TD> <TD align="right"> 28.877 </TD> <TD align="right"> 0.000 </TD> <TD align="right"> 0.000 </TD> <TD align="right"> 0.000 </TD> <TD align="right"> 0.000 </TD> </TR>
+  <TR> <TD align="right"> mphaseSAT64 </TD> <TD align="right"> 73.522 </TD> <TD align="right"> 26.478 </TD> <TD align="right"> 0.000 </TD> <TD align="right"> 0.000 </TD> <TD align="right"> 0.000 </TD> <TD align="right"> 0.000 </TD> </TR>
+  <TR> <TD align="right"> mphaseSATm </TD> <TD align="right"> 70.608 </TD> <TD align="right"> 29.392 </TD> <TD align="right"> 0.000 </TD> <TD align="right"> 0.000 </TD> <TD align="right"> 0.000 </TD> <TD align="right"> 0.000 </TD> </TR>
+  <TR> <TD align="right"> mxc09 </TD> <TD align="right"> 65.553 </TD> <TD align="right"> 34.447 </TD> <TD align="right"> 0.000 </TD> <TD align="right"> 0.000 </TD> <TD align="right"> 0.000 </TD> <TD align="right"> 0.000 </TD> </TR>
+  <TR> <TD align="right"> picosat </TD> <TD align="right"> 60.411 </TD> <TD align="right"> 39.589 </TD> <TD align="right"> 0.000 </TD> <TD align="right"> 0.000 </TD> <TD align="right"> 0.000 </TD> <TD align="right"> 0.000 </TD> </TR>
+  <TR> <TD align="right"> precosat </TD> <TD align="right"> 73.436 </TD> <TD align="right"> 26.564 </TD> <TD align="right"> 0.000 </TD> <TD align="right"> 0.000 </TD> <TD align="right"> 0.000 </TD> <TD align="right"> 0.000 </TD> </TR>
+  <TR> <TD align="right"> qutersat </TD> <TD align="right"> 75.835 </TD> <TD align="right"> 24.165 </TD> <TD align="right"> 0.000 </TD> <TD align="right"> 0.000 </TD> <TD align="right"> 0.000 </TD> <TD align="right"> 0.000 </TD> </TR>
+  <TR> <TD align="right"> rcl </TD> <TD align="right"> 67.352 </TD> <TD align="right"> 32.648 </TD> <TD align="right"> 0.000 </TD> <TD align="right"> 0.000 </TD> <TD align="right"> 0.000 </TD> <TD align="right"> 0.000 </TD> </TR>
+  <TR> <TD align="right"> restartsat </TD> <TD align="right"> 73.008 </TD> <TD align="right"> 26.992 </TD> <TD align="right"> 0.000 </TD> <TD align="right"> 0.000 </TD> <TD align="right"> 0.000 </TD> <TD align="right"> 0.000 </TD> </TR>
+  <TR> <TD align="right"> sapperlot </TD> <TD align="right"> 65.296 </TD> <TD align="right"> 34.704 </TD> <TD align="right"> 0.000 </TD> <TD align="right"> 0.000 </TD> <TD align="right"> 0.000 </TD> <TD align="right"> 0.000 </TD> </TR>
+  <TR> <TD align="right"> satime11 </TD> <TD align="right"> 8.569 </TD> <TD align="right"> 91.431 </TD> <TD align="right"> 0.000 </TD> <TD align="right"> 0.000 </TD> <TD align="right"> 0.000 </TD> <TD align="right"> 0.000 </TD> </TR>
+  <TR> <TD align="right"> sattime </TD> <TD align="right"> 7.969 </TD> <TD align="right"> 92.031 </TD> <TD align="right"> 0.000 </TD> <TD align="right"> 0.000 </TD> <TD align="right"> 0.000 </TD> <TD align="right"> 0.000 </TD> </TR>
+  <TR> <TD align="right"> sattimep </TD> <TD align="right"> 8.141 </TD> <TD align="right"> 91.859 </TD> <TD align="right"> 0.000 </TD> <TD align="right"> 0.000 </TD> <TD align="right"> 0.000 </TD> <TD align="right"> 0.000 </TD> </TR>
+  <TR> <TD align="right"> sol </TD> <TD align="right"> 51.157 </TD> <TD align="right"> 48.843 </TD> <TD align="right"> 0.000 </TD> <TD align="right"> 0.000 </TD> <TD align="right"> 0.000 </TD> <TD align="right"> 0.000 </TD> </TR>
+  <TR> <TD align="right"> sparrow </TD> <TD align="right"> 3.171 </TD> <TD align="right"> 96.829 </TD> <TD align="right"> 0.000 </TD> <TD align="right"> 0.000 </TD> <TD align="right"> 0.000 </TD> <TD align="right"> 0.000 </TD> </TR>
+  <TR> <TD align="right"> spear-hw </TD> <TD align="right"> 52.614 </TD> <TD align="right"> 47.386 </TD> <TD align="right"> 0.000 </TD> <TD align="right"> 0.000 </TD> <TD align="right"> 0.000 </TD> <TD align="right"> 0.000 </TD> </TR>
+  <TR> <TD align="right"> spear-sw </TD> <TD align="right"> 51.414 </TD> <TD align="right"> 48.586 </TD> <TD align="right"> 0.000 </TD> <TD align="right"> 0.000 </TD> <TD align="right"> 0.000 </TD> <TD align="right"> 0.000 </TD> </TR>
+  <TR> <TD align="right"> tnm </TD> <TD align="right"> 3.342 </TD> <TD align="right"> 96.658 </TD> <TD align="right"> 0.000 </TD> <TD align="right"> 0.000 </TD> <TD align="right"> 0.000 </TD> <TD align="right"> 0.000 </TD> </TR>
    </TABLE>
 
 
 
+<br>
+<h2> Dominated Algorithms </h2>
+
+Here, you'll find an overview of dominating/dominated algorithms: <br>
+<br>
+
+<!-- html table generated in R 3.0.2 by xtable 1.7-1 package -->
+<!-- Thu Jan 23 12:01:02 2014 -->
+<TABLE border=1>
+<TR> <TH>  </TH> <TH> cryptominisat2011 </TH> <TH> eagleup </TH> <TH> ebminisat </TH> <TH> glueminisat </TH> <TH> lingeling </TH> <TH> lrglshr </TH> <TH> marchrw </TH> <TH> mphaseSAT64 </TH> <TH> mxc09 </TH> <TH> picosat </TH> <TH> precosat </TH> <TH> restartsat </TH> <TH> sapperlot </TH> <TH> spear-hw </TH>  </TR>
+  <TR> <TD align="right"> cryptominisat2011 </TD> <TD>  </TD> <TD> better </TD> <TD>  </TD> <TD>  </TD> <TD>  </TD> <TD>  </TD> <TD>  </TD> <TD>  </TD> <TD>  </TD> <TD>  </TD> <TD>  </TD> <TD>  </TD> <TD>  </TD> <TD>  </TD> </TR>
+  <TR> <TD align="right"> eagleup </TD> <TD> worse </TD> <TD>  </TD> <TD> worse </TD> <TD> worse </TD> <TD> worse </TD> <TD> worse </TD> <TD> worse </TD> <TD> worse </TD> <TD> worse </TD> <TD> worse </TD> <TD> worse </TD> <TD> worse </TD> <TD> worse </TD> <TD> worse </TD> </TR>
+  <TR> <TD align="right"> ebminisat </TD> <TD>  </TD> <TD> better </TD> <TD>  </TD> <TD>  </TD> <TD>  </TD> <TD>  </TD> <TD>  </TD> <TD>  </TD> <TD>  </TD> <TD>  </TD> <TD>  </TD> <TD>  </TD> <TD>  </TD> <TD>  </TD> </TR>
+  <TR> <TD align="right"> glueminisat </TD> <TD>  </TD> <TD> better </TD> <TD>  </TD> <TD>  </TD> <TD>  </TD> <TD>  </TD> <TD>  </TD> <TD>  </TD> <TD>  </TD> <TD>  </TD> <TD>  </TD> <TD>  </TD> <TD>  </TD> <TD>  </TD> </TR>
+  <TR> <TD align="right"> lingeling </TD> <TD>  </TD> <TD> better </TD> <TD>  </TD> <TD>  </TD> <TD>  </TD> <TD>  </TD> <TD>  </TD> <TD>  </TD> <TD>  </TD> <TD>  </TD> <TD>  </TD> <TD>  </TD> <TD>  </TD> <TD>  </TD> </TR>
+  <TR> <TD align="right"> lrglshr </TD> <TD>  </TD> <TD> better </TD> <TD>  </TD> <TD>  </TD> <TD>  </TD> <TD>  </TD> <TD>  </TD> <TD>  </TD> <TD>  </TD> <TD>  </TD> <TD>  </TD> <TD>  </TD> <TD>  </TD> <TD>  </TD> </TR>
+  <TR> <TD align="right"> marchrw </TD> <TD>  </TD> <TD> better </TD> <TD>  </TD> <TD>  </TD> <TD>  </TD> <TD>  </TD> <TD>  </TD> <TD>  </TD> <TD>  </TD> <TD>  </TD> <TD>  </TD> <TD>  </TD> <TD>  </TD> <TD>  </TD> </TR>
+  <TR> <TD align="right"> mphaseSAT64 </TD> <TD>  </TD> <TD> better </TD> <TD>  </TD> <TD>  </TD> <TD>  </TD> <TD>  </TD> <TD>  </TD> <TD>  </TD> <TD>  </TD> <TD>  </TD> <TD>  </TD> <TD>  </TD> <TD>  </TD> <TD>  </TD> </TR>
+  <TR> <TD align="right"> mxc09 </TD> <TD>  </TD> <TD> better </TD> <TD>  </TD> <TD>  </TD> <TD>  </TD> <TD>  </TD> <TD>  </TD> <TD>  </TD> <TD>  </TD> <TD>  </TD> <TD>  </TD> <TD>  </TD> <TD>  </TD> <TD>  </TD> </TR>
+  <TR> <TD align="right"> picosat </TD> <TD>  </TD> <TD> better </TD> <TD>  </TD> <TD>  </TD> <TD>  </TD> <TD>  </TD> <TD>  </TD> <TD>  </TD> <TD>  </TD> <TD>  </TD> <TD>  </TD> <TD>  </TD> <TD>  </TD> <TD>  </TD> </TR>
+  <TR> <TD align="right"> precosat </TD> <TD>  </TD> <TD> better </TD> <TD>  </TD> <TD>  </TD> <TD>  </TD> <TD>  </TD> <TD>  </TD> <TD>  </TD> <TD>  </TD> <TD>  </TD> <TD>  </TD> <TD>  </TD> <TD>  </TD> <TD>  </TD> </TR>
+  <TR> <TD align="right"> restartsat </TD> <TD>  </TD> <TD> better </TD> <TD>  </TD> <TD>  </TD> <TD>  </TD> <TD>  </TD> <TD>  </TD> <TD>  </TD> <TD>  </TD> <TD>  </TD> <TD>  </TD> <TD>  </TD> <TD>  </TD> <TD>  </TD> </TR>
+  <TR> <TD align="right"> sapperlot </TD> <TD>  </TD> <TD> better </TD> <TD>  </TD> <TD>  </TD> <TD>  </TD> <TD>  </TD> <TD>  </TD> <TD>  </TD> <TD>  </TD> <TD>  </TD> <TD>  </TD> <TD>  </TD> <TD>  </TD> <TD>  </TD> </TR>
+  <TR> <TD align="right"> spear-hw </TD> <TD>  </TD> <TD> better </TD> <TD>  </TD> <TD>  </TD> <TD>  </TD> <TD>  </TD> <TD>  </TD> <TD>  </TD> <TD>  </TD> <TD>  </TD> <TD>  </TD> <TD>  </TD> <TD>  </TD> <TD>  </TD> </TR>
+   </TABLE>
+
+
+
+<br>
+<br>
 <h2> Useless Algorithms </h2>
+
+Here, you'll find all the algorithms that always resulted in the same performance (and eventually NA's):<br>
+<br>
 
 There were no entirely useless algorithms.
 
 
+<br>
+<br>
 <h2> Boxplots of performance values </h2>
 
-<div class="chunk" id="unnamed-chunk-4"><div class="rcode"><div class="warning"><pre class="knitr r">## Warning: Removed 17641 rows containing non-finite values (stat_boxplot).
+<div class="chunk" id="unnamed-chunk-5"><div class="rcode"><div class="warning"><pre class="knitr r">## Warning: Removed 17641 rows containing non-finite values (stat_boxplot).
 </pre></div>
-</div><div class="rimage default"><img src="figure/unnamed-chunk-4.png" title="plot of chunk unnamed-chunk-4" alt="plot of chunk unnamed-chunk-4" class="plot" /></div></div>
+</div><div class="rimage default"><img src="figure/unnamed-chunk-5.png" title="plot of chunk unnamed-chunk-5" alt="plot of chunk unnamed-chunk-5" class="plot" /></div></div>
 
 
+<br>
 <h2> Estimated densitities of performance values </h2>
 
-<div class="chunk" id="unnamed-chunk-5"><div class="rcode"><div class="warning"><pre class="knitr r">## Warning: Removed 436 rows containing non-finite values (stat_density).
+<div class="chunk" id="unnamed-chunk-6"><div class="rcode"><div class="warning"><pre class="knitr r">## Warning: Removed 436 rows containing non-finite values (stat_density).
 ## Warning: Removed 461 rows containing non-finite values (stat_density).
 ## Warning: Removed 276 rows containing non-finite values (stat_density).
 ## Warning: Removed 1158 rows containing non-finite values (stat_density).
@@ -179,7 +254,48 @@ There were no entirely useless algorithms.
 ## Warning: Removed 570 rows containing non-finite values (stat_density).
 ## Warning: Removed 1131 rows containing non-finite values (stat_density).
 </pre></div>
-</div><div class="rimage default"><img src="figure/unnamed-chunk-5.png" title="plot of chunk unnamed-chunk-5" alt="plot of chunk unnamed-chunk-5" class="plot" /></div></div>
+</div><div class="rimage default"><img src="figure/unnamed-chunk-6.png" title="plot of chunk unnamed-chunk-6" alt="plot of chunk unnamed-chunk-6" class="plot" /></div></div>
+
+
+<br>
+<h2> Scatterplot matrix of the performance values </h2>
+
+The following figure creates pairwise scatterplots of the performance values, 
+including a regression line (cf. upper panel), a histogram of each performance
+value (cf. diagonal), as well as the pairwise (pearson) correlation (cf. lower
+panel).<br>
+In order to facilitate the lucidity of the correlations, they are colored
+depending on their value. Thus, a high positive correlation (&ge; 0.8) is
+colored green, light correlations (between 0.3 and 0.8, or -0.8 and -0.3)
+are orange, little to no correlations (&ge; -0.3 and &le; 0.3) are written
+in black and high negative correlations (&le; -0.8) are shown red.
+
+</div><div class="rimage default"><img src="figure/unnamed-chunk-7.png" title="plot of chunk unnamed-chunk-7" alt="plot of chunk unnamed-chunk-7" class="plot" /></div><div class="rcode">
+
+
+
+
+<br>
+<h2> Clustering algorithms based on their correlations </h2>
+The following figure shows the correlations of the performance values. Per
+default it will show the correlation coefficient of pearson. If NA's exist,
+they were removed pairwise. <br>
+In addition, the algorithms are ordered in a way that similar (highly
+correlated) algorithms are close to each other. Per default the clustering
+is based on hierarchical clustering, using Ward's method. <br>
+<br>
+
+ATTENTION: <br>
+As the correlations from this figure always depend on the original performance
+values, they might be different to the values shown in the scatterplot matrix,
+which could be log-scaled (depending on the setting). <br>
+
+<div class="chunk" id="unnamed-chunk-8"><div class="rcode"><div class="warning"><pre class="knitr r">## Warning: The correlation matrix might be wrong, because some of the
+## pairwise correlations, e.g. the correlation between eagleup and sparrow,
+## could not be computed properly.
+</pre></div>
+</div><div class="rimage default"><img src="figure/unnamed-chunk-8.png" title="plot of chunk unnamed-chunk-8" alt="plot of chunk unnamed-chunk-8" class="plot" /></div></div>
+
 
 
 </body>

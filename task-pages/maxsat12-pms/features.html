@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style type="text/css">
+.knitr.inline {
+  background-color: #f7f7f7;
+  border:solid 1px #B0B0B0;
+}
+.error {
+	font-weight: bold;
+	color: #FF0000;
+},
+.warning {
+	font-weight: bold;
+}
+.message {
+	font-style: italic;
+}
+.source, .output, .warning, .error, .message {
+	padding: 0em 1em;
+  border:solid 1px #F7F7F7;
+}
+.source {
+  background-color: #f5f5f5;
+}
+.rimage.left {
+  text-align: left;
+}
+.rimage.right {
+  text-align: right;
+}
+.rimage.center {
+  text-align: center;
+}
+.hl.num {
+  color: #AF0F91;
+}
+.hl.str {
+  color: #317ECC;
+}
+.hl.com {
+  color: #AD95AF;
+  font-style: italic;
+}
+.hl.opt {
+  color: #000000;
+}
+.hl.std {
+  color: #585858;
+}
+.hl.kwa {
+  color: #295F94;
+  font-weight: bold;
+}
+.hl.kwb {
+  color: #B05A65;
+}
+.hl.kwc {
+  color: #55aa55;
+}
+.hl.kwd {
+  color: #BC5A65;
+  font-weight: bold;
+}
+</style>
+  <title>Feature performance overview</title>
+</head>
+<body>
+
+
+<h2> Overview of Feature Values </h2>
+
+The following measures were taken for the results of each feature:
+<ul>
+
+  <li> <a>Min: Minimum</a>
+  <li> <a>1st Qu.: 1st Quartile = lower Quartile = 25%-Quantile</a>
+  <li> <a>Median: Median = 50%-Quantile</a>
+  <li> <a>Mean: Arithmetic Mean</a>
+  <li> <a>3rd Qu.: 3rd Quartile = upper Quartile = 75%-Quantile</a>
+  <li> <a>Max.: Maximum</a>
+  <li> <a>Std. Dev.: Standard Deviation</a>
+  <li> <a>CoV.: Coefficient of Variation = Standard Deviation / Arithmetic Mean</a>
+  <li> <a>NA's: Number of NAs (missing values) within the feature set.</a>
+  <li> <a>Obs.: Number of Observations within the feature set.</a>
+  <li> <a>Run OK (%): Percentage of feature computations without a crash.</a>
+
+</ul>
+
+<!-- html table generated in R 3.0.2 by xtable 1.7-1 package -->
+<!-- Thu Jan 23 11:55:22 2014 -->
+<TABLE border=1>
+<TR> <TH>  </TH> <TH> Min. </TH> <TH> 1st Qu. </TH> <TH> Median </TH> <TH> Mean </TH> <TH> 3rd Qu. </TH> <TH> Max. </TH> <TH> Std. Dev. </TH> <TH> CoV. </TH> <TH> NA's </TH> <TH> Obs. </TH> <TH> Run OK (%) </TH>  </TR>
+  <TR> <TD align="right"> numVars </TD> <TD align="right"> 26.000 </TD> <TD align="right"> 160.000 </TD> <TD align="right"> 783.000 </TD> <TD align="right"> 6308.998 </TD> <TD align="right"> 4775.750 </TD> <TD align="right"> 913900.000 </TD> <TD align="right"> 34968.266 </TD> <TD align="right"> 5.543 </TD> <TD align="right"> 0 </TD> <TD align="right"> 876 </TD> <TD align="right"> 100.0000 </TD> </TR>
+  <TR> <TD align="right"> numClauses </TD> <TD align="right"> 46.000 </TD> <TD align="right"> 1309.000 </TD> <TD align="right"> 9102.500 </TD> <TD align="right"> 62177.155 </TD> <TD align="right"> 25909.000 </TD> <TD align="right"> 3848496.000 </TD> <TD align="right"> 283181.786 </TD> <TD align="right"> 4.554 </TD> <TD align="right"> 0 </TD> <TD align="right"> 876 </TD> <TD align="right"> 100.0000 </TD> </TR>
+  <TR> <TD align="right"> perc_soft </TD> <TD align="right"> 0.000 </TD> <TD align="right"> 0.013 </TD> <TD align="right"> 0.058 </TD> <TD align="right"> 0.159 </TD> <TD align="right"> 0.225 </TD> <TD align="right"> 0.982 </TD> <TD align="right"> 0.206 </TD> <TD align="right"> 1.303 </TD> <TD align="right"> 0 </TD> <TD align="right"> 876 </TD> <TD align="right"> 100.0000 </TD> </TR>
+  <TR> <TD align="right"> soft_mean </TD> <TD align="right"> 1.000 </TD> <TD align="right"> 1.000 </TD> <TD align="right"> 1.000 </TD> <TD align="right"> 1.000 </TD> <TD align="right"> 1.000 </TD> <TD align="right"> 1.000 </TD> <TD align="right"> 0.000 </TD> <TD align="right"> 0.000 </TD> <TD align="right"> 0 </TD> <TD align="right"> 876 </TD> <TD align="right"> 100.0000 </TD> </TR>
+  <TR> <TD align="right"> soft_std </TD> <TD align="right"> 0.000 </TD> <TD align="right"> 0.000 </TD> <TD align="right"> 0.000 </TD> <TD align="right"> 0.000 </TD> <TD align="right"> 0.000 </TD> <TD align="right"> 0.000 </TD> <TD align="right"> 0.000 </TD> <TD align="right">  </TD> <TD align="right"> 0 </TD> <TD align="right"> 876 </TD> <TD align="right"> 100.0000 </TD> </TR>
+  <TR> <TD align="right"> soft_min </TD> <TD align="right"> 1.000 </TD> <TD align="right"> 1.000 </TD> <TD align="right"> 1.000 </TD> <TD align="right"> 1.000 </TD> <TD align="right"> 1.000 </TD> <TD align="right"> 1.000 </TD> <TD align="right"> 0.000 </TD> <TD align="right"> 0.000 </TD> <TD align="right"> 0 </TD> <TD align="right"> 876 </TD> <TD align="right"> 100.0000 </TD> </TR>
+  <TR> <TD align="right"> soft_max </TD> <TD align="right"> 1.000 </TD> <TD align="right"> 1.000 </TD> <TD align="right"> 1.000 </TD> <TD align="right"> 1.000 </TD> <TD align="right"> 1.000 </TD> <TD align="right"> 1.000 </TD> <TD align="right"> 0.000 </TD> <TD align="right"> 0.000 </TD> <TD align="right"> 0 </TD> <TD align="right"> 876 </TD> <TD align="right"> 100.0000 </TD> </TR>
+  <TR> <TD align="right"> var_clauses_ratio </TD> <TD align="right"> 0.001 </TD> <TD align="right"> 0.077 </TD> <TD align="right"> 0.228 </TD> <TD align="right"> 0.218 </TD> <TD align="right"> 0.276 </TD> <TD align="right"> 0.982 </TD> <TD align="right"> 0.154 </TD> <TD align="right"> 0.705 </TD> <TD align="right"> 0 </TD> <TD align="right"> 876 </TD> <TD align="right"> 100.0000 </TD> </TR>
+  <TR> <TD align="right"> vcg_var_mean </TD> <TD align="right"> 0.000 </TD> <TD align="right"> 0.001 </TD> <TD align="right"> 0.003 </TD> <TD align="right"> 0.012 </TD> <TD align="right"> 0.013 </TD> <TD align="right"> 0.540 </TD> <TD align="right"> 0.039 </TD> <TD align="right"> 3.254 </TD> <TD align="right"> 0 </TD> <TD align="right"> 876 </TD> <TD align="right"> 100.0000 </TD> </TR>
+  <TR> <TD align="right"> vcg_var_std </TD> <TD align="right"> 0.000 </TD> <TD align="right"> 0.193 </TD> <TD align="right"> 0.580 </TD> <TD align="right"> 0.779 </TD> <TD align="right"> 1.097 </TD> <TD align="right"> 7.316 </TD> <TD align="right"> 0.874 </TD> <TD align="right"> 1.122 </TD> <TD align="right"> 0 </TD> <TD align="right"> 876 </TD> <TD align="right"> 100.0000 </TD> </TR>
+  <TR> <TD align="right"> vcg_var_min </TD> <TD align="right"> 0.000 </TD> <TD align="right"> 0.000 </TD> <TD align="right"> 0.001 </TD> <TD align="right"> 0.006 </TD> <TD align="right"> 0.005 </TD> <TD align="right"> 0.487 </TD> <TD align="right"> 0.029 </TD> <TD align="right"> 4.630 </TD> <TD align="right"> 0 </TD> <TD align="right"> 876 </TD> <TD align="right"> 100.0000 </TD> </TR>
+  <TR> <TD align="right"> vcg_var_max </TD> <TD align="right"> 0.000 </TD> <TD align="right"> 0.004 </TD> <TD align="right"> 0.012 </TD> <TD align="right"> 0.025 </TD> <TD align="right"> 0.028 </TD> <TD align="right"> 0.593 </TD> <TD align="right"> 0.051 </TD> <TD align="right"> 2.015 </TD> <TD align="right"> 0 </TD> <TD align="right"> 876 </TD> <TD align="right"> 100.0000 </TD> </TR>
+  <TR> <TD align="right"> vcg_var_spread </TD> <TD align="right"> 0.000 </TD> <TD align="right"> 0.002 </TD> <TD align="right"> 0.005 </TD> <TD align="right"> 0.019 </TD> <TD align="right"> 0.023 </TD> <TD align="right"> 0.400 </TD> <TD align="right"> 0.034 </TD> <TD align="right"> 1.817 </TD> <TD align="right"> 0 </TD> <TD align="right"> 876 </TD> <TD align="right"> 100.0000 </TD> </TR>
+  <TR> <TD align="right"> vcg_cls_mean </TD> <TD align="right"> 0.000 </TD> <TD align="right"> 0.001 </TD> <TD align="right"> 0.003 </TD> <TD align="right"> 0.012 </TD> <TD align="right"> 0.013 </TD> <TD align="right"> 0.540 </TD> <TD align="right"> 0.039 </TD> <TD align="right"> 3.254 </TD> <TD align="right"> 0 </TD> <TD align="right"> 876 </TD> <TD align="right"> 100.0000 </TD> </TR>
+  <TR> <TD align="right"> vcg_cls_std </TD> <TD align="right"> 0.000 </TD> <TD align="right"> 0.261 </TD> <TD align="right"> 0.354 </TD> <TD align="right"> 0.469 </TD> <TD align="right"> 0.432 </TD> <TD align="right"> 7.338 </TD> <TD align="right"> 0.493 </TD> <TD align="right"> 1.050 </TD> <TD align="right"> 0 </TD> <TD align="right"> 876 </TD> <TD align="right"> 100.0000 </TD> </TR>
+  <TR> <TD align="right"> vcg_cls_min </TD> <TD align="right"> 0.000 </TD> <TD align="right"> 0.000 </TD> <TD align="right"> 0.001 </TD> <TD align="right"> 0.003 </TD> <TD align="right"> 0.006 </TD> <TD align="right"> 0.038 </TD> <TD align="right"> 0.004 </TD> <TD align="right"> 1.328 </TD> <TD align="right"> 0 </TD> <TD align="right"> 876 </TD> <TD align="right"> 100.0000 </TD> </TR>
+  <TR> <TD align="right"> vcg_cls_max </TD> <TD align="right"> 0.000 </TD> <TD align="right"> 0.002 </TD> <TD align="right"> 0.013 </TD> <TD align="right"> 0.033 </TD> <TD align="right"> 0.020 </TD> <TD align="right"> 0.987 </TD> <TD align="right"> 0.098 </TD> <TD align="right"> 2.946 </TD> <TD align="right"> 0 </TD> <TD align="right"> 876 </TD> <TD align="right"> 100.0000 </TD> </TR>
+  <TR> <TD align="right"> vcg_cls_spread </TD> <TD align="right"> 0.000 </TD> <TD align="right"> 0.001 </TD> <TD align="right"> 0.007 </TD> <TD align="right"> 0.030 </TD> <TD align="right"> 0.014 </TD> <TD align="right"> 0.973 </TD> <TD align="right"> 0.096 </TD> <TD align="right"> 3.179 </TD> <TD align="right"> 0 </TD> <TD align="right"> 876 </TD> <TD align="right"> 100.0000 </TD> </TR>
+  <TR> <TD align="right"> pnr_var_mean </TD> <TD align="right"> 0.000 </TD> <TD align="right"> 0.435 </TD> <TD align="right"> 0.527 </TD> <TD align="right"> 0.593 </TD> <TD align="right"> 0.795 </TD> <TD align="right"> 0.999 </TD> <TD align="right"> 0.248 </TD> <TD align="right"> 0.418 </TD> <TD align="right"> 0 </TD> <TD align="right"> 876 </TD> <TD align="right"> 100.0000 </TD> </TR>
+  <TR> <TD align="right"> pnr_var_std </TD> <TD align="right"> 0.000 </TD> <TD align="right"> 0.096 </TD> <TD align="right"> 0.224 </TD> <TD align="right"> 0.229 </TD> <TD align="right"> 0.299 </TD> <TD align="right"> 1.144 </TD> <TD align="right"> 0.179 </TD> <TD align="right"> 0.782 </TD> <TD align="right"> 0 </TD> <TD align="right"> 876 </TD> <TD align="right"> 100.0000 </TD> </TR>
+  <TR> <TD align="right"> pnr_var_min </TD> <TD align="right"> 0.000 </TD> <TD align="right"> 0.000 </TD> <TD align="right"> 0.250 </TD> <TD align="right"> 0.322 </TD> <TD align="right"> 0.412 </TD> <TD align="right"> 0.998 </TD> <TD align="right"> 0.354 </TD> <TD align="right"> 1.097 </TD> <TD align="right"> 0 </TD> <TD align="right"> 876 </TD> <TD align="right"> 100.0000 </TD> </TR>
+  <TR> <TD align="right"> pnr_var_max </TD> <TD align="right"> 0.001 </TD> <TD align="right"> 0.750 </TD> <TD align="right"> 0.970 </TD> <TD align="right"> 0.861 </TD> <TD align="right"> 0.996 </TD> <TD align="right"> 1.000 </TD> <TD align="right"> 0.218 </TD> <TD align="right"> 0.253 </TD> <TD align="right"> 0 </TD> <TD align="right"> 876 </TD> <TD align="right"> 100.0000 </TD> </TR>
+  <TR> <TD align="right"> pnr_var_spread </TD> <TD align="right"> 0.000 </TD> <TD align="right"> 0.205 </TD> <TD align="right"> 0.639 </TD> <TD align="right"> 0.539 </TD> <TD align="right"> 0.855 </TD> <TD align="right"> 1.000 </TD> <TD align="right"> 0.361 </TD> <TD align="right"> 0.671 </TD> <TD align="right"> 0 </TD> <TD align="right"> 876 </TD> <TD align="right"> 100.0000 </TD> </TR>
+  <TR> <TD align="right"> pnr_cls_mean </TD> <TD align="right"> 0.000 </TD> <TD align="right"> 0.404 </TD> <TD align="right"> 0.569 </TD> <TD align="right"> 0.570 </TD> <TD align="right"> 0.716 </TD> <TD align="right"> 0.997 </TD> <TD align="right"> 0.246 </TD> <TD align="right"> 0.431 </TD> <TD align="right"> 0 </TD> <TD align="right"> 876 </TD> <TD align="right"> 100.0000 </TD> </TR>
+  <TR> <TD align="right"> pnr_cls_std </TD> <TD align="right"> 0.000 </TD> <TD align="right"> 0.387 </TD> <TD align="right"> 0.549 </TD> <TD align="right"> 3.142 </TD> <TD align="right"> 0.668 </TD> <TD align="right"> 232.816 </TD> <TD align="right"> 21.207 </TD> <TD align="right"> 6.750 </TD> <TD align="right"> 0 </TD> <TD align="right"> 876 </TD> <TD align="right"> 100.0000 </TD> </TR>
+  <TR> <TD align="right"> pnr_cls_min </TD> <TD align="right"> 0.000 </TD> <TD align="right"> 0.000 </TD> <TD align="right"> 0.000 </TD> <TD align="right"> 0.000 </TD> <TD align="right"> 0.000 </TD> <TD align="right"> 0.000 </TD> <TD align="right"> 0.000 </TD> <TD align="right">  </TD> <TD align="right"> 0 </TD> <TD align="right"> 876 </TD> <TD align="right"> 100.0000 </TD> </TR>
+  <TR> <TD align="right"> pnr_cls_max </TD> <TD align="right"> 1.000 </TD> <TD align="right"> 1.000 </TD> <TD align="right"> 1.000 </TD> <TD align="right"> 1.000 </TD> <TD align="right"> 1.000 </TD> <TD align="right"> 1.000 </TD> <TD align="right"> 0.000 </TD> <TD align="right"> 0.000 </TD> <TD align="right"> 0 </TD> <TD align="right"> 876 </TD> <TD align="right"> 100.0000 </TD> </TR>
+  <TR> <TD align="right"> pnr_cls_spread </TD> <TD align="right"> 1.000 </TD> <TD align="right"> 1.000 </TD> <TD align="right"> 1.000 </TD> <TD align="right"> 1.000 </TD> <TD align="right"> 1.000 </TD> <TD align="right"> 1.000 </TD> <TD align="right"> 0.000 </TD> <TD align="right"> 0.000 </TD> <TD align="right"> 0 </TD> <TD align="right"> 876 </TD> <TD align="right"> 100.0000 </TD> </TR>
+  <TR> <TD align="right"> unary </TD> <TD align="right"> 0.000 </TD> <TD align="right"> 0.013 </TD> <TD align="right"> 0.046 </TD> <TD align="right"> 0.135 </TD> <TD align="right"> 0.200 </TD> <TD align="right"> 0.982 </TD> <TD align="right"> 0.170 </TD> <TD align="right"> 1.263 </TD> <TD align="right"> 0 </TD> <TD align="right"> 876 </TD> <TD align="right"> 100.0000 </TD> </TR>
+  <TR> <TD align="right"> binary </TD> <TD align="right"> 0.072 </TD> <TD align="right"> 0.392 </TD> <TD align="right"> 0.670 </TD> <TD align="right"> 0.650 </TD> <TD align="right"> 0.946 </TD> <TD align="right"> 1.000 </TD> <TD align="right"> 0.275 </TD> <TD align="right"> 0.422 </TD> <TD align="right"> 0 </TD> <TD align="right"> 876 </TD> <TD align="right"> 100.0000 </TD> </TR>
+  <TR> <TD align="right"> trinary </TD> <TD align="right"> 0.072 </TD> <TD align="right"> 0.791 </TD> <TD align="right"> 0.953 </TD> <TD align="right"> 0.855 </TD> <TD align="right"> 1.000 </TD> <TD align="right"> 1.000 </TD> <TD align="right"> 0.206 </TD> <TD align="right"> 0.241 </TD> <TD align="right"> 0 </TD> <TD align="right"> 876 </TD> <TD align="right"> 100.0000 </TD> </TR>
+  <TR> <TD align="right"> horn_mean </TD> <TD align="right"> 0.000 </TD> <TD align="right"> 0.000 </TD> <TD align="right"> 0.000 </TD> <TD align="right"> 0.002 </TD> <TD align="right"> 0.003 </TD> <TD align="right"> 0.041 </TD> <TD align="right"> 0.004 </TD> <TD align="right"> 1.640 </TD> <TD align="right"> 0 </TD> <TD align="right"> 876 </TD> <TD align="right"> 100.0000 </TD> </TR>
+  <TR> <TD align="right"> horn_std </TD> <TD align="right"> 0.000 </TD> <TD align="right"> 0.000 </TD> <TD align="right"> 0.000 </TD> <TD align="right"> 0.044 </TD> <TD align="right"> 0.000 </TD> <TD align="right"> 1.414 </TD> <TD align="right"> 0.147 </TD> <TD align="right"> 3.329 </TD> <TD align="right"> 0 </TD> <TD align="right"> 876 </TD> <TD align="right"> 100.0000 </TD> </TR>
+  <TR> <TD align="right"> horn_min </TD> <TD align="right"> 0.000 </TD> <TD align="right"> 0.000 </TD> <TD align="right"> 0.000 </TD> <TD align="right"> 0.001 </TD> <TD align="right"> 0.001 </TD> <TD align="right"> 0.022 </TD> <TD align="right"> 0.002 </TD> <TD align="right"> 2.052 </TD> <TD align="right"> 0 </TD> <TD align="right"> 876 </TD> <TD align="right"> 100.0000 </TD> </TR>
+  <TR> <TD align="right"> horn_max </TD> <TD align="right"> 0.000 </TD> <TD align="right"> 0.000 </TD> <TD align="right"> 0.002 </TD> <TD align="right"> 29844919206783450709147300585799680.000 </TD> <TD align="right"> 0.009 </TD> <TD align="right"> 26144147673564625086490550591182340096.000 </TD> <TD align="right"> 883328890411268487127182947215474688.000 </TD> <TD align="right"> 29.597 </TD> <TD align="right"> 0 </TD> <TD align="right"> 876 </TD> <TD align="right"> 100.0000 </TD> </TR>
+  <TR> <TD align="right"> horn_spread </TD> <TD align="right"> 0.000 </TD> <TD align="right"> 0.000 </TD> <TD align="right"> 0.001 </TD> <TD align="right"> 29844919206783450709147300585799680.000 </TD> <TD align="right"> 0.008 </TD> <TD align="right"> 26144147673564625086490550591182340096.000 </TD> <TD align="right"> 883328890411268487127182947215474688.000 </TD> <TD align="right"> 29.597 </TD> <TD align="right"> 0 </TD> <TD align="right"> 876 </TD> <TD align="right"> 100.0000 </TD> </TR>
+  <TR> <TD align="right"> horn </TD> <TD align="right"> 0.003 </TD> <TD align="right"> 0.319 </TD> <TD align="right"> 0.597 </TD> <TD align="right"> 0.526 </TD> <TD align="right"> 0.747 </TD> <TD align="right"> 1.000 </TD> <TD align="right"> 0.302 </TD> <TD align="right"> 0.575 </TD> <TD align="right"> 0 </TD> <TD align="right"> 876 </TD> <TD align="right"> 100.0000 </TD> </TR>
+   </TABLE>
+
+
+
+<br>
+<h2> Summary of the runstatus per feature </h2>
+
+The following table summarizes the runstatus of each feature over all instances (in %).<br>
+<br>
+
+<!-- html table generated in R 3.0.2 by xtable 1.7-1 package -->
+<!-- Thu Jan 23 11:55:22 2014 -->
+<TABLE border=1>
+<TR> <TH>  </TH> <TH> ok </TH> <TH> timeout </TH> <TH> memout </TH> <TH> presolved </TH> <TH> crash </TH> <TH> other </TH>  </TR>
+  <TR> <TD align="right"> numVars </TD> <TD align="right"> 100.00 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.00 </TD> </TR>
+  <TR> <TD align="right"> numClauses </TD> <TD align="right"> 100.00 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.00 </TD> </TR>
+  <TR> <TD align="right"> perc_soft </TD> <TD align="right"> 100.00 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.00 </TD> </TR>
+  <TR> <TD align="right"> soft_mean </TD> <TD align="right"> 100.00 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.00 </TD> </TR>
+  <TR> <TD align="right"> soft_std </TD> <TD align="right"> 100.00 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.00 </TD> </TR>
+  <TR> <TD align="right"> soft_min </TD> <TD align="right"> 100.00 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.00 </TD> </TR>
+  <TR> <TD align="right"> soft_max </TD> <TD align="right"> 100.00 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.00 </TD> </TR>
+  <TR> <TD align="right"> var_clauses_ratio </TD> <TD align="right"> 100.00 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.00 </TD> </TR>
+  <TR> <TD align="right"> vcg_var_mean </TD> <TD align="right"> 100.00 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.00 </TD> </TR>
+  <TR> <TD align="right"> vcg_var_std </TD> <TD align="right"> 100.00 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.00 </TD> </TR>
+  <TR> <TD align="right"> vcg_var_min </TD> <TD align="right"> 100.00 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.00 </TD> </TR>
+  <TR> <TD align="right"> vcg_var_max </TD> <TD align="right"> 100.00 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.00 </TD> </TR>
+  <TR> <TD align="right"> vcg_var_spread </TD> <TD align="right"> 100.00 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.00 </TD> </TR>
+  <TR> <TD align="right"> vcg_cls_mean </TD> <TD align="right"> 100.00 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.00 </TD> </TR>
+  <TR> <TD align="right"> vcg_cls_std </TD> <TD align="right"> 100.00 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.00 </TD> </TR>
+  <TR> <TD align="right"> vcg_cls_min </TD> <TD align="right"> 100.00 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.00 </TD> </TR>
+  <TR> <TD align="right"> vcg_cls_max </TD> <TD align="right"> 100.00 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.00 </TD> </TR>
+  <TR> <TD align="right"> vcg_cls_spread </TD> <TD align="right"> 100.00 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.00 </TD> </TR>
+  <TR> <TD align="right"> pnr_var_mean </TD> <TD align="right"> 100.00 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.00 </TD> </TR>
+  <TR> <TD align="right"> pnr_var_std </TD> <TD align="right"> 100.00 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.00 </TD> </TR>
+  <TR> <TD align="right"> pnr_var_min </TD> <TD align="right"> 100.00 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.00 </TD> </TR>
+  <TR> <TD align="right"> pnr_var_max </TD> <TD align="right"> 100.00 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.00 </TD> </TR>
+  <TR> <TD align="right"> pnr_var_spread </TD> <TD align="right"> 100.00 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.00 </TD> </TR>
+  <TR> <TD align="right"> pnr_cls_mean </TD> <TD align="right"> 100.00 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.00 </TD> </TR>
+  <TR> <TD align="right"> pnr_cls_std </TD> <TD align="right"> 100.00 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.00 </TD> </TR>
+  <TR> <TD align="right"> pnr_cls_min </TD> <TD align="right"> 100.00 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.00 </TD> </TR>
+  <TR> <TD align="right"> pnr_cls_max </TD> <TD align="right"> 100.00 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.00 </TD> </TR>
+  <TR> <TD align="right"> pnr_cls_spread </TD> <TD align="right"> 100.00 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.00 </TD> </TR>
+  <TR> <TD align="right"> unary </TD> <TD align="right"> 100.00 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.00 </TD> </TR>
+  <TR> <TD align="right"> binary </TD> <TD align="right"> 100.00 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.00 </TD> </TR>
+  <TR> <TD align="right"> trinary </TD> <TD align="right"> 100.00 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.00 </TD> </TR>
+  <TR> <TD align="right"> horn_mean </TD> <TD align="right"> 100.00 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.00 </TD> </TR>
+  <TR> <TD align="right"> horn_std </TD> <TD align="right"> 100.00 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.00 </TD> </TR>
+  <TR> <TD align="right"> horn_min </TD> <TD align="right"> 100.00 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.00 </TD> </TR>
+  <TR> <TD align="right"> horn_max </TD> <TD align="right"> 100.00 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.00 </TD> </TR>
+  <TR> <TD align="right"> horn_spread </TD> <TD align="right"> 100.00 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.00 </TD> </TR>
+  <TR> <TD align="right"> horn </TD> <TD align="right"> 100.00 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.00 </TD> </TR>
+   </TABLE>
+
+
+
+<br>
+<h2> Duplicated Features </h2>
+
+The following 23 instances result in 8 blocks of duplicated features:
+<!-- html table generated in R 3.0.2 by xtable 1.7-1 package -->
+<!-- Thu Jan 23 11:55:41 2014 -->
+<TABLE border=1>
+<TR> <TH> Block </TH> <TH> Inst. No. </TH> <TH> ID of duplicated feature </TH>  </TR>
+  <TR> <TD> 1 </TD> <TD> 1 </TD> <TD> benchmarks/pms_crafted/maxclicque/random/max_clq_150-0-447-1.clq.wcnf </TD> </TR>
+  <TR> <TD> 1 </TD> <TD> 2 </TD> <TD> benchmarks/pms_crafted/maxclicque/random/max_clq_150-0-447-2.clq.wcnf </TD> </TR>
+  <TR> <TD>  </TD> <TD>  </TD> <TD>  </TD> </TR>
+  <TR> <TD> 2 </TD> <TD> 3 </TD> <TD> benchmarks/pms_industrial/bcp-mtg/c1355_F106gat-409gat@1.wcnf </TD> </TR>
+  <TR> <TD> 2 </TD> <TD> 4 </TD> <TD> benchmarks/pms_industrial/bcp-mtg/c1355_F120gat-414gat@1.wcnf </TD> </TR>
+  <TR> <TD> 2 </TD> <TD> 5 </TD> <TD> benchmarks/pms_industrial/bcp-mtg/c1355_F127gat-418gat@1.wcnf </TD> </TR>
+  <TR> <TD>  </TD> <TD>  </TD> <TD>  </TD> </TR>
+  <TR> <TD> 3 </TD> <TD> 6 </TD> <TD> benchmarks/pms_industrial/bcp-mtg/c1355_F106gat@0.wcnf </TD> </TR>
+  <TR> <TD> 3 </TD> <TD> 7 </TD> <TD> benchmarks/pms_industrial/bcp-mtg/c1355_F141gat@0.wcnf </TD> </TR>
+  <TR> <TD> 3 </TD> <TD> 8 </TD> <TD> benchmarks/pms_industrial/bcp-mtg/c1355_F183gat@0.wcnf </TD> </TR>
+  <TR> <TD>  </TD> <TD>  </TD> <TD>  </TD> </TR>
+  <TR> <TD> 4 </TD> <TD> 9 </TD> <TD> benchmarks/pms_industrial/bcp-mtg/c1355_F113gat-1260gat@1.wcnf </TD> </TR>
+  <TR> <TD> 4 </TD> <TD> 10 </TD> <TD> benchmarks/pms_industrial/bcp-mtg/c1355_F176gat-1278gat@1.wcnf </TD> </TR>
+  <TR> <TD>  </TD> <TD>  </TD> <TD>  </TD> </TR>
+  <TR> <TD> 5 </TD> <TD> 11 </TD> <TD> benchmarks/pms_industrial/bcp-mtg/c1355_F155gat@1.wcnf </TD> </TR>
+  <TR> <TD> 5 </TD> <TD> 12 </TD> <TD> benchmarks/pms_industrial/bcp-mtg/c1355_F43gat@1.wcnf </TD> </TR>
+  <TR> <TD> 5 </TD> <TD> 13 </TD> <TD> benchmarks/pms_industrial/bcp-mtg/c1355_F50gat@1.wcnf </TD> </TR>
+  <TR> <TD> 5 </TD> <TD> 14 </TD> <TD> benchmarks/pms_industrial/bcp-mtg/c1355_F57gat@1.wcnf </TD> </TR>
+  <TR> <TD> 5 </TD> <TD> 15 </TD> <TD> benchmarks/pms_industrial/bcp-mtg/c1355_F71gat@1.wcnf </TD> </TR>
+  <TR> <TD>  </TD> <TD>  </TD> <TD>  </TD> </TR>
+  <TR> <TD> 6 </TD> <TD> 16 </TD> <TD> benchmarks/pms_industrial/bcp-mtg/c3540_F45@0.wcnf </TD> </TR>
+  <TR> <TD> 6 </TD> <TD> 17 </TD> <TD> benchmarks/pms_industrial/bcp-mtg/c3540_F45@1.wcnf </TD> </TR>
+  <TR> <TD>  </TD> <TD>  </TD> <TD>  </TD> </TR>
+  <TR> <TD> 7 </TD> <TD> 18 </TD> <TD> benchmarks/pms_industrial/bcp-mtg/c499_Fic0@1.wcnf </TD> </TR>
+  <TR> <TD> 7 </TD> <TD> 19 </TD> <TD> benchmarks/pms_industrial/bcp-mtg/c499_Fic2@1.wcnf </TD> </TR>
+  <TR> <TD> 7 </TD> <TD> 20 </TD> <TD> benchmarks/pms_industrial/bcp-mtg/c499_Fic6@1.wcnf </TD> </TR>
+  <TR> <TD>  </TD> <TD>  </TD> <TD>  </TD> </TR>
+  <TR> <TD> 8 </TD> <TD> 21 </TD> <TD> benchmarks/pms_industrial/bcp-mtg/c499_Fid11@1.wcnf </TD> </TR>
+  <TR> <TD> 8 </TD> <TD> 22 </TD> <TD> benchmarks/pms_industrial/bcp-mtg/c499_Fid18@0.wcnf </TD> </TR>
+  <TR> <TD> 8 </TD> <TD> 23 </TD> <TD> benchmarks/pms_industrial/bcp-mtg/c499_Fid26@0.wcnf </TD> </TR>
+   </TABLE>
+
+
+
+<br>
+<h2> Useless Features </h2>
+
+In this section, you'll find all features that adopted only one value (and eventually NA's).<br>
+<br>
+
+Feature Values:
+<!-- html table generated in R 3.0.2 by xtable 1.7-1 package -->
+<!-- Thu Jan 23 11:55:41 2014 -->
+<TABLE border=1>
+<TR> <TH>  </TH> <TH> unique Value(s) </TH> <TH> NA's </TH>  </TR>
+  <TR> <TD align="right"> repetition </TD> <TD align="right"> 1.0000 </TD> <TD align="right"> 0 </TD> </TR>
+  <TR> <TD align="right"> soft_mean </TD> <TD align="right"> 1.0000 </TD> <TD align="right"> 0 </TD> </TR>
+  <TR> <TD align="right"> soft_std </TD> <TD align="right"> 0.0000 </TD> <TD align="right"> 0 </TD> </TR>
+  <TR> <TD align="right"> soft_min </TD> <TD align="right"> 1.0000 </TD> <TD align="right"> 0 </TD> </TR>
+  <TR> <TD align="right"> soft_max </TD> <TD align="right"> 1.0000 </TD> <TD align="right"> 0 </TD> </TR>
+  <TR> <TD align="right"> pnr_cls_min </TD> <TD align="right"> 0.0000 </TD> <TD align="right"> 0 </TD> </TR>
+  <TR> <TD align="right"> pnr_cls_max </TD> <TD align="right"> 1.0000 </TD> <TD align="right"> 0 </TD> </TR>
+  <TR> <TD align="right"> pnr_cls_spread </TD> <TD align="right"> 1.0000 </TD> <TD align="right"> 0 </TD> </TR>
+   </TABLE>
+
+
+
+<br>
+Feature Runstatus:
+<!-- html table generated in R 3.0.2 by xtable 1.7-1 package -->
+<!-- Thu Jan 23 11:55:41 2014 -->
+<TABLE border=1>
+<TR> <TH>  </TH> <TH> unique Value(s) </TH> <TH> NA's </TH>  </TR>
+  <TR> <TD align="right"> repetition </TD> <TD> 1 </TD> <TD> 0 </TD> </TR>
+  <TR> <TD align="right"> presolved </TD> <TD> FALSE </TD> <TD> 0 </TD> </TR>
+   </TABLE>
+
+
+
+</body>
+</html>
