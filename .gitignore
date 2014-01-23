@@ -1,6 +1,10 @@
 algselbench/algselbench.Rcheck
 algselbench/algselbench*.tar.gz
+algselbench/test_src.R
 defs.R
 html
 .Rproj.user
 coseal-algsel-benchmark-repo.Rproj
+.DS_Store
+.Rhistory
+algselbench/.DS_Store

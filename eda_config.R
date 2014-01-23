@@ -2,13 +2,22 @@
 
 makeEDAConfig = function(
   algo.perf.boxplots.log = FALSE,
-  algo.perf.densities.log = FALSE
+  algo.perf.densities.log = FALSE,
+  algo.perf.scatter.log = FALSE
 ) {
   
-  list(
+  makeS3Obj("ASTaskHTMLConfig",
     algo.perf.boxplots.log = algo.perf.boxplots.log,
-    algo.perf.densities.log = algo.perf.densities.log
+    algo.perf.densities.log = algo.perf.densities.log,
+    algo.perf.scatter.log = algo.perf.scatter.log
   )
+}
+
+print.ASTaskHTMLConfig = function(x, ...) {
+  ns = names(x)
+  for (i in seq_along(x)) {
+   catf("%-30s : %s", ns[i], x[[i]]) 
+  }  
 }
 
 readEDAConfig = function(path, task.name) {
@@ -19,7 +28,7 @@ readEDAConfig = function(path, task.name) {
     x = try(sys.source(conffile, envir=conf))
     if (is.error(x)) {
       stopf("There was an error in sourcing your configuration file '%s': %s!", 
-        conffile, as.character(x))
+            conffile, as.character(x))
     }
     return(do.call(makeEDAConfig, as.list(conf)))
   } else {

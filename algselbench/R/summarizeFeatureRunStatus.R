@@ -1,16 +1,18 @@
-summarizeFeatureRunStatus = function(astask) {
-  rs = astask$feature.runstatus
-  fns = getFeatureNames(astask)
-  n = nrow(rs)
-  for (fn in fns)
-    rs[, fn] = as.character(rs[, fn])
-  print(head(rs))
-  # print(fns)
-  # tabs = lapply(fns, function(fn) table(rs[, fn]))
-  # Filter(tabs, function(x) all(names(x) %in% )
-  # print(tabs[[1]])
-  inst.presolved = sapply(seq_len(n), function(i) any("presolved" %in% rs[i, fns]))
-  messagef("Number of presolved instances: %i", sum(inst.presolved))
-  # print(str(rs))
-
+#' Creates a table that summarize the runstatus of the features.
+#'
+#' @param astask [\code{\link{ASTask}}]\cr
+#'   Algorithm selection task.
+#' @return [\code{table}]. 
+#'  Table, which summarizes the runstatus per algorithm.
+#' @export
+summarizeFeatureRunstatus = function(astask) {
+  checkArg(astask, "ASTask")
+  data = astask$feature.runstatus
+  n = ncol(data)
+  for (i in 3:(n-1)) {
+    data[, i] = factor(as.character(data[, i]), 
+      levels = c("ok", "timeout", "memout", "presolved", "crash", "other"))
+  }
+  tab = t(sapply(data[, 3:(n-1)], table))
+  return(t(apply(tab, 1, function(z) 100 * z / sum(z))))
 }
