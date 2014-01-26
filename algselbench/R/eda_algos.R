@@ -56,7 +56,10 @@ plotAlgoPerfBoxplots = function(astask, measure, log = FALSE) {
   checkArg(log, "logical", len=1L, na.ok=FALSE)
 
   data = astask$algo.runs
-  p = ggplot(data, aes_string(x = "algorithm", y = measure)) +
+  data = data[!is.na(data[,measure]), ]
+  if (log) 
+    data = data[(data[,measure] > 0), ]
+  p = ggplot(data, aes_string(x = "algorithm", y = measure, col = "algorithm")) +
     geom_boxplot() +
     theme(axis.text.x = element_text(angle=90, vjust=1))
   if (log)  
@@ -87,6 +90,9 @@ plotAlgoPerfDensities = function(astask, measure, log = FALSE) {
   if (missing(measure))
     measure = astask$desc$performance_measures[1]
   data = astask$algo.runs
+  data = data[!is.na(data[,measure]), ]
+  if (log) 
+    data = data[(data[,measure] > 0), ]
   p = ggplot(data, aes_string(x = measure, col = "algorithm")) +
     geom_density()
   if (log)  

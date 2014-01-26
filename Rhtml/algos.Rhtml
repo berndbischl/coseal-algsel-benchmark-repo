@@ -76,12 +76,20 @@ end.rcode-->
 <br>
 <h2> Boxplots of performance values </h2>
 
+Any observations with missing values in their algorithms' performance were removed prior to the creation of the boxplots.<br>
+Additionally, if the performance is represented on a log-scale, all non-positive performance values were removed as well.<br>
+<br>
+
 <!--begin.rcode
   plotAlgoPerfBoxplots(astask, log = config$algo.perf.boxplots.log)
 end.rcode-->
 
 <br>
 <h2> Estimated densitities of performance values </h2>
+
+Any observations with missing values in their algorithms' performance were removed prior to the creation of the density plot.<br>
+Additionally, if the performance is represented on a log-scale, all non-positive performance values were removed as well.<br>
+<br>
 
 <!--begin.rcode
   plotAlgoPerfDensities(astask, log = config$algo.perf.densities.log) 
