@@ -10,12 +10,12 @@ Imports:
     BBmisc,
     foreign,
     ggplot2,
+    llama,
     plyr,
     reshape2,
     stringr
 Suggests:
     corrplot,
-    llama,
     testthat
 LazyData: yes
 ByteCompile: yes
