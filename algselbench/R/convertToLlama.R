@@ -39,9 +39,9 @@ convertToLlama = function(astask, measure) {
 
   # conctruct solved
   # FIXME: 
-  successes = matrix(TRUE, nrow = nrow(perf), ncol = ncol(perf))
-
+  successes = as.data.frame(matrix(TRUE, nrow = nrow(perf), ncol = ncol(perf)))
+  colnames(successes) = colnames(perf)
+  successes$instance_id = perf$instance_id 
   input(feats, perf, successes = successes, minimize = !astask$desc$maximize[[measure]])
 }
-
 
