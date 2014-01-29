@@ -34,7 +34,7 @@ convertToLlama = function(astask, measure) {
   perf = dcast(perf, instance_id ~ algorithm, value.var = measure)
   # impute NAs
   # FIXME:
-  # FIXME: llama does not work if NAs in data, should be checked
+  # FIXME: llama does not work if NAs are in data, should be checked
   perf[is.na(perf)] = 10
 
   # conctruct solved
