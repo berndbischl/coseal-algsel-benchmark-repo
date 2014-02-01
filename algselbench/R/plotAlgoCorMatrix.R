@@ -24,7 +24,7 @@
 #' @return corrplot
 #' @export
 plotAlgoCorMatrix = function(astask, measure, order.method, hclust.method, cor.method) {
-  requirePackages("corrplot", why = "plotAlgoCorMatrix")
+  requirePackages("corrplot", why = "plotAlgoCorMatrix", quietly = TRUE)
   checkArg(astask, "ASTask")
   if (missing(measure))
     measure = astask$desc$performance_measures[1]

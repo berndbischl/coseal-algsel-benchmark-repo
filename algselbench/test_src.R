@@ -2,21 +2,12 @@ library(devtools)
 library(foreign)
 library(stringr)
 library(plyr)
-load_all("..")
+load_all(".")
 
 #dataset.dir = "~/cos/coseal/data/sat11-indu"
-dataset.dir = "../../../coseal/data/sat11-hand/"
+dataset.dir = "../../coseal/data/qbf_2011/"
 
 astask = parseASTask(dataset.dir)
-summarizeFeatureRunStatus(astask)
 
-summarizeAlgoRuns(astask)
-summarizeFeatureValues(astask)
-dominatedAlgos(astask)
-checkDuplicates(astask)
-uselessInstances(astask)
-
-# exploreAlgos(astask)
-
-# print(plotAlgoPerfHist(astask, "TIME"))
-
+llama.task = convertToLlama(astask)
+cv = cvFolds(llama.task)

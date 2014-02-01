@@ -34,14 +34,14 @@ convertToLlama = function(astask, measure) {
   perf = dcast(perf, instance_id ~ algorithm, value.var = measure)
   # impute NAs
   # FIXME:
-  # FIXME: llama does not work if NAs in data, should be checked
+  # FIXME: llama does not work if NAs are in data, should be checked
   perf[is.na(perf)] = 10
 
   # conctruct solved
   # FIXME: 
-  successes = matrix(TRUE, nrow = nrow(perf), ncol = ncol(perf))
-
+  successes = as.data.frame(matrix(TRUE, nrow = nrow(perf), ncol = ncol(perf)))
+  colnames(successes) = colnames(perf)
+  successes$instance_id = perf$instance_id 
   input(feats, perf, successes = successes, minimize = !astask$desc$maximize[[measure]])
 }
-
 

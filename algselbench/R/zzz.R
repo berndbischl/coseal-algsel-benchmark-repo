@@ -4,4 +4,5 @@
 #' @import plyr
 #' @import reshape2
 #' @import stringr
+#' @import llama
 NULL
