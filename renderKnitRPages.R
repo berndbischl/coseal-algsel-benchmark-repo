@@ -31,7 +31,7 @@ knit(file.path(rhtml.dir, "index.Rhtml"), output = file.path(html.dir, "index.ht
 
 try({
 
-  for (task.dir in task.dirs) {
+  for (task.dir in task.dirs[1]) {
     setwd(old.wd)
     task.name = basename(task.dir)
     messagef("Create pages for: %s", task.name)
@@ -75,6 +75,7 @@ try({
     file.copy(file.path(task.dir, "readme.txt"), out.dir)
     knitIt("algos")
     knitIt("features")
+    knitIt("config")
   }
 
 })
