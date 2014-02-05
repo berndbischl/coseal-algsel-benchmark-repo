@@ -1,8 +1,8 @@
-\name{lookForDuplicates}
-\alias{lookForDuplicates}
+\name{checkDuplicatedInstances}
+\alias{checkDuplicatedInstances}
 \title{Checks the feature data set for duplicated instances.}
 \usage{
-lookForDuplicates(astask)
+checkDuplicatedInstances(astask)
 }
 \arguments{
   \item{astask}{[\code{\link{ASTask}}]\cr Algorithm

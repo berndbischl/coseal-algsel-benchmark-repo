@@ -15,6 +15,7 @@ convertToLlama(astask, measure)
 Result of calling \code{\link[llama]{input}}.
 }
 \description{
-Convert an ASTask task object to a llama data object.
+For stochastic algorithms and features, mean values are
+computed over the repetitions.
 }
 
