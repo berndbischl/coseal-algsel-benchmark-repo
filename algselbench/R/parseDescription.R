@@ -53,19 +53,3 @@ parseDescription = function(path) {
   addClasses(desc, "ASTaskDesc")
 }
 
-#' @S3method print ASTaskDesc
-print.ASTaskDesc = function(x, ...) {
-  printField1 = function(n) { 
-    val = x[[n]]
-    k = length(val)
-    if (k == 0L)
-      catf("%-25s        : -", n)
-    else if (k == 1L)
-      catf("%-25s        : %s", n, clipString(as.character(val), 60L))
-    else
-      catf("%-25s (%3i)  : %s", n, k, clipString(collapse(val, sep = ", "), 60L))
-  }  
-  x$feature_groups = names(x$feature_groups)
-  lapply(names(x), printField1)
-}
-
