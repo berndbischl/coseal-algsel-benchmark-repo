@@ -1,3 +1,3 @@
 test_that("summarizeFeatureValues", {
-  s = summarizeFeatureValues(testask1)
+  s = summarizeFeatureValues(testtask1)
 })

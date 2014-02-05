@@ -5,7 +5,7 @@
 #' @return [\code{table}]. 
 #'  Table, which summarizes the runstatus per algorithm.
 #' @export
-summarizeFeatureRunstatus = function(astask) {
+summarizeFeatureRunStatus = function(astask) {
   checkArg(astask, "ASTask")
   data = astask$feature.runstatus
   n = ncol(data)
