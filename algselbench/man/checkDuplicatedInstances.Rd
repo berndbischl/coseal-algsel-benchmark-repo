@@ -9,9 +9,12 @@ checkDuplicatedInstances(astask)
   selection task.}
 }
 \value{
-Blocks of duplicated features (if existing).
+[\code{list} of \code{character}]. List of instance id
+vectors where corresponding feature vectors are the same.
+Only groups of at least 2 elements are returned.
 }
 \description{
-Checks the feature data set for duplicated instances.
+Potentially duplicated instances are detected by grouping
+all instances with equal feature vectors.
 }
 
