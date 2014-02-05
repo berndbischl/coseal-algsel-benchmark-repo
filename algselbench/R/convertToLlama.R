@@ -1,5 +1,7 @@
 #' Convert an ASTask task object to a llama data object.
 #'
+#' For stochastic algorithms and features, mean values are computed over the repetitions.
+#'
 #' @param astask [\code{\link{ASTask}}]\cr
 #'   Algorithm selection task.
 #' @param measure [\code{character(1)}]\cr
@@ -15,21 +17,24 @@ convertToLlama = function(astask, measure) {
     checkArg(measure, "character", len = 1L, na.ok = FALSE)
   
   feats = astask$feature.values
-  # aggregate stochastic features
-  # FIXME: is averaging ok?
-  feats = ddply(feats, c("instance_id"), function(d) {
-    colMeans(d[, getFeatureNames(astask), drop = FALSE])
-  })
+  # aggregate stochastic features, only do this if repeated to save time
+  if (max(feats$repetition) > 1L) {
+    feats = ddply(feats, c("instance_id"), function(d) {
+      colMeans(d[, getFeatureNames(astask), drop = FALSE])
+    })
+  }
 
   # convert to perf to wide format
   perf = astask$algo.runs
-  #FIXME what do we do, if runstatus is not ok? impute?
+  #FIXME: what do we do, if runstatus is not ok? impute?
   # drop unneeded stuff and average over repetitions
-  # FIXME: is averaging ok?
   perf = subset(perf, select = c("instance_id", "repetition", "algorithm", measure, "runstatus"))
-  perf = ddply(perf, c("instance_id", "algorithm"), function(d) {
-    colMeans(d[, measure, drop = FALSE])
-  })
+  # aggregate stochastic algorithms, only do this if repeated to save time
+  if (max(perf$repetition) > 1L) {
+    perf = ddply(perf, c("instance_id", "algorithm"), function(d) {
+      colMeans(d[, measure, drop = FALSE])
+    })
+  }
   # wide format
   perf = dcast(perf, instance_id ~ algorithm, value.var = measure)
   # impute NAs
@@ -42,6 +47,7 @@ convertToLlama = function(astask, measure) {
   successes = as.data.frame(matrix(TRUE, nrow = nrow(perf), ncol = ncol(perf)))
   colnames(successes) = colnames(perf)
   successes$instance_id = perf$instance_id 
+  print(444)
   input(feats, perf, successes = successes, minimize = !astask$desc$maximize[[measure]])
 }
 
