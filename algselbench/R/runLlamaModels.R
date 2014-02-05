@@ -1,4 +1,4 @@
-
+#' @export
 runLlamaModels = function(astask, nfolds = 10L, stratify = TRUE, classifiers, regressors) {
   if (missing(classifiers)) {
     # FIXME: use 2-3 classfiers and 2-3 regr models
