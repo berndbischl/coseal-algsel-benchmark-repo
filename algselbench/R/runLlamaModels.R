@@ -1,46 +1,69 @@
 #' @export
-runLlamaModels = function(astask, nfolds = 10L, stratify = TRUE, classifiers, regressors,
+runLlamaModels = function(astask, nfolds = 10L, stratify = TRUE, baselines, classifiers, regressors,
   show.info = TRUE) {
 
+  checkArg(astasks, "list")
+  checkListElementClass(astasks, "ASTask")
+  if (missing(baselines)) {
+    baselines = c("vbs", "singleBest", "singleBestByPar", "singleBestBySuccesses")
+  }
   if (missing(classifiers)) {
     # FIXME: use 2-3 classfiers and 2-3 regr models
-    classifiers = list(j48 = J48)
+    classifiers = c("J48")
   }
   if (missing(regressors)) {
     # FIXME: use 2-3 classfiers and 2-3 regr models
-    regressors = list(lm = LinearRegression)
+    regressors = c("LinearRegression")
   }
-  baselines = list(vbs = vbs, single_best = singleBest, single_best_by_par = singleBestByPar,
-    single_best_by_success = singleBestBySuccesses)
-  llama.task = convertToLlama(astask)
-  llama.cv = cvFolds(llama.task, nfolds = nfolds, stratify = stratify)
+  # FIXME: maybe parallel?
+  llama.tasks = lapply(astasks, convertToLlama)
+  llama.cvs = lapply(llama.tasks, cvFolds, nfolds = nfolds, stratify = stratify)
 
-  job = function(name, obj, type, llama.task, llama.cv, show.info) {
-    if (show.info)
-      messagef("Computing: %s", name)
-    if (type == "baseline") {
-      p = obj(llama.task)
-      data = llama.task
-    } else {
-      if (type == "classif")
-        p = classify(obj, data = llama.cv)$predictions
-      else
-        p = regression(obj, data = llama.cv)$predictions
-      data = llama.cv
-    }
-    c(
-      mean(unlist(successes(data, p))),
-      mean(unlist(misclassificationPenalties(data, p))),
-      mean(unlist(parscores(data, p)))
+  # FIXME:
+  unlink("run_llama_models-files", recursive = TRUE)
+  reg = makeExperimentRegistry("run_llama_models")
+
+  for (i in seq_along(astasks)) {
+    addProblem(reg, id = astasks[[i]]$desc$task_id,
+      static = list(
+        llama.task = llama.tasks[[i]],
+        llama.cv = llama.cvs[[i]],
+        makeRes = function(data, p) {
+          list(
+            best = mean(unlist(successes(data, p))),
+            mcp = mean(unlist(misclassificationPenalties(data, p))),
+            par = mean(unlist(parscores(data, p)))
+          )
+        }
+      )
     )
   }
-  objs = c(baselines, classifiers, regressors)
-  types = rep(c("baseline", "classif", "regr"),
-    c(length(baselines), length(classifiers), length(regressors)))
-  rows  = parallelMap(job, names(objs), objs, types,
-    more.args = list(llama.task = llama.task, llama.cv = llama.cv, show.info = show.info))
-  res = as.data.frame(do.call(rbind, rows))
-  rownames(res) = names(objs)
-  colnames(res) = c("best", "mcp", "par")
-  return(res)
+
+  algoBaseline = function(static, model) {
+    fun = get(model)
+    p = fun(static$llama.task)
+    static$makeRes(static$llama.task, p)
+  }
+
+  algoClassif = function(static, model) {
+    fun = get(model)
+    p = classify(fun, data = static$llama.cv)$predictions
+    static$makeRes(static$llama.cv, p)
+  }
+
+  algoRegr = function(static, model) {
+    fun = get(model)
+    p = regression(fun, data = static$llama.cv)$predictions
+    static$makeRes(static$llama.cv, p)
+  }
+
+  addAlgorithm(reg, id = "baseline", fun = algoBaseline)
+  addAlgorithm(reg, id = "classif", fun = algoClassif)
+  addAlgorithm(reg, id = "regr", fun = algoRegr)
+
+  des.baseline = makeDesign("baseline", exhaustive = list(model = baselines))
+  des.classif = makeDesign("classif", exhaustive = list(model = classifiers))
+  des.regr = makeDesign("regr", exhaustive = list(model = regressors))
+  addExperiments(reg, algo.designs = list(des.baseline, des.classif, des.regr))
+  return(reg)
 }
