@@ -9,9 +9,7 @@
 <h2> Llama results </h2>
 
 <!--begin.rcode, results = "asis"
-  llama.task = convertToLlama(astask)
-  cv = cvFolds(llama.task, nfolds = 2L)
-  res = classify()
+  d = subset(llama.results, prob == astask$desc$task_id)
   print(xtable(d), "html")
 end.rcode-->
 
