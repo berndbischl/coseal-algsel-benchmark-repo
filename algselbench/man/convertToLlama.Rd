@@ -16,6 +16,6 @@ Result of calling \code{\link[llama]{input}}.
 }
 \description{
 For stochastic algorithms and features, mean values are
-computed over the repetitions.
+computed across repetitions.
 }
 

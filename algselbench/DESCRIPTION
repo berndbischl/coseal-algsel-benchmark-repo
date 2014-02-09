@@ -15,6 +15,7 @@ Imports:
     reshape2,
     stringr
 Suggests:
+    BatchExperiments,
     corrplot,
     testthat
 LazyData: yes
