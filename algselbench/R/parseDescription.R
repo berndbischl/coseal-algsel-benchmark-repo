@@ -36,6 +36,7 @@ parseDescription = function(path) {
   convertField("number_of_groups", as.integer)
 
   desc$maximize = setNames(desc$maximize, desc$performance_measures)
+  desc$performance_type = setNames(desc$performance_type, desc$performance_measures)
 
   # handle groups
   ns = names(desc)

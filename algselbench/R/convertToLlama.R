@@ -52,9 +52,11 @@ convertToLlama = function(astask, measure) {
   successes = !is.na(perf2) & runstatus2 == "ok"
 
   # impute performance values
-  if (desc$performance_type == "runtime" & !is.na(desc$algorithm_cutoff_time))
+  if (desc$performance_type[measure] == "runtime" & !is.na(desc$algorithm_cutoff_time))
     impute.val = desc$algorithm_cutoff_time
-  perf2[successes] = impute.val
+  else
+    impute.val = 10 * max(perf2, na.rm = TRUE)
+  perf2[!successes] = impute.val
   perf[, cols] = perf2
 
   # aggregate stochastic algorithms, only do this if repeated measurements to save time

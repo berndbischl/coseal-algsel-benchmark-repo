@@ -21,7 +21,7 @@ runLlamaModels = function(astask, nfolds = 10L, stratify = TRUE, baselines, clas
 
   # FIXME:
   unlink("run_llama_models-files", recursive = TRUE)
-  reg = makeExperimentRegistry("run_llama_models")
+  reg = makeExperimentRegistry("run_llama_models", packages = c("llama", "RWeka"))
 
   for (i in seq_along(astasks)) {
     addProblem(reg, id = astasks[[i]]$desc$task_id,

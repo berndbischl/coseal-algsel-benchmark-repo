@@ -1,9 +1,4 @@
-library(BBmisc)
-library(knitr)
-library(xtable)
-library(ggplot2)
-library(devtools)
-load_all("algselbench")
+library(algselbench)
 source("defs.R")
 source("eda_config.R")
 
