@@ -88,7 +88,7 @@ The following measures were taken from the performance values of each algorithm:
 </ul>
 
 <!-- html table generated in R 3.0.2 by xtable 1.7-1 package -->
-<!-- Thu Jan 23 12:02:41 2014 -->
+<!-- Mon Feb 10 11:33:48 2014 -->
 <TABLE border=1>
 <TR> <TH>  </TH> <TH> Min. </TH> <TH> 1st Qu. </TH> <TH> Median </TH> <TH> Mean </TH> <TH> 3rd Qu. </TH> <TH> Max. </TH> <TH> Std. Dev. </TH> <TH> CoV. </TH> <TH> NA's </TH> <TH> Obs. </TH> <TH> Run OK (%) </TH>  </TR>
   <TR> <TD align="right"> clasp1 </TD> <TD align="right"> 0.110 </TD> <TD align="right"> 20.000 </TD> <TD align="right"> 88.075 </TD> <TD align="right"> 208.636 </TD> <TD align="right"> 299.380 </TD> <TD align="right"> 1143.010 </TD> <TD align="right"> 263.270 </TD> <TD align="right"> 1.262 </TD> <TD align="right"> 1144 </TD> <TD align="right"> 1362 </TD> <TD align="right"> 16.006 </TD> </TR>
@@ -134,7 +134,7 @@ The following table summarizes the runstatus of each algorithm over all instance
 <br>
 
 <!-- html table generated in R 3.0.2 by xtable 1.7-1 package -->
-<!-- Thu Jan 23 12:02:41 2014 -->
+<!-- Mon Feb 10 11:33:48 2014 -->
 <TABLE border=1>
 <TR> <TH>  </TH> <TH> ok </TH> <TH> timeout </TH> <TH> memout </TH> <TH> not_applicable </TH> <TH> crash </TH> <TH> other </TH>  </TR>
   <TR> <TD align="right"> clasp1 </TD> <TD align="right"> 16.006 </TD> <TD align="right"> 83.994 </TD> <TD align="right"> 0.000 </TD> <TD align="right"> 0.000 </TD> <TD align="right"> 0.000 </TD> <TD align="right"> 0.000 </TD> </TR>
@@ -179,7 +179,7 @@ Here, you'll find an overview of dominating/dominated algorithms: <br>
 <br>
 
 <!-- html table generated in R 3.0.2 by xtable 1.7-1 package -->
-<!-- Thu Jan 23 12:02:45 2014 -->
+<!-- Mon Feb 10 11:33:51 2014 -->
 <TABLE border=1>
 <TR> <TH>  </TH> <TH> marchrw </TH> <TH> qutersat </TH>  </TR>
   <TR> <TD align="right"> marchrw </TD> <TD>  </TD> <TD> better </TD> </TR>
@@ -202,47 +202,21 @@ There were no entirely useless algorithms.
 <br>
 <h2> Boxplots of performance values </h2>
 
-<div class="chunk" id="unnamed-chunk-5"><div class="rcode"><div class="warning"><pre class="knitr r">## Warning: Removed 31335 rows containing non-finite values (stat_boxplot).
-</pre></div>
-</div><div class="rimage default"><img src="figure/unnamed-chunk-5.png" title="plot of chunk unnamed-chunk-5" alt="plot of chunk unnamed-chunk-5" class="plot" /></div></div>
+Any observations with missing values in their algorithms' performance were removed prior to the creation of the boxplots.<br>
+Additionally, if the performance is represented on a log-scale, all non-positive performance values were removed as well.<br>
+<br>
+
+<div class="chunk" id="unnamed-chunk-5"><div class="rimage default"><img src="figure/unnamed-chunk-5.png" title="plot of chunk unnamed-chunk-5" alt="plot of chunk unnamed-chunk-5" class="plot" /></div></div>
 
 
 <br>
 <h2> Estimated densitities of performance values </h2>
 
-<div class="chunk" id="unnamed-chunk-6"><div class="rcode"><div class="warning"><pre class="knitr r">## Warning: Removed 1144 rows containing non-finite values (stat_density).
-## Warning: Removed 1130 rows containing non-finite values (stat_density).
-## Warning: Removed 1264 rows containing non-finite values (stat_density).
-## Warning: Removed 502 rows containing non-finite values (stat_density).
-## Warning: Removed 1265 rows containing non-finite values (stat_density).
-## Warning: Removed 1199 rows containing non-finite values (stat_density).
-## Warning: Removed 1256 rows containing non-finite values (stat_density).
-## Warning: Removed 1303 rows containing non-finite values (stat_density).
-## Warning: Removed 549 rows containing non-finite values (stat_density).
-## Warning: Removed 1256 rows containing non-finite values (stat_density).
-## Warning: Removed 1242 rows containing non-finite values (stat_density).
-## Warning: Removed 960 rows containing non-finite values (stat_density).
-## Warning: Removed 1288 rows containing non-finite values (stat_density).
-## Warning: Removed 631 rows containing non-finite values (stat_density).
-## Warning: Removed 620 rows containing non-finite values (stat_density).
-## Warning: Removed 633 rows containing non-finite values (stat_density).
-## Warning: Removed 1163 rows containing non-finite values (stat_density).
-## Warning: Removed 1164 rows containing non-finite values (stat_density).
-## Warning: Removed 1260 rows containing non-finite values (stat_density).
-## Warning: Removed 1263 rows containing non-finite values (stat_density).
-## Warning: Removed 1292 rows containing non-finite values (stat_density).
-## Warning: Removed 1227 rows containing non-finite values (stat_density).
-## Warning: Removed 1188 rows containing non-finite values (stat_density).
-## Warning: Removed 456 rows containing non-finite values (stat_density).
-## Warning: Removed 606 rows containing non-finite values (stat_density).
-## Warning: Removed 733 rows containing non-finite values (stat_density).
-## Warning: Removed 1287 rows containing non-finite values (stat_density).
-## Warning: Removed 440 rows containing non-finite values (stat_density).
-## Warning: Removed 1191 rows containing non-finite values (stat_density).
-## Warning: Removed 1338 rows containing non-finite values (stat_density).
-## Warning: Removed 485 rows containing non-finite values (stat_density).
-</pre></div>
-</div><div class="rimage default"><img src="figure/unnamed-chunk-6.png" title="plot of chunk unnamed-chunk-6" alt="plot of chunk unnamed-chunk-6" class="plot" /></div></div>
+Any observations with missing values in their algorithms' performance were removed prior to the creation of the density plot.<br>
+Additionally, if the performance is represented on a log-scale, all non-positive performance values were removed as well.<br>
+<br>
+
+<div class="chunk" id="unnamed-chunk-6"><div class="rimage default"><img src="figure/unnamed-chunk-6.png" title="plot of chunk unnamed-chunk-6" alt="plot of chunk unnamed-chunk-6" class="plot" /></div></div>
 
 
 <br>
