@@ -2,6 +2,7 @@ library(knitr)
 library(ggplot2)
 library(xtable)
 library(algselbench)
+library(BBmisc)
 source("defs.R")
 source("eda_config.R")
 
