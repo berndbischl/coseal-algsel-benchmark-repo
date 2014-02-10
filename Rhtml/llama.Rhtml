@@ -10,7 +10,8 @@
 
 <!--begin.rcode, results = "asis"
   d = subset(llama.results, prob == astask$desc$task_id)
-  print(xtable(d), "html")
+  d$id = d$prob = d$repl = NULL
+  print(xtable(d), "html", include.rownames = FALSE)
 end.rcode-->
 
 
