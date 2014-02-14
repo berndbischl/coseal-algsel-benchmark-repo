@@ -30,11 +30,15 @@ convertToLlama = function(astask, measure) {
     feats$repetition = NULL
   }
 
+  #FIXME: maybe use a backup solver when some features are NA, instead of imputing 
+
   # impute feature values
   # FIXME: why cant we impute without target
   feats$.y = 1
   feats = impute(feats, target = ".y")$data
   feats$.y =  NULL
+
+  #FIXME: add featuree costs at end to performance 
 
   ### handle perf values ###
 
