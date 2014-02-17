@@ -68,22 +68,180 @@
 <body>
 
 
-<h1>Algorithm selection tasks</h1>
+<h1>Algorithm Selection Benchmark Library</h1>
 
-<div class="chunk" id="unnamed-chunk-1"><div class="rcode"><div class="output"><pre class="knitr r">## <a href='http://berndbischl.github.io/coseal-algsel-benchmark-repo/task-pages/bbob_2013_master_thesis/index.html'>bbob_2013_master_thesis</a>
-## <a href='http://berndbischl.github.io/coseal-algsel-benchmark-repo/task-pages/csp_2010/index.html'>csp_2010</a>
-## <a href='http://berndbischl.github.io/coseal-algsel-benchmark-repo/task-pages/maxsat12-pms/index.html'>maxsat12-pms</a>
-## <a href='http://berndbischl.github.io/coseal-algsel-benchmark-repo/task-pages/qbf_2011/index.html'>qbf_2011</a>
-## <a href='http://berndbischl.github.io/coseal-algsel-benchmark-repo/task-pages/sat11-hand/index.html'>sat11-hand</a>
-## <a href='http://berndbischl.github.io/coseal-algsel-benchmark-repo/task-pages/sat11-indu/index.html'>sat11-indu</a>
-## <a href='http://berndbischl.github.io/coseal-algsel-benchmark-repo/task-pages/sat11-rand/index.html'>sat11-rand</a>
-## <a href='http://berndbischl.github.io/coseal-algsel-benchmark-repo/task-pages/sat12-all/index.html'>sat12-all</a>
-## <a href='http://berndbischl.github.io/coseal-algsel-benchmark-repo/task-pages/sat12-hand/index.html'>sat12-hand</a>
-## <a href='http://berndbischl.github.io/coseal-algsel-benchmark-repo/task-pages/sat12-indu/index.html'>sat12-indu</a>
-## <a href='http://berndbischl.github.io/coseal-algsel-benchmark-repo/task-pages/sat12-rand/index.html'>sat12-rand</a>
-</pre></div>
-</div></div>
+<b>
+CAUTION: Heavily work in progress, do not use data or results for papers until we remove
+this message. ETA: April 2014.
+</b>
 
+<br><br><br>
+
+<table border=1 cellpadding=10>
+<tr>
+  <th>Task Name</th>
+  <th>Instances</th> 
+  <th>Algorithms</th> 
+  <th>Features</th>
+</tr>
+
+<tr>
+<td>
+<a href='http://berndbischl.github.io/coseal-algsel-benchmark-repo/task-pages/bbob_2013_master_thesis/index.html'>BBOB_2013_Master_Thesis</a>
+</td>
+<td align='right'>
+1200
+</td>
+<td align='right'>
+7
+</td>
+<td align='right'>
+50
+</td>
+</tr>
+<tr>
+<td>
+<a href='http://berndbischl.github.io/coseal-algsel-benchmark-repo/task-pages/csp_2010/index.html'>CSP_2010</a>
+</td>
+<td align='right'>
+2024
+</td>
+<td align='right'>
+2
+</td>
+<td align='right'>
+17
+</td>
+</tr>
+<tr>
+<td>
+<a href='http://berndbischl.github.io/coseal-algsel-benchmark-repo/task-pages/maxsat12-pms/index.html'>MaxSAT-2012-pms</a>
+</td>
+<td align='right'>
+876
+</td>
+<td align='right'>
+6
+</td>
+<td align='right'>
+37
+</td>
+</tr>
+<tr>
+<td>
+<a href='http://berndbischl.github.io/coseal-algsel-benchmark-repo/task-pages/qbf_2011/index.html'>QBF_2011</a>
+</td>
+<td align='right'>
+1368
+</td>
+<td align='right'>
+5
+</td>
+<td align='right'>
+46
+</td>
+</tr>
+<tr>
+<td>
+<a href='http://berndbischl.github.io/coseal-algsel-benchmark-repo/task-pages/sat11-hand/index.html'>SAT11-CRAFTED</a>
+</td>
+<td align='right'>
+296
+</td>
+<td align='right'>
+15
+</td>
+<td align='right'>
+115
+</td>
+</tr>
+<tr>
+<td>
+<a href='http://berndbischl.github.io/coseal-algsel-benchmark-repo/task-pages/sat11-indu/index.html'>SAT11-INDU</a>
+</td>
+<td align='right'>
+300
+</td>
+<td align='right'>
+18
+</td>
+<td align='right'>
+115
+</td>
+</tr>
+<tr>
+<td>
+<a href='http://berndbischl.github.io/coseal-algsel-benchmark-repo/task-pages/sat11-rand/index.html'>SAT11-RANDOM</a>
+</td>
+<td align='right'>
+600
+</td>
+<td align='right'>
+9
+</td>
+<td align='right'>
+115
+</td>
+</tr>
+<tr>
+<td>
+<a href='http://berndbischl.github.io/coseal-algsel-benchmark-repo/task-pages/sat12-all/index.html'>SAT12-ALL</a>
+</td>
+<td align='right'>
+1614
+</td>
+<td align='right'>
+31
+</td>
+<td align='right'>
+115
+</td>
+</tr>
+<tr>
+<td>
+<a href='http://berndbischl.github.io/coseal-algsel-benchmark-repo/task-pages/sat12-hand/index.html'>SAT12-HAND</a>
+</td>
+<td align='right'>
+767
+</td>
+<td align='right'>
+31
+</td>
+<td align='right'>
+115
+</td>
+</tr>
+<tr>
+<td>
+<a href='http://berndbischl.github.io/coseal-algsel-benchmark-repo/task-pages/sat12-indu/index.html'>SAT12-INDU</a>
+</td>
+<td align='right'>
+1167
+</td>
+<td align='right'>
+31
+</td>
+<td align='right'>
+115
+</td>
+</tr>
+<tr>
+<td>
+<a href='http://berndbischl.github.io/coseal-algsel-benchmark-repo/task-pages/sat12-rand/index.html'>SAT12-RAND</a>
+</td>
+<td align='right'>
+1362
+</td>
+<td align='right'>
+31
+</td>
+<td align='right'>
+115
+</td>
+</tr>
+
+
+</table>
 
 </body>
 </html>
