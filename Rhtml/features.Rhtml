@@ -37,7 +37,7 @@ The following table summarizes the runstatus of each feature over all instances 
 <br>
 
 <!--begin.rcode, results = "asis"
-  res = summarizeFeatureRunstatus(astask)
+  res = summarizeFeatureRunStatus(astask)
   print(xtable(res), "html")
 end.rcode-->
 
@@ -45,8 +45,10 @@ end.rcode-->
 <h2> Duplicated Features </h2>
 
 <!--begin.rcode, results = "asis"
-  res = lookForDuplicates(astask)
-  if(!is.null(res)) {
+  res = checkDuplicatedInstances(astask)
+  if (length(res) > 0L) {
+    res = sapply(res, collapse, sep = ",")
+    res = data.frame(instances = res)
     print(xtable(res), include.rownames = FALSE, "html")
   }
 end.rcode-->
