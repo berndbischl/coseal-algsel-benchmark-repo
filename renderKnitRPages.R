@@ -25,9 +25,8 @@ ee$data.dir = data.dir
 ee$task.dirs = task.dirs
 ee$url.prefix = url.prefix
 ee$llama.results = load2("llama_results.RData")
+ee$astasks = list()
 
-knit(file.path(rhtml.dir, "index.Rhtml"), output = file.path(html.dir, "index.html"),
-  env = ee, quiet = TRUE)
 
 try({
 
@@ -38,6 +37,7 @@ try({
 
     # set task data for knitr
     astask = parseASTask(task.dir)
+    ee$astasks[[astask$desc$task_id]] = astask
     ee$astask = astask
 
     # create output dir
@@ -78,6 +78,9 @@ try({
     knitIt("llama")
     knitIt("config")
   }
+
+  knit(file.path(rhtml.dir, "index.Rhtml"), output = file.path(html.dir, "index.html"),
+    env = ee, quiet = TRUE)
 
 })
 

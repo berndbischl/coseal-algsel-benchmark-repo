@@ -6,18 +6,48 @@
 <body>
 
 
-<h1>Algorithm selection tasks</h1>
+<h1>Algorithm Selection Benchmark Library</h1>
 
-<!--begin.rcode, echo = FALSE
+<b>
+CAUTION: Heavily work in progress, do not use data or results for papers until we remove
+this message. ETA: April 2014.
+</b>
 
-for (i in seq_along(task.dirs)) {
+<br><br><br>
+
+<table border=1 cellpadding=10>
+<tr>
+  <th>Task Name</th>
+  <th>Instances</th> 
+  <th>Algorithms</th> 
+  <th>Features</th>
+</tr>
+
+<!--begin.rcode, echo = FALSE, results = "asis"
+
+printTDString = function(x) {
+  catf("<td align='right'>"); catf(x); catf("</td>")
+}
+printTDNumber = function(x) {
+  printTDString(as.character(x))
+}
+
+for (i in seq_along(astasks)) {
+  astask = astasks[[i]]
+  desc = astask$desc
   task.dir = task.dirs[i]
   bn = basename(task.dir)
   url = sprintf("%s/%s/index.html", url.prefix, bn)
-  catf("<a href='%s'>%s</a>", url, bn)
+  catf("<tr>")
+  catf("<td>"); catf("<a href='%s'>%s</a>", url, desc$task_id); catf("</td>")
+  printTDNumber(length(getInstanceNames(astask)))
+  printTDNumber(length(getAlgorithmNames(astask)))
+  printTDNumber(length(getFeatureNames(astask)))
+  catf("</tr>")
 }
 
 end.rcode-->
+</table>
 
 </body>
 </html>
