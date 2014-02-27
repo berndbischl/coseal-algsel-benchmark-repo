@@ -38,6 +38,7 @@ try({
     # set task data for knitr
     astask = parseASTask(task.dir)
     ee$astasks[[astask$desc$task_id]] = astask
+    ee$task.dir = task.dir
     ee$astask = astask
 
     # create output dir
@@ -73,6 +74,7 @@ try({
     # create all subpages and copy readme
     knitIt("task_index", "index")
     file.copy(file.path(task.dir, "readme.txt"), out.dir)
+    knitIt("data_files")
     knitIt("algos")
     knitIt("features")
     knitIt("llama")

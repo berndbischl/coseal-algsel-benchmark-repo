@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Data files</title>
+</head>
+<body>
+
+
+<h1>Task <!--rinline I(astask$desc$task_id)--></h1>
+
+<ul>
+
+<!--begin.rcode, echo = FALSE, results = "asis"
+
+  fs = list.files(task.dir)
+  url.prefix = "http://coseal.googlecode.com/svn/trunk/data"
+  for (f in fs) {
+    bn = basename(task.dir)
+    url = sprintf("%s/%s/%s", url.prefix, bn, f)
+    catf("<li>")
+    catf("<a href='%s'>%s</a>", url, f)
+    catf("</li>")
+  }
+
+end.rcode-->
+
+<ul>
+
+<br><br>
+
+<a href="../index.html">Back to task list</a>
+
+</body>
+</html>
+
