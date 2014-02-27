@@ -7,7 +7,8 @@ source("defs.R")
 source("eda_config.R")
 
 data.dir =  file.path(coseal.svn.dir, "data")
-task.dirs = list.files(data.dir, full = TRUE)
+#FIXME: asp does not work
+task.dirs = list.files(data.dir, full = TRUE)[-1]
 rhtml.dir = normalizePath("Rhtml")
 html.dir = normalizePath("html")
 config.dir = normalizePath("configs")
