@@ -13,10 +13,10 @@
 <!--begin.rcode, echo = FALSE, results = "asis"
 
   fs = list.files(task.dir)
-  url.prefix = "http://coseal.googlecode.com/svn/trunk/data"
+  coseal.svn.prefix = "http://coseal.googlecode.com/svn/trunk/data"
   for (f in fs) {
     bn = basename(task.dir)
-    url = sprintf("%s/%s/%s", url.prefix, bn, f)
+    url = sprintf("%s/%s/%s", coseal.svn.prefix, bn, f)
     catf("<li>")
     catf("<a href='%s'>%s</a>", url, f)
     catf("</li>")
