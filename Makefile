@@ -23,6 +23,7 @@ push-task-pages: render-task-pages
 	rm -rf /tmp/html
 	cp -r html /tmp/
 	git checkout gh-pages
+	git pull
 	${DELETE} task-pages
 	cp -r /tmp/html task-pages 
 	git add task-pages 
