@@ -44,8 +44,14 @@ createCVSplits = function(astask, reps = 1L, folds = 10L, file = NULL) {
     rdesc = makeResampleDesc("RepCV", folds = folds, reps = reps)
   rin = makeResampleInstance(rdesc, size = size)
   splits = rin$test.inds
-  splits = lapply(seq_along(splits), function(i)
-    data.frame(instance_id = splits[[i]], fold = (i - 1) %% folds  + 1, rep = (i - 1) %/% folds + 1))
+  # mlr creates rep1, rep2, ..., folds in order
+  splits = lapply(seq_along(splits), function(i) {
+    data.frame(
+      instance_id = splits[[i]],
+      repetition = (i - 1) %/% folds + 1,
+      fold = (i - 1) %% folds  + 1
+    )
+  })
   splits = do.call(rbind, splits)
   splits$instance_id = instances[splits$instance_id]
   if (!missing(file))
