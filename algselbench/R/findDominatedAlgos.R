@@ -24,25 +24,34 @@ findDominatedAlgos = function(astask, measure){
   result = matrix("", nrow = nr.of.algos, ncol = nr.of.algos)
   rownames(result) = algo.names
   colnames(result) = algo.names
-  for (i in 1:nr.of.algos) {
+  for (i in 1:(nr.of.algos - 1L)) {
     alg1 = splitted.data[[algo.names[i]]]
-    for (j in 1:nr.of.algos) {
-      if (j == i)
-        next
+    for (j in (i+1L):nr.of.algos) {
       alg2 = splitted.data[[algo.names[j]]]
-      result[i, j] = checkDomination(x = alg1, y = alg2, measure = measure)
+      res = checkDomination(x = alg1, y = alg2, measure = measure)
+      if (res == "")
+        next
+      if (res == "+") {
+        result[i, j] = "better"
+        result[j, i] = "worse"
+        next
+      }
+      if (res == "-") {
+        result[i, j] = "worse"
+        result[j, i] = "better"
+        next
+      }
+      if (res == "=")
+        result[i, j] = result[j, i] = "="
     }
   }
+  
   if (all(result == ""))
     return(NULL)
   
-  for (i in nr.of.algos:1) {
-    if ( all(result[i, ] == "") )
-      result = result[-i, ]
-    if ( all(result[, i] == "") )
-      result = result[, -i]
-  }
-  result = as.data.frame(result)
+  ## keep only rows and columns that have information about dominance
+  ind = apply(result, 1, function(x) any(x != ""))
+  result = as.data.frame(result[ind, ind])
   return(result)
 }
 
@@ -50,9 +59,9 @@ findDominatedAlgos = function(astask, measure){
 ## Helper function that checks whether algorithm x
 ## is superior / inferior to algorithm y.
 ## If there's a superior algorithm it returns
-## \code{character(2)} where the first element
-## is the name of the superior algorithm and the
-## second element of the inferior algorithm.
+## "+" (if x is superior to y), "=" (if both are equal),
+## "-" (if x is inferior to y) or "" if there
+## is no dominance between x and y.
 checkDomination = function(x, y, measure){
   x$solved = (as.character(x$runstatus) == "ok")
   y$solved = (as.character(y$runstatus) == "ok")
@@ -64,14 +73,14 @@ checkDomination = function(x, y, measure){
   if ( all(reduced.x$solved) ) {
     if ( all(reduced.x[reduced.y$solved, measure] <= reduced.y[reduced.y$solved, measure]) ) {
       if ( any(reduced.x[reduced.y$solved, measure] < reduced.y[reduced.y$solved, measure]) ) {
-        return("better")
+        return("+")
       }
       return("=")
     }
   }
   if ( all(reduced.y$solved) ) {
     if ( all(reduced.y[reduced.x$solved, measure] <= reduced.x[reduced.x$solved, measure]) ) {
-      return("worse")
+      return("-")
     }
   }
   return("")
