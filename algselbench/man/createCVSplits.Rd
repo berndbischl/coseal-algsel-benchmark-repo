@@ -1,0 +1,33 @@
+\name{createCVSplits}
+\alias{createCVSplits}
+\title{Create cross-validation splits for a task.}
+\usage{
+createCVSplits(astask, reps = 1L, folds = 10L, file = NULL)
+}
+\arguments{
+  \item{astask}{[\code{\link{ASTask}}]\cr Algorithm
+  selection task.}
+
+  \item{reps}{[\code{integer}]\cr CV repetitions.  Default
+  is 1.}
+
+  \item{folds}{[\code{integer}]\cr CV folds.  Default is
+  10.}
+
+  \item{file}{[\code{character}]\cr If not missing, where
+  to save the returned splits as an ARFF file via
+  \code{\link{write.arff}}.  Default is no saving.}
+}
+\value{
+[\code{data.frame}]. Splits as defined in the algorithm
+benchmark repository specification text.  Has columns:
+\dQuote{instance_id}, \dQuote{fold}, \dQuote{rep}.  Defines
+which instances go into the test set for each replication /
+fold during CV.  The training set are the remaining
+instances, in exactly the order as given by the data.frame
+for the current repetition.
+}
+\description{
+Create cross-validation splits for a task.
+}
+

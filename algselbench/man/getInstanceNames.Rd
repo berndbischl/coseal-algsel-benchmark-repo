@@ -1,6 +1,6 @@
 \name{getInstanceNames}
 \alias{getInstanceNames}
-\title{Returns inszance names of task.}
+\title{Returns instance names of task.}
 \usage{
 getInstanceNames(astask)
 }
@@ -12,6 +12,6 @@ getInstanceNames(astask)
 [\code{character}].
 }
 \description{
-Returns inszance names of task.
+Returns instance names of task.
 }
 

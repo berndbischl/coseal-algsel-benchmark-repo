@@ -1,7 +1,7 @@
 #' Checks the feature data set for duplicated instances.
 #'
 #' Potentially duplicated instances are detected by grouping all instances
-#' with equal feature vectors. 
+#' with equal feature vectors.
 #'
 #' @param astask [\code{\link{ASTask}}]\cr
 #'   Algorithm selection task.
@@ -13,8 +13,8 @@ checkDuplicatedInstances = function(astask) {
   #FIXME: how do we handle stochastic features / repetions? think again about it.
   data = astask$feature.values
   # only take first repetition, might be wrong...
-  data = subset(data, repetition == 1L)
-  # remove instance_id 
+  data = subset(data, data$repetition == 1L)
+  # remove instance_id
   iid =  data$instance_id
   data$instance_id = NULL
   # paste all feature values to get faster
