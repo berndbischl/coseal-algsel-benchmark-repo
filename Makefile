@@ -17,7 +17,7 @@ clean:
 
 render-task-pages: clean
 	echo "Creating task html pages"
-	${RSCRIPT} renderKnitRPages.R
+	cd server_scripts; ${RSCRIPT} renderKnitRPages.R; cd .. 
 
 push-task-pages: render-task-pages
 	rm -rf /tmp/html
