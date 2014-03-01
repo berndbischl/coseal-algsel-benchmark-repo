@@ -1,5 +1,6 @@
 library(algselbench)
 library(BBmisc)
+source("defs.R")
 
 data.dir =  file.path(coseal.svn.dir, "data")
 task.dirs = list.files(data.dir, full = TRUE)

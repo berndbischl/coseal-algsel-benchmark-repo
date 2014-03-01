@@ -8,16 +8,16 @@ BugReports: https://github.com/berndbischl/coseal-algsel-benchmark-repo/issues
 License: GPL-3
 Imports:
     BBmisc,
-    foreign,
     ggplot2,
     llama,
+    mlr,
     plyr,
     reshape2,
+    RWeka,
     stringr
 Suggests:
     BatchExperiments,
     corrplot,
-    mlr,
     testthat
 LazyData: yes
 ByteCompile: yes

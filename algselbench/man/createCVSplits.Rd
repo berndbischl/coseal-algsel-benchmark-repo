@@ -28,6 +28,13 @@ instances, in exactly the order as given by the data.frame
 for the current repetition.
 }
 \description{
-Create cross-validation splits for a task.
+Create a data.frame that defines cross-validation splits
+for a task,
+
+and potentially store it in an ARFF file.
+
+The \code{mlr} package is used to generate the splits, see
+\code{\link[mlr]{makeResampleDesc}} and
+\code{\link[mlr]{makeResampleInstance}}.
 }
 

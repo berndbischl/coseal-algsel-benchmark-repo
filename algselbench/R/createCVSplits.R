@@ -1,12 +1,12 @@
 #' @title Create cross-validation splits for a task.
 #'
-#' @describtion
+#' @description
 #' Create a data.frame that defines cross-validation splits for a task,
 #'
 #' and potentially store it in an ARFF file.
 #'
 #' The \code{mlr} package is used to generate the splits, see
-#' \code{\link{makeResampleDesc}} and \code{\link{makeResampleInstance}}.
+#' \code{\link[mlr]{makeResampleDesc}} and \code{\link[mlr]{makeResampleInstance}}.
 #'
 #' @param astask [\code{\link{ASTask}}]\cr
 #'   Algorithm selection task.
@@ -32,7 +32,6 @@ createCVSplits = function(astask, reps = 1L, folds = 10L, file = NULL) {
   checkArg(reps, "integer", len = 1L, na.ok = FALSE)
   folds = convertInteger(folds)
   checkArg(folds, "integer", len = 1L, na.ok = FALSE)
-  requirePackages("mlr", "createCVSplits")
   if (!missing(file))
     checkArg(file, "character", len = 1L, na.ok = FALSE)
 
@@ -54,6 +53,8 @@ createCVSplits = function(astask, reps = 1L, folds = 10L, file = NULL) {
   })
   splits = do.call(rbind, splits)
   splits$instance_id = instances[splits$instance_id]
+  splits$repetition = as.integer(splits$repetition)
+  splits$fold = as.integer(splits$fold)
   if (!missing(file))
     write.arff(splits, file)
   return(splits)

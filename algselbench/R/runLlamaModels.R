@@ -22,7 +22,7 @@ runLlamaModels = function(astasks, nfolds = 10L, stratify = TRUE, baselines, cla
   llama.cvs = lapply(llama.tasks, cvFolds, nfolds = nfolds, stratify = stratify)
 
   #FIXME: do we really need mlr just for impute
-  requirePackages(c("BatchExperiments", "mlr"), "runLlamaModels")
+  requirePackages("BatchExperiments", "runLlamaModels")
   # FIXME:
   unlink("run_llama_models-files", recursive = TRUE)
   reg = makeExperimentRegistry("run_llama_models", packages = c("llama", "RWeka"))

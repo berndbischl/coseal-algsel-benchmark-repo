@@ -33,7 +33,6 @@ convertToLlama = function(astask, measure) {
   #FIXME: maybe use a backup solver when some features are NA, instead of imputing
 
   # impute feature values
-  requirePackages("mlr", "convertToLlama:imputation")
   # FIXME: why cant we impute without target
   feats$.y = 1
   feats = impute(feats, target = ".y")$data
