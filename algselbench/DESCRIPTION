@@ -17,6 +17,7 @@ Imports:
 Suggests:
     BatchExperiments,
     corrplot,
+    mlr,
     testthat
 LazyData: yes
 ByteCompile: yes
