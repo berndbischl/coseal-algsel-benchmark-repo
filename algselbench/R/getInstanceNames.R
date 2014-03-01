@@ -1,4 +1,4 @@
-#' Returns inszance names of task.
+#' Returns instance names of task.
 #'
 #' @param astask [\code{\link{ASTask}}]\cr
 #'   Algorithm selection task.
