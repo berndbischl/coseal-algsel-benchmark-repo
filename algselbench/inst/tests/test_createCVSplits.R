@@ -12,7 +12,7 @@ test_that("createCVSplits", {
   expect_equal(range(s$repetition), c(1, 10))
   expect_equal(range(s$fold), c(1, 5))
   for (i in 1:10)
-    expect_true(setequal(subset(s, rep == i)$instance_id, getInstanceNames(testtask1)))
+    expect_true(setequal(subset(s, repetition == i)$instance_id, getInstanceNames(testtask1)))
 })
 
 
