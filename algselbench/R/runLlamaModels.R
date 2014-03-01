@@ -1,8 +1,10 @@
 #' @export
-runLlamaModels = function(astask, nfolds = 10L, stratify = TRUE, baselines, classifiers, regressors,
+runLlamaModels = function(astasks, nfolds = 10L, stratify = TRUE, baselines, classifiers, regressors,
   show.info = TRUE) {
 
-  checkArg(astasks, "list")
+  checkArg(astasks, c("list", "ASTask"))
+  if (!missing(astasks) && inherits(astasks, "ASTask"))
+    astasks = list(astasks)
   checkListElementClass(astasks, "ASTask")
   if (missing(baselines)) {
     baselines = c("vbs", "singleBest", "singleBestByPar", "singleBestBySuccesses")
