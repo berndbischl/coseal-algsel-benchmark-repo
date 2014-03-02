@@ -1,5 +1,5 @@
-context("lookForDuplicates")
+context("checkDuplicatedInstances")
 
-test_that("lookForDuplicates", {
-  # l = lookForDuplicates(testtask1)
+test_that("checkDuplicatedInstances", {
+   l = checkDuplicatedInstances(testtask1)
 })
