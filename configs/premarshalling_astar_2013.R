@@ -1,6 +1,6 @@
-algo.perf.boxplots.log = TRUE
-algo.perf.densities.log = TRUE
-algo.perf.scatter.log = TRUE
+algo.perf.boxplots.log = FALSE
+algo.perf.densities.log = FALSE
+algo.perf.scatter.log = FALSE
 
 
 
