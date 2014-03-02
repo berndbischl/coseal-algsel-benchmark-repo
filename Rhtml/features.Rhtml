@@ -27,13 +27,13 @@ The following measures were taken for the results of each feature:
 
 <!--begin.rcode, results = "asis"
   res = summarizeFeatureValues(astask)
-  print(xtable(res, digits = c(0, rep(4, 8), 0, 0, 2), display = c("s", rep("e", 8), "d", "d", "f")), "html")
+  print(xtable(res, digits = c(0, rep(4, 8), 0, 0), display = c("s", rep("e", 8), "d", "d")), "html")
 end.rcode-->
 
 <br>
 <h2> Summary of the runstatus per feature </h2>
 
-The following table summarizes the runstatus of each feature over all instances (in %).<br>
+The following table summarizes the runstatus of the feature steps over all instances (in %).<br>
 <br>
 
 <!--begin.rcode, results = "asis"
@@ -44,12 +44,23 @@ end.rcode-->
 <br>
 <h2> Duplicated Features </h2>
 
+In this section, you'll find all features that adopted only one value (and eventually NA's).<br>
+Please note, that only a maximum of 5 duplicates per block is shown.<br>
+<br>
+
 <!--begin.rcode, results = "asis"
   res = checkDuplicatedInstances(astask)
   if (length(res) > 0L) {
-    res = sapply(res, collapse, sep = ",")
-    res = data.frame(instances = res)
+    numbers = sapply(res, length)
+    res = sapply(seq_along(res), function(i) {
+      if (numbers[i] > 5)
+        res[[i]] = c(res[[i]][1:5], "...")
+      collapse(res[[i]], sep = ", ")
+    })
+    res = data.frame(block = seq_along(numbers), numbers = numbers, instances = res)
     print(xtable(res), include.rownames = FALSE, "html")
+  } else {
+    cat("There were no duplicated features.")
   }
 end.rcode-->
 
@@ -71,11 +82,11 @@ end.rcode-->
 
 <br>
 <!--begin.rcode, results = "asis"
-  cat("Feature Runstatus:\n")
+  cat("Runstatus of Feature Steps:\n")
   if(nrow(res$feature.runstatus) >= 1) {
     print(xtable(res$feature.runstatus), "html")
   } else {
-    cat("None of the features consisted of unique values (except for 'ok').")
+    cat("\nNone of the feature steps consisted of unique values (except for 'ok').")
   }
 end.rcode-->
 

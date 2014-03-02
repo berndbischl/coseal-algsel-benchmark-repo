@@ -25,11 +25,11 @@ findUselessInstances = function(astask, measure) {
   checked.algos = checked.algos[
     (checked.algos$uniqueValue != -Inf) | (checked.algos$NAs != -Inf), ]
   colnames(checked.algos) = c("unique Value(s)", "NA's")
-  checked.feat.vals = findUniqueValues(feat.vals)
+  checked.feat.vals = findUniqueValues(feat.vals)[-(1:2),]
   checked.feat.vals = checked.feat.vals[
     (checked.feat.vals$uniqueValue != -Inf) | (checked.feat.vals$NAs != -Inf), ]
   colnames(checked.feat.vals) = c("unique Value(s)", "NA's")
-  checked.feat.runs = findUniqueValues(feat.runs)
+  checked.feat.runs = findUniqueValues(feat.runs)[-(1:2),]
   checked.feat.runs = checked.feat.runs[
     (checked.feat.runs$uniqueValue != -Inf) | (checked.feat.runs$NAs != -Inf), ]
   checked.feat.runs = checked.feat.runs[
