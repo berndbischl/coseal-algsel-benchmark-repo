@@ -34,11 +34,13 @@ convertToLlama = function(astask, measure) {
 
   # impute feature values
   # FIXME: why cant we impute without target
-  feats$.y = 1
-  feats = impute(feats, target = ".y")$data
-  feats$.y =  NULL
-
-  #FIXME: add featuree costs at end to performance
+  # FIXME: check whether imputing the median is useful
+  cols = sapply(feats, function(x) any(is.na(x)))
+  cols = names(cols)[cols]
+  cols = setNames(lapply(cols, function(x) imputeMedian()), cols)
+  feats = impute(feats, target = character(0), cols = cols)$data
+  
+  #FIXME: add feature costs at end to performance
 
   ### handle perf values ###
 
@@ -56,10 +58,11 @@ convertToLlama = function(astask, measure) {
   successes = !is.na(perf2) & runstatus2 == "ok"
 
   # impute performance values
-  if (desc$performance_type[measure] == "runtime" & !is.na(desc$algorithm_cutoff_time))
+  if (desc$performance_type[measure] == "runtime" & !is.na(desc$algorithm_cutoff_time)) {
     impute.val = desc$algorithm_cutoff_time
-  else
+  } else {
     impute.val = 10 * max(perf2, na.rm = TRUE)
+  }
   perf2[!successes] = impute.val
   perf[, cols] = perf2
 
@@ -76,6 +79,7 @@ convertToLlama = function(astask, measure) {
   successes = as.data.frame(successes)
   successes = cbind(instance_id = perf$instance_id, successes)
   colnames(successes) = colnames(perf)
-  input(feats, perf, successes = successes, minimize = !astask$desc$maximize[[measure]])
+  input(feats, perf, successes = successes, 
+    minimize = !astask$desc$maximize[[which(astask$desc$performance_measures == measure)]])
 }
 

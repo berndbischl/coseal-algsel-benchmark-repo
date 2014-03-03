@@ -4,7 +4,7 @@ library(algselbench)
 # ast = parseASTask(dataset.dir)
 # lt = convertToLlama(ast)
 
-ds.dirs = list.files("../coseal/data/", full.names = TRUE)
+ds.dirs = list.files("../coseal/data", full.names = TRUE)
 astasks = lapply(ds.dirs, parseASTask)
 reg = runLlamaModels(astasks, nfolds=2L)
 submitJobs(reg)
