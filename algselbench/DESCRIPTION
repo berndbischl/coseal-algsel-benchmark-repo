@@ -22,3 +22,26 @@ Suggests:
 LazyData: yes
 ByteCompile: yes
 Version: 1.0
+Collate:
+    'calcAggrPerfValues.R'
+    'checkDuplicatedInstances.R'
+    'convertToLlama.R'
+    'createCVSplits.R'
+    'findDominatedAlgos.R'
+    'findUselessInstances.R'
+    'getAlgorithmNames.R'
+    'getFeatureNames.R'
+    'getInstanceNames.R'
+    'helpers_singleBest.R'
+    'parseASTask.R'
+    'parseDescription.R'
+    'plotAlgoCorMatrix.R'
+    'plotAlgoPerfBoxplots.R'
+    'plotAlgoPerfDensities.R'
+    'plotAlgoScattermatrix.R'
+    'runLlamaModels.R'
+    'summarizeAlgoRuns.R'
+    'summarizeAlgoRunstatus.R'
+    'summarizeFeatureRunStatus.R'
+    'summarizeFeatureValues.R'
+    'zzz.R'

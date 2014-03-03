@@ -7,8 +7,7 @@ source("defs.R")
 source("eda_config.R")
 
 data.dir =  file.path(coseal.svn.dir, "data")
-#FIXME: bbob broken due to INFs
-task.dirs = list.files(data.dir, full = TRUE)[-2]
+task.dirs = list.files(data.dir, full = TRUE)
 rhtml.dir = normalizePath("../Rhtml")
 html.dir = normalizePath("../html")
 config.dir = normalizePath("../configs")
