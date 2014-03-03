@@ -55,7 +55,7 @@ Please note, that only a maximum of 5 duplicates per block is shown.<br>
     res = sapply(seq_along(res), function(i) {
       if (numbers[i] > 5)
         res[[i]] = c(res[[i]][1:5], "...")
-      collapse(res[[i]], sep = ", ")
+      collapse(res[[i]], sep = " +++++++ ")
     })
     res = data.frame(block = seq_along(numbers), numbers = numbers, instances = res)
     print(xtable(res), include.rownames = FALSE, "html")
