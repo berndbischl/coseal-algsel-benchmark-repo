@@ -26,6 +26,7 @@ Collate:
     'calcAggrPerfValues.R'
     'checkDuplicatedInstances.R'
     'convertToLlama.R'
+    'convertToLlamaCVFolds.R'
     'createCVSplits.R'
     'findDominatedAlgos.R'
     'findUselessInstances.R'

@@ -1,6 +1,7 @@
 export(calcAggrPerfValues)
 export(checkDuplicatedInstances)
 export(convertToLlama)
+export(convertToLlamaCVFolds)
 export(createCVSplits)
 export(findDominatedAlgos)
 export(findUselessInstances)
