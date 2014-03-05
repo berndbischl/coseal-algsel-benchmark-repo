@@ -8,12 +8,20 @@
 
 <h2> Llama results </h2>
 
+All results were produced by using the cross-validation splits in the repository with
+<!--rinline getNumberOfCVFolds(astask) --> folds and <!--rinline getNumberOfCVReps(astask) --> repetitions.
+
+<p>
+
 <!--begin.rcode, results = "asis"
   d = subset(llama.results, prob == astask$desc$task_id)
   d$id = d$prob = d$repl = NULL
   print(xtable(d), "html", include.rownames = FALSE)
 end.rcode-->
 
+<p>
+
+The cost for using all features is: <!--rinline getSummedFeatureCosts(astask) -->
 
 </body>
 </html>
