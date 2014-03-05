@@ -5,5 +5,6 @@
 #' @return [\code{character}].
 #' @export
 getFeatureNames = function(astask) {
+  checkArg(astask, "ASTask")
   c(astask$desc$features_deterministic, astask$desc$features_stochastic)
 }
