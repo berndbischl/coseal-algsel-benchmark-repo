@@ -12,12 +12,15 @@ parseASTask = function(path) {
   feature.runstatus = read.arff(file.path(path, "feature_runstatus.arff"))
   feature.values = read.arff(file.path(path, "feature_values.arff"))
   algo.runs = read.arff(file.path(path, "algorithm_runs.arff"))
+  cv = read.arff(file.path(path, "cv.arff"))
 
   makeS3Obj("ASTask",
     desc = desc,
     feature.runstatus = feature.runstatus,
     feature.values = feature.values,
-    algo.runs = algo.runs
+    algo.runs = algo.runs,
+    cv = cv
+            
   )
 }
 
@@ -50,5 +53,8 @@ print.ASTask = function(x, ...) {
   printField1("Algo. runs (inst x algo x rep)", nrow(x$algo.runs))
   printField1("Nr. of feature groups", d$number_of_feature_groups)
   printField1("Nr. of groups", d$number_of_groups)
+  printField1("CV Nr. of instances", length(unique(x$cv$instance_id)))
+  printField1("CV repetitions", max(x$cv$repetition))
+  printField1("CV Nr. of pass", max(x$cv$fold))
 }
 
