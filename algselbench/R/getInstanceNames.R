@@ -5,6 +5,7 @@
 #' @return [\code{character}].
 #' @export
 getInstanceNames = function(astask) {
+  checkArg(astask, "ASTask")
   return(unique(astask$feature.values$instance_id))
 }
 
