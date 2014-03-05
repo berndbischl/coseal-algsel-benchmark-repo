@@ -20,6 +20,7 @@ parseASTask = function(path) {
     feature.values = feature.values,
     algo.runs = algo.runs,
     cv = cv         
+            
   )
 }
 
