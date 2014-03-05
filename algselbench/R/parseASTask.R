@@ -41,7 +41,7 @@ print.ASTask = function(x, ...) {
     else
       catf("%-30s (%3i)  : %s", name, k, clipString(collapse(val, sep = ", "), 60L))
   }
-  x$feature_groups = names(x$feature_groups)
+  x$feature_steps = names(x$feature_steps)
   printField1("Task id", d$task_id)
   printField1("Performance measures", d$performance_measures)
   printField1("Algorithm cutoff time", d$algorithm_cutoff_time)

@@ -36,7 +36,7 @@ parseDescription = function(path) {
   convertField("number_of_feature_steps", as.integer)
 
   desc$maximize = setNames(desc$maximize, desc$performance_measures)
-  desc$performance.type = setNames(desc$performance_type, desc$performance_measures)
+  desc$performance_type = setNames(desc$performance_type, desc$performance_measures)
 
   # handle groups
   ns = names(desc)
@@ -50,8 +50,7 @@ parseDescription = function(path) {
     feature.steps[[step.name]] = feats
   }
   desc[f.steps] = NULL
-  desc$feature.steps = feature.steps
-  names(desc) = str_replace_all(names(desc), "_", ".")
+  desc$feature_steps = feature.steps
   addClasses(desc, "ASTaskDesc")
 }
 
