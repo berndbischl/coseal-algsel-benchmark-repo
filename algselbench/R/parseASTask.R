@@ -11,12 +11,18 @@ parseASTask = function(path) {
   desc = parseDescription(path)
   feature.runstatus = read.arff(file.path(path, "feature_runstatus.arff"))
   feature.values = read.arff(file.path(path, "feature_values.arff"))
+  costfile = file.path(path, "feature_costs.arff")
+  feature.costs = if (file.exists(costfile))
+    read.arff(file.path(path, "feature_costs.arff"))
+  else
+    NULL
   algo.runs = read.arff(file.path(path, "algorithm_runs.arff"))
 
   makeS3Obj("ASTask",
     desc = desc,
     feature.runstatus = feature.runstatus,
     feature.values = feature.values,
+    feature.costs= feature.costs,
     algo.runs = algo.runs
   )
 }
@@ -44,11 +50,11 @@ print.ASTask = function(x, ...) {
   printField1("Features (deterministic)", d$features_deterministic)
   printField1("Features (stochastic)", d$features_stochastic)
   printField1("Feature repetitions", collapse(range(x$feature.values$repetition), sep = " - "))
+  printField1("Feature costs", ifelse(is.null(x$feature.costs), "No", "Yes"))
   printField1("Algo. (deterministic)", d$algorithms_deterministic)
   printField1("Algo. (stochastic)", d$algorithms_stochastic)
   printField1("Algo. repetitions", collapse(range(x$algo.runs$repetition), sep = " - "))
   printField1("Algo. runs (inst x algo x rep)", nrow(x$algo.runs))
-  printField1("Nr. of feature groups", d$number_of_feature_groups)
-  printField1("Nr. of groups", d$number_of_groups)
+  printField1("Nr. of feature steps", d$number_of_feature_steps)
 }
 

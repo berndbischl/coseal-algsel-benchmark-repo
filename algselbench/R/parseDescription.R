@@ -33,24 +33,24 @@ parseDescription = function(path) {
   convertField("features_stochastic")
   convertField("algorithms_deterministic")
   convertField("algorithms_stochastic")
-  convertField("number_of_groups", as.integer)
+  convertField("number_of_feature_steps", as.integer)
 
   desc$maximize = setNames(desc$maximize, desc$performance_measures)
   desc$performance_type = setNames(desc$performance_type, desc$performance_measures)
 
   # handle groups
   ns = names(desc)
-  f.groups = which(str_detect(ns, "^feature_group"))
-  feature.groups = list()
-  for (i in f.groups) {
+  f.steps = which(str_detect(ns, "^feature_step"))
+  feature.steps = list()
+  for (i in f.steps) {
     s1 = str_split(ns[[i]], " ")[[1]]
     s2 = str_split(desc[[i]], " ")[[1]]
-    group.name = str_trim(s1[2])
+    step.name = str_trim(s1[2])
     feats = str_trim(s2)
-    feature.groups[[group.name]] = feats
+    feature.steps[[step.name]] = feats
   }
-  desc[f.groups] = NULL
-  desc$feature_groups = feature.groups
+  desc[f.steps] = NULL
+  desc$feature_steps = feature.steps
   addClasses(desc, "ASTaskDesc")
 }
 
