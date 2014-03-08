@@ -15,8 +15,13 @@ All results were produced by using the cross-validation splits in the repository
 
 <!--begin.rcode, results = "asis"
   d = subset(llama.results, prob == astask$desc$task_id)
+  d$model = as.character(d$model)
+  for (alg in c("classif", "regr", "cluster")) {
+    y = strsplit(d$model[d$algo == alg], split = paste(alg, ".", sep = ""))
+    d$model[d$algo == alg] = sapply(y, function(x) x[2])
+  }
   d$id = d$prob = d$repl = NULL
-  print(xtable(d), "html", include.rownames = FALSE)
+  print(xtable(d, digits = c(0, 0, 0, 4, 4, 4)), "html", include.rownames = FALSE)
 end.rcode-->
 
 <p>

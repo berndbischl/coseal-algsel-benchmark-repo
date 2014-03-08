@@ -2,7 +2,8 @@
 \alias{createCVSplits}
 \title{Create cross-validation splits for a task.}
 \usage{
-createCVSplits(astask, reps = 1L, folds = 10L, file = NULL)
+  createCVSplits(astask, reps = 1L, folds = 10L,
+    file = NULL)
 }
 \arguments{
   \item{astask}{[\code{\link{ASTask}}]\cr Algorithm
@@ -19,22 +20,22 @@ createCVSplits(astask, reps = 1L, folds = 10L, file = NULL)
   \code{\link{write.arff}}.  Default is no saving.}
 }
 \value{
-[\code{data.frame}]. Splits as defined in the algorithm
-benchmark repository specification text.  Has columns:
-\dQuote{instance_id}, \dQuote{fold}, \dQuote{rep}.  Defines
-which instances go into the test set for each replication /
-fold during CV.  The training set are the remaining
-instances, in exactly the order as given by the data.frame
-for the current repetition.
+  [\code{data.frame}]. Splits as defined in the algorithm
+  benchmark repository specification text.  Has columns:
+  \dQuote{instance_id}, \dQuote{fold}, \dQuote{rep}.
+  Defines which instances go into the test set for each
+  replication / fold during CV.  The training set are the
+  remaining instances, in exactly the order as given by the
+  data.frame for the current repetition.
 }
 \description{
-Create a data.frame that defines cross-validation splits
-for a task,
+  Create a data.frame that defines cross-validation splits
+  for a task,
 
-and potentially store it in an ARFF file.
+  and potentially store it in an ARFF file.
 
-The \code{mlr} package is used to generate the splits, see
-\code{\link[mlr]{makeResampleDesc}} and
-\code{\link[mlr]{makeResampleInstance}}.
+  The \code{mlr} package is used to generate the splits,
+  see \code{\link[mlr]{makeResampleDesc}} and
+  \code{\link[mlr]{makeResampleInstance}}.
 }
 

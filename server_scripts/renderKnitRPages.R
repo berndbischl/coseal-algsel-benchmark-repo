@@ -15,7 +15,7 @@ config.dir = normalizePath("../configs")
 old.wd = getwd()
 
 if (interactive()) {
-  url.prefix =  sprintf("file://%s/html", old.wd)
+  url.prefix =  sprintf("file://%s", html.dir)
 } else {
   url.prefix = "http://berndbischl.github.io/coseal-algsel-benchmark-repo/task-pages"
 }
