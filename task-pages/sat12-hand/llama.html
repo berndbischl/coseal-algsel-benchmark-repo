@@ -70,20 +70,54 @@
 
 <h2> Llama results </h2>
 
+All results were produced by using the cross-validation splits in the repository with
+<code class="knitr inline">10</code> folds and <code class="knitr inline">5</code> repetitions.
+
+<p>
+
 <!-- html table generated in R 3.0.2 by xtable 1.7-1 package -->
-<!-- Mon Mar  3 15:57:52 2014 -->
+<!-- Sat Mar  8 14:07:37 2014 -->
 <TABLE border=1>
 <TR> <TH> algo </TH> <TH> model </TH> <TH> best </TH> <TH> mcp </TH> <TH> par </TH>  </TR>
-  <TR> <TD> baseline </TD> <TD> vbs </TD> <TD align="right"> 0.70 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 3662.24 </TD> </TR>
-  <TR> <TD> baseline </TD> <TD> singleBest </TD> <TD align="right"> 0.42 </TD> <TD align="right"> 337.63 </TD> <TD align="right"> 7083.58 </TD> </TR>
-  <TR> <TD> baseline </TD> <TD> singleBestByPar </TD> <TD align="right"> 0.48 </TD> <TD align="right"> 254.76 </TD> <TD align="right"> 6338.90 </TD> </TR>
-  <TR> <TD> baseline </TD> <TD> singleBestBySuccesses </TD> <TD align="right"> 0.48 </TD> <TD align="right"> 254.76 </TD> <TD align="right"> 6338.90 </TD> </TR>
-  <TR> <TD> classif </TD> <TD> J48 </TD> <TD align="right"> 0.48 </TD> <TD align="right"> 247.66 </TD> <TD align="right"> 6303.64 </TD> </TR>
-  <TR> <TD> regr </TD> <TD> LinearRegression </TD> <TD align="right"> 0.43 </TD> <TD align="right"> 304.78 </TD> <TD align="right"> 6938.08 </TD> </TR>
+  <TR> <TD> baseline </TD> <TD> vbs </TD> <TD align="right"> 0.7014 </TD> <TD align="right"> 0.0000 </TD> <TD align="right"> 3662.2410 </TD> </TR>
+  <TR> <TD> baseline </TD> <TD> singleBest </TD> <TD align="right"> 0.4146 </TD> <TD align="right"> 337.6323 </TD> <TD align="right"> 7097.6569 </TD> </TR>
+  <TR> <TD> baseline </TD> <TD> singleBestByPar </TD> <TD align="right"> 0.4772 </TD> <TD align="right"> 254.7567 </TD> <TD align="right"> 6338.9013 </TD> </TR>
+  <TR> <TD> baseline </TD> <TD> singleBestBySuccesses </TD> <TD align="right"> 0.4772 </TD> <TD align="right"> 254.7567 </TD> <TD align="right"> 6338.9013 </TD> </TR>
+  <TR> <TD> classif </TD> <TD> AdaBoost </TD> <TD align="right"> 0.4146 </TD> <TD align="right"> 337.6323 </TD> <TD align="right"> 7097.6569 </TD> </TR>
+  <TR> <TD> classif </TD> <TD> BayesNet </TD> <TD align="right"> 0.5945 </TD> <TD align="right"> 116.1125 </TD> <TD align="right"> 4932.9820 </TD> </TR>
+  <TR> <TD> classif </TD> <TD> IBk </TD> <TD align="right"> 0.6076 </TD> <TD align="right"> 102.7781 </TD> <TD align="right"> 4778.8392 </TD> </TR>
+  <TR> <TD> classif </TD> <TD> OneR </TD> <TD align="right"> 0.4876 </TD> <TD align="right"> 246.0992 </TD> <TD align="right"> 6217.5971 </TD> </TR>
+  <TR> <TD> classif </TD> <TD> MultilayerPerceptron </TD> <TD align="right"> 0.5893 </TD> <TD align="right"> 120.8688 </TD> <TD align="right"> 4994.0616 </TD> </TR>
+  <TR> <TD> classif </TD> <TD> RandomTree </TD> <TD align="right"> 0.5971 </TD> <TD align="right"> 114.7774 </TD> <TD align="right"> 4903.4852 </TD> </TR>
+  <TR> <TD> classif </TD> <TD> ctree </TD> <TD align="right"> 0.5319 </TD> <TD align="right"> 189.1160 </TD> <TD align="right"> 5681.8656 </TD> </TR>
+  <TR> <TD> classif </TD> <TD> fnn </TD> <TD align="right"> 0.5528 </TD> <TD align="right"> 166.2920 </TD> <TD align="right"> 5433.7482 </TD> </TR>
+  <TR> <TD> classif </TD> <TD> J48 </TD> <TD align="right"> 0.5997 </TD> <TD align="right"> 118.6105 </TD> <TD align="right"> 4879.1566 </TD> </TR>
+  <TR> <TD> classif </TD> <TD> JRip </TD> <TD align="right"> 0.5241 </TD> <TD align="right"> 203.4881 </TD> <TD align="right"> 5780.7226 </TD> </TR>
+  <TR> <TD> classif </TD> <TD> kknn </TD> <TD align="right"> 0.6089 </TD> <TD align="right"> 108.6411 </TD> <TD align="right"> 4770.6213 </TD> </TR>
+  <TR> <TD> classif </TD> <TD> ksvm </TD> <TD align="right"> 0.4198 </TD> <TD align="right"> 329.9882 </TD> <TD align="right"> 7033.6895 </TD> </TR>
+  <TR> <TD> classif </TD> <TD> naiveBayes </TD> <TD align="right"> 0.5020 </TD> <TD align="right"> 204.5252 </TD> <TD align="right"> 6021.1339 </TD> </TR>
+  <TR> <TD> classif </TD> <TD> nnet </TD> <TD align="right"> 0.4146 </TD> <TD align="right"> 337.6323 </TD> <TD align="right"> 7097.6569 </TD> </TR>
+  <TR> <TD> classif </TD> <TD> randomForest </TD> <TD align="right"> 0.6271 </TD> <TD align="right"> 78.6788 </TD> <TD align="right"> 4543.5274 </TD> </TR>
+  <TR> <TD> classif </TD> <TD> rpart </TD> <TD align="right"> 0.5306 </TD> <TD align="right"> 189.1649 </TD> <TD align="right"> 5695.9953 </TD> </TR>
+  <TR> <TD> classif </TD> <TD> svm </TD> <TD align="right"> 0.4302 </TD> <TD align="right"> 309.9444 </TD> <TD align="right"> 6900.9990 </TD> </TR>
+  <TR> <TD> regr </TD> <TD> REPTree </TD> <TD align="right"> 0.5593 </TD> <TD align="right"> 155.5421 </TD> <TD align="right"> 5352.5941 </TD> </TR>
+  <TR> <TD> regr </TD> <TD> earth </TD> <TD align="right"> 0.6102 </TD> <TD align="right"> 100.2546 </TD> <TD align="right"> 4748.1541 </TD> </TR>
+  <TR> <TD> regr </TD> <TD> ksvm </TD> <TD align="right"> 0.5241 </TD> <TD align="right"> 206.3070 </TD> <TD align="right"> 5783.5416 </TD> </TR>
+  <TR> <TD> regr </TD> <TD> lm </TD> <TD align="right"> 0.6245 </TD> <TD align="right"> 88.9593 </TD> <TD align="right"> 4581.9696 </TD> </TR>
+  <TR> <TD> regr </TD> <TD> nnet </TD> <TD align="right"> 0.4146 </TD> <TD align="right"> 337.6323 </TD> <TD align="right"> 7097.6569 </TD> </TR>
+  <TR> <TD> regr </TD> <TD> randomForest </TD> <TD align="right"> 0.6532 </TD> <TD align="right"> 58.1266 </TD> <TD align="right"> 4241.3585 </TD> </TR>
+  <TR> <TD> regr </TD> <TD> rpart </TD> <TD align="right"> 0.5580 </TD> <TD align="right"> 155.6311 </TD> <TD align="right"> 5366.7639 </TD> </TR>
+  <TR> <TD> cluster </TD> <TD> XMeans </TD> <TD align="right"> 0.4146 </TD> <TD align="right"> 337.6323 </TD> <TD align="right"> 7097.6569 </TD> </TR>
+  <TR> <TD> cluster </TD> <TD> EM </TD> <TD align="right"> 0.4159 </TD> <TD align="right"> 335.6002 </TD> <TD align="right"> 7081.5440 </TD> </TR>
+  <TR> <TD> cluster </TD> <TD> FarthestFirst </TD> <TD align="right"> 0.4146 </TD> <TD align="right"> 337.4708 </TD> <TD align="right"> 7097.4954 </TD> </TR>
+  <TR> <TD> cluster </TD> <TD> SimpleKMeans </TD> <TD align="right"> 0.4146 </TD> <TD align="right"> 337.6323 </TD> <TD align="right"> 7097.6569 </TD> </TR>
    </TABLE>
 
 
 
+<p>
+
+The cost for using all features is: <code class="knitr inline">NA</code>
 
 </body>
 </html>
