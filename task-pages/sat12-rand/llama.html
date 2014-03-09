@@ -72,30 +72,30 @@
 
 All results were produced by using the cross-validation splits in the repository with
 <code class="knitr inline">10</code> folds and <code class="knitr inline">5</code> repetitions.<br>
-The best values within a group -- i.e. baseline (except for vbs), classif, regr and cluster -- and performance measure -- i.e. best, mcp, par -- are colored orange. Furthermore, the three best values over all groups within a performance measure are highlighted red.
+The best values within a group (type) -- i.e., baseline (except for vbs), classif, regr and cluster -- and performance measure -- i.e., best, mcp, par -- are colored orange. Furthermore, the three best values over all groups within a performance measure are highlighted red.
 
 <p>
 
 The performance is measured in three different ways.
 <ul>
-<li>The number of successes records the number of problem instances in the data
-set what were solved within the timeout.</li>
-<li>The penalized average runtime (PAR) score measures the time required to
-run on all problem instances. If an instance was solved within the timeout, the
-actual runtime is taken. If a timeout occurred, the timeout value was multiplied
-by 10.</li>
-<li>The misclassification penalty measures the additional time required to run
+<li>The success ratio records the percentage of problem instances in the data
+set that were solved within the timeout.</li>
+<li>The misclassification penalty (mcp) measures the additional time required to run
 on all problems if sub-optimal algorithms were used. That is, if an algorithm is
 run on a problem instance that is not the best, a performance loss is incurred.
 The virtual best solver always has a misclassification penalty of zero.</li>
+<li>The penalized average runtime (PAR10) score measures the time required to
+run on all problem instances. If an instance was solved within the timeout, the
+actual runtime is taken. If a timeout occurred, the timeout value was multiplied
+by 10.</li>
 </ul>
 
 <p>
 
 <!-- html table generated in R 3.0.2 by xtable 1.7-1 package -->
-<!-- Sun Mar  9 15:52:34 2014 -->
+<!-- Sun Mar  9 22:58:36 2014 -->
 <TABLE border=1>
-<TR> <TH> algo </TH> <TH> model </TH> <TH> best </TH> <TH> mcp </TH> <TH> par </TH>  </TR>
+<TR> <TH> Type </TH> <TH> Model </TH> <TH> Success Ratio </TH> <TH> MCP </TH> <TH> PAR10 </TH>  </TR>
   <TR> <TD> baseline </TD> <TD> vbs </TD> <TD> 0.7636 </TD> <TD> 0.0000 </TD> <TD> 2872.8425 </TD> </TR>
   <TR> <TD> baseline </TD> <TD> singleBest </TD> <TD> 0.6725 </TD> <TD> 109.3215 </TD> <TD> 3965.4240 </TD> </TR>
   <TR> <TD> baseline </TD> <TD> singleBestByPar </TD> <TD> <b> <FONT COLOR = "#FF0000"> 0.7313 </FONT> </b> </TD> <TD> <b> <FONT COLOR = "#FE9A2E"> 49.3957 </FONT> </b> </TD> <TD> <b> <FONT COLOR = "#FE9A2E"> 3271.1369 </FONT> </b> </TD> </TR>
