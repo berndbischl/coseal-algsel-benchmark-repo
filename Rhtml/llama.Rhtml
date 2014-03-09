@@ -9,19 +9,15 @@
 <h2> Llama results </h2>
 
 All results were produced by using the cross-validation splits in the repository with
-<!--rinline getNumberOfCVFolds(astask) --> folds and <!--rinline getNumberOfCVReps(astask) --> repetitions.
+<!--rinline getNumberOfCVFolds(astask) --> folds and <!--rinline getNumberOfCVReps(astask) --> repetitions.<br>
+The best values within a group -- i.e. baseline (except for vbs), classif, regr and cluster -- and performance measure -- i.e. best, mcp, par -- are colored orange. Furthermore, the three best values over all groups within a performance measure are highlighted red.
 
 <p>
 
 <!--begin.rcode, results = "asis"
   d = subset(llama.results, prob == astask$desc$task_id)
-  d$model = as.character(d$model)
-  for (alg in c("classif", "regr", "cluster")) {
-    y = strsplit(d$model[d$algo == alg], split = paste(alg, ".", sep = ""))
-    d$model[d$algo == alg] = sapply(y, function(x) x[2])
-  }
-  d$id = d$prob = d$repl = NULL
-  print(xtable(d, digits = c(0, 0, 0, 4, 4, 4)), "html", include.rownames = FALSE)
+  d = refurbishLlamaResults(data = d, color.best = "#FF0000", color.best.in.group = "#FE9A2E")
+  print(xtable(d), "html", include.rownames = FALSE, sanitize.text.function = function(x) x)
 end.rcode-->
 
 <p>
