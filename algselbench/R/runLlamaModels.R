@@ -120,7 +120,7 @@ runLlamaModels = function(astasks, nfolds = 10L, stratify = TRUE, baselines,
         llama.cv = llama.cvs[[i]],
         makeRes = function(data, p) {
           list(
-            best = mean(unlist(successes(data, p))),
+            succ = mean(unlist(successes(data, p))),
             mcp = mean(unlist(misclassificationPenalties(data, p))),
             par = mean(unlist(parscores(data, p)))
           )

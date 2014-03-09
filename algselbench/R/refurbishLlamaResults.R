@@ -17,15 +17,15 @@ refurbishLlamaResults = function(data, color.best = "#FF0000", color.best.in.gro
   vbs.index = which(data$model == "vbs")
   index.per.algo = split(2:nrow(data), data$algo[-vbs.index])
   
-  index.best = which(data$best %in% sort(data$best[-vbs.index], decreasing = TRUE)[1:3])
-  index.best.in.group = sapply(index.per.algo, function(i) {
-    i[data$best[i] %in% max(data$best[i])]})
-  index.best.in.group = setdiff(unlist(index.best.in.group), index.best)
-  data$best = sprintf("%.4f", data$best)
-  if (length(index.best.in.group) > 0)
-    data$best[index.best.in.group] = data$best[index.best.in.group] = paste("<b> <FONT COLOR = \"", 
-      color.best.in.group, "\"> ", data$best[index.best.in.group], " </FONT> </b>", sep = "")
-  data$best[index.best] = paste("<b> <FONT COLOR = \"", color.best, "\"> ", data$best[index.best], 
+  index.succ = which(data$succ %in% sort(data$succ[-vbs.index], decreasing = TRUE)[1:3])
+  index.succ.in.group = sapply(index.per.algo, function(i) {
+    i[data$succ[i] %in% max(data$succ[i])]})
+  index.succ.in.group = setdiff(unlist(index.succ.in.group), index.succ)
+  data$succ = sprintf("%.4f", data$succ)
+  if (length(index.succ.in.group) > 0)
+    data$succ[index.succ.in.group] = data$succ[index.succ.in.group] = paste("<b> <FONT COLOR = \"", 
+      color.best.in.group, "\"> ", data$succ[index.succ.in.group], " </FONT> </b>", sep = "")
+  data$succ[index.succ] = paste("<b> <FONT COLOR = \"", color.best, "\"> ", data$succ[index.succ], 
     " </FONT> </b>", sep = "")
   
   index.mcp = which(data$mcp %in% sort(data$mcp[-vbs.index], decreasing = FALSE)[1:3])
