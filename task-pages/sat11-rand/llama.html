@@ -71,46 +71,47 @@
 <h2> Llama results </h2>
 
 All results were produced by using the cross-validation splits in the repository with
-<code class="knitr inline">10</code> folds and <code class="knitr inline">5</code> repetitions.
+<code class="knitr inline">10</code> folds and <code class="knitr inline">5</code> repetitions.<br>
+The best values within a group -- i.e. baseline (except for vbs), classif, regr and cluster -- and performance measure -- i.e. best, mcp, par -- are colored orange. Furthermore, the three best values over all groups within a performance measure are highlighted red.
 
 <p>
 
 <!-- html table generated in R 3.0.2 by xtable 1.7-1 package -->
-<!-- Sat Mar  8 14:07:16 2014 -->
+<!-- Sun Mar  9 02:28:15 2014 -->
 <TABLE border=1>
 <TR> <TH> algo </TH> <TH> model </TH> <TH> best </TH> <TH> mcp </TH> <TH> par </TH>  </TR>
-  <TR> <TD> baseline </TD> <TD> vbs </TD> <TD align="right"> 0.8200 </TD> <TD align="right"> 0.0000 </TD> <TD align="right"> 9186.4406 </TD> </TR>
-  <TR> <TD> baseline </TD> <TD> singleBest </TD> <TD align="right"> 0.6033 </TD> <TD align="right"> 979.9154 </TD> <TD align="right"> 19916.3559 </TD> </TR>
-  <TR> <TD> baseline </TD> <TD> singleBestByPar </TD> <TD align="right"> 0.6033 </TD> <TD align="right"> 979.9154 </TD> <TD align="right"> 19916.3559 </TD> </TR>
-  <TR> <TD> baseline </TD> <TD> singleBestBySuccesses </TD> <TD align="right"> 0.6033 </TD> <TD align="right"> 979.9154 </TD> <TD align="right"> 19916.3559 </TD> </TR>
-  <TR> <TD> classif </TD> <TD> AdaBoost </TD> <TD align="right"> 0.7333 </TD> <TD align="right"> 444.7872 </TD> <TD align="right"> 13531.2278 </TD> </TR>
-  <TR> <TD> classif </TD> <TD> BayesNet </TD> <TD align="right"> 0.8017 </TD> <TD align="right"> 121.8176 </TD> <TD align="right"> 10133.2581 </TD> </TR>
-  <TR> <TD> classif </TD> <TD> IBk </TD> <TD align="right"> 0.7250 </TD> <TD align="right"> 442.0662 </TD> <TD align="right"> 13903.5068 </TD> </TR>
-  <TR> <TD> classif </TD> <TD> OneR </TD> <TD align="right"> 0.7700 </TD> <TD align="right"> 260.8374 </TD> <TD align="right"> 11697.2779 </TD> </TR>
-  <TR> <TD> classif </TD> <TD> MultilayerPerceptron </TD> <TD align="right"> 0.7717 </TD> <TD align="right"> 259.8057 </TD> <TD align="right"> 11621.2463 </TD> </TR>
-  <TR> <TD> classif </TD> <TD> RandomTree </TD> <TD align="right"> 0.7133 </TD> <TD align="right"> 486.4646 </TD> <TD align="right"> 14472.9051 </TD> </TR>
-  <TR> <TD> classif </TD> <TD> ctree </TD> <TD align="right"> 0.7867 </TD> <TD align="right"> 151.8767 </TD> <TD align="right"> 10838.3173 </TD> </TR>
-  <TR> <TD> classif </TD> <TD> fnn </TD> <TD align="right"> 0.7150 </TD> <TD align="right"> 477.5735 </TD> <TD align="right"> 14389.0141 </TD> </TR>
-  <TR> <TD> classif </TD> <TD> J48 </TD> <TD align="right"> 0.7367 </TD> <TD align="right"> 386.1692 </TD> <TD align="right"> 13322.6098 </TD> </TR>
-  <TR> <TD> classif </TD> <TD> JRip </TD> <TD align="right"> 0.7383 </TD> <TD align="right"> 356.3138 </TD> <TD align="right"> 13217.7543 </TD> </TR>
-  <TR> <TD> classif </TD> <TD> kknn </TD> <TD align="right"> 0.7467 </TD> <TD align="right"> 338.1427 </TD> <TD align="right"> 12824.5833 </TD> </TR>
-  <TR> <TD> classif </TD> <TD> ksvm </TD> <TD align="right"> 0.7900 </TD> <TD align="right"> 123.3120 </TD> <TD align="right"> 10659.7525 </TD> </TR>
-  <TR> <TD> classif </TD> <TD> naiveBayes </TD> <TD align="right"> 0.7383 </TD> <TD align="right"> 497.8712 </TD> <TD align="right"> 13359.3117 </TD> </TR>
-  <TR> <TD> classif </TD> <TD> nnet </TD> <TD align="right"> 0.6633 </TD> <TD align="right"> 811.8751 </TD> <TD align="right"> 17048.3156 </TD> </TR>
-  <TR> <TD> classif </TD> <TD> randomForest </TD> <TD align="right"> 0.7950 </TD> <TD align="right"> 135.2237 </TD> <TD align="right"> 10446.6643 </TD> </TR>
-  <TR> <TD> classif </TD> <TD> rpart </TD> <TD align="right"> 0.8033 </TD> <TD align="right"> 104.5765 </TD> <TD align="right"> 10041.0171 </TD> </TR>
-  <TR> <TD> classif </TD> <TD> svm </TD> <TD align="right"> 0.5917 </TD> <TD align="right"> 1106.9083 </TD> <TD align="right"> 20568.3489 </TD> </TR>
-  <TR> <TD> regr </TD> <TD> REPTree </TD> <TD align="right"> 0.7867 </TD> <TD align="right"> 126.4397 </TD> <TD align="right"> 10812.8802 </TD> </TR>
-  <TR> <TD> regr </TD> <TD> earth </TD> <TD align="right"> 0.7700 </TD> <TD align="right"> 242.2977 </TD> <TD align="right"> 11678.7382 </TD> </TR>
-  <TR> <TD> regr </TD> <TD> ksvm </TD> <TD align="right"> 0.6033 </TD> <TD align="right"> 979.9154 </TD> <TD align="right"> 19916.3559 </TD> </TR>
-  <TR> <TD> regr </TD> <TD> lm </TD> <TD align="right"> 0.7750 </TD> <TD align="right"> 199.5829 </TD> <TD align="right"> 11411.0235 </TD> </TR>
-  <TR> <TD> regr </TD> <TD> nnet </TD> <TD align="right"> 0.5467 </TD> <TD align="right"> 1328.1222 </TD> <TD align="right"> 22814.5628 </TD> </TR>
-  <TR> <TD> regr </TD> <TD> randomForest </TD> <TD align="right"> 0.7933 </TD> <TD align="right"> 96.2962 </TD> <TD align="right"> 10482.7367 </TD> </TR>
-  <TR> <TD> regr </TD> <TD> rpart </TD> <TD align="right"> 0.7450 </TD> <TD align="right"> 349.9254 </TD> <TD align="right"> 12911.3660 </TD> </TR>
-  <TR> <TD> cluster </TD> <TD> XMeans </TD> <TD align="right"> 0.6300 </TD> <TD align="right"> 943.5252 </TD> <TD align="right"> 18679.9658 </TD> </TR>
-  <TR> <TD> cluster </TD> <TD> EM </TD> <TD align="right"> 0.7550 </TD> <TD align="right"> 305.0173 </TD> <TD align="right"> 12416.4578 </TD> </TR>
-  <TR> <TD> cluster </TD> <TD> FarthestFirst </TD> <TD align="right"> 0.5683 </TD> <TD align="right"> 1142.1694 </TD> <TD align="right"> 21653.6100 </TD> </TR>
-  <TR> <TD> cluster </TD> <TD> SimpleKMeans </TD> <TD align="right"> 0.5633 </TD> <TD align="right"> 1161.7492 </TD> <TD align="right"> 21898.1898 </TD> </TR>
+  <TR> <TD> baseline </TD> <TD> vbs </TD> <TD> 0.8200 </TD> <TD> 0.0000 </TD> <TD> 9186.4406 </TD> </TR>
+  <TR> <TD> baseline </TD> <TD> singleBest </TD> <TD> <b> <FONT COLOR = "#FE9A2E"> 0.6033 </FONT> </b> </TD> <TD> <b> <FONT COLOR = "#FE9A2E"> 979.9154 </FONT> </b> </TD> <TD> <b> <FONT COLOR = "#FE9A2E"> 19916.3559 </FONT> </b> </TD> </TR>
+  <TR> <TD> baseline </TD> <TD> singleBestByPar </TD> <TD> <b> <FONT COLOR = "#FE9A2E"> 0.6033 </FONT> </b> </TD> <TD> <b> <FONT COLOR = "#FE9A2E"> 979.9154 </FONT> </b> </TD> <TD> <b> <FONT COLOR = "#FE9A2E"> 19916.3559 </FONT> </b> </TD> </TR>
+  <TR> <TD> baseline </TD> <TD> singleBestBySuccesses </TD> <TD> <b> <FONT COLOR = "#FE9A2E"> 0.6033 </FONT> </b> </TD> <TD> <b> <FONT COLOR = "#FE9A2E"> 979.9154 </FONT> </b> </TD> <TD> <b> <FONT COLOR = "#FE9A2E"> 19916.3559 </FONT> </b> </TD> </TR>
+  <TR> <TD> classif </TD> <TD> AdaBoost </TD> <TD> 0.7333 </TD> <TD> 444.7872 </TD> <TD> 13531.2278 </TD> </TR>
+  <TR> <TD> classif </TD> <TD> BayesNet </TD> <TD> <b> <FONT COLOR = "#FF0000"> 0.8017 </FONT> </b> </TD> <TD> <b> <FONT COLOR = "#FF0000"> 121.8176 </FONT> </b> </TD> <TD> <b> <FONT COLOR = "#FF0000"> 10133.2581 </FONT> </b> </TD> </TR>
+  <TR> <TD> classif </TD> <TD> IBk </TD> <TD> 0.7250 </TD> <TD> 442.0662 </TD> <TD> 13903.5068 </TD> </TR>
+  <TR> <TD> classif </TD> <TD> OneR </TD> <TD> 0.7700 </TD> <TD> 260.8374 </TD> <TD> 11697.2779 </TD> </TR>
+  <TR> <TD> classif </TD> <TD> MultilayerPerceptron </TD> <TD> 0.7717 </TD> <TD> 259.8057 </TD> <TD> 11621.2463 </TD> </TR>
+  <TR> <TD> classif </TD> <TD> RandomTree </TD> <TD> 0.7133 </TD> <TD> 486.4646 </TD> <TD> 14472.9051 </TD> </TR>
+  <TR> <TD> classif </TD> <TD> ctree </TD> <TD> 0.7867 </TD> <TD> 151.8767 </TD> <TD> 10838.3173 </TD> </TR>
+  <TR> <TD> classif </TD> <TD> fnn </TD> <TD> 0.7150 </TD> <TD> 477.5735 </TD> <TD> 14389.0141 </TD> </TR>
+  <TR> <TD> classif </TD> <TD> J48 </TD> <TD> 0.7367 </TD> <TD> 386.1692 </TD> <TD> 13322.6098 </TD> </TR>
+  <TR> <TD> classif </TD> <TD> JRip </TD> <TD> 0.7383 </TD> <TD> 356.3138 </TD> <TD> 13217.7543 </TD> </TR>
+  <TR> <TD> classif </TD> <TD> kknn </TD> <TD> 0.7467 </TD> <TD> 338.1427 </TD> <TD> 12824.5833 </TD> </TR>
+  <TR> <TD> classif </TD> <TD> ksvm </TD> <TD> 0.7900 </TD> <TD> 123.3120 </TD> <TD> 10659.7525 </TD> </TR>
+  <TR> <TD> classif </TD> <TD> naiveBayes </TD> <TD> 0.7383 </TD> <TD> 497.8712 </TD> <TD> 13359.3117 </TD> </TR>
+  <TR> <TD> classif </TD> <TD> nnet </TD> <TD> 0.6633 </TD> <TD> 811.8751 </TD> <TD> 17048.3156 </TD> </TR>
+  <TR> <TD> classif </TD> <TD> randomForest </TD> <TD> <b> <FONT COLOR = "#FF0000"> 0.7950 </FONT> </b> </TD> <TD> 135.2237 </TD> <TD> <b> <FONT COLOR = "#FF0000"> 10446.6643 </FONT> </b> </TD> </TR>
+  <TR> <TD> classif </TD> <TD> rpart </TD> <TD> <b> <FONT COLOR = "#FF0000"> 0.8033 </FONT> </b> </TD> <TD> <b> <FONT COLOR = "#FF0000"> 104.5765 </FONT> </b> </TD> <TD> <b> <FONT COLOR = "#FF0000"> 10041.0171 </FONT> </b> </TD> </TR>
+  <TR> <TD> classif </TD> <TD> svm </TD> <TD> 0.5917 </TD> <TD> 1106.9083 </TD> <TD> 20568.3489 </TD> </TR>
+  <TR> <TD> regr </TD> <TD> REPTree </TD> <TD> 0.7867 </TD> <TD> 126.4397 </TD> <TD> 10812.8802 </TD> </TR>
+  <TR> <TD> regr </TD> <TD> earth </TD> <TD> 0.7700 </TD> <TD> 242.2977 </TD> <TD> 11678.7382 </TD> </TR>
+  <TR> <TD> regr </TD> <TD> ksvm </TD> <TD> 0.6033 </TD> <TD> 979.9154 </TD> <TD> 19916.3559 </TD> </TR>
+  <TR> <TD> regr </TD> <TD> lm </TD> <TD> 0.7750 </TD> <TD> 199.5829 </TD> <TD> 11411.0235 </TD> </TR>
+  <TR> <TD> regr </TD> <TD> nnet </TD> <TD> 0.5467 </TD> <TD> 1328.1222 </TD> <TD> 22814.5628 </TD> </TR>
+  <TR> <TD> regr </TD> <TD> randomForest </TD> <TD> <b> <FONT COLOR = "#FE9A2E"> 0.7933 </FONT> </b> </TD> <TD> <b> <FONT COLOR = "#FF0000"> 96.2962 </FONT> </b> </TD> <TD> <b> <FONT COLOR = "#FE9A2E"> 10482.7367 </FONT> </b> </TD> </TR>
+  <TR> <TD> regr </TD> <TD> rpart </TD> <TD> 0.7450 </TD> <TD> 349.9254 </TD> <TD> 12911.3660 </TD> </TR>
+  <TR> <TD> cluster </TD> <TD> XMeans </TD> <TD> 0.6300 </TD> <TD> 943.5252 </TD> <TD> 18679.9658 </TD> </TR>
+  <TR> <TD> cluster </TD> <TD> EM </TD> <TD> <b> <FONT COLOR = "#FE9A2E"> 0.7550 </FONT> </b> </TD> <TD> <b> <FONT COLOR = "#FE9A2E"> 305.0173 </FONT> </b> </TD> <TD> <b> <FONT COLOR = "#FE9A2E"> 12416.4578 </FONT> </b> </TD> </TR>
+  <TR> <TD> cluster </TD> <TD> FarthestFirst </TD> <TD> 0.5683 </TD> <TD> 1142.1694 </TD> <TD> 21653.6100 </TD> </TR>
+  <TR> <TD> cluster </TD> <TD> SimpleKMeans </TD> <TD> 0.5633 </TD> <TD> 1161.7492 </TD> <TD> 21898.1898 </TD> </TR>
    </TABLE>
 
 
