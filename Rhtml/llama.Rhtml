@@ -1,16 +1,32 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Some llama benchmark results</title>
+<title>Some LLAMA benchmark results</title>
 </head>
 <body>
 
 
-<h2> Llama results </h2>
+<h2> LLAMA results </h2>
 
 All results were produced by using the cross-validation splits in the repository with
 <!--rinline getNumberOfCVFolds(astask) --> folds and <!--rinline getNumberOfCVReps(astask) --> repetitions.<br>
 The best values within a group -- i.e. baseline (except for vbs), classif, regr and cluster -- and performance measure -- i.e. best, mcp, par -- are colored orange. Furthermore, the three best values over all groups within a performance measure are highlighted red.
+
+<p>
+
+The performance is measured in three different ways.
+<ul>
+<li>The number of successes records the number of problem instances in the data
+set what were solved within the timeout.</li>
+<li>The penalized average runtime (PAR) score measures the time required to
+run on all problem instances. If an instance was solved within the timeout, the
+actual runtime is taken. If a timeout occurred, the timeout value was multiplied
+by 10.</li>
+<li>The misclassification penalty measures the additional time required to run
+on all problems if sub-optimal algorithms were used. That is, if an algorithm is
+run on a problem instance that is not the best, a performance loss is incurred.
+The virtual best solver always has a misclassification penalty of zero.</li>
+</ul>
 
 <p>
 
