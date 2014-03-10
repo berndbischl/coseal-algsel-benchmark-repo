@@ -2,7 +2,7 @@
 \alias{convertToLlama}
 \title{Convert an ASTask task object to a llama data object.}
 \usage{
-  convertToLlama(astask, measure)
+convertToLlama(astask, measure)
 }
 \arguments{
   \item{astask}{[\code{\link{ASTask}}]\cr Algorithm
@@ -12,10 +12,10 @@
   for modelling.  Default is first measure in task.}
 }
 \value{
-  Result of calling \code{\link[llama]{input}}.
+Result of calling \code{\link[llama]{input}}.
 }
 \description{
-  For stochastic algorithms and features, mean values are
-  computed across repetitions.
+For stochastic algorithms and features, mean values are
+computed across repetitions.
 }
 

@@ -2,7 +2,7 @@
 \alias{convertToLlamaCVFolds}
 \title{Convert an ASTask task object to a llama data object with cross-validation folds.}
 \usage{
-  convertToLlamaCVFolds(astask, folds, measure)
+convertToLlamaCVFolds(astask, folds, measure)
 }
 \arguments{
   \item{astask}{[\code{\link{ASTask}}]\cr Algorithm
@@ -16,11 +16,11 @@
   for modelling.  Default is first measure in task.}
 }
 \value{
-  Result of calling \code{\link[llama]{input}} with data
-  partitioned into folds.
+Result of calling \code{\link[llama]{input}} with data
+partitioned into folds.
 }
 \description{
-  For stochastic algorithms and features, mean values are
-  computed across repetitions.
+For stochastic algorithms and features, mean values are
+computed across repetitions.
 }
 
