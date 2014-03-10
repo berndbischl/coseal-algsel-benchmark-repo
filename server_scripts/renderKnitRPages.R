@@ -68,7 +68,7 @@ try({
         file.path(rhtml.dir, paste(file, "Rhtml", sep = ".")),
         output = file.path(out.dir, paste(out, "html", sep = ".")),
         env = ee, quiet = TRUE
-        )
+      )
     }
 
     # create all subpages and copy readme
