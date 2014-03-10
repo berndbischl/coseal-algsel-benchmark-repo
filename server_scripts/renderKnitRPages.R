@@ -79,6 +79,7 @@ try({
     knitIt("features")
     knitIt("llama")
     knitIt("config")
+    knitIt("validator")
   }
 
   knit(file.path(rhtml.dir, "index.Rhtml"), output = file.path(html.dir, "index.html"),
