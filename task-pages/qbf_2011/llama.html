@@ -78,14 +78,14 @@ The best values within a group (type) -- i.e., baseline (except for vbs), classi
 
 The performance is measured in three different ways.
 <ul>
-<li>The success ratio records the percentage of problem instances in the data
+<li> <b>Percentage solved</b> records the percentage of problem instances in the data
 set that were solved within the timeout.</li>
-<li>The misclassification penalty (mcp) measures the additional time required to run
+<li>The <b>misclassification penalty (mcp)</b> measures the additional time required to run
 on all problems if sub-optimal algorithms were used. That is, if an algorithm is
 run on a problem instance that is not the best, a performance loss is incurred.
 There are no additional penalties or factors for timeouts. The virtual best
 solver always has a misclassification penalty of zero.</li>
-<li>The penalized average runtime (PAR10) score measures the time required to
+<li>The <b>penalized average runtime score (PAR10)</b> measures the time required to
 run on all problem instances. If an instance was solved within the timeout, the
 actual runtime is taken. If a timeout occurred, the timeout value was multiplied
 by 10.</li>
@@ -94,9 +94,9 @@ by 10.</li>
 <p>
 
 <!-- html table generated in R 3.0.2 by xtable 1.7-1 package -->
-<!-- Mon Mar 10 11:18:44 2014 -->
+<!-- Mon Mar 10 11:33:03 2014 -->
 <TABLE border=1>
-<TR> <TH> Type </TH> <TH> Model </TH> <TH> Success Ratio </TH> <TH> MCP </TH> <TH> PAR10 </TH>  </TR>
+<TR> <TH> Type </TH> <TH> Model </TH> <TH> Percentage Solved </TH> <TH> MCP </TH> <TH> PAR10 </TH>  </TR>
   <TR> <TD> baseline </TD> <TD> vbs </TD> <TD> 0.7705 </TD> <TD> 0.0000 </TD> <TD> 8337.0993 </TD> </TR>
   <TR> <TD> baseline </TD> <TD> singleBest </TD> <TD> 0.3962 </TD> <TD> 1420.9039 </TD> <TD> 21884.3190 </TD> </TR>
   <TR> <TD> baseline </TD> <TD> singleBestByPar </TD> <TD> <b> <FONT COLOR = "#FE9A2E"> 0.5768 </FONT> </b> </TD> <TD> <b> <FONT COLOR = "#FE9A2E"> 716.7556 </FONT> </b> </TD> <TD> <b> <FONT COLOR = "#FE9A2E"> 15330.1708 </FONT> </b> </TD> </TR>
