@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style type="text/css">
+.knitr.inline {
+  background-color: #f7f7f7;
+  border:solid 1px #B0B0B0;
+}
+.error {
+	font-weight: bold;
+	color: #FF0000;
+},
+.warning {
+	font-weight: bold;
+}
+.message {
+	font-style: italic;
+}
+.source, .output, .warning, .error, .message {
+	padding: 0em 1em;
+  border:solid 1px #F7F7F7;
+}
+.source {
+  background-color: #f5f5f5;
+}
+.rimage.left {
+  text-align: left;
+}
+.rimage.right {
+  text-align: right;
+}
+.rimage.center {
+  text-align: center;
+}
+.hl.num {
+  color: #AF0F91;
+}
+.hl.str {
+  color: #317ECC;
+}
+.hl.com {
+  color: #AD95AF;
+  font-style: italic;
+}
+.hl.opt {
+  color: #000000;
+}
+.hl.std {
+  color: #585858;
+}
+.hl.kwa {
+  color: #295F94;
+  font-weight: bold;
+}
+.hl.kwb {
+  color: #B05A65;
+}
+.hl.kwc {
+  color: #55aa55;
+}
+.hl.kwd {
+  color: #BC5A65;
+  font-weight: bold;
+}
+</style>
+<title>Some LLAMA benchmark results</title>
+</head>
+<body>
+
+
+<h2> LLAMA results </h2>
+
+All results were produced by using the cross-validation splits in the repository with
+<code class="knitr inline">10</code> folds and <code class="knitr inline">5</code> repetitions.<br>
+The best values within a group (type) -- i.e., baseline (except for vbs), classif, regr and cluster -- and performance measure -- i.e., best, mcp, par -- are colored orange. Furthermore, the three best values over all groups within a performance measure are highlighted red.
+
+<p>
+
+The performance is measured in three different ways.
+<ul>
+<li>The success ratio records the percentage of problem instances in the data
+set that were solved within the timeout.</li>
+<li>The misclassification penalty (mcp) measures the additional time required to run
+on all problems if sub-optimal algorithms were used. That is, if an algorithm is
+run on a problem instance that is not the best, a performance loss is incurred.
+There are no additional penalties or factors for timeouts. The virtual best
+solver always has a misclassification penalty of zero.</li>
+<li>The penalized average runtime (PAR10) score measures the time required to
+run on all problem instances. If an instance was solved within the timeout, the
+actual runtime is taken. If a timeout occurred, the timeout value was multiplied
+by 10.</li>
+</ul>
+
+<p>
+
+<!-- html table generated in R 3.0.2 by xtable 1.7-1 package -->
+<!-- Mon Mar 10 11:19:14 2014 -->
+<TABLE border=1>
+<TR> <TH> Type </TH> <TH> Model </TH> <TH> Success Ratio </TH> <TH> MCP </TH> <TH> PAR10 </TH>  </TR>
+  <TR> <TD> baseline </TD> <TD> vbs </TD> <TD> 0.7014 </TD> <TD> 0.0000 </TD> <TD> 3662.2410 </TD> </TR>
+  <TR> <TD> baseline </TD> <TD> singleBest </TD> <TD> 0.4146 </TD> <TD> 337.6323 </TD> <TD> 7097.6569 </TD> </TR>
+  <TR> <TD> baseline </TD> <TD> singleBestByPar </TD> <TD> <b> <FONT COLOR = "#FE9A2E"> 0.4772 </FONT> </b> </TD> <TD> <b> <FONT COLOR = "#FE9A2E"> 254.7567 </FONT> </b> </TD> <TD> <b> <FONT COLOR = "#FE9A2E"> 6338.9013 </FONT> </b> </TD> </TR>
+  <TR> <TD> baseline </TD> <TD> singleBestBySuccesses </TD> <TD> <b> <FONT COLOR = "#FE9A2E"> 0.4772 </FONT> </b> </TD> <TD> <b> <FONT COLOR = "#FE9A2E"> 254.7567 </FONT> </b> </TD> <TD> <b> <FONT COLOR = "#FE9A2E"> 6338.9013 </FONT> </b> </TD> </TR>
+  <TR> <TD> classif </TD> <TD> AdaBoost </TD> <TD> 0.4146 </TD> <TD> 337.6323 </TD> <TD> 7097.6569 </TD> </TR>
+  <TR> <TD> classif </TD> <TD> BayesNet </TD> <TD> 0.5945 </TD> <TD> 116.1125 </TD> <TD> 4932.9820 </TD> </TR>
+  <TR> <TD> classif </TD> <TD> IBk </TD> <TD> 0.6076 </TD> <TD> 102.7781 </TD> <TD> 4778.8392 </TD> </TR>
+  <TR> <TD> classif </TD> <TD> OneR </TD> <TD> 0.4876 </TD> <TD> 246.0992 </TD> <TD> 6217.5971 </TD> </TR>
+  <TR> <TD> classif </TD> <TD> MultilayerPerceptron </TD> <TD> 0.5893 </TD> <TD> 120.8688 </TD> <TD> 4994.0616 </TD> </TR>
+  <TR> <TD> classif </TD> <TD> RandomTree </TD> <TD> 0.5971 </TD> <TD> 114.7774 </TD> <TD> 4903.4852 </TD> </TR>
+  <TR> <TD> classif </TD> <TD> ctree </TD> <TD> 0.5319 </TD> <TD> 189.1160 </TD> <TD> 5681.8656 </TD> </TR>
+  <TR> <TD> classif </TD> <TD> fnn </TD> <TD> 0.5528 </TD> <TD> 166.2920 </TD> <TD> 5433.7482 </TD> </TR>
+  <TR> <TD> classif </TD> <TD> J48 </TD> <TD> 0.5997 </TD> <TD> 118.6105 </TD> <TD> 4879.1566 </TD> </TR>
+  <TR> <TD> classif </TD> <TD> JRip </TD> <TD> 0.5241 </TD> <TD> 203.4881 </TD> <TD> 5780.7226 </TD> </TR>
+  <TR> <TD> classif </TD> <TD> kknn </TD> <TD> 0.6089 </TD> <TD> 108.6411 </TD> <TD> 4770.6213 </TD> </TR>
+  <TR> <TD> classif </TD> <TD> ksvm </TD> <TD> 0.4198 </TD> <TD> 329.9882 </TD> <TD> 7033.6895 </TD> </TR>
+  <TR> <TD> classif </TD> <TD> naiveBayes </TD> <TD> 0.5020 </TD> <TD> 204.5252 </TD> <TD> 6021.1339 </TD> </TR>
+  <TR> <TD> classif </TD> <TD> nnet </TD> <TD> 0.4146 </TD> <TD> 337.6323 </TD> <TD> 7097.6569 </TD> </TR>
+  <TR> <TD> classif </TD> <TD> randomForest </TD> <TD> <b> <FONT COLOR = "#FF0000"> 0.6271 </FONT> </b> </TD> <TD> <b> <FONT COLOR = "#FF0000"> 78.6788 </FONT> </b> </TD> <TD> <b> <FONT COLOR = "#FF0000"> 4543.5274 </FONT> </b> </TD> </TR>
+  <TR> <TD> classif </TD> <TD> rpart </TD> <TD> 0.5306 </TD> <TD> 189.1649 </TD> <TD> 5695.9953 </TD> </TR>
+  <TR> <TD> classif </TD> <TD> svm </TD> <TD> 0.4302 </TD> <TD> 309.9444 </TD> <TD> 6900.9990 </TD> </TR>
+  <TR> <TD> regr </TD> <TD> REPTree </TD> <TD> 0.5593 </TD> <TD> 155.5421 </TD> <TD> 5352.5941 </TD> </TR>
+  <TR> <TD> regr </TD> <TD> earth </TD> <TD> 0.6102 </TD> <TD> 100.2546 </TD> <TD> 4748.1541 </TD> </TR>
+  <TR> <TD> regr </TD> <TD> ksvm </TD> <TD> 0.5241 </TD> <TD> 206.3070 </TD> <TD> 5783.5416 </TD> </TR>
+  <TR> <TD> regr </TD> <TD> lm </TD> <TD> <b> <FONT COLOR = "#FF0000"> 0.6245 </FONT> </b> </TD> <TD> <b> <FONT COLOR = "#FF0000"> 88.9593 </FONT> </b> </TD> <TD> <b> <FONT COLOR = "#FF0000"> 4581.9696 </FONT> </b> </TD> </TR>
+  <TR> <TD> regr </TD> <TD> nnet </TD> <TD> 0.4146 </TD> <TD> 337.6323 </TD> <TD> 7097.6569 </TD> </TR>
+  <TR> <TD> regr </TD> <TD> randomForest </TD> <TD> <b> <FONT COLOR = "#FF0000"> 0.6532 </FONT> </b> </TD> <TD> <b> <FONT COLOR = "#FF0000"> 58.1266 </FONT> </b> </TD> <TD> <b> <FONT COLOR = "#FF0000"> 4241.3585 </FONT> </b> </TD> </TR>
+  <TR> <TD> regr </TD> <TD> rpart </TD> <TD> 0.5580 </TD> <TD> 155.6311 </TD> <TD> 5366.7639 </TD> </TR>
+  <TR> <TD> cluster </TD> <TD> XMeans </TD> <TD> 0.4146 </TD> <TD> 337.6323 </TD> <TD> 7097.6569 </TD> </TR>
+  <TR> <TD> cluster </TD> <TD> EM </TD> <TD> <b> <FONT COLOR = "#FE9A2E"> 0.4159 </FONT> </b> </TD> <TD> <b> <FONT COLOR = "#FE9A2E"> 335.6002 </FONT> </b> </TD> <TD> <b> <FONT COLOR = "#FE9A2E"> 7081.5440 </FONT> </b> </TD> </TR>
+  <TR> <TD> cluster </TD> <TD> FarthestFirst </TD> <TD> 0.4146 </TD> <TD> 337.4708 </TD> <TD> 7097.4954 </TD> </TR>
+  <TR> <TD> cluster </TD> <TD> SimpleKMeans </TD> <TD> 0.4146 </TD> <TD> 337.6323 </TD> <TD> 7097.6569 </TD> </TR>
+   </TABLE>
+
+
+
+<p>
+
+The cost for using all features is: <code class="knitr inline">NA</code>
+
+</body>
+</html>
+
