@@ -21,7 +21,8 @@ set that were solved within the timeout.</li>
 <li>The misclassification penalty (mcp) measures the additional time required to run
 on all problems if sub-optimal algorithms were used. That is, if an algorithm is
 run on a problem instance that is not the best, a performance loss is incurred.
-The virtual best solver always has a misclassification penalty of zero.</li>
+There are no additional penalties or factors for timeouts. The virtual best
+solver always has a misclassification penalty of zero.</li>
 <li>The penalized average runtime (PAR10) score measures the time required to
 run on all problem instances. If an instance was solved within the timeout, the
 actual runtime is taken. If a timeout occurred, the timeout value was multiplied
