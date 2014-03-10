@@ -16,14 +16,14 @@ The best values within a group (type) -- i.e., baseline (except for vbs), classi
 
 The performance is measured in three different ways.
 <ul>
-<li>The success ratio records the percentage of problem instances in the data
+<li> <b>Percentage solved</b> records the percentage of problem instances in the data
 set that were solved within the timeout.</li>
-<li>The misclassification penalty (mcp) measures the additional time required to run
+<li>The <b>misclassification penalty (mcp)</b> measures the additional time required to run
 on all problems if sub-optimal algorithms were used. That is, if an algorithm is
 run on a problem instance that is not the best, a performance loss is incurred.
 There are no additional penalties or factors for timeouts. The virtual best
 solver always has a misclassification penalty of zero.</li>
-<li>The penalized average runtime (PAR10) score measures the time required to
+<li>The <b>penalized average runtime score (PAR10)</b> measures the time required to
 run on all problem instances. If an instance was solved within the timeout, the
 actual runtime is taken. If a timeout occurred, the timeout value was multiplied
 by 10.</li>
@@ -34,7 +34,7 @@ by 10.</li>
 <!--begin.rcode, results = "asis"
   d = subset(llama.results, prob == astask$desc$task_id)
   d = refurbishLlamaResults(data = d, color.best = "#FF0000", color.best.in.group = "#FE9A2E")
-  colnames(d) = c("Type", "Model", "Success Ratio", "MCP", "PAR10")
+  colnames(d) = c("Type", "Model", "Percentage Solved", "MCP", "PAR10")
   print(xtable(d), "html", include.rownames = FALSE, sanitize.text.function = function(x) x)
 end.rcode-->
 
