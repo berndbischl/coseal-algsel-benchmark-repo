@@ -17,7 +17,7 @@ createCVSplitFiles = function(task.dirs, data.dir, overwrite = FALSE, warn = TRU
       if (warn)
         warningf("CV file already exist: %s", fn)
     }
-    s = createCVSplits(astask, folds = 10L, rep = 5L, file = fn)
+    s = createCVSplits(astask, folds = 10L, rep = 1L, file = fn)
   }
 }
 

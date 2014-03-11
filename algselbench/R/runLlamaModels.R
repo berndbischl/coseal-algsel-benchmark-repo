@@ -4,12 +4,6 @@
 #'
 #' @param astasks [\code{list}]\cr
 #'   List of algorithm selection tasks (\code{\link{ASTask}}).
-#' @param nfolds [\code{integer(1)}]\cr
-#'   Number of folds used for the crossvalidation of the data sets.
-#'   Default is 10.
-#' @param stratify [\code{logical(1)}]\cr
-#'   Should the training and test data be stratified?
-#'   Default is TRUE.
 #' @param baselines [\code{character}]\cr
 #'   Vector of characters, defining the baseline models.
 #'   Default is c("vbs", "singleBest", "singleBestByPar", "singleBestBySuccesses").
@@ -26,15 +20,17 @@
 #'   Default is c("XMeans", "EM", "FarthestFirst", "SimpleKMeans").
 #' @return registry.
 #' @export
-runLlamaModels = function(astasks, nfolds = 10L, stratify = TRUE, baselines,
-  classifiers, regressors, clusterers) {
+runLlamaModels = function(astasks, baselines, classifiers, regressors, clusterers) {
 
   checkArg(astasks, c("list", "ASTask"))
   if (!missing(astasks) && inherits(astasks, "ASTask"))
     astasks = list(astasks)
   checkListElementClass(astasks, "ASTask")
+  baselines.def = c("vbs", "singleBest", "singleBestByPar", "singleBestBySuccesses")
   if (missing(baselines)) {
-    baselines = c("vbs", "singleBest", "singleBestByPar", "singleBestBySuccesses")
+    baselines = baselines.def
+  } else {
+    checkArg(baselines, subset = baselines.def)
   }
   ## FIXME: find a way to pass further arguments such as size in nnet
   ## FIXME: problems with rpart and lda (due to constant values), presumably caused
@@ -90,13 +86,12 @@ runLlamaModels = function(astasks, nfolds = 10L, stratify = TRUE, baselines,
     cluster.FarthestFirst = make_Weka_clusterer("weka/clusterers/FarthestFirst")
     cluster.SimpleKMeans = make_Weka_clusterer("weka/clusterers/SimpleKMeans")
   }
+
+
+  #FIXME: baseline methods are not cross-validated.
+
   llama.tasks = lapply(astasks, convertToLlama)
-  ## remove constant columns
-  llama.task = lapply(llama.tasks, removeConstantFeatures)
-  ## generate cv-folds
-  llama.cvs = lapply(llama.tasks, cvFolds, nfolds = nfolds, stratify = stratify)
-  ## avoid empty classes
-  llama.cvs = lapply(llama.cvs, avoidEmptyClasses)
+  llama.cvs = lapply(astasks, convertToLlamaCVFolds)
 
   requirePackages("BatchExperiments", why = "runLlamaModels")
   # FIXME:
@@ -130,36 +125,39 @@ runLlamaModels = function(astasks, nfolds = 10L, stratify = TRUE, baselines,
   algoBaseline = function(static, model) {
     fun = get(model)
     p = fun(static$llama.task)
-    static$makeRes(static$llama.task, p)
+    static$makeRes(static$llama.task, p, static$timeout)
   }
 
   algoClassif = function(static, model) {
     fun = get(model)
     p = llama::classify(classifier = fun, data = static$llama.cv)$predictions
-    static$makeRes(static$llama.cv, p)
+    static$makeRes(static$llama.cv, p, static$timeout)
   }
 
   algoRegr = function(static, model) {
     fun = get(model)
     p = llama::regression(regressor = fun, data = static$llama.cv)$predictions
-    static$makeRes(static$llama.cv, p)
+    static$makeRes(static$llama.cv, p, static$timeout)
   }
 
   algoCluster = function(static, model) {
     fun = get(model)
     p = llama::cluster(clusterer = fun, data = static$llama.cv)$predictions
-    static$makeRes(static$llama.cv, p)
+    static$makeRes(static$llama.cv, p, static$timeout)
   }
 
-  addAlgorithm(reg, id = "baseline", fun = algoBaseline)
-  addAlgorithm(reg, id = "classif", fun = algoClassif)
-  addAlgorithm(reg, id = "regr", fun = algoRegr)
-  addAlgorithm(reg, id = "cluster", fun = algoCluster)
+  addExps = function(id, models, fun) {
+    if (length(models) > 0L) {
+      addAlgorithm(reg, id = id, fun = fun)
+      des = makeDesign(id, exhaustive = list(model = models))
+      addExperiments(reg, algo.designs = des)
+    }
+  }
 
-  des.baseline = makeDesign("baseline", exhaustive = list(model = baselines))
-  des.classif = makeDesign("classif", exhaustive = list(model = classifiers))
-  des.regr = makeDesign("regr", exhaustive = list(model = regressors))
-  des.cluster = makeDesign("cluster", exhaustive = list(model = clusterers))
-  addExperiments(reg, algo.designs = list(des.baseline, des.classif, des.regr, des.cluster))
+  addExps("baseline", baselines, algoBaseline)
+  addExps("classif", classifiers, algoClassif)
+  addExps("regr", regressors, algoRegr)
+  addExps("cluster", clusterers, algoCluster)
+
   return(reg)
 }
