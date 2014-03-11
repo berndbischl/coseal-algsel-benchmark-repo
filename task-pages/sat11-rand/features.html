@@ -68,27 +68,27 @@
 <body>
 
 
-<h2> Overview of Feature Values </h2>
+<h2> Overview of Feature Values</h2>
 
 The following measures were taken for the results of each feature:
 <ul>
 
-  <li> <a>Min: Minimum</a>
-  <li> <a>1st Qu.: 1st Quartile = lower Quartile = 25%-Quantile</a>
-  <li> <a>Median: Median = 50%-Quantile</a>
-  <li> <a>Mean: Arithmetic Mean</a>
-  <li> <a>3rd Qu.: 3rd Quartile = upper Quartile = 75%-Quantile</a>
-  <li> <a>Max.: Maximum</a>
-  <li> <a>Std. Dev.: Standard Deviation</a>
-  <li> <a>CoV.: Coefficient of Variation = Standard Deviation / Arithmetic Mean</a>
-  <li> <a>NA's: Number of NAs (missing values) within the feature set.</a>
-  <li> <a>Obs.: Number of Observations within the feature set.</a>
-  <li> <a>Run OK (%): Percentage of feature computations without a crash.</a>
+  <li> Min: Minimum
+  <li> 1st Qu.: 1st Quartile = lower Quartile = 25%-Quantile
+  <li> Median: Median = 50%-Quantile
+  <li> Mean: Arithmetic Mean
+  <li> 3rd Qu.: 3rd Quartile = upper Quartile = 75%-Quantile
+  <li> Max.: Maximum
+  <li> Std. Dev.: Standard Deviation
+  <li> CoV.: Coefficient of Variation = Standard Deviation / Arithmetic Mean
+  <li> NA's: Number of NAs (missing values) within the feature set.
+  <li> Obs.: Number of Observations within the feature set.
+  <li> Run OK (%): Percentage of feature computations without a crash.
 
 </ul>
 
-<!-- html table generated in R 3.0.2 by xtable 1.7-1 package -->
-<!-- Mon Mar 10 11:33:12 2014 -->
+<!-- html table generated in R 3.0.3 by xtable 1.7-3 package -->
+<!-- Tue Mar 11 03:09:38 2014 -->
 <TABLE border=1>
 <TR> <TH>  </TH> <TH> Min. </TH> <TH> 1st Qu. </TH> <TH> Median </TH> <TH> Mean </TH> <TH> 3rd Qu. </TH> <TH> Max. </TH> <TH> Std. Dev. </TH> <TH> CoV. </TH> <TH> NA's </TH> <TH> Obs. </TH>  </TR>
   <TR> <TD align="right"> nvarsOrig </TD> <TD align="right"> 5.0000e+01 </TD> <TD align="right"> 1.1875e+02 </TD> <TD align="right"> 4.0000e+02 </TD> <TD align="right"> 4.2104e+03 </TD> <TD align="right"> 7.6250e+02 </TD> <TD align="right"> 5.0000e+04 </TD> <TD align="right"> 1.0464e+04 </TD> <TD align="right"> 2.4852e+00 </TD> <TD align="right"> 0 </TD> <TD align="right"> 600 </TD> </TR>
@@ -211,25 +211,32 @@ The following measures were taken for the results of each feature:
 
 
 <br>
-<h2> Summary of the runstatus per feature </h2>
+<h2> Summary of feature steps </h2>
 
-The following table summarizes the runstatus of the feature steps over all instances (in %).<br>
+The following table summarizes the feature steps over all instances.
+<ul>
+  <li> size: How many features are affected by this step in %
+  <li> ok, ..., other: Percentage of run status
+  <li> cost.min, cost.mean, cost.max: Range of costs for this step
+  <li> cost.na: How many missing values occur in costs in %
+</ul>
+
 <br>
 
-<!-- html table generated in R 3.0.2 by xtable 1.7-1 package -->
-<!-- Mon Mar 10 11:33:12 2014 -->
+<!-- html table generated in R 3.0.3 by xtable 1.7-3 package -->
+<!-- Tue Mar 11 03:09:38 2014 -->
 <TABLE border=1>
-<TR> <TH>  </TH> <TH> ok </TH> <TH> timeout </TH> <TH> memout </TH> <TH> presolved </TH> <TH> crash </TH> <TH> other </TH>  </TR>
-  <TR> <TD align="right"> KLB_featuretime </TD> <TD align="right"> 100.00 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.00 </TD> </TR>
-  <TR> <TD align="right"> cl_featuretime </TD> <TD align="right"> 100.00 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.00 </TD> </TR>
-  <TR> <TD align="right"> lobjois_featuretime </TD> <TD align="right"> 100.00 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.00 </TD> </TR>
-  <TR> <TD align="right"> DIAMETER_featuretime </TD> <TD align="right"> 100.00 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.00 </TD> </TR>
-  <TR> <TD align="right"> CG_featuretime </TD> <TD align="right"> 68.33 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 31.67 </TD> <TD align="right"> 0.00 </TD> </TR>
-  <TR> <TD align="right"> Pre_featuretime </TD> <TD align="right"> 100.00 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.00 </TD> </TR>
-  <TR> <TD align="right"> sp_featuretime </TD> <TD align="right"> 100.00 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.00 </TD> </TR>
-  <TR> <TD align="right"> ls_gsat_featuretime </TD> <TD align="right"> 100.00 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.00 </TD> </TR>
-  <TR> <TD align="right"> Basic_featuretime </TD> <TD align="right"> 100.00 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.00 </TD> </TR>
-  <TR> <TD align="right"> ls_saps_featuretime </TD> <TD align="right"> 100.00 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.00 </TD> </TR>
+<TR> <TH>  </TH> <TH> size </TH> <TH> ok </TH> <TH> timeout </TH> <TH> memout </TH> <TH> presolved </TH> <TH> crash </TH> <TH> other </TH> <TH> cost.min </TH> <TH> cost.mean </TH> <TH> cost.max </TH> <TH> cost.na </TH>  </TR>
+  <TR> <TD align="right"> Pre_featuretime </TD> <TD align="right"> 115.00 </TD> <TD align="right"> 100.00 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.34 </TD> <TD align="right"> 6.78 </TD> <TD align="right"> 0.00 </TD> </TR>
+  <TR> <TD align="right"> Basic_featuretime </TD> <TD align="right"> 109.00 </TD> <TD align="right"> 100.00 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.26 </TD> <TD align="right"> 1.99 </TD> <TD align="right"> 2.01 </TD> <TD align="right"> 0.00 </TD> </TR>
+  <TR> <TD align="right"> KLB_featuretime </TD> <TD align="right"> 95.00 </TD> <TD align="right"> 100.00 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 2.00 </TD> <TD align="right"> 2.01 </TD> <TD align="right"> 2.20 </TD> <TD align="right"> 0.00 </TD> </TR>
+  <TR> <TD align="right"> CG_featuretime </TD> <TD align="right"> 75.00 </TD> <TD align="right"> 100.00 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.54 </TD> <TD align="right"> 2.07 </TD> <TD align="right"> 0.00 </TD> </TR>
+  <TR> <TD align="right"> DIAMETER_featuretime </TD> <TD align="right"> 65.00 </TD> <TD align="right"> 68.33 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 31.67 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.01 </TD> <TD align="right"> 21.64 </TD> <TD align="right"> 60.31 </TD> <TD align="right"> 0.00 </TD> </TR>
+  <TR> <TD align="right"> cl_featuretime </TD> <TD align="right"> 60.00 </TD> <TD align="right"> 100.00 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.08 </TD> <TD align="right"> 0.98 </TD> <TD align="right"> 0.00 </TD> </TR>
+  <TR> <TD align="right"> sp_featuretime </TD> <TD align="right"> 42.00 </TD> <TD align="right"> 100.00 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.43 </TD> <TD align="right"> 2.90 </TD> <TD align="right"> 0.00 </TD> </TR>
+  <TR> <TD align="right"> ls_saps_featuretime </TD> <TD align="right"> 24.00 </TD> <TD align="right"> 100.00 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 1.62 </TD> <TD align="right"> 2.27 </TD> <TD align="right"> 2.58 </TD> <TD align="right"> 0.00 </TD> </TR>
+  <TR> <TD align="right"> ls_gsat_featuretime </TD> <TD align="right"> 13.00 </TD> <TD align="right"> 100.00 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.08 </TD> <TD align="right"> 0.00 </TD> </TR>
+  <TR> <TD align="right"> lobjois_featuretime </TD> <TD align="right"> 2.00 </TD> <TD align="right"> 100.00 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 1.00 </TD> <TD align="right"> 2.11 </TD> <TD align="right"> 2.29 </TD> <TD align="right"> 0.00 </TD> </TR>
    </TABLE>
 
 
@@ -251,8 +258,8 @@ In this section, you'll find all features that adopted only one value (and event
 <br>
 
 Feature Values:
-<!-- html table generated in R 3.0.2 by xtable 1.7-1 package -->
-<!-- Mon Mar 10 11:33:12 2014 -->
+<!-- html table generated in R 3.0.3 by xtable 1.7-3 package -->
+<!-- Tue Mar 11 03:09:39 2014 -->
 <TABLE border=1>
 <TR> <TH>  </TH> <TH> unique Value(s) </TH> <TH> NA's </TH>  </TR>
   <TR> <TD align="right"> POSNEG_RATIO_CLAUSE_max </TD> <TD align="right"> 1.0000 </TD> <TD align="right"> 0 </TD> </TR>

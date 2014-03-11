@@ -68,27 +68,27 @@
 <body>
 
 
-<h2> Overview of Feature Values </h2>
+<h2> Overview of Feature Values</h2>
 
 The following measures were taken for the results of each feature:
 <ul>
 
-  <li> <a>Min: Minimum</a>
-  <li> <a>1st Qu.: 1st Quartile = lower Quartile = 25%-Quantile</a>
-  <li> <a>Median: Median = 50%-Quantile</a>
-  <li> <a>Mean: Arithmetic Mean</a>
-  <li> <a>3rd Qu.: 3rd Quartile = upper Quartile = 75%-Quantile</a>
-  <li> <a>Max.: Maximum</a>
-  <li> <a>Std. Dev.: Standard Deviation</a>
-  <li> <a>CoV.: Coefficient of Variation = Standard Deviation / Arithmetic Mean</a>
-  <li> <a>NA's: Number of NAs (missing values) within the feature set.</a>
-  <li> <a>Obs.: Number of Observations within the feature set.</a>
-  <li> <a>Run OK (%): Percentage of feature computations without a crash.</a>
+  <li> Min: Minimum
+  <li> 1st Qu.: 1st Quartile = lower Quartile = 25%-Quantile
+  <li> Median: Median = 50%-Quantile
+  <li> Mean: Arithmetic Mean
+  <li> 3rd Qu.: 3rd Quartile = upper Quartile = 75%-Quantile
+  <li> Max.: Maximum
+  <li> Std. Dev.: Standard Deviation
+  <li> CoV.: Coefficient of Variation = Standard Deviation / Arithmetic Mean
+  <li> NA's: Number of NAs (missing values) within the feature set.
+  <li> Obs.: Number of Observations within the feature set.
+  <li> Run OK (%): Percentage of feature computations without a crash.
 
 </ul>
 
-<!-- html table generated in R 3.0.2 by xtable 1.7-1 package -->
-<!-- Mon Mar 10 11:32:56 2014 -->
+<!-- html table generated in R 3.0.3 by xtable 1.7-3 package -->
+<!-- Tue Mar 11 03:07:52 2014 -->
 <TABLE border=1>
 <TR> <TH>  </TH> <TH> Min. </TH> <TH> 1st Qu. </TH> <TH> Median </TH> <TH> Mean </TH> <TH> 3rd Qu. </TH> <TH> Max. </TH> <TH> Std. Dev. </TH> <TH> CoV. </TH> <TH> NA's </TH> <TH> Obs. </TH>  </TR>
   <TR> <TD align="right"> dim </TD> <TD align="right"> 2.0000e+00 </TD> <TD align="right"> 3.0000e+00 </TD> <TD align="right"> 5.0000e+00 </TD> <TD align="right"> 8.0000e+00 </TD> <TD align="right"> 1.0000e+01 </TD> <TD align="right"> 2.0000e+01 </TD> <TD align="right"> 6.6033e+00 </TD> <TD align="right"> 8.2541e-01 </TD> <TD align="right"> 0 </TD> <TD align="right"> 12000 </TD> </TR>
@@ -149,22 +149,32 @@ The following measures were taken for the results of each feature:
 
 
 <br>
-<h2> Summary of the runstatus per feature </h2>
+<h2> Summary of feature steps </h2>
 
-The following table summarizes the runstatus of the feature steps over all instances (in %).<br>
+The following table summarizes the feature steps over all instances.
+<ul>
+  <li> size: How many features are affected by this step in %
+  <li> ok, ..., other: Percentage of run status
+  <li> cost.min, cost.mean, cost.max: Range of costs for this step
+  <li> cost.na: How many missing values occur in costs in %
+</ul>
+
 <br>
 
-<!-- html table generated in R 3.0.2 by xtable 1.7-1 package -->
-<!-- Mon Mar 10 11:32:56 2014 -->
+<div class="warning"><pre class="knitr r">## Warning: number of rows of result is not a multiple of vector length (arg
+## 1)
+</pre></div>
+<!-- html table generated in R 3.0.3 by xtable 1.7-3 package -->
+<!-- Tue Mar 11 03:07:52 2014 -->
 <TABLE border=1>
-<TR> <TH>  </TH> <TH> ok </TH> <TH> timeout </TH> <TH> memout </TH> <TH> presolved </TH> <TH> crash </TH> <TH> other </TH>  </TR>
-  <TR> <TD align="right"> initial_design </TD> <TD align="right"> 100.00 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.00 </TD> </TR>
-  <TR> <TD align="right"> meta </TD> <TD align="right"> 100.00 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.00 </TD> </TR>
-  <TR> <TD align="right"> convexity </TD> <TD align="right"> 95.83 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 4.17 </TD> </TR>
-  <TR> <TD align="right"> y_distr </TD> <TD align="right"> 100.00 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.00 </TD> </TR>
-  <TR> <TD align="right"> levelset </TD> <TD align="right"> 99.95 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.05 </TD> </TR>
-  <TR> <TD align="right"> local_search </TD> <TD align="right"> 100.00 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.00 </TD> </TR>
-  <TR> <TD align="right"> curvature </TD> <TD align="right"> 91.65 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 8.35 </TD> </TR>
+<TR> <TH>  </TH> <TH> size </TH> <TH> ok </TH> <TH> timeout </TH> <TH> memout </TH> <TH> presolved </TH> <TH> crash </TH> <TH> other </TH> <TH> cost.min </TH> <TH> cost.mean </TH> <TH> cost.max </TH> <TH> cost.na </TH>  </TR>
+  <TR> <TD align="right"> initial_design </TD> <TD align="right"> 2.00 </TD> <TD align="right"> 100.00 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 400.00 </TD> <TD align="right"> 1600.00 </TD> <TD align="right"> 4000.00 </TD> <TD align="right"> 0.00 </TD> </TR>
+  <TR> <TD align="right"> meta </TD> <TD align="right"> 2.00 </TD> <TD align="right"> 100.00 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.00 </TD> </TR>
+  <TR> <TD align="right"> convexity </TD> <TD align="right"> 2.00 </TD> <TD align="right"> 95.83 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 4.17 </TD> <TD align="right"> 1000.00 </TD> <TD align="right"> 1000.00 </TD> <TD align="right"> 1000.00 </TD> <TD align="right"> 0.00 </TD> </TR>
+  <TR> <TD align="right"> y_distr </TD> <TD align="right"> 2.00 </TD> <TD align="right"> 100.00 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.00 </TD> </TR>
+  <TR> <TD align="right"> levelset </TD> <TD align="right"> 2.00 </TD> <TD align="right"> 99.95 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.05 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.00 </TD> </TR>
+  <TR> <TD align="right"> local_search </TD> <TD align="right"> 2.00 </TD> <TD align="right"> 100.00 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 1559.00 </TD> <TD align="right"> 310587.11 </TD> <TD align="right"> 1002070.00 </TD> <TD align="right"> 0.00 </TD> </TR>
+  <TR> <TD align="right"> curvature </TD> <TD align="right"> 2.00 </TD> <TD align="right"> 91.65 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 8.35 </TD> <TD align="right"> 6200.00 </TD> <TD align="right"> 861637.79 </TD> <TD align="right"> 3686000.00 </TD> <TD align="right"> 0.00 </TD> </TR>
    </TABLE>
 
 
@@ -186,8 +196,8 @@ In this section, you'll find all features that adopted only one value (and event
 <br>
 
 Feature Values:
-<!-- html table generated in R 3.0.2 by xtable 1.7-1 package -->
-<!-- Mon Mar 10 11:32:56 2014 -->
+<!-- html table generated in R 3.0.3 by xtable 1.7-3 package -->
+<!-- Tue Mar 11 03:07:53 2014 -->
 <TABLE border=1>
 <TR> <TH>  </TH> <TH> unique Value(s) </TH> <TH> NA's </TH>  </TR>
   <TR> <TD align="right"> convex.linear_p </TD> <TD align="right"> 0.0000 </TD> <TD align="right"> 0 </TD> </TR>
