@@ -13,8 +13,8 @@
 #'   Default is c("vbs", "singleBest", "singleBestByPar", "singleBestBySuccesses").
 #' @param classifiers [\code{character}]\cr
 #'   Vector of characters, defining the classification models.
-#'   Default is c("AdaBoost", "BayesNet", "IBk", "OneR", "MultilayerPerceptron", 
-#'   "RandomTree", "ctree", "fnn", "J48", "JRip", "kknn", "ksvm", "naiveBayes", 
+#'   Default is c("AdaBoost", "BayesNet", "IBk", "OneR", "MultilayerPerceptron",
+#'   "RandomTree", "ctree", "fnn", "J48", "JRip", "kknn", "ksvm", "naiveBayes",
 #'   "nnet", "randomForest", "rpart", "svm").
 #' @param regressors [\code{character}]\cr
 #'   Vector of characters, defining the regression models.
@@ -24,7 +24,7 @@
 #'   Default is c("XMeans", "EM", "FarthestFirst", "SimpleKMeans").
 #' @return registry.
 #' @export
-runLlamaModels = function(astasks, nfolds = 10L, stratify = TRUE, baselines, 
+runLlamaModels = function(astasks, nfolds = 10L, stratify = TRUE, baselines,
   classifiers, regressors, clusterers) {
 
   checkArg(astasks, c("list", "ASTask"))
@@ -44,16 +44,8 @@ runLlamaModels = function(astasks, nfolds = 10L, stratify = TRUE, baselines,
       "RandomTree", "ctree", "fnn", "J48", "JRip", "kknn", "ksvm",
       "naiveBayes", "nnet", "randomForest", "rpart", "svm")
     classifiers = paste("classif", classifiers, sep = ".")
-    requirePackages("party", "runLlamaModels")
-    requirePackages("FNN", "runLlamaModels")
-    requirePackages("kknn", "runLlamaModels")
-    requirePackages("kernlab", "runLlamaModels")
-    requirePackages("class", "runLlamaModels")
-    requirePackages("nnet", "runLlamaModels")
-    requirePackages("e1071", "runLlamaModels")
-    requirePackages("randomForest", "runLlamaModels")
-    requirePackages("klaR", "runLlamaModels")
-    requirePackages("rpart", "runLlamaModels")
+    requirePackages(why="runLlamaModels", packs = c("party", "FNN", "kknn", "kernlab",
+        "class", "nnet", "e1071", "randomForest", "klaR", "rpart"))
     classif.AdaBoost = make_Weka_classifier("weka/classifiers/meta/AdaBoostM1")
     classif.BayesNet = make_Weka_classifier("weka/classifiers/bayes/BayesNet")
     classif.IBk = make_Weka_classifier("weka/classifiers/lazy/IBk")
@@ -62,26 +54,24 @@ runLlamaModels = function(astasks, nfolds = 10L, stratify = TRUE, baselines,
     classif.OneR = make_Weka_classifier("weka/classifiers/rules/OneR")
     classif.MultilayerPerceptron = make_Weka_classifier("weka/classifiers/functions/MultilayerPerceptron")
     classif.RandomTree = make_Weka_classifier("weka/classifiers/trees/RandomTree")
-    classif.boosting = convertMlrClassifLearnerToLlama(makeLearner("classif.boosting"))
-    classif.ctree = convertMlrClassifLearnerToLlama(makeLearner("classif.ctree"))
-    classif.fnn = convertMlrClassifLearnerToLlama(makeLearner("classif.fnn"))
-    classif.kknn = convertMlrClassifLearnerToLlama(makeLearner("classif.kknn"))
-    classif.ksvm = convertMlrClassifLearnerToLlama(makeLearner("classif.ksvm"))
-    classif.naiveBayes = convertMlrClassifLearnerToLlama(makeLearner("classif.naiveBayes"))
-    classif.nnet = convertMlrClassifLearnerToLlama(makeLearner("classif.nnet", size = 3L))
-    classif.randomForest = convertMlrClassifLearnerToLlama(makeLearner("classif.randomForest"))
-    classif.rpart = convertMlrClassifLearnerToLlama(makeLearner("classif.rpart"))
-    classif.svm = convertMlrClassifLearnerToLlama(makeLearner("classif.svm")) 
+    g = function(x, ...)
+      convertMlrClassifLearnerToLlama(makeLearner(x, ...))
+    classif.boosting = g("classif.boosting")
+    classif.ctree = g("classif.ctree")
+    classif.fnn = g("classif.fnn")
+    classif.kknn = g("classif.kknn")
+    classif.ksvm = g("classif.ksvm")
+    classif.naiveBayes = g("classif.naiveBayes")
+    classif.nnet = g("classif.nnet", size = 3L)
+    classif.randomForest = g("classif.randomForest")
+    classif.rpart = g("classif.rpart")
+    classif.svm = g("classif.svm")
   }
   if (missing(regressors)) {
     regressors = c("REPTree", "earth", "ksvm", "lm", "nnet", "randomForest", "rpart")
     regressors = paste("regr", regressors, sep = ".")
-    requirePackages("earth", "runLlamaModels")
-    requirePackages("kernlab", "runLlamaModels")
-    requirePackages("stats", "runLlamaModels")
-    requirePackages("nnet", "runLlamaModels")
-    requirePackages("randomForest", "runLlamaModels")
-    requirePackages("rpart", "runLlamaModels")  
+    requirePackages(why = "runLlamaModels", packs = c("earth", "kernlab", "stats", "nnet",
+      "randomForest", "rpart"))
     regr.REPTree = make_Weka_classifier("weka/classifiers/trees/REPTree")
     regr.earth = earth
     regr.ksvm = ksvm
@@ -98,7 +88,6 @@ runLlamaModels = function(astasks, nfolds = 10L, stratify = TRUE, baselines,
     cluster.FarthestFirst = make_Weka_clusterer("weka/clusterers/FarthestFirst")
     cluster.SimpleKMeans = make_Weka_clusterer("weka/clusterers/SimpleKMeans")
   }
-  # FIXME: maybe parallel?
   llama.tasks = lapply(astasks, convertToLlama)
   ## remove constant columns
   llama.task = lapply(llama.tasks, removeConstantFeatures)
@@ -107,8 +96,7 @@ runLlamaModels = function(astasks, nfolds = 10L, stratify = TRUE, baselines,
   ## avoid empty classes
   llama.cvs = lapply(llama.cvs, avoidEmptyClasses)
 
-  #FIXME: do we really need mlr just for impute
-  requirePackages("BatchExperiments", "runLlamaModels")
+  requirePackages("BatchExperiments", why = "runLlamaModels")
   # FIXME:
   unlink("run_llama_models-files", recursive = TRUE)
   reg = makeExperimentRegistry("run_llama_models", packages = c("llama", "RWeka"))
@@ -146,18 +134,18 @@ runLlamaModels = function(astasks, nfolds = 10L, stratify = TRUE, baselines,
     p = llama::regression(regressor = fun, data = static$llama.cv)$predictions
     static$makeRes(static$llama.cv, p)
   }
-  
+
   algoCluster = function(static, model) {
     fun = get(model)
     p = llama::cluster(clusterer = fun, data = static$llama.cv)$predictions
-    static$makeRes(static$llama.cv, p)    
+    static$makeRes(static$llama.cv, p)
   }
 
   addAlgorithm(reg, id = "baseline", fun = algoBaseline)
   addAlgorithm(reg, id = "classif", fun = algoClassif)
   addAlgorithm(reg, id = "regr", fun = algoRegr)
   addAlgorithm(reg, id = "cluster", fun = algoCluster)
-  
+
   des.baseline = makeDesign("baseline", exhaustive = list(model = baselines))
   des.classif = makeDesign("classif", exhaustive = list(model = classifiers))
   des.regr = makeDesign("regr", exhaustive = list(model = regressors))
