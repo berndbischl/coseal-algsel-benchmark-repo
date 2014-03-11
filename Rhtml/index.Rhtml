@@ -50,11 +50,10 @@ for (i in seq_along(astasks)) {
   printTDNumber(length(getInstanceNames(astask)))
   printTDNumber(length(getAlgorithmNames(astask)))
   printTDNumber(length(getFeatureNames(astask)))
-  printTDLogical(max(astask$feature.values$rep) > 1L)
-  printTDString(sprintf("%s, max. reps = %i"),
-    length(astask$features_stochastic) > 0L, max(astask$feature.values$reps))
-  printTDString(sprintf("%s, max. reps = %i"),
-    length(astask$algorithms_stochastic) > 0L, max(astask$algo.run$reps))
+  printTDString(sprintf("%s, max. reps = %i",
+    length(astask$desc$features_stochastic) > 0L, max(astask$feature.values$rep)))
+  printTDString(sprintf("%s, max. reps = %i",
+    length(astask$desc$algorithms_stochastic) > 0L, max(astask$algo.runs$rep)))
   printTDLogical(!is.null(astask$feature.costs))
   catf("</tr>")
 }
