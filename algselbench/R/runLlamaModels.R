@@ -1,3 +1,5 @@
+#FIXME: the whole way of defining/selecting the learner is horrible in the code!
+
 #' Creates a registry which can be used for running several Llama models on a cluster.
 #'
 #' @param astasks [\code{list}]\cr
@@ -109,8 +111,8 @@ runLlamaModels = function(astasks, nfolds = 10L, stratify = TRUE, baselines,
         makeRes = function(data, p) {
           list(
             succ = mean(unlist(successes(data, p))),
-            mcp = mean(unlist(misclassificationPenalties(data, p))),
-            par = mean(unlist(parscores(data, p)))
+            par10 = mean(unlist(parscores(data, p))),
+            mcp = mean(unlist(misclassificationPenalties(data, p)))
           )
         }
       )

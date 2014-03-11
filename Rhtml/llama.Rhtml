@@ -37,7 +37,7 @@ solver always has a misclassification penalty of zero.</li>
 <!--begin.rcode, results = "asis"
   d = subset(llama.results, prob == astask$desc$task_id)
   d = refurbishLlamaResults(data = d, color.best = "#FF0000", color.best.in.group = "#FE9A2E")
-  colnames(d) = c("Type", "Model", "Percentage Solved", "MCP", "PAR10")
+  colnames(d) = c("Type", "Model", "Percentage Solved", "PAR10", "MCP")
   print(xtable(d), "html", include.rownames = FALSE, sanitize.text.function = function(x) x)
 end.rcode-->
 
