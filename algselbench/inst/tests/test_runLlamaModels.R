@@ -12,4 +12,4 @@ test_that("runLlamaModels", {
   waitForJobs(reg)
   res = reduceResultsExperiments(reg)
   expect_true(is.data.frame(res) && nrow(res) == 2L)
-)
+})
