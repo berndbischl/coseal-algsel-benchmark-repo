@@ -23,6 +23,7 @@ this message. ETA: April 2014.
   <th>Features</th>
   <th>Stoch. Feat.</th>
   <th>Stoch. Alg.</th>
+  <th>Feature Costs</th>
 </tr>
 
 <!--begin.rcode, echo = FALSE, results = "asis"
@@ -51,6 +52,7 @@ for (i in seq_along(astasks)) {
   printTDNumber(length(getFeatureNames(astask)))
   printTDLogical(max(astask$feature.values$rep) > 1L)
   printTDLogical(max(astask$algo.runs$rep) > 1L)
+  printTDLogical(!is.null(astask$feature.costs))
   catf("</tr>")
 }
 
