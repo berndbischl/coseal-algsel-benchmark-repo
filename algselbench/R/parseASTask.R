@@ -49,6 +49,7 @@ print.ASTask = function(x, ...) {
   x$feature_steps = names(x$feature_steps)
   printField1("Task id", d$task_id)
   printField1("Performance measures", d$performance_measures)
+  printField1("Performance types", d$performance_type)
   printField1("Algorithm cutoff time", d$algorithm_cutoff_time)
   printField1("Algorithm cutoff mem", d$algorithm_cutoff_memory)
   printField1("Feature cutoff time", d$features_cutoff_time)
