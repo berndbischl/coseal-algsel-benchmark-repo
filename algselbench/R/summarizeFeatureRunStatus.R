@@ -2,7 +2,7 @@
 #'
 #' @param astask [\code{\link{ASTask}}]\cr
 #'   Algorithm selection task.
-#' @return [\code{table}]. 
+#' @return [\code{table}].
 #'  Table, which summarizes the runstatus per algorithm.
 #' @export
 summarizeFeatureRunStatus = function(astask) {
@@ -10,7 +10,7 @@ summarizeFeatureRunStatus = function(astask) {
   data = astask$feature.runstatus
   n = ncol(data)
   for (i in 3:n) {
-    data[, i] = factor(as.character(data[, i]), 
+    data[, i] = factor(as.character(data[, i]),
       levels = c("ok", "timeout", "memout", "presolved", "crash", "other"))
   }
   if (n == 3) {
