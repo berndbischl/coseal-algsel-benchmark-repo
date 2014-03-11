@@ -16,17 +16,20 @@ The best values within a group (type) -- i.e., baseline (except for vbs), classi
 
 The performance is measured in three different ways.
 <ul>
-<li> <b>Percentage solved</b> records the percentage of problem instances in the data
-set that were solved within the timeout.</li>
-<li>The <b>misclassification penalty (mcp)</b> measures the additional time required to run
+<li><strong>Percentage solved</strong> records the percentage of problem
+instances in the data set for which the selector selected an algorithm that was
+able to solve it with runstatus "ok" and the algorithm time plus the feature
+computation time was at most the timeout.</li>
+<li>The <strong>penalized average runtime score (PAR10)</strong> measures the time required to
+run on all problem instances. If an instance was solved within the timeout by
+the algorithm the selector chose, the
+actual runtime is taken. If a timeout occurred, the timeout value was multiplied
+by 10.</li>
+<li>The <strong>misclassification penalty (mcp)</strong> measures the additional time required to run
 on all problems if sub-optimal algorithms were used. That is, if an algorithm is
 run on a problem instance that is not the best, a performance loss is incurred.
 There are no additional penalties or factors for timeouts. The virtual best
 solver always has a misclassification penalty of zero.</li>
-<li>The <b>penalized average runtime score (PAR10)</b> measures the time required to
-run on all problem instances. If an instance was solved within the timeout, the
-actual runtime is taken. If a timeout occurred, the timeout value was multiplied
-by 10.</li>
 </ul>
 
 <p>
