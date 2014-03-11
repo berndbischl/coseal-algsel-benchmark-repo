@@ -24,6 +24,10 @@ convertToLlamaCVFolds = function(astask, measure, cv.splits) {
   else
     checkArg(cv.splits, "data.frame")
 
+  reps = max(cv.splits$rep)
+  if (reps > 1L)
+    stopf("llama can currently not handle CVs with repetitions, but you used reps = %i!", reps)
+
   folds = cv.splits
 
   llamaFrame = convertToLlama(astask, measure)
