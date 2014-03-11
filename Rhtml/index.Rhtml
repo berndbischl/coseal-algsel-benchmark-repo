@@ -21,6 +21,7 @@ this message. ETA: April 2014.
   <th>Instances</th>
   <th>Algorithms</th>
   <th>Features</th>
+  <th>Type</th>
   <th>Stoch. Feat.</th>
   <th>Stoch. Alg.</th>
   <th>Feature Costs</th>
@@ -50,6 +51,7 @@ for (i in seq_along(astasks)) {
   printTDNumber(length(getInstanceNames(astask)))
   printTDNumber(length(getAlgorithmNames(astask)))
   printTDNumber(length(getFeatureNames(astask)))
+  printTDString(astask$desc$performance_type[[1]])
   printTDString(sprintf("%s, max. reps = %i",
     length(astask$desc$features_stochastic) > 0L, max(astask$feature.values$rep)))
   printTDString(sprintf("%s, max. reps = %i",
