@@ -43,10 +43,13 @@ parseDescription = function(path) {
   f.steps = which(str_detect(ns, "^feature_step"))
   feature.steps = list()
   for (i in f.steps) {
+    #separate name and feature list section
     s1 = str_split(ns[[i]], " ")[[1]]
     s2 = str_split(desc[[i]], " ")[[1]]
     step.name = str_trim(s1[2])
-    feats = str_trim(s2)
+    # split by comma and trim whitespace
+    feats = str_split(s2, ",")[[1]]
+    feats = sapply(feats, str_trim, USE.NAMES=FALSE)
     feature.steps[[step.name]] = feats
   }
   desc[f.steps] = NULL
