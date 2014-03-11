@@ -4,15 +4,27 @@
 #'
 #' @param astask [\code{\link{ASTask}}]\cr
 #'   Algorithm selection task.
-#' @param folds [\code{data.frame(1)}]\cr
-#'   Data frame defining the split of the data into cross-validation folds, as returned by \code{\link{createCVSplits}}.
 #' @param measure [\code{character(1)}]\cr
 #'   Measure to use for modelling.
 #'   Default is first measure in task.
+#' @param cv.splits [\code{data.frame}]\cr
+#'   Data frame defining the split of the data into cross-validation folds,
+#'   as returned by \code{\link{createCVSplits}}.
+#'   Default are the splits \code{astask$cv.splits}
 #' @return Result of calling \code{\link[llama]{input}} with data partitioned into folds.
 #' @export
-convertToLlamaCVFolds = function(astask, folds, measure) {
-  checkArg(folds, "data.frame")
+convertToLlamaCVFolds = function(astask, measure, cv.splits) {
+  checkArg(astask, "ASTask")
+  if (missing(measure))
+    measure = astask$desc$performance_measures[1]
+  else
+    checkArg(measure, "character", len = 1L, na.ok = FALSE)
+  if (missing(cv.splits))
+    cv.splits = astask$cv.splits
+  else
+    checkArg(cv.splits, "data.frame")
+
+  folds = cv.splits
 
   llamaFrame = convertToLlama(astask, measure)
 
