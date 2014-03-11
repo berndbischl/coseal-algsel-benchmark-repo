@@ -70,12 +70,35 @@
 
 <h1>Output of data validator</h1>
 
-<div class="chunk" id="unnamed-chunk-1"><div class="rcode"><div class="error"><pre class="knitr r">## Error: Command: python ~/cos/coseal/data_check_tool_python/src/main.py --dir /home/bischl/cos/coseal/data/qbf_2011; exit code: 1; output: Traceback (most recent call last):
-##   File "/home/bischl/cos/coseal/data_check_tool_python/src/main.py", line 12, in <module>
-##     import arff
-## ImportError: No module named arff
+<div class="chunk" id="unnamed-chunk-1"><div class="rcode"><div class="error"><pre class="knitr r">## Error: Command: python ~/cos/coseal/data_check_tool_python/src/main.py --dir /home/bischl/cos/coseal/data/qbf_2011; exit code: 255; output: % [WARNING]: Not found: /home/bischl/cos/coseal/data/qbf_2011/ground_truth.arff (maybe you want to add it)
+## % [WARNING]: Not found: /home/bischl/cos/coseal/data/qbf_2011/feature_costs.arff (maybe you want to add it)
+## % [WARNING]: Not found: /home/bischl/cos/coseal/data/qbf_2011/citation.bib (maybe you want to add it)
+## % [WARNING]: Cannot read FEATURES_CUTOFF_TIME
+## % [WARNING]: Cannot read FEATURES_CUTOFF_MEMORY
+## % [WARNING]: Have not found features_cutoff_time
+## % [WARNING]: Assumption FEATURES_CUTOFF_TIME == ALGORITHM_CUTOFF_TIME 
+## % [WARNING]: Have not found features_cutoff_memory
+## % [WARNING]: Have not found algorithms_stochastic
+## [ERROR]: "runtime" as attribute is missing in /home/bischl/cos/coseal/data/qbf_2011/algorithm_runs.arff
+## % Read /home/bischl/cos/coseal/data/qbf_2011/description.txt
+## % Read /home/bischl/cos/coseal/data/qbf_2011/algorithm_runs.arff
 </pre></div>
-<div class="error"><pre class="knitr r">## Error: object 's' not found
+<div class="output"><pre class="knitr r">## % [WARNING]: Not found: /home/bischl/cos/coseal/data/premarshalling_astar_2013/ground_truth.arff (maybe you want to add it)
+## % [WARNING]: Not found: /home/bischl/cos/coseal/data/premarshalling_astar_2013/feature_costs.arff (maybe you want to add it)
+## % [WARNING]: Not found: /home/bischl/cos/coseal/data/premarshalling_astar_2013/citation.bib (maybe you want to add it)
+## % [WARNING]: Have not found algorithms_stochastic
+## % Read /home/bischl/cos/coseal/data/premarshalling_astar_2013/description.txt
+## % Read /home/bischl/cos/coseal/data/premarshalling_astar_2013/algorithm_runs.arff
+## % Read /home/bischl/cos/coseal/data/premarshalling_astar_2013/feature_values.arff
+## % Read /home/bischl/cos/coseal/data/premarshalling_astar_2013/feature_runstatus.arff
+## % Used features: stack-tier-ratio,bflb,top-good-mean,overstowage-pct,tiers,top-good-min,container-density,top-good-max,group-same-min,group-same-mean,empty-stack-pct,overstowing-stack-pct,group-same-stdev,top-good-stdev,group-same-max,stacks
+## % 
+## % Check Consistency and Completeness of input data
+## % Instances: 		 527
+## % Incomplete Feature Vector: 	 0
+## % Unsolvable Instances (status): 	 0
+## % Valid Instances: 	 527
+## % Presolved: 		 0
 </pre></div>
 
 </div></div>
