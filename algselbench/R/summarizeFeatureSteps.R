@@ -10,11 +10,11 @@ summarizeFeatureSteps= function(astask) {
   # First 2 cols are instanceid and rep
   # create prop table for the subsequent step columns over their levels
   n = ncol(rs)
-  res = dapply(rs[, 3:n, drop=FALSE], function(x)
-    100 * prop.table(table(x)))
+  res = sapply(rs[, 3:n, drop=FALSE], function(x)
+    100 * as.numeric(prop.table(table(x))))
   # add size of step = number of features in it
   size = sapply(astask$desc$feature_steps, length)
-  res = setColNames(t(res), levels(rs[, 3]))
+  res = as.data.frame(setColNames(t(res), levels(rs[, 3])))
   res = cbind(size = size, res)
   fc = astask$feature.costs
   if (!is.null(fc)) {
