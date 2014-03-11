@@ -6,22 +6,22 @@
 <body>
 
 
-<h2> Overview of Feature Values </h2>
+<h2> Overview of Feature Values</h2>
 
 The following measures were taken for the results of each feature:
 <ul>
 
-  <li> <a>Min: Minimum</a>
-  <li> <a>1st Qu.: 1st Quartile = lower Quartile = 25%-Quantile</a>
-  <li> <a>Median: Median = 50%-Quantile</a>
-  <li> <a>Mean: Arithmetic Mean</a>
-  <li> <a>3rd Qu.: 3rd Quartile = upper Quartile = 75%-Quantile</a>
-  <li> <a>Max.: Maximum</a>
-  <li> <a>Std. Dev.: Standard Deviation</a>
-  <li> <a>CoV.: Coefficient of Variation = Standard Deviation / Arithmetic Mean</a>
-  <li> <a>NA's: Number of NAs (missing values) within the feature set.</a>
-  <li> <a>Obs.: Number of Observations within the feature set.</a>
-  <li> <a>Run OK (%): Percentage of feature computations without a crash.</a>
+  <li> Min: Minimum
+  <li> 1st Qu.: 1st Quartile = lower Quartile = 25%-Quantile
+  <li> Median: Median = 50%-Quantile
+  <li> Mean: Arithmetic Mean
+  <li> 3rd Qu.: 3rd Quartile = upper Quartile = 75%-Quantile
+  <li> Max.: Maximum
+  <li> Std. Dev.: Standard Deviation
+  <li> CoV.: Coefficient of Variation = Standard Deviation / Arithmetic Mean
+  <li> NA's: Number of NAs (missing values) within the feature set.
+  <li> Obs.: Number of Observations within the feature set.
+  <li> Run OK (%): Percentage of feature computations without a crash.
 
 </ul>
 
@@ -31,13 +31,20 @@ The following measures were taken for the results of each feature:
 end.rcode-->
 
 <br>
-<h2> Summary of the runstatus per feature </h2>
+<h2> Summary of feature steps </h2>
 
-The following table summarizes the runstatus of the feature steps over all instances (in %).<br>
+The following table summarizes the feature steps over all instances.
+<ul>
+  <li> size: How many features are affected by this step in %
+  <li> ok, ..., other: Percentage of run status
+  <li> cost.min, cost.mean, cost.max: Range of costs for this step
+  <li> cost.na: How many missing values occur in costs in %
+</ul>
+
 <br>
 
 <!--begin.rcode, results = "asis"
-  res = summarizeFeatureRunStatus(astask)
+  res = summarizeFeatureSteps(astask)
   print(xtable(res), "html")
 end.rcode-->
 

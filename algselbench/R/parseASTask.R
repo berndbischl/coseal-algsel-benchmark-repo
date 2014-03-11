@@ -10,6 +10,11 @@ parseASTask = function(path) {
 
   desc = parseDescription(path)
   feature.runstatus = read.arff(file.path(path, "feature_runstatus.arff"))
+  # make sure we have correct levels
+  for (j in 3:ncol(feature.runstatus)) {
+    feature.runstatus[, j] = factor(feature.runstatus[, j],
+      levels = c("ok", "timeout", "memout", "presolved", "crash", "other"))
+  }
   feature.values = read.arff(file.path(path, "feature_values.arff"))
   costfile = file.path(path, "feature_costs.arff")
   feature.costs = if (file.exists(costfile))
