@@ -63,7 +63,7 @@ print.ASTask = function(x, ...) {
   printField1("Algo. (stochastic)", d$algorithms_stochastic)
   printField1("Algo. repetitions", collapse(range(x$algo.runs$repetition), sep = " - "))
   printField1("Algo. runs (inst x algo x rep)", nrow(x$algo.runs))
-  printField1("Nr. of feature steps", d$number_of_feature_steps)
+  printField1("Feature steps", names(d$feature_steps))
   printField1("CV repetitions", getNumberOfCVReps(x))
   printField1("CV folds", getNumberOfCVFolds(x))
 }
