@@ -104,14 +104,22 @@ runLlamaModels = function(astasks, nfolds = 10L, stratify = TRUE, baselines,
   reg = makeExperimentRegistry("run_llama_models", packages = c("llama", "RWeka"))
 
   for (i in seq_along(astasks)) {
-    addProblem(reg, id = astasks[[i]]$desc$task_id,
+    astask = astasks[[i]]
+    desc = astask$desc
+    cutoff = desc$algorithm_cutoff_time
+    timeout = if (desc$performance_type[[1L]] == "runtime" && !is.na(cutoff))
+      cutoff
+    else
+      NULL
+    addProblem(reg, id = desc$task_id,
       static = list(
+        timeout = timeout,
         llama.task = llama.tasks[[i]],
         llama.cv = llama.cvs[[i]],
-        makeRes = function(data, p) {
+        makeRes = function(data, p, timeout) {
           list(
             succ = mean(unlist(successes(data, p))),
-            par10 = mean(unlist(parscores(data, p))),
+            par10 = mean(unlist(parscores(data, p, timeout = timeout))),
             mcp = mean(unlist(misclassificationPenalties(data, p)))
           )
         }
