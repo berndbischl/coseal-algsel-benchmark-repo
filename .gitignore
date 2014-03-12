@@ -3,6 +3,7 @@ algselbench/algselbench.Rcheck
 algselbench/algselbench*.tar.gz
 algselbench/test_src.R
 algselbench/run_llama_models-files
+algselbench/inst/tests/Rplots.pdf
 
 .DS_Store
 .Rhistory
