@@ -1,15 +1,24 @@
+#' Return features that are useable for a given set of feature steps.
+#'
+#' @param astask [\code{\link{ASTask}}]\cr
+#'   Algorithm selection task.
+#' @param steps [\code{character}]\cr
+#'   Feature steps.
+#'   Default are all feature steps.
+#' @return [\code{character}].
+#' @export
 getProvidedFeatures = function(astask, steps) {
   checkArg(astask, "ASTask")
-  checkArg(steps, subset = names(astask$desc$feature_steps))
+  if (missing(steps))
+    steps = names(astask$desc$feature_steps)
+  else
+    checkArg(steps, subset = names(astask$desc$feature_steps))
   allfeats = getFeatureNames(astask)
   step.list = astask$desc$feature_steps
   allsteps = names(step.list)
   notsteps = setdiff(allsteps, steps)
-  print(step.list[notsteps])
   notfeatures = Reduce(union, step.list[notsteps])
-  print(notfeatures)
+  return(setdiff(allfeats, notfeatures))
 }
 
-# astask = parseASTask(task.dir)
-# getProvidedFeatures(astask, "lobjois_featuretime")
 
