@@ -2,8 +2,8 @@ context("runLlamaModels")
 
 test_that("runLlamaModels", {
   cv = createCVSplits(testtask1, folds = 2, reps = 1L)
-  reg = runLlamaModels(testtask1, 
-    baselines = "vbs", 
+  reg = runLlamaModels(testtask1,
+    baselines = "vbs",
     classifiers = "J48",
     regressors = character(0),
     clusterers = character(0)

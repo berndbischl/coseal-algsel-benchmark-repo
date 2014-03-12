@@ -3,6 +3,7 @@ library(devtools)
 library(testthat)
 library(llama)
 library(mlr)
+library(BatchExperiments)
 
 if (interactive()) {
   load_all(".")
