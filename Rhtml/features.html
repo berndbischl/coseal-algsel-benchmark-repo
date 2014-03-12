@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style type="text/css">
+.knitr.inline {
+  background-color: #f7f7f7;
+  border:solid 1px #B0B0B0;
+}
+.error {
+	font-weight: bold;
+	color: #FF0000;
+},
+.warning {
+	font-weight: bold;
+}
+.message {
+	font-style: italic;
+}
+.source, .output, .warning, .error, .message {
+	padding: 0em 1em;
+  border:solid 1px #F7F7F7;
+}
+.source {
+  background-color: #f5f5f5;
+}
+.rimage.left {
+  text-align: left;
+}
+.rimage.right {
+  text-align: right;
+}
+.rimage.center {
+  text-align: center;
+}
+.hl.num {
+  color: #AF0F91;
+}
+.hl.str {
+  color: #317ECC;
+}
+.hl.com {
+  color: #AD95AF;
+  font-style: italic;
+}
+.hl.opt {
+  color: #000000;
+}
+.hl.std {
+  color: #585858;
+}
+.hl.kwa {
+  color: #295F94;
+  font-weight: bold;
+}
+.hl.kwb {
+  color: #B05A65;
+}
+.hl.kwc {
+  color: #55aa55;
+}
+.hl.kwd {
+  color: #BC5A65;
+  font-weight: bold;
+}
+</style>
+  <title>Feature performance overview</title>
+</head>
+<body>
+
+
+<h2> Overview of Feature Values </h2>
+
+The following measures were taken for the results of each feature:
+<ul>
+
+  <li> <a>Min: Minimum</a>
+  <li> <a>1st Qu.: 1st Quartile = lower Quartile = 25%-Quantile</a>
+  <li> <a>Median: Median = 50%-Quantile</a>
+  <li> <a>Mean: Arithmetic Mean</a>
+  <li> <a>3rd Qu.: 3rd Quartile = upper Quartile = 75%-Quantile</a>
+  <li> <a>Max.: Maximum</a>
+  <li> <a>Std. Dev.: Standard Deviation</a>
+  <li> <a>CoV.: Coefficient of Variation = Standard Deviation / Arithmetic Mean</a>
+  <li> <a>NA's: Number of NAs (missing values) within the feature set.</a>
+  <li> <a>Obs.: Number of Observations within the feature set.</a>
+  <li> <a>Run OK (%): Percentage of feature computations without a crash.</a>
+
+</ul>
+
+<div class="source"><pre class="knitr r"><span class="hl std">res</span> <span class="hl kwb">=</span> <span class="hl kwd">summarizeFeatureValues</span><span class="hl std">(astask)</span>
+</pre></div>
+<div class="error"><pre class="knitr r">## Error: konnte Funktion "summarizeFeatureValues" nicht finden
+</pre></div>
+<div class="source"><pre class="knitr r"><span class="hl kwd">print</span><span class="hl std">(</span><span class="hl kwd">xtable</span><span class="hl std">(res,</span> <span class="hl kwc">digits</span> <span class="hl std">=</span> <span class="hl kwd">c</span><span class="hl std">(</span><span class="hl num">0</span><span class="hl std">,</span> <span class="hl kwd">rep</span><span class="hl std">(</span><span class="hl num">4</span><span class="hl std">,</span> <span class="hl num">8</span><span class="hl std">),</span> <span class="hl num">0</span><span class="hl std">,</span> <span class="hl num">0</span><span class="hl std">),</span> <span class="hl kwc">display</span> <span class="hl std">=</span> <span class="hl kwd">c</span><span class="hl std">(</span><span class="hl str">&quot;s&quot;</span><span class="hl std">,</span> <span class="hl kwd">rep</span><span class="hl std">(</span><span class="hl str">&quot;e&quot;</span><span class="hl std">,</span>
+    <span class="hl num">8</span><span class="hl std">),</span> <span class="hl str">&quot;d&quot;</span><span class="hl std">,</span> <span class="hl str">&quot;d&quot;</span><span class="hl std">)),</span> <span class="hl str">&quot;html&quot;</span><span class="hl std">)</span>
+</pre></div>
+<div class="error"><pre class="knitr r">## Error: konnte Funktion "xtable" nicht finden
+</pre></div>
+
+
+
+<br>
+<h2> Summary of the runstatus per feature </h2>
+
+The following table summarizes the runstatus of the feature steps over all instances (in %).<br>
+<br>
+
+<div class="source"><pre class="knitr r"><span class="hl std">res</span> <span class="hl kwb">=</span> <span class="hl kwd">summarizeFeatureRunStatus</span><span class="hl std">(astask)</span>
+</pre></div>
+<div class="error"><pre class="knitr r">## Error: konnte Funktion "summarizeFeatureRunStatus" nicht finden
+</pre></div>
+<div class="source"><pre class="knitr r"><span class="hl kwd">print</span><span class="hl std">(</span><span class="hl kwd">xtable</span><span class="hl std">(res),</span> <span class="hl str">&quot;html&quot;</span><span class="hl std">)</span>
+</pre></div>
+<div class="error"><pre class="knitr r">## Error: konnte Funktion "xtable" nicht finden
+</pre></div>
+
+
+
+<br>
+<h2> Duplicated Features </h2>
+
+In this section, you'll find all features that adopted only one value (and eventually NA's).<br>
+Please note, that only a maximum of 5 duplicates per block is shown.<br>
+<br>
+
+<div class="source"><pre class="knitr r"><span class="hl std">res</span> <span class="hl kwb">=</span> <span class="hl kwd">checkDuplicatedInstances</span><span class="hl std">(astask)</span>
+</pre></div>
+<div class="error"><pre class="knitr r">## Error: konnte Funktion "checkDuplicatedInstances" nicht finden
+</pre></div>
+<div class="source"><pre class="knitr r"><span class="hl kwa">if</span> <span class="hl std">(</span><span class="hl kwd">length</span><span class="hl std">(res)</span> <span class="hl opt">&gt;</span> <span class="hl num">0L</span><span class="hl std">) {</span>
+    <span class="hl std">numbers</span> <span class="hl kwb">=</span> <span class="hl kwd">sapply</span><span class="hl std">(res, length)</span>
+    <span class="hl std">res</span> <span class="hl kwb">=</span> <span class="hl kwd">sapply</span><span class="hl std">(</span><span class="hl kwd">seq_along</span><span class="hl std">(res),</span> <span class="hl kwa">function</span><span class="hl std">(</span><span class="hl kwc">i</span><span class="hl std">) {</span>
+        <span class="hl kwa">if</span> <span class="hl std">(numbers[i]</span> <span class="hl opt">&gt;</span> <span class="hl num">5</span><span class="hl std">)</span>
+            <span class="hl std">res[[i]]</span> <span class="hl kwb">=</span> <span class="hl kwd">c</span><span class="hl std">(res[[i]][</span><span class="hl num">1</span><span class="hl opt">:</span><span class="hl num">5</span><span class="hl std">],</span> <span class="hl str">&quot;...&quot;</span><span class="hl std">)</span>
+        <span class="hl kwd">collapse</span><span class="hl std">(res[[i]],</span> <span class="hl kwc">sep</span> <span class="hl std">=</span> <span class="hl str">&quot; +++++++ &quot;</span><span class="hl std">)</span>
+    <span class="hl std">})</span>
+    <span class="hl std">res</span> <span class="hl kwb">=</span> <span class="hl kwd">data.frame</span><span class="hl std">(</span><span class="hl kwc">block</span> <span class="hl std">=</span> <span class="hl kwd">seq_along</span><span class="hl std">(numbers),</span> <span class="hl kwc">numbers</span> <span class="hl std">= numbers,</span> <span class="hl kwc">instances</span> <span class="hl std">= res)</span>
+    <span class="hl kwd">print</span><span class="hl std">(</span><span class="hl kwd">xtable</span><span class="hl std">(res),</span> <span class="hl kwc">include.rownames</span> <span class="hl std">=</span> <span class="hl num">FALSE</span><span class="hl std">,</span> <span class="hl str">&quot;html&quot;</span><span class="hl std">)</span>
+<span class="hl std">}</span> <span class="hl kwa">else</span> <span class="hl std">{</span>
+    <span class="hl kwd">cat</span><span class="hl std">(</span><span class="hl str">&quot;There were no duplicated features.&quot;</span><span class="hl std">)</span>
+<span class="hl std">}</span>
+</pre></div>
+<div class="error"><pre class="knitr r">## Error: Objekt 'res' nicht gefunden
+</pre></div>
+
+
+
+<br>
+<h2> Useless Features </h2>
+
+In this section, you'll find all features that adopted only one value (and eventually NA's).<br>
+<br>
+
+<div class="source"><pre class="knitr r"><span class="hl std">res</span> <span class="hl kwb">=</span> <span class="hl kwd">findUselessInstances</span><span class="hl std">(astask)</span>
+</pre></div>
+<div class="error"><pre class="knitr r">## Error: konnte Funktion "findUselessInstances" nicht finden
+</pre></div>
+<div class="source"><pre class="knitr r"><span class="hl kwd">cat</span><span class="hl std">(</span><span class="hl str">&quot;Feature Values:\n&quot;</span><span class="hl std">)</span>
+</pre></div>
+Feature Values:
+<div class="source"><pre class="knitr r"><span class="hl kwa">if</span> <span class="hl std">(</span><span class="hl kwd">nrow</span><span class="hl std">(res</span><span class="hl opt">$</span><span class="hl std">feature.values)</span> <span class="hl opt">&gt;=</span> <span class="hl num">1</span><span class="hl std">) {</span>
+    <span class="hl kwd">print</span><span class="hl std">(</span><span class="hl kwd">xtable</span><span class="hl std">(res</span><span class="hl opt">$</span><span class="hl std">feature.values,</span> <span class="hl kwc">digits</span> <span class="hl std">=</span> <span class="hl kwd">c</span><span class="hl std">(</span><span class="hl num">0</span><span class="hl std">,</span> <span class="hl num">4</span><span class="hl std">,</span> <span class="hl num">0</span><span class="hl std">)),</span> <span class="hl str">&quot;html&quot;</span><span class="hl std">)</span>
+<span class="hl std">}</span> <span class="hl kwa">else</span> <span class="hl std">{</span>
+    <span class="hl kwd">cat</span><span class="hl std">(</span><span class="hl str">&quot;There were no entirely useless feature values.&quot;</span><span class="hl std">)</span>
+<span class="hl std">}</span>
+</pre></div>
+<div class="error"><pre class="knitr r">## Error: Objekt 'res' nicht gefunden
+</pre></div>
+
+
+
+<br>
+<div class="source"><pre class="knitr r"><span class="hl kwd">cat</span><span class="hl std">(</span><span class="hl str">&quot;Runstatus of Feature Steps:\n&quot;</span><span class="hl std">)</span>
+</pre></div>
+Runstatus of Feature Steps:
+<div class="source"><pre class="knitr r"><span class="hl kwa">if</span> <span class="hl std">(</span><span class="hl kwd">nrow</span><span class="hl std">(res</span><span class="hl opt">$</span><span class="hl std">feature.runstatus)</span> <span class="hl opt">&gt;=</span> <span class="hl num">1</span><span class="hl std">) {</span>
+    <span class="hl kwd">print</span><span class="hl std">(</span><span class="hl kwd">xtable</span><span class="hl std">(res</span><span class="hl opt">$</span><span class="hl std">feature.runstatus),</span> <span class="hl str">&quot;html&quot;</span><span class="hl std">)</span>
+<span class="hl std">}</span> <span class="hl kwa">else</span> <span class="hl std">{</span>
+    <span class="hl kwd">cat</span><span class="hl std">(</span><span class="hl str">&quot;\nNone of the feature steps consisted of unique values (except for 'ok').&quot;</span><span class="hl std">)</span>
+<span class="hl std">}</span>
+</pre></div>
+<div class="error"><pre class="knitr r">## Error: Objekt 'res' nicht gefunden
+</pre></div>
+
+
+
+</body>
+</html>
