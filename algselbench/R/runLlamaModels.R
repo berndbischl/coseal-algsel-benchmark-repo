@@ -1,4 +1,4 @@
-#FIXME: the whole way of defining/selecting the learner is horrible in the code!
+  # #FIXME: baseline methods are not cross-validated.
 
 #' Creates a registry which can be used for running several Llama models on a cluster.
 #'
@@ -26,77 +26,59 @@ runLlamaModels = function(astasks, baselines, classifiers, regressors, clusterer
   if (!missing(astasks) && inherits(astasks, "ASTask"))
     astasks = list(astasks)
   checkListElementClass(astasks, "ASTask")
+
+  # models and defaults
   baselines.def = c("vbs", "singleBest", "singleBestByPar", "singleBestBySuccesses")
-  if (missing(baselines)) {
+
+  classifiers.weka = c("meta/AdaBoost", "bayes/BayesNet", "lazy/IBk", "rules/OneR",
+    "functions/MultilayerPerceptron", "trees/RandomTree", "trees/J48", "rules/JRip")
+  classifiers.mlr = c("classif.ctree", "classfif.kknn", "classif.ksvm", "classif.naiveBayes",
+    "classif.randomForest", "classif.rpart")
+  classifiers.def = c(classifiers.weka, classifiers.mlr)
+
+  regressors.mlr = c("regr.earth", "regr.ksvm", "regr.lm", "regr.randomForest", "regr.rpart")
+  regressors.def = regressors.mlr
+
+  clusterers.weka = c("XMeans", "EM", "FarthestFirst", "SimpleKMeans")
+  clusterers.def = clusterers.weka
+
+  # check model args
+  if (missing(baselines))
     baselines = baselines.def
-  } else {
+  else
     checkArg(baselines, subset = baselines.def)
-  }
-  ## FIXME: find a way to pass further arguments such as size in nnet
-  ## FIXME: problems with rpart and lda (due to constant values), presumably caused
-  ## by %dopar% in llama::classify
-  ## FIXME: also in %dopar%, problem when training a model to an empty class, e.g.
-  ## in SAT11-Crafted fold 1 (of 2 folds)
-  if (missing(classifiers)) {
-    classifiers = c("AdaBoost", "BayesNet", "IBk", "OneR", "MultilayerPerceptron",
-      "RandomTree", "ctree", "fnn", "J48", "JRip", "kknn", "ksvm",
-      "naiveBayes", "nnet", "randomForest", "rpart", "svm")
-    classifiers = paste("classif", classifiers, sep = ".")
-    requirePackages(why="runLlamaModels", packs = c("party", "FNN", "kknn", "kernlab",
-        "class", "nnet", "e1071", "randomForest", "klaR", "rpart"))
-    classif.AdaBoost = make_Weka_classifier("weka/classifiers/meta/AdaBoostM1")
-    classif.BayesNet = make_Weka_classifier("weka/classifiers/bayes/BayesNet")
-    classif.IBk = make_Weka_classifier("weka/classifiers/lazy/IBk")
-    classif.J48 = J48
-    classif.JRip = JRip
-    classif.OneR = make_Weka_classifier("weka/classifiers/rules/OneR")
-    classif.MultilayerPerceptron = make_Weka_classifier("weka/classifiers/functions/MultilayerPerceptron")
-    classif.RandomTree = make_Weka_classifier("weka/classifiers/trees/RandomTree")
-    g = function(x, ...)
-      convertMlrClassifLearnerToLlama(makeLearner(x, ...))
-    classif.boosting = g("classif.boosting")
-    classif.ctree = g("classif.ctree")
-    classif.fnn = g("classif.fnn")
-    classif.kknn = g("classif.kknn")
-    classif.ksvm = g("classif.ksvm")
-    classif.naiveBayes = g("classif.naiveBayes")
-    classif.nnet = g("classif.nnet", size = 3L)
-    classif.randomForest = g("classif.randomForest")
-    classif.rpart = g("classif.rpart")
-    classif.svm = g("classif.svm")
-  }
-  if (missing(regressors)) {
-    regressors = c("REPTree", "earth", "ksvm", "lm", "nnet", "randomForest", "rpart")
-    regressors = paste("regr", regressors, sep = ".")
-    requirePackages(why = "runLlamaModels", packs = c("earth", "kernlab", "stats", "nnet",
-      "randomForest", "rpart"))
-    regr.REPTree = make_Weka_classifier("weka/classifiers/trees/REPTree")
-    regr.earth = earth
-    regr.ksvm = ksvm
-    regr.lm = lm
-    regr.nnet = function(formula, data, ...) nnet(formula = formula, data = data, size = 3L, ...)
-    regr.randomForest = randomForest
-    regr.rpart = rpart
-  }
-  if (missing(clusterers)) {
-    clusterers = c("XMeans", "EM", "FarthestFirst", "SimpleKMeans")
-    clusterers = paste("cluster", clusterers, sep = ".")
-    cluster.XMeans = XMeans
-    cluster.EM = make_Weka_clusterer("weka/clusterers/EM")
-    cluster.FarthestFirst = make_Weka_clusterer("weka/clusterers/FarthestFirst")
-    cluster.SimpleKMeans = make_Weka_clusterer("weka/clusterers/SimpleKMeans")
-  }
+  if (missing(classifiers))
+    classifiers = classifiers.def
+  else
+    checkArg(classifiers, subset = classifiers.def)
+  if (missing(regressors))
+    regressors = regressors.def
+  else
+    checkArg(regressors, subset = regressors.def)
+  if (missing(clusterers))
+    clusterers = clusterers.def
+  else
+    checkArg(clusterers, subset = clusterers.def)
 
+  packs = c("RWeka", "mlr", "BatchExperiments")
+  requirePackages(packs, why = "runLlamaModels")
 
-  #FIXME: baseline methods are not cross-validated.
+  makeModelFun = function(name) {
+    if (name %in% c(classifiers.mlr, regressors.mlr)) {
+      convertMlrLearnerToLlama(makeLearner(name))
+    } else if (name %in% classifiers.weka) {
+      make_Weka_classifier(paste("weka/classifiers", name, sep = "/"))
+    } else {
+      get(name)
+    }
+  }
 
   llama.tasks = lapply(astasks, convertToLlama)
   llama.cvs = lapply(astasks, convertToLlamaCVFolds)
 
-  requirePackages("BatchExperiments", why = "runLlamaModels")
   # FIXME:
   unlink("run_llama_models-files", recursive = TRUE)
-  reg = makeExperimentRegistry("run_llama_models", packages = c("llama", "RWeka"))
+  reg = makeExperimentRegistry("run_llama_models", packages = packs)
 
   for (i in seq_along(astasks)) {
     astask = astasks[[i]]
@@ -111,6 +93,7 @@ runLlamaModels = function(astasks, baselines, classifiers, regressors, clusterer
         timeout = timeout,
         llama.task = llama.tasks[[i]],
         llama.cv = llama.cvs[[i]],
+        makeModelFun = makeModelFun,
         makeRes = function(data, p, timeout) {
           list(
             succ = mean(unlist(successes(data, p))),
@@ -123,25 +106,25 @@ runLlamaModels = function(astasks, baselines, classifiers, regressors, clusterer
   }
 
   algoBaseline = function(static, model) {
-    fun = get(model)
+    fun = static$makeModelFun(model)
     p = fun(static$llama.task)
     static$makeRes(static$llama.task, p, static$timeout)
   }
 
   algoClassif = function(static, model) {
-    fun = get(model)
+    fun = static$makeModelFun(model)
     p = llama::classify(classifier = fun, data = static$llama.cv)$predictions
     static$makeRes(static$llama.cv, p, static$timeout)
   }
 
   algoRegr = function(static, model) {
-    fun = get(model)
+    fun = static$makeModelFun(model)
     p = llama::regression(regressor = fun, data = static$llama.cv)$predictions
     static$makeRes(static$llama.cv, p, static$timeout)
   }
 
   algoCluster = function(static, model) {
-    fun = get(model)
+    fun = static$makeModelFun(model)
     p = llama::cluster(clusterer = fun, data = static$llama.cv)$predictions
     static$makeRes(static$llama.cv, p, static$timeout)
   }
