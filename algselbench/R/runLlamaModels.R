@@ -30,7 +30,7 @@ runLlamaModels = function(astasks, baselines, classifiers, regressors, clusterer
 
   classifiers.weka = c("meta/AdaBoost", "bayes/BayesNet", "lazy/IBk", "rules/OneR",
     "functions/MultilayerPerceptron", "trees/RandomTree", "trees/J48", "rules/JRip")
-  classifiers.mlr = c("classif.ctree", "classfif.kknn", "classif.ksvm", "classif.naiveBayes",
+  classifiers.mlr = c("classif.ctree", "classif.kknn", "classif.ksvm", "classif.naiveBayes",
     "classif.randomForest", "classif.rpart")
   classifiers.def = c(classifiers.weka, classifiers.mlr)
 
@@ -122,7 +122,7 @@ runLlamaModels = function(astasks, baselines, classifiers, regressors, clusterer
 
   addExps = function(id, algo, llama.fun, models) {
     if (length(models) > 0L) {
-      addAlgorithm(reg, id = id, fun = algoLlama)
+      addAlgorithm(reg, id = id, fun = algo)
       des = makeDesign(id, exhaustive = list(model = models, llama.fun = llama.fun))
       addExperiments(reg, algo.designs = des)
     }
