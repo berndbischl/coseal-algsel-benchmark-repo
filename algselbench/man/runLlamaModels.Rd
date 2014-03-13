@@ -2,7 +2,8 @@
 \alias{runLlamaModels}
 \title{Creates a registry which can be used for running several Llama models on a cluster.}
 \usage{
-runLlamaModels(astasks, baselines, classifiers, regressors, clusterers)
+  runLlamaModels(astasks, baselines, classifiers,
+    regressors, clusterers)
 }
 \arguments{
   \item{astasks}{[\code{list}]\cr List of algorithm
@@ -30,10 +31,10 @@ runLlamaModels(astasks, baselines, classifiers, regressors, clusterers)
   c("XMeans", "EM", "FarthestFirst", "SimpleKMeans").}
 }
 \value{
-registry.
+  registry.
 }
 \description{
-Creates a registry which can be used for running several
-Llama models on a cluster.
+  Creates a registry which can be used for running several
+  Llama models on a cluster.
 }
 
