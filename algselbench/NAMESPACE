@@ -1,6 +1,8 @@
+S3method(predict,LlamaClassifMlrWrapper)
 S3method(print,ASTask)
 export(calcAggrPerfValues)
 export(checkDuplicatedInstances)
+export(convertMlrLearnerToLlama)
 export(convertToLlama)
 export(convertToLlamaCVFolds)
 export(createCVSplits)

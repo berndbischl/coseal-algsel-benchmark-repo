@@ -1,12 +1,12 @@
-# library(algselbench)
+library(BBmisc)
+library(devtools)
+load_all("../algselbench")
+source("defs.R")
 
-# dataset.dir = "../../coseal/data/csp_2010"
-# ast = parseASTask(dataset.dir)
-# lt = convertToLlama(ast)
-
-ds.dirs = list.files("../coseal/data", full.names = TRUE)
+ds.dirs = list.files(file.path(coseal.svn.dir, "data"), full.names = TRUE)[1]
+print(ds.dirs)
 astasks = lapply(ds.dirs, parseASTask)
-reg = runLlamaModels(astasks, nfolds = 10L)
+reg = runLlamaModels(astasks)
 time1 = proc.time()
 submitJobs(reg)
 waitForJobs(reg)

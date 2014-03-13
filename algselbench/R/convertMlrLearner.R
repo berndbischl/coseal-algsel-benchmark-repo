@@ -1,7 +1,9 @@
+#' @export
 predict.LlamaClassifMlrWrapper = function(model, newdata, ...) {
   mlr:::predict.WrappedModel(model, newdata = newdata, ...)$data$response
 }
 
+#' @export
 convertMlrLearnerToLlama = function(learner) {
   force(learner)
   function(formula, data) {

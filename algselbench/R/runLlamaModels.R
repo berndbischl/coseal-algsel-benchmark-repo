@@ -1,5 +1,3 @@
-  # #FIXME: baseline methods are not cross-validated.
-
 #' Creates a registry which can be used for running several Llama models on a cluster.
 #'
 #' @param astasks [\code{list}]\cr
@@ -105,42 +103,35 @@ runLlamaModels = function(astasks, baselines, classifiers, regressors, clusterer
     )
   }
 
-  algoBaseline = function(static, model) {
+  algoBaseline = function(static, llama.fun, model) {
     fun = static$makeModelFun(model)
-    p = fun(static$llama.task)
+    p = fun(data = static$llama.task)
     static$makeRes(static$llama.task, p, static$timeout)
   }
 
-  algoClassif = function(static, model) {
+  algoLlama = function(static, llama.fun, model) {
+    # FIXME: how to better load this? think about interactive test and so on...
+    if (!interactive())
+      library(algselbench)
+    #FIXME: get from llama package envir
+    llama.fun = get(llama.fun)
     fun = static$makeModelFun(model)
-    p = llama::classify(classifier = fun, data = static$llama.cv)$predictions
+    p = llama.fun(fun, data = static$llama.cv)$predictions
     static$makeRes(static$llama.cv, p, static$timeout)
   }
 
-  algoRegr = function(static, model) {
-    fun = static$makeModelFun(model)
-    p = llama::regression(regressor = fun, data = static$llama.cv)$predictions
-    static$makeRes(static$llama.cv, p, static$timeout)
-  }
-
-  algoCluster = function(static, model) {
-    fun = static$makeModelFun(model)
-    p = llama::cluster(clusterer = fun, data = static$llama.cv)$predictions
-    static$makeRes(static$llama.cv, p, static$timeout)
-  }
-
-  addExps = function(id, models, fun) {
+  addExps = function(id, algo, llama.fun, models) {
     if (length(models) > 0L) {
-      addAlgorithm(reg, id = id, fun = fun)
-      des = makeDesign(id, exhaustive = list(model = models))
+      addAlgorithm(reg, id = id, fun = algoLlama)
+      des = makeDesign(id, exhaustive = list(model = models, llama.fun = llama.fun))
       addExperiments(reg, algo.designs = des)
     }
   }
 
-  addExps("baseline", baselines, algoBaseline)
-  addExps("classif", classifiers, algoClassif)
-  addExps("regr", regressors, algoRegr)
-  addExps("cluster", clusterers, algoCluster)
+  addExps("baseline", algoBaseline, "foo", baselines)
+  addExps("classif", algoLlama, "classify", classifiers)
+  addExps("regr", algoLlama, "regression", regressors)
+  addExps("cluster", algoLlama, "cluster", clusterers)
 
   return(reg)
 }
