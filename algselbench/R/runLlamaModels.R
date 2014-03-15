@@ -41,7 +41,7 @@ runLlamaModels = function(astasks, baselines, classifiers, regressors, clusterer
   regressors.mlr = c("regr.earth", "regr.lm", "regr.randomForest", "regr.rpart")
   regressors.def = regressors.mlr
 
-  clusterers.weka = c("FarthestFirst", "SimpleKMeans")
+  clusterers.weka = c("XMeans", "EM", "FarthestFirst", "SimpleKMeans")
   clusterers.def = clusterers.weka
 
   # check model args
