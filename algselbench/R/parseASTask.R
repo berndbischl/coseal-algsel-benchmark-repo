@@ -23,10 +23,11 @@ parseASTask = function(path) {
     NULL
   algo.runs = read.arff(file.path(path, "algorithm_runs.arff"))
   cv.file = file.path(path, "cv.arff")
-  cv.splits = if (file.exists(cv.file)) {
-    read.arff(cv.file)
+  if (file.exists(cv.file)) {
+    cv.files = read.arff(cv.file)
   } else {
     warningf("No cv file exists for task at:\n%s", path)
+    cv.splits = NULL
   }
 
   makeS3Obj("ASTask",
@@ -69,7 +70,7 @@ print.ASTask = function(x, ...) {
   printField1("Algo. repetitions", collapse(range(x$algo.runs$repetition), sep = " - "))
   printField1("Algo. runs (inst x algo x rep)", nrow(x$algo.runs))
   printField1("Feature steps", names(d$feature_steps))
-  printField1("CV repetitions", getNumberOfCVReps(x))
-  printField1("CV folds", getNumberOfCVFolds(x))
+  printField1("CV repetitions", ifelse(is.null(x$cv.splits), "No", getNumberOfCVReps(x)))
+  printField1("CV folds", ifelse(is.null(x$cv.splits), "No", getNumberOfCVFolds(x)))
 }
 
