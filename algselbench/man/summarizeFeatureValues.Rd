@@ -3,17 +3,17 @@
 \title{Creates a table that gives an overview of the feature values
 across all instances.}
 \usage{
-  summarizeFeatureValues(astask)
+summarizeFeatureValues(astask)
 }
 \arguments{
   \item{astask}{[\code{\link{ASTask}}]\cr Algorithm
   selection task.}
 }
 \value{
-  [\code{data.frame}].  Overview of the feature values.
+[\code{data.frame}].  Overview of the feature values.
 }
 \description{
-  Creates a table that gives an overview of the feature
-  values across all instances.
+Creates a table that gives an overview of the feature
+values across all instances.
 }
 

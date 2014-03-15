@@ -24,7 +24,7 @@ parseASTask = function(path) {
   algo.runs = read.arff(file.path(path, "algorithm_runs.arff"))
   cv.file = file.path(path, "cv.arff")
   if (file.exists(cv.file)) {
-    cv.files = read.arff(cv.file)
+    cv.splits = read.arff(cv.file)
   } else {
     warningf("No cv file exists for task at:\n%s", path)
     cv.splits = NULL

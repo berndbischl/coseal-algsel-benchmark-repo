@@ -2,7 +2,7 @@
 \alias{plotAlgoPerfBoxplots}
 \title{Plot boxplots of performance values per algorithm across all instances.}
 \usage{
-  plotAlgoPerfBoxplots(astask, measure, log = FALSE)
+plotAlgoPerfBoxplots(astask, measure, log = FALSE)
 }
 \arguments{
   \item{astask}{[\code{\link{ASTask}}]\cr Algorithm
@@ -16,10 +16,10 @@
   FALSE.}
 }
 \value{
-  ggplot2 plot object.
+ggplot2 plot object.
 }
 \description{
-  Plot boxplots of performance values per algorithm across
-  all instances.
+Plot boxplots of performance values per algorithm across
+all instances.
 }
 
