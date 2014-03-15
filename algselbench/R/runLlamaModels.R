@@ -1,5 +1,9 @@
 #' Creates a registry which can be used for running several Llama models on a cluster.
 #'
+#' It is likely that you need to install some additional R packages for this from CRAN or extra
+#' Weka learner. The latter can be one via e.g. \code{WPM("install-package", "XMeans")}.
+#'
+#'
 #' @param astasks [\code{list}]\cr
 #'   List of algorithm selection tasks (\code{\link{ASTask}}).
 #' @param baselines [\code{character}]\cr
@@ -66,6 +70,8 @@ runLlamaModels = function(astasks, baselines, classifiers, regressors, clusterer
       convertMlrLearnerToLlama(makeLearner(name))
     } else if (name %in% classifiers.weka) {
       make_Weka_classifier(paste("weka/classifiers", name, sep = "/"))
+    } else if (name %in% clusterers.weka) {
+      make_Weka_clusterer(paste("weka/clusterers", name, sep = "/"))
     } else {
       get(name)
     }
