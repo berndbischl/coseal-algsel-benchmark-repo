@@ -28,16 +28,16 @@ runLlamaModels = function(astasks, baselines, classifiers, regressors, clusterer
   # models and defaults
   baselines.def = c("vbs", "singleBest", "singleBestByPar", "singleBestBySuccesses")
 
-  classifiers.weka = c("meta/AdaBoost", "bayes/BayesNet", "lazy/IBk", "rules/OneR",
-    "functions/MultilayerPerceptron", "trees/RandomTree", "trees/J48", "rules/JRip")
+  classifiers.weka = c("meta/AdaBoostM1", "bayes/BayesNet", "lazy/IBk", "rules/OneR",
+    "trees/RandomTree", "trees/J48", "rules/JRip")
   classifiers.mlr = c("classif.ctree", "classif.kknn", "classif.ksvm", "classif.naiveBayes",
     "classif.randomForest", "classif.rpart")
   classifiers.def = c(classifiers.weka, classifiers.mlr)
 
-  regressors.mlr = c("regr.earth", "regr.ksvm", "regr.lm", "regr.randomForest", "regr.rpart")
+  regressors.mlr = c("regr.earth", "regr.lm", "regr.randomForest", "regr.rpart")
   regressors.def = regressors.mlr
 
-  clusterers.weka = c("XMeans", "EM", "FarthestFirst", "SimpleKMeans")
+  clusterers.weka = c("FarthestFirst", "SimpleKMeans")
   clusterers.def = clusterers.weka
 
   # check model args
