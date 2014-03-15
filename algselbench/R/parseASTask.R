@@ -22,7 +22,12 @@ parseASTask = function(path) {
   else
     NULL
   algo.runs = read.arff(file.path(path, "algorithm_runs.arff"))
-  cv.splits= read.arff(file.path(path, "cv.arff"))
+  cv.file = file.path(path, "cv.arff")
+  cv.splits = if (file.exists(cv.file)) {
+    read.arff(cv.file)
+  } else {
+    warningf("No cv file exists for task at:\n%s", path)
+  }
 
   makeS3Obj("ASTask",
     desc = desc,
