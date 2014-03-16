@@ -9,18 +9,24 @@ parseASTask = function(path) {
   checkArg(path, "character", len = 1L, na.ok = FALSE)
 
   desc = parseDescription(path)
+  fsteps = names(desc$feature_steps)
   feature.runstatus = read.arff(file.path(path, "feature_runstatus.arff"))
   # make sure we have correct levels
   for (j in 3:ncol(feature.runstatus)) {
     feature.runstatus[, j] = factor(feature.runstatus[, j],
       levels = c("ok", "timeout", "memout", "presolved", "crash", "other"))
   }
+  # make sure step run status is in the correct order of feature steps
+  feature.runstatus = feature.runstatus[, c("instance_id", "repetition", fsteps)]
   feature.values = read.arff(file.path(path, "feature_values.arff"))
   costfile = file.path(path, "feature_costs.arff")
-  feature.costs = if (file.exists(costfile))
-    read.arff(file.path(path, "feature_costs.arff"))
-  else
-    NULL
+  if (file.exists(costfile)) {
+    feature.costs = read.arff(file.path(path, "feature_costs.arff"))
+    # make sure step costs is in the correct order of feature steps
+    feature.costs = feature.costs[, c("instance_id", "repetition", fsteps)]
+  } else {
+    feature.costs = NULL
+  }
   algo.runs = read.arff(file.path(path, "algorithm_runs.arff"))
   cv.file = file.path(path, "cv.arff")
   if (file.exists(cv.file)) {
