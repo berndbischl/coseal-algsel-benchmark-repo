@@ -10,7 +10,7 @@
 #' @return [\code{list}]. In the following, \code{n} is the number of instances.
 #'   \item{is.presolved [\code{logical(n)}]}{Was instance presolved? Named by instance ids.}
 #'   \item{solve.steps [\code{character(n)}]}{Which step solved it? NA if no step did it. Named by instance ids.}
-#'   \item{costs [\code{numeric(n)}]}{Feature costs for using the steps. Named by instance ids.}
+#'   \item{costs [\code{numeric(n)}]}{Feature costs for using the steps. Named by instance ids. NULL if no costs are present.}
 #' @export
 getPresolved = function(astask, feature.steps) {
   checkArg(astask, "ASTask")
@@ -25,7 +25,6 @@ getPresolved = function(astask, feature.steps) {
   iids = frs$instance_id
   # reduce to allowed feature steps
   frs = frs[, feature.steps, drop = FALSE]
-  costs = astask$feature.costs[, feature.steps, drop = FALSE]
   isps = frs == "presolved"
   ps = apply(isps, 1, any)
   # steps are in correct order of execution after parseASTask
@@ -34,11 +33,19 @@ getPresolved = function(astask, feature.steps) {
     ifelse(any(x), which.first(x), NA_integer_))
   # set NA to nr of steps (means we use all in costs)
   solve.steps2 = ifelse(is.na(solve.steps1), length(feature.steps), solve.steps1)
-  # add up costs to solving step (or add up all)
-  costs = sapply(seq_row(costs), function(i) sum(costs[i, 1:solve.steps2[i]]))
+  if (!is.null(astask$feature.costs)) {
+    costs = astask$feature.costs[, feature.steps, drop = FALSE]
+    # FIXME: is this really ok??? we just dont know the costs if we got NA. check this
+    costs[is.na(costs)] = 0
+    # add up costs to solving step (or add up all)
+    costs = sapply(seq_row(costs), function(i) sum(costs[i, 1:solve.steps2[i]]))
+    costs = setNames(costs, iids)
+  } else {
+    costs = NULL
+  }
   list(
     is.presolved = setNames(ps, iids),
     solve.steps = setNames(solve.steps1, iids),
-    costs = setNames(costs, iids)
+    costs = costs
   )
 }
