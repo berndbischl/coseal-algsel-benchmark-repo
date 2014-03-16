@@ -35,6 +35,12 @@ solver always has a misclassification penalty of zero.</li>
 <p>
 
 <!--begin.rcode, results = "asis"
+  allfeats = getFeatureNames(astask)
+  fsteps = config$feature.steps.default
+  presolve = getPresolved(astask)
+  if (is.null(fsteps))
+    fsteps = getFeatureStepNames(astask)
+  feats = getProvidedFeatures(astask, fsteps)
   d = subset(llama.results, prob == astask$desc$task_id)
   d = refurbishLlamaResults(data = d, color.best = "#FF0000", color.best.in.group = "#FE9A2E")
   colnames(d) = c("Type", "Model", "Percentage Solved", "PAR10", "MCP")
@@ -43,7 +49,25 @@ end.rcode-->
 
 <p>
 
-The cost for using all features is: <!--rinline getSummedFeatureCosts(astask) -->
+The following default feature steps were used for model building:
+<p>
+<!--rinline collapse(fsteps, sep = ", ")  -->
+<p>
+Number of presolved instances: <!--rinline sum(presolve$is.presolved) -->
+<p>
+The cost for using the feature steps (adapted for presolving) is: <!--rinline sum(presolve$costs) --> 
+or on average: <!--rinline mean(presolve$costs) -->
+<p>
+The feature steps correspond to the following <!--rinline length(feats)--> / <!-- rinline length(allfeats) --> features:
+<p>
+<!--begin.rcode, results = "asis"
+  for (i in seq_along(feats)) {
+    cat(feats[i]); cat(", ")
+    if (i %% 5 == 0L )
+      cat("<br>")
+  }
+end.rcode-->
+<p>
 
 </body>
 </html>
