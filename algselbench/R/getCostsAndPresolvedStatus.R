@@ -12,7 +12,7 @@
 #'   \item{solve.steps [\code{character(n)}]}{Which step solved it? NA if no step did it. Named by instance ids.}
 #'   \item{costs [\code{numeric(n)}]}{Feature costs for using the steps. Named by instance ids. NULL if no costs are present.}
 #' @export
-getPresolved = function(astask, feature.steps) {
+getCostsAndPresolvedStatus = function(astask, feature.steps) {
   checkArg(astask, "ASTask")
   allsteps = getFeatureStepNames(astask)
   if (missing(feature.steps))
@@ -45,7 +45,7 @@ getPresolved = function(astask, feature.steps) {
   }
   list(
     is.presolved = setNames(ps, iids),
-    solve.steps = setNames(solve.steps1, iids),
+    solve.steps = setNames(feature.steps[solve.steps1], iids),
     costs = costs
   )
 }
