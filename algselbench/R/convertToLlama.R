@@ -5,31 +5,50 @@
 #' @param astask [\code{\link{ASTask}}]\cr
 #'   Algorithm selection task.
 #' @param measure [\code{character(1)}]\cr
-#'   Measure to use for modelling.
+#'   Measure to use for modeling.
 #'   Default is first measure in task.
+#' @param feature.steps [\code{character}]\cr
+#'   Which feature steps are allowed?
+#'   Default is all steps.
+#' @param add.feature.costs [\code{logical(1)}]\cr
+#'   If costs for features are present in runtime tasks, should they be added to the algorithm costs
+#'   (because in reality you would  have to pay them)? Whether the algorithm hit the cutoff runtime
+#'   is also newly calculated in this case.
+#'   This adding of feature costs should not be done for the
+#'   baseline models, but only for proper prognostic models.
+#'   Default is \code{TRUE}.
 #' @return Result of calling \code{\link[llama]{input}}.
 #' @export
-convertToLlama = function(astask, measure) {
+convertToLlama = function(astask, measure, feature.steps, add.feature.costs = TRUE) {
   checkArg(astask, "ASTask")
   if (missing(measure))
     measure = astask$desc$performance_measures[1]
   else
     checkArg(measure, "character", len = 1L, na.ok = FALSE)
+  allsteps = names(astask$desc$feature_steps)
+  if (missing(feature.steps))
+    feature.steps = allsteps
+  else
+    checkArg(feature.steps, subset = allsteps)
+  checkArg(add.feature.costs, "logical", len = 1L, na.ok = FALSE)
 
   desc = astask$desc
   feats = astask$feature.values
+  allowed.features = getProvidedFeatures(astask, feature.steps)
 
   ### handle features ###
+
+  # reduce to inst + rep + allowed features
+  feats = feats[, c("instance_id", "repetition", allowed.features), drop = FALSE]
 
   # aggregate stochastic features, only do this if repeated measurements to save time
   if (max(feats$repetition) > 1L) {
     feats = ddply(feats, c("instance_id"), function(d) {
-      colMeans(d[, getFeatureNames(astask), drop = FALSE])
+      colMeans(d[, allowed.features, drop = FALSE])
     })
   } else {
     feats$repetition = NULL
   }
-
   #FIXME: maybe use a backup solver when some features are NA, instead of imputing
 
   # impute feature values
@@ -39,8 +58,6 @@ convertToLlama = function(astask, measure) {
   cols = names(cols)[cols]
   cols = setNames(lapply(cols, function(x) imputeMedian()), cols)
   feats = impute(feats, target = character(0), cols = cols)$data
-  
-  #FIXME: add feature costs at end to performance
 
   ### handle perf values ###
 
@@ -54,16 +71,27 @@ convertToLlama = function(astask, measure) {
   runstatus2 = runstatus[, cols]
   perf2 = perf[, cols]
 
-  # construct successes
+  # construct successes, so far means: no NA in perf val and run status of algo is "OK"
+  cutoff = desc$algorithm_cutoff_time
   successes = !is.na(perf2) & runstatus2 == "ok"
 
-  # impute performance values
-  if (desc$performance_type[measure] == "runtime" & !is.na(desc$algorithm_cutoff_time)) {
+  presolve = getCostsAndPresolvedStatus(astask, feature.steps = feature.steps)
+
+  # impute performance values and add feature costs for run time tasks
+  if (desc$performance_type[measure] == "runtime" & !is.na(cutoff)) {
     impute.val = desc$algorithm_cutoff_time
+    if (add.feature.costs) {
+      m = ncol(perf2)
+      # add instance costs (adapated by presolving) to each alg column
+      perf2 = perf2 + matrix(rep(presolve$costs, m), ncol = m, byrow = FALSE)
+    }
+    # recalculate successes wrt to new perf vals and cutoff. we spent more time due to feat costs
+    successes = successes & perf2 <= cutoff
   } else {
     impute.val = 10 * max(perf2, na.rm = TRUE)
   }
   perf2[!successes] = impute.val
+  # copy back to perf object
   perf[, cols] = perf2
 
   # aggregate stochastic algorithms, only do this if repeated measurements to save time
@@ -79,7 +107,7 @@ convertToLlama = function(astask, measure) {
   successes = as.data.frame(successes)
   successes = cbind(instance_id = perf$instance_id, successes)
   colnames(successes) = colnames(perf)
-  input(feats, perf, successes = successes, 
+  input(feats, perf, successes = successes,
     minimize = !astask$desc$maximize[[which(astask$desc$performance_measures == measure)]])
 }
 
