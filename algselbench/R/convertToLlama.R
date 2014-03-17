@@ -87,12 +87,12 @@ convertToLlama = function(astask, measure, feature.steps, add.feature.costs = TR
       m = ncol(perf2)
       # set algorithm costs to 0 for presolved instances, they wont run
       perf2[presolve$is.presolved, ] = 0
-      if (is.null(astask$feature.costs)) 
+      if (is.null(astask$feature.costs))
         add = 0
       else
         add = matrix(rep(presolve$costs, m), ncol = m, byrow = FALSE)
       # add instance costs (adapated by presolving) to each alg column
-      perf2 = perf2 + add    
+      perf2 = perf2 + add
     }
     # recalculate successes wrt to new perf vals and cutoff. we spent more time due to feat costs
     successes = successes & perf2 <= cutoff

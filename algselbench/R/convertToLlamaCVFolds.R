@@ -33,7 +33,7 @@ convertToLlamaCVFolds = function(astask, measure, add.feature.costs = TRUE, cv.s
 
   folds = cv.splits
 
-  llamaFrame = convertToLlama(astask, measurei = measure, add.feature.costs = add.feature.costs)
+  llamaFrame = convertToLlama(astask, measure = measure, add.feature.costs = add.feature.costs)
 
   nfolds = length(unique(folds$fold))
   parts = split(llamaFrame$data, folds$fold)
