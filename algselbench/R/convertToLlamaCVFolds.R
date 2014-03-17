@@ -7,13 +7,16 @@
 #' @param measure [\code{character(1)}]\cr
 #'   Measure to use for modelling.
 #'   Default is first measure in task.
+#' @param add.feature.costs [\code{logical(1)}]\cr
+#'   See \code{\link{convertToLlama}}.
+#'   Default is \code{TRUE}.
 #' @param cv.splits [\code{data.frame}]\cr
 #'   Data frame defining the split of the data into cross-validation folds,
 #'   as returned by \code{\link{createCVSplits}}.
 #'   Default are the splits \code{astask$cv.splits}
 #' @return Result of calling \code{\link[llama]{input}} with data partitioned into folds.
 #' @export
-convertToLlamaCVFolds = function(astask, measure, cv.splits) {
+convertToLlamaCVFolds = function(astask, measure, add.feature.costs = TRUE, cv.splits) {
   checkArg(astask, "ASTask")
   if (missing(measure))
     measure = astask$desc$performance_measures[1]
@@ -30,7 +33,7 @@ convertToLlamaCVFolds = function(astask, measure, cv.splits) {
 
   folds = cv.splits
 
-  llamaFrame = convertToLlama(astask, measure)
+  llamaFrame = convertToLlama(astask, measurei = measure, add.feature.costs = add.feature.costs)
 
   nfolds = length(unique(folds$fold))
   parts = split(llamaFrame$data, folds$fold)

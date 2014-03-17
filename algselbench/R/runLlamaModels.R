@@ -1,8 +1,10 @@
-#' Creates a registry which can be used for running several Llama models on a cluster.
+#' @title Creates a registry which can be used for running several Llama models on a cluster.
 #'
+#' @description
 #' It is likely that you need to install some additional R packages for this from CRAN or extra
 #' Weka learner. The latter can be one via e.g. \code{WPM("install-package", "XMeans")}.
 #'
+#' Feature costs are added for real prognostic models but not for baseline models.
 #'
 #' @param astasks [\code{list}]\cr
 #'   List of algorithm selection tasks (\code{\link{ASTask}}).
@@ -20,7 +22,7 @@
 #' @param clusterers [\code{character}]\cr
 #'   Vector of characters, defining the cluster models.
 #'   Default is c("XMeans", "EM", "FarthestFirst", "SimpleKMeans").
-#' @return registry.
+#' @return BatchExperiments registry.
 #' @export
 runLlamaModels = function(astasks, baselines, classifiers, regressors, clusterers) {
 
@@ -77,8 +79,10 @@ runLlamaModels = function(astasks, baselines, classifiers, regressors, clusterer
     }
   }
 
-  llama.tasks = lapply(astasks, convertToLlama)
-  llama.cvs = lapply(astasks, convertToLlamaCVFolds)
+  # baseline models use these, no feature costs
+  llama.tasks = lapply(astasks, convertToLlama, add.feature.costs = FALSE)
+  # real models use these, use feature costs
+  llama.cvs = lapply(astasks, convertToLlamaCVFolds, add.feature.costs = TRUE)
 
   # FIXME:
   unlink("run_llama_models-files", recursive = TRUE)
