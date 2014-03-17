@@ -28,16 +28,16 @@ test_that("getCostsAndPresolvedStatus", {
   ps = getCostsAndPresolvedStatus(testtask3)
   expect_equal(ps$is.presolved, c(i1 = FALSE, i2 = TRUE, i3 = FALSE))
   expect_equal(ps$solve.steps, c(i1 = NA, i2 = "s1", i3 = NA))
-  expect_equal(ps$costs, c(i1 = 3, i2 = 3, i3 = 1))
+  expect_equal(ps$costs, c(i1 = 30, i2 = 30, i3 = 10))
 
   ps = getCostsAndPresolvedStatus(testtask3, feature.steps = "s1")
   expect_equal(ps$is.presolved, c(i1 = FALSE, i2 = TRUE, i3 = FALSE))
   expect_equal(ps$solve.steps, c(i1 = NA, i2 = "s1", i3 = NA))
-  expect_equal(ps$costs, c(i1 = 2, i2 = 3, i3 = 0))
+  expect_equal(ps$costs, c(i1 = 20, i2 = 30, i3 = 0))
 
   ps = getCostsAndPresolvedStatus(testtask3, feature.steps = "s2")
   expect_equal(ps$is.presolved, c(i1 = FALSE, i2 = FALSE, i3 = FALSE))
   expect_equal(ps$solve.steps, c(i1 = NA_character_, i2 = NA_character_, i3 = NA_character_))
-  expect_equal(ps$costs, c(i1 = 1, i2 = 2, i3 = 1))
+  expect_equal(ps$costs, c(i1 = 10, i2 = 20, i3 = 10))
 })
 
