@@ -16,6 +16,7 @@
 #'   is also newly calculated in this case.
 #'   This adding of feature costs should not be done for the
 #'   baseline models, but only for proper prognostic models.
+#'   If no costs are present, 0 is added as costs and a warning is issued.
 #'   Default is \code{TRUE}.
 #' @return Result of calling \code{\link[llama]{input}}.
 #' @export
@@ -31,6 +32,8 @@ convertToLlama = function(astask, measure, feature.steps, add.feature.costs = TR
   else
     checkArg(feature.steps, subset = allsteps)
   checkArg(add.feature.costs, "logical", len = 1L, na.ok = FALSE)
+  if (add.feature.costs && is.null(astask$feature.costs))
+    warningf("Requested to add feature costs, but none in task. Adding always 0 feature costs.")
 
   desc = astask$desc
   feats = astask$feature.values
@@ -82,8 +85,14 @@ convertToLlama = function(astask, measure, feature.steps, add.feature.costs = TR
     impute.val = desc$algorithm_cutoff_time
     if (add.feature.costs) {
       m = ncol(perf2)
+      # set algorithm costs to 0 for presolved instances, they wont run
+      perf2[presolve$is.presolved, ] = 0
+      if (is.null(astask$feature.costs)) 
+        add = 0
+      else
+        add = matrix(rep(presolve$costs, m), ncol = m, byrow = FALSE)
       # add instance costs (adapated by presolving) to each alg column
-      perf2 = perf2 + matrix(rep(presolve$costs, m), ncol = m, byrow = FALSE)
+      perf2 = perf2 + add    
     }
     # recalculate successes wrt to new perf vals and cutoff. we spent more time due to feat costs
     successes = successes & perf2 <= cutoff

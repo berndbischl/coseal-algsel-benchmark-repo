@@ -9,10 +9,10 @@ makeTestTask3 = function() {
   desc = makeS3Obj("Description",
     task_id = "foo",
     performance_measures = "m",
-    performance_type = "runtime",
-    maximize = FALSE,
+    performance_type = c(m = "runtime"),
+    maximize = c(m = FALSE),
     algorithm_cutoff_time = 100,
-    features_deterministic = c("f1", "f2", "f2"),
+    features_deterministic = c("f1", "f2", "f3"),
     features_stochastic = character(0),
     algorithms_deterministic = c("a1", "a2"),
     algorithms_stochastic = character(0),
@@ -26,11 +26,15 @@ makeTestTask3 = function() {
   rs2 = c("ok", "ok", "ok")
   c1 = c(20, 30, NA)
   c2 = c(10, 20, 10)
-  f1 = f2 = f3 = c(1, 2, 3)
+  f1 = 1:3
+  f2 = 2:4
+  f3 = 3:5
   feats = data.frame(instance_id = iids, repetition = 1, f1 = f1, f2 = f2, f3 = f3)
   algo.runs = rbind(
-    data.frame(instance_id = iids, repetition = 1L, algo = "a1", m = c(30, 30, 30)),
-    data.frame(instance_id = iids, repetition = 1L, algo = "a1", m = c(30, 30, 30))
+    data.frame(instance_id = iids, repetition = 1L, algorithm = "a1",
+      m = c(30, 90, 70), runstatus = c("ok", "ok", "ok")),
+    data.frame(instance_id = iids, repetition = 1L, algorithm = "a2",
+      m = c(50, 30, 10), runstatus = c("ok", "ok", "crash"))
   )
   makeS3Obj("ASTask",
     desc = desc,
