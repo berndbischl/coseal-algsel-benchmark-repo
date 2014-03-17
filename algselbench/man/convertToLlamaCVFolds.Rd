@@ -2,7 +2,7 @@
 \alias{convertToLlamaCVFolds}
 \title{Convert an ASTask task object to a llama data object with cross-validation folds.}
 \usage{
-convertToLlamaCVFolds(astask, measure, cv.splits)
+convertToLlamaCVFolds(astask, measure, add.feature.costs = TRUE, cv.splits)
 }
 \arguments{
   \item{astask}{[\code{\link{ASTask}}]\cr Algorithm
@@ -10,6 +10,9 @@ convertToLlamaCVFolds(astask, measure, cv.splits)
 
   \item{measure}{[\code{character(1)}]\cr Measure to use
   for modelling.  Default is first measure in task.}
+
+  \item{add.feature.costs}{[\code{logical(1)}]\cr See
+  \code{\link{convertToLlama}}.  Default is \code{TRUE}.}
 
   \item{cv.splits}{[\code{data.frame}]\cr Data frame
   defining the split of the data into cross-validation

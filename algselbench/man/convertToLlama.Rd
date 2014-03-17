@@ -9,7 +9,7 @@ convertToLlama(astask, measure, feature.steps, add.feature.costs = TRUE)
   selection task.}
 
   \item{measure}{[\code{character(1)}]\cr Measure to use
-  for modelling.  Default is first measure in task.}
+  for modeling.  Default is first measure in task.}
 
   \item{feature.steps}{[\code{character}]\cr Which feature
   steps are allowed?  Default is all steps.}
@@ -19,9 +19,10 @@ convertToLlama(astask, measure, feature.steps, add.feature.costs = TRUE)
   added to the algorithm costs (because in reality you
   would have to pay them)? Whether the algorithm hit the
   cutoff runtime is also newly calculated in this case.
-  This adding of feature costs is never done for the
-  baseline, but only for proper prognostic models.  Default
-  is \code{TRUE}.}
+  This adding of feature costs should not be done for the
+  baseline models, but only for proper prognostic models.
+  If no costs are present, 0 is added as costs and a
+  warning is issued.  Default is \code{TRUE}.}
 }
 \value{
 Result of calling \code{\link[llama]{input}}.
