@@ -72,7 +72,7 @@
 
 All results were produced by using the cross-validation splits in the repository with
 <code class="knitr inline">10</code> folds and <code class="knitr inline">1</code> repetitions.<br>
-The best values within a group (type) -- i.e., baseline (except for vbs), classif, regr and cluster -- and performance measure -- i.e., best, mcp, par -- are colored orange. Furthermore, the three best values over all groups within a performance measure are highlighted red.
+The best values within a type (i.e., baseline (except for vbs), classif, regr and cluster) and performance measure (i.e., Percentage solved, PAR10, MCP) are colored orange. Furthermore, the three best values over all groups within a performance measure are highlighted red.
 
 <p>
 
@@ -97,48 +97,52 @@ solver always has a misclassification penalty of zero.</li>
 <p>
 
 <!-- html table generated in R 3.0.2 by xtable 1.7-1 package -->
-<!-- Thu Mar 13 13:18:47 2014 -->
+<!-- Thu Mar 20 13:06:39 2014 -->
 <TABLE border=1>
 <TR> <TH> Type </TH> <TH> Model </TH> <TH> Percentage Solved </TH> <TH> PAR10 </TH> <TH> MCP </TH>  </TR>
-  <TR> <TD> baseline </TD> <TD> vbs </TD> <TD> 0.8750 </TD> <TD> 0.0000 </TD> <TD> 6344.2512 </TD> </TR>
-  <TR> <TD> baseline </TD> <TD> singleBest </TD> <TD> <b> <FONT COLOR = "#FE9A2E"> 0.8577 </FONT> </b> </TD> <TD> <b> <FONT COLOR = "#FE9A2E"> 79.1426 </FONT> </b> </TD> <TD> <b> <FONT COLOR = "#FE9A2E"> 7201.5558 </FONT> </b> </TD> </TR>
-  <TR> <TD> baseline </TD> <TD> singleBestByPar </TD> <TD> <b> <FONT COLOR = "#FE9A2E"> 0.8577 </FONT> </b> </TD> <TD> <b> <FONT COLOR = "#FE9A2E"> 79.1426 </FONT> </b> </TD> <TD> <b> <FONT COLOR = "#FE9A2E"> 7201.5558 </FONT> </b> </TD> </TR>
-  <TR> <TD> baseline </TD> <TD> singleBestBySuccesses </TD> <TD> <b> <FONT COLOR = "#FE9A2E"> 0.8577 </FONT> </b> </TD> <TD> <b> <FONT COLOR = "#FE9A2E"> 79.1426 </FONT> </b> </TD> <TD> <b> <FONT COLOR = "#FE9A2E"> 7201.5558 </FONT> </b> </TD> </TR>
-  <TR> <TD> classif </TD> <TD> AdaBoost </TD> <TD> 0.8617 </TD> <TD> 60.7624 </TD> <TD> 7005.3101 </TD> </TR>
-  <TR> <TD> classif </TD> <TD> BayesNet </TD> <TD> 0.8567 </TD> <TD> 65.4575 </TD> <TD> 7232.3372 </TD> </TR>
-  <TR> <TD> classif </TD> <TD> IBk </TD> <TD> 0.8587 </TD> <TD> 59.3985 </TD> <TD> 7137.3454 </TD> </TR>
-  <TR> <TD> classif </TD> <TD> OneR </TD> <TD> 0.8503 </TD> <TD> 96.3275 </TD> <TD> 7552.2388 </TD> </TR>
-  <TR> <TD> classif </TD> <TD> MultilayerPerceptron </TD> <TD> 0.8552 </TD> <TD> 77.4883 </TD> <TD> 7311.0675 </TD> </TR>
-  <TR> <TD> classif </TD> <TD> RandomTree </TD> <TD> 0.8617 </TD> <TD> 47.4981 </TD> <TD> 6992.0458 </TD> </TR>
-  <TR> <TD> classif </TD> <TD> ctree </TD> <TD> 0.8533 </TD> <TD> 78.5567 </TD> <TD> 7401.0688 </TD> </TR>
-  <TR> <TD> classif </TD> <TD> fnn </TD> <TD> 0.8602 </TD> <TD> 54.6257 </TD> <TD> 7065.8730 </TD> </TR>
-  <TR> <TD> classif </TD> <TD> J48 </TD> <TD> <b> <FONT COLOR = "#FE9A2E"> 0.8622 </FONT> </b> </TD> <TD> <b> <FONT COLOR = "#FF0000"> 41.7609 </FONT> </b> </TD> <TD> <b> <FONT COLOR = "#FE9A2E"> 6964.0754 </FONT> </b> </TD> </TR>
-  <TR> <TD> classif </TD> <TD> JRip </TD> <TD> 0.8562 </TD> <TD> 56.1568 </TD> <TD> 7245.2697 </TD> </TR>
-  <TR> <TD> classif </TD> <TD> kknn </TD> <TD> 0.8592 </TD> <TD> 52.7999 </TD> <TD> 7108.5136 </TD> </TR>
-  <TR> <TD> classif </TD> <TD> ksvm </TD> <TD> 0.8577 </TD> <TD> 63.6699 </TD> <TD> 7186.0832 </TD> </TR>
-  <TR> <TD> classif </TD> <TD> naiveBayes </TD> <TD> 0.8617 </TD> <TD> 80.1301 </TD> <TD> 7024.6778 </TD> </TR>
-  <TR> <TD> classif </TD> <TD> nnet </TD> <TD> 0.8602 </TD> <TD> 77.9829 </TD> <TD> 7089.2302 </TD> </TR>
-  <TR> <TD> classif </TD> <TD> randomForest </TD> <TD> 0.8612 </TD> <TD> 42.4470 </TD> <TD> 7009.2279 </TD> </TR>
-  <TR> <TD> classif </TD> <TD> rpart </TD> <TD> 0.8602 </TD> <TD> 48.0125 </TD> <TD> 7059.2598 </TD> </TR>
-  <TR> <TD> classif </TD> <TD> svm </TD> <TD> 0.8592 </TD> <TD> 51.3927 </TD> <TD> 7107.1064 </TD> </TR>
-  <TR> <TD> regr </TD> <TD> REPTree </TD> <TD> 0.8646 </TD> <TD> 48.0284 </TD> <TD> 6859.1768 </TD> </TR>
-  <TR> <TD> regr </TD> <TD> earth </TD> <TD> <b> <FONT COLOR = "#FF0000"> 0.8666 </FONT> </b> </TD> <TD> 42.7324 </TD> <TD> <b> <FONT COLOR = "#FF0000"> 6764.9481 </FONT> </b> </TD> </TR>
-  <TR> <TD> regr </TD> <TD> ksvm </TD> <TD> 0.8577 </TD> <TD> 81.8540 </TD> <TD> 7204.2673 </TD> </TR>
-  <TR> <TD> regr </TD> <TD> lm </TD> <TD> <b> <FONT COLOR = "#FF0000"> 0.8696 </FONT> </b> </TD> <TD> <b> <FONT COLOR = "#FF0000"> 19.3835 </FONT> </b> </TD> <TD> <b> <FONT COLOR = "#FF0000"> 6608.1999 </FONT> </b> </TD> </TR>
-  <TR> <TD> regr </TD> <TD> nnet </TD> <TD> 0.7510 </TD> <TD> 713.8255 </TD> <TD> 12638.6103 </TD> </TR>
-  <TR> <TD> regr </TD> <TD> randomForest </TD> <TD> <b> <FONT COLOR = "#FF0000"> 0.8730 </FONT> </b> </TD> <TD> <b> <FONT COLOR = "#FF0000"> 6.6641 </FONT> </b> </TD> <TD> <b> <FONT COLOR = "#FF0000"> 6439.8481 </FONT> </b> </TD> </TR>
-  <TR> <TD> regr </TD> <TD> rpart </TD> <TD> 0.8661 </TD> <TD> 45.3756 </TD> <TD> 6789.8244 </TD> </TR>
-  <TR> <TD> cluster </TD> <TD> XMeans </TD> <TD> <b> <FONT COLOR = "#FE9A2E"> 0.8577 </FONT> </b> </TD> <TD> <b> <FONT COLOR = "#FE9A2E"> 79.1426 </FONT> </b> </TD> <TD> <b> <FONT COLOR = "#FE9A2E"> 7201.5558 </FONT> </b> </TD> </TR>
-  <TR> <TD> cluster </TD> <TD> EM </TD> <TD> 0.8547 </TD> <TD> 100.9197 </TD> <TD> 7356.7322 </TD> </TR>
-  <TR> <TD> cluster </TD> <TD> FarthestFirst </TD> <TD> <b> <FONT COLOR = "#FE9A2E"> 0.8577 </FONT> </b> </TD> <TD> <b> <FONT COLOR = "#FE9A2E"> 79.1426 </FONT> </b> </TD> <TD> <b> <FONT COLOR = "#FE9A2E"> 7201.5558 </FONT> </b> </TD> </TR>
-  <TR> <TD> cluster </TD> <TD> SimpleKMeans </TD> <TD> <b> <FONT COLOR = "#FE9A2E"> 0.8577 </FONT> </b> </TD> <TD> <b> <FONT COLOR = "#FE9A2E"> 79.1426 </FONT> </b> </TD> <TD> <b> <FONT COLOR = "#FE9A2E"> 7201.5558 </FONT> </b> </TD> </TR>
+  <TR> <TD> baseline </TD> <TD> vbs </TD> <TD> 0.8750 </TD> <TD> 6344.2512 </TD> <TD> 0.0000 </TD> </TR>
+  <TR> <TD> baseline </TD> <TD> singleBest </TD> <TD> <b> <FONT COLOR = "#FE9A2E"> 0.8577 </FONT> </b> </TD> <TD> <b> <FONT COLOR = "#FE9A2E"> 7201.5558 </FONT> </b> </TD> <TD> <b> <FONT COLOR = "#FF0000"> 79.1426 </FONT> </b> </TD> </TR>
+  <TR> <TD> baseline </TD> <TD> singleBestByPar </TD> <TD> <b> <FONT COLOR = "#FE9A2E"> 0.8577 </FONT> </b> </TD> <TD> <b> <FONT COLOR = "#FE9A2E"> 7201.5558 </FONT> </b> </TD> <TD> <b> <FONT COLOR = "#FF0000"> 79.1426 </FONT> </b> </TD> </TR>
+  <TR> <TD> baseline </TD> <TD> singleBestBySuccesses </TD> <TD> <b> <FONT COLOR = "#FE9A2E"> 0.8577 </FONT> </b> </TD> <TD> <b> <FONT COLOR = "#FE9A2E"> 7201.5558 </FONT> </b> </TD> <TD> <b> <FONT COLOR = "#FF0000"> 79.1426 </FONT> </b> </TD> </TR>
+  <TR> <TD> classif </TD> <TD> meta/AdaBoostM1 </TD> <TD> <b> <FONT COLOR = "#FF0000"> 0.8626 </FONT> </b> </TD> <TD> <b> <FONT COLOR = "#FF0000"> 6959.8221 </FONT> </b> </TD> <TD> <b> <FONT COLOR = "#FF0000"> 59.7408 </FONT> </b> </TD> </TR>
+  <TR> <TD> classif </TD> <TD> bayes/BayesNet </TD> <TD> <b> <FONT COLOR = "#FF0000"> 0.8592 </FONT> </b> </TD> <TD> <b> <FONT COLOR = "#FF0000"> 7140.2996 </FONT> </b> </TD> <TD> 84.5859 </TD> </TR>
+  <TR> <TD> classif </TD> <TD> lazy/IBk </TD> <TD> 0.8231 </TD> <TD> 8976.3536 </TD> <TD> 297.6162 </TD> </TR>
+  <TR> <TD> classif </TD> <TD> rules/OneR </TD> <TD> 0.8048 </TD> <TD> 9873.6952 </TD> <TD> 372.3294 </TD> </TR>
+  <TR> <TD> classif </TD> <TD> trees/RandomTree </TD> <TD> 0.8468 </TD> <TD> 7750.1487 </TD> <TD> 138.6050 </TD> </TR>
+  <TR> <TD> classif </TD> <TD> trees/J48 </TD> <TD> 0.8454 </TD> <TD> 7830.3605 </TD> <TD> 152.1172 </TD> </TR>
+  <TR> <TD> classif </TD> <TD> rules/JRip </TD> <TD> 0.8552 </TD> <TD> 7324.6035 </TD> <TD> 91.0242 </TD> </TR>
+  <TR> <TD> classif </TD> <TD> classif.ctree </TD> <TD> 0.8360 </TD> <TD> 8253.3904 </TD> <TD> 152.7162 </TD> </TR>
+  <TR> <TD> classif </TD> <TD> classif.ksvm </TD> <TD> 0.8409 </TD> <TD> 8065.3350 </TD> <TD> 186.9929 </TD> </TR>
+  <TR> <TD> classif </TD> <TD> classif.naiveBayes </TD> <TD> 0.8577 </TD> <TD> 7226.6241 </TD> <TD> 104.2108 </TD> </TR>
+  <TR> <TD> classif </TD> <TD> classif.randomForest </TD> <TD> <b> <FONT COLOR = "#FF0000"> 0.8587 </FONT> </b> </TD> <TD> <b> <FONT COLOR = "#FF0000"> 7158.3551 </FONT> </b> </TD> <TD> 80.4082 </TD> </TR>
+  <TR> <TD> classif </TD> <TD> classif.rpart </TD> <TD> 0.8468 </TD> <TD> 7741.2029 </TD> <TD> 129.6592 </TD> </TR>
+  <TR> <TD> classif </TD> <TD> classif.kknn </TD> <TD> 0.8305 </TD> <TD> 8580.6895 </TD> <TD> 235.4501 </TD> </TR>
+  <TR> <TD> cluster </TD> <TD> EM </TD> <TD> <b> <FONT COLOR = "#FE9A2E"> 0.8503 </FONT> </b> </TD> <TD> <b> <FONT COLOR = "#FE9A2E"> 7592.4672 </FONT> </b> </TD> <TD> <b> <FONT COLOR = "#FE9A2E"> 136.5559 </FONT> </b> </TD> </TR>
+  <TR> <TD> cluster </TD> <TD> XMeans </TD> <TD> 0.8370 </TD> <TD> 8288.2638 </TD> <TD> 232.0561 </TD> </TR>
+  <TR> <TD> regr </TD> <TD> regr.earth </TD> <TD> 0.8538 </TD> <TD> 7445.5113 </TD> <TD> 145.2324 </TD> </TR>
+  <TR> <TD> regr </TD> <TD> regr.lm </TD> <TD> <b> <FONT COLOR = "#FE9A2E"> 0.8572 </FONT> </b> </TD> <TD> <b> <FONT COLOR = "#FE9A2E"> 7252.9854 </FONT> </b> </TD> <TD> <b> <FONT COLOR = "#FE9A2E"> 108.3389 </FONT> </b> </TD> </TR>
+  <TR> <TD> regr </TD> <TD> regr.randomForest </TD> <TD> 0.8538 </TD> <TD> 7414.9241 </TD> <TD> 114.6452 </TD> </TR>
+  <TR> <TD> regr </TD> <TD> regr.rpart </TD> <TD> 0.8458 </TD> <TD> 7838.1206 </TD> <TD> 182.1105 </TD> </TR>
    </TABLE>
 
 
 
 <p>
 
-The cost for using all features is: <code class="knitr inline">0</code>
+The following default feature steps were used for model building:
+<p>
+<code class="knitr inline">all_feats</code>
+<p>
+Number of presolved instances: <code class="knitr inline">0</code>
+<p>
+The cost for using the feature steps (adapted for presolving) is: <code class="knitr inline">0</code> 
+or on average: <code class="knitr inline">NA</code>
+<p>
+The feature steps correspond to the following <code class="knitr inline">86</code> / <code class="knitr inline">86</code> features:
+<p>
+stats_varcount, stats_var_bool, stats_var_discrete, stats_var_bound, stats_var_sparsebound, <br>stats_dom_0, stats_dom_25, stats_dom_50, stats_dom_75, stats_dom_100, <br>stats_dom_mean, stats_dom_not2_2_ratio, stats_discrete_bool_ratio, stats_branchingvars, stats_auxvars, <br>stats_auxvar_branching_ratio, stats_conscount, stats_arity_0, stats_arity_25, stats_arity_50, <br>stats_arity_75, stats_arity_100, stats_arity_mean, stats_arity_mean_normalised, stats_cts_per_var_mean, <br>stats_cts_per_var_mean_normalised, stats_alldiff_count, stats_alldiff_proportion, stats_sums_count, stats_sums_proportion, <br>stats_or_atleastk_count, stats_or_atleastk_proportion, stats_ternary_count, stats_ternary_proportion, stats_binary_count, <br>stats_binary_proportion, stats_reify_count, stats_reify_proportion, stats_table_count, stats_table_proportion, <br>stats_lex_count, stats_lex_proportion, stats_unary_count, stats_unary_proportion, stats_nullary_count, <br>stats_nullary_proportion, stats_element_count, stats_element_proportion, stats_minmax_count, stats_minmax_proportion, <br>stats_occurrence_count, stats_occurrence_proportion, stats_multi_shared_vars, stats_edge_density, stats_Local_Variance, <br>standard_deviation_of_node_degree, normalised_standard_deviation_of_node_degree, clustering_coefficient, minimum_degree, normalised_minimum_degree, <br>maximum_degree, normalised_maximum_degree, median_degree, normalised_median_degree, mean_degree, <br>normalised_mean_degree, width_of_ordering, normalised_width_of_ordering, width_of_graph, normalised_width_of_graph, <br>SAC_literals, normalised_SAC_literals, stats_tightness_0, stats_tightness_25, stats_tightness_50, <br>stats_tightness_75, stats_tightness_100, stats_tightness_mean, stats_tightness_mean_normalised, stats_literal_tightness_0, <br>stats_literal_tightness_25, stats_literal_tightness_50, stats_literal_tightness_75, stats_literal_tightness_100, stats_literal_tightness_mean, <br>stats_literal_tightness_coeff_of_variation, 
+
+<p>
 
 </body>
 </html>

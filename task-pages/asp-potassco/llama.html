@@ -72,7 +72,7 @@
 
 All results were produced by using the cross-validation splits in the repository with
 <code class="knitr inline">10</code> folds and <code class="knitr inline">1</code> repetitions.<br>
-The best values within a group (type) -- i.e., baseline (except for vbs), classif, regr and cluster -- and performance measure -- i.e., best, mcp, par -- are colored orange. Furthermore, the three best values over all groups within a performance measure are highlighted red.
+The best values within a type (i.e., baseline (except for vbs), classif, regr and cluster) and performance measure (i.e., Percentage solved, PAR10, MCP) are colored orange. Furthermore, the three best values over all groups within a performance measure are highlighted red.
 
 <p>
 
@@ -97,48 +97,52 @@ solver always has a misclassification penalty of zero.</li>
 <p>
 
 <!-- html table generated in R 3.0.2 by xtable 1.7-1 package -->
-<!-- Thu Mar 13 13:18:42 2014 -->
+<!-- Thu Mar 20 13:06:34 2014 -->
 <TABLE border=1>
 <TR> <TH> Type </TH> <TH> Model </TH> <TH> Percentage Solved </TH> <TH> PAR10 </TH> <TH> MCP </TH>  </TR>
-  <TR> <TD> baseline </TD> <TD> vbs </TD> <TD> 0.9366 </TD> <TD> 0.0000 </TD> <TD> 400.1791 </TD> </TR>
-  <TR> <TD> baseline </TD> <TD> singleBest </TD> <TD> <b> <FONT COLOR = "#FE9A2E"> 0.8586 </FONT> </b> </TD> <TD> <b> <FONT COLOR = "#FE9A2E"> 58.8844 </FONT> </b> </TD> <TD> <b> <FONT COLOR = "#FE9A2E"> 880.5473 </FONT> </b> </TD> </TR>
-  <TR> <TD> baseline </TD> <TD> singleBestByPar </TD> <TD> <b> <FONT COLOR = "#FE9A2E"> 0.8586 </FONT> </b> </TD> <TD> <b> <FONT COLOR = "#FE9A2E"> 58.8844 </FONT> </b> </TD> <TD> <b> <FONT COLOR = "#FE9A2E"> 880.5473 </FONT> </b> </TD> </TR>
-  <TR> <TD> baseline </TD> <TD> singleBestBySuccesses </TD> <TD> <b> <FONT COLOR = "#FE9A2E"> 0.8586 </FONT> </b> </TD> <TD> <b> <FONT COLOR = "#FE9A2E"> 58.8844 </FONT> </b> </TD> <TD> <b> <FONT COLOR = "#FE9A2E"> 880.5473 </FONT> </b> </TD> </TR>
-  <TR> <TD> classif </TD> <TD> AdaBoost </TD> <TD> 0.8586 </TD> <TD> 58.8844 </TD> <TD> 880.5473 </TD> </TR>
-  <TR> <TD> classif </TD> <TD> BayesNet </TD> <TD> 0.8748 </TD> <TD> 42.0397 </TD> <TD> 776.0673 </TD> </TR>
-  <TR> <TD> classif </TD> <TD> IBk </TD> <TD> 0.8756 </TD> <TD> 37.3855 </TD> <TD> 767.2400 </TD> </TR>
-  <TR> <TD> classif </TD> <TD> OneR </TD> <TD> 0.8725 </TD> <TD> 43.9758 </TD> <TD> 790.5227 </TD> </TR>
-  <TR> <TD> classif </TD> <TD> MultilayerPerceptron </TD> <TD> 0.8787 </TD> <TD> 38.8388 </TD> <TD> 752.0009 </TD> </TR>
-  <TR> <TD> classif </TD> <TD> RandomTree </TD> <TD> 0.8794 </TD> <TD> 38.8810 </TD> <TD> 747.8700 </TD> </TR>
-  <TR> <TD> classif </TD> <TD> ctree </TD> <TD> 0.8694 </TD> <TD> 41.7321 </TD> <TD> 804.9714 </TD> </TR>
-  <TR> <TD> classif </TD> <TD> fnn </TD> <TD> 0.8856 </TD> <TD> 36.3989 </TD> <TD> 712.0030 </TD> </TR>
-  <TR> <TD> classif </TD> <TD> J48 </TD> <TD> 0.8864 </TD> <TD> 35.7290 </TD> <TD> 707.1600 </TD> </TR>
-  <TR> <TD> classif </TD> <TD> JRip </TD> <TD> 0.8833 </TD> <TD> 40.4550 </TD> <TD> 728.5784 </TD> </TR>
-  <TR> <TD> classif </TD> <TD> kknn </TD> <TD> 0.8802 </TD> <TD> 35.0235 </TD> <TD> 739.8394 </TD> </TR>
-  <TR> <TD> classif </TD> <TD> ksvm </TD> <TD> 0.8787 </TD> <TD> 43.2110 </TD> <TD> 756.3731 </TD> </TR>
-  <TR> <TD> classif </TD> <TD> naiveBayes </TD> <TD> 0.8702 </TD> <TD> 47.4433 </TD> <TD> 806.5095 </TD> </TR>
-  <TR> <TD> classif </TD> <TD> nnet </TD> <TD> 0.8501 </TD> <TD> 62.6874 </TD> <TD> 930.2545 </TD> </TR>
-  <TR> <TD> classif </TD> <TD> randomForest </TD> <TD> <b> <FONT COLOR = "#FE9A2E"> 0.8910 </FONT> </b> </TD> <TD> <b> <FONT COLOR = "#FF0000"> 29.0218 </FONT> </b> </TD> <TD> <b> <FONT COLOR = "#FE9A2E"> 675.4142 </FONT> </b> </TD> </TR>
-  <TR> <TD> classif </TD> <TD> rpart </TD> <TD> 0.8864 </TD> <TD> 33.1194 </TD> <TD> 704.5505 </TD> </TR>
-  <TR> <TD> classif </TD> <TD> svm </TD> <TD> 0.8601 </TD> <TD> 58.5987 </TD> <TD> 871.9154 </TD> </TR>
-  <TR> <TD> regr </TD> <TD> REPTree </TD> <TD> 0.8988 </TD> <TD> 31.0103 </TD> <TD> 635.6716 </TD> </TR>
-  <TR> <TD> regr </TD> <TD> earth </TD> <TD> 0.8995 </TD> <TD> 29.6908 </TD> <TD> 630.1790 </TD> </TR>
-  <TR> <TD> regr </TD> <TD> ksvm </TD> <TD> 0.8408 </TD> <TD> 62.3425 </TD> <TD> 979.9868 </TD> </TR>
-  <TR> <TD> regr </TD> <TD> lm </TD> <TD> <b> <FONT COLOR = "#FF0000"> 0.9042 </FONT> </b> </TD> <TD> <b> <FONT COLOR = "#FF0000"> 28.1288 </FONT> </b> </TD> <TD> <b> <FONT COLOR = "#FF0000"> 603.5784 </FONT> </b> </TD> </TR>
-  <TR> <TD> regr </TD> <TD> nnet </TD> <TD> 0.8586 </TD> <TD> 58.8844 </TD> <TD> 880.5473 </TD> </TR>
-  <TR> <TD> regr </TD> <TD> randomForest </TD> <TD> <b> <FONT COLOR = "#FF0000"> 0.9189 </FONT> </b> </TD> <TD> <b> <FONT COLOR = "#FF0000"> 15.3918 </FONT> </b> </TD> <TD> <b> <FONT COLOR = "#FF0000"> 511.5523 </FONT> </b> </TD> </TR>
-  <TR> <TD> regr </TD> <TD> rpart </TD> <TD> <b> <FONT COLOR = "#FF0000"> 0.9065 </FONT> </b> </TD> <TD> 29.9268 </TD> <TD> <b> <FONT COLOR = "#FF0000"> 592.8570 </FONT> </b> </TD> </TR>
-  <TR> <TD> cluster </TD> <TD> XMeans </TD> <TD> 0.8478 </TD> <TD> 62.9685 </TD> <TD> 943.0549 </TD> </TR>
-  <TR> <TD> cluster </TD> <TD> EM </TD> <TD> <b> <FONT COLOR = "#FE9A2E"> 0.8624 </FONT> </b> </TD> <TD> <b> <FONT COLOR = "#FE9A2E"> 51.7468 </FONT> </b> </TD> <TD> <b> <FONT COLOR = "#FE9A2E"> 852.5441 </FONT> </b> </TD> </TR>
-  <TR> <TD> cluster </TD> <TD> FarthestFirst </TD> <TD> 0.8462 </TD> <TD> 64.5915 </TD> <TD> 953.0241 </TD> </TR>
-  <TR> <TD> cluster </TD> <TD> SimpleKMeans </TD> <TD> 0.8478 </TD> <TD> 63.7349 </TD> <TD> 943.8212 </TD> </TR>
+  <TR> <TD> baseline </TD> <TD> vbs </TD> <TD> 0.9366 </TD> <TD> 400.1791 </TD> <TD> 0.0000 </TD> </TR>
+  <TR> <TD> baseline </TD> <TD> singleBest </TD> <TD> <b> <FONT COLOR = "#FE9A2E"> 0.8586 </FONT> </b> </TD> <TD> <b> <FONT COLOR = "#FE9A2E"> 880.5473 </FONT> </b> </TD> <TD> <b> <FONT COLOR = "#FE9A2E"> 58.8844 </FONT> </b> </TD> </TR>
+  <TR> <TD> baseline </TD> <TD> singleBestByPar </TD> <TD> <b> <FONT COLOR = "#FE9A2E"> 0.8586 </FONT> </b> </TD> <TD> <b> <FONT COLOR = "#FE9A2E"> 880.5473 </FONT> </b> </TD> <TD> <b> <FONT COLOR = "#FE9A2E"> 58.8844 </FONT> </b> </TD> </TR>
+  <TR> <TD> baseline </TD> <TD> singleBestBySuccesses </TD> <TD> <b> <FONT COLOR = "#FE9A2E"> 0.8586 </FONT> </b> </TD> <TD> <b> <FONT COLOR = "#FE9A2E"> 880.5473 </FONT> </b> </TD> <TD> <b> <FONT COLOR = "#FE9A2E"> 58.8844 </FONT> </b> </TD> </TR>
+  <TR> <TD> classif </TD> <TD> meta/AdaBoostM1 </TD> <TD> 0.8586 </TD> <TD> 881.5907 </TD> <TD> 60.5252 </TD> </TR>
+  <TR> <TD> classif </TD> <TD> bayes/BayesNet </TD> <TD> 0.8230 </TD> <TD> 1088.4905 </TD> <TD> 75.4621 </TD> </TR>
+  <TR> <TD> classif </TD> <TD> lazy/IBk </TD> <TD> 0.8856 </TD> <TD> 715.3307 </TD> <TD> 40.3240 </TD> </TR>
+  <TR> <TD> classif </TD> <TD> rules/OneR </TD> <TD> 0.8563 </TD> <TD> 893.5147 </TD> <TD> 59.9300 </TD> </TR>
+  <TR> <TD> classif </TD> <TD> trees/RandomTree </TD> <TD> 0.8740 </TD> <TD> 781.2859 </TD> <TD> 43.6826 </TD> </TR>
+  <TR> <TD> classif </TD> <TD> trees/J48 </TD> <TD> 0.8748 </TD> <TD> 780.5898 </TD> <TD> 47.1596 </TD> </TR>
+  <TR> <TD> classif </TD> <TD> rules/JRip </TD> <TD> 0.8694 </TD> <TD> 808.8773 </TD> <TD> 46.2354 </TD> </TR>
+  <TR> <TD> classif </TD> <TD> classif.ctree </TD> <TD> 0.8416 </TD> <TD> 975.9769 </TD> <TD> 63.1031 </TD> </TR>
+  <TR> <TD> classif </TD> <TD> classif.ksvm </TD> <TD> 0.8740 </TD> <TD> 789.5245 </TD> <TD> 51.9212 </TD> </TR>
+  <TR> <TD> classif </TD> <TD> classif.naiveBayes </TD> <TD> 0.8393 </TD> <TD> 993.2122 </TD> <TD> 67.8191 </TD> </TR>
+  <TR> <TD> classif </TD> <TD> classif.randomForest </TD> <TD> <b> <FONT COLOR = "#FF0000"> 0.8918 </FONT> </b> </TD> <TD> <b> <FONT COLOR = "#FF0000"> 678.1235 </FONT> </b> </TD> <TD> <b> <FONT COLOR = "#FF0000"> 36.5017 </FONT> </b> </TD> </TR>
+  <TR> <TD> classif </TD> <TD> classif.rpart </TD> <TD> 0.8872 </TD> <TD> 704.7641 </TD> <TD> 38.1036 </TD> </TR>
+  <TR> <TD> classif </TD> <TD> classif.kknn </TD> <TD> 0.8624 </TD> <TD> 850.0426 </TD> <TD> 50.7385 </TD> </TR>
+  <TR> <TD> cluster </TD> <TD> EM </TD> <TD> <b> <FONT COLOR = "#FE9A2E"> 0.8555 </FONT> </b> </TD> <TD> <b> <FONT COLOR = "#FE9A2E"> 900.4537 </FONT> </b> </TD> <TD> <b> <FONT COLOR = "#FE9A2E"> 62.6958 </FONT> </b> </TD> </TR>
+  <TR> <TD> cluster </TD> <TD> XMeans </TD> <TD> 0.8439 </TD> <TD> 965.5710 </TD> <TD> 66.1124 </TD> </TR>
+  <TR> <TD> regr </TD> <TD> regr.earth </TD> <TD> 0.8733 </TD> <TD> 789.7597 </TD> <TD> 47.9832 </TD> </TR>
+  <TR> <TD> regr </TD> <TD> regr.lm </TD> <TD> <b> <FONT COLOR = "#FF0000"> 0.8934 </FONT> </b> </TD> <TD> <b> <FONT COLOR = "#FF0000"> 668.7669 </FONT> </b> </TD> <TD> <b> <FONT COLOR = "#FF0000"> 35.4913 </FONT> </b> </TD> </TR>
+  <TR> <TD> regr </TD> <TD> regr.randomForest </TD> <TD> <b> <FONT COLOR = "#FF0000"> 0.9011 </FONT> </b> </TD> <TD> <b> <FONT COLOR = "#FF0000"> 623.5077 </FONT> </b> </TD> <TD> <b> <FONT COLOR = "#FF0000"> 31.9631 </FONT> </b> </TD> </TR>
+  <TR> <TD> regr </TD> <TD> regr.rpart </TD> <TD> 0.8655 </TD> <TD> 839.9595 </TD> <TD> 56.4520 </TD> </TR>
    </TABLE>
 
 
 
 <p>
 
-The cost for using all features is: <code class="knitr inline">NA</code>
+The following default feature steps were used for model building:
+<p>
+<code class="knitr inline">Static, Dynamic-1, Dynamic-2, Dynamic-3, Dynamic-4</code>
+<p>
+Number of presolved instances: <code class="knitr inline">204</code>
+<p>
+The cost for using the feature steps (adapted for presolving) is: <code class="knitr inline">1720.11</code> 
+or on average: <code class="knitr inline">1.3293</code>
+<p>
+The feature steps correspond to the following <code class="knitr inline">138</code> / <code class="knitr inline">138</code> features:
+<p>
+Frac_Neg_Body, Frac_Pos_Body, Frac_Unary_Rules, Frac_Binary_Rules, Frac_Ternary_Rules, <br>Frac_Integrity_Rules, Tight, Problem_Variables, Free_Problem_Variables, Assigned_Problem_Variables, <br>Constraints, Constraints/Vars, Created_Bodies, Program_Atoms, SCCS, <br>Nodes_in_Positive_BADG, Rules, Normal_Rules, Cardinality_Rules, Choice_Rules, <br>Weight_Rules, Frac_Normal_Rules, Frac_Cardinality_Rules, Frac_Choice_Rules, Frac_Weight_Rules, <br>Equivalences, Atom-Atom_Equivalences, Body-Body_Equivalences, Other_Equivalences, Frac_Atom-Atom_Equivalences, <br>Frac_Body-Body_Equivalences, Frac_Other_Equivalences, Binary_Constraints, Ternary_Constraints, Other_Constraints, <br>Frac_Binary_Constraints, Frac_Ternary_Constraints, Frac_Other_Constraints, Choices-1, Conflicts/Choices-1, <br>Avg_Conflict_Levels-1, Avg_LBD_Levels-1, Learnt_from_Conflict-1, Learnt_from_Loop-1, Frac_Learnt_from_Conflict-1, <br>Frac_Learnt_from_Loop-1, Literals_in_Conflict_Nogoods-1, Literals_in_Loop_Nogoods-1, Frac_Literals_in_Conflict_Nogoods-1, Frac_Literals_in_Loop_Nogoods-1, <br>Removed_Nogoods-1, Learnt_Binary-1, Learnt_Ternary-1, Learnt_Others-1, Frac_Removed_Nogood-1, <br>Frac_Learnt_Binary-1, Frac_Learnt_Ternary-1, Frac_Learnt_Others-1, Skipped_Levels_while_Backjumping-1, Avg_Skipped_Levels_while_Backjumping-1, <br>Longest_Backjumping-1, Running_Avg_Conflictlevel-1, Running_Avg_LBD-1, Choices-2, Conflicts/Choices-2, <br>Avg_Conflict_Levels-2, Avg_LBD_Levels-2, Learnt_from_Conflict-2, Learnt_from_Loop-2, Frac_Learnt_from_Conflict-2, <br>Frac_Learnt_from_Loop-2, Literals_in_Conflict_Nogoods-2, Literals_in_Loop_Nogoods-2, Frac_Literals_in_Conflict_Nogoods-2, Frac_Literals_in_Loop_Nogoods-2, <br>Removed_Nogoods-2, Learnt_Binary-2, Learnt_Ternary-2, Learnt_Others-2, Frac_Removed_Nogood-2, <br>Frac_Learnt_Binary-2, Frac_Learnt_Ternary-2, Frac_Learnt_Others-2, Skipped_Levels_while_Backjumping-2, Avg_Skipped_Levels_while_Backjumping-2, <br>Longest_Backjumping-2, Running_Avg_Conflictlevel-2, Running_Avg_LBD-2, Choices-3, Conflicts/Choices-3, <br>Avg_Conflict_Levels-3, Avg_LBD_Levels-3, Learnt_from_Conflict-3, Learnt_from_Loop-3, Frac_Learnt_from_Conflict-3, <br>Frac_Learnt_from_Loop-3, Literals_in_Conflict_Nogoods-3, Literals_in_Loop_Nogoods-3, Frac_Literals_in_Conflict_Nogoods-3, Frac_Literals_in_Loop_Nogoods-3, <br>Removed_Nogoods-3, Learnt_Binary-3, Learnt_Ternary-3, Learnt_Others-3, Frac_Removed_Nogood-3, <br>Frac_Learnt_Binary-3, Frac_Learnt_Ternary-3, Frac_Learnt_Others-3, Skipped_Levels_while_Backjumping-3, Avg_Skipped_Levels_while_Backjumping-3, <br>Longest_Backjumping-3, Running_Avg_Conflictlevel-3, Running_Avg_LBD-3, Choices-4, Conflicts/Choices-4, <br>Avg_Conflict_Levels-4, Avg_LBD_Levels-4, Learnt_from_Conflict-4, Learnt_from_Loop-4, Frac_Learnt_from_Conflict-4, <br>Frac_Learnt_from_Loop-4, Literals_in_Conflict_Nogoods-4, Literals_in_Loop_Nogoods-4, Frac_Literals_in_Conflict_Nogoods-4, Frac_Literals_in_Loop_Nogoods-4, <br>Removed_Nogoods-4, Learnt_Binary-4, Learnt_Ternary-4, Learnt_Others-4, Frac_Removed_Nogood-4, <br>Frac_Learnt_Binary-4, Frac_Learnt_Ternary-4, Frac_Learnt_Others-4, Skipped_Levels_while_Backjumping-4, Avg_Skipped_Levels_while_Backjumping-4, <br>Longest_Backjumping-4, Running_Avg_Conflictlevel-4, Running_Avg_LBD-4, 
+
+<p>
 
 </body>
 </html>
