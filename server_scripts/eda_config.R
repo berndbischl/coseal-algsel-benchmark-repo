@@ -3,6 +3,7 @@ library(algselbench)
 makeEDAConfig = function(
   algo.perf.boxplots.log = FALSE,
   algo.perf.densities.log = FALSE,
+  algo.perf.probabilities.log = TRUE,
   algo.perf.scatter.log = FALSE,
   feature.steps.default
 ) {
@@ -10,6 +11,7 @@ makeEDAConfig = function(
   makeS3Obj("ASTaskHTMLConfig",
     algo.perf.boxplots.log = algo.perf.boxplots.log,
     algo.perf.densities.log = algo.perf.densities.log,
+    algo.perf.probabilities.log = algo.perf.probabilities.log,
     algo.perf.scatter.log = algo.perf.scatter.log,
     feature.steps.default = feature.steps.default
   )

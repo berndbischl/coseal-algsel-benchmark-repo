@@ -96,6 +96,17 @@ Additionally, if the performance is represented on a log-scale, all non-positive
 end.rcode-->
 
 <br>
+<h2> Estimated cumulative distribution functions of performance values </h2>
+
+Any observations with missing values in their algorithms' performance were removed prior to the creation of the cumulative distribution plot.<br>
+Additionally, if the performance is represented on a log-scale, all non-positive performance values were removed as well.<br>
+<br>
+
+<!--begin.rcode
+  plotAlgoPerfProbability(astask, log = config$algo.perf.probabilities.log) 
+end.rcode-->
+
+<br>
 <h2> Scatterplot matrix of the performance values </h2>
 
 The following figure creates pairwise scatterplots of the performance values, 

@@ -55,3 +55,4 @@ Collate:
     'summarizeFeatureValues.R'
     'zzz.R'
     'shortenPathsInValidator.R'
+    'plotAlgoPerfProbability.R'

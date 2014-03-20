@@ -1,4 +1,4 @@
-#' Plot densities of performance values per algorithm across all instances.
+#' Plot cumulative distribution function of performance values per algorithm across all instances.
 #'
 #' @param astask [\code{\link{ASTask}}]\cr
 #'   Algorithm selection task.
@@ -10,20 +10,20 @@
 #'   Default is FALSE.
 #' @return ggplot2 plot object.
 #' @export
-plotAlgoPerfDensities = function(astask, measure, log = FALSE) {
+plotAlgoPerfProbability = function(astask, measure, log = FALSE) {
   checkArg(astask, "ASTask")
   if (missing(measure))
     measure = astask$desc$performance_measures[1]
   else
     checkArg(measure, "character", len = 1L, na.ok = FALSE)
   checkArg(log, "logical", len=1L, na.ok=FALSE)
-
+  
   data = astask$algo.runs
   data = data[!is.na(data[,measure]), ]
   if (log)
     data = data[(data[,measure] > 0), ]
   p = ggplot(data, aes_string(x = measure, col = "algorithm")) +
-  geom_density()
+    stat_ecdf()
   if (log)
     p = p + scale_x_log10()
   p
