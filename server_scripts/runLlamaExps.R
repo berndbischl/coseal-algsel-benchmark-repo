@@ -3,10 +3,12 @@ library(devtools)
 load_all("../algselbench")
 source("defs.R")
 
-ds.dirs = list.files(file.path(coseal.svn.dir, "data"), full.names = TRUE)[1]
+ds.dirs = list.files(file.path(coseal.svn.dir, "data"), full.names = TRUE)
 print(ds.dirs)
 astasks = lapply(ds.dirs, parseASTask)
-reg = runLlamaModels(astasks)
+reg = runLlamaModels(astasks, baseline=c("vbs"),classifiers=c("classif.kknn"), 
+  regressors=c("regr.lm"), clusterers = c("XMeans"))
+ids = c(findExperiments(reg = reg, algo.pattern="regr"), findExperiments(reg = reg, algo.pattern="cluster"))
 time1 = proc.time()
 submitJobs(reg)
 waitForJobs(reg)

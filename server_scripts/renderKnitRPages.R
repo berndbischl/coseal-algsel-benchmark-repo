@@ -6,8 +6,10 @@ library(BBmisc)
 source("defs.R")
 source("eda_config.R")
 
-data.dir =  file.path(coseal.svn.dir, "data")
+data.dir =  normalizePath(file.path(coseal.svn.dir, "data"))
 task.dirs = list.files(data.dir, full = TRUE)
+# avoid bbob and machine learning for now
+task.dirs = task.dirs[-c(grep("bbob", task.dirs), grep("machine", task.dirs))]
 rhtml.dir = normalizePath("../Rhtml")
 html.dir = normalizePath("../html")
 config.dir = normalizePath("../configs")
@@ -59,7 +61,7 @@ try({
     theme_set(theme_gray(base_size = 18))
 
     # read EDA HTML config for task
-    config = readEDAConfig(config.dir, task.name)
+    config = readEDAConfig(config.dir, task.name, data.dir)
     ee$config = config
 
     # helper to knit rhtml files

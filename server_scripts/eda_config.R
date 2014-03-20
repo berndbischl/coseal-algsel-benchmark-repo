@@ -1,27 +1,31 @@
-
+library(algselbench)
 
 makeEDAConfig = function(
   algo.perf.boxplots.log = FALSE,
   algo.perf.densities.log = FALSE,
-  algo.perf.scatter.log = FALSE
+  algo.perf.scatter.log = FALSE,
+  feature.steps.default
 ) {
   
   makeS3Obj("ASTaskHTMLConfig",
     algo.perf.boxplots.log = algo.perf.boxplots.log,
     algo.perf.densities.log = algo.perf.densities.log,
-    algo.perf.scatter.log = algo.perf.scatter.log
+    algo.perf.scatter.log = algo.perf.scatter.log,
+    feature.steps.default = feature.steps.default
   )
 }
 
 print.ASTaskHTMLConfig = function(x, ...) {
   ns = names(x)
   for (i in seq_along(x)) {
+   if (ns[i] == "feature.steps.default")
+     x[[i]] = paste(x[[i]], collapse = ", ")
    catf("%-30s : %s", ns[i], x[[i]]) 
   }  
 }
 
-readEDAConfig = function(path, task.name) {
-  conffile = file.path(path, paste(task.name, "R", sep = "."))
+readEDAConfig = function(conf.path, task.name, data.path) {
+  conffile = file.path(conf.path, paste(task.name, "R", sep = "."))
   if (file.exists(conffile)) {
     # source config into envir, then construct
     conf = new.env()
@@ -30,7 +34,11 @@ readEDAConfig = function(path, task.name) {
       stopf("There was an error in sourcing your configuration file '%s': %s!", 
             conffile, as.character(x))
     }
-    return(do.call(makeEDAConfig, as.list(conf)))
+    conf.list = as.list(conf)
+    default.featsteps = getFeatureStepNames(parseASTask(paste(data.path, task.name, sep = "/")))
+    if (!("feature.steps.default" %in% names(conf.list)))
+      conf.list$feature.steps.default = default.featsteps
+    return(do.call(makeEDAConfig, conf.list))
   } else {
     # warn, then use default config
     warningf("Config file for task does not exist: %s", task.name)

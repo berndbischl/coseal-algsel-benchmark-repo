@@ -12,6 +12,7 @@
   fn.main = file.path(coseal.svn.dir, "data_check_tool_python/src/main.py")
   args = c(fn.main, sprintf("--dir %s", task.dir))
   s = system3("python", args, stdout = TRUE, stderr = TRUE)
+  s = shortenPathsInValidator(s, task.dir)
   cat(collapse(s$output, "\n"))
   cat("\n")  
 end.rcode-->
