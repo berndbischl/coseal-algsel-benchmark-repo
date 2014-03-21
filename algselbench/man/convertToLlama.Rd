@@ -13,7 +13,8 @@
   for modeling.  Default is first measure in task.}
 
   \item{feature.steps}{[\code{character}]\cr Which feature
-  steps are allowed?  Default is all steps.}
+  steps are allowed?  Default are the default feature steps
+  or all steps in case no defaults were defined.}
 
   \item{add.feature.costs}{[\code{logical(1)}]\cr If costs
   for features are present in runtime tasks, should they be

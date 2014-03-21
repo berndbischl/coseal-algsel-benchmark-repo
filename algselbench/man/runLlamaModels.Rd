@@ -3,7 +3,7 @@
 \title{Creates a registry which can be used for running several Llama models on a cluster.}
 \usage{
   runLlamaModels(astasks, baselines, classifiers,
-    regressors, clusterers)
+    regressors, clusterers, pre)
 }
 \arguments{
   \item{astasks}{[\code{list}]\cr List of algorithm
@@ -29,6 +29,10 @@
   \item{clusterers}{[\code{character}]\cr Vector of
   characters, defining the cluster models.  Default is
   c("XMeans", "EM", "FarthestFirst", "SimpleKMeans").}
+
+  \item{pre}{[\code{function}]\cr A function (e.g.
+  normalize) to preprocess the data.  By default no
+  preprocessing is done.}
 }
 \value{
   BatchExperiments registry.

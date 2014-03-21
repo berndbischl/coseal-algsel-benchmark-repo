@@ -9,7 +9,8 @@
 #'   Default is first measure in task.
 #' @param feature.steps [\code{character}]\cr
 #'   Which feature steps are allowed?
-#'   Default is all steps.
+#'   Default are the default feature steps or all steps
+#'   in case no defaults were defined.
 #' @param add.feature.costs [\code{logical(1)}]\cr
 #'   If costs for features are present in runtime tasks, should they be added to the algorithm costs
 #'   (because in reality you would  have to pay them)? Whether the algorithm hit the cutoff runtime
@@ -28,7 +29,7 @@ convertToLlama = function(astask, measure, feature.steps, add.feature.costs = TR
     checkArg(measure, "character", len = 1L, na.ok = FALSE)
   allsteps = names(astask$desc$feature_steps)
   if (missing(feature.steps))
-    feature.steps = allsteps
+    feature.steps = getDefaultFeatureStepNames(astask)
   else
     checkArg(feature.steps, subset = allsteps)
   checkArg(add.feature.costs, "logical", len = 1L, na.ok = FALSE)

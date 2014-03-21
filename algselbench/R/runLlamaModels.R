@@ -22,15 +22,24 @@
 #' @param clusterers [\code{character}]\cr
 #'   Vector of characters, defining the cluster models.
 #'   Default is c("XMeans", "EM", "FarthestFirst", "SimpleKMeans").
+#' @param pre [\code{function}]\cr
+#'   A function (e.g. normalize) to preprocess the data.
+#'   By default no preprocessing is done.
 #' @return BatchExperiments registry.
 #' @export
-runLlamaModels = function(astasks, baselines, classifiers, regressors, clusterers) {
+runLlamaModels = function(astasks, baselines, classifiers, regressors, clusterers, pre) {
 
   checkArg(astasks, c("list", "ASTask"))
   if (!missing(astasks) && inherits(astasks, "ASTask"))
     astasks = list(astasks)
   checkListElementClass(astasks, "ASTask")
 
+  if (missing(pre)) {
+    pre = function(x, y = NULL) {
+      list(features = x)
+    }    
+  }
+  
   # models and defaults
   baselines.def = c("vbs", "singleBest", "singleBestByPar", "singleBestBySuccesses")
 
@@ -126,7 +135,7 @@ runLlamaModels = function(astasks, baselines, classifiers, regressors, clusterer
     #FIXME: get from llama package envir
     llama.fun = get(llama.fun)
     fun = static$makeModelFun(model)
-    p = llama.fun(fun, data = static$llama.cv)$predictions
+    p = llama.fun(fun, data = static$llama.cv, pre = pre)$predictions
     static$makeRes(static$llama.cv, p, static$timeout)
   }
 

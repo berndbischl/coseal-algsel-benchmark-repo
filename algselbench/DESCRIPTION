@@ -56,3 +56,5 @@ Collate:
     'zzz.R'
     'shortenPathsInValidator.R'
     'plotAlgoPerfProbability.R'
+    'addDefaultsToASTask.R'
+    'getDefaultFeatureStepNames.R'

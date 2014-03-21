@@ -7,6 +7,10 @@
 #' @param measure [\code{character(1)}]\cr
 #'   Measure to use for modelling.
 #'   Default is first measure in task.
+#' @param feature.steps [\code{character}]\cr
+#'   Which feature steps are allowed?
+#'   Default are the default feature steps or all steps
+#'   in case no defaults were defined.
 #' @param add.feature.costs [\code{logical(1)}]\cr
 #'   See \code{\link{convertToLlama}}.
 #'   Default is \code{TRUE}.
@@ -16,7 +20,7 @@
 #'   Default are the splits \code{astask$cv.splits}
 #' @return Result of calling \code{\link[llama]{input}} with data partitioned into folds.
 #' @export
-convertToLlamaCVFolds = function(astask, measure, add.feature.costs = TRUE, cv.splits) {
+convertToLlamaCVFolds = function(astask, measure, feature.steps, add.feature.costs = TRUE, cv.splits) {
   checkArg(astask, "ASTask")
   if (missing(measure))
     measure = astask$desc$performance_measures[1]
@@ -26,14 +30,20 @@ convertToLlamaCVFolds = function(astask, measure, add.feature.costs = TRUE, cv.s
     cv.splits = astask$cv.splits
   else
     checkArg(cv.splits, "data.frame")
-
+  allsteps = names(astask$desc$feature_steps)
+  if (missing(feature.steps))
+    feature.steps = getDefaultFeatureStepNames(astask)
+  else
+    checkArg(feature.steps, subset = allsteps)
+  
   reps = max(cv.splits$rep)
   if (reps > 1L)
     stopf("llama can currently not handle CVs with repetitions, but you used reps = %i!", reps)
 
   folds = cv.splits
 
-  llamaFrame = convertToLlama(astask, measure = measure, add.feature.costs = add.feature.costs)
+  llamaFrame = convertToLlama(astask, measure = measure, 
+    feature.steps = feature.steps, add.feature.costs = add.feature.costs)
 
   nfolds = length(unique(folds$fold))
   parts = split(llamaFrame$data, folds$fold)

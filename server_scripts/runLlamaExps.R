@@ -1,13 +1,21 @@
 library(BBmisc)
 library(devtools)
+library(llama)
 load_all("../algselbench")
 source("defs.R")
 
 ds.dirs = list.files(file.path(coseal.svn.dir, "data"), full.names = TRUE)
 print(ds.dirs)
-astasks = lapply(ds.dirs, parseASTask)
-reg = runLlamaModels(astasks, baseline=c("vbs"),classifiers=c("classif.kknn"), 
-  regressors=c("regr.lm"), clusterers = c("XMeans"))
+astasks = lapply(ds.dirs[-c(grep("bbob", ds.dirs), grep("machine", ds.dirs))], parseASTask)
+astasks = lapply(astasks, addDefaultsToASTask, "../configs/")
+# reg = runLlamaModels(astasks, baseline=c("vbs"),classifiers=c("classif.kknn"), 
+#   regressors=c("regr.lm"), clusterers = c("XMeans"), pre = normalize)
+classifiers.weka = c("meta/AdaBoostM1", "bayes/BayesNet", "lazy/IBk", "rules/OneR",
+  "trees/RandomTree", "trees/J48", "rules/JRip")
+classifiers.mlr = c("classif.ctree", "classif.ksvm", "classif.naiveBayes",
+  "classif.randomForest", "classif.rpart")
+reg = runLlamaModels(astasks, classifiers=c(classifiers.weka, classifiers.mlr), 
+  clusterers = c("EM"), pre = normalize)
 ids = c(findExperiments(reg = reg, algo.pattern="regr"), findExperiments(reg = reg, algo.pattern="cluster"))
 time1 = proc.time()
 submitJobs(reg)
