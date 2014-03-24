@@ -96,34 +96,15 @@ solver always has a misclassification penalty of zero.</li>
 
 <p>
 
+<div class="error"><pre class="knitr r">## Error: Gruppenlänge ist 0 aber Datenlänge ist > 0
+</pre></div>
+<div class="warning"><pre class="knitr r">## Warning: Datenlänge überschreitet Größe der Matrix
+</pre></div>
 <!-- html table generated in R 3.0.2 by xtable 1.7-1 package -->
-<!-- Fri Mar 21 20:29:13 2014 -->
+<!-- Mon Mar 24 23:14:14 2014 -->
 <TABLE border=1>
-<TR> <TH> Type </TH> <TH> Model </TH> <TH> Percentage Solved </TH> <TH> PAR10 </TH> <TH> MCP </TH>  </TR>
-  <TR> <TD> baseline </TD> <TD> vbs </TD> <TD> 0.8527 </TD> <TD> 3127.2363 </TD> <TD> 0.0000 </TD> </TR>
-  <TR> <TD> baseline </TD> <TD> singleBest </TD> <TD> <b> <FONT COLOR = "#FE9A2E"> 0.7694 </FONT> </b> </TD> <TD> <b> <FONT COLOR = "#FE9A2E"> 4893.1407 </FONT> </b> </TD> <TD> <b> <FONT COLOR = "#FE9A2E"> 190.9044 </FONT> </b> </TD> </TR>
-  <TR> <TD> baseline </TD> <TD> singleBestByPar </TD> <TD> <b> <FONT COLOR = "#FE9A2E"> 0.7694 </FONT> </b> </TD> <TD> <b> <FONT COLOR = "#FE9A2E"> 4893.1407 </FONT> </b> </TD> <TD> <b> <FONT COLOR = "#FE9A2E"> 190.9044 </FONT> </b> </TD> </TR>
-  <TR> <TD> baseline </TD> <TD> singleBestBySuccesses </TD> <TD> <b> <FONT COLOR = "#FE9A2E"> 0.7694 </FONT> </b> </TD> <TD> <b> <FONT COLOR = "#FE9A2E"> 4893.1407 </FONT> </b> </TD> <TD> <b> <FONT COLOR = "#FE9A2E"> 190.9044 </FONT> </b> </TD> </TR>
-  <TR> <TD> classif </TD> <TD> meta/AdaBoostM1 </TD> <TD> 0.6279 </TD> <TD> 7865.6158 </TD> <TD> 487.9295 </TD> </TR>
-  <TR> <TD> classif </TD> <TD> bayes/BayesNet </TD> <TD> 0.7374 </TD> <TD> 5568.7517 </TD> <TD> 262.2983 </TD> </TR>
-  <TR> <TD> classif </TD> <TD> lazy/IBk </TD> <TD> 0.7671 </TD> <TD> 4955.2701 </TD> <TD> 209.7756 </TD> </TR>
-  <TR> <TD> classif </TD> <TD> rules/OneR </TD> <TD> 0.6610 </TD> <TD> 7182.9305 </TD> <TD> 430.9291 </TD> </TR>
-  <TR> <TD> classif </TD> <TD> trees/RandomTree </TD> <TD> 0.7591 </TD> <TD> 5109.0992 </TD> <TD> 212.5773 </TD> </TR>
-  <TR> <TD> classif </TD> <TD> trees/J48 </TD> <TD> 0.7591 </TD> <TD> 5122.9461 </TD> <TD> 226.4242 </TD> </TR>
-  <TR> <TD> classif </TD> <TD> rules/JRip </TD> <TD> 0.7500 </TD> <TD> 5298.8939 </TD> <TD> 229.7692 </TD> </TR>
-  <TR> <TD> classif </TD> <TD> classif.ctree </TD> <TD> 0.7489 </TD> <TD> 5334.0197 </TD> <TD> 243.3197 </TD> </TR>
-  <TR> <TD> classif </TD> <TD> classif.ksvm </TD> <TD> 0.7626 </TD> <TD> 5054.8384 </TD> <TD> 223.0425 </TD> </TR>
-  <TR> <TD> classif </TD> <TD> classif.naiveBayes </TD> <TD> <b> <FONT COLOR = "#FF0000"> 0.7763 </FONT> </b> </TD> <TD> <b> <FONT COLOR = "#FF0000"> 4753.1406 </FONT> </b> </TD> <TD> <b> <FONT COLOR = "#FF0000"> 180.2488 </FONT> </b> </TD> </TR>
-  <TR> <TD> classif </TD> <TD> classif.randomForest </TD> <TD> 0.7534 </TD> <TD> 5232.4249 </TD> <TD> 228.0263 </TD> </TR>
-  <TR> <TD> classif </TD> <TD> classif.rpart </TD> <TD> 0.7466 </TD> <TD> 5371.2765 </TD> <TD> 237.4258 </TD> </TR>
-  <TR> <TD> classif </TD> <TD> classif.kknn </TD> <TD> 0.7295 </TD> <TD> 5746.6682 </TD> <TD> 289.1875 </TD> </TR>
-  <TR> <TD> cluster </TD> <TD> EM </TD> <TD> 0.6941 </TD> <TD> 6486.3398 </TD> <TD> 360.0234 </TD> </TR>
-  <TR> <TD> cluster </TD> <TD> XMeans </TD> <TD> <b> <FONT COLOR = "#FE9A2E"> 0.7123 </FONT> </b> </TD> <TD> <b> <FONT COLOR = "#FE9A2E"> 6087.7214 </FONT> </b> </TD> <TD> <b> <FONT COLOR = "#FE9A2E"> 306.6106 </FONT> </b> </TD> </TR>
-  <TR> <TD> regr </TD> <TD> regr.earth </TD> <TD> <b> <FONT COLOR = "#FF0000"> 0.8002 </FONT> </b> </TD> <TD> <b> <FONT COLOR = "#FF0000"> 4241.9518 </FONT> </b> </TD> <TD> <b> <FONT COLOR = "#FF0000"> 122.1422 </FONT> </b> </TD> </TR>
-  <TR> <TD> regr </TD> <TD> regr.lm </TD> <TD> 0.7626 </TD> <TD> 5028.2792 </TD> <TD> 196.4834 </TD> </TR>
-  <TR> <TD> regr </TD> <TD> regr.randomForest </TD> <TD> <b> <FONT COLOR = "#FF0000"> 0.8059 </FONT> </b> </TD> <TD> <b> <FONT COLOR = "#FF0000"> 4121.0504 </FONT> </b> </TD> <TD> <b> <FONT COLOR = "#FF0000"> 109.1176 </FONT> </b> </TD> </TR>
-  <TR> <TD> regr </TD> <TD> regr.rpart </TD> <TD> 0.7626 </TD> <TD> 5034.5765 </TD> <TD> 202.7806 </TD> </TR>
-   </TABLE>
+<TR> <TH> Type </TH> <TH> Model </TH> <TH> Percentage Solved </TH> <TH> PAR10 </TH> <TH> MCP </TH> <TH> NA </TH> <TH> NA </TH> <TH> NA </TH> <TH> NA </TH>  </TR>
+  </TABLE>
 
 
 
