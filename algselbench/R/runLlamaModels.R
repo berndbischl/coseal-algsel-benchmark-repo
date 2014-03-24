@@ -73,7 +73,7 @@ runLlamaModels = function(astasks, baselines, classifiers, regressors, clusterer
   else
     checkArg(clusterers, subset = clusterers.def)
 
-  packs = c("RWeka", "mlr", "BatchExperiments")
+  packs = c("RWeka", "llama", "methods", "mlr", "BatchExperiments")
   requirePackages(packs, why = "runLlamaModels")
 
   makeModelFun = function(name) {
@@ -82,7 +82,31 @@ runLlamaModels = function(astasks, baselines, classifiers, regressors, clusterer
     } else if (name %in% classifiers.weka) {
       make_Weka_classifier(paste("weka/classifiers", name, sep = "/"))
     } else if (name %in% clusterers.weka) {
-      make_Weka_clusterer(paste("weka/clusterers", name, sep = "/"))
+      if (name == "XMeans") {
+        function(data) {
+          XMeans(data, control = Weka_control(H = length(grep("_success", names(data$data)))))
+        }
+      } else if (name == "EM") {
+        function(data) {
+          wekaEM = make_Weka_clusterer("weka/clusterers/EM", 
+                                       init = Weka_control(max = length(grep("_success", names(data$data)))))
+          wekaEM(data)
+        }
+      } else if (name == "FarthestFirst") {
+        function(data) {
+          wekaFF = make_Weka_clusterer("weka/clusterers/FarthestFirst", 
+            init = Weka_control(N = length(grep("_success", names(data$data)))))
+          wekaFF(data)
+        }
+      } else if (name == "SimpleKMeans") {
+        function(data) {
+          wekaSimpleKMeans = make_Weka_clusterer("weka/clusterers/SimpleKMeans", 
+            init = Weka_control(N = length(grep("_success", names(data$data)))))
+          wekaSimpleKMeans(data)
+        }
+      } else {
+        make_Weka_clusterer(paste("weka/clusterers", name, sep = "/"))
+      }
     } else {
       get(name)
     }
