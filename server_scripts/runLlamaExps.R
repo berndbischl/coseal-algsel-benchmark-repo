@@ -26,6 +26,8 @@ submitJobs(reg, ids = ids, resources = list(walltime = 8 * 3600))
 ids = findExperiments(reg = reg, algo.pattern="regr")
 ids = ids[seq(3, length(ids), 4)]
 summarizeExperiments(reg = reg, ids = ids, show = c("algo", "prob", "model"))
+ids = c(findExperiments(reg = reg, algo.pattern="classify"), 
+  findExperiments(reg = reg, algo.pattern="cluster"))
 submitJobs(reg)
 showStatus(reg)
 d = reduceResultsExperiments(reg)
