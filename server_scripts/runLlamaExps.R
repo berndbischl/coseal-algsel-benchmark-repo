@@ -20,10 +20,36 @@ classifiers.mlr = c("classif.ctree", "classif.ksvm", "classif.naiveBayes",
 reg = runLlamaModels(astasks, classifiers=c(classifiers.weka, classifiers.mlr), 
   clusterers = c("EM", "FarthestFirst", "SimpleKMeans"), pre = normalize)
 ids = findExperiments(reg = reg, algo.pattern="cluster")
+ids = ids[seq(1, length(ids), 3)]
+summarizeExperiments(reg = reg, ids = ids, show = c("algo", "prob", "model"))
+submitJobs(reg, ids = ids, resources = list(walltime = 8 * 3600))
 ids = findExperiments(reg = reg, algo.pattern="regr")
 ids = ids[seq(3, length(ids), 4)]
+summarizeExperiments(reg = reg, ids = ids, show = c("algo", "prob", "model"))
 submitJobs(reg)
 showStatus(reg)
 d = reduceResultsExperiments(reg)
 print(d)
 save2(file = "llama_results_10folds.RData", res = d)
+
+
+d = reduceResultsExperiments(reg, ids = c(findExperiments(reg, algo.pattern = "classif"),
+  findExperiments(reg, algo.pattern = "cluster")))
+
+save(d, file = "exp_results_newImputation_teil2.RData")
+
+d1 = load2(file = "exp_results_newImputation_teil1.RData")
+d2 = d
+
+d = rbind(d1, d2)
+d = d[order(d$prob, d$algo), ]
+save(d, file = "llama_results.RData")
+
+
+g = split(d[, c("prob", "model", "succ", "par10", "mcp")], d$prob)
+g2 = lapply(g, function(data) {
+  i1 = which(data$succ %in% sort(data$succ[-(1:4)], decreasing = TRUE)[1:3])
+  i2 = which(data$par10 %in% sort(data$par10[-(1:4)], decreasing = FALSE)[1:3])
+  i3 = which(data$mcp %in% sort(data$mcp[-(1:4)], decreasing = FALSE)[1:3])
+  return(data[sort(unique(c(1:4, i1, i2, i3))), ])
+})

@@ -34,6 +34,10 @@ solver always has a misclassification penalty of zero.</li>
 
 <p>
 
+<h2> Imputation by 2*Max (numeric) and extra-class (string / factor) </h2>
+
+<p>
+
 <!--begin.rcode, results = "asis"
   allfeats = getFeatureNames(astask)
   fsteps = config$feature.steps.default
@@ -48,6 +52,26 @@ solver always has a misclassification penalty of zero.</li>
 end.rcode-->
 
 <p>
+
+<h2> Imputation by Median </h2>
+
+<p>
+
+<!--begin.rcode, results = "asis"
+  allfeats = getFeatureNames(astask)
+  fsteps = config$feature.steps.default
+  presolve = getCostsAndPresolvedStatus(astask)
+#   if (is.null(fsteps))
+#     fsteps = getFeatureStepNames(astask)
+  feats = getProvidedFeatures(astask, fsteps)
+  d = subset(llama.results2, prob == astask$desc$task_id)
+  d = refurbishLlamaResults(data = d, color.best = "#FF0000", color.best.in.group = "#FE9A2E")
+  colnames(d) = c("Type", "Model", "Percentage Solved", "PAR10", "MCP")
+  print(xtable(d), "html", include.rownames = FALSE, sanitize.text.function = function(x) x)
+end.rcode-->
+
+<p>
+
 
 The following default feature steps were used for model building:
 <p>

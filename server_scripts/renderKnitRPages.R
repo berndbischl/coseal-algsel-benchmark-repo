@@ -27,6 +27,7 @@ ee$data.dir = data.dir
 ee$task.dirs = task.dirs
 ee$url.prefix = url.prefix
 ee$llama.results = load2("llama_results.RData")
+ee$llama.results2 = load2("llama_results_newSAT.RData")
 ee$astasks = list()
 
 
