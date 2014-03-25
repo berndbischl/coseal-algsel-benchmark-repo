@@ -101,7 +101,7 @@ solver always has a misclassification penalty of zero.</li>
 <p>
 
 <!-- html table generated in R 3.0.2 by xtable 1.7-1 package -->
-<!-- Tue Mar 25 11:28:32 2014 -->
+<!-- Tue Mar 25 15:26:21 2014 -->
 <TABLE border=1>
 <TR> <TH> Type </TH> <TH> Model </TH> <TH> Percentage Solved </TH> <TH> PAR10 </TH> <TH> MCP </TH>  </TR>
   <TR> <TD> baseline </TD> <TD> vbs </TD> <TD> 0.8200 </TD> <TD> 9186.4406 </TD> <TD> 0.0000 </TD> </TR>
@@ -139,7 +139,7 @@ solver always has a misclassification penalty of zero.</li>
 <p>
 
 <!-- html table generated in R 3.0.2 by xtable 1.7-1 package -->
-<!-- Tue Mar 25 11:28:32 2014 -->
+<!-- Tue Mar 25 15:26:21 2014 -->
 <TABLE border=1>
 <TR> <TH> Type </TH> <TH> Model </TH> <TH> Percentage Solved </TH> <TH> PAR10 </TH> <TH> MCP </TH>  </TR>
   <TR> <TD> baseline </TD> <TD> vbs </TD> <TD> 0.8200 </TD> <TD> 9186.4406 </TD> <TD> 0.0000 </TD> </TR>
@@ -166,6 +166,44 @@ solver always has a misclassification penalty of zero.</li>
   <TR> <TD> regr </TD> <TD> regr.lm </TD> <TD> <b> <FONT COLOR = "#FF0000"> 0.7267 </FONT> </b> </TD> <TD> <b> <FONT COLOR = "#FF0000"> 13842.5236 </FONT> </b> </TD> <TD> <b> <FONT COLOR = "#FF0000"> 437.9027 </FONT> </b> </TD> </TR>
   <TR> <TD> regr </TD> <TD> regr.randomForest </TD> <TD> <b> <FONT COLOR = "#FF0000"> 0.7567 </FONT> </b> </TD> <TD> <b> <FONT COLOR = "#FF0000"> 12380.2308 </FONT> </b> </TD> <TD> <b> <FONT COLOR = "#FF0000"> 325.6099 </FONT> </b> </TD> </TR>
   <TR> <TD> regr </TD> <TD> regr.rpart </TD> <TD> 0.6267 </TD> <TD> 18926.6726 </TD> <TD> 1022.0517 </TD> </TR>
+   </TABLE>
+
+
+
+<p>
+
+<h2> Imputation by Mean </h2>
+
+<p>
+
+<!-- html table generated in R 3.0.2 by xtable 1.7-1 package -->
+<!-- Tue Mar 25 15:26:21 2014 -->
+<TABLE border=1>
+<TR> <TH> Type </TH> <TH> Model </TH> <TH> Percentage Solved </TH> <TH> PAR10 </TH> <TH> MCP </TH>  </TR>
+  <TR> <TD> baseline </TD> <TD> vbs </TD> <TD> 0.8200 </TD> <TD> 9186.4406 </TD> <TD> 0.0000 </TD> </TR>
+  <TR> <TD> baseline </TD> <TD> singleBest </TD> <TD> 0.5467 </TD> <TD> 22744.2293 </TD> <TD> 1257.7887 </TD> </TR>
+  <TR> <TD> baseline </TD> <TD> singleBestByPar </TD> <TD> <b> <FONT COLOR = "#FE9A2E"> 0.6033 </FONT> </b> </TD> <TD> <b> <FONT COLOR = "#FE9A2E"> 19916.3559 </FONT> </b> </TD> <TD> <b> <FONT COLOR = "#FE9A2E"> 979.9154 </FONT> </b> </TD> </TR>
+  <TR> <TD> baseline </TD> <TD> singleBestBySuccesses </TD> <TD> <b> <FONT COLOR = "#FE9A2E"> 0.6033 </FONT> </b> </TD> <TD> <b> <FONT COLOR = "#FE9A2E"> 19916.3559 </FONT> </b> </TD> <TD> <b> <FONT COLOR = "#FE9A2E"> 979.9154 </FONT> </b> </TD> </TR>
+  <TR> <TD> classif </TD> <TD> meta/AdaBoostM1 </TD> <TD> 0.7067 </TD> <TD> 14829.8585 </TD> <TD> 525.2375 </TD> </TR>
+  <TR> <TD> classif </TD> <TD> bayes/BayesNet </TD> <TD> 0.6967 </TD> <TD> 15425.5828 </TD> <TD> 670.9619 </TD> </TR>
+  <TR> <TD> classif </TD> <TD> lazy/IBk </TD> <TD> 0.6217 </TD> <TD> 19097.5038 </TD> <TD> 967.8829 </TD> </TR>
+  <TR> <TD> classif </TD> <TD> rules/OneR </TD> <TD> 0.6783 </TD> <TD> 16321.4421 </TD> <TD> 741.8212 </TD> </TR>
+  <TR> <TD> classif </TD> <TD> trees/RandomTree </TD> <TD> 0.6450 </TD> <TD> 17915.8612 </TD> <TD> 836.2403 </TD> </TR>
+  <TR> <TD> classif </TD> <TD> trees/J48 </TD> <TD> 0.6700 </TD> <TD> 16612.5939 </TD> <TD> 657.9730 </TD> </TR>
+  <TR> <TD> classif </TD> <TD> rules/JRip </TD> <TD> 0.7067 </TD> <TD> 14798.8209 </TD> <TD> 494.2000 </TD> </TR>
+  <TR> <TD> classif </TD> <TD> classif.ctree </TD> <TD> 0.6300 </TD> <TD> 18775.2127 </TD> <TD> 1020.5917 </TD> </TR>
+  <TR> <TD> classif </TD> <TD> classif.ksvm </TD> <TD> 0.6567 </TD> <TD> 17355.7538 </TD> <TD> 801.1329 </TD> </TR>
+  <TR> <TD> classif </TD> <TD> classif.naiveBayes </TD> <TD> 0.6100 </TD> <TD> 19706.2904 </TD> <TD> 1051.6695 </TD> </TR>
+  <TR> <TD> classif </TD> <TD> classif.randomForest </TD> <TD> 0.7083 </TD> <TD> 14797.5851 </TD> <TD> 567.9642 </TD> </TR>
+  <TR> <TD> classif </TD> <TD> classif.rpart </TD> <TD> <b> <FONT COLOR = "#FF0000"> 0.7317 </FONT> </b> </TD> <TD> <b> <FONT COLOR = "#FF0000"> 13584.1554 </FONT> </b> </TD> <TD> <b> <FONT COLOR = "#FF0000"> 404.5344 </FONT> </b> </TD> </TR>
+  <TR> <TD> classif </TD> <TD> classif.kknn </TD> <TD> 0.6233 </TD> <TD> 19041.5885 </TD> <TD> 986.9676 </TD> </TR>
+  <TR> <TD> cluster </TD> <TD> FarthestFirst </TD> <TD> <b> <FONT COLOR = "#FE9A2E"> 0.4800 </FONT> </b> </TD> <TD> <b> <FONT COLOR = "#FE9A2E"> 26076.2985 </FONT> </b> </TD> <TD> <b> <FONT COLOR = "#FE9A2E"> 1571.6775 </FONT> </b> </TD> </TR>
+  <TR> <TD> cluster </TD> <TD> SimpleKMeans </TD> <TD> 0.4467 </TD> <TD> 27741.2808 </TD> <TD> 1736.6599 </TD> </TR>
+  <TR> <TD> cluster </TD> <TD> XMeans </TD> <TD> 0.4517 </TD> <TD> 27641.1320 </TD> <TD> 1861.5111 </TD> </TR>
+  <TR> <TD> regr </TD> <TD> regr.earth </TD> <TD> 0.6833 </TD> <TD> 15981.9263 </TD> <TD> 627.3054 </TD> </TR>
+  <TR> <TD> regr </TD> <TD> regr.lm </TD> <TD> <b> <FONT COLOR = "#FF0000"> 0.7250 </FONT> </b> </TD> <TD> <b> <FONT COLOR = "#FF0000"> 13925.8378 </FONT> </b> </TD> <TD> <b> <FONT COLOR = "#FF0000"> 446.2169 </FONT> </b> </TD> </TR>
+  <TR> <TD> regr </TD> <TD> regr.randomForest </TD> <TD> <b> <FONT COLOR = "#FF0000"> 0.7817 </FONT> </b> </TD> <TD> <b> <FONT COLOR = "#FF0000"> 11136.5426 </FONT> </b> </TD> <TD> <b> <FONT COLOR = "#FF0000"> 206.9217 </FONT> </b> </TD> </TR>
+  <TR> <TD> regr </TD> <TD> regr.rpart </TD> <TD> 0.6300 </TD> <TD> 18681.4277 </TD> <TD> 926.8068 </TD> </TR>
    </TABLE>
 
 
