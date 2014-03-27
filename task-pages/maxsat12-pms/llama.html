@@ -96,55 +96,36 @@ solver always has a misclassification penalty of zero.</li>
 
 <p>
 
-<h2> Imputation by 2*Max (numeric) and extra-class (string / factor) </h2>
-
-<p>
-
-<div class="error"><pre class="knitr r">## Error: Gruppenlänge ist 0 aber Datenlänge ist > 0
-</pre></div>
-<div class="warning"><pre class="knitr r">## Warning: Datenlänge überschreitet Größe der Matrix
-</pre></div>
 <!-- html table generated in R 3.0.2 by xtable 1.7-1 package -->
-<!-- Tue Mar 25 15:26:00 2014 -->
+<!-- Thu Mar 27 09:36:47 2014 -->
 <TABLE border=1>
-<TR> <TH> Type </TH> <TH> Model </TH> <TH> Percentage Solved </TH> <TH> PAR10 </TH> <TH> MCP </TH> <TH> NA </TH> <TH> NA </TH> <TH> NA </TH> <TH> NA </TH>  </TR>
-  </TABLE>
-
-
-
-<p>
-
-<h2> Imputation by Median </h2>
-
-<p>
-
-<div class="error"><pre class="knitr r">## Error: Gruppenlänge ist 0 aber Datenlänge ist > 0
-</pre></div>
-<div class="warning"><pre class="knitr r">## Warning: Datenlänge überschreitet Größe der Matrix
-</pre></div>
-<!-- html table generated in R 3.0.2 by xtable 1.7-1 package -->
-<!-- Tue Mar 25 15:26:00 2014 -->
-<TABLE border=1>
-<TR> <TH> Type </TH> <TH> Model </TH> <TH> Percentage Solved </TH> <TH> PAR10 </TH> <TH> MCP </TH> <TH> NA </TH> <TH> NA </TH> <TH> NA </TH> <TH> NA </TH>  </TR>
-  </TABLE>
-
-
-
-<p>
-
-<h2> Imputation by Mean </h2>
-
-<p>
-
-<div class="error"><pre class="knitr r">## Error: Gruppenlänge ist 0 aber Datenlänge ist > 0
-</pre></div>
-<div class="warning"><pre class="knitr r">## Warning: Datenlänge überschreitet Größe der Matrix
-</pre></div>
-<!-- html table generated in R 3.0.2 by xtable 1.7-1 package -->
-<!-- Tue Mar 25 15:26:00 2014 -->
-<TABLE border=1>
-<TR> <TH> Type </TH> <TH> Model </TH> <TH> Percentage Solved </TH> <TH> PAR10 </TH> <TH> MCP </TH> <TH> NA </TH> <TH> NA </TH> <TH> NA </TH> <TH> NA </TH>  </TR>
-  </TABLE>
+<TR> <TH> Type </TH> <TH> Model </TH> <TH> Percentage Solved </TH> <TH> PAR10 </TH> <TH> MCP </TH>  </TR>
+  <TR> <TD> baseline </TD> <TD> vbs </TD> <TD> 0.8527 </TD> <TD> 3127.2363 </TD> <TD> 0.0000 </TD> </TR>
+  <TR> <TD> baseline </TD> <TD> singleBest </TD> <TD> <b> <FONT COLOR = "#FE9A2E"> 0.7694 </FONT> </b> </TD> <TD> <b> <FONT COLOR = "#FE9A2E"> 4893.1407 </FONT> </b> </TD> <TD> <b> <FONT COLOR = "#FE9A2E"> 190.9044 </FONT> </b> </TD> </TR>
+  <TR> <TD> baseline </TD> <TD> singleBestByPar </TD> <TD> <b> <FONT COLOR = "#FE9A2E"> 0.7694 </FONT> </b> </TD> <TD> <b> <FONT COLOR = "#FE9A2E"> 4893.1407 </FONT> </b> </TD> <TD> <b> <FONT COLOR = "#FE9A2E"> 190.9044 </FONT> </b> </TD> </TR>
+  <TR> <TD> baseline </TD> <TD> singleBestBySuccesses </TD> <TD> <b> <FONT COLOR = "#FE9A2E"> 0.7694 </FONT> </b> </TD> <TD> <b> <FONT COLOR = "#FE9A2E"> 4893.1407 </FONT> </b> </TD> <TD> <b> <FONT COLOR = "#FE9A2E"> 190.9044 </FONT> </b> </TD> </TR>
+  <TR> <TD> classif </TD> <TD> meta/AdaBoostM1 </TD> <TD> 0.6279 </TD> <TD> 7865.6158 </TD> <TD> 487.9295 </TD> </TR>
+  <TR> <TD> classif </TD> <TD> bayes/BayesNet </TD> <TD> 0.7500 </TD> <TD> 5315.8680 </TD> <TD> 246.7434 </TD> </TR>
+  <TR> <TD> classif </TD> <TD> lazy/IBk </TD> <TD> 0.7671 </TD> <TD> 4954.5805 </TD> <TD> 209.0860 </TD> </TR>
+  <TR> <TD> classif </TD> <TD> rules/OneR </TD> <TD> 0.6610 </TD> <TD> 7182.9305 </TD> <TD> 430.9291 </TD> </TR>
+  <TR> <TD> classif </TD> <TD> trees/RandomTree </TD> <TD> <b> <FONT COLOR = "#FF0000"> 0.7945 </FONT> </b> </TD> <TD> <b> <FONT COLOR = "#FF0000"> 4360.8068 </FONT> </b> </TD> <TD> <b> <FONT COLOR = "#FF0000"> 133.1206 </FONT> </b> </TD> </TR>
+  <TR> <TD> classif </TD> <TD> trees/J48 </TD> <TD> 0.7568 </TD> <TD> 5167.8403 </TD> <TD> 228.1677 </TD> </TR>
+  <TR> <TD> classif </TD> <TD> rules/JRip </TD> <TD> 0.7534 </TD> <TD> 5223.0403 </TD> <TD> 218.6417 </TD> </TR>
+  <TR> <TD> classif </TD> <TD> classif.ctree </TD> <TD> 0.7489 </TD> <TD> 5334.0197 </TD> <TD> 243.3197 </TD> </TR>
+  <TR> <TD> classif </TD> <TD> classif.ksvm </TD> <TD> 0.7614 </TD> <TD> 5077.1957 </TD> <TD> 223.8245 </TD> </TR>
+  <TR> <TD> classif </TD> <TD> classif.naiveBayes </TD> <TD> 0.7432 </TD> <TD> 5471.4716 </TD> <TD> 272.8949 </TD> </TR>
+  <TR> <TD> classif </TD> <TD> classif.randomForest </TD> <TD> 0.7477 </TD> <TD> 5355.4505 </TD> <TD> 243.1752 </TD> </TR>
+  <TR> <TD> classif </TD> <TD> classif.rpart </TD> <TD> 0.7466 </TD> <TD> 5371.2765 </TD> <TD> 237.4258 </TD> </TR>
+  <TR> <TD> classif </TD> <TD> classif.kknn </TD> <TD> 0.7249 </TD> <TD> 5840.6890 </TD> <TD> 296.9069 </TD> </TR>
+  <TR> <TD> cluster </TD> <TD> EM </TD> <TD> 0.6575 </TD> <TD> 7266.9394 </TD> <TD> 450.2120 </TD> </TR>
+  <TR> <TD> cluster </TD> <TD> FarthestFirst </TD> <TD> 0.6724 </TD> <TD> 6939.5397 </TD> <TD> 403.2918 </TD> </TR>
+  <TR> <TD> cluster </TD> <TD> SimpleKMeans </TD> <TD> <b> <FONT COLOR = "#FF0000"> 0.8116 </FONT> </b> </TD> <TD> <b> <FONT COLOR = "#FF0000"> 3998.8987 </FONT> </b> </TD> <TD> <b> <FONT COLOR = "#FF0000"> 94.8425 </FONT> </b> </TD> </TR>
+  <TR> <TD> cluster </TD> <TD> XMeans </TD> <TD> 0.7397 </TD> <TD> 5514.6892 </TD> <TD> 251.3866 </TD> </TR>
+  <TR> <TD> regr </TD> <TD> regr.earth </TD> <TD> 0.7477 </TD> <TD> 5349.8250 </TD> <TD> 237.5496 </TD> </TR>
+  <TR> <TD> regr </TD> <TD> regr.lm </TD> <TD> 0.7511 </TD> <TD> 5264.6557 </TD> <TD> 217.1063 </TD> </TR>
+  <TR> <TD> regr </TD> <TD> regr.randomForest </TD> <TD> <b> <FONT COLOR = "#FF0000"> 0.7911 </FONT> </b> </TD> <TD> <b> <FONT COLOR = "#FF0000"> 4429.0008 </FONT> </b> </TD> <TD> <b> <FONT COLOR = "#FF0000"> 136.5884 </FONT> </b> </TD> </TR>
+  <TR> <TD> regr </TD> <TD> regr.rpart </TD> <TD> 0.7751 </TD> <TD> 4770.3530 </TD> <TD> 175.8859 </TD> </TR>
+   </TABLE>
 
 
 
