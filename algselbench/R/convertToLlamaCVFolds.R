@@ -35,20 +35,19 @@ convertToLlamaCVFolds = function(astask, measure, feature.steps, add.feature.cos
     feature.steps = getDefaultFeatureStepNames(astask)
   else
     checkArg(feature.steps, subset = allsteps)
-  
+
   reps = max(cv.splits$rep)
   if (reps > 1L)
     stopf("llama can currently not handle CVs with repetitions, but you used reps = %i!", reps)
 
   folds = cv.splits
 
-  llamaFrame = convertToLlama(astask, measure = measure, 
+  llamaFrame = convertToLlama(astask, measure = measure,
     feature.steps = feature.steps, add.feature.costs = add.feature.costs)
 
   nfolds = length(unique(folds$fold))
-  splitFactors = sapply(llamaFrame$data$instance_id, function(id) {
-      folds$fold[id == folds$instance_id]
-  })
+  rownames(folds) = folds$instance_id
+  splitFactors = folds[llamaFrame$data$instance_id, "fold"]
   parts = split(llamaFrame$data, splitFactors)
 
   return(c(llamaFrame,
