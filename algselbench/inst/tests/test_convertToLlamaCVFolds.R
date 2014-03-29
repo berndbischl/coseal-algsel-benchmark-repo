@@ -12,4 +12,10 @@ test_that("convertToLlamaCVFolds", {
   # res = classify(classifier = J48, data = llama.task)
 })
 
-
+test_that("convertToLlamaCVFolds check matching", {
+  folds = createCVSplits(testtask1, folds = 2L, reps = 1L)
+  llama.task = convertToLlamaCVFolds(testtask1, cv.splits = folds)
+  for(i in unique(folds$fold)) {
+      expect_equal(length(setdiff(llama.task$test[[i]]$instance_id, subset(folds, folds$fold==i)$instance_id)), 0)
+  }
+})

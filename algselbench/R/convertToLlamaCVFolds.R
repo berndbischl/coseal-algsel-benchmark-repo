@@ -46,7 +46,10 @@ convertToLlamaCVFolds = function(astask, measure, feature.steps, add.feature.cos
     feature.steps = feature.steps, add.feature.costs = add.feature.costs)
 
   nfolds = length(unique(folds$fold))
-  parts = split(llamaFrame$data, folds$fold)
+  splitFactors = sapply(llamaFrame$data$instance_id, function(id) {
+      folds$fold[id == folds$instance_id]
+  })
+  parts = split(llamaFrame$data, splitFactors)
 
   return(c(llamaFrame,
             list(train = lapply(1:nfolds, function(x) { return(unsplit(parts[-x], folds$fold[folds$fold!=x])) }),
