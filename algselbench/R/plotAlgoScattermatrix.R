@@ -20,7 +20,7 @@ plotAlgoScattermatrix = function(astask, measure, log = FALSE){
   algos = unique(algo.perf$algorithm)
   x = algo.perf[order(algo.perf[, "instance_id"], algo.perf[, "repetition"],
                       algo.perf[, "algorithm"]),]
-  perf = x[,measure]
+  perf = 2*x[,measure]
   data = matrix(perf, ncol = length(algos), byrow = TRUE)
   colnames(data) = sort(algos)
   if (!log) {
