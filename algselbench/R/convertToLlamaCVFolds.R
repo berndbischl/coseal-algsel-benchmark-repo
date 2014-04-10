@@ -36,7 +36,7 @@ convertToLlamaCVFolds = function(astask, measure, feature.steps, add.feature.cos
   else
     checkArg(feature.steps, subset = allsteps)
 
-  reps = max(cv.splits$rep)
+  reps = max(cv.splits$repetition)
   if (reps > 1L)
     stopf("llama can currently not handle CVs with repetitions, but you used reps = %i!", reps)
 

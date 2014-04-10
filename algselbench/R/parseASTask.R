@@ -96,11 +96,22 @@ parseASTask = function(path) {
   algo.runs = read.arff(file.path(path, "algorithm_runs.arff"))
 
   ### build algo.runstatus
+  algo.runstatus = dcast(algo.runs, instance_id + repetition ~ algorithm, value.var = "runstatus")
   # sort rows and cols
-  algo.runstatus = algo.runs[, c("instance_id", "repetition", "algorithm", "runstatus")]
   algo.runstatus = algo.runstatus[, c("instance_id", "repetition",
-    desc$algorithms_deterministic, algorithms_stochastic)]
+    desc$algorithms_deterministic, desc$algorithms_stochastic)]
   algo.runstatus = sortByCol(algo.runstatus, c("instance_id", "repetition"))
+
+  ### build algo.perf
+  algo.perf = list()
+  for (measure in desc$performance_measures) {
+    ap = dcast(algo.runs, instance_id + repetition ~ algorithm, value.var = measure)
+    # sort rows and cols
+    ap = ap[, c("instance_id", "repetition",
+      desc$algorithms_deterministic, desc$algorithms_stochastic)]
+    ap = sortByCol(ap, c("instance_id", "repetition"))
+    algo.perf[[measure]] = ap
+  }
 
   ### build cv.splits
   cv.file = file.path(path, "cv.arff")
@@ -119,6 +130,7 @@ parseASTask = function(path) {
     feature.runstatus = feature.runstatus,
     feature.costs= feature.costs,
     feature.values = feature.values,
+    algo.runs = algo.runs,
     algo.runstatus = algo.runstatus,
     algo.perf = algo.perf,
     cv.splits = cv.splits
