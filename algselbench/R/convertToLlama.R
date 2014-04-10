@@ -43,6 +43,7 @@ convertToLlama = function(astask, measure, feature.steps, add.feature.costs = TR
   ### handle features ###
 
   # reduce to inst + rep + allowed features
+  # note that feats is ordered by instance, then repetition
   feats = feats[, c("instance_id", "repetition", allowed.features), drop = FALSE]
 
   # aggregate stochastic features, only do this if repeated measurements to save time
@@ -75,11 +76,9 @@ convertToLlama = function(astask, measure, feature.steps, add.feature.costs = TR
 
   ### handle perf values ###
 
-  perf = astask$algo.runs
-  perf = subset(perf, select = c("instance_id", "repetition", "algorithm", measure, "runstatus"))
+  # note that perf is ordered by instance, then repetition
+  perf = astask$algo.perf[[measure]]
 
-  # wide format
-  runstatus = dcast(perf, instance_id + repetition ~ algorithm, value.var = "runstatus")
   perf = dcast(perf, instance_id + repetition ~ algorithm, value.var = measure)
   cols = 3:ncol(perf)
   runstatus2 = runstatus[, cols]
