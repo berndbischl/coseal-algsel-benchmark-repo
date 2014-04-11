@@ -7,7 +7,7 @@
 #' @param feature.steps [\code{character}]\cr
 #'   Which feature steps are allowed?
 #'   Default is all steps.
-#' @return [\code{list}]. In the following, \code{n} is the number of instances.
+#' @return [\code{list}]. In the following, \code{n} is the number of instances. All following object are ordered by \dQuote{instance_id}.
 #'   \item{is.presolved [\code{logical(n)}]}{Was instance presolved? Named by instance ids.}
 #'   \item{solve.steps [\code{character(n)}]}{Which step solved it? NA if no step did it. Named by instance ids.}
 #'   \item{costs [\code{numeric(n)}]}{Feature costs for using the steps. Named by instance ids. NULL if no costs are present.}
@@ -22,6 +22,7 @@ getCostsAndPresolvedStatus = function(astask, feature.steps) {
   frs = astask$feature.runstatus
   #FIXME:
   stopifnot(max(frs$repetition) == 1L)
+  # note that frs and costs are ordered by instance_id 
   iids = frs$instance_id
   # reduce to allowed feature steps
   frs = frs[, feature.steps, drop = FALSE]
