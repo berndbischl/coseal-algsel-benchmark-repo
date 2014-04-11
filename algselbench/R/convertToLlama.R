@@ -86,7 +86,6 @@ convertToLlama = function(astask, measure, feature.steps, add.feature.costs = TR
   # The reason is that we have not cleanly defined, what happens if on
   # one instance an algo crashes a sometimes but works otherwise 
   stopifnot(max(perf$repetition) == 1L)
-  print(summary(perf))
   perf$repetition = runstatus$repetition = NULL
   iid = perf$instance_id
   perf$instance_id = runstatus$instance_id = NULL
