@@ -2,8 +2,7 @@
 \alias{runLlamaModels}
 \title{Creates a registry which can be used for running several Llama models on a cluster.}
 \usage{
-  runLlamaModels(astasks, baselines, classifiers,
-    regressors, clusterers, pre)
+runLlamaModels(astasks, baselines, classifiers, regressors, clusterers, pre)
 }
 \arguments{
   \item{astasks}{[\code{list}]\cr List of algorithm
@@ -35,15 +34,15 @@
   preprocessing is done.}
 }
 \value{
-  BatchExperiments registry.
+BatchExperiments registry.
 }
 \description{
-  It is likely that you need to install some additional R
-  packages for this from CRAN or extra Weka learner. The
-  latter can be one via e.g. \code{WPM("install-package",
-  "XMeans")}.
+It is likely that you need to install some additional R
+packages for this from CRAN or extra Weka learner. The
+latter can be one via e.g. \code{WPM("install-package",
+"XMeans")}.
 
-  Feature costs are added for real prognostic models but
-  not for baseline models.
+Feature costs are added for real prognostic models but not
+for baseline models.
 }
 

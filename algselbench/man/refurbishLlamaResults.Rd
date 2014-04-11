@@ -2,8 +2,8 @@
 \alias{refurbishLlamaResults}
 \title{Refurbishes the llama experiments data frame by coloring the best values.}
 \usage{
-  refurbishLlamaResults(data, color.best = "#FF0000",
-    color.best.in.group = "##FFA500")
+refurbishLlamaResults(data, color.best = "#FF0000",
+  color.best.in.group = "##FFA500")
 }
 \arguments{
   \item{data}{[\code{data.frame}]\cr Data frame retrieved
@@ -18,10 +18,10 @@
   group.}
 }
 \value{
-  [\code{data.frame}].
+[\code{data.frame}].
 }
 \description{
-  Refurbishes the llama experiments data frame by coloring
-  the best values.
+Refurbishes the llama experiments data frame by coloring
+the best values.
 }
 

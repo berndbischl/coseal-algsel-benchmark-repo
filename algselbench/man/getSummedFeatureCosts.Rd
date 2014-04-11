@@ -2,7 +2,7 @@
 \alias{getSummedFeatureCosts}
 \title{Returns feature costs of task, summed over all instances.}
 \usage{
-  getSummedFeatureCosts(astask, feature.steps)
+getSummedFeatureCosts(astask, feature.steps)
 }
 \arguments{
   \item{astask}{[\code{\link{ASTask}}]\cr Algorithm
@@ -13,9 +13,9 @@
   steps.}
 }
 \value{
-  [\code{character}].
+[\code{character}].
 }
 \description{
-  Returns feature costs of task, summed over all instances.
+Returns feature costs of task, summed over all instances.
 }
 

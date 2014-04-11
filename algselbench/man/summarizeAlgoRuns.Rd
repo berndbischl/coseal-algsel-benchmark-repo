@@ -3,7 +3,7 @@
 \title{Creates a table that gives an overview of the performance values
 per algorithm across all instances.}
 \usage{
-  summarizeAlgoRuns(astask, measure)
+summarizeAlgoRuns(astask, measure)
 }
 \arguments{
   \item{astask}{[\code{\link{ASTask}}]\cr Algorithm
@@ -14,11 +14,11 @@ per algorithm across all instances.}
   Default is first measure in task.}
 }
 \value{
-  [\code{data.frame}].  Data frame, which gives an overview
-  of the performance values.
+[\code{data.frame}].  Data frame, which gives an overview
+of the performance values.
 }
 \description{
-  Creates a table that gives an overview of the performance
-  values per algorithm across all instances.
+Creates a table that gives an overview of the performance
+values per algorithm across all instances.
 }
 

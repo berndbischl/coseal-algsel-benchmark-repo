@@ -1,9 +1,9 @@
 \name{addDefaultsToASTask}
-\alias{addDefaultsToASTask}
 \alias{ASTask}
+\alias{addDefaultsToASTask}
 \title{Integrates default settings from the configs file to the description object.}
 \usage{
-  addDefaultsToASTask(astask, conf.path)
+addDefaultsToASTask(astask, conf.path)
 }
 \arguments{
   \item{[\code{\link{ASTask}}]\cr}{Description object for
@@ -13,10 +13,10 @@
   directory of benchmark data set.}
 }
 \value{
-  [\code{\link{ASTask}}]. Description object.
+[\code{\link{ASTask}}]. Description object.
 }
 \description{
-  Integrates default settings from the configs file to the
-  description object.
+Integrates default settings from the configs file to the
+description object.
 }
 
