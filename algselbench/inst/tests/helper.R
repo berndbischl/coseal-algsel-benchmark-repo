@@ -36,12 +36,18 @@ makeTestTask3 = function() {
     data.frame(instance_id = iids, repetition = 1L, algorithm = "a2",
       m = c(50, 30, 10), runstatus = c("ok", "ok", "crash"))
   )
+  algo.runstatus = data.frame(instance_id = iids, repetition = 1L, 
+      a1 = c("ok", "ok", "ok"), a2 = c("ok", "ok", "crash"))
+  algo.perf = data.frame(instance_id = iids, repetition = 1L, 
+      a1 = c(30, 90, 70), a2 = c(50, 30, 10))
   makeS3Obj("ASTask",
     desc = desc,
     feature.values = feats,
     feature.runstatus = data.frame(instance_id = iids, repetition = 1L, s1 = rs1, s2 = rs2),
     feature.costs = data.frame(instance_id = iids, repetition = 1L, s1 = c1, s2 = c2),
-    algo.runs = algo.runs
+    algo.runs = algo.runs,
+    algo.runstatus = algo.runstatus,
+    algo.perf = list(m = algo.perf)
   )
 }
 
