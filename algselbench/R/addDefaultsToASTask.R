@@ -1,12 +1,11 @@
 #' Integrates default settings from the configs file to the description object.
 #'
-#' @param [\code{\link{ASTask}}]\cr
+#' @param astask [\code{\link{ASTask}}]\cr
 #'   Description object for the algorithm selection task.
 #' @param conf.path [\code{character(1)}]\cr
 #'   Path to configs directory of benchmark data set.
 #' @return [\code{\link{ASTask}}]. Description object.
 #' @export
-#' @aliases ASTask
 addDefaultsToASTask = function(astask, conf.path) {
   checkArg(astask, "ASTask")
   checkArg(conf.path, "character", len = 1L, na.ok = FALSE)

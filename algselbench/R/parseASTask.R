@@ -6,7 +6,8 @@
 #'
 #' Let n be the number of (replicated) instances, m the number of unique instances,
 #' p the number of features, s the number of steps and k the number of algorithms.
-#'
+#
+#  @details
 #' \describe{
 #' \item{desc [\code{\link{ASTaskDesc}}]}{Description object, containing further info.}
 #' \item{feature.runstatus [\code{data.frame(n, s + 2)}]}{Runstatus of feature computation steps.
@@ -20,8 +21,8 @@
 #'   numeric costs of the feature steps.
 #'   The step columns are in the same order as the feature steps in the description object.
 #'   code{NA} means the cost is not available, possibly because the feature computation was aborted.
-#'   The data.frame is sorted by \dQuote{instance_id}, then \dQuote{repetition}.}
-#'   If no cost file is available at all, \code{NULL} is stored.
+#'   The data.frame is sorted by \dQuote{instance_id}, then \dQuote{repetition}.
+#'   If no cost file is available at all, \code{NULL} is stored.}
 #' \item{feature.values [\code{data.frame(n, p + 2)}]}{Measured feature values of instances.
 #'   The first 2 columns are \dQuote{instance_id} and \dQuote{rep}. The remaining ones are
 #'   the measured instance features.
@@ -32,7 +33,7 @@
 #' \item{algo.runs [\code{data.frame}]}{Runstatus and performance information of the
 #'   algorithms. Simply the parsed ARFF file. See the next member slots for a more
 #'   convenient format of the same information.
-#'   (Yeah that means we redundantly store the same data twice.)
+#'   (Yeah that means we redundantly store the same data twice.}
 #' \item{algo.runstatus [\code{data.frame(n, s + 2)}]}{Runstatus of algorithm runs.
 #'   The first 2 columns are \dQuote{instance_id} and \dQuote{rep}, the remaining are the status factors.
 #'   The step columns are in the same order as the feature steps in the description object.
@@ -52,9 +53,9 @@
 #'   The instances with fold = i for a replication r constitute the i-th test set for the r-th CV.
 #'   The training set is the \dQuote{instance_id} column with repetition = r, in the same order,
 #'   when the test set is removed.
-#'   The data.frame is sorted by \dQuote{repetition}, then \dQuote{fold}, then \dQuote{instance_id}}
+#'   The data.frame is sorted by \dQuote{repetition}, then \dQuote{fold}, then \dQuote{instance_id}.
 #'   If no CV file is available at all, \code{NULL} is stored, and a warning is issued, although this
-#'   should not happen.
+#'   should not happen.}
 #' }
 #'
 #' @param path [\code{character(1)}]\cr

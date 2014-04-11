@@ -1,13 +1,12 @@
 \name{addDefaultsToASTask}
-\alias{ASTask}
 \alias{addDefaultsToASTask}
 \title{Integrates default settings from the configs file to the description object.}
 \usage{
 addDefaultsToASTask(astask, conf.path)
 }
 \arguments{
-  \item{[\code{\link{ASTask}}]\cr}{Description object for
-  the algorithm selection task.}
+  \item{astask}{[\code{\link{ASTask}}]\cr Description
+  object for the algorithm selection task.}
 
   \item{conf.path}{[\code{character(1)}]\cr Path to configs
   directory of benchmark data set.}

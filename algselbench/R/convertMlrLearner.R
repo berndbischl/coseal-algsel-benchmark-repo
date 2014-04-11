@@ -1,6 +1,6 @@
 #' @export
-predict.LlamaClassifMlrWrapper = function(model, newdata, ...) {
-  mlr:::predict.WrappedModel(model, newdata = newdata, ...)$data$response
+predict.LlamaClassifMlrWrapper = function(object, newdata, ...) {
+  mlr:::predict.WrappedModel(object, newdata = newdata, ...)$data$response
 }
 
 #' @export

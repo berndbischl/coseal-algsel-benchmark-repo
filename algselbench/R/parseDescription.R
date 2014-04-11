@@ -1,4 +1,5 @@
 # Parses description file and returns an S3 class of the contents
+#FIXME: document data format
 
 parseDescription = function(path) {
   checkArg(path, "character", len = 1L, na.ok = FALSE)
