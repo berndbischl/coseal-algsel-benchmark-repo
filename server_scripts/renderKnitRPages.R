@@ -5,6 +5,7 @@ library(algselbench)
 library(BBmisc)
 source("defs.R")
 source("eda_config.R")
+source("convertResultsToXTable.R")
 
 data.dir =  normalizePath(file.path(coseal.svn.dir, "data"))
 task.dirs = list.files(data.dir, full = TRUE)
