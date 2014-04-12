@@ -26,7 +26,7 @@ ee = new.env()
 ee$data.dir = data.dir
 ee$task.dirs = task.dirs
 ee$url.prefix = url.prefix
-ee$llama.results = load2("llama_results_mean.RData")
+ee$llama.results = load2("llama_results.RData")
 ee$astasks = list()
 
 
