@@ -21,9 +21,14 @@ reg = runLlamaModels(astasks, classifiers=c(classifiers.weka, classifiers.mlr),
   clusterers = c("EM", "FarthestFirst", "SimpleKMeans"), pre = normalize)
 
 # jobs should be run with 2gig mem
+# run time of all jobs
+# summary(getJobInfo(reg)$time.running)
+   # Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+      # 9      18      30     161      50    6320 
+# can be run on SLURM in a few hours in total
+
 # submitJobs(reg, resources = list(memory = 2048))
 
-# d = reduceResultsExperiments(reg)
-# print(d)
-# save2(file = "llama_results.RData", res = d)
+d = reduceResultsExperiments(reg)
+save2(file = "llama_results.RData", res = d)
 
