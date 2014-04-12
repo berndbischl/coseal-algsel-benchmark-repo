@@ -29,6 +29,6 @@ reg = runLlamaModels(astasks, classifiers=c(classifiers.weka, classifiers.mlr),
 
 # submitJobs(reg, resources = list(memory = 2048))
 
-d = reduceResultsExperiments(reg)
+d = reduceResultsExperiments(reg, strings.as.factors = FALSE)
 save2(file = "llama_results.RData", res = d)
 
