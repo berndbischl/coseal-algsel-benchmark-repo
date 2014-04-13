@@ -1,17 +1,17 @@
-#' @title Parses the data files of an algorithm selection task int an S3 object.
+#' @title Parses the data files of an algorithm selection task into an S3 object.
 #'
 #' @description
 #'
 #' Object members
 #'
 #' Let n be the number of (replicated) instances, m the number of unique instances,
-#' p the number of features, s the number of steps and k the number of algorithms.
+#' p the number of features, s the number of feature steps and k the number of algorithms.
 #
 #  @details
 #' \describe{
 #' \item{desc [\code{\link{ASTaskDesc}}]}{Description object, containing further info.}
 #' \item{feature.runstatus [\code{data.frame(n, s + 2)}]}{Runstatus of feature computation steps.
-#'   The first 2 columns are \dQuote{instance_id} and \dQuote{rep}, the remaining are the status factors.
+#'   The first 2 columns are \dQuote{instance_id} and \dQuote{repetition}, the remaining are the status factors.
 #'   The step columns are in the same order as the feature steps in the description object.
 #'   The factor levels are always: ok, presolved, crash, timeout, memout, other.
 #'   No entry can be \code{NA}.
@@ -24,7 +24,7 @@
 #'   The data.frame is sorted by \dQuote{instance_id}, then \dQuote{repetition}.
 #'   If no cost file is available at all, \code{NULL} is stored.}
 #' \item{feature.values [\code{data.frame(n, p + 2)}]}{Measured feature values of instances.
-#'   The first 2 columns are \dQuote{instance_id} and \dQuote{rep}. The remaining ones are
+#'   The first 2 columns are \dQuote{instance_id} and \dQuote{repetition}. The remaining ones are
 #'   the measured instance features.
 #'   The feature columns are in the same order as \dQuote{features_deterministic},
 #'   \dQuote{features_stochastic} in the description object.
@@ -34,14 +34,14 @@
 #'   algorithms. Simply the parsed ARFF file. See the next member slots for a more
 #'   convenient format of the same information.
 #'   (Yeah that means we redundantly store the same data twice.}
-#' \item{algo.runstatus [\code{data.frame(n, s + 2)}]}{Runstatus of algorithm runs.
-#'   The first 2 columns are \dQuote{instance_id} and \dQuote{rep}, the remaining are the status factors.
+#' \item{algo.runstatus [\code{data.frame(n, k + 2)}]}{Runstatus of algorithm runs.
+#'   The first 2 columns are \dQuote{instance_id} and \dQuote{repetition}, the remaining are the status factors.
 #'   The step columns are in the same order as the feature steps in the description object.
 #'   The factor levels are always: ok, presolved, crash, timeout, memout, other.
 #'   No entry can be \code{NA}.
 #'   The data.frame is sorted by \dQuote{instance_id}, then \dQuote{repetition}.}
 #' \item{algo.perf [\code{data.frame(n, k + 2)}]}{Measured performance of algorithms on instances.
-#'   The first 2 columns are \dQuote{instance_id} and \dQuote{rep}. The remaining ones are
+#'   The first 2 columns are \dQuote{instance_id} and \dQuote{repetition}. The remaining ones are
 #'   the measured performance values.
 #'   The feature columns are in the same order as \dQuote{algorithms_deterministic},
 #'   \dQuote{algorithms_stochastic} in the description object.
@@ -71,10 +71,15 @@ parseASTask = function(path) {
 
   ### build feature.runstatus
   feature.runstatus = read.arff(file.path(path, "feature_runstatus.arff"))
+  statusLevels = c("ok", "timeout", "memout", "presolved", "crash", "other")
   # make sure we have correct levels
   for (j in 3:ncol(feature.runstatus)) {
+    factors = factor(feature.runstatus[, j])
+    if(!setequal(union(factors, statusLevels), statusLevels)) {
+        stop(paste("Feature runstatus file contains illegal levels:", setdiff(factors, statusLevels)))
+    }
     feature.runstatus[, j] = factor(feature.runstatus[, j],
-      levels = c("ok", "timeout", "memout", "presolved", "crash", "other"))
+      levels = statusLevels)
   }
   # sort rows and cols
   feature.runstatus = feature.runstatus[, c("instance_id", "repetition", fsteps)]
@@ -122,6 +127,11 @@ parseASTask = function(path) {
   cv.file = file.path(path, "cv.arff")
   if (file.exists(cv.file)) {
     cv.splits = read.arff(cv.file)
+    instancesInCV = length(unique(cv.splits$instance_id))
+    instancesInAlgos = length(unique(algo.runstatus$instance_id))
+    if(instancesInCV != instancesInAlgos) {
+        stop(paste("Fold allocations given for ", instancesInCV, "instances, but algorithms run on", instancesInAlgos, "instances!"))
+    }
     # sort rows and cols
     cv.splits = cv.splits[, c("instance_id", "repetition", "fold")]
     cv.splits = sortByCol(cv.splits, c("repetition", "fold", "instance_id"))
