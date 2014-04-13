@@ -13,11 +13,11 @@
 #'   in case no defaults were defined.
 #' @param add.feature.costs [\code{logical(1)}]\cr
 #'   If costs for features are present in runtime tasks, should they be added to the algorithm costs
-#'   (because in reality you would  have to pay them)? Whether the algorithm hit the cutoff runtime
-#'   is also newly calculated in this case.
-#'   This adding of feature costs should not be done for the
+#'   (because in reality you would  have to pay them)? Whether the algorithms hit the cutoff runtime
+#'   is also recalculated in this case.
+#'   Adding the feature costs should not be done for the
 #'   baseline models, but only for proper prognostic models.
-#'   If no costs are present, 0 is added as costs and a warning is issued.
+#'   If no costs are present, 0 is added as cost and a warning is issued.
 #'   Default is \code{TRUE}.
 #' @return Result of calling \code{\link[llama]{input}}.
 #' @export
@@ -46,7 +46,7 @@ convertToLlama = function(astask, measure, feature.steps, add.feature.costs = TR
   # note that feats is ordered by instance, then repetition
   feats = feats[, c("instance_id", "repetition", allowed.features), drop = FALSE]
 
-  # aggregate stochastic features, only do this if repeated measurements to save time
+  # aggregate features, only do this if repeated measurements to save time
   if (max(feats$repetition) > 1L) {
     feats = ddply(feats, c("instance_id"), function(d) {
       colMeans(d[, allowed.features, drop = FALSE])

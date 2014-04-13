@@ -37,3 +37,32 @@ test_that("convertToLlama", {
 })
 
 
+test_that("convertToLlama parses real task correctly", {
+  llama.task = convertToLlama(testtask1, add.feature.costs = FALSE)
+  expect_equal(llama.task$performance, c("2clsQ", "quantor", "QuBE", "sKizzo", "sSolve"))
+  expect_equal(llama.task$success, c("2clsQ_success", "quantor_success", "QuBE_success", "sKizzo_success", "sSolve_success"))
+  expect_equal(llama.task$features, c( "EXIST_VARS", "FORALL_VARS",
+        "TOTAL_VARS", "CLAUSES",
+        "LITERALS", "EXIST_SET",
+        "FORALL_SET", "TOTAL_SET",
+        "UNARY_CLAUSES", "BINARY_CLAUSES",
+        "TERNARY_MORE_CLAUSES", "POS_HORN",
+        "NEG_HORN", "EXIST_LIT_PER_CLAUSE",
+        "FORALL_LIT_PER_CLAUSE", "EXIST_VARS_PER_SET",
+        "FORALL_POS_LITS_PER_CLAUSE", "FORALL_NEG_LITS_PER_CLAUSE",
+        "OCCS_POS_NO_PER_VAR", "OCCS_FORALL_NO_PER_VAR",
+        "OCCS_FORALL_POS_NO_PER_VAR", "W_OCCS_POS_NO_PER_VAR",
+        "W_OCCS_FORALL_NO_PER_VAR", "W_OCCS_FORALL_POS_NO_PER_VAR",
+        "W_PRODUCTS", "LITN_LIT",
+        "LITEP_LIT", "LITEN_LITE",
+        "LITEN_LITN", "LITFN_LIT",
+        "LITFP_LITFN", "OCCP_OCCN",
+        "OCCE_OCC", "OCCEN_OCC",
+        "OCCFP_OCCF", "OCCEN_OCCE",
+        "OCCEN_OCCN", "OCCFP_OCCFN",
+        "TERMORE_CLAUSE", "NEG_HORN_CLAUSE",
+        "WOCCN_WOCC", "WOCCEP_WOCC",
+        "WOCCFN_WOCC", "WOCCEP_WOCCE",
+        "WOCCEP_WOCCP", "WOCCFN_WOCCN"))
+  expect_equal(length(llama.task$data$best), 1368)
+})
