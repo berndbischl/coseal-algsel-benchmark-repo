@@ -1,6 +1,7 @@
 #' Convert an ASTask task object to a llama data object with cross-validation folds.
 #'
-#' For stochastic algorithms and features, mean values are computed across repetitions.
+#' For features, mean values are computed across repetitions.
+#' For algorithms, repetitions are not supported at the moment and will result in an error.
 #'
 #' @param astask [\code{\link{ASTask}}]\cr
 #'   Algorithm selection task.
