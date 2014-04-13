@@ -29,7 +29,8 @@ Result of calling \code{\link[llama]{input}} with data
 partitioned into folds.
 }
 \description{
-For stochastic algorithms and features, mean values are
-computed across repetitions.
+For features, mean values are computed across repetitions.
+For algorithms, repetitions are not supported at the moment
+and will result in an error.
 }
 

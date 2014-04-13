@@ -30,7 +30,7 @@ runLlamaModels(astasks, baselines, classifiers, regressors, clusterers, pre)
   c("XMeans", "EM", "FarthestFirst", "SimpleKMeans").}
 
   \item{pre}{[\code{function}]\cr A function (e.g.
-  normalize) to preprocess the data.  By default no
+  normalize) to preprocess the feature data.  By default no
   preprocessing is done.}
 }
 \value{
