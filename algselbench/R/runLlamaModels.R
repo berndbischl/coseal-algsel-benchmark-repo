@@ -23,7 +23,7 @@
 #'   Vector of characters, defining the cluster models.
 #'   Default is c("XMeans", "EM", "FarthestFirst", "SimpleKMeans").
 #' @param pre [\code{function}]\cr
-#'   A function (e.g. normalize) to preprocess the data.
+#'   A function (e.g. normalize) to preprocess the feature data.
 #'   By default no preprocessing is done.
 #' @return BatchExperiments registry.
 #' @export
