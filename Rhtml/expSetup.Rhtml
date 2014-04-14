@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Algorithm selection benchmarks experimental setup</title>
+</head>
+<body>
+
+<h1>Algorithm selection benchmarks experimental setup</h1>
+
+Disclaimer: The experimental setup and results are <strong>not</strong> meant to
+demonstrate the state of the art or the best possible results. They are intended
+as a guide only.
+
+<h2>Software used</h2>
+
+The experiments use the <a href="https://bitbucket.org/lkotthoff/llama">LLAMA
+algorithm selection system</a> and the <a
+href="https://github.com/berndbischl/mlr">mlr machine learning wrapper</a>.
+
+<h2>Data preprocessing</h2>
+
+The data in each algorithm selection task is preprocessed as follows.
+
+<ol>
+<li>For repeated feature calculations, the mean value is taken across all
+repetitions.</li>
+<li>NA feature values are imputed by the mean value across all non-NA values for
+the feature.</li>
+<li>Any tasks that have repeated performance measurements are discarded. This
+currently applies to no tasks.</li>
+<li>If the performance measure is runtime, the cost of feature computation is
+added to the algorithms' performances, unless we are considering only the
+baselines which do not incur feature costs.</li>
+<li>The success for each algorithm on each problem instance is computed by
+checking whether the run status was OK and the performance value is not NA. If
+the performance measure is runtime and a cutoff value has been specified, any
+algorithm runs that exceed the cutoff when taking the cost of feature
+computation into account are marked as not successful.</li>
+<li>The performance value for all not successful runs is set to the cutoff value
+if present, else ten times the maximum performance.</li>
+<li>The algorithm selection task data structure is converted to a LLAMA data
+frame.</li>
+</ol>
+
+The cross-validation splits defined in the respective tasks are preserved in the
+LLAMA data frame. That is, the model building functions will use these splits
+for training and testing.
+
+<h2>Machine learning models used in experiments</h2>
+
+We use the following classification, regression and clustering approaches in our
+experiments.
+
+<ul>
+<li>classification (from <a href="http://www.cs.waikato.ac.nz/ml/weka/">Weka</a>)
+    <ul>
+        <li>meta/AdaBoostM1</li>
+        <li>bayes/BayesNet</li>
+        <li>lazy/IBk</li>
+        <li>rules/OneR</li>
+        <li>trees/RandomTree</li>
+        <li>trees/J48</li>
+        <li>rules/JRip</li>
+    </ul>
+</li>
+<li>classification (from mlr)
+    <ul>
+        <li>classif.ctree</li>
+        <li>classif.ksvm</li>
+        <li>classif.naiveBayes</li>
+        <li>classif.randomForest</li>
+        <li>classif.rpart</li>
+    </ul>
+</li>
+<li>regression (from mlr)
+    <ul>
+        <li>regr.earth</li>
+        <li>regr.lm</li>
+        <li>regr.randomForest</li>
+        <li>regr.rpart</li>
+    </ul>
+</li>
+<li>clustering (from Weka)
+    <ul>
+        <li>EM</li>
+        <li>FarthestFirst</li>
+        <li>SimpleKMeans</li>
+    </ul>
+</li>
+</ul>
+
+The parameters of all algorithms were left at their default values. For the
+clustering algorithms, the (maximum) number of clusters was set to the number of
+algorithms in the respective task.
+
+<h3>Baseline algorithms</h3>
+
+For comparison purposes, we use the following baseline algorithms.
+
+<ul>
+<li>virtual best solver</li>
+<li>single best solver by overall performance</li>
+<li>single best solver by PAR10 score</li>
+<li>single best solver by number of successes</li>
+</ul>
+
+<h3>Model building in LLAMA</h3>
+
+The model building functions in LLAMA were used with their default parameters.
+In all cases, LLAMA's normalize() function was used to normalize the feature
+vectors before passing them to the machine learning models.
+
+<h2>Model evaluation</h2>
+
+For each trained model, we record the mean number of successes, the mean PAR10
+score, and the mean misclassification penalty across all problem instances of an
+algorithm selection task.
+
+
+</body>
+</html>
