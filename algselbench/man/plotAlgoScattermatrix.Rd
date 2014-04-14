@@ -19,9 +19,9 @@
   \item{na.impute}{[\code{logical(1)}]\cr Should the values
   of algorithm runs with non-ok runstatus (missing
   performance values) be imputed? If yes, imputation is
-  done via max + 0.1 * (max - min) for minimization
-  problems and via min - 0.1 * (max - min) for maximization
-  problems.  Default is TRUE.}
+  done via max + scalar * (max - min) for minimization
+  problems and via min - scalar * (max - min) for
+  maximization problems.  Default is TRUE.}
 }
 \value{
   plot object.

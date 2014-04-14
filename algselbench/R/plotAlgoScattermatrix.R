@@ -10,8 +10,8 @@
 #'   Default is identity.
 #' @param na.impute [\code{logical(1)}]\cr
 #'   Should the values of algorithm runs with non-ok runstatus (missing performance 
-#'   values) be imputed? If yes, imputation is done via max + 0.1 * (max - min) for
-#'   minimization problems and via min - 0.1 * (max - min) for maximization problems.
+#'   values) be imputed? If yes, imputation is done via max + scalar * (max - min) for
+#'   minimization problems and via min - scalar * (max - min) for maximization problems.
 #'   Default is TRUE.
 #' @return  plot object.
 #' @export
@@ -25,20 +25,13 @@ plotAlgoScattermatrix = function(astask, measure, trafo = identity, na.impute = 
     trafo = get(trafo)
   checkArg(trafo, "function", len = 1L)
   checkArg(na.impute, "logical", len = 1L, na.ok = FALSE)
+  
+  if (na.impute)
+    astask = imputeCrashedRuns(astask)
   algo.perf = astask$algo.runs
   algos = unique(algo.perf$algorithm)
-  x = algo.perf[order(algo.perf[, "instance_id"], algo.perf[, "repetition"],
-    algo.perf[, "algorithm"]),]
-  perf = x[,measure]
-  if (na.impute) {
-    run.status = algo.perf[, "runstatus"]
-    perf.range = range(perf[run.status == "ok"], na.rm = TRUE)
-    if (astask$desc$maximize) {
-      perf[run.status != "ok"] = perf.range[1] - 0.1 * diff(perf.range)
-    } else {
-      perf[run.status != "ok"] = perf.range[2] + 0.1 * diff(perf.range)
-    }    
-  }
+  perf = algo.perf[order(algo.perf[, "instance_id"], algo.perf[, "repetition"],
+    algo.perf[, "algorithm"]), measure]
   data = matrix(perf, ncol = length(algos), byrow = TRUE)
   colnames(data) = sort(algos)
   data = apply(data, 2, trafo)
@@ -46,12 +39,7 @@ plotAlgoScattermatrix = function(astask, measure, trafo = identity, na.impute = 
   pairs(data, lower.panel = panel.cor, 
     diag.panel = panel.hist, upper.panel = panel.lm,
     cex.axis = 2)
-  trafo.string = deparse(trafo)
-  if (trafo.string[1] == "function (x) ") {
-    trafo.string = trafo.string[2]
-  } else if (grepl(".Primitive", trafo.string)) {
-    trafo.string = sprintf("%s(x)", strsplit(deparse(trafo), "\"")[[1]][2])
-  }
+  trafo.string = extractTrafo(trafo)
   title(sub = bquote(x[shown] == .(trafo.string)))  
 }
 

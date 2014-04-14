@@ -57,3 +57,5 @@ Collate:
     'summarizeFeatureSteps.R'
     'summarizeFeatureValues.R'
     'zzz.R'
+    'extractTrafo.R'
+    'imputeCrashedRuns.R'

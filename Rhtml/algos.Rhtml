@@ -74,50 +74,60 @@ end.rcode-->
 
 <br>
 <br>
+<b><FONT COLOR = "#FF0000"> Important Note:</b><br>
+Depending on the configuration, missing values among the algorithms' performance values
+were imputed prior to the creation of the following plots (except for the correlation 
+matrix, cf. bottom of this page).<br>
+Missing values were imputed to max + 0.3 * (max - min), in case of minimization problems, 
+or min - 0.3 * (max - min), in case of maximization problems.<br>
+In addition, a small noise is added to the imputed values. </FONT>
+<br>
+<br>
+
 <h2> Boxplots of performance values </h2>
 
-Any observations with missing values in their algorithms' performance were removed prior to the creation of the boxplots.<br>
-Additionally, if the performance is represented on a log-scale, all non-positive performance values were removed as well.<br>
+If the performance is represented on a log-scale, all non-positive performance values were removed.<br>
 <br>
 
 <!--begin.rcode
-  plotAlgoPerfBoxplots(astask, log = config$algo.perf.boxplots.log)
+  plotAlgoPerfBoxplots(astask, log = config$algo.perf.boxplots.log, na.impute = config$algo.perf.impute.nas)
 end.rcode-->
 
 <br>
 <h2> Estimated densitities of performance values </h2>
 
-Any observations with missing values in their algorithms' performance were removed prior to the creation of the density plot.<br>
-Additionally, if the performance is represented on a log-scale, all non-positive performance values were removed as well.<br>
+If the performance is represented on a log-scale, all non-positive performance values were removed as well.<br>
 <br>
 
 <!--begin.rcode
-  plotAlgoPerfDensities(astask, log = config$algo.perf.densities.log) 
+  plotAlgoPerfDensities(astask, log = config$algo.perf.densities.log, na.impute = config$algo.perf.impute.nas) 
 end.rcode-->
 
 <br>
 <h2> Estimated cumulative distribution functions of performance values </h2>
 
-Any observations with missing values in their algorithms' performance were removed prior to the creation of the cumulative distribution plot.<br>
-Additionally, if the performance is represented on a log-scale, all non-positive performance values were removed as well.<br>
+If the performance is represented on a log-scale, all non-positive performance values were removed as well.<br>
 <br>
 
 <!--begin.rcode
-  plotAlgoPerfProbability(astask, log = config$algo.perf.probabilities.log) 
+  plotAlgoPerfProbability(astask, log = config$algo.perf.probabilities.log, na.impute = config$algo.perf.impute.nas) 
 end.rcode-->
 
 <br>
 <h2> Scatterplot matrix of the performance values </h2>
 
-The following figure creates pairwise scatterplots of the performance values, 
-including a regression line (cf. upper panel), a histogram of each performance
-value (cf. diagonal), as well as the pairwise (pearson) correlation (cf. lower
-panel).<br>
+The following figure creates pairwise scatterplots of the (possibly transformed) 
+performance values, including a regression line (cf. upper panel), a histogram 
+of each performance value (cf. diagonal), as well as the pairwise (pearson) 
+correlation (cf. lower panel).<br>
 In order to facilitate the lucidity of the correlations, they are colored
 depending on their value. Thus, a high positive correlation (&ge; 0.8) is
 colored green, light correlations (between 0.3 and 0.8, or -0.8 and -0.3)
 are orange, little to no correlations (&ge; -0.3 and &le; 0.3) are written
-in black and high negative correlations (&le; -0.8) are shown red.
+in black and high negative correlations (&le; -0.8) are shown red.<br>
+Eventually, the performance values are transformed, based on the settings
+within its config-file. However, the corresponding transformation is mentioned
+within the subtitle underneath the figure.
 
 <!--begin.rcode, results = "asis"
   plotAlgoScattermatrix(astask, trafo = config$algo.perf.scatter.trafo, na.impute = config$algo.perf.impute.nas)
@@ -126,18 +136,13 @@ end.rcode-->
 
 <br>
 <h2> Clustering algorithms based on their correlations </h2>
-The following figure shows the correlations of the performance values. Per
-default it will show the correlation coefficient of pearson. If NA's exist,
-they were removed pairwise. <br>
+The following figure shows the correlations of the <b>ranks</b> of the performance 
+values. Per default it will show the correlation coefficient of pearson. If NA's 
+exist, they were removed pairwise. <br>
 In addition, the algorithms are ordered in a way that similar (highly
 correlated) algorithms are close to each other. Per default the clustering
 is based on hierarchical clustering, using Ward's method. <br>
 <br>
-
-ATTENTION: <br>
-As the correlations from this figure always depend on the original performance
-values, they might be different to the values shown in the scatterplot matrix,
-which could be log-scaled (depending on the setting). <br>
 
 <!--begin.rcode
   plotAlgoCorMatrix(astask) 
