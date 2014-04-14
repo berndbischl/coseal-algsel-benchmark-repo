@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style type="text/css">
+.knitr.inline {
+  background-color: #f7f7f7;
+  border:solid 1px #B0B0B0;
+}
+.error {
+	font-weight: bold;
+	color: #FF0000;
+},
+.warning {
+	font-weight: bold;
+}
+.message {
+	font-style: italic;
+}
+.source, .output, .warning, .error, .message {
+	padding: 0em 1em;
+  border:solid 1px #F7F7F7;
+}
+.source {
+  background-color: #f5f5f5;
+}
+.rimage.left {
+  text-align: left;
+}
+.rimage.right {
+  text-align: right;
+}
+.rimage.center {
+  text-align: center;
+}
+.hl.num {
+  color: #AF0F91;
+}
+.hl.str {
+  color: #317ECC;
+}
+.hl.com {
+  color: #AD95AF;
+  font-style: italic;
+}
+.hl.opt {
+  color: #000000;
+}
+.hl.std {
+  color: #585858;
+}
+.hl.kwa {
+  color: #295F94;
+  font-weight: bold;
+}
+.hl.kwb {
+  color: #B05A65;
+}
+.hl.kwc {
+  color: #55aa55;
+}
+.hl.kwd {
+  color: #BC5A65;
+  font-weight: bold;
+}
+</style>
+  <title>Feature performance overview</title>
+</head>
+<body>
+
+
+<h2> Overview of Feature Values</h2>
+
+The following measures were taken for the results of each feature:
+<ul>
+
+  <li> Min: Minimum
+  <li> 1st Qu.: 1st Quartile = lower Quartile = 25%-Quantile
+  <li> Median: Median = 50%-Quantile
+  <li> Mean: Arithmetic Mean
+  <li> 3rd Qu.: 3rd Quartile = upper Quartile = 75%-Quantile
+  <li> Max.: Maximum
+  <li> Std. Dev.: Standard Deviation
+  <li> CoV.: Coefficient of Variation = Standard Deviation / Arithmetic Mean
+  <li> NA's: Number of NAs (missing values) within the feature set.
+  <li> Obs.: Number of Observations within the feature set.
+  <li> Run OK (%): Percentage of feature computations without a crash.
+
+</ul>
+
+<!-- html table generated in R 3.0.2 by xtable 1.7-1 package -->
+<!-- Mon Apr 14 15:24:02 2014 -->
+<TABLE border=1>
+<TR> <TH>  </TH> <TH> Min. </TH> <TH> 1st Qu. </TH> <TH> Median </TH> <TH> Mean </TH> <TH> 3rd Qu. </TH> <TH> Max. </TH> <TH> Std. Dev. </TH> <TH> CoV. </TH> <TH> NA's </TH> <TH> Obs. </TH>  </TR>
+  <TR> <TD align="right"> nvarsOrig </TD> <TD align="right"> 2.0000e+01 </TD> <TD align="right"> 2.2450e+02 </TD> <TD align="right"> 7.6000e+02 </TD> <TD align="right"> 2.5982e+03 </TD> <TD align="right"> 1.9232e+03 </TD> <TD align="right"> 6.3882e+04 </TD> <TD align="right"> 8.2789e+03 </TD> <TD align="right"> 3.1865e+00 </TD> <TD align="right"> 0 </TD> <TD align="right"> 296 </TD> </TR>
+  <TR> <TD align="right"> nclausesOrig </TD> <TD align="right"> 1.0500e+02 </TD> <TD align="right"> 2.8562e+03 </TD> <TD align="right"> 2.8623e+04 </TD> <TD align="right"> 9.9614e+04 </TD> <TD align="right"> 8.5700e+04 </TD> <TD align="right"> 1.7111e+06 </TD> <TD align="right"> 1.9769e+05 </TD> <TD align="right"> 1.9846e+00 </TD> <TD align="right"> 0 </TD> <TD align="right"> 296 </TD> </TR>
+  <TR> <TD align="right"> nvars </TD> <TD align="right"> 2.0000e+01 </TD> <TD align="right"> 2.2000e+02 </TD> <TD align="right"> 6.1200e+02 </TD> <TD align="right"> 1.7857e+03 </TD> <TD align="right"> 1.5050e+03 </TD> <TD align="right"> 3.4307e+04 </TD> <TD align="right"> 4.7484e+03 </TD> <TD align="right"> 2.6591e+00 </TD> <TD align="right"> 0 </TD> <TD align="right"> 296 </TD> </TR>
+  <TR> <TD align="right"> nclauses </TD> <TD align="right"> 1.0500e+02 </TD> <TD align="right"> 2.5875e+03 </TD> <TD align="right"> 2.7474e+04 </TD> <TD align="right"> 9.5724e+04 </TD> <TD align="right"> 8.2812e+04 </TD> <TD align="right"> 1.6679e+06 </TD> <TD align="right"> 1.9286e+05 </TD> <TD align="right"> 2.0147e+00 </TD> <TD align="right"> 0 </TD> <TD align="right"> 296 </TD> </TR>
+  <TR> <TD align="right"> reducedVars </TD> <TD align="right"> 0.0000e+00 </TD> <TD align="right"> 0.0000e+00 </TD> <TD align="right"> 3.2300e-02 </TD> <TD align="right"> 3.5740e-01 </TD> <TD align="right"> 1.3810e-01 </TD> <TD align="right"> 5.3851e+01 </TD> <TD align="right"> 3.1449e+00 </TD> <TD align="right"> 8.7994e+00 </TD> <TD align="right"> 0 </TD> <TD align="right"> 296 </TD> </TR>
+  <TR> <TD align="right"> reducedClauses </TD> <TD align="right"> 0.0000e+00 </TD> <TD align="right"> 0.0000e+00 </TD> <TD align="right"> 9.1000e-03 </TD> <TD align="right"> 2.7891e-01 </TD> <TD align="right"> 2.3725e-02 </TD> <TD align="right"> 5.4968e+01 </TD> <TD align="right"> 3.2181e+00 </TD> <TD align="right"> 1.1538e+01 </TD> <TD align="right"> 0 </TD> <TD align="right"> 296 </TD> </TR>
+  <TR> <TD align="right"> vars_clauses_ratio </TD> <TD align="right"> 6.0000e-04 </TD> <TD align="right"> 9.6000e-03 </TD> <TD align="right"> 2.3450e-02 </TD> <TD align="right"> 9.6851e-02 </TD> <TD align="right"> 1.4603e-01 </TD> <TD align="right"> 5.1320e-01 </TD> <TD align="right"> 1.2926e-01 </TD> <TD align="right"> 1.3346e+00 </TD> <TD align="right"> 0 </TD> <TD align="right"> 296 </TD> </TR>
+  <TR> <TD align="right"> POSNEG_RATIO_CLAUSE_mean </TD> <TD align="right"> 2.4370e-01 </TD> <TD align="right"> 4.7800e-01 </TD> <TD align="right"> 9.9435e-01 </TD> <TD align="right"> 7.5361e-01 </TD> <TD align="right"> 1.0000e+00 </TD> <TD align="right"> 1.0000e+00 </TD> <TD align="right"> 2.8788e-01 </TD> <TD align="right"> 3.8201e-01 </TD> <TD align="right"> 0 </TD> <TD align="right"> 296 </TD> </TR>
+  <TR> <TD align="right"> POSNEG_RATIO_CLAUSE_coeff_variation </TD> <TD align="right"> 0.0000e+00 </TD> <TD align="right"> 0.0000e+00 </TD> <TD align="right"> 2.3600e-02 </TD> <TD align="right"> 3.5245e-01 </TD> <TD align="right"> 7.9860e-01 </TD> <TD align="right"> 1.1471e+00 </TD> <TD align="right"> 4.1155e-01 </TD> <TD align="right"> 1.1677e+00 </TD> <TD align="right"> 0 </TD> <TD align="right"> 296 </TD> </TR>
+  <TR> <TD align="right"> POSNEG_RATIO_CLAUSE_min </TD> <TD align="right"> 0.0000e+00 </TD> <TD align="right"> 0.0000e+00 </TD> <TD align="right"> 8.0000e-01 </TD> <TD align="right"> 5.3347e-01 </TD> <TD align="right"> 1.0000e+00 </TD> <TD align="right"> 1.0000e+00 </TD> <TD align="right"> 4.5145e-01 </TD> <TD align="right"> 8.4625e-01 </TD> <TD align="right"> 0 </TD> <TD align="right"> 296 </TD> </TR>
+  <TR> <TD align="right"> POSNEG_RATIO_CLAUSE_max </TD> <TD align="right"> 1.0000e+00 </TD> <TD align="right"> 1.0000e+00 </TD> <TD align="right"> 1.0000e+00 </TD> <TD align="right"> 1.0000e+00 </TD> <TD align="right"> 1.0000e+00 </TD> <TD align="right"> 1.0000e+00 </TD> <TD align="right"> 0.0000e+00 </TD> <TD align="right"> 0.0000e+00 </TD> <TD align="right"> 0 </TD> <TD align="right"> 296 </TD> </TR>
+  <TR> <TD align="right"> POSNEG_RATIO_CLAUSE_entropy </TD> <TD align="right"> 0.0000e+00 </TD> <TD align="right"> 0.0000e+00 </TD> <TD align="right"> 2.3850e-01 </TD> <TD align="right"> 5.8839e-01 </TD> <TD align="right"> 1.0719e+00 </TD> <TD align="right"> 2.9316e+00 </TD> <TD align="right"> 6.6563e-01 </TD> <TD align="right"> 1.1313e+00 </TD> <TD align="right"> 0 </TD> <TD align="right"> 296 </TD> </TR>
+  <TR> <TD align="right"> VCG_CLAUSE_mean </TD> <TD align="right"> 1.0000e-04 </TD> <TD align="right"> 2.5000e-03 </TD> <TD align="right"> 5.8000e-03 </TD> <TD align="right"> 1.6552e-02 </TD> <TD align="right"> 1.7825e-02 </TD> <TD align="right"> 3.5000e-01 </TD> <TD align="right"> 3.3169e-02 </TD> <TD align="right"> 2.0039e+00 </TD> <TD align="right"> 0 </TD> <TD align="right"> 296 </TD> </TR>
+  <TR> <TD align="right"> VCG_CLAUSE_coeff_variation </TD> <TD align="right"> 0.0000e+00 </TD> <TD align="right"> 3.6005e-01 </TD> <TD align="right"> 8.1355e-01 </TD> <TD align="right"> 9.6729e-01 </TD> <TD align="right"> 1.6358e+00 </TD> <TD align="right"> 2.7515e+00 </TD> <TD align="right"> 7.4612e-01 </TD> <TD align="right"> 7.7135e-01 </TD> <TD align="right"> 0 </TD> <TD align="right"> 296 </TD> </TR>
+  <TR> <TD align="right"> VCG_CLAUSE_min </TD> <TD align="right"> 1.0000e-04 </TD> <TD align="right"> 1.3000e-03 </TD> <TD align="right"> 3.3000e-03 </TD> <TD align="right"> 1.0517e-02 </TD> <TD align="right"> 1.0825e-02 </TD> <TD align="right"> 3.5000e-01 </TD> <TD align="right"> 2.8182e-02 </TD> <TD align="right"> 2.6796e+00 </TD> <TD align="right"> 0 </TD> <TD align="right"> 296 </TD> </TR>
+  <TR> <TD align="right"> VCG_CLAUSE_max </TD> <TD align="right"> 1.0000e-04 </TD> <TD align="right"> 1.7775e-02 </TD> <TD align="right"> 3.9100e-02 </TD> <TD align="right"> 4.9393e-02 </TD> <TD align="right"> 7.1400e-02 </TD> <TD align="right"> 3.5000e-01 </TD> <TD align="right"> 4.3692e-02 </TD> <TD align="right"> 8.8457e-01 </TD> <TD align="right"> 0 </TD> <TD align="right"> 296 </TD> </TR>
+  <TR> <TD align="right"> VCG_CLAUSE_entropy </TD> <TD align="right"> 0.0000e+00 </TD> <TD align="right"> 1.8848e-01 </TD> <TD align="right"> 3.0990e-01 </TD> <TD align="right"> 4.6186e-01 </TD> <TD align="right"> 6.0357e-01 </TD> <TD align="right"> 2.6115e+00 </TD> <TD align="right"> 4.5401e-01 </TD> <TD align="right"> 9.8301e-01 </TD> <TD align="right"> 0 </TD> <TD align="right"> 296 </TD> </TR>
+  <TR> <TD align="right"> UNARY </TD> <TD align="right"> 0.0000e+00 </TD> <TD align="right"> 0.0000e+00 </TD> <TD align="right"> 0.0000e+00 </TD> <TD align="right"> 0.0000e+00 </TD> <TD align="right"> 0.0000e+00 </TD> <TD align="right"> 0.0000e+00 </TD> <TD align="right"> 0.0000e+00 </TD> <TD align="right">  </TD> <TD align="right"> 0 </TD> <TD align="right"> 296 </TD> </TR>
+  <TR> <TD align="right"> BINARYp </TD> <TD align="right"> 0.0000e+00 </TD> <TD align="right"> 3.7250e-03 </TD> <TD align="right"> 2.4055e-01 </TD> <TD align="right"> 4.5746e-01 </TD> <TD align="right"> 9.4407e-01 </TD> <TD align="right"> 9.8930e-01 </TD> <TD align="right"> 4.4809e-01 </TD> <TD align="right"> 9.7952e-01 </TD> <TD align="right"> 0 </TD> <TD align="right"> 296 </TD> </TR>
+  <TR> <TD align="right"> TRINARYp </TD> <TD align="right"> 0.0000e+00 </TD> <TD align="right"> 9.8075e-02 </TD> <TD align="right"> 8.8545e-01 </TD> <TD align="right"> 6.3886e-01 </TD> <TD align="right"> 9.5255e-01 </TD> <TD align="right"> 1.0000e+00 </TD> <TD align="right"> 4.0331e-01 </TD> <TD align="right"> 6.3129e-01 </TD> <TD align="right"> 0 </TD> <TD align="right"> 296 </TD> </TR>
+  <TR> <TD align="right"> VCG_VAR_mean </TD> <TD align="right"> 1.0000e-04 </TD> <TD align="right"> 2.5000e-03 </TD> <TD align="right"> 5.8000e-03 </TD> <TD align="right"> 1.6552e-02 </TD> <TD align="right"> 1.7825e-02 </TD> <TD align="right"> 3.5000e-01 </TD> <TD align="right"> 3.3169e-02 </TD> <TD align="right"> 2.0039e+00 </TD> <TD align="right"> 0 </TD> <TD align="right"> 296 </TD> </TR>
+  <TR> <TD align="right"> VCG_VAR_coeff_variation </TD> <TD align="right"> 0.0000e+00 </TD> <TD align="right"> 6.6250e-03 </TD> <TD align="right"> 1.7790e-01 </TD> <TD align="right"> 3.7865e-01 </TD> <TD align="right"> 2.6158e-01 </TD> <TD align="right"> 4.5721e+00 </TD> <TD align="right"> 7.1887e-01 </TD> <TD align="right"> 1.8985e+00 </TD> <TD align="right"> 0 </TD> <TD align="right"> 296 </TD> </TR>
+  <TR> <TD align="right"> VCG_VAR_min </TD> <TD align="right"> 0.0000e+00 </TD> <TD align="right"> 9.0000e-04 </TD> <TD align="right"> 3.3000e-03 </TD> <TD align="right"> 1.2870e-02 </TD> <TD align="right"> 1.2125e-02 </TD> <TD align="right"> 3.3490e-01 </TD> <TD align="right"> 3.0251e-02 </TD> <TD align="right"> 2.3505e+00 </TD> <TD align="right"> 0 </TD> <TD align="right"> 296 </TD> </TR>
+  <TR> <TD align="right"> VCG_VAR_max </TD> <TD align="right"> 3.0000e-04 </TD> <TD align="right"> 4.3000e-03 </TD> <TD align="right"> 1.1050e-02 </TD> <TD align="right"> 3.0309e-02 </TD> <TD align="right"> 2.7725e-02 </TD> <TD align="right"> 7.0950e-01 </TD> <TD align="right"> 6.3442e-02 </TD> <TD align="right"> 2.0932e+00 </TD> <TD align="right"> 0 </TD> <TD align="right"> 296 </TD> </TR>
+  <TR> <TD align="right"> VCG_VAR_entropy </TD> <TD align="right"> 0.0000e+00 </TD> <TD align="right"> 3.8750e-02 </TD> <TD align="right"> 3.0065e+00 </TD> <TD align="right"> 2.7545e+00 </TD> <TD align="right"> 4.9169e+00 </TD> <TD align="right"> 6.6172e+00 </TD> <TD align="right"> 2.1977e+00 </TD> <TD align="right"> 7.9789e-01 </TD> <TD align="right"> 0 </TD> <TD align="right"> 296 </TD> </TR>
+  <TR> <TD align="right"> POSNEG_RATIO_VAR_mean </TD> <TD align="right"> 0.0000e+00 </TD> <TD align="right"> 3.1800e-02 </TD> <TD align="right"> 1.7590e-01 </TD> <TD align="right"> 2.0430e-01 </TD> <TD align="right"> 3.2010e-01 </TD> <TD align="right"> 9.3790e-01 </TD> <TD align="right"> 1.9295e-01 </TD> <TD align="right"> 9.4447e-01 </TD> <TD align="right"> 0 </TD> <TD align="right"> 296 </TD> </TR>
+  <TR> <TD align="right"> POSNEG_RATIO_VAR_stdev </TD> <TD align="right"> 0.0000e+00 </TD> <TD align="right"> 0.0000e+00 </TD> <TD align="right"> 4.9250e-02 </TD> <TD align="right"> 7.4592e-02 </TD> <TD align="right"> 9.4700e-02 </TD> <TD align="right"> 4.2320e-01 </TD> <TD align="right"> 8.2909e-02 </TD> <TD align="right"> 1.1115e+00 </TD> <TD align="right"> 0 </TD> <TD align="right"> 296 </TD> </TR>
+  <TR> <TD align="right"> POSNEG_RATIO_VAR_min </TD> <TD align="right"> 0.0000e+00 </TD> <TD align="right"> 0.0000e+00 </TD> <TD align="right"> 4.6550e-02 </TD> <TD align="right"> 7.5274e-02 </TD> <TD align="right"> 1.2265e-01 </TD> <TD align="right"> 5.0000e-01 </TD> <TD align="right"> 9.4302e-02 </TD> <TD align="right"> 1.2528e+00 </TD> <TD align="right"> 0 </TD> <TD align="right"> 296 </TD> </TR>
+  <TR> <TD align="right"> POSNEG_RATIO_VAR_max </TD> <TD align="right"> 0.0000e+00 </TD> <TD align="right"> 8.4625e-02 </TD> <TD align="right"> 3.4105e-01 </TD> <TD align="right"> 4.3002e-01 </TD> <TD align="right"> 7.4360e-01 </TD> <TD align="right"> 1.0000e+00 </TD> <TD align="right"> 3.3520e-01 </TD> <TD align="right"> 7.7950e-01 </TD> <TD align="right"> 0 </TD> <TD align="right"> 296 </TD> </TR>
+  <TR> <TD align="right"> POSNEG_RATIO_VAR_entropy </TD> <TD align="right"> 0.0000e+00 </TD> <TD align="right"> 0.0000e+00 </TD> <TD align="right"> 2.5590e+00 </TD> <TD align="right"> 1.7632e+00 </TD> <TD align="right"> 2.9410e+00 </TD> <TD align="right"> 4.2441e+00 </TD> <TD align="right"> 1.3974e+00 </TD> <TD align="right"> 7.9254e-01 </TD> <TD align="right"> 0 </TD> <TD align="right"> 296 </TD> </TR>
+  <TR> <TD align="right"> HORNY_VAR_mean </TD> <TD align="right"> 0.0000e+00 </TD> <TD align="right"> 1.1000e-03 </TD> <TD align="right"> 2.5500e-03 </TD> <TD align="right"> 5.3135e-03 </TD> <TD align="right"> 7.3000e-03 </TD> <TD align="right"> 1.3330e-01 </TD> <TD align="right"> 9.5440e-03 </TD> <TD align="right"> 1.7962e+00 </TD> <TD align="right"> 0 </TD> <TD align="right"> 296 </TD> </TR>
+  <TR> <TD align="right"> HORNY_VAR_coeff_variation </TD> <TD align="right"> 0.0000e+00 </TD> <TD align="right"> 1.5805e-01 </TD> <TD align="right"> 2.7860e-01 </TD> <TD align="right"> 4.9148e-01 </TD> <TD align="right"> 3.9392e-01 </TD> <TD align="right"> 6.0436e+00 </TD> <TD align="right"> 8.1862e-01 </TD> <TD align="right"> 1.6656e+00 </TD> <TD align="right"> 0 </TD> <TD align="right"> 296 </TD> </TR>
+  <TR> <TD align="right"> HORNY_VAR_min </TD> <TD align="right"> 0.0000e+00 </TD> <TD align="right"> 2.0000e-04 </TD> <TD align="right"> 8.0000e-04 </TD> <TD align="right"> 3.1139e-03 </TD> <TD align="right"> 2.0000e-03 </TD> <TD align="right"> 1.3330e-01 </TD> <TD align="right"> 9.2512e-03 </TD> <TD align="right"> 2.9710e+00 </TD> <TD align="right"> 0 </TD> <TD align="right"> 296 </TD> </TR>
+  <TR> <TD align="right"> HORNY_VAR_max </TD> <TD align="right"> 2.0000e-04 </TD> <TD align="right"> 2.2750e-03 </TD> <TD align="right"> 5.3500e-03 </TD> <TD align="right"> 1.2299e-02 </TD> <TD align="right"> 1.1425e-02 </TD> <TD align="right"> 2.1220e-01 </TD> <TD align="right"> 2.7776e-02 </TD> <TD align="right"> 2.2583e+00 </TD> <TD align="right"> 0 </TD> <TD align="right"> 296 </TD> </TR>
+  <TR> <TD align="right"> HORNY_VAR_entropy </TD> <TD align="right"> 0.0000e+00 </TD> <TD align="right"> 1.4064e+00 </TD> <TD align="right"> 2.7706e+00 </TD> <TD align="right"> 2.7632e+00 </TD> <TD align="right"> 4.5649e+00 </TD> <TD align="right"> 6.3413e+00 </TD> <TD align="right"> 1.8803e+00 </TD> <TD align="right"> 6.8050e-01 </TD> <TD align="right"> 0 </TD> <TD align="right"> 296 </TD> </TR>
+  <TR> <TD align="right"> horn_clauses_fraction </TD> <TD align="right"> 9.4000e-03 </TD> <TD align="right"> 3.1795e-01 </TD> <TD align="right"> 7.2750e-01 </TD> <TD align="right"> 6.1539e-01 </TD> <TD align="right"> 9.2705e-01 </TD> <TD align="right"> 9.8710e-01 </TD> <TD align="right"> 3.2086e-01 </TD> <TD align="right"> 5.2138e-01 </TD> <TD align="right"> 0 </TD> <TD align="right"> 296 </TD> </TR>
+  <TR> <TD align="right"> VG_mean </TD> <TD align="right"> 1.0000e-04 </TD> <TD align="right"> 3.1000e-03 </TD> <TD align="right"> 7.3500e-03 </TD> <TD align="right"> 2.2332e-02 </TD> <TD align="right"> 1.7200e-02 </TD> <TD align="right"> 3.4290e-01 </TD> <TD align="right"> 4.3828e-02 </TD> <TD align="right"> 1.9626e+00 </TD> <TD align="right"> 0 </TD> <TD align="right"> 296 </TD> </TR>
+  <TR> <TD align="right"> VG_coeff_variation </TD> <TD align="right"> 0.0000e+00 </TD> <TD align="right"> 0.0000e+00 </TD> <TD align="right"> 7.1500e-02 </TD> <TD align="right"> 2.4009e-01 </TD> <TD align="right"> 2.0625e-01 </TD> <TD align="right"> 2.1024e+00 </TD> <TD align="right"> 4.3499e-01 </TD> <TD align="right"> 1.8118e+00 </TD> <TD align="right"> 0 </TD> <TD align="right"> 296 </TD> </TR>
+  <TR> <TD align="right"> VG_min </TD> <TD align="right"> 0.0000e+00 </TD> <TD align="right"> 1.2000e-03 </TD> <TD align="right"> 5.0000e-03 </TD> <TD align="right"> 2.0590e-02 </TD> <TD align="right"> 1.6175e-02 </TD> <TD align="right"> 3.3330e-01 </TD> <TD align="right"> 4.3276e-02 </TD> <TD align="right"> 2.1018e+00 </TD> <TD align="right"> 0 </TD> <TD align="right"> 296 </TD> </TR>
+  <TR> <TD align="right"> VG_max </TD> <TD align="right"> 2.0000e-04 </TD> <TD align="right"> 4.9750e-03 </TD> <TD align="right"> 1.0150e-02 </TD> <TD align="right"> 2.7351e-02 </TD> <TD align="right"> 2.2700e-02 </TD> <TD align="right"> 3.7140e-01 </TD> <TD align="right"> 4.7049e-02 </TD> <TD align="right"> 1.7202e+00 </TD> <TD align="right"> 0 </TD> <TD align="right"> 296 </TD> </TR>
+  <TR> <TD align="right"> CG_mean </TD> <TD align="right"> 0.0000e+00 </TD> <TD align="right"> 1.0450e-02 </TD> <TD align="right"> 2.0600e-02 </TD> <TD align="right"> 3.7806e-02 </TD> <TD align="right"> 4.3300e-02 </TD> <TD align="right"> 3.2320e-01 </TD> <TD align="right"> 4.8016e-02 </TD> <TD align="right"> 1.2701e+00 </TD> <TD align="right"> 181 </TD> <TD align="right"> 296 </TD> </TR>
+  <TR> <TD align="right"> CG_coeff_variation </TD> <TD align="right"> 5.7000e-03 </TD> <TD align="right"> 1.9145e-01 </TD> <TD align="right"> 6.4500e-01 </TD> <TD align="right"> 7.9965e-01 </TD> <TD align="right"> 1.0646e+00 </TD> <TD align="right"> 4.6927e+00 </TD> <TD align="right"> 7.9100e-01 </TD> <TD align="right"> 9.8918e-01 </TD> <TD align="right"> 181 </TD> <TD align="right"> 296 </TD> </TR>
+  <TR> <TD align="right"> CG_min </TD> <TD align="right"> 0.0000e+00 </TD> <TD align="right"> 2.2500e-03 </TD> <TD align="right"> 1.2800e-02 </TD> <TD align="right"> 1.9841e-02 </TD> <TD align="right"> 2.3950e-02 </TD> <TD align="right"> 2.0480e-01 </TD> <TD align="right"> 2.9070e-02 </TD> <TD align="right"> 1.4652e+00 </TD> <TD align="right"> 181 </TD> <TD align="right"> 296 </TD> </TR>
+  <TR> <TD align="right"> CG_max </TD> <TD align="right"> 1.4000e-03 </TD> <TD align="right"> 3.4900e-02 </TD> <TD align="right"> 6.9400e-02 </TD> <TD align="right"> 9.6380e-02 </TD> <TD align="right"> 1.3395e-01 </TD> <TD align="right"> 3.7140e-01 </TD> <TD align="right"> 8.3312e-02 </TD> <TD align="right"> 8.6441e-01 </TD> <TD align="right"> 181 </TD> <TD align="right"> 296 </TD> </TR>
+  <TR> <TD align="right"> CG_entropy </TD> <TD align="right"> 4.3700e-02 </TD> <TD align="right"> 4.1775e-01 </TD> <TD align="right"> 8.1580e-01 </TD> <TD align="right"> 1.6327e+00 </TD> <TD align="right"> 2.9052e+00 </TD> <TD align="right"> 5.9175e+00 </TD> <TD align="right"> 1.5498e+00 </TD> <TD align="right"> 9.4923e-01 </TD> <TD align="right"> 181 </TD> <TD align="right"> 296 </TD> </TR>
+  <TR> <TD align="right"> cluster_coeff_mean </TD> <TD align="right"> 9.7000e-03 </TD> <TD align="right"> 7.6600e-02 </TD> <TD align="right"> 1.7660e-01 </TD> <TD align="right"> 2.1331e-01 </TD> <TD align="right"> 3.4920e-01 </TD> <TD align="right"> 5.8770e-01 </TD> <TD align="right"> 1.5653e-01 </TD> <TD align="right"> 7.3379e-01 </TD> <TD align="right"> 181 </TD> <TD align="right"> 296 </TD> </TR>
+  <TR> <TD align="right"> cluster_coeff_coeff_variation </TD> <TD align="right"> 8.0000e-03 </TD> <TD align="right"> 1.5770e-01 </TD> <TD align="right"> 2.8510e-01 </TD> <TD align="right"> 3.2327e-01 </TD> <TD align="right"> 3.3895e-01 </TD> <TD align="right"> 1.6196e+00 </TD> <TD align="right"> 2.7469e-01 </TD> <TD align="right"> 8.4974e-01 </TD> <TD align="right"> 181 </TD> <TD align="right"> 296 </TD> </TR>
+  <TR> <TD align="right"> cluster_coeff_min </TD> <TD align="right"> 4.0000e-04 </TD> <TD align="right"> 9.8000e-03 </TD> <TD align="right"> 4.3500e-02 </TD> <TD align="right"> 9.7362e-02 </TD> <TD align="right"> 1.5380e-01 </TD> <TD align="right"> 4.0000e-01 </TD> <TD align="right"> 1.1556e-01 </TD> <TD align="right"> 1.1869e+00 </TD> <TD align="right"> 181 </TD> <TD align="right"> 296 </TD> </TR>
+  <TR> <TD align="right"> cluster_coeff_max </TD> <TD align="right"> 4.0800e-02 </TD> <TD align="right"> 9.5200e-02 </TD> <TD align="right"> 3.3330e-01 </TD> <TD align="right"> 3.6246e-01 </TD> <TD align="right"> 5.4445e-01 </TD> <TD align="right"> 9.7970e-01 </TD> <TD align="right"> 2.7945e-01 </TD> <TD align="right"> 7.7100e-01 </TD> <TD align="right"> 181 </TD> <TD align="right"> 296 </TD> </TR>
+  <TR> <TD align="right"> cluster_coeff_entropy </TD> <TD align="right"> 9.7500e-02 </TD> <TD align="right"> 3.8890e-01 </TD> <TD align="right"> 7.7010e-01 </TD> <TD align="right"> 1.2452e+00 </TD> <TD align="right"> 2.0250e+00 </TD> <TD align="right"> 3.9437e+00 </TD> <TD align="right"> 1.0831e+00 </TD> <TD align="right"> 8.6987e-01 </TD> <TD align="right"> 181 </TD> <TD align="right"> 296 </TD> </TR>
+  <TR> <TD align="right"> DIAMETER_mean </TD> <TD align="right"> 2.0000e+00 </TD> <TD align="right"> 2.0000e+00 </TD> <TD align="right"> 3.0000e+00 </TD> <TD align="right"> 9.6810e+00 </TD> <TD align="right"> 4.5299e+00 </TD> <TD align="right"> 7.4952e+02 </TD> <TD align="right"> 6.2063e+01 </TD> <TD align="right"> 6.4108e+00 </TD> <TD align="right"> 0 </TD> <TD align="right"> 296 </TD> </TR>
+  <TR> <TD align="right"> DIAMETER_coeff_variation </TD> <TD align="right"> 0.0000e+00 </TD> <TD align="right"> 0.0000e+00 </TD> <TD align="right"> 5.6000e-03 </TD> <TD align="right"> 4.4692e-02 </TD> <TD align="right"> 8.2575e-02 </TD> <TD align="right"> 1.8640e-01 </TD> <TD align="right"> 5.6026e-02 </TD> <TD align="right"> 1.2536e+00 </TD> <TD align="right"> 0 </TD> <TD align="right"> 296 </TD> </TR>
+  <TR> <TD align="right"> DIAMETER_min </TD> <TD align="right"> 2.0000e+00 </TD> <TD align="right"> 2.0000e+00 </TD> <TD align="right"> 3.0000e+00 </TD> <TD align="right"> 8.9392e+00 </TD> <TD align="right"> 4.0000e+00 </TD> <TD align="right"> 7.4400e+02 </TD> <TD align="right"> 6.1158e+01 </TD> <TD align="right"> 6.8416e+00 </TD> <TD align="right"> 0 </TD> <TD align="right"> 296 </TD> </TR>
+  <TR> <TD align="right"> DIAMETER_max </TD> <TD align="right"> 2.0000e+00 </TD> <TD align="right"> 2.0000e+00 </TD> <TD align="right"> 3.0000e+00 </TD> <TD align="right"> 1.0517e+01 </TD> <TD align="right"> 5.0000e+00 </TD> <TD align="right"> 7.6000e+02 </TD> <TD align="right"> 6.3691e+01 </TD> <TD align="right"> 6.0561e+00 </TD> <TD align="right"> 0 </TD> <TD align="right"> 296 </TD> </TR>
+  <TR> <TD align="right"> DIAMETER_entropy </TD> <TD align="right"> 0.0000e+00 </TD> <TD align="right"> 0.0000e+00 </TD> <TD align="right"> 1.6950e-02 </TD> <TD align="right"> 2.9228e-01 </TD> <TD align="right"> 4.4382e-01 </TD> <TD align="right"> 4.4519e+00 </TD> <TD align="right"> 5.7928e-01 </TD> <TD align="right"> 1.9819e+00 </TD> <TD align="right"> 0 </TD> <TD align="right"> 296 </TD> </TR>
+  <TR> <TD align="right"> cl_num_mean </TD> <TD align="right"> 0.0000e+00 </TD> <TD align="right"> 3.6943e+02 </TD> <TD align="right"> 1.6438e+03 </TD> <TD align="right"> 2.1084e+03 </TD> <TD align="right"> 4.0285e+03 </TD> <TD align="right"> 4.9262e+03 </TD> <TD align="right"> 1.7830e+03 </TD> <TD align="right"> 8.4565e-01 </TD> <TD align="right"> 0 </TD> <TD align="right"> 296 </TD> </TR>
+  <TR> <TD align="right"> cl_num_coeff_variation </TD> <TD align="right"> 0.0000e+00 </TD> <TD align="right"> 1.4750e-02 </TD> <TD align="right"> 2.3945e-01 </TD> <TD align="right"> 3.9397e-01 </TD> <TD align="right"> 6.5063e-01 </TD> <TD align="right"> 2.3917e+00 </TD> <TD align="right"> 4.4894e-01 </TD> <TD align="right"> 1.1395e+00 </TD> <TD align="right"> 0 </TD> <TD align="right"> 296 </TD> </TR>
+  <TR> <TD align="right"> cl_num_min </TD> <TD align="right"> 0.0000e+00 </TD> <TD align="right"> 7.3000e+01 </TD> <TD align="right"> 4.7800e+02 </TD> <TD align="right"> 1.6818e+03 </TD> <TD align="right"> 3.8478e+03 </TD> <TD align="right"> 4.9160e+03 </TD> <TD align="right"> 1.8863e+03 </TD> <TD align="right"> 1.1216e+00 </TD> <TD align="right"> 0 </TD> <TD align="right"> 296 </TD> </TR>
+  <TR> <TD align="right"> cl_num_max </TD> <TD align="right"> 0.0000e+00 </TD> <TD align="right"> 9.0000e+02 </TD> <TD align="right"> 3.4660e+03 </TD> <TD align="right"> 2.8274e+03 </TD> <TD align="right"> 4.4710e+03 </TD> <TD align="right"> 4.9410e+03 </TD> <TD align="right"> 1.7676e+03 </TD> <TD align="right"> 6.2516e-01 </TD> <TD align="right"> 0 </TD> <TD align="right"> 296 </TD> </TR>
+  <TR> <TD align="right"> cl_num_q90 </TD> <TD align="right"> 0.0000e+00 </TD> <TD align="right"> 5.9725e+02 </TD> <TD align="right"> 3.2610e+03 </TD> <TD align="right"> 2.6887e+03 </TD> <TD align="right"> 4.4548e+03 </TD> <TD align="right"> 4.9410e+03 </TD> <TD align="right"> 1.8093e+03 </TD> <TD align="right"> 6.7291e-01 </TD> <TD align="right"> 0 </TD> <TD align="right"> 296 </TD> </TR>
+  <TR> <TD align="right"> cl_num_q10 </TD> <TD align="right"> 0.0000e+00 </TD> <TD align="right"> 1.0600e+02 </TD> <TD align="right"> 5.2250e+02 </TD> <TD align="right"> 1.7192e+03 </TD> <TD align="right"> 3.8485e+03 </TD> <TD align="right"> 4.9160e+03 </TD> <TD align="right"> 1.8697e+03 </TD> <TD align="right"> 1.0875e+00 </TD> <TD align="right"> 0 </TD> <TD align="right"> 296 </TD> </TR>
+  <TR> <TD align="right"> cl_num_q75 </TD> <TD align="right"> 0.0000e+00 </TD> <TD align="right"> 4.0200e+02 </TD> <TD align="right"> 2.2975e+03 </TD> <TD align="right"> 2.3335e+03 </TD> <TD align="right"> 4.2060e+03 </TD> <TD align="right"> 4.9410e+03 </TD> <TD align="right"> 1.8487e+03 </TD> <TD align="right"> 7.9224e-01 </TD> <TD align="right"> 0 </TD> <TD align="right"> 296 </TD> </TR>
+  <TR> <TD align="right"> cl_num_q25 </TD> <TD align="right"> 0.0000e+00 </TD> <TD align="right"> 1.8625e+02 </TD> <TD align="right"> 8.4450e+02 </TD> <TD align="right"> 1.8622e+03 </TD> <TD align="right"> 3.9545e+03 </TD> <TD align="right"> 4.9170e+03 </TD> <TD align="right"> 1.8665e+03 </TD> <TD align="right"> 1.0024e+00 </TD> <TD align="right"> 0 </TD> <TD align="right"> 296 </TD> </TR>
+  <TR> <TD align="right"> cl_num_q50 </TD> <TD align="right"> 0.0000e+00 </TD> <TD align="right"> 2.9750e+02 </TD> <TD align="right"> 1.6305e+03 </TD> <TD align="right"> 2.0926e+03 </TD> <TD align="right"> 4.0835e+03 </TD> <TD align="right"> 4.9310e+03 </TD> <TD align="right"> 1.8674e+03 </TD> <TD align="right"> 8.9239e-01 </TD> <TD align="right"> 0 </TD> <TD align="right"> 296 </TD> </TR>
+  <TR> <TD align="right"> cl_size_mean </TD> <TD align="right"> 0.0000e+00 </TD> <TD align="right"> 2.4893e+01 </TD> <TD align="right"> 3.7016e+01 </TD> <TD align="right"> 4.7344e+01 </TD> <TD align="right"> 6.5874e+01 </TD> <TD align="right"> 2.3468e+02 </TD> <TD align="right"> 3.4990e+01 </TD> <TD align="right"> 7.3905e-01 </TD> <TD align="right"> 0 </TD> <TD align="right"> 296 </TD> </TR>
+  <TR> <TD align="right"> cl_size_coeff_variation </TD> <TD align="right"> 0.0000e+00 </TD> <TD align="right"> 4.5875e-02 </TD> <TD align="right"> 9.7450e-02 </TD> <TD align="right"> 1.2602e-01 </TD> <TD align="right"> 1.5580e-01 </TD> <TD align="right"> 9.0670e-01 </TD> <TD align="right"> 1.3702e-01 </TD> <TD align="right"> 1.0873e+00 </TD> <TD align="right"> 0 </TD> <TD align="right"> 296 </TD> </TR>
+  <TR> <TD align="right"> cl_size_min </TD> <TD align="right"> 0.0000e+00 </TD> <TD align="right"> 1.8773e+01 </TD> <TD align="right"> 3.3923e+01 </TD> <TD align="right"> 3.9709e+01 </TD> <TD align="right"> 5.4214e+01 </TD> <TD align="right"> 2.3468e+02 </TD> <TD align="right"> 3.0912e+01 </TD> <TD align="right"> 7.7847e-01 </TD> <TD align="right"> 0 </TD> <TD align="right"> 296 </TD> </TR>
+  <TR> <TD align="right"> cl_size_max </TD> <TD align="right"> 0.0000e+00 </TD> <TD align="right"> 2.8960e+01 </TD> <TD align="right"> 4.6279e+01 </TD> <TD align="right"> 5.9613e+01 </TD> <TD align="right"> 8.3708e+01 </TD> <TD align="right"> 3.9037e+02 </TD> <TD align="right"> 4.5090e+01 </TD> <TD align="right"> 7.5638e-01 </TD> <TD align="right"> 0 </TD> <TD align="right"> 296 </TD> </TR>
+  <TR> <TD align="right"> cl_size_q90 </TD> <TD align="right"> 0.0000e+00 </TD> <TD align="right"> 2.7818e+01 </TD> <TD align="right"> 4.3041e+01 </TD> <TD align="right"> 5.6203e+01 </TD> <TD align="right"> 7.9139e+01 </TD> <TD align="right"> 3.9037e+02 </TD> <TD align="right"> 4.3347e+01 </TD> <TD align="right"> 7.7127e-01 </TD> <TD align="right"> 0 </TD> <TD align="right"> 296 </TD> </TR>
+  <TR> <TD align="right"> cl_size_q10 </TD> <TD align="right"> 0.0000e+00 </TD> <TD align="right"> 1.9737e+01 </TD> <TD align="right"> 3.3923e+01 </TD> <TD align="right"> 4.0434e+01 </TD> <TD align="right"> 5.4827e+01 </TD> <TD align="right"> 2.3468e+02 </TD> <TD align="right"> 3.1143e+01 </TD> <TD align="right"> 7.7021e-01 </TD> <TD align="right"> 0 </TD> <TD align="right"> 296 </TD> </TR>
+  <TR> <TD align="right"> cl_size_q75 </TD> <TD align="right"> 0.0000e+00 </TD> <TD align="right"> 2.5952e+01 </TD> <TD align="right"> 3.9863e+01 </TD> <TD align="right"> 5.1624e+01 </TD> <TD align="right"> 7.1759e+01 </TD> <TD align="right"> 3.9037e+02 </TD> <TD align="right"> 4.1010e+01 </TD> <TD align="right"> 7.9439e-01 </TD> <TD align="right"> 0 </TD> <TD align="right"> 296 </TD> </TR>
+  <TR> <TD align="right"> cl_size_q25 </TD> <TD align="right"> 0.0000e+00 </TD> <TD align="right"> 2.1728e+01 </TD> <TD align="right"> 3.5079e+01 </TD> <TD align="right"> 4.2759e+01 </TD> <TD align="right"> 5.8438e+01 </TD> <TD align="right"> 2.3468e+02 </TD> <TD align="right"> 3.1614e+01 </TD> <TD align="right"> 7.3936e-01 </TD> <TD align="right"> 0 </TD> <TD align="right"> 296 </TD> </TR>
+  <TR> <TD align="right"> cl_size_q50 </TD> <TD align="right"> 0.0000e+00 </TD> <TD align="right"> 2.4092e+01 </TD> <TD align="right"> 3.8058e+01 </TD> <TD align="right"> 4.7628e+01 </TD> <TD align="right"> 6.2513e+01 </TD> <TD align="right"> 3.9037e+02 </TD> <TD align="right"> 3.9127e+01 </TD> <TD align="right"> 8.2153e-01 </TD> <TD align="right"> 0 </TD> <TD align="right"> 296 </TD> </TR>
+  <TR> <TD align="right"> SP_bias_mean </TD> <TD align="right"> 0.0000e+00 </TD> <TD align="right"> 3.5137e-01 </TD> <TD align="right"> 7.0915e-01 </TD> <TD align="right"> 5.8613e-01 </TD> <TD align="right"> 8.3573e-01 </TD> <TD align="right"> 9.8120e-01 </TD> <TD align="right"> 3.1406e-01 </TD> <TD align="right"> 5.3582e-01 </TD> <TD align="right"> 0 </TD> <TD align="right"> 296 </TD> </TR>
+  <TR> <TD align="right"> SP_bias_coeff_variation </TD> <TD align="right"> 0.0000e+00 </TD> <TD align="right"> 1.2375e-02 </TD> <TD align="right"> 8.3500e-02 </TD> <TD align="right"> 3.7809e-01 </TD> <TD align="right"> 3.2998e-01 </TD> <TD align="right"> 8.3598e+00 </TD> <TD align="right"> 7.8111e-01 </TD> <TD align="right"> 2.0659e+00 </TD> <TD align="right"> 0 </TD> <TD align="right"> 296 </TD> </TR>
+  <TR> <TD align="right"> SP_bias_min </TD> <TD align="right"> 0.0000e+00 </TD> <TD align="right"> 4.7500e-04 </TD> <TD align="right"> 4.9530e-01 </TD> <TD align="right"> 3.9583e-01 </TD> <TD align="right"> 7.4360e-01 </TD> <TD align="right"> 9.3520e-01 </TD> <TD align="right"> 3.4365e-01 </TD> <TD align="right"> 8.6818e-01 </TD> <TD align="right"> 0 </TD> <TD align="right"> 296 </TD> </TR>
+  <TR> <TD align="right"> SP_bias_max </TD> <TD align="right"> 0.0000e+00 </TD> <TD align="right"> 5.8330e-01 </TD> <TD align="right"> 8.8805e-01 </TD> <TD align="right"> 7.5104e-01 </TD> <TD align="right"> 9.7717e-01 </TD> <TD align="right"> 1.0000e+00 </TD> <TD align="right"> 2.9610e-01 </TD> <TD align="right"> 3.9425e-01 </TD> <TD align="right"> 0 </TD> <TD align="right"> 296 </TD> </TR>
+  <TR> <TD align="right"> SP_bias_q90 </TD> <TD align="right"> 0.0000e+00 </TD> <TD align="right"> 4.5822e-01 </TD> <TD align="right"> 7.8890e-01 </TD> <TD align="right"> 6.6239e-01 </TD> <TD align="right"> 9.0525e-01 </TD> <TD align="right"> 1.0000e+00 </TD> <TD align="right"> 3.1171e-01 </TD> <TD align="right"> 4.7059e-01 </TD> <TD align="right"> 0 </TD> <TD align="right"> 296 </TD> </TR>
+  <TR> <TD align="right"> SP_bias_q10 </TD> <TD align="right"> 0.0000e+00 </TD> <TD align="right"> 1.0470e-01 </TD> <TD align="right"> 6.1830e-01 </TD> <TD align="right"> 5.0876e-01 </TD> <TD align="right"> 7.8598e-01 </TD> <TD align="right"> 9.6840e-01 </TD> <TD align="right"> 3.3105e-01 </TD> <TD align="right"> 6.5071e-01 </TD> <TD align="right"> 0 </TD> <TD align="right"> 296 </TD> </TR>
+  <TR> <TD align="right"> SP_bias_q75 </TD> <TD align="right"> 0.0000e+00 </TD> <TD align="right"> 4.2483e-01 </TD> <TD align="right"> 7.4405e-01 </TD> <TD align="right"> 6.2576e-01 </TD> <TD align="right"> 8.8790e-01 </TD> <TD align="right"> 1.0000e+00 </TD> <TD align="right"> 3.2670e-01 </TD> <TD align="right"> 5.2210e-01 </TD> <TD align="right"> 0 </TD> <TD align="right"> 296 </TD> </TR>
+  <TR> <TD align="right"> SP_bias_q25 </TD> <TD align="right"> 0.0000e+00 </TD> <TD align="right"> 1.9837e-01 </TD> <TD align="right"> 6.6410e-01 </TD> <TD align="right"> 5.4822e-01 </TD> <TD align="right"> 8.1907e-01 </TD> <TD align="right"> 9.9500e-01 </TD> <TD align="right"> 3.3363e-01 </TD> <TD align="right"> 6.0856e-01 </TD> <TD align="right"> 0 </TD> <TD align="right"> 296 </TD> </TR>
+  <TR> <TD align="right"> SP_bias_q50 </TD> <TD align="right"> 0.0000e+00 </TD> <TD align="right"> 3.5182e-01 </TD> <TD align="right"> 7.0095e-01 </TD> <TD align="right"> 5.8645e-01 </TD> <TD align="right"> 8.5762e-01 </TD> <TD align="right"> 9.9660e-01 </TD> <TD align="right"> 3.3205e-01 </TD> <TD align="right"> 5.6621e-01 </TD> <TD align="right"> 0 </TD> <TD align="right"> 296 </TD> </TR>
+  <TR> <TD align="right"> SP_unconstraint_mean </TD> <TD align="right"> 0.0000e+00 </TD> <TD align="right"> 0.0000e+00 </TD> <TD align="right"> 1.5400e-02 </TD> <TD align="right"> 1.1110e-01 </TD> <TD align="right"> 2.2950e-01 </TD> <TD align="right"> 4.9880e-01 </TD> <TD align="right"> 1.5300e-01 </TD> <TD align="right"> 1.3771e+00 </TD> <TD align="right"> 0 </TD> <TD align="right"> 296 </TD> </TR>
+  <TR> <TD align="right"> SP_unconstraint_coeff_variation </TD> <TD align="right"> 0.0000e+00 </TD> <TD align="right"> 1.6075e-02 </TD> <TD align="right"> 9.2360e-01 </TD> <TD align="right"> 2.4220e+00 </TD> <TD align="right"> 3.7118e+00 </TD> <TD align="right"> 1.5736e+01 </TD> <TD align="right"> 3.3860e+00 </TD> <TD align="right"> 1.3980e+00 </TD> <TD align="right"> 0 </TD> <TD align="right"> 296 </TD> </TR>
+  <TR> <TD align="right"> SP_unconstraint_min </TD> <TD align="right"> 0.0000e+00 </TD> <TD align="right"> 0.0000e+00 </TD> <TD align="right"> 0.0000e+00 </TD> <TD align="right"> 6.9865e-02 </TD> <TD align="right"> 5.9700e-02 </TD> <TD align="right"> 4.9880e-01 </TD> <TD align="right"> 1.3054e-01 </TD> <TD align="right"> 1.8685e+00 </TD> <TD align="right"> 0 </TD> <TD align="right"> 296 </TD> </TR>
+  <TR> <TD align="right"> SP_unconstraint_max </TD> <TD align="right"> 0.0000e+00 </TD> <TD align="right"> 1.0000e-04 </TD> <TD align="right"> 3.4450e-02 </TD> <TD align="right"> 1.9460e-01 </TD> <TD align="right"> 3.2635e-01 </TD> <TD align="right"> 1.0000e+00 </TD> <TD align="right"> 2.5929e-01 </TD> <TD align="right"> 1.3324e+00 </TD> <TD align="right"> 0 </TD> <TD align="right"> 296 </TD> </TR>
+  <TR> <TD align="right"> SP_unconstraint_q90 </TD> <TD align="right"> 0.0000e+00 </TD> <TD align="right"> 0.0000e+00 </TD> <TD align="right"> 2.8950e-02 </TD> <TD align="right"> 1.3334e-01 </TD> <TD align="right"> 2.4380e-01 </TD> <TD align="right"> 9.9080e-01 </TD> <TD align="right"> 1.7958e-01 </TD> <TD align="right"> 1.3467e+00 </TD> <TD align="right"> 0 </TD> <TD align="right"> 296 </TD> </TR>
+  <TR> <TD align="right"> SP_unconstraint_q10 </TD> <TD align="right"> 0.0000e+00 </TD> <TD align="right"> 0.0000e+00 </TD> <TD align="right"> 4.0000e-04 </TD> <TD align="right"> 8.4400e-02 </TD> <TD align="right"> 1.4868e-01 </TD> <TD align="right"> 4.9880e-01 </TD> <TD align="right"> 1.3579e-01 </TD> <TD align="right"> 1.6089e+00 </TD> <TD align="right"> 0 </TD> <TD align="right"> 296 </TD> </TR>
+  <TR> <TD align="right"> SP_unconstraint_q75 </TD> <TD align="right"> 0.0000e+00 </TD> <TD align="right"> 0.0000e+00 </TD> <TD align="right"> 1.8750e-02 </TD> <TD align="right"> 1.2325e-01 </TD> <TD align="right"> 2.2950e-01 </TD> <TD align="right"> 9.3810e-01 </TD> <TD align="right"> 1.7392e-01 </TD> <TD align="right"> 1.4112e+00 </TD> <TD align="right"> 0 </TD> <TD align="right"> 296 </TD> </TR>
+  <TR> <TD align="right"> SP_unconstraint_q25 </TD> <TD align="right"> 0.0000e+00 </TD> <TD align="right"> 0.0000e+00 </TD> <TD align="right"> 3.1000e-03 </TD> <TD align="right"> 1.0064e-01 </TD> <TD align="right"> 2.2425e-01 </TD> <TD align="right"> 4.9880e-01 </TD> <TD align="right"> 1.5281e-01 </TD> <TD align="right"> 1.5183e+00 </TD> <TD align="right"> 0 </TD> <TD align="right"> 296 </TD> </TR>
+  <TR> <TD align="right"> SP_unconstraint_q50 </TD> <TD align="right"> 0.0000e+00 </TD> <TD align="right"> 0.0000e+00 </TD> <TD align="right"> 6.4000e-03 </TD> <TD align="right"> 1.1185e-01 </TD> <TD align="right"> 2.2950e-01 </TD> <TD align="right"> 4.9970e-01 </TD> <TD align="right"> 1.6030e-01 </TD> <TD align="right"> 1.4332e+00 </TD> <TD align="right"> 0 </TD> <TD align="right"> 296 </TD> </TR>
+  <TR> <TD align="right"> saps_BestSolution_Mean </TD> <TD align="right"> 0.0000e+00 </TD> <TD align="right"> 6.9726e+00 </TD> <TD align="right"> 1.6137e+01 </TD> <TD align="right"> 5.2208e+02 </TD> <TD align="right"> 4.6852e+01 </TD> <TD align="right"> 4.6904e+04 </TD> <TD align="right"> 3.2627e+03 </TD> <TD align="right"> 6.2495e+00 </TD> <TD align="right"> 0 </TD> <TD align="right"> 296 </TD> </TR>
+  <TR> <TD align="right"> saps_BestSolution_CoeffVariance </TD> <TD align="right"> 0.0000e+00 </TD> <TD align="right"> 2.1208e-01 </TD> <TD align="right"> 4.3030e-01 </TD> <TD align="right"> 3.7604e+00 </TD> <TD align="right"> 3.6369e+00 </TD> <TD align="right"> 5.4507e+01 </TD> <TD align="right"> 8.3700e+00 </TD> <TD align="right"> 2.2258e+00 </TD> <TD align="right"> 0 </TD> <TD align="right"> 296 </TD> </TR>
+  <TR> <TD align="right"> saps_FirstLocalMinStep_Mean </TD> <TD align="right"> 0.0000e+00 </TD> <TD align="right"> 6.4874e+01 </TD> <TD align="right"> 1.5806e+02 </TD> <TD align="right"> 4.7024e+02 </TD> <TD align="right"> 4.9911e+02 </TD> <TD align="right"> 6.5924e+03 </TD> <TD align="right"> 9.2543e+02 </TD> <TD align="right"> 1.9680e+00 </TD> <TD align="right"> 0 </TD> <TD align="right"> 296 </TD> </TR>
+  <TR> <TD align="right"> saps_FirstLocalMinStep_CoeffVariance </TD> <TD align="right"> 0.0000e+00 </TD> <TD align="right"> 6.8425e-02 </TD> <TD align="right"> 9.6650e-02 </TD> <TD align="right"> 1.1873e-01 </TD> <TD align="right"> 1.4772e-01 </TD> <TD align="right"> 8.6610e-01 </TD> <TD align="right"> 9.1925e-02 </TD> <TD align="right"> 7.7424e-01 </TD> <TD align="right"> 0 </TD> <TD align="right"> 296 </TD> </TR>
+  <TR> <TD align="right"> saps_FirstLocalMinStep_Median </TD> <TD align="right"> 0.0000e+00 </TD> <TD align="right"> 6.4750e+01 </TD> <TD align="right"> 1.5850e+02 </TD> <TD align="right"> 4.8699e+02 </TD> <TD align="right"> 5.0262e+02 </TD> <TD align="right"> 6.7750e+03 </TD> <TD align="right"> 9.7389e+02 </TD> <TD align="right"> 1.9998e+00 </TD> <TD align="right"> 0 </TD> <TD align="right"> 296 </TD> </TR>
+  <TR> <TD align="right"> saps_FirstLocalMinStep_Q10 </TD> <TD align="right"> 0.0000e+00 </TD> <TD align="right"> 4.9000e+01 </TD> <TD align="right"> 1.3700e+02 </TD> <TD align="right"> 4.2139e+02 </TD> <TD align="right"> 4.0150e+02 </TD> <TD align="right"> 6.5620e+03 </TD> <TD align="right"> 8.8631e+02 </TD> <TD align="right"> 2.1033e+00 </TD> <TD align="right"> 0 </TD> <TD align="right"> 296 </TD> </TR>
+  <TR> <TD align="right"> saps_FirstLocalMinStep_Q90 </TD> <TD align="right"> 0.0000e+00 </TD> <TD align="right"> 7.2750e+01 </TD> <TD align="right"> 1.7050e+02 </TD> <TD align="right"> 5.0071e+02 </TD> <TD align="right"> 5.2225e+02 </TD> <TD align="right"> 6.7750e+03 </TD> <TD align="right"> 9.7501e+02 </TD> <TD align="right"> 1.9473e+00 </TD> <TD align="right"> 0 </TD> <TD align="right"> 296 </TD> </TR>
+  <TR> <TD align="right"> saps_BestAvgImprovement_Mean </TD> <TD align="right"> 1.9590e-01 </TD> <TD align="right"> 1.5736e+00 </TD> <TD align="right"> 7.1928e+00 </TD> <TD align="right"> 1.8783e+01 </TD> <TD align="right"> 2.7541e+01 </TD> <TD align="right"> 1.6925e+02 </TD> <TD align="right"> 2.4994e+01 </TD> <TD align="right"> 1.3306e+00 </TD> <TD align="right"> 0 </TD> <TD align="right"> 296 </TD> </TR>
+  <TR> <TD align="right"> saps_BestAvgImprovement_CoeffVariance </TD> <TD align="right"> 0.0000e+00 </TD> <TD align="right"> 1.3155e-01 </TD> <TD align="right"> 1.9585e-01 </TD> <TD align="right"> 2.2417e-01 </TD> <TD align="right"> 2.5772e-01 </TD> <TD align="right"> 1.2881e+00 </TD> <TD align="right"> 1.5788e-01 </TD> <TD align="right"> 7.0428e-01 </TD> <TD align="right"> 0 </TD> <TD align="right"> 296 </TD> </TR>
+  <TR> <TD align="right"> saps_FirstLocalMinRatio_Mean </TD> <TD align="right"> 6.7580e-01 </TD> <TD align="right"> 9.3045e-01 </TD> <TD align="right"> 9.9340e-01 </TD> <TD align="right"> 9.6195e-01 </TD> <TD align="right"> 9.9940e-01 </TD> <TD align="right"> 1.2524e+00 </TD> <TD align="right"> 7.7943e-02 </TD> <TD align="right"> 8.1026e-02 </TD> <TD align="right"> 0 </TD> <TD align="right"> 296 </TD> </TR>
+  <TR> <TD align="right"> saps_FirstLocalMinRatio_CoeffVariance </TD> <TD align="right"> 0.0000e+00 </TD> <TD align="right"> 3.1750e-03 </TD> <TD align="right"> 2.7000e-02 </TD> <TD align="right"> 6.4599e-02 </TD> <TD align="right"> 6.5400e-02 </TD> <TD align="right"> 1.0562e+00 </TD> <TD align="right"> 1.3528e-01 </TD> <TD align="right"> 2.0942e+00 </TD> <TD align="right"> 0 </TD> <TD align="right"> 296 </TD> </TR>
+  <TR> <TD align="right"> gsat_BestSolution_Mean </TD> <TD align="right"> 0.0000e+00 </TD> <TD align="right"> 5.2402e+00 </TD> <TD align="right"> 1.9762e+01 </TD> <TD align="right"> 2.7455e+02 </TD> <TD align="right"> 5.2108e+01 </TD> <TD align="right"> 2.1234e+04 </TD> <TD align="right"> 1.4249e+03 </TD> <TD align="right"> 5.1899e+00 </TD> <TD align="right"> 0 </TD> <TD align="right"> 296 </TD> </TR>
+  <TR> <TD align="right"> gsat_BestSolution_CoeffVariance </TD> <TD align="right"> 0.0000e+00 </TD> <TD align="right"> 1.4438e-01 </TD> <TD align="right"> 2.4480e-01 </TD> <TD align="right"> 2.7771e+00 </TD> <TD align="right"> 1.1187e+00 </TD> <TD align="right"> 5.9000e+01 </TD> <TD align="right"> 8.2192e+00 </TD> <TD align="right"> 2.9596e+00 </TD> <TD align="right"> 0 </TD> <TD align="right"> 296 </TD> </TR>
+  <TR> <TD align="right"> gsat_FirstLocalMinStep_Mean </TD> <TD align="right"> 2.6970e+00 </TD> <TD align="right"> 6.4745e+01 </TD> <TD align="right"> 1.5997e+02 </TD> <TD align="right"> 4.8857e+02 </TD> <TD align="right"> 5.0229e+02 </TD> <TD align="right"> 6.8495e+03 </TD> <TD align="right"> 9.6177e+02 </TD> <TD align="right"> 1.9685e+00 </TD> <TD align="right"> 0 </TD> <TD align="right"> 296 </TD> </TR>
+  <TR> <TD align="right"> gsat_FirstLocalMinStep_CoeffVariance </TD> <TD align="right"> 1.4000e-03 </TD> <TD align="right"> 5.0425e-02 </TD> <TD align="right"> 8.8750e-02 </TD> <TD align="right"> 1.1206e-01 </TD> <TD align="right"> 1.3412e-01 </TD> <TD align="right"> 1.4142e+00 </TD> <TD align="right"> 1.3346e-01 </TD> <TD align="right"> 1.1910e+00 </TD> <TD align="right"> 0 </TD> <TD align="right"> 296 </TD> </TR>
+  <TR> <TD align="right"> gsat_FirstLocalMinStep_Median </TD> <TD align="right"> 3.0000e+00 </TD> <TD align="right"> 6.5000e+01 </TD> <TD align="right"> 1.6050e+02 </TD> <TD align="right"> 4.9890e+02 </TD> <TD align="right"> 5.0525e+02 </TD> <TD align="right"> 6.8660e+03 </TD> <TD align="right"> 9.9383e+02 </TD> <TD align="right"> 1.9921e+00 </TD> <TD align="right"> 0 </TD> <TD align="right"> 296 </TD> </TR>
+  <TR> <TD align="right"> gsat_FirstLocalMinStep_Q10 </TD> <TD align="right"> 0.0000e+00 </TD> <TD align="right"> 4.9750e+01 </TD> <TD align="right"> 1.4000e+02 </TD> <TD align="right"> 4.1216e+02 </TD> <TD align="right"> 4.1125e+02 </TD> <TD align="right"> 6.5190e+03 </TD> <TD align="right"> 8.1385e+02 </TD> <TD align="right"> 1.9746e+00 </TD> <TD align="right"> 0 </TD> <TD align="right"> 296 </TD> </TR>
+  <TR> <TD align="right"> gsat_FirstLocalMinStep_Q90 </TD> <TD align="right"> 0.0000e+00 </TD> <TD align="right"> 7.1750e+01 </TD> <TD align="right"> 1.7000e+02 </TD> <TD align="right"> 4.7994e+02 </TD> <TD align="right"> 4.8175e+02 </TD> <TD align="right"> 6.9080e+03 </TD> <TD align="right"> 9.1594e+02 </TD> <TD align="right"> 1.9084e+00 </TD> <TD align="right"> 0 </TD> <TD align="right"> 296 </TD> </TR>
+  <TR> <TD align="right"> gsat_BestAvgImprovement_Mean </TD> <TD align="right"> 4.4400e-02 </TD> <TD align="right"> 9.8372e-01 </TD> <TD align="right"> 6.4708e+00 </TD> <TD align="right"> 1.9599e+01 </TD> <TD align="right"> 3.1817e+01 </TD> <TD align="right"> 1.6334e+02 </TD> <TD align="right"> 2.6804e+01 </TD> <TD align="right"> 1.3676e+00 </TD> <TD align="right"> 0 </TD> <TD align="right"> 296 </TD> </TR>
+  <TR> <TD align="right"> gsat_BestAvgImprovement_CoeffVariance </TD> <TD align="right"> 2.0400e-02 </TD> <TD align="right"> 1.6487e-01 </TD> <TD align="right"> 2.6045e-01 </TD> <TD align="right"> 3.3777e-01 </TD> <TD align="right"> 3.8025e-01 </TD> <TD align="right"> 5.8934e+00 </TD> <TD align="right"> 4.2398e-01 </TD> <TD align="right"> 1.2552e+00 </TD> <TD align="right"> 0 </TD> <TD align="right"> 296 </TD> </TR>
+  <TR> <TD align="right"> gsat_FirstLocalMinRatio_Mean </TD> <TD align="right"> 6.8700e-01 </TD> <TD align="right"> 9.1265e-01 </TD> <TD align="right"> 9.9425e-01 </TD> <TD align="right"> 9.8035e-01 </TD> <TD align="right"> 9.9980e-01 </TD> <TD align="right"> 8.4629e+00 </TD> <TD align="right"> 4.4318e-01 </TD> <TD align="right"> 4.5207e-01 </TD> <TD align="right"> 0 </TD> <TD align="right"> 296 </TD> </TR>
+  <TR> <TD align="right"> gsat_FirstLocalMinRatio_CoeffVariance </TD> <TD align="right"> 0.0000e+00 </TD> <TD align="right"> 1.5500e-03 </TD> <TD align="right"> 1.2500e-02 </TD> <TD align="right"> 6.0243e-02 </TD> <TD align="right"> 5.3750e-02 </TD> <TD align="right"> 3.5286e+00 </TD> <TD align="right"> 2.3568e-01 </TD> <TD align="right"> 3.9122e+00 </TD> <TD align="right"> 0 </TD> <TD align="right"> 296 </TD> </TR>
+  <TR> <TD align="right"> lobjois_mean_depth_over_vars </TD> <TD align="right"> 2.7300e-02 </TD> <TD align="right"> 4.9165e-01 </TD> <TD align="right"> 7.5700e-01 </TD> <TD align="right"> 6.6058e-01 </TD> <TD align="right"> 8.6660e-01 </TD> <TD align="right"> 1.0000e+00 </TD> <TD align="right"> 2.6886e-01 </TD> <TD align="right"> 4.0701e-01 </TD> <TD align="right"> 0 </TD> <TD align="right"> 296 </TD> </TR>
+  <TR> <TD align="right"> lobjois_log_num_nodes_over_vars </TD> <TD align="right"> 8.7100e-02 </TD> <TD align="right"> 7.1132e-01 </TD> <TD align="right"> 8.9030e-01 </TD> <TD align="right"> 8.0465e-01 </TD> <TD align="right"> 9.4512e-01 </TD> <TD align="right"> 1.0000e+00 </TD> <TD align="right"> 1.9880e-01 </TD> <TD align="right"> 2.4706e-01 </TD> <TD align="right"> 0 </TD> <TD align="right"> 296 </TD> </TR>
+   </TABLE>
+
+
+
+<br>
+<h2> Summary of feature steps </h2>
+
+The following table summarizes the feature steps over all instances.
+<ul>
+  <li> size: How many features are affected by this step in %
+  <li> ok, ..., other: Percentage of run status
+  <li> cost.min, cost.mean, cost.max: Range of costs for this step
+  <li> cost.na: How many missing values occur in costs in %
+</ul>
+
+<br>
+
+<!-- html table generated in R 3.0.2 by xtable 1.7-1 package -->
+<!-- Mon Apr 14 15:24:02 2014 -->
+<TABLE border=1>
+<TR> <TH>  </TH> <TH> size </TH> <TH> ok </TH> <TH> timeout </TH> <TH> memout </TH> <TH> presolved </TH> <TH> crash </TH> <TH> other </TH> <TH> cost.min </TH> <TH> cost.mean </TH> <TH> cost.max </TH> <TH> cost.na </TH>  </TR>
+  <TR> <TD align="right"> Pre_featuretime </TD> <TD align="right"> 115 </TD> <TD align="right"> 100.00 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.98 </TD> <TD align="right"> 37.87 </TD> <TD align="right"> 0.00 </TD> </TR>
+  <TR> <TD align="right"> Basic_featuretime </TD> <TD align="right">  14 </TD> <TD align="right"> 100.00 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.01 </TD> <TD align="right"> 0.31 </TD> <TD align="right"> 0.00 </TD> </TR>
+  <TR> <TD align="right"> KLB_featuretime </TD> <TD align="right">  20 </TD> <TD align="right"> 100.00 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.11 </TD> <TD align="right"> 4.24 </TD> <TD align="right"> 0.00 </TD> </TR>
+  <TR> <TD align="right"> CG_featuretime </TD> <TD align="right">  10 </TD> <TD align="right"> 38.85 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 61.15 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 40.12 </TD> <TD align="right"> 157.27 </TD> <TD align="right"> 0.00 </TD> </TR>
+  <TR> <TD align="right"> DIAMETER_featuretime </TD> <TD align="right">   5 </TD> <TD align="right"> 100.00 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 1.00 </TD> <TD align="right"> 2.43 </TD> <TD align="right"> 0.00 </TD> </TR>
+  <TR> <TD align="right"> cl_featuretime </TD> <TD align="right">  18 </TD> <TD align="right"> 100.00 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 1.83 </TD> <TD align="right"> 2.01 </TD> <TD align="right"> 0.00 </TD> </TR>
+  <TR> <TD align="right"> sp_featuretime </TD> <TD align="right">  18 </TD> <TD align="right"> 100.00 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 1.32 </TD> <TD align="right"> 8.81 </TD> <TD align="right"> 0.00 </TD> </TR>
+  <TR> <TD align="right"> ls_saps_featuretime </TD> <TD align="right">  11 </TD> <TD align="right"> 100.00 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.22 </TD> <TD align="right"> 1.98 </TD> <TD align="right"> 3.45 </TD> <TD align="right"> 0.00 </TD> </TR>
+  <TR> <TD align="right"> ls_gsat_featuretime </TD> <TD align="right">  11 </TD> <TD align="right"> 100.00 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.40 </TD> <TD align="right"> 2.13 </TD> <TD align="right"> 3.42 </TD> <TD align="right"> 0.00 </TD> </TR>
+  <TR> <TD align="right"> lobjois_featuretime </TD> <TD align="right">   2 </TD> <TD align="right"> 100.00 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.49 </TD> <TD align="right"> 1.97 </TD> <TD align="right"> 2.72 </TD> <TD align="right"> 0.00 </TD> </TR>
+   </TABLE>
+
+
+
+<br>
+<h2> Duplicated Features </h2>
+
+In this section, you'll find all features that adopted only one value (and eventually NA's).<br>
+Please note, that only a maximum of 5 duplicates per block is shown.<br>
+<br>
+
+There were no duplicated features.
+
+
+<br>
+<h2> Useless Features </h2>
+
+In this section, you'll find all features that adopted only one value (and eventually NA's).<br>
+<br>
+
+Feature Values:
+<!-- html table generated in R 3.0.2 by xtable 1.7-1 package -->
+<!-- Mon Apr 14 15:24:02 2014 -->
+<TABLE border=1>
+<TR> <TH>  </TH> <TH> unique Value(s) </TH> <TH> NA's </TH>  </TR>
+  <TR> <TD align="right"> POSNEG_RATIO_CLAUSE_max </TD> <TD align="right"> 1.0000 </TD> <TD align="right"> 0 </TD> </TR>
+  <TR> <TD align="right"> UNARY </TD> <TD align="right"> 0.0000 </TD> <TD align="right"> 0 </TD> </TR>
+   </TABLE>
+
+
+
+<br>
+Runstatus of Feature Steps:
+
+None of the feature steps consisted of unique values (except for 'ok').
+
+
+</body>
+</html>

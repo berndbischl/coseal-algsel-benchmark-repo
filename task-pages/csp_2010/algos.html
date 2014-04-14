@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style type="text/css">
+.knitr.inline {
+  background-color: #f7f7f7;
+  border:solid 1px #B0B0B0;
+}
+.error {
+	font-weight: bold;
+	color: #FF0000;
+},
+.warning {
+	font-weight: bold;
+}
+.message {
+	font-style: italic;
+}
+.source, .output, .warning, .error, .message {
+	padding: 0em 1em;
+  border:solid 1px #F7F7F7;
+}
+.source {
+  background-color: #f5f5f5;
+}
+.rimage.left {
+  text-align: left;
+}
+.rimage.right {
+  text-align: right;
+}
+.rimage.center {
+  text-align: center;
+}
+.hl.num {
+  color: #AF0F91;
+}
+.hl.str {
+  color: #317ECC;
+}
+.hl.com {
+  color: #AD95AF;
+  font-style: italic;
+}
+.hl.opt {
+  color: #000000;
+}
+.hl.std {
+  color: #585858;
+}
+.hl.kwa {
+  color: #295F94;
+  font-weight: bold;
+}
+.hl.kwb {
+  color: #B05A65;
+}
+.hl.kwc {
+  color: #55aa55;
+}
+.hl.kwd {
+  color: #BC5A65;
+  font-weight: bold;
+}
+</style>
+  <title>Algorithm performance overview</title>
+</head>
+<body>
+
+
+<h2> Overview of performance values </h2>
+
+The following measures were taken from the performance values of each algorithm:
+<ul>
+
+  <li> <a>Min: Minimum</a>
+  <li> <a>1st Qu.: 1st Quartile = lower Quartile = 25%-Quantile</a>
+  <li> <a>Median: Median = 50%-Quantile</a>
+  <li> <a>Mean: Arithmetic Mean</a>
+  <li> <a>3rd Qu.: 3rd Quartile = upper Quartile = 75%-Quantile</a>
+  <li> <a>Max.: Maximum</a>
+  <li> <a>Std. Dev.: Standard Deviation</a>
+  <li> <a>CoV.: Coefficient of Variation = Standard Deviation / Arithmetic Mean</a>
+  <li> <a>NA's: Number of NAs (missing values) within the feature set.</a>
+  <li> <a>Obs.: Number of Observations within the feature set.</a>
+  <li> <a>Run OK (%): Percentage of feature computations without a crash.</a>
+
+</ul>
+
+<!-- html table generated in R 3.0.2 by xtable 1.7-1 package -->
+<!-- Mon Apr 14 15:23:46 2014 -->
+<TABLE border=1>
+<TR> <TH>  </TH> <TH> Min. </TH> <TH> 1st Qu. </TH> <TH> Median </TH> <TH> Mean </TH> <TH> 3rd Qu. </TH> <TH> Max. </TH> <TH> Std. Dev. </TH> <TH> CoV. </TH> <TH> NA's </TH> <TH> Obs. </TH> <TH> Run OK (%) </TH>  </TR>
+  <TR> <TD align="right"> learning </TD> <TD align="right"> 0.027 </TD> <TD align="right"> 0.197 </TD> <TD align="right"> 0.348 </TD> <TD align="right"> 250.360 </TD> <TD align="right"> 1.949 </TD> <TD align="right"> 4954.719 </TD> <TD align="right"> 823.735 </TD> <TD align="right"> 3.290 </TD> <TD align="right"> 504 </TD> <TD align="right"> 2024 </TD> <TD align="right"> 75.099 </TD> </TR>
+  <TR> <TD align="right"> standard </TD> <TD align="right"> 0.023 </TD> <TD align="right"> 0.190 </TD> <TD align="right"> 0.504 </TD> <TD align="right"> 101.353 </TD> <TD align="right"> 8.138 </TD> <TD align="right"> 4926.858 </TD> <TD align="right"> 476.263 </TD> <TD align="right"> 4.699 </TD> <TD align="right"> 288 </TD> <TD align="right"> 2024 </TD> <TD align="right"> 85.771 </TD> </TR>
+  <TR> <TD align="right"> allAlgorithms </TD> <TD align="right"> 0.023 </TD> <TD align="right"> 0.195 </TD> <TD align="right"> 0.380 </TD> <TD align="right"> 170.914 </TD> <TD align="right"> 5.793 </TD> <TD align="right"> 4954.719 </TD> <TD align="right"> 665.646 </TD> <TD align="right"> 3.895 </TD> <TD align="right"> 792 </TD> <TD align="right"> 4048 </TD> <TD align="right"> 80.435 </TD> </TR>
+   </TABLE>
+
+
+
+<br>
+<h2> Summary of the runstatus per algorithm </h2>
+
+The following table summarizes the runstatus of each algorithm over all instances (in %).<br>
+<br>
+
+<!-- html table generated in R 3.0.2 by xtable 1.7-1 package -->
+<!-- Mon Apr 14 15:23:46 2014 -->
+<TABLE border=1>
+<TR> <TH>  </TH> <TH> ok </TH> <TH> timeout </TH> <TH> memout </TH> <TH> not_applicable </TH> <TH> crash </TH> <TH> other </TH>  </TR>
+  <TR> <TD align="right"> learning </TD> <TD align="right"> 75.099 </TD> <TD align="right"> 24.901 </TD> <TD align="right"> 0.000 </TD> <TD align="right"> 0.000 </TD> <TD align="right"> 0.000 </TD> <TD align="right"> 0.000 </TD> </TR>
+  <TR> <TD align="right"> standard </TD> <TD align="right"> 85.771 </TD> <TD align="right"> 14.229 </TD> <TD align="right"> 0.000 </TD> <TD align="right"> 0.000 </TD> <TD align="right"> 0.000 </TD> <TD align="right"> 0.000 </TD> </TR>
+   </TABLE>
+
+
+
+<br>
+<h2> Dominated Algorithms </h2>
+
+Here, you'll find an overview of dominating/dominated algorithms: <br>
+<br>
+
+None of the algorithms was superior to any of the other.
+
+
+<br>
+<br>
+<h2> Useless Algorithms </h2>
+
+Here, you'll find all the algorithms that always resulted in the same performance (and eventually NA's):<br>
+<br>
+
+There were no entirely useless algorithms.
+
+
+<br>
+<br>
+<b><FONT COLOR = "#FF0000"> Important Note:</b><br>
+Depending on the configuration, missing values among the algorithms' performance values
+were imputed prior to the creation of the following plots (except for the correlation 
+matrix, cf. bottom of this page).<br>
+Missing values were imputed to max + 0.3 * (max - min), in case of minimization problems, 
+or min - 0.3 * (max - min), in case of maximization problems.<br>
+In addition, a small noise is added to the imputed values. </FONT>
+<br>
+<br>
+
+<h2> Boxplots of performance values </h2>
+
+If the performance is represented on a log-scale, all non-positive performance values were removed.<br>
+<br>
+
+<div class="chunk" id="unnamed-chunk-5"><div class="rimage default"><img src="figure/unnamed-chunk-5.png" title="plot of chunk unnamed-chunk-5" alt="plot of chunk unnamed-chunk-5" class="plot" /></div></div>
+
+
+<br>
+<h2> Estimated densitities of performance values </h2>
+
+If the performance is represented on a log-scale, all non-positive performance values were removed as well.<br>
+<br>
+
+<div class="chunk" id="unnamed-chunk-6"><div class="rimage default"><img src="figure/unnamed-chunk-6.png" title="plot of chunk unnamed-chunk-6" alt="plot of chunk unnamed-chunk-6" class="plot" /></div></div>
+
+
+<br>
+<h2> Estimated cumulative distribution functions of performance values </h2>
+
+If the performance is represented on a log-scale, all non-positive performance values were removed as well.<br>
+<br>
+
+<div class="chunk" id="unnamed-chunk-7"><div class="rimage default"><img src="figure/unnamed-chunk-7.png" title="plot of chunk unnamed-chunk-7" alt="plot of chunk unnamed-chunk-7" class="plot" /></div></div>
+
+
+<br>
+<h2> Scatterplot matrix of the performance values </h2>
+
+The following figure creates pairwise scatterplots of the (possibly transformed) 
+performance values, including a regression line (cf. upper panel), a histogram 
+of each performance value (cf. diagonal), as well as the pairwise (pearson) 
+correlation (cf. lower panel).<br>
+In order to facilitate the lucidity of the correlations, they are colored
+depending on their value. Thus, a high positive correlation (&ge; 0.8) is
+colored green, light correlations (between 0.3 and 0.8, or -0.8 and -0.3)
+are orange, little to no correlations (&ge; -0.3 and &le; 0.3) are written
+in black and high negative correlations (&le; -0.8) are shown red.<br>
+Eventually, the performance values are transformed, based on the settings
+within its config-file. However, the corresponding transformation is mentioned
+within the subtitle underneath the figure.
+
+</div><div class="rimage default"><img src="figure/unnamed-chunk-8.png" title="plot of chunk unnamed-chunk-8" alt="plot of chunk unnamed-chunk-8" class="plot" /></div><div class="rcode">
+
+
+
+
+<br>
+<h2> Clustering algorithms based on their correlations </h2>
+The following figure shows the correlations of the <b>ranks</b> of the performance 
+values. Per default it will show the correlation coefficient of pearson. If NA's 
+exist, they were removed pairwise. <br>
+In addition, the algorithms are ordered in a way that similar (highly
+correlated) algorithms are close to each other. Per default the clustering
+is based on hierarchical clustering, using Ward's method. <br>
+<br>
+
+<div class="chunk" id="unnamed-chunk-9"><div class="rimage default"><img src="figure/unnamed-chunk-9.png" title="plot of chunk unnamed-chunk-9" alt="plot of chunk unnamed-chunk-9" class="plot" /></div></div>
+
+
+
+</body>
+</html>

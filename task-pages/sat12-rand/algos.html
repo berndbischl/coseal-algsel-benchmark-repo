@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style type="text/css">
+.knitr.inline {
+  background-color: #f7f7f7;
+  border:solid 1px #B0B0B0;
+}
+.error {
+	font-weight: bold;
+	color: #FF0000;
+},
+.warning {
+	font-weight: bold;
+}
+.message {
+	font-style: italic;
+}
+.source, .output, .warning, .error, .message {
+	padding: 0em 1em;
+  border:solid 1px #F7F7F7;
+}
+.source {
+  background-color: #f5f5f5;
+}
+.rimage.left {
+  text-align: left;
+}
+.rimage.right {
+  text-align: right;
+}
+.rimage.center {
+  text-align: center;
+}
+.hl.num {
+  color: #AF0F91;
+}
+.hl.str {
+  color: #317ECC;
+}
+.hl.com {
+  color: #AD95AF;
+  font-style: italic;
+}
+.hl.opt {
+  color: #000000;
+}
+.hl.std {
+  color: #585858;
+}
+.hl.kwa {
+  color: #295F94;
+  font-weight: bold;
+}
+.hl.kwb {
+  color: #B05A65;
+}
+.hl.kwc {
+  color: #55aa55;
+}
+.hl.kwd {
+  color: #BC5A65;
+  font-weight: bold;
+}
+</style>
+  <title>Algorithm performance overview</title>
+</head>
+<body>
+
+
+<h2> Overview of performance values </h2>
+
+The following measures were taken from the performance values of each algorithm:
+<ul>
+
+  <li> <a>Min: Minimum</a>
+  <li> <a>1st Qu.: 1st Quartile = lower Quartile = 25%-Quantile</a>
+  <li> <a>Median: Median = 50%-Quantile</a>
+  <li> <a>Mean: Arithmetic Mean</a>
+  <li> <a>3rd Qu.: 3rd Quartile = upper Quartile = 75%-Quantile</a>
+  <li> <a>Max.: Maximum</a>
+  <li> <a>Std. Dev.: Standard Deviation</a>
+  <li> <a>CoV.: Coefficient of Variation = Standard Deviation / Arithmetic Mean</a>
+  <li> <a>NA's: Number of NAs (missing values) within the feature set.</a>
+  <li> <a>Obs.: Number of Observations within the feature set.</a>
+  <li> <a>Run OK (%): Percentage of feature computations without a crash.</a>
+
+</ul>
+
+<!-- html table generated in R 3.0.2 by xtable 1.7-1 package -->
+<!-- Mon Apr 14 15:26:16 2014 -->
+<TABLE border=1>
+<TR> <TH>  </TH> <TH> Min. </TH> <TH> 1st Qu. </TH> <TH> Median </TH> <TH> Mean </TH> <TH> 3rd Qu. </TH> <TH> Max. </TH> <TH> Std. Dev. </TH> <TH> CoV. </TH> <TH> NA's </TH> <TH> Obs. </TH> <TH> Run OK (%) </TH>  </TR>
+  <TR> <TD align="right"> clasp1 </TD> <TD align="right"> 0.110 </TD> <TD align="right"> 20.000 </TD> <TD align="right"> 88.075 </TD> <TD align="right"> 208.636 </TD> <TD align="right"> 299.380 </TD> <TD align="right"> 1143.010 </TD> <TD align="right"> 263.270 </TD> <TD align="right"> 1.262 </TD> <TD align="right"> 1144 </TD> <TD align="right"> 1362 </TD> <TD align="right"> 16.006 </TD> </TR>
+  <TR> <TD align="right"> clasp2 </TD> <TD align="right"> 0.070 </TD> <TD align="right"> 23.420 </TD> <TD align="right"> 100.140 </TD> <TD align="right"> 271.340 </TD> <TD align="right"> 451.850 </TD> <TD align="right"> 1200.999 </TD> <TD align="right"> 332.142 </TD> <TD align="right"> 1.224 </TD> <TD align="right"> 1130 </TD> <TD align="right"> 1362 </TD> <TD align="right"> 16.960 </TD> </TR>
+  <TR> <TD align="right"> cryptominisat2011 </TD> <TD align="right"> 0.130 </TD> <TD align="right"> 41.543 </TD> <TD align="right"> 158.670 </TD> <TD align="right"> 299.035 </TD> <TD align="right"> 432.135 </TD> <TD align="right"> 1193.650 </TD> <TD align="right"> 315.929 </TD> <TD align="right"> 1.056 </TD> <TD align="right"> 1264 </TD> <TD align="right"> 1362 </TD> <TD align="right"> 7.195 </TD> </TR>
+  <TR> <TD align="right"> eagleup </TD> <TD align="right"> 0.000 </TD> <TD align="right"> 0.050 </TD> <TD align="right"> 1.315 </TD> <TD align="right"> 53.392 </TD> <TD align="right"> 25.040 </TD> <TD align="right"> 1133.400 </TD> <TD align="right"> 145.954 </TD> <TD align="right"> 2.734 </TD> <TD align="right"> 446 </TD> <TD align="right"> 1362 </TD> <TD align="right"> 67.254 </TD> </TR>
+  <TR> <TD align="right"> ebglucose </TD> <TD align="right"> 1.280 </TD> <TD align="right"> 58.090 </TD> <TD align="right"> 212.010 </TD> <TD align="right"> 319.300 </TD> <TD align="right"> 411.380 </TD> <TD align="right"> 1176.020 </TD> <TD align="right"> 342.785 </TD> <TD align="right"> 1.074 </TD> <TD align="right"> 1265 </TD> <TD align="right"> 1362 </TD> <TD align="right"> 7.122 </TD> </TR>
+  <TR> <TD align="right"> ebminisat </TD> <TD align="right"> 0.020 </TD> <TD align="right"> 17.750 </TD> <TD align="right"> 112.080 </TD> <TD align="right"> 253.382 </TD> <TD align="right"> 427.000 </TD> <TD align="right"> 1165.010 </TD> <TD align="right"> 301.396 </TD> <TD align="right"> 1.189 </TD> <TD align="right"> 1199 </TD> <TD align="right"> 1362 </TD> <TD align="right"> 11.968 </TD> </TR>
+  <TR> <TD align="right"> glucose2 </TD> <TD align="right"> 0.390 </TD> <TD align="right"> 30.617 </TD> <TD align="right"> 114.600 </TD> <TD align="right"> 237.288 </TD> <TD align="right"> 328.642 </TD> <TD align="right"> 1154.250 </TD> <TD align="right"> 278.324 </TD> <TD align="right"> 1.173 </TD> <TD align="right"> 1256 </TD> <TD align="right"> 1362 </TD> <TD align="right"> 7.783 </TD> </TR>
+  <TR> <TD align="right"> glueminisat </TD> <TD align="right"> 0.480 </TD> <TD align="right"> 51.970 </TD> <TD align="right"> 205.380 </TD> <TD align="right"> 288.007 </TD> <TD align="right"> 489.655 </TD> <TD align="right"> 1052.500 </TD> <TD align="right"> 287.879 </TD> <TD align="right"> 1.000 </TD> <TD align="right"> 1303 </TD> <TD align="right"> 1362 </TD> <TD align="right"> 4.332 </TD> </TR>
+  <TR> <TD align="right"> gnoveltyp2 </TD> <TD align="right"> 0.000 </TD> <TD align="right"> 0.070 </TD> <TD align="right"> 1.035 </TD> <TD align="right"> 93.196 </TD> <TD align="right"> 40.663 </TD> <TD align="right"> 1162.000 </TD> <TD align="right"> 225.250 </TD> <TD align="right"> 2.417 </TD> <TD align="right"> 484 </TD> <TD align="right"> 1362 </TD> <TD align="right"> 64.464 </TD> </TR>
+  <TR> <TD align="right"> lingeling </TD> <TD align="right"> 0.500 </TD> <TD align="right"> 32.400 </TD> <TD align="right"> 89.115 </TD> <TD align="right"> 254.950 </TD> <TD align="right"> 403.088 </TD> <TD align="right"> 1170.780 </TD> <TD align="right"> 315.216 </TD> <TD align="right"> 1.236 </TD> <TD align="right"> 1256 </TD> <TD align="right"> 1362 </TD> <TD align="right"> 7.783 </TD> </TR>
+  <TR> <TD align="right"> lrglshr </TD> <TD align="right"> 0.140 </TD> <TD align="right"> 24.712 </TD> <TD align="right"> 150.385 </TD> <TD align="right"> 282.477 </TD> <TD align="right"> 477.008 </TD> <TD align="right"> 1113.170 </TD> <TD align="right"> 315.338 </TD> <TD align="right"> 1.116 </TD> <TD align="right"> 1242 </TD> <TD align="right"> 1362 </TD> <TD align="right"> 8.811 </TD> </TR>
+  <TR> <TD align="right"> marchrw </TD> <TD align="right"> 0.000 </TD> <TD align="right"> 2.540 </TD> <TD align="right"> 16.160 </TD> <TD align="right"> 137.813 </TD> <TD align="right"> 148.010 </TD> <TD align="right"> 1200.999 </TD> <TD align="right"> 247.525 </TD> <TD align="right"> 1.796 </TD> <TD align="right"> 959 </TD> <TD align="right"> 1362 </TD> <TD align="right"> 29.515 </TD> </TR>
+  <TR> <TD align="right"> minisatpsm </TD> <TD align="right"> 0.410 </TD> <TD align="right"> 32.832 </TD> <TD align="right"> 171.130 </TD> <TD align="right"> 313.518 </TD> <TD align="right"> 427.655 </TD> <TD align="right"> 1199.850 </TD> <TD align="right"> 339.850 </TD> <TD align="right"> 1.084 </TD> <TD align="right"> 1288 </TD> <TD align="right"> 1362 </TD> <TD align="right"> 5.433 </TD> </TR>
+  <TR> <TD align="right"> mphaseSAT </TD> <TD align="right"> 0.560 </TD> <TD align="right"> 0.870 </TD> <TD align="right"> 1.370 </TD> <TD align="right"> 85.951 </TD> <TD align="right"> 39.665 </TD> <TD align="right"> 1191.030 </TD> <TD align="right"> 207.607 </TD> <TD align="right"> 2.415 </TD> <TD align="right"> 631 </TD> <TD align="right"> 1362 </TD> <TD align="right"> 53.671 </TD> </TR>
+  <TR> <TD align="right"> mphaseSAT64 </TD> <TD align="right"> 0.350 </TD> <TD align="right"> 0.772 </TD> <TD align="right"> 1.575 </TD> <TD align="right"> 86.451 </TD> <TD align="right"> 33.373 </TD> <TD align="right"> 1169.330 </TD> <TD align="right"> 209.441 </TD> <TD align="right"> 2.423 </TD> <TD align="right"> 620 </TD> <TD align="right"> 1362 </TD> <TD align="right"> 54.479 </TD> </TR>
+  <TR> <TD align="right"> mphaseSATm </TD> <TD align="right"> 0.560 </TD> <TD align="right"> 0.870 </TD> <TD align="right"> 1.380 </TD> <TD align="right"> 89.611 </TD> <TD align="right"> 39.890 </TD> <TD align="right"> 1183.140 </TD> <TD align="right"> 216.266 </TD> <TD align="right"> 2.413 </TD> <TD align="right"> 633 </TD> <TD align="right"> 1362 </TD> <TD align="right"> 53.524 </TD> </TR>
+  <TR> <TD align="right"> mxc09 </TD> <TD align="right"> 0.580 </TD> <TD align="right"> 27.815 </TD> <TD align="right"> 128.240 </TD> <TD align="right"> 266.434 </TD> <TD align="right"> 424.775 </TD> <TD align="right"> 1200.999 </TD> <TD align="right"> 304.887 </TD> <TD align="right"> 1.144 </TD> <TD align="right"> 1163 </TD> <TD align="right"> 1362 </TD> <TD align="right"> 14.537 </TD> </TR>
+  <TR> <TD align="right"> picosat </TD> <TD align="right"> 0.010 </TD> <TD align="right"> 20.188 </TD> <TD align="right"> 89.475 </TD> <TD align="right"> 233.059 </TD> <TD align="right"> 341.507 </TD> <TD align="right"> 1176.890 </TD> <TD align="right"> 295.416 </TD> <TD align="right"> 1.268 </TD> <TD align="right"> 1164 </TD> <TD align="right"> 1362 </TD> <TD align="right"> 14.537 </TD> </TR>
+  <TR> <TD align="right"> precosat </TD> <TD align="right"> 0.190 </TD> <TD align="right"> 18.677 </TD> <TD align="right"> 79.545 </TD> <TD align="right"> 245.995 </TD> <TD align="right"> 340.665 </TD> <TD align="right"> 1194.170 </TD> <TD align="right"> 320.629 </TD> <TD align="right"> 1.303 </TD> <TD align="right"> 1260 </TD> <TD align="right"> 1362 </TD> <TD align="right"> 7.489 </TD> </TR>
+  <TR> <TD align="right"> qutersat </TD> <TD align="right"> 0.330 </TD> <TD align="right"> 41.735 </TD> <TD align="right"> 166.620 </TD> <TD align="right"> 292.036 </TD> <TD align="right"> 432.470 </TD> <TD align="right"> 1193.570 </TD> <TD align="right"> 321.366 </TD> <TD align="right"> 1.100 </TD> <TD align="right"> 1263 </TD> <TD align="right"> 1362 </TD> <TD align="right"> 7.269 </TD> </TR>
+  <TR> <TD align="right"> rcl </TD> <TD align="right"> 0.330 </TD> <TD align="right"> 34.718 </TD> <TD align="right"> 143.660 </TD> <TD align="right"> 334.495 </TD> <TD align="right"> 597.882 </TD> <TD align="right"> 1133.680 </TD> <TD align="right"> 359.026 </TD> <TD align="right"> 1.073 </TD> <TD align="right"> 1292 </TD> <TD align="right"> 1362 </TD> <TD align="right"> 5.140 </TD> </TR>
+  <TR> <TD align="right"> restartsat </TD> <TD align="right"> 0.090 </TD> <TD align="right"> 29.905 </TD> <TD align="right"> 121.340 </TD> <TD align="right"> 245.738 </TD> <TD align="right"> 303.665 </TD> <TD align="right"> 1184.930 </TD> <TD align="right"> 303.588 </TD> <TD align="right"> 1.235 </TD> <TD align="right"> 1227 </TD> <TD align="right"> 1362 </TD> <TD align="right"> 9.912 </TD> </TR>
+  <TR> <TD align="right"> sapperlot </TD> <TD align="right"> 0.560 </TD> <TD align="right"> 34.067 </TD> <TD align="right"> 121.180 </TD> <TD align="right"> 244.368 </TD> <TD align="right"> 359.058 </TD> <TD align="right"> 1148.250 </TD> <TD align="right"> 287.906 </TD> <TD align="right"> 1.178 </TD> <TD align="right"> 1188 </TD> <TD align="right"> 1362 </TD> <TD align="right"> 12.775 </TD> </TR>
+  <TR> <TD align="right"> satime11 </TD> <TD align="right"> 0.000 </TD> <TD align="right"> 0.090 </TD> <TD align="right"> 1.780 </TD> <TD align="right"> 125.380 </TD> <TD align="right"> 141.560 </TD> <TD align="right"> 1164.720 </TD> <TD align="right"> 234.792 </TD> <TD align="right"> 1.873 </TD> <TD align="right"> 425 </TD> <TD align="right"> 1362 </TD> <TD align="right"> 68.796 </TD> </TR>
+  <TR> <TD align="right"> sattime </TD> <TD align="right"> 0.000 </TD> <TD align="right"> 0.070 </TD> <TD align="right"> 0.730 </TD> <TD align="right"> 90.343 </TD> <TD align="right"> 33.517 </TD> <TD align="right"> 1200.999 </TD> <TD align="right"> 229.887 </TD> <TD align="right"> 2.545 </TD> <TD align="right"> 578 </TD> <TD align="right"> 1362 </TD> <TD align="right"> 57.489 </TD> </TR>
+  <TR> <TD align="right"> sattimep </TD> <TD align="right"> 0.000 </TD> <TD align="right"> 0.200 </TD> <TD align="right"> 1.415 </TD> <TD align="right"> 76.626 </TD> <TD align="right"> 15.828 </TD> <TD align="right"> 1200.999 </TD> <TD align="right"> 210.678 </TD> <TD align="right"> 2.749 </TD> <TD align="right"> 718 </TD> <TD align="right"> 1362 </TD> <TD align="right"> 47.210 </TD> </TR>
+  <TR> <TD align="right"> sol </TD> <TD align="right"> 0.180 </TD> <TD align="right"> 17.020 </TD> <TD align="right"> 101.340 </TD> <TD align="right"> 239.357 </TD> <TD align="right"> 356.575 </TD> <TD align="right"> 1147.700 </TD> <TD align="right"> 308.001 </TD> <TD align="right"> 1.287 </TD> <TD align="right"> 1287 </TD> <TD align="right"> 1362 </TD> <TD align="right"> 5.507 </TD> </TR>
+  <TR> <TD align="right"> sparrow </TD> <TD align="right"> 0.000 </TD> <TD align="right"> 0.080 </TD> <TD align="right"> 1.705 </TD> <TD align="right"> 63.543 </TD> <TD align="right"> 25.770 </TD> <TD align="right"> 1197.140 </TD> <TD align="right"> 171.109 </TD> <TD align="right"> 2.693 </TD> <TD align="right"> 366 </TD> <TD align="right"> 1362 </TD> <TD align="right"> 73.128 </TD> </TR>
+  <TR> <TD align="right"> spear-hw </TD> <TD align="right"> 0.200 </TD> <TD align="right"> 37.410 </TD> <TD align="right"> 168.600 </TD> <TD align="right"> 315.897 </TD> <TD align="right"> 539.950 </TD> <TD align="right"> 1198.170 </TD> <TD align="right"> 347.733 </TD> <TD align="right"> 1.101 </TD> <TD align="right"> 1191 </TD> <TD align="right"> 1362 </TD> <TD align="right"> 12.555 </TD> </TR>
+  <TR> <TD align="right"> spear-sw </TD> <TD align="right"> 4.710 </TD> <TD align="right"> 28.925 </TD> <TD align="right"> 124.995 </TD> <TD align="right"> 292.642 </TD> <TD align="right"> 470.293 </TD> <TD align="right"> 1111.540 </TD> <TD align="right"> 325.911 </TD> <TD align="right"> 1.114 </TD> <TD align="right"> 1338 </TD> <TD align="right"> 1362 </TD> <TD align="right"> 1.762 </TD> </TR>
+  <TR> <TD align="right"> tnm </TD> <TD align="right"> 0.000 </TD> <TD align="right"> 0.070 </TD> <TD align="right"> 1.280 </TD> <TD align="right"> 96.539 </TD> <TD align="right"> 53.005 </TD> <TD align="right"> 1182.460 </TD> <TD align="right"> 219.733 </TD> <TD align="right"> 2.276 </TD> <TD align="right"> 435 </TD> <TD align="right"> 1362 </TD> <TD align="right"> 68.062 </TD> </TR>
+  <TR> <TD align="right"> allAlgorithms </TD> <TD align="right"> 0.000 </TD> <TD align="right"> 0.650 </TD> <TD align="right"> 6.750 </TD> <TD align="right"> 128.185 </TD> <TD align="right"> 117.055 </TD> <TD align="right"> 1200.999 </TD> <TD align="right"> 248.363 </TD> <TD align="right"> 1.938 </TD> <TD align="right"> 31015 </TD> <TD align="right"> 42222 </TD> <TD align="right"> 26.531 </TD> </TR>
+   </TABLE>
+
+
+
+<br>
+<h2> Summary of the runstatus per algorithm </h2>
+
+The following table summarizes the runstatus of each algorithm over all instances (in %).<br>
+<br>
+
+<!-- html table generated in R 3.0.2 by xtable 1.7-1 package -->
+<!-- Mon Apr 14 15:26:16 2014 -->
+<TABLE border=1>
+<TR> <TH>  </TH> <TH> ok </TH> <TH> timeout </TH> <TH> memout </TH> <TH> not_applicable </TH> <TH> crash </TH> <TH> other </TH>  </TR>
+  <TR> <TD align="right"> clasp1 </TD> <TD align="right"> 16.006 </TD> <TD align="right"> 83.994 </TD> <TD align="right"> 0.000 </TD> <TD align="right"> 0.000 </TD> <TD align="right"> 0.000 </TD> <TD align="right"> 0.000 </TD> </TR>
+  <TR> <TD align="right"> clasp2 </TD> <TD align="right"> 16.960 </TD> <TD align="right"> 83.040 </TD> <TD align="right"> 0.000 </TD> <TD align="right"> 0.000 </TD> <TD align="right"> 0.000 </TD> <TD align="right"> 0.000 </TD> </TR>
+  <TR> <TD align="right"> cryptominisat2011 </TD> <TD align="right"> 7.195 </TD> <TD align="right"> 92.805 </TD> <TD align="right"> 0.000 </TD> <TD align="right"> 0.000 </TD> <TD align="right"> 0.000 </TD> <TD align="right"> 0.000 </TD> </TR>
+  <TR> <TD align="right"> eagleup </TD> <TD align="right"> 67.254 </TD> <TD align="right"> 32.746 </TD> <TD align="right"> 0.000 </TD> <TD align="right"> 0.000 </TD> <TD align="right"> 0.000 </TD> <TD align="right"> 0.000 </TD> </TR>
+  <TR> <TD align="right"> ebglucose </TD> <TD align="right"> 7.122 </TD> <TD align="right"> 92.878 </TD> <TD align="right"> 0.000 </TD> <TD align="right"> 0.000 </TD> <TD align="right"> 0.000 </TD> <TD align="right"> 0.000 </TD> </TR>
+  <TR> <TD align="right"> ebminisat </TD> <TD align="right"> 11.968 </TD> <TD align="right"> 88.032 </TD> <TD align="right"> 0.000 </TD> <TD align="right"> 0.000 </TD> <TD align="right"> 0.000 </TD> <TD align="right"> 0.000 </TD> </TR>
+  <TR> <TD align="right"> glucose2 </TD> <TD align="right"> 7.783 </TD> <TD align="right"> 92.217 </TD> <TD align="right"> 0.000 </TD> <TD align="right"> 0.000 </TD> <TD align="right"> 0.000 </TD> <TD align="right"> 0.000 </TD> </TR>
+  <TR> <TD align="right"> glueminisat </TD> <TD align="right"> 4.332 </TD> <TD align="right"> 95.668 </TD> <TD align="right"> 0.000 </TD> <TD align="right"> 0.000 </TD> <TD align="right"> 0.000 </TD> <TD align="right"> 0.000 </TD> </TR>
+  <TR> <TD align="right"> gnoveltyp2 </TD> <TD align="right"> 64.464 </TD> <TD align="right"> 35.536 </TD> <TD align="right"> 0.000 </TD> <TD align="right"> 0.000 </TD> <TD align="right"> 0.000 </TD> <TD align="right"> 0.000 </TD> </TR>
+  <TR> <TD align="right"> lingeling </TD> <TD align="right"> 7.783 </TD> <TD align="right"> 92.217 </TD> <TD align="right"> 0.000 </TD> <TD align="right"> 0.000 </TD> <TD align="right"> 0.000 </TD> <TD align="right"> 0.000 </TD> </TR>
+  <TR> <TD align="right"> lrglshr </TD> <TD align="right"> 8.811 </TD> <TD align="right"> 91.189 </TD> <TD align="right"> 0.000 </TD> <TD align="right"> 0.000 </TD> <TD align="right"> 0.000 </TD> <TD align="right"> 0.000 </TD> </TR>
+  <TR> <TD align="right"> marchrw </TD> <TD align="right"> 29.515 </TD> <TD align="right"> 70.485 </TD> <TD align="right"> 0.000 </TD> <TD align="right"> 0.000 </TD> <TD align="right"> 0.000 </TD> <TD align="right"> 0.000 </TD> </TR>
+  <TR> <TD align="right"> minisatpsm </TD> <TD align="right"> 5.433 </TD> <TD align="right"> 94.567 </TD> <TD align="right"> 0.000 </TD> <TD align="right"> 0.000 </TD> <TD align="right"> 0.000 </TD> <TD align="right"> 0.000 </TD> </TR>
+  <TR> <TD align="right"> mphaseSAT </TD> <TD align="right"> 53.671 </TD> <TD align="right"> 46.329 </TD> <TD align="right"> 0.000 </TD> <TD align="right"> 0.000 </TD> <TD align="right"> 0.000 </TD> <TD align="right"> 0.000 </TD> </TR>
+  <TR> <TD align="right"> mphaseSAT64 </TD> <TD align="right"> 54.479 </TD> <TD align="right"> 45.521 </TD> <TD align="right"> 0.000 </TD> <TD align="right"> 0.000 </TD> <TD align="right"> 0.000 </TD> <TD align="right"> 0.000 </TD> </TR>
+  <TR> <TD align="right"> mphaseSATm </TD> <TD align="right"> 53.524 </TD> <TD align="right"> 46.476 </TD> <TD align="right"> 0.000 </TD> <TD align="right"> 0.000 </TD> <TD align="right"> 0.000 </TD> <TD align="right"> 0.000 </TD> </TR>
+  <TR> <TD align="right"> mxc09 </TD> <TD align="right"> 14.537 </TD> <TD align="right"> 85.463 </TD> <TD align="right"> 0.000 </TD> <TD align="right"> 0.000 </TD> <TD align="right"> 0.000 </TD> <TD align="right"> 0.000 </TD> </TR>
+  <TR> <TD align="right"> picosat </TD> <TD align="right"> 14.537 </TD> <TD align="right"> 85.463 </TD> <TD align="right"> 0.000 </TD> <TD align="right"> 0.000 </TD> <TD align="right"> 0.000 </TD> <TD align="right"> 0.000 </TD> </TR>
+  <TR> <TD align="right"> precosat </TD> <TD align="right"> 7.489 </TD> <TD align="right"> 92.511 </TD> <TD align="right"> 0.000 </TD> <TD align="right"> 0.000 </TD> <TD align="right"> 0.000 </TD> <TD align="right"> 0.000 </TD> </TR>
+  <TR> <TD align="right"> qutersat </TD> <TD align="right"> 7.269 </TD> <TD align="right"> 92.731 </TD> <TD align="right"> 0.000 </TD> <TD align="right"> 0.000 </TD> <TD align="right"> 0.000 </TD> <TD align="right"> 0.000 </TD> </TR>
+  <TR> <TD align="right"> rcl </TD> <TD align="right"> 5.140 </TD> <TD align="right"> 94.860 </TD> <TD align="right"> 0.000 </TD> <TD align="right"> 0.000 </TD> <TD align="right"> 0.000 </TD> <TD align="right"> 0.000 </TD> </TR>
+  <TR> <TD align="right"> restartsat </TD> <TD align="right"> 9.912 </TD> <TD align="right"> 90.088 </TD> <TD align="right"> 0.000 </TD> <TD align="right"> 0.000 </TD> <TD align="right"> 0.000 </TD> <TD align="right"> 0.000 </TD> </TR>
+  <TR> <TD align="right"> sapperlot </TD> <TD align="right"> 12.775 </TD> <TD align="right"> 87.225 </TD> <TD align="right"> 0.000 </TD> <TD align="right"> 0.000 </TD> <TD align="right"> 0.000 </TD> <TD align="right"> 0.000 </TD> </TR>
+  <TR> <TD align="right"> satime11 </TD> <TD align="right"> 68.796 </TD> <TD align="right"> 31.204 </TD> <TD align="right"> 0.000 </TD> <TD align="right"> 0.000 </TD> <TD align="right"> 0.000 </TD> <TD align="right"> 0.000 </TD> </TR>
+  <TR> <TD align="right"> sattime </TD> <TD align="right"> 57.489 </TD> <TD align="right"> 42.511 </TD> <TD align="right"> 0.000 </TD> <TD align="right"> 0.000 </TD> <TD align="right"> 0.000 </TD> <TD align="right"> 0.000 </TD> </TR>
+  <TR> <TD align="right"> sattimep </TD> <TD align="right"> 47.210 </TD> <TD align="right"> 52.790 </TD> <TD align="right"> 0.000 </TD> <TD align="right"> 0.000 </TD> <TD align="right"> 0.000 </TD> <TD align="right"> 0.000 </TD> </TR>
+  <TR> <TD align="right"> sol </TD> <TD align="right"> 5.507 </TD> <TD align="right"> 94.493 </TD> <TD align="right"> 0.000 </TD> <TD align="right"> 0.000 </TD> <TD align="right"> 0.000 </TD> <TD align="right"> 0.000 </TD> </TR>
+  <TR> <TD align="right"> sparrow </TD> <TD align="right"> 73.128 </TD> <TD align="right"> 26.872 </TD> <TD align="right"> 0.000 </TD> <TD align="right"> 0.000 </TD> <TD align="right"> 0.000 </TD> <TD align="right"> 0.000 </TD> </TR>
+  <TR> <TD align="right"> spear-hw </TD> <TD align="right"> 12.555 </TD> <TD align="right"> 87.445 </TD> <TD align="right"> 0.000 </TD> <TD align="right"> 0.000 </TD> <TD align="right"> 0.000 </TD> <TD align="right"> 0.000 </TD> </TR>
+  <TR> <TD align="right"> spear-sw </TD> <TD align="right"> 1.762 </TD> <TD align="right"> 98.238 </TD> <TD align="right"> 0.000 </TD> <TD align="right"> 0.000 </TD> <TD align="right"> 0.000 </TD> <TD align="right"> 0.000 </TD> </TR>
+  <TR> <TD align="right"> tnm </TD> <TD align="right"> 68.062 </TD> <TD align="right"> 31.938 </TD> <TD align="right"> 0.000 </TD> <TD align="right"> 0.000 </TD> <TD align="right"> 0.000 </TD> <TD align="right"> 0.000 </TD> </TR>
+   </TABLE>
+
+
+
+<br>
+<h2> Dominated Algorithms </h2>
+
+Here, you'll find an overview of dominating/dominated algorithms: <br>
+<br>
+
+<!-- html table generated in R 3.0.2 by xtable 1.7-1 package -->
+<!-- Mon Apr 14 15:26:17 2014 -->
+<TABLE border=1>
+<TR> <TH>  </TH> <TH> marchrw </TH> <TH> qutersat </TH>  </TR>
+  <TR> <TD align="right"> marchrw </TD> <TD>  </TD> <TD> better </TD> </TR>
+  <TR> <TD align="right"> qutersat </TD> <TD> worse </TD> <TD>  </TD> </TR>
+   </TABLE>
+
+
+
+<br>
+<br>
+<h2> Useless Algorithms </h2>
+
+Here, you'll find all the algorithms that always resulted in the same performance (and eventually NA's):<br>
+<br>
+
+There were no entirely useless algorithms.
+
+
+<br>
+<br>
+<b><FONT COLOR = "#FF0000"> Important Note:</b><br>
+Depending on the configuration, missing values among the algorithms' performance values
+were imputed prior to the creation of the following plots (except for the correlation 
+matrix, cf. bottom of this page).<br>
+Missing values were imputed to max + 0.3 * (max - min), in case of minimization problems, 
+or min - 0.3 * (max - min), in case of maximization problems.<br>
+In addition, a small noise is added to the imputed values. </FONT>
+<br>
+<br>
+
+<h2> Boxplots of performance values </h2>
+
+If the performance is represented on a log-scale, all non-positive performance values were removed.<br>
+<br>
+
+<div class="chunk" id="unnamed-chunk-5"><div class="rimage default"><img src="figure/unnamed-chunk-5.png" title="plot of chunk unnamed-chunk-5" alt="plot of chunk unnamed-chunk-5" class="plot" /></div></div>
+
+
+<br>
+<h2> Estimated densitities of performance values </h2>
+
+If the performance is represented on a log-scale, all non-positive performance values were removed as well.<br>
+<br>
+
+<div class="chunk" id="unnamed-chunk-6"><div class="rimage default"><img src="figure/unnamed-chunk-6.png" title="plot of chunk unnamed-chunk-6" alt="plot of chunk unnamed-chunk-6" class="plot" /></div></div>
+
+
+<br>
+<h2> Estimated cumulative distribution functions of performance values </h2>
+
+If the performance is represented on a log-scale, all non-positive performance values were removed as well.<br>
+<br>
+
+<div class="chunk" id="unnamed-chunk-7"><div class="rimage default"><img src="figure/unnamed-chunk-7.png" title="plot of chunk unnamed-chunk-7" alt="plot of chunk unnamed-chunk-7" class="plot" /></div></div>
+
+
+<br>
+<h2> Scatterplot matrix of the performance values </h2>
+
+The following figure creates pairwise scatterplots of the (possibly transformed) 
+performance values, including a regression line (cf. upper panel), a histogram 
+of each performance value (cf. diagonal), as well as the pairwise (pearson) 
+correlation (cf. lower panel).<br>
+In order to facilitate the lucidity of the correlations, they are colored
+depending on their value. Thus, a high positive correlation (&ge; 0.8) is
+colored green, light correlations (between 0.3 and 0.8, or -0.8 and -0.3)
+are orange, little to no correlations (&ge; -0.3 and &le; 0.3) are written
+in black and high negative correlations (&le; -0.8) are shown red.<br>
+Eventually, the performance values are transformed, based on the settings
+within its config-file. However, the corresponding transformation is mentioned
+within the subtitle underneath the figure.
+
+</div><div class="rimage default"><img src="figure/unnamed-chunk-8.png" title="plot of chunk unnamed-chunk-8" alt="plot of chunk unnamed-chunk-8" class="plot" /></div><div class="rcode">
+
+
+
+
+<br>
+<h2> Clustering algorithms based on their correlations </h2>
+The following figure shows the correlations of the <b>ranks</b> of the performance 
+values. Per default it will show the correlation coefficient of pearson. If NA's 
+exist, they were removed pairwise. <br>
+In addition, the algorithms are ordered in a way that similar (highly
+correlated) algorithms are close to each other. Per default the clustering
+is based on hierarchical clustering, using Ward's method. <br>
+<br>
+
+<div class="chunk" id="unnamed-chunk-9"><div class="rimage default"><img src="figure/unnamed-chunk-9.png" title="plot of chunk unnamed-chunk-9" alt="plot of chunk unnamed-chunk-9" class="plot" /></div></div>
+
+
+
+</body>
+</html>
