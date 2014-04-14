@@ -30,12 +30,10 @@ plotAlgoCorMatrix = function(astask, measure, order.method, hclust.method, cor.m
     measure = astask$desc$performance_measures[1]
   else
     checkArg(measure, "character", len = 1L, na.ok = FALSE)
-  
   if (missing(order.method))
     order.method = "hclust"
   else
     checkArg(order.method, "character", len = 1L, na.ok = FALSE)
-  
   if (missing(hclust.method)) {
     if (order.method == "hclust")
       hclust.method = "ward"
@@ -47,7 +45,6 @@ plotAlgoCorMatrix = function(astask, measure, order.method, hclust.method, cor.m
       hclust.method = NA      
     }
   }
-  
   if (missing(cor.method))
     cor.method = "pearson"
   else
@@ -55,11 +52,11 @@ plotAlgoCorMatrix = function(astask, measure, order.method, hclust.method, cor.m
   
   algo.perf = astask$algo.runs
   algos = unique(algo.perf$algorithm)
-  x = algo.perf[order(algo.perf[, "instance_id"], algo.perf[, "repetition"],
-                      algo.perf[, "algorithm"]),]
-  perf = x[, measure]
+  perf = algo.perf[order(algo.perf[, "instance_id"], algo.perf[, "repetition"],
+    algo.perf[, "algorithm"]), measure]
   data = matrix(perf, ncol = length(algos), byrow = TRUE)
   colnames(data) = sort(algos)
+  data = apply(data, 2, function(x) rank(x, na.last = "keep"))
   suppressWarnings((cor.matrix = cor(data, use = "pairwise.complete.obs", 
     method = cor.method)))
   if (any(is.na(cor.matrix))) {
@@ -73,7 +70,7 @@ plotAlgoCorMatrix = function(astask, measure, order.method, hclust.method, cor.m
   }
   if (!is.na(hclust.method)) {
     ind = corrMatOrder(cor.matrix, order = order.method, 
-                       hclust.method = hclust.method)    
+      hclust.method = hclust.method)    
   } else {
     ind = corrMatOrder(cor.matrix, order = order.method)
   }
