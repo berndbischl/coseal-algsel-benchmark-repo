@@ -1,5 +1,5 @@
-algo.perf.boxplots.log = FALSE
-algo.perf.densities.log = FALSE
-algo.perf.probabilities.log = FALSE
-algo.perf.scatter.log = FALSE
-
+algo.perf.boxplots.log = TRUE
+algo.perf.densities.log = TRUE
+algo.perf.probabilities.log = TRUE
+algo.perf.scatter.trafo = "log10"
+algo.perf.impute.nas = TRUE

@@ -2,7 +2,8 @@
 \alias{convertToLlama}
 \title{Convert an ASTask task object to a llama data object.}
 \usage{
-convertToLlama(astask, measure, feature.steps, add.feature.costs = TRUE)
+  convertToLlama(astask, measure, feature.steps,
+    add.feature.costs = TRUE)
 }
 \arguments{
   \item{astask}{[\code{\link{ASTask}}]\cr Algorithm
@@ -26,11 +27,11 @@ convertToLlama(astask, measure, feature.steps, add.feature.costs = TRUE)
   issued.  Default is \code{TRUE}.}
 }
 \value{
-Result of calling \code{\link[llama]{input}}.
+  Result of calling \code{\link[llama]{input}}.
 }
 \description{
-For features, mean values are computed across repetitions.
-For algorithms, repetitions are not supported at the moment
-and will result in an error.
+  For features, mean values are computed across
+  repetitions. For algorithms, repetitions are not
+  supported at the moment and will result in an error.
 }
 

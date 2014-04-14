@@ -5,36 +5,56 @@
 #' @param measure [\code{character(1)}]\cr
 #'   Measure to plot.
 #'   Default is first measure in task.
-#' @param log [\code{logical(1)}]\cr
-#'   Should the performance values be log10-transformed in the plot?
-#'   Default is FALSE.
+#' @param trafo [\code{function(1)}]\cr
+#'   Function applied to the data as preprocessing to the generation of the plot.
+#'   Default is identity.
+#' @param na.impute [\code{logical(1)}]\cr
+#'   Should the values of algorithm runs with non-ok runstatus (missing performance 
+#'   values) be imputed? If yes, imputation is done via max + 0.1 * (max - min) for
+#'   minimization problems and via min - 0.1 * (max - min) for maximization problems.
+#'   Default is TRUE.
 #' @return  plot object.
 #' @export
-plotAlgoScattermatrix = function(astask, measure, log = FALSE){
+plotAlgoScattermatrix = function(astask, measure, trafo = identity, na.impute = TRUE){
   checkArg(astask, "ASTask")
   if (missing(measure))
     measure = astask$desc$performance_measures[1]
   else
     checkArg(measure, "character", len = 1L, na.ok = FALSE)
+  if (is.character(trafo))
+    trafo = get(trafo)
+  checkArg(trafo, "function", len = 1L)
+  checkArg(na.impute, "logical", len = 1L, na.ok = FALSE)
   algo.perf = astask$algo.runs
   algos = unique(algo.perf$algorithm)
   x = algo.perf[order(algo.perf[, "instance_id"], algo.perf[, "repetition"],
-                      algo.perf[, "algorithm"]),]
-  perf = 2*x[,measure]
+    algo.perf[, "algorithm"]),]
+  perf = x[,measure]
+  if (na.impute) {
+    run.status = algo.perf[, "runstatus"]
+    perf.range = range(perf[run.status == "ok"], na.rm = TRUE)
+    if (astask$desc$maximize) {
+      perf[run.status != "ok"] = perf.range[1] - 0.1 * diff(perf.range)
+    } else {
+      perf[run.status != "ok"] = perf.range[2] + 0.1 * diff(perf.range)
+    }    
+  }
   data = matrix(perf, ncol = length(algos), byrow = TRUE)
   colnames(data) = sort(algos)
-  if (!log) {
-    pairs(data, lower.panel = panel.cor, 
-          diag.panel = panel.hist, upper.panel = panel.lm,
-          cex.axis = 2)  
-  } else {
-    data.logscaled = apply(data, 2, function(x) log10(x))
-    pairs(data.logscaled, lower.panel = panel.cor, 
-          diag.panel = panel.hist, upper.panel = panel.lm,
-          cex.axis = 2)
-    title(sub = "(Performance values on log10-scale)")
+  data = apply(data, 2, trafo)
+  data = apply(data, 2, function(x) ifelse(is.finite(x), x, NA))
+  pairs(data, lower.panel = panel.cor, 
+    diag.panel = panel.hist, upper.panel = panel.lm,
+    cex.axis = 2)
+  trafo.string = deparse(trafo)
+  if (trafo.string[1] == "function (x) ") {
+    trafo.string = trafo.string[2]
+  } else if (grepl(".Primitive", trafo.string)) {
+    trafo.string = sprintf("%s(x)", strsplit(deparse(trafo), "\"")[[1]][2])
   }
+  title(sub = bquote(x[shown] == .(trafo.string)))  
 }
+
 
 ## helper function that creates a histogram for each algorithm
 ## on the diagonal of the scatterplot matrix
