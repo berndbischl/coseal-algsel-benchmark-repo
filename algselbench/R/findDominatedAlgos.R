@@ -1,87 +1,69 @@
+
 #' Creates a table that shows the dominance of one algorithm over another one.
+#'
+#' Stochastic replications are currently aggregated by the mean value.
 #'
 #' @param astask [\code{\link{ASTask}}]\cr
 #'   Algorithm selection task.
 #' @param measure [\code{character(1)}]\cr
-#'   Measure that's been used for analyzing the algorithm performances.
+#'   Measure for algorithm performance.
 #'   Default is first measure in task.
-#' @return [\code{data.frame}]. 
-#'  Overview of the dominance between the algorithms.
+#' @param reduce [\code{logical(1)}]\cr
+#'   Should the resulting matrix be reduced to algorithms that a are either dominated by or dominate
+#'   another algorithm?
+#'   Default is \code{FALSE}.
+#' @param type {\code{character}]
+#'   \dQuote{logical}: Logical matrix, TRUE means row algorithm dominates column algorithm.\cr
+#'   \dQuote{character}: Same information but more human-readable.
+#'     States how the row relates to the column.
+#' @return [\code{matrix}]. See above.
 #' @export
-findDominatedAlgos = function(astask, measure){
+findDominatedAlgos = function(astask, measure, reduce = FALSE, type = "logical") {
   checkArg(astask, "ASTask")
   if (missing(measure))
     measure = astask$desc$performance_measures[1]
   else
     checkArg(measure, "character", len = 1L, na.ok = FALSE)
-  data = astask$algo.runs
-  ## convert maximization into minimization
-  if (as.vector(astask$desc$maximize[measure]))
-    data[, measure] = -1 * data[, measure]
-  splitted.data = split(data, data$algorithm)
-  algo.names = names(splitted.data)
-  nr.of.algos = length(algo.names)
-  result = matrix("", nrow = nr.of.algos, ncol = nr.of.algos)
-  rownames(result) = algo.names
-  colnames(result) = algo.names
-  for (i in 1:(nr.of.algos - 1L)) {
-    alg1 = splitted.data[[algo.names[i]]]
-    for (j in (i+1L):nr.of.algos) {
-      alg2 = splitted.data[[algo.names[j]]]
-      res = checkDomination(x = alg1, y = alg2, measure = measure)
-      if (res == "")
-        next
-      if (res == "+") {
-        result[i, j] = "better"
-        result[j, i] = "worse"
-        next
-      }
-      if (res == "-") {
-        result[i, j] = "worse"
-        result[j, i] = "better"
-        next
-      }
-      if (res == "=")
-        result[i, j] = result[j, i] = "="
-    }
+  perf = astask$algo.perf[[measure]]
+  perf = aggregateStochasticAlgoPerf(perf, with.instance.id = FALSE)
+  # convert maximization into minimization
+  if (astask$desc$maximize[measure])
+    perf = -1 * perf
+  ns = colnames(perf)
+  k = length(ns)
+  res = matrix(FALSE, k, k)
+  rownames(res) = colnames(res) = ns
+
+  for (i in 1:(k - 1L))
+    for (j in (i+1L):k)
+      res[i, j] = isDominated(perf[, i], perf[, j])
+
+  # reduce result matrix to entries where something happens
+  if (reduce) {
+    keep = sapply(1:k, function(i) any(res[i, ]) || any(res[, i]))
+    res = res[keep, keep, drop = FALSE]
   }
-  
-  if (all(result == ""))
-    return(NULL)
-  
-  ## keep only rows and columns that have information about dominance
-  ind = apply(result, 1, function(x) any(x != ""))
-  result = as.data.frame(result[ind, ind])
-  return(result)
+
+  if (type == "character") {
+    res2 = res
+    res2[!res] = "-"
+    res2[res] = "better"
+    res2[t(res)] = "worse"
+    return(res2)
+  } else {
+    return(res)
+  }
+
+  return(res)
 }
 
 
-## Helper function that checks whether algorithm x
-## is superior / inferior to algorithm y.
-## If there's a superior algorithm it returns
-## "+" (if x is superior to y), "=" (if both are equal),
-## "-" (if x is inferior to y) or "" if there
-## is no dominance between x and y.
-checkDomination = function(x, y, measure){
-  x$solved = (as.character(x$runstatus) == "ok")
-  y$solved = (as.character(y$runstatus) == "ok")
-  index = (x$solved | y$solved)
-  if (sum(index) == 0) 
-    return("")
-  reduced.x = x[index,]
-  reduced.y = y[index,]
-  if ( all(reduced.x$solved) ) {
-    if ( all(reduced.x[reduced.y$solved, measure] <= reduced.y[reduced.y$solved, measure]) ) {
-      if ( any(reduced.x[reduced.y$solved, measure] < reduced.y[reduced.y$solved, measure]) ) {
-        return("+")
-      }
-      return("=")
-    }
-  }
-  if ( all(reduced.y$solved) ) {
-    if ( all(reduced.y[reduced.x$solved, measure] <= reduced.x[reduced.x$solved, measure]) ) {
-      return("-")
-    }
-  }
-  return("")
+# Helper function that checks whether algorithm x is dominated by y.
+# here NA = NA, and "real val" is always better than NA.
+isDominated = function(x, y) {
+  # impute NA perfs of crashes, so we can compare
+  x[is.na(x)] = Inf
+  y[is.na(y)] = Inf
+  # dominated if all values x are at least as bad as y and one x val is really worse
+  all(x >= y) && any(x > y)
 }
