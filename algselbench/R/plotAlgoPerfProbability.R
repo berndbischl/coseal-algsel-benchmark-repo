@@ -10,7 +10,7 @@
 #'   Default is FALSE.
 #' @return ggplot2 plot object.
 #' @export
-plotAlgoPerfProbability = function(astask, measure, log = FALSE, na.impute = TRUE) {
+plotAlgoPerfProbability = function(astask, measure, log = FALSE) {
   checkArg(astask, "ASTask")
   if (missing(measure))
     measure = astask$desc$performance_measures[1]
