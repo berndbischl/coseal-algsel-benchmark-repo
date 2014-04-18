@@ -1,7 +1,6 @@
 library(algselbench)
 
 makeEDAConfig = function(
-  algo.perf.impute.nas = TRUE,
   algo.perf.boxplots.log = FALSE,
   algo.perf.scatter.trafo = "identity",
   algo.perf.densities.log = FALSE,
@@ -14,7 +13,6 @@ makeEDAConfig = function(
     algo.perf.densities.log = algo.perf.densities.log,
     algo.perf.probabilities.log = algo.perf.probabilities.log,
     algo.perf.scatter.trafo = algo.perf.scatter.trafo,
-    algo.perf.impute.nas = algo.perf.impute.nas,
     feature.steps.default = feature.steps.default
   )
 }

@@ -19,10 +19,10 @@ summarizeFeatureSteps= function(astask) {
   fc = astask$feature.costs
   if (!is.null(fc)) {
     res2 = t(sapply(fc[, 3:n, drop=FALSE], function(x) c(
-      cost.min = min(x, na.rm = TRUE),
-      cost.mean = mean(x, na.rm = TRUE),
-      cost.max = max(x, na.rm = TRUE),
-      cost.na = mean(is.na(x))
+      cost_min = min(x, na.rm = TRUE),
+      cost_mean = mean(x, na.rm = TRUE),
+      cost_max = max(x, na.rm = TRUE),
+      cost_na = mean(is.na(x))
     )))
     res = cbind(res, res2)
   }

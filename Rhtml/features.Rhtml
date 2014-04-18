@@ -11,23 +11,19 @@
 The following measures were taken for the results of each feature:
 <ul>
 
-  <li> Min: Minimum
-  <li> 1st Qu.: 1st Quartile = lower Quartile = 25%-Quantile
-  <li> Median: Median = 50%-Quantile
-  <li> Mean: Arithmetic Mean
-  <li> 3rd Qu.: 3rd Quartile = upper Quartile = 75%-Quantile
-  <li> Max.: Maximum
-  <li> Std. Dev.: Standard Deviation
-  <li> CoV.: Coefficient of Variation = Standard Deviation / Arithmetic Mean
-  <li> NA's: Number of NAs (missing values) within the feature set.
-  <li> Obs.: Number of Observations within the feature set.
-  <li> Run OK (%): Percentage of feature computations without a crash.
+  <li> <a>obs (number of observations within the feature set)</a>
+  <li> <a>NAs (number of NAs, i.e., missing values, within the feature set)</a>
+  <li> <a>min (minimum), mean (arithmetic mean), max (maximum), std_dev (standard deviation)</a>
+  <li> <a>1st_qu (1st quartile = lower quartile = 25%-quantile)</a>
+  <li> <a>median (median = 50%-quantile)</a>
+  <li> <a>3rd_qu (3rd quartile = upper quartile = 75%-quantile)</a>
+  <li> <a>co_var (coefficient of variation = standard deviation / arithmetic mean)</a>
 
 </ul>
 
 <!--begin.rcode, results = "asis"
   res = summarizeFeatureValues(astask)
-  print(xtable(res, digits = c(0, rep(4, 8), 0, 0), display = c("s", rep("e", 8), "d", "d")), "html")
+  print(xtable(res, display = c("s", "d", "d", rep("g", 8))), "html")
 end.rcode-->
 
 <br>
@@ -35,17 +31,17 @@ end.rcode-->
 
 The following table summarizes the feature steps over all instances.
 <ul>
-  <li> size: How many features are affected by this step in %
-  <li> ok, ..., other: Percentage of run status
-  <li> cost.min, cost.mean, cost.max: Range of costs for this step
-  <li> cost.na: How many missing values occur in costs in %
+  <li> size (percentage of features affected by this step)
+  <li> ok, ..., other (percentage of run status)
+  <li> cost_min, cost_mean, cost_max (range of costs for this step)
+  <li> cost_na (percentage of missing values occuring in costs)
 </ul>
 
 <br>
 
 <!--begin.rcode, results = "asis"
   res = summarizeFeatureSteps(astask)
-  print(xtable(res), "html")
+  print(xtable(res, display = c("s", "d", rep("g", 10))), "html")
 end.rcode-->
 
 <br>
@@ -68,32 +64,6 @@ Please note, that only a maximum of 5 duplicates per block is shown.<br>
     print(xtable(res), include.rownames = FALSE, "html")
   } else {
     cat("There were no duplicated features.")
-  }
-end.rcode-->
-
-<br>
-<h2> Useless Features </h2>
-
-In this section, you'll find all features that adopted only one value (and eventually NA's).<br>
-<br>
-
-<!--begin.rcode, results = "asis"
-  res = findUselessInstances(astask)
-  cat("Feature Values:\n")
-  if(nrow(res$feature.values) >= 1) {
-    print(xtable(res$feature.values, digits = c(0, 4, 0)), "html")
-  } else {
-    cat("There were no entirely useless feature values.")
-  }
-end.rcode-->
-
-<br>
-<!--begin.rcode, results = "asis"
-  cat("Runstatus of Feature Steps:\n")
-  if(nrow(res$feature.runstatus) >= 1) {
-    print(xtable(res$feature.runstatus), "html")
-  } else {
-    cat("\nNone of the feature steps consisted of unique values (except for 'ok').")
   }
 end.rcode-->
 

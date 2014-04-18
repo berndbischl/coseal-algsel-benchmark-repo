@@ -23,7 +23,7 @@ plotAlgoScattermatrix = function(astask, measure, trafo = identity) {
   
   data = imputeAlgoPerf(astask, measure, jitter = 0.05)
   data = data[,setdiff(colnames(data), c("instance_id", "repetition"))]
-  if (trafo %in% c("log(x)", "log2(x)", "log10(x)"))
+  if (trafo.string %in% c("log(x)", "log2(x)", "log10(x)"))
     checkLogarithm(unlist(data), TRUE)
   data = apply(data, 2, trafo)
   data = apply(data, 2, function(x) ifelse(is.finite(x), x, NA))

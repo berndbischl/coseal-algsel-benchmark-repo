@@ -41,23 +41,24 @@ end.rcode-->
 <br>
 <h2> Dominated Algorithms </h2>
 
-Here, you'll find an overview of dominating/dominated algorithms. <br>
-An algorithm (A) is considered to be superior to an other algorithm (B), if it has at least an equal performance on all instances (compared to B) <u>and</u> if it is better on at least one of them. A missing value is automatically a worse performance. However, instances which could not be solved by either one of the algorithms, were not considered for the dominance relation.<br>
-<br>
+Here, you'll find an overview of dominating/dominated algorithms: <br>
 
 <!--begin.rcode, results = "asis"
-  res = findDominatedAlgos(astask)
-  if (!is.null(res)) {
+  res = findDominatedAlgos(astask, reduce = TRUE, type = "character")
+  if (nrow(res) != 0) {
     print(xtable(res), include.rownames = TRUE, "html")
   } else {
     cat("None of the algorithms was superior to any of the other.")
   }  
 end.rcode-->
 
+<br> <br>
+An algorithm (A) is considered to be superior to an other algorithm (B), if it has at least an equal performance on all instances (compared to B) <u>and</u> if it is better on at least one of them. A missing value is automatically a worse performance. However, instances which could not be solved by either one of the algorithms, were not considered for the dominance relation.<br>
+
 <br>
 <br>
 
-<b><FONT COLOR = "#FF0000"> Important Note:</b><br>
+<b><FONT COLOR = "#FF0000"> Important note w.r.t. the following plots:</b><br>
 Depending on the configuration, missing values among the algorithms' performance values
 were imputed prior to the creation of the following plots.<br>
 Missing values were imputed to max + 0.3 * (max - min), in case of minimization problems, 
@@ -72,7 +73,7 @@ based on correlations, which is shown at the end of this page). </FONT>
 <br>
 
 <!--begin.rcode
-  plotAlgoPerfBoxplots(astask, log = config$algo.perf.boxplots.log, na.impute = config$algo.perf.impute.nas)
+  plotAlgoPerfBoxplots(astask, log = config$algo.perf.boxplots.log)
 end.rcode-->
 
 <br>
@@ -81,7 +82,7 @@ end.rcode-->
 <br>
 
 <!--begin.rcode
-  plotAlgoPerfDensities(astask, log = config$algo.perf.densities.log, na.impute = config$algo.perf.impute.nas) 
+  plotAlgoPerfDensities(astask, log = config$algo.perf.densities.log) 
 end.rcode-->
 
 <br>
@@ -90,7 +91,7 @@ end.rcode-->
 <br>
 
 <!--begin.rcode
-  plotAlgoPerfProbability(astask, log = config$algo.perf.probabilities.log, na.impute = config$algo.perf.impute.nas) 
+  plotAlgoPerfProbability(astask, log = config$algo.perf.probabilities.log) 
 end.rcode-->
 
 <br>
@@ -110,7 +111,7 @@ within its config-file. The corresponding transformation is mentioned
 within the subtitle underneath the figure.
 
 <!--begin.rcode, results = "asis"
-  plotAlgoScattermatrix(astask, trafo = config$algo.perf.scatter.trafo, na.impute = config$algo.perf.impute.nas)
+  plotAlgoScattermatrix(astask, trafo = config$algo.perf.scatter.trafo)
 end.rcode-->
 
 
