@@ -6,6 +6,11 @@
 #'
 #' Feature costs are added for real prognostic models but not for baseline models.
 #'
+#' Machine learning models are run with their default settings.
+#' For the clusterers we set the number of clusters (N) to the number of algorithms in the task.
+#' Except for XMeans where we set the maximum number of clusters (H) in the same way, as
+#' a parameter for the number of clusters does not exist.
+#'
 #' @param astasks [\code{list}]\cr
 #'   List of algorithm selection tasks (\code{\link{ASTask}}).
 #' @param baselines [\code{character}]\cr
