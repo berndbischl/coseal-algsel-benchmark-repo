@@ -2,16 +2,16 @@
 \alias{getAlgorithmNames}
 \title{Returns algorithm names of task.}
 \usage{
-getAlgorithmNames(astask)
+  getAlgorithmNames(astask)
 }
 \arguments{
   \item{astask}{[\code{\link{ASTask}}]\cr Algorithm
   selection task.}
 }
 \value{
-[\code{character}].
+  [\code{character}].
 }
 \description{
-Returns algorithm names of task.
+  Returns algorithm names of task.
 }
 

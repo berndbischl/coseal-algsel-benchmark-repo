@@ -21,7 +21,7 @@ plotAlgoScattermatrix = function(astask, measure, trafo = identity) {
   checkArg(trafo, "function", len = 1L)
   checkArg(na.impute, "logical", len = 1L, na.ok = FALSE)
   
-  data = imputeAlgoPerf(astask, measure)
+  data = imputeAlgoPerf(astask, measure, jitter = 0.05)
   data = apply(data, 2, trafo)
   data = apply(data, 2, function(x) ifelse(is.finite(x), x, NA))
   pairs(data, lower.panel = panel.cor, 

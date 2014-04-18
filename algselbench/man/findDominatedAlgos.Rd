@@ -2,7 +2,7 @@
 \alias{findDominatedAlgos}
 \title{Creates a table that shows the dominance of one algorithm over another one.}
 \usage{
-findDominatedAlgos(astask, measure)
+  findDominatedAlgos(astask, measure)
 }
 \arguments{
   \item{astask}{[\code{\link{ASTask}}]\cr Algorithm
@@ -13,11 +13,11 @@ findDominatedAlgos(astask, measure)
   Default is first measure in task.}
 }
 \value{
-[\code{data.frame}].  Overview of the dominance between the
-algorithms.
+  [\code{data.frame}].  Overview of the dominance between
+  the algorithms.
 }
 \description{
-Creates a table that shows the dominance of one algorithm
-over another one.
+  Creates a table that shows the dominance of one algorithm
+  over another one.
 }
 

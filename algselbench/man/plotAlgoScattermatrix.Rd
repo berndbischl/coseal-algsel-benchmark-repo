@@ -2,7 +2,7 @@
 \alias{plotAlgoScattermatrix}
 \title{Creates a scatterplot matrix of the performance values of the algorithms.}
 \usage{
-plotAlgoScattermatrix(astask, measure, trafo = identity)
+  plotAlgoScattermatrix(astask, measure, trafo = identity)
 }
 \arguments{
   \item{astask}{[\code{\link{ASTask}}]\cr Algorithm
@@ -16,10 +16,10 @@ plotAlgoScattermatrix(astask, measure, trafo = identity)
   Default is identity.}
 }
 \value{
-plot object.
+  plot object.
 }
 \description{
-Creates a scatterplot matrix of the performance values of
-the algorithms.
+  Creates a scatterplot matrix of the performance values of
+  the algorithms.
 }
 

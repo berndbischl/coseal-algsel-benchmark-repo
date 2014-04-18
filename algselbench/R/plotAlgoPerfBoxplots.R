@@ -19,7 +19,7 @@ plotAlgoPerfBoxplots = function(astask, measure, log = FALSE) {
   checkArg(log, "logical", len=1L, na.ok=FALSE)
   checkArg(na.impute, "logical", len=1L, na.ok=FALSE)
   
-  data = imputeAlgoPerf(astask, measure)
+  data = imputeAlgoPerf(astask, measure, structure = "algo.runs", jitter = 0.05)
   if (log) 
     data = data[(data[,measure] > 0), ]
   p = ggplot(data, aes_string(x = "algorithm", y = measure, col = "algorithm")) +

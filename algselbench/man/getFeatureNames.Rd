@@ -2,16 +2,16 @@
 \alias{getFeatureNames}
 \title{Returns feature names of task.}
 \usage{
-getFeatureNames(astask)
+  getFeatureNames(astask)
 }
 \arguments{
   \item{astask}{[\code{\link{ASTask}}]\cr Algorithm
   selection task.}
 }
 \value{
-[\code{character}].
+  [\code{character}].
 }
 \description{
-Returns feature names of task.
+  Returns feature names of task.
 }
 
