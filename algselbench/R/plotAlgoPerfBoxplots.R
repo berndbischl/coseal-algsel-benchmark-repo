@@ -20,8 +20,7 @@ plotAlgoPerfBoxplots = function(astask, measure, log = FALSE) {
   
   data = imputeAlgoPerf(astask, measure, structure = "algo.runs", jitter = 0.05)
   data = data[,setdiff(colnames(data), c("instance_id", "repetition"))]
-  if (log) 
-    data = data[(data[,measure] > 0), ]
+  checkLogarithm(data[, measure], log)
   p = ggplot(data, aes_string(x = "algorithm", y = measure, col = "algorithm")) +
   geom_boxplot() +
   theme(axis.text.x = element_text(angle=90, vjust=1))

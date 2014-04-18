@@ -19,15 +19,17 @@ plotAlgoScattermatrix = function(astask, measure, trafo = identity) {
   if (is.character(trafo))
     trafo = get(trafo)
   checkArg(trafo, "function", len = 1L)
+  trafo.string = extractTrafo(trafo)
   
   data = imputeAlgoPerf(astask, measure, jitter = 0.05)
   data = data[,setdiff(colnames(data), c("instance_id", "repetition"))]
+  if (trafo %in% c("log(x)", "log2(x)", "log10(x)"))
+    checkLogarithm(unlist(data), TRUE)
   data = apply(data, 2, trafo)
   data = apply(data, 2, function(x) ifelse(is.finite(x), x, NA))
   pairs(data, lower.panel = panel.cor, 
     diag.panel = panel.hist, upper.panel = panel.lm,
     cex.axis = 2)
-  trafo.string = extractTrafo(trafo)
   title(sub = bquote(x[shown] == .(trafo.string)))  
 }
 
