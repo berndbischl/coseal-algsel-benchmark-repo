@@ -13,21 +13,20 @@
 #'   Default is c("vbs", "singleBest", "singleBestByPar", "singleBestBySuccesses").
 #' @param classifiers [\code{character}]\cr
 #'   Vector of characters, defining the classification models.
-#'   Default is c("AdaBoost", "BayesNet", "IBk", "OneR", "MultilayerPerceptron",
-#'   "RandomTree", "ctree", "fnn", "J48", "JRip", "kknn", "ksvm", "naiveBayes",
-#'   "nnet", "randomForest", "rpart", "svm").
+#'   Default is none.
 #' @param regressors [\code{character}]\cr
 #'   Vector of characters, defining the regression models.
-#'   Default is c("REPTree", "earth", "ksvm", "lm", "nnet", "randomForest", "rpart").
+#'   Default is none.
 #' @param clusterers [\code{character}]\cr
 #'   Vector of characters, defining the cluster models.
-#'   Default is c("XMeans", "EM", "FarthestFirst", "SimpleKMeans").
+#'   Default is none.
 #' @param pre [\code{function}]\cr
 #'   A function (e.g. normalize) to preprocess the feature data.
 #'   By default no preprocessing is done.
 #' @return BatchExperiments registry.
 #' @export
-runLlamaModels = function(astasks, baselines, classifiers, regressors, clusterers, pre) {
+runLlamaModels = function(astasks, baselines,
+ classifiers = character(0), regressors = character(0), clusterers = character(0), pre) {
 
   checkArg(astasks, c("list", "ASTask"))
   if (!missing(astasks) && inherits(astasks, "ASTask"))
@@ -37,71 +36,64 @@ runLlamaModels = function(astasks, baselines, classifiers, regressors, clusterer
   if (missing(pre)) {
     pre = function(x, y = NULL) {
       list(features = x)
-    }    
+    }
   }
-  
+
   # models and defaults
-  baselines.def = c("vbs", "singleBest", "singleBestByPar", "singleBestBySuccesses")
+  baselines.all = c("vbs", "singleBest", "singleBestByPar", "singleBestBySuccesses")
 
   classifiers.weka = c("meta/AdaBoostM1", "bayes/BayesNet", "lazy/IBk", "rules/OneR",
     "trees/RandomTree", "trees/J48", "rules/JRip")
   classifiers.mlr = c("classif.ctree", "classif.kknn", "classif.ksvm", "classif.naiveBayes",
     "classif.randomForest", "classif.rpart")
-  classifiers.def = c(classifiers.weka, classifiers.mlr)
+  classifiers.all = c(classifiers.weka, classifiers.mlr)
 
   regressors.mlr = c("regr.earth", "regr.lm", "regr.randomForest", "regr.rpart")
-  regressors.def = regressors.mlr
+  regressors.all = regressors.mlr
 
   clusterers.weka = c("XMeans", "EM", "FarthestFirst", "SimpleKMeans")
-  clusterers.def = clusterers.weka
+  clusterers.all = clusterers.weka
 
   # check model args
   if (missing(baselines))
-    baselines = baselines.def
+    baselines = baselines.all
   else
-    checkArg(baselines, subset = baselines.def)
-  if (missing(classifiers))
-    classifiers = classifiers.def
-  else
-    checkArg(classifiers, subset = classifiers.def)
-  if (missing(regressors))
-    regressors = regressors.def
-  else
-    checkArg(regressors, subset = regressors.def)
-  if (missing(clusterers))
-    clusterers = clusterers.def
-  else
-    checkArg(clusterers, subset = clusterers.def)
+    checkArg(baselines, subset = baselines.all)
+  checkArg(classifiers, subset = classifiers.all)
+  checkArg(regressors, subset = regressors.all)
+  checkArg(clusterers, subset = clusterers.all)
 
   packs = c("RWeka", "llama", "methods", "mlr", "BatchExperiments")
   requirePackages(packs, why = "runLlamaModels")
 
-  makeModelFun = function(name) {
+  makeModelFun = function(name, n.algos) {
+    force(n.algos)
     if (name %in% c(classifiers.mlr, regressors.mlr)) {
       convertMlrLearnerToLlama(makeLearner(name))
     } else if (name %in% classifiers.weka) {
       make_Weka_classifier(paste("weka/classifiers", name, sep = "/"))
     } else if (name %in% clusterers.weka) {
+      # we set nr of clusters to nr of algos, for XMEANs it is the max nr, as we split by BIC value
       if (name == "XMeans") {
         function(data) {
-          XMeans(data, control = Weka_control(H = length(grep("_success", names(data$data)))))
+          XMeans(data, control = Weka_control(H = n.algos))
         }
       } else if (name == "EM") {
         function(data) {
-          wekaEM = make_Weka_clusterer("weka/clusterers/EM", 
-                                       init = Weka_control(max = length(grep("_success", names(data$data)))))
+          wekaEM = make_Weka_clusterer("weka/clusterers/EM",
+            init = Weka_control(N = n.algos))
           wekaEM(data)
         }
       } else if (name == "FarthestFirst") {
         function(data) {
-          wekaFF = make_Weka_clusterer("weka/clusterers/FarthestFirst", 
-            init = Weka_control(N = length(grep("_success", names(data$data)))))
+          wekaFF = make_Weka_clusterer("weka/clusterers/FarthestFirst",
+            init = Weka_control(N = n.algos))
           wekaFF(data)
         }
       } else if (name == "SimpleKMeans") {
         function(data) {
-          wekaSimpleKMeans = make_Weka_clusterer("weka/clusterers/SimpleKMeans", 
-            init = Weka_control(N = length(grep("_success", names(data$data)))))
+          wekaSimpleKMeans = make_Weka_clusterer("weka/clusterers/SimpleKMeans",
+            init = Weka_control(N = n.algos))
           wekaSimpleKMeans(data)
         }
       } else {
@@ -135,6 +127,7 @@ runLlamaModels = function(astasks, baselines, classifiers, regressors, clusterer
         llama.task = llama.tasks[[i]],
         llama.cv = llama.cvs[[i]],
         makeModelFun = makeModelFun,
+        n.algos = length(getAlgorithmNames(astask)),
         makeRes = function(data, p, timeout) {
           list(
             succ = mean(unlist(successes(data, p))),
@@ -158,7 +151,7 @@ runLlamaModels = function(astasks, baselines, classifiers, regressors, clusterer
       library(algselbench)
     #FIXME: get from llama package envir
     llama.fun = get(llama.fun)
-    fun = static$makeModelFun(model)
+    fun = static$makeModelFun(model, n.algos = static$n.algos)
     p = llama.fun(fun, data = static$llama.cv, pre = pre)$predictions
     static$makeRes(static$llama.cv, p, static$timeout)
   }
