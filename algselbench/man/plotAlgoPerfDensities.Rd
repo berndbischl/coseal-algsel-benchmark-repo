@@ -2,7 +2,7 @@
 \alias{plotAlgoPerfDensities}
 \title{Plot densities of performance values per algorithm across all instances.}
 \usage{
-  plotAlgoPerfDensities(astask, measure, log = FALSE)
+plotAlgoPerfDensities(astask, measure, log = FALSE)
 }
 \arguments{
   \item{astask}{[\code{\link{ASTask}}]\cr Algorithm
@@ -16,10 +16,10 @@
   FALSE.}
 }
 \value{
-  ggplot2 plot object.
+ggplot2 plot object.
 }
 \description{
-  Plot densities of performance values per algorithm across
-  all instances.
+Plot densities of performance values per algorithm across
+all instances.
 }
 

@@ -2,8 +2,8 @@
 \alias{imputeAlgoPerf}
 \title{Imputes algorithm runs which have NA performance values.}
 \usage{
-  imputeAlgoPerf(astask, measure, base, range.scalar = 0.3,
-    jitter = 0, structure = "algo.perf")
+imputeAlgoPerf(astask, measure, base, range.scalar = 0.3, jitter = 0,
+  structure = "algo.perf")
 }
 \arguments{
   \item{astask}{[\code{\link{ASTask}}]\cr Algorithm
@@ -22,19 +22,18 @@
   \item{jitter}{[\code{numeric(1)}]\cr See formula.
   Default is 0.}
 
-  \item{structure}{[\character(1)}]\cr What structure
+  \item{structure}{[\code{character(1)}]\cr What structure
   should the result have?  Possible values are
   \dQuote{algo.runs} and \dQuote{algo.perf}.  They
   correspond to the structures in \code{\link{ASTask}}.
   Default is \dQuote{algo.perf}.}
 }
 \value{
-  See \code{struture}.
+See \code{struture}.
 }
 \description{
-  The following formula is used for imputation
-  \code{range.span = max - min} \code{base +- range.scalar
-  * range.span + N(0, sd = jitter * range.span)}. jitter is
-  a
+The following formula is used for imputation: \code{base +-
+range.scalar * range.span + N(0, sd = jitter *
+range.span)}\cr With \code{range.span = max - min}.
 }
 

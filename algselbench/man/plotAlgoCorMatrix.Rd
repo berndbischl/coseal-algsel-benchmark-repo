@@ -2,8 +2,7 @@
 \alias{plotAlgoCorMatrix}
 \title{Plots the correlation matrix of the algorithms.}
 \usage{
-  plotAlgoCorMatrix(astask, measure, order.method,
-    hclust.method, cor.method)
+plotAlgoCorMatrix(astask, measure, order.method, hclust.method, cor.method)
 }
 \arguments{
   \item{astask}{[\code{\link{ASTask}}]\cr Algorithm
@@ -34,9 +33,9 @@
   \code{spearman}.}
 }
 \value{
-  corrplot
+corrplot
 }
 \description{
-  Plots the correlation matrix of the algorithms.
+Plots the correlation matrix of the algorithms.
 }
 
