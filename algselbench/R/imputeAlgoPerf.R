@@ -1,10 +1,9 @@
 #' @title Imputes algorithm runs which have NA performance values.
 #'
 #' @description
-#' The following formula is used for imputation
-#' \code{range.span = max - min}
-#' \code{base +- range.scalar * range.span + N(0, sd = jitter * range.span)}.
-#' jitter is a
+#' The following formula is used for imputation:
+#' \code{base +- range.scalar * range.span + N(0, sd = jitter * range.span)}\cr
+#' With \code{range.span = max - min}.
 #'
 #' @param astask [\code{\link{ASTask}}]\cr
 #'   Algorithm selection task.
@@ -21,7 +20,7 @@
 #' @param jitter [\code{numeric(1)}]\cr
 #'   See formula.
 #'   Default is 0.
-#' @param structure [\character(1)}]\cr
+#' @param structure [\code{character(1)}]\cr
 #'   What structure should the result have?
 #'   Possible values are \dQuote{algo.runs} and \dQuote{algo.perf}.
 #'   They correspond to the structures in \code{\link{ASTask}}.

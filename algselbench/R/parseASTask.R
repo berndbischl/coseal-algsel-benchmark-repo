@@ -114,7 +114,8 @@ parseASTask = function(path) {
 
   ### build algo.perf
   # helper functions sorts rows and cols
-  algo.perf = lapply(desc$performance_measures, convertAlgoTunsToAlgoPerf, desc = desc, algo.runs = algo.runs)
+  algo.perf = setNames(lapply(desc$performance_measures, convertAlgoTunsToAlgoPerf, 
+    desc = desc, algo.runs = algo.runs), desc$performance_measures)
 
   ### build cv.splits
   cv.file = file.path(path, "cv.arff")
