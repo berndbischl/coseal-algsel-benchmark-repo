@@ -113,15 +113,8 @@ parseASTask = function(path) {
   algo.runstatus = sortByCol(algo.runstatus, c("instance_id", "repetition"))
 
   ### build algo.perf
-  algo.perf = list()
-  for (measure in desc$performance_measures) {
-    ap = dcast(algo.runs, instance_id + repetition ~ algorithm, value.var = measure)
-    # sort rows and cols
-    ap = ap[, c("instance_id", "repetition",
-      desc$algorithms_deterministic, desc$algorithms_stochastic)]
-    ap = sortByCol(ap, c("instance_id", "repetition"))
-    algo.perf[[measure]] = ap
-  }
+  # helper functions sorts rows and cols
+  algo.perf = lapply(desc$performance_measures, convertAlgoTunsToAlgoPerf, desc = desc, algo.runs = algo.runs)
 
   ### build cv.splits
   cv.file = file.path(path, "cv.arff")
