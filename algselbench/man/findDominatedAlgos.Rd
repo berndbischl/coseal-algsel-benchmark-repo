@@ -2,22 +2,34 @@
 \alias{findDominatedAlgos}
 \title{Creates a table that shows the dominance of one algorithm over another one.}
 \usage{
-findDominatedAlgos(astask, measure)
+findDominatedAlgos(astask, measure, reduce = FALSE, type = "logical")
 }
 \arguments{
   \item{astask}{[\code{\link{ASTask}}]\cr Algorithm
   selection task.}
 
-  \item{measure}{[\code{character(1)}]\cr Measure that's
-  been used for analyzing the algorithm performances.
-  Default is first measure in task.}
+  \item{measure}{[\code{character(1)}]\cr Measure for
+  algorithm performance.  Default is first measure in
+  task.}
+
+  \item{reduce}{[\code{logical(1)}]\cr Should the resulting
+  matrix be reduced to algorithms that a are either
+  dominated by or dominate another algorithm?  Default is
+  \code{FALSE}.}
+
+  \item{type}{{\code{character}] \dQuote{logical}: Logical
+  matrix, TRUE means row algorithm dominates column
+  algorithm.\cr \dQuote{character}: Same information but
+  more human-readable.  States how the row relates to the
+  column.}
 }
 \value{
-[\code{data.frame}].  Overview of the dominance between the
-algorithms.
+[\code{matrix}]. See above.
 }
 \description{
-Creates a table that shows the dominance of one algorithm
-over another one.
+Stochastic replications are currently aggregated by the
+mean value. If NAs occur, they are imputed before
+aggregation either by 10 * cutoff (for runtimes tasks with
+cutoff) or 10 * <worst performance> for all others.
 }
 

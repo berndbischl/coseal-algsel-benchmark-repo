@@ -2,7 +2,7 @@
 \alias{plotAlgoPerfProbability}
 \title{Plot cumulative distribution function of performance values per algorithm across all instances.}
 \usage{
-plotAlgoPerfProbability(astask, measure, log = FALSE, na.impute = TRUE)
+plotAlgoPerfProbability(astask, measure, log = FALSE)
 }
 \arguments{
   \item{astask}{[\code{\link{ASTask}}]\cr Algorithm

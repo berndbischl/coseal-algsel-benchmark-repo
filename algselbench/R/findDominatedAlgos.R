@@ -1,7 +1,11 @@
+#FIXME: think about hiow this should we dwefined if we have stochastic repls
+# FIXME: probaly implement what is documented 
 
 #' Creates a table that shows the dominance of one algorithm over another one.
 #'
 #' Stochastic replications are currently aggregated by the mean value.
+#' If NAs occur, they are imputed before aggregation either by 10 * cutoff
+#' (for runtimes tasks with cutoff) or 10 * <worst performance> for all others.
 #'
 #' @param astask [\code{\link{ASTask}}]\cr
 #'   Algorithm selection task.
@@ -25,6 +29,8 @@ findDominatedAlgos = function(astask, measure, reduce = FALSE, type = "logical")
   else
     checkArg(measure, "character", len = 1L, na.ok = FALSE)
   perf = astask$algo.perf[[measure]]
+  stopifnot(max(perf$repetition) == 1L)
+  #FIXME:
   perf = aggregateStochasticAlgoPerf(perf, with.instance.id = FALSE)
   # convert maximization into minimization
   if (astask$desc$maximize[measure])
