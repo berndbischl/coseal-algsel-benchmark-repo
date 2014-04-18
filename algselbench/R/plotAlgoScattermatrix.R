@@ -19,9 +19,9 @@ plotAlgoScattermatrix = function(astask, measure, trafo = identity) {
   if (is.character(trafo))
     trafo = get(trafo)
   checkArg(trafo, "function", len = 1L)
-  checkArg(na.impute, "logical", len = 1L, na.ok = FALSE)
   
   data = imputeAlgoPerf(astask, measure, jitter = 0.05)
+  data = data[,setdiff(colnames(data), c("instance_id", "repetition"))]
   data = apply(data, 2, trafo)
   data = apply(data, 2, function(x) ifelse(is.finite(x), x, NA))
   pairs(data, lower.panel = panel.cor, 

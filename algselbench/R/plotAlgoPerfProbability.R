@@ -17,9 +17,9 @@ plotAlgoPerfProbability = function(astask, measure, log = FALSE, na.impute = TRU
   else
     checkArg(measure, "character", len = 1L, na.ok = FALSE)
   checkArg(log, "logical", len=1L, na.ok=FALSE)
-  checkArg(na.impute, "logical", len=1L, na.ok=FALSE)
   
   data = imputeAlgoPerf(astask, measure, structure = "algo.runs", jitter = 0.05)
+  data = data[,setdiff(colnames(data), c("instance_id", "repetition"))]
   if (log)
     data = data[(data[,measure] > 0), ]
   p = ggplot(data, aes_string(x = measure, col = "algorithm")) +
