@@ -2,7 +2,7 @@
 \alias{getProvidedFeatures}
 \title{Return features that are useable for a given set of feature steps.}
 \usage{
-  getProvidedFeatures(astask, steps)
+getProvidedFeatures(astask, steps)
 }
 \arguments{
   \item{astask}{[\code{\link{ASTask}}]\cr Algorithm
@@ -12,10 +12,10 @@
   Default are all feature steps.}
 }
 \value{
-  [\code{character}].
+[\code{character}].
 }
 \description{
-  Return features that are useable for a given set of
-  feature steps.
+Return features that are useable for a given set of feature
+steps.
 }
 

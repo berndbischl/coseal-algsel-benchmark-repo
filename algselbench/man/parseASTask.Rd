@@ -3,90 +3,85 @@
 \alias{parseASTask}
 \title{Parses the data files of an algorithm selection task into an S3 object.}
 \usage{
-  parseASTask(path)
+parseASTask(path)
 }
 \arguments{
   \item{path}{[\code{character(1)}]\cr Path to directory of
   benchmark data set.}
 }
 \value{
-  [\code{\link{ASTask}}]. Description object.
+[\code{\link{ASTask}}]. Description object.
 }
 \description{
-  Object members
+Object members
 
-  Let n be the number of (replicated) instances, m the
-  number of unique instances, p the number of features, s
-  the number of feature steps and k the number of
-  algorithms. \describe{ \item{desc
-  [\code{\link{ASTaskDesc}}]}{Description object,
-  containing further info.} \item{feature.runstatus
-  [\code{data.frame(n, s + 2)}]}{Runstatus of feature
-  computation steps.  The first 2 columns are
-  \dQuote{instance_id} and \dQuote{repetition}, the
-  remaining are the status factors.  The step columns are
-  in the same order as the feature steps in the description
-  object.  The factor levels are always: ok, presolved,
-  crash, timeout, memout, other.  No entry can be
-  \code{NA}.  The data.frame is sorted by
-  \dQuote{instance_id}, then \dQuote{repetition}.}
-  \item{feature.costs [\code{data.frame(n, s + 2)}]}{Costs
-  of feature computation steps.  The first 2 columns are
-  \dQuote{instance_id} and \dQuote{repetition}, the
-  remaining are numeric costs of the feature steps.  The
-  step columns are in the same order as the feature steps
-  in the description object.  code{NA} means the cost is
-  not available, possibly because the feature computation
-  was aborted.  The data.frame is sorted by
-  \dQuote{instance_id}, then \dQuote{repetition}.  If no
-  cost file is available at all, \code{NULL} is stored.}
-  \item{feature.values [\code{data.frame(n, p +
-  2)}]}{Measured feature values of instances.  The first 2
-  columns are \dQuote{instance_id} and \dQuote{repetition}.
-  The remaining ones are the measured instance features.
-  The feature columns are in the same order as
-  \dQuote{features_deterministic},
-  \dQuote{features_stochastic} in the description object.
-  code{NA} means the feature is not available, possibly
-  because the feature computation was aborted.  The
-  data.frame is sorted by \dQuote{instance_id}, then
-  \dQuote{repetition}.} \item{algo.runs
-  [\code{data.frame}]}{Runstatus and performance
-  information of the algorithms. Simply the parsed ARFF
-  file. See the next member slots for a more convenient
-  format of the same information.  (Yeah that means we
-  redundantly store the same data twice.}
-  \item{algo.runstatus [\code{data.frame(n, k +
-  2)}]}{Runstatus of algorithm runs.  The first 2 columns
-  are \dQuote{instance_id} and \dQuote{repetition}, the
-  remaining are the status factors.  The step columns are
-  in the same order as the feature steps in the description
-  object.  The factor levels are always: ok, presolved,
-  crash, timeout, memout, other.  No entry can be
-  \code{NA}.  The data.frame is sorted by
-  \dQuote{instance_id}, then \dQuote{repetition}.}
-  \item{algo.perf [\code{data.frame(n, k + 2)}]}{Measured
-  performance of algorithms on instances.  The first 2
-  columns are \dQuote{instance_id} and \dQuote{repetition}.
-  The remaining ones are the measured performance values.
-  The feature columns are in the same order as
-  \dQuote{algorithms_deterministic},
-  \dQuote{algorithms_stochastic} in the description object.
-  code{NA} means the performance value is not available,
-  possibly because the algorithm run was aborted.  The
-  data.frame is sorted by \dQuote{instance_id}, then
-  \dQuote{repetition}.} \item{cv.splits[\code{data.frame(m,
-  3)}]}{Definition of cross-validation splits for each
-  replication of a repeated CV with folds.  Has columns
-  \dQuote{instance_id}, \dQuote{repetition} and
-  \dQuote{fold}.  The instances with fold = i for a
-  replication r constitute the i-th test set for the r-th
-  CV.  The training set is the \dQuote{instance_id} column
-  with repetition = r, in the same order, when the test set
-  is removed.  The data.frame is sorted by
-  \dQuote{repetition}, then \dQuote{fold}, then
-  \dQuote{instance_id}.  If no CV file is available at all,
-  \code{NULL} is stored, and a warning is issued, although
-  this should not happen.} }
+Let n be the number of (replicated) instances, m the number
+of unique instances, p the number of features, s the number
+of feature steps and k the number of algorithms. \describe{
+\item{desc [\code{\link{ASTaskDesc}}]}{Description object,
+containing further info.} \item{feature.runstatus
+[\code{data.frame(n, s + 2)}]}{Runstatus of feature
+computation steps.  The first 2 columns are
+\dQuote{instance_id} and \dQuote{repetition}, the remaining
+are the status factors.  The step columns are in the same
+order as the feature steps in the description object.  The
+factor levels are always: ok, presolved, crash, timeout,
+memout, other.  No entry can be \code{NA}.  The data.frame
+is sorted by \dQuote{instance_id}, then
+\dQuote{repetition}.} \item{feature.costs
+[\code{data.frame(n, s + 2)}]}{Costs of feature computation
+steps.  The first 2 columns are \dQuote{instance_id} and
+\dQuote{repetition}, the remaining are numeric costs of the
+feature steps.  The step columns are in the same order as
+the feature steps in the description object.  code{NA}
+means the cost is not available, possibly because the
+feature computation was aborted.  The data.frame is sorted
+by \dQuote{instance_id}, then \dQuote{repetition}.  If no
+cost file is available at all, \code{NULL} is stored.}
+\item{feature.values [\code{data.frame(n, p +
+2)}]}{Measured feature values of instances.  The first 2
+columns are \dQuote{instance_id} and \dQuote{repetition}.
+The remaining ones are the measured instance features.  The
+feature columns are in the same order as
+\dQuote{features_deterministic},
+\dQuote{features_stochastic} in the description object.
+code{NA} means the feature is not available, possibly
+because the feature computation was aborted.  The
+data.frame is sorted by \dQuote{instance_id}, then
+\dQuote{repetition}.} \item{algo.runs
+[\code{data.frame}]}{Runstatus and performance information
+of the algorithms. Simply the parsed ARFF file. See the
+next member slots for a more convenient format of the same
+information.  (Yeah that means we redundantly store the
+same data twice.} \item{algo.runstatus [\code{data.frame(n,
+k + 2)}]}{Runstatus of algorithm runs.  The first 2 columns
+are \dQuote{instance_id} and \dQuote{repetition}, the
+remaining are the status factors.  The step columns are in
+the same order as the feature steps in the description
+object.  The factor levels are always: ok, presolved,
+crash, timeout, memout, other.  No entry can be \code{NA}.
+The data.frame is sorted by \dQuote{instance_id}, then
+\dQuote{repetition}.} \item{algo.perf [\code{data.frame(n,
+k + 2)}]}{Measured performance of algorithms on instances.
+The first 2 columns are \dQuote{instance_id} and
+\dQuote{repetition}. The remaining ones are the measured
+performance values.  The feature columns are in the same
+order as \dQuote{algorithms_deterministic},
+\dQuote{algorithms_stochastic} in the description object.
+code{NA} means the performance value is not available,
+possibly because the algorithm run was aborted.  The
+data.frame is sorted by \dQuote{instance_id}, then
+\dQuote{repetition}.} \item{cv.splits[\code{data.frame(m,
+3)}]}{Definition of cross-validation splits for each
+replication of a repeated CV with folds.  Has columns
+\dQuote{instance_id}, \dQuote{repetition} and
+\dQuote{fold}.  The instances with fold = i for a
+replication r constitute the i-th test set for the r-th CV.
+The training set is the \dQuote{instance_id} column with
+repetition = r, in the same order, when the test set is
+removed.  The data.frame is sorted by \dQuote{repetition},
+then \dQuote{fold}, then \dQuote{instance_id}.  If no CV
+file is available at all, \code{NULL} is stored, and a
+warning is issued, although this should not happen.} }
 }
 

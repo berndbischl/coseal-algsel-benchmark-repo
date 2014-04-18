@@ -4,40 +4,43 @@
 #' The following formula is used for imputation
 #' \code{range.span = max - min}
 #' \code{base +- range.scalar * range.span + N(0, sd = jitter * range.span)}.
-#' jitter is a  
+#' jitter is a
 #'
 #' @param astask [\code{\link{ASTask}}]\cr
 #'   Algorithm selection task.
 #' @param measure [\code{character(1)}]\cr
 #'   Measure to impute.
 #'   Default is first measure in task.
-#' @param log [\code{(1)}]\cr
-#'   Should the performance values be log10-transformed in the plot?
-#'   Default is FALSE.
-#' @param na.impute [\code{logical(1)}]\cr
-#'   Should the values of algorithm runs with non-ok runstatus (missing performance 
-#'   values) be imputed? If yes, imputation is done via max + scalar * (max - min) for
-#'   minimization problems and via min - scalar * (max - min) for maximization problems.
-#'   Default is TRUE.
-#' @return ggplot2 plot object.
+#' @param base [\code{numeric(1)}]\cr
+#'   See formula.
+#'   Default is maximum of performance values if measure should be minimized, or minimum for
+#'   maximization case.
+#' @param range.scalar [\code{numeric(1)}]\cr
+#'   See formula.
+#'   Default is 0.3.
+#' @param jitter [\code{numeric(1)}]\cr
+#'   See formula.
+#'   Default is 0.
+#' @param structure [\character(1)}]\cr
+#'   What structure should the result have?
+#'   Possible values are \dQuote{algo.runs} and \dQuote{algo.perf}.
+#'   They correspond to the structures in \code{\link{ASTask}}.
+#'   Default is \dQuote{algo.perf}.
+#' @return See \code{struture}.
 #' @export
-#' @param perf [\code{matrix}]\cr
-#' @param perf [\code{matrix}]\cr
-#'   Algorithm performance matrix, see \code{algo.perf} in \code{\link{ASTask}}.
-#' @return [\code{matrix}]. Same format as \code{perf}.
 imputeAlgoPerf = function(astask, measure, base, range.scalar = 0.3, jitter = 0, structure = "algo.perf") {
 
   checkArg(astask, "ASTask")
   desc = astask$desc
   ar = astask$algo.runs
-  
+
   if (missing(measure))
     measure = desc$performance_measures[1]
   else
     checkArg(measure, choices = desc$performance_measures)
   maxi = desc$maximize[measure]
   perf = ar[, measure]
-  
+
   if (missing(base))
     base = ifelse(maxi, min(perf, na.rm = TRUE), max(perf, na.rm = TRUE))
   else

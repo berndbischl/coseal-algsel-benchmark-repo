@@ -2,16 +2,16 @@
 \alias{getInstanceNames}
 \title{Returns instance names of task.}
 \usage{
-  getInstanceNames(astask)
+getInstanceNames(astask)
 }
 \arguments{
   \item{astask}{[\code{\link{ASTask}}]\cr Algorithm
   selection task.}
 }
 \value{
-  [\code{character}].
+[\code{character}].
 }
 \description{
-  Returns instance names of task.
+Returns instance names of task.
 }
 
