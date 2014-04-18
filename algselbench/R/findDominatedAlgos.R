@@ -46,7 +46,7 @@ findDominatedAlgos = function(astask, measure, reduce = FALSE, type = "logical")
 
   if (type == "character") {
     res2 = res
-    res2[!res] = "-"
+    res2[] = "-"
     res2[res] = "better"
     res2[t(res)] = "worse"
     return(res2)
