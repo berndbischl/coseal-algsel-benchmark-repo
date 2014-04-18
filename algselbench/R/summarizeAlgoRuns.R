@@ -29,7 +29,12 @@ summarizeAlgos = function(data, measure) {
   foo = function(x, aggr) {
     aggr(na.omit(x[[measure]]))
   }
-  result = sapply(splitted.data, function(z) foo(z, min))
+  result = sapply(splitted.data, nrow)
+  result = cbind(result, sapply(splitted.data, 
+    function(z) sum( is.na(z[[measure]]) ))) 
+  result = cbind(result, sapply(splitted.data, 
+    function(z) solved(z$runstatus)))
+  result = cbind(result, sapply(splitted.data, function(z) foo(z, min)))
   result = cbind(result, sapply(splitted.data, 
     function(z) foo(z, function(a) quantile(a, 0.25))))
   result = cbind(result, sapply(splitted.data, function(z) foo(z, median)))
@@ -39,12 +44,7 @@ summarizeAlgos = function(data, measure) {
   result = cbind(result, sapply(splitted.data, function(z) foo(z, max)))
   result = cbind(result, sapply(splitted.data, function(z) foo(z, sd))) 
   result = cbind(result, sapply(splitted.data, function(z) foo(z, varCoeff))) 
-  result = cbind(result, sapply(splitted.data, 
-    function(z) sum( is.na(z[[measure]]) ))) 
-  result = cbind(result, sapply(splitted.data, nrow))
-  result = cbind(result, sapply(splitted.data, 
-    function(z) solved(z$runstatus)))
-  colnames(result) = c("Min.", "1st Qu.", "Median", "Mean", "3rd Qu.", "Max.",
-    "Std. Dev.", "CoV.", "NA's", "Obs.", "Run OK (%)")
+  colnames(result) = c("obs", "NAs", "run_ok", "min", "1st_qu", "median", 
+    "mean", "3rd_qu", "max", "std_dev", "co_var")
   return(as.data.frame(result))
 }

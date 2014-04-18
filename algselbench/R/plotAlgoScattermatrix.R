@@ -8,14 +8,9 @@
 #' @param trafo [\code{function(1)}]\cr
 #'   Function applied to the data as preprocessing to the generation of the plot.
 #'   Default is identity.
-#' @param na.impute [\code{logical(1)}]\cr
-#'   Should the values of algorithm runs with non-ok runstatus (missing performance 
-#'   values) be imputed? If yes, imputation is done via max + scalar * (max - min) for
-#'   minimization problems and via min - scalar * (max - min) for maximization problems.
-#'   Default is TRUE.
 #' @return  plot object.
 #' @export
-plotAlgoScattermatrix = function(astask, measure, trafo = identity, na.impute = TRUE){
+plotAlgoScattermatrix = function(astask, measure, trafo = identity) {
   checkArg(astask, "ASTask")
   if (missing(measure))
     measure = astask$desc$performance_measures[1]
@@ -26,14 +21,7 @@ plotAlgoScattermatrix = function(astask, measure, trafo = identity, na.impute = 
   checkArg(trafo, "function", len = 1L)
   checkArg(na.impute, "logical", len = 1L, na.ok = FALSE)
   
-  if (na.impute)
-    astask = imputeCrashedRuns(astask)
-  algo.perf = astask$algo.runs
-  algos = unique(algo.perf$algorithm)
-  perf = algo.perf[order(algo.perf[, "instance_id"], algo.perf[, "repetition"],
-    algo.perf[, "algorithm"]), measure]
-  data = matrix(perf, ncol = length(algos), byrow = TRUE)
-  colnames(data) = sort(algos)
+  data = imputeAlgoPerf(astask, measure)
   data = apply(data, 2, trafo)
   data = apply(data, 2, function(x) ifelse(is.finite(x), x, NA))
   pairs(data, lower.panel = panel.cor, 

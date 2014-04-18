@@ -8,26 +8,23 @@
 
 <h2> Overview of performance values </h2>
 
-The following measures were taken from the performance values of each algorithm:
+The following statistics were calculated from the performance values of each algorithm:
 <ul>
 
-  <li> <a>Min: Minimum</a>
-  <li> <a>1st Qu.: 1st Quartile = lower Quartile = 25%-Quantile</a>
-  <li> <a>Median: Median = 50%-Quantile</a>
-  <li> <a>Mean: Arithmetic Mean</a>
-  <li> <a>3rd Qu.: 3rd Quartile = upper Quartile = 75%-Quantile</a>
-  <li> <a>Max.: Maximum</a>
-  <li> <a>Std. Dev.: Standard Deviation</a>
-  <li> <a>CoV.: Coefficient of Variation = Standard Deviation / Arithmetic Mean</a>
-  <li> <a>NA's: Number of NAs (missing values) within the feature set.</a>
-  <li> <a>Obs.: Number of Observations within the feature set.</a>
-  <li> <a>Run OK (%): Percentage of feature computations without a crash.</a>
+  <li> <a>obs (number of observations within performance values)</a>
+  <li> <a>NAs (number of NAs, i.e., missing values, within performance values)</a>
+  <li> <a>run_ok (percentage of performance values without a crash)</a>
+  <li> <a>min (minimum), mean (arithmetic mean), max (maximum), std_dev (standard deviation)</a>
+  <li> <a>1st_qu (1st quartile = lower quartile = 25%-quantile)</a>
+  <li> <a>median (median = 50%-quantile)</a>
+  <li> <a>3rd_qu (3rd quartile = upper quartile = 75%-quantile)</a>
+  <li> <a>co_var (coefficient of variation = standard deviation / arithmetic mean)</a>
 
 </ul>
 
 <!--begin.rcode, results = "asis"
   res = summarizeAlgoRuns(astask)
-  print(xtable(res, digits = c(0, rep(3, 8), 0, 0, 3)), "html")
+  print(xtable(res, display = c("s", "d", "d", rep("g", 9))), "html")
 end.rcode-->
 
 <br>
@@ -44,7 +41,8 @@ end.rcode-->
 <br>
 <h2> Dominated Algorithms </h2>
 
-Here, you'll find an overview of dominating/dominated algorithms: <br>
+Here, you'll find an overview of dominating/dominated algorithms. <br>
+An algorithm (A) is considered to be superior to an other algorithm (B), if it has at least an equal performance on all instances (compared to B) <u>and</u> if it is better on at least one of them. A missing value is automatically a worse performance. However, instances which could not be solved by either one of the algorithms, were not considered for the dominance relation.<br>
 <br>
 
 <!--begin.rcode, results = "asis"
@@ -58,22 +56,7 @@ end.rcode-->
 
 <br>
 <br>
-<h2> Useless Algorithms </h2>
 
-Here, you'll find all the algorithms that always resulted in the same performance (and eventually NA's):<br>
-<br>
-
-<!--begin.rcode, results = "asis"
-  res = findUselessInstances(astask)$algo.runs
-  if(nrow(res) >= 1) {
-    print(xtable(res), "html")
-  } else {
-    cat("There were no entirely useless algorithms.")
-  }
-end.rcode-->
-
-<br>
-<br>
 <b><FONT COLOR = "#FF0000"> Important Note:</b><br>
 Depending on the configuration, missing values among the algorithms' performance values
 were imputed prior to the creation of the following plots (except for the correlation 
