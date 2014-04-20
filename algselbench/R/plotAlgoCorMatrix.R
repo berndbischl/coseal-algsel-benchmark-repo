@@ -35,21 +35,15 @@
 plotAlgoCorMatrix = function(astask, measure, order.method = "hclust", hclust.method = "ward",
   cor.method = "spearman") {
 
-  requirePackages("corrplot", why = "plotAlgoCorMatrix", quietly = TRUE)
-  checkArg(astask, "ASTask")
-  if (missing(measure))
-    measure = astask$desc$performance_measures[1]
-  else
-    checkArg(measure, choices = astask$desc$performance_measures)
   checkArg(order.method, choices = c("hclust", "FPC", "AOE", "original", "alphabet"))
   checkArg(hclust.method, choices =
     c("ward", "single", "complete", "average", "mcquitty", "median", "centroid"))
   checkArg(cor.method, choices = c("pearson", "kendall", "spearman"))
 
-  algo.perf = imputeAlgoPerf(astask, measure, )
-  algo.perf = aggregateStochasticAlgoPerf(algo.perf, with.instance.id = FALSE)
+  z = getEDAAlgoPerf(astask, measure, jitter = FALSE, check.log = FALSE, 
+    format = "wide", with.instance.id = FALSE)
 
-  cor.matrix = cor(algo.perf, method = cor.method)
+  cor.matrix = cor(z$data, method = cor.method)
   ind = corrMatOrder(cor.matrix, order = order.method, hclust.method = hclust.method)
   corrplot(cor.matrix[ind, ind], method = "shade")
 }

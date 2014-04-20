@@ -1,7 +1,8 @@
 #' @rdname plotAlgoPerfADoc
 #' @export
 plotAlgoPerfBoxplots = function(astask, measure, log = FALSE) {
-  z = getEDAAlgoPerf(astask, measure, jitter = TRUE, check.log = log, format = "long")
+  z = getEDAAlgoPerf(astask, measure, jitter = TRUE, check.log = log,
+    format = "long", with.instance.id = FALSE)
   p = ggplot(z$data, aes_string(x = "algorithm", y = z$measure, col = "algorithm")) +
     geom_boxplot() +
     theme(

@@ -1,5 +1,5 @@
-context("plotAlgoScattermatrix")
+context("plotAlgoPerfScatterMatrix")
 
-test_that("plotAlgoScattermatrix", {
-  p1 = plotAlgoScattermatrix(testtask1)
+test_that("plotAlgoPerfScatterMatrix", {
+  p1 = plotAlgoPerfScatterMatrix(testtask1)
 })

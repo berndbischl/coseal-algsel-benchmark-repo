@@ -4,12 +4,13 @@
 #  - returns in wide or long format
 
 
-getEDAAlgoPerf = function(astask, measure, jitter, check.log, format) {
+getEDAAlgoPerf = function(astask, measure, jitter, check.log, format, with.instance.id) {
   checkArg(astask, "ASTask")
   desc = astask$desc
   measure = checkMeasure(measure, desc)
   checkArg(jitter, "logical", len = 1L, na.ok = FALSE)
   checkArg(format, choices = c("wide", "long"))
+  checkArg(with.instance.id, "logical", len = 1L, na.ok = FALSE)
 
   jitter2 = ifelse(jitter, 0.05, 0)
   # for runtime tasks set to cutoff, otherwise use default, which is min or max value of perfs
@@ -29,6 +30,8 @@ getEDAAlgoPerf = function(astask, measure, jitter, check.log, format) {
     algo.runs
   # remove fake repetition col
   data$repetition = NULL
+  if (!with.instance.id)
+    data = dropNamed(data, "instance_id")
   list(data = data, measure = measure)
 }
 
