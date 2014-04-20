@@ -1,9 +1,9 @@
-#' EDA plots for performance values of algorithms across all instances.
+#' @title EDA plots for performance values of algorithms across all instances.
 #'
 #' @description
-#' If NAs occur, they are imputed (before aggregation) either by
+#' If NAs occur, they are imputed (before aggregation) by
 #' \code{base + 0.3 range + jitter} .
-#' \code{base} is ithe cutoff value for runtimes tasks with cutoff or
+#' \code{base} is is the cutoff value for runtimes tasks with cutoff or
 #' the worst performance for all others.
 #'
 #' Stochastic replications are aggregated by the mean value.
@@ -17,5 +17,7 @@
 #'   Should the performance values be log10-transformed in the plot?
 #'   Default is FALSE.
 #' @return ggplot2 plot object.
+#' @name plotAlgoPerf
+#' @rdname plotAlgoPerf
 NULL
 

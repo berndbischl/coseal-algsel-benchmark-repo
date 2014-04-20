@@ -1,7 +1,11 @@
-#' Plots the correlation matrix of the algorithms.
+#' @title Plots the correlation matrix of the algorithms.
 #'
-#' If NAs occur, they are imputed (before aggregation) either by 10 * cutoff
-#' (for runtimes tasks with cutoff) or 10 * <worst performance> for all others.
+#' @description
+#' If NAs occur, they are imputed (before aggregation) by
+#' \code{base + 0.3 * range}.
+#' \code{base} is the cutoff value for runtimes tasks with cutoff or
+#' the worst performance for all others.
+#'
 #' Stochastic replications are aggregated by the mean value.
 #'
 #' @param astask [\code{\link{ASTask}}]\cr
@@ -40,7 +44,7 @@ plotAlgoCorMatrix = function(astask, measure, order.method = "hclust", hclust.me
     c("ward", "single", "complete", "average", "mcquitty", "median", "centroid"))
   checkArg(cor.method, choices = c("pearson", "kendall", "spearman"))
 
-  z = getEDAAlgoPerf(astask, measure, jitter = FALSE, check.log = FALSE, 
+  z = getEDAAlgoPerf(astask, measure, jitter = FALSE, check.log = FALSE,
     format = "wide", with.instance.id = FALSE)
 
   cor.matrix = cor(z$data, method = cor.method)

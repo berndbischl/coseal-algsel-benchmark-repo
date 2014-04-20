@@ -2,7 +2,8 @@
 \alias{plotAlgoCorMatrix}
 \title{Plots the correlation matrix of the algorithms.}
 \usage{
-plotAlgoCorMatrix(astask, measure, order.method, hclust.method, cor.method)
+plotAlgoCorMatrix(astask, measure, order.method = "hclust",
+  hclust.method = "ward", cor.method = "spearman")
 }
 \arguments{
   \item{astask}{[\code{\link{ASTask}}]\cr Algorithm
@@ -13,29 +14,38 @@ plotAlgoCorMatrix(astask, measure, order.method, hclust.method, cor.method)
 
   \item{order.method}{[\code{character(1)}]\cr Method for
   ordering the algorithms within the plot.  Possible values
-  are \code{hclust} (for hierarchical clustering order),
-  \code{FPC} (first principal component order), \code{AOE}
-  (angular order of eigenvectors), \code{original}
-  (original order) and \code{alphabet} (alphabetical
-  order). Default is \code{hclust}.}
+  are \dQuote{hclust} (for hierarchical clustering order),
+  \dQuote{FPC} (first principal component order),
+  \dQuote{AOE} (angular order of eigenvectors),
+  \dQuote{original} (original order) and \dQuote{alphabet}
+  (alphabetical order).  See
+  \code{\link[corrplot]{corMatOrder}}.  Default is
+  \dQuote{hclust}.}
 
   \item{hclust.method}{[\code{character(1)}]\cr Method for
   hierarchical clustering. Only useful, when
-  \code{order.method} is set to \code{hclust}. Possible
-  values are \code{ward}, \code{single}, \code{complete},
-  \code{average}, \code{mcquitty}, \code{median} and
-  \code{centroid}.  Default is \code{ward}.}
+  \code{order.method} is set to \dQuote{hclust}, otherwise
+  ignored.  Possible values are: \dQuote{ward},
+  \dQuote{single}, \dQuote{complete}, \dQuote{average},
+  \dQuote{mcquitty}, \dQuote{median} and \dQuote{centroid}.
+  See \code{\link[corrplot]{corMatOrder}}.  Default is
+  \dQuote{ward}.}
 
   \item{cor.method}{[\code{character(1)}]\cr Method to be
   used for calculating the correlation between the
-  algorithms.  Possible values are \code{pearson},
-  \code{kendall} and \code{spearman}.  The default is
-  \code{spearman}.}
+  algorithms.  Possible values are \dQuote{pearson},
+  \dQuote{kendall} and \dQuote{spearman}.  See
+  \code{\link{cor}}.  Default is \dQuote{spearman}.}
 }
 \value{
 corrplot
 }
 \description{
-Plots the correlation matrix of the algorithms.
+If NAs occur, they are imputed (before aggregation) by
+\code{base + 0.3 * range}. \code{base} is the cutoff value
+for runtimes tasks with cutoff or the worst performance for
+all others.
+
+Stochastic replications are aggregated by the mean value.
 }
 

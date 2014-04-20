@@ -31,8 +31,8 @@
 #'   code{NA} means the feature is not available, possibly because the feature computation was aborted.
 #'   The data.frame is sorted by \dQuote{instance_id}, then \dQuote{repetition}.}
 #' \item{algo.runs [\code{data.frame}]}{Runstatus and performance information of the
-#'   algorithms. Simply the parsed ARFF file. 
-#'   See \code{\link{convertAlgoRunsToPerfMatrix}} for a more convenient format.
+#'   algorithms. Simply the parsed ARFF file.
+#'   See \code{\link{convertAlgoRunsToPerfMatrix}} for a more convenient format.}
 #' \item{algo.runstatus [\code{data.frame(n, k + 2)}]}{Runstatus of algorithm runs.
 #'   The first 2 columns are \dQuote{instance_id} and \dQuote{repetition}, the remaining are the status factors.
 #'   The step columns are in the same order as the feature steps in the description object.

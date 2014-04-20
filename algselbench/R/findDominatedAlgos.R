@@ -1,11 +1,12 @@
-#FIXME: think about hiow this should we dwefined if we have stochastic repls
-# FIXME: probaly implement what is documented
-
-#' Creates a table that shows the dominance of one algorithm over another one.
+#' @title Creates a table that shows the dominance of one algorithm over another one.
 #'
-#' Stochastic replications are currently aggregated by the mean value.
-#' If NAs occur, they are imputed before aggregation either by 10 * cutoff
-#' (for runtimes tasks with cutoff) or 10 * <worst performance> for all others.
+#' @description
+#' If NAs occur, they are imputed (before aggregation) by
+#' \code{base + 0.3 * range}.
+#' \code{base} is the cutoff value for runtimes tasks with cutoff or
+#' the worst performance for all others.
+#'
+#' Stochastic replications are aggregated by the mean value.
 #'
 #' @param astask [\code{\link{ASTask}}]\cr
 #'   Algorithm selection task.
@@ -24,19 +25,15 @@
 #' @export
 findDominatedAlgos = function(astask, measure, reduce = FALSE, type = "logical") {
   
-  checkArg(astask, "ASTask")
-  
-  if (missing(measure))
-    measure = astask$desc$performance_measures[1]
-  else
-    checkArg(measure, "character", len = 1L, na.ok = FALSE)
-  perf = astask$algo.perf[[measure]]
-  stopifnot(max(perf$repetition) == 1L)
-  #FIXME:
-  perf = aggregateStochasticAlgoPerf(perf, with.instance.id = FALSE)
+  z = getEDAAlgoPerf(astask, measure, jitter = FALSE, check.log = FALSE,
+    format = "wide", with.instance.id = FALSE)
+
   # convert maximization into minimization
-  if (astask$desc$maximize[measure])
-    perf = -1 * perf
+  perf = if (astask$desc$maximize[z$measure])
+   -1 * z$data
+  else
+    z$data
+ 
   ns = colnames(perf)
   k = length(ns)
   res = matrix(FALSE, k, k)

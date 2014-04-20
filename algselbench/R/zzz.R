@@ -1,4 +1,6 @@
+#' @import BatchExperiments
 #' @import BBmisc
+#' @import corrplot
 #' @import ggplot2
 #' @import llama
 #' @import mlr

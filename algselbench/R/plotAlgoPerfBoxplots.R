@@ -1,4 +1,4 @@
-#' @rdname plotAlgoPerfADoc
+#' @rdname plotAlgoPerf
 #' @export
 plotAlgoPerfBoxplots = function(astask, measure, log = FALSE) {
   z = getEDAAlgoPerf(astask, measure, jitter = TRUE, check.log = log,
