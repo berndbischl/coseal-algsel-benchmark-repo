@@ -1,50 +1,34 @@
-#' Creates a table that gives an overview of the performance values 
-#' per algorithm across all instances.
+#' Creates summary data.frame for algorithm performance values across all instances.
 #'
 #' @param astask [\code{\link{ASTask}}]\cr
 #'   Algorithm selection task.
 #' @param measure [\code{character(1)}]\cr
-#'   Measure that's been used for analyzing the algorithm performances.
+#'   Selected measure.
 #'   Default is first measure in task.
-#' @return [\code{data.frame}]. 
-#'  Data frame, which gives an overview of the performance values.
+#' @return [\code{data.frame}].
 #' @export
 summarizeAlgoRuns = function(astask, measure) {
   checkArg(astask, "ASTask")
-  data = astask$algo.runs
-  if (missing(measure))
-    measure = astask$desc$performance_measures[1]
-  else
-    checkArg(measure, "character", len = 1L, na.ok = FALSE)
-  return(summarizeAlgos(data, measure))
+  measure = checkMeasure(measure, astask$desc)
+  ap = convertAlgoTunsToWideFormat(astask$desc, astask$algo.runs, measure)
+  ap = dropNamed(ap, c("repetition", "instance_id"))
+
+  funs = list(
+    obs = function(x) length(x),
+    nas = function(x) sum(is.na(x)),
+    run_ok = function(x) 100 * mean(!is.na(x)),
+    min = function(x) min(x, na.rm = TRUE),
+    qu_1st = function(x) quantile(x, 0.25, na.rm = TRUE),
+    med = function(x) median(x, na.rm = TRUE),
+    mean = function(x) mean(x, na.rm = TRUE),
+    qu_3rd  = function(x) quantile(x, 0.75, na.rm = TRUE),
+    max = function(x) max(x, na.rm = TRUE),
+    sd = function(x) sd(x, na.rm = TRUE),
+    coeff_var = function(x) sd(x, na.rm = TRUE) / mean(x, na.rm = TRUE)
+  )
+  # put vector in, get vector of stats out
+  getStatistics = function(x) sapply(funs, function(f) f(x))
+  s = apply(ap, 2, getStatistics)
+  setColNames(as.data.frame(t(s)), names(funs))
 }
 
-
-## Helper function that actually creates the overview.
-summarizeAlgos = function(data, measure) {
-  splitted.data = split(data, data$algorithm)
-  splitted.data = c(splitted.data, allAlgorithms = list(data))
-  varCoeff = function(x) sd(x) / mean(x)
-  solved = function(x) 100 * mean(as.character(x) == "ok")
-  foo = function(x, aggr) {
-    aggr(na.omit(x[[measure]]))
-  }
-  result = sapply(splitted.data, nrow)
-  result = cbind(result, sapply(splitted.data, 
-    function(z) sum( is.na(z[[measure]]) ))) 
-  result = cbind(result, sapply(splitted.data, 
-    function(z) solved(z$runstatus)))
-  result = cbind(result, sapply(splitted.data, function(z) foo(z, min)))
-  result = cbind(result, sapply(splitted.data, 
-    function(z) foo(z, function(a) quantile(a, 0.25))))
-  result = cbind(result, sapply(splitted.data, function(z) foo(z, median)))
-  result = cbind(result, sapply(splitted.data, function(z) foo(z, mean)))
-  result = cbind(result, sapply(splitted.data, 
-    function(z) foo(z, function(a) quantile(a, 0.75))))
-  result = cbind(result, sapply(splitted.data, function(z) foo(z, max)))
-  result = cbind(result, sapply(splitted.data, function(z) foo(z, sd))) 
-  result = cbind(result, sapply(splitted.data, function(z) foo(z, varCoeff))) 
-  colnames(result) = c("obs", "NAs", "run_ok", "min", "1st_qu", "median", 
-    "mean", "3rd_qu", "max", "std_dev", "co_var")
-  return(as.data.frame(result))
-}
