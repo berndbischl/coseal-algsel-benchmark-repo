@@ -5,6 +5,9 @@
 #' \code{base +- range.scalar * range.span + N(0, sd = jitter * range.span)}\cr
 #' With \code{range.span = max - min}.
 #'
+#' Returns an object like \code{algo.runs} of \code{astask}, but drops
+#' the runstatus and all other measures.
+#'
 #' @param astask [\code{\link{ASTask}}]\cr
 #'   Algorithm selection task.
 #' @param measure [\code{character(1)}]\cr
@@ -12,54 +15,47 @@
 #'   Default is first measure in task.
 #' @param base [\code{numeric(1)}]\cr
 #'   See formula.
-#'   Default is maximum of performance values if measure should be minimized, or minimum for
-#'   maximization case.
+#'   Default is \code{NULL}, which means maximum of performance values if measure should be minimized,
+#'   or minimum for maximization case.
 #' @param range.scalar [\code{numeric(1)}]\cr
 #'   See formula.
 #'   Default is 0.3.
 #' @param jitter [\code{numeric(1)}]\cr
 #'   See formula.
 #'   Default is 0.
-#' @param structure [\code{character(1)}]\cr
-#'   What structure should the result have?
-#'   Possible values are \dQuote{algo.runs} and \dQuote{algo.perf}.
-#'   They correspond to the structures in \code{\link{ASTask}}.
-#'   Default is \dQuote{algo.perf}.
-#' @return See \code{struture}.
+#' @return [\code{data.frame}].
 #' @export
-imputeAlgoPerf = function(astask, measure, base, range.scalar = 0.3, jitter = 0, structure = "algo.perf") {
+imputeAlgoRuns = function(astask, measure, base = NULL, range.scalar = 0.3, jitter = 0) {
 
   checkArg(astask, "ASTask")
   desc = astask$desc
+  measure = checkMeasure(measure, astask$desc)
   ar = astask$algo.runs
-
-  if (missing(measure))
-    measure = desc$performance_measures[1]
-  else
-    checkArg(measure, choices = desc$performance_measures)
   maxi = desc$maximize[measure]
+  # reduce to relevant cols
+  ar = ar[, c("instance_id", "repetition", "algorithm", measure)]
   perf = ar[, measure]
 
-  if (missing(base))
+  # base is either min or max perf
+  if (is.null(base))
     base = ifelse(maxi, min(perf, na.rm = TRUE), max(perf, na.rm = TRUE))
   else
     checkArg(base, "numeric", len = 1L, na.ok = FALSE)
   checkArg(range.scalar, "numeric", len = 1L, na.ok = FALSE, lower = 0)
   checkArg(jitter, "numeric", len = 1L, na.ok = FALSE, lower = 0)
-  checkArg(structure, choices = c("algo.runs", "algo.perf"))
 
   isna = is.na(perf)
   n.na = sum(isna)
   rv = rangeVal(perf, na.rm = TRUE)
   mult = ifelse(maxi, -1, 1)
   newvals = base + mult * range.scalar * rv
+
+  # maybe add jitter
   if (jitter) {
     noise = rnorm(n.na, sd = jitter * rv)
     newvals = newvals + noise
   }
   ar[isna, measure] = newvals
-  if (structure == "algo.runs")
-    return(ar)
-  else
-    convertAlgoTunsToAlgoPerf(desc, ar, measure)
+
+  return(ar)
 }

@@ -1,32 +1,35 @@
-# mainly for internal use
-#  - selects algo.perf matrix
+# helper to retrieve algo data for plotting
 #  - imputes it (in standard way)
 #  - aggregates replications
+#  - returns in wide or long format
 
 
-getEDADataCheck = function(astask, measure) {
+getEDAAlgoPerf = function(astask, measure, jitter, check.log, format) {
   checkArg(astask, "ASTask")
-  if (missing(measure))
-    measure = astask$desc$performance_measures[1]
+  desc = astask$desc
+  measure = checkMeasure(measure, desc)
+  checkArg(jitter, "logical", len = 1L, na.ok = FALSE)
+  checkArg(format, choices = c("wide", "long"))
+
+  jitter2 = ifelse(jitter, 0.05, 0)
+  # for runtime tasks set to cutoff, otherwise use default, which is min or max value of perfs
+  base = if (desc$performance_type[[measure]] == "runtime" && !is.na(desc$algorithm_cutoff_time))
+    desc$algorithm_cutoff_time
   else
-    checkArg(measure, choices = astask$desc$performance_measures)
-  return(measure)
-}
-
-
-getEDAAlgoPerf = function(astask, measure) {
-  measure = getEDAAlgoRuns(astask, measure)
-  ap = imputeAlgoPerf(astask, measure = measure, structure = "algo.perf")
-  ap = aggregateStochasticAlgoPerf(algo.perf = ap, with.instance.id = FALSE)
-  #FIXME: check log
+    NULL
+  algo.runs = imputeAlgoRuns(astask, measure = measure,
+    base = base, range.scalar = 0.3, jitter = jitter2)
+  # include fake repetition col, so we can convert to wide
+  algo.runs = aggregateStochasticAlgoRuns(algo.runs, measure = measure, with.repetition = TRUE)
+  
+  checkLogarithm(check.log, algo.runs, measure)
+  data = if (format == "wide")
+    convertAlgoTunsToWideFormat(algo.runs, desc = desc)
+  else
+    algo.runs
+  # remove fake repetition col
+  data$repetition = NULL
   list(data = data, measure = measure)
 }
 
-getEDAAlgoRuns = function(astask, measure) {
-  measure = getEDAAlgoRuns(astask, measure)
-  ar = imputeAlgoPerf(astask, measure = measure, structure = "algo.runs")
-  algo.perf = aggregateStochasticAlgoPerf(algo.perf, with.instance.id = FALSE)
-  checkLogarithm(data[, measure], log)
-  list(data = data, measure = measure)
-}
 
