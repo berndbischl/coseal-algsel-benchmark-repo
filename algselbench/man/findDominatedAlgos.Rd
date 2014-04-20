@@ -17,10 +17,11 @@ findDominatedAlgos(astask, measure, reduce = FALSE, type = "logical")
   dominated by or dominate another algorithm?  Default is
   \code{FALSE}.}
 
-  \item{type}{{\code{character}] \dQuote{logical}: Logical
-  matrix, TRUE means row algorithm dominates column
-  algorithm.\cr \dQuote{character}: Same information but
-  more human-readable.  States how the row relates to the
+  \item{type}{[\code{character(1)}]\cr Data type of the
+  result object.\cr \dQuote{logical}: Logical matrix, TRUE
+  means row algorithm dominates column algorithm.\cr
+  \dQuote{character}: Same information but more
+  human-readable. States how the row relates to the
   column.}
 }
 \value{

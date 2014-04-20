@@ -1,5 +1,5 @@
 #FIXME: think about hiow this should we dwefined if we have stochastic repls
-# FIXME: probaly implement what is documented 
+# FIXME: probaly implement what is documented
 
 #' Creates a table that shows the dominance of one algorithm over another one.
 #'
@@ -16,10 +16,10 @@
 #'   Should the resulting matrix be reduced to algorithms that a are either dominated by or dominate
 #'   another algorithm?
 #'   Default is \code{FALSE}.
-#' @param type {\code{character}]
+#' @param type [\code{character(1)}]\cr
+#'   Data type of the result object.\cr
 #'   \dQuote{logical}: Logical matrix, TRUE means row algorithm dominates column algorithm.\cr
-#'   \dQuote{character}: Same information but more human-readable.
-#'     States how the row relates to the column.
+#'   \dQuote{character}: Same information but more human-readable. States how the row relates to the column.
 #' @return [\code{matrix}]. See above.
 #' @export
 findDominatedAlgos = function(astask, measure, reduce = FALSE, type = "logical") {

@@ -2,8 +2,8 @@
 aggregateStochasticAlgoPerf = function(algo.perf, with.instance.id = TRUE) {
   # only do this if repeated measurements to save time
   if (max(algo.perf$repetition) > 1L) {
-    algo.perf = ddply(algo.perf, c("instance_id", "algorithm"), function(d) {
-      colMeans(d[, measure, drop = FALSE])
+    algo.perf = ddply(algo.perf, "instance_id", function(d) {
+      colMeans(dropNamed(d, "instance_id"))
     })
   }
   drop = "repetition"
