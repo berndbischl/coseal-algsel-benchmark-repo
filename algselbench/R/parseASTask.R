@@ -31,21 +31,13 @@
 #'   code{NA} means the feature is not available, possibly because the feature computation was aborted.
 #'   The data.frame is sorted by \dQuote{instance_id}, then \dQuote{repetition}.}
 #' \item{algo.runs [\code{data.frame}]}{Runstatus and performance information of the
-#'   algorithms. Simply the parsed ARFF file. See the next member slots for a more
-#'   convenient format of the same information.
-#'   (Yeah that means we redundantly store the same data twice.}
+#'   algorithms. Simply the parsed ARFF file. 
+#'   See \code{\link{convertAlgoRunsToPerfMatrix}} for a more convenient format.
 #' \item{algo.runstatus [\code{data.frame(n, k + 2)}]}{Runstatus of algorithm runs.
 #'   The first 2 columns are \dQuote{instance_id} and \dQuote{repetition}, the remaining are the status factors.
 #'   The step columns are in the same order as the feature steps in the description object.
 #'   The factor levels are always: ok, presolved, crash, timeout, memout, other.
 #'   No entry can be \code{NA}.
-#'   The data.frame is sorted by \dQuote{instance_id}, then \dQuote{repetition}.}
-#' \item{algo.perf [\code{data.frame(n, k + 2)}]}{Measured performance of algorithms on instances.
-#'   The first 2 columns are \dQuote{instance_id} and \dQuote{repetition}. The remaining ones are
-#'   the measured performance values.
-#'   The feature columns are in the same order as \dQuote{algorithms_deterministic},
-#'   \dQuote{algorithms_stochastic} in the description object.
-#'   code{NA} means the performance value is not available, possibly because the algorithm run was aborted.
 #'   The data.frame is sorted by \dQuote{instance_id}, then \dQuote{repetition}.}
 #' \item{cv.splits[\code{data.frame(m, 3)}]}{Definition of cross-validation splits for each replication
 #'   of a repeated CV with folds.
@@ -112,11 +104,6 @@ parseASTask = function(path) {
     desc$algorithms_deterministic, desc$algorithms_stochastic)]
   algo.runstatus = sortByCol(algo.runstatus, c("instance_id", "repetition"))
 
-  ### build algo.perf
-  # helper functions sorts rows and cols
-  algo.perf = setNames(lapply(desc$performance_measures, convertAlgoTunsToAlgoPerf, 
-    desc = desc, algo.runs = algo.runs), desc$performance_measures)
-
   ### build cv.splits
   cv.file = file.path(path, "cv.arff")
   if (file.exists(cv.file)) {
@@ -141,7 +128,6 @@ parseASTask = function(path) {
     feature.values = feature.values,
     algo.runs = algo.runs,
     algo.runstatus = algo.runstatus,
-    algo.perf = algo.perf,
     cv.splits = cv.splits
   )
 }

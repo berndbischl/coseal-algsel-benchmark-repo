@@ -11,18 +11,8 @@
 #' @return ggplot2 plot object.
 #' @export
 plotAlgoPerfProbability = function(astask, measure, log = FALSE) {
-  checkArg(astask, "ASTask")
-  if (missing(measure))
-    measure = astask$desc$performance_measures[1]
-  else
-    checkArg(measure, "character", len = 1L, na.ok = FALSE)
-  checkArg(log, "logical", len=1L, na.ok=FALSE)
-  
-  data = imputeAlgoPerf(astask, measure, structure = "algo.runs", jitter = 0.05)
-  data = data[,setdiff(colnames(data), c("instance_id", "repetition"))]
-  checkLogarithm(data[, measure], log)
-  p = ggplot(data, aes_string(x = measure, col = "algorithm")) +
-    stat_ecdf()
+  algo.perf = getEDAAlgoPerf(astask, measure)
+  p = ggplot(data, aes_string(x = measure, col = "algorithm")) + stat_ecdf()
   if (log)
     p = p + scale_x_log10()
   p

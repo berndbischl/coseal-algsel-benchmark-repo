@@ -1,5 +1,9 @@
 #' Plots the correlation matrix of the algorithms.
 #'
+#' If NAs occur, they are imputed (before aggregation) either by 10 * cutoff
+#' (for runtimes tasks with cutoff) or 10 * <worst performance> for all others.
+#' Stochastic replications are aggregated by the mean value.
+#'
 #' @param astask [\code{\link{ASTask}}]\cr
 #'   Algorithm selection task.
 #' @param measure [\code{character(1)}]\cr
@@ -7,57 +11,45 @@
 #'   Default is first measure in task.
 #' @param order.method [\code{character(1)}]\cr
 #'   Method for ordering the algorithms within the plot.
-#'   Possible values are \code{hclust} (for hierarchical clustering order),
-#'   \code{FPC} (first principal component order), \code{AOE} (angular order
-#'   of eigenvectors), \code{original} (original order) and \code{alphabet}
-#'   (alphabetical order). Default is \code{hclust}.
+#'   Possible values are \dQuote{hclust} (for hierarchical clustering order),
+#'   \dQuote{FPC} (first principal component order), \dQuote{AOE} (angular order
+#'   of eigenvectors), \dQuote{original} (original order) and \dQuote{alphabet}
+#'   (alphabetical order).
+#'   See \code{\link[corrplot]{corMatOrder}}.
+#'   Default is \dQuote{hclust}.
 #' @param hclust.method [\code{character(1)}]\cr
-#'   Method for hierarchical clustering. Only useful, when \code{order.method} 
-#'   is set to \code{hclust}. Possible values are \code{ward}, \code{single},
-#'   \code{complete}, \code{average}, \code{mcquitty}, \code{median} and
-#'   \code{centroid}.
-#'   Default is \code{ward}.
+#'   Method for hierarchical clustering. Only useful, when \code{order.method}
+#'   is set to \dQuote{hclust}, otherwise ignored.
+#'   Possible values are: \dQuote{ward}, \dQuote{single},
+#'   \dQuote{complete}, \dQuote{average}, \dQuote{mcquitty}, \dQuote{median} and
+#'   \dQuote{centroid}.
+#'   See \code{\link[corrplot]{corMatOrder}}.
+#'   Default is \dQuote{ward}.
 #' @param cor.method [\code{character(1)}]\cr
 #'   Method to be used for calculating the correlation between the algorithms.
-#'   Possible values are \code{pearson}, \code{kendall} and \code{spearman}.
-#'   The default is \code{spearman}.
+#'   Possible values are \dQuote{pearson}, \dQuote{kendall} and \dQuote{spearman}.
+#'   See \code{\link{cor}}.
+#'   Default is \dQuote{spearman}.
 #' @return corrplot
 #' @export
-plotAlgoCorMatrix = function(astask, measure, order.method, hclust.method, cor.method) {
+plotAlgoCorMatrix = function(astask, measure, order.method = "hclust", hclust.method = "ward",
+  cor.method = "spearman") {
+
   requirePackages("corrplot", why = "plotAlgoCorMatrix", quietly = TRUE)
   checkArg(astask, "ASTask")
   if (missing(measure))
     measure = astask$desc$performance_measures[1]
   else
-    checkArg(measure, "character", len = 1L, na.ok = FALSE)
-  if (missing(order.method))
-    order.method = "hclust"
-  else
-    checkArg(order.method, "character", len = 1L, na.ok = FALSE)
-  if (missing(hclust.method)) {
-    if (order.method == "hclust")
-      hclust.method = "ward"
-  } else {
-    if (order.method == "hclust")
-      checkArg(hclust.method, "character", len = 1L, na.ok = FALSE)
-    else {
-      message("There's no reason to provide a clustering type, when you don't use 'hclust' for sorting the algorithms.")
-      hclust.method = NA      
-    }
-  }
-  if (missing(cor.method))
-    cor.method = "spearman"
-  else
-    checkArg(cor.method, choices = c("pearson", "kendall", "spearman"))
-  
-  algo.perf = imputeAlgoPerf(astask, measure)
-  data = algo.perf[, setdiff(colnames(algo.perf), c("instance_id", "repetition"))]
-  cor.matrix = cor(data, method = cor.method)
-  if (!is.na(hclust.method)) {
-    ind = corrMatOrder(cor.matrix, order = order.method, 
-      hclust.method = hclust.method)    
-  } else {
-    ind = corrMatOrder(cor.matrix, order = order.method)
-  }
+    checkArg(measure, choices = astask$desc$performance_measures)
+  checkArg(order.method, choices = c("hclust", "FPC", "AOE", "original", "alphabet"))
+  checkArg(hclust.method, choices =
+    c("ward", "single", "complete", "average", "mcquitty", "median", "centroid"))
+  checkArg(cor.method, choices = c("pearson", "kendall", "spearman"))
+
+  algo.perf = imputeAlgoPerf(astask, measure, )
+  algo.perf = aggregateStochasticAlgoPerf(algo.perf, with.instance.id = FALSE)
+
+  cor.matrix = cor(algo.perf, method = cor.method)
+  ind = corrMatOrder(cor.matrix, order = order.method, hclust.method = hclust.method)
   corrplot(cor.matrix[ind, ind], method = "shade")
 }

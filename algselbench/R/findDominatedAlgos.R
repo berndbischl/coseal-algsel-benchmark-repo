@@ -23,7 +23,9 @@
 #' @return [\code{matrix}]. See above.
 #' @export
 findDominatedAlgos = function(astask, measure, reduce = FALSE, type = "logical") {
+  
   checkArg(astask, "ASTask")
+  
   if (missing(measure))
     measure = astask$desc$performance_measures[1]
   else
