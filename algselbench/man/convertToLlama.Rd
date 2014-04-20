@@ -1,8 +1,11 @@
 \name{convertToLlama}
 \alias{convertToLlama}
+\alias{convertToMlr}
 \title{Convert an ASTask task object to a llama data object.}
 \usage{
 convertToLlama(astask, measure, feature.steps, add.feature.costs = TRUE)
+
+convertToMlr(astask, measure, feature.steps, add.feature.costs = TRUE)
 }
 \arguments{
   \item{astask}{[\code{\link{ASTask}}]\cr Algorithm

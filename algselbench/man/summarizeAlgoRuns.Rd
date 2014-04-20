@@ -1,7 +1,6 @@
 \name{summarizeAlgoRuns}
 \alias{summarizeAlgoRuns}
-\title{Creates a table that gives an overview of the performance values
-per algorithm across all instances.}
+\title{Creates summary data.frame for algorithm performance values across all instances.}
 \usage{
 summarizeAlgoRuns(astask, measure)
 }
@@ -9,16 +8,14 @@ summarizeAlgoRuns(astask, measure)
   \item{astask}{[\code{\link{ASTask}}]\cr Algorithm
   selection task.}
 
-  \item{measure}{[\code{character(1)}]\cr Measure that's
-  been used for analyzing the algorithm performances.
+  \item{measure}{[\code{character(1)}]\cr Selected measure.
   Default is first measure in task.}
 }
 \value{
-[\code{data.frame}].  Data frame, which gives an overview
-of the performance values.
+[\code{data.frame}].
 }
 \description{
-Creates a table that gives an overview of the performance
-values per algorithm across all instances.
+Creates summary data.frame for algorithm performance values
+across all instances.
 }
 

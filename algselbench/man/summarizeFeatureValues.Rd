@@ -1,7 +1,6 @@
 \name{summarizeFeatureValues}
 \alias{summarizeFeatureValues}
-\title{Creates a table that gives an overview of the feature values
-across all instances.}
+\title{Creates summary data.frame for feature values across all instances.}
 \usage{
 summarizeFeatureValues(astask)
 }
@@ -10,10 +9,10 @@ summarizeFeatureValues(astask)
   selection task.}
 }
 \value{
-[\code{data.frame}].  Overview of the feature values.
+[\code{data.frame}].
 }
 \description{
-Creates a table that gives an overview of the feature
-values across all instances.
+Creates summary data.frame for feature values across all
+instances.
 }
 

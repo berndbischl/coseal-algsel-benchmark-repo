@@ -1,6 +1,6 @@
 \name{summarizeAlgoRunstatus}
 \alias{summarizeAlgoRunstatus}
-\title{Creates a table that summarizes the runstatus of each algorithm.}
+\title{Creates summary data.frame for algorithm runstatus across all instances.}
 \usage{
 summarizeAlgoRunstatus(astask)
 }
@@ -9,11 +9,10 @@ summarizeAlgoRunstatus(astask)
   selection task.}
 }
 \value{
-[\code{table}].  Table, which summarizes the runstatus per
-algorithm.
+[\code{data.frame}].
 }
 \description{
-Creates a table that summarizes the runstatus of each
-algorithm.
+Creates summary data.frame for algorithm runstatus across
+all instances.
 }
 
