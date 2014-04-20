@@ -10,7 +10,7 @@ checkMeasure = function(measure, desc) {
 checkLogarithm = function(log, x, col) {
   if (log) {
     if (!missing(col))
-      x = x$col
+      x = x[, col]
     if ((any(x <= 0)))
       stop("Cannot compute logarithm of <= 0 value! ")
   }

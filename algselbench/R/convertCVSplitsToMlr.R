@@ -8,7 +8,7 @@ convertCVSplitsToMlr = function(cv.splits) {
   all = 1:n
   for (i in 1:folds) {
     s = subset(cv.splits, folds == i)
-    FIXME: ids muste be tranformed to inds
+    #FIXME: ids muste be tranformed to inds
     rin$test.inds = s$instance_id
     rin$train.inds = setdiff(all, rin$test.inds)
   }
