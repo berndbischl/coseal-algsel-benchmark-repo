@@ -145,7 +145,7 @@ runLlamaModels = function(astasks, baselines,
   }
 
   algoBaseline = function(static, llama.fun, model) {
-    fun = static$makeModelFun(model)
+    fun = static$makeModelFun(model, n.algos = static$n.algos)
     p = fun(data = static$llama.task)
     static$makeRes(static$llama.task, p, static$timeout)
   }

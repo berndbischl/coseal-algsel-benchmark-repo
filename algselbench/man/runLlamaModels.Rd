@@ -2,7 +2,8 @@
 \alias{runLlamaModels}
 \title{Creates a registry which can be used for running several Llama models on a cluster.}
 \usage{
-runLlamaModels(astasks, baselines, classifiers, regressors, clusterers, pre)
+runLlamaModels(astasks, baselines, classifiers = character(0),
+  regressors = character(0), clusterers = character(0), pre)
 }
 \arguments{
   \item{astasks}{[\code{list}]\cr List of algorithm
@@ -15,19 +16,15 @@ runLlamaModels(astasks, baselines, classifiers, regressors, clusterers, pre)
 
   \item{classifiers}{[\code{character}]\cr Vector of
   characters, defining the classification models.  Default
-  is c("AdaBoost", "BayesNet", "IBk", "OneR",
-  "MultilayerPerceptron", "RandomTree", "ctree", "fnn",
-  "J48", "JRip", "kknn", "ksvm", "naiveBayes", "nnet",
-  "randomForest", "rpart", "svm").}
+  is none.}
 
   \item{regressors}{[\code{character}]\cr Vector of
   characters, defining the regression models.  Default is
-  c("REPTree", "earth", "ksvm", "lm", "nnet",
-  "randomForest", "rpart").}
+  none.}
 
   \item{clusterers}{[\code{character}]\cr Vector of
   characters, defining the cluster models.  Default is
-  c("XMeans", "EM", "FarthestFirst", "SimpleKMeans").}
+  none.}
 
   \item{pre}{[\code{function}]\cr A function (e.g.
   normalize) to preprocess the feature data.  By default no
@@ -44,5 +41,12 @@ latter can be one via e.g. \code{WPM("install-package",
 
 Feature costs are added for real prognostic models but not
 for baseline models.
+
+Machine learning models are run with their default
+settings. For the clusterers we set the number of clusters
+(N) to the number of algorithms in the task. Except for
+XMeans where we set the maximum number of clusters (H) in
+the same way, as a parameter for the number of clusters
+does not exist.
 }
 
