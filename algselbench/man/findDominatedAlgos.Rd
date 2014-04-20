@@ -28,9 +28,11 @@ findDominatedAlgos(astask, measure, reduce = FALSE, type = "logical")
 [\code{matrix}]. See above.
 }
 \description{
-Stochastic replications are currently aggregated by the
-mean value. If NAs occur, they are imputed before
-aggregation either by 10 * cutoff (for runtimes tasks with
-cutoff) or 10 * <worst performance> for all others.
+If NAs occur, they are imputed (before aggregation) by
+\code{base + 0.3 * range}. \code{base} is the cutoff value
+for runtimes tasks with cutoff or the worst performance for
+all others.
+
+Stochastic replications are aggregated by the mean value.
 }
 
