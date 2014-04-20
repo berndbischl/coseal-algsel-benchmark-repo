@@ -1,15 +1,13 @@
-#' Creates a table that summarizes the runstatus of each algorithm.
+#' Creates summary data.frame for algorithm runstatus across all instances.
 #'
 #' @param astask [\code{\link{ASTask}}]\cr
 #'   Algorithm selection task.
-#' @return [\code{table}]. 
-#'  Table, which summarizes the runstatus per algorithm.
+#' @return [\code{data.frame}]. 
 #' @export
 summarizeAlgoRunstatus = function(astask) {
   checkArg(astask, "ASTask")
-  data = astask$algo.runs
-  data$runstatus = factor(as.character(data$runstatus), 
-    levels = c("ok", "timeout", "memout", "not_applicable", "crash", "other"))
-  tab = table(data[, c("algorithm", "runstatus")])
-  return(t(apply(tab, 1, function(z) 100 * z / sum(z))))
+  tab = table(astask$algo.runs[, c("algorithm", "runstatus")])
+  # to percentages
+  tab = apply(tab, 1, function(z) 100 * z / sum(z))
+  return(as.data.frame(t(tab)))
 }
