@@ -16,7 +16,7 @@
 #'   Default is first measure in task.
 #' @return [\code{data.frame}].
 #' @export
-convertAlgoTunsToWideFormat = function(desc, algo.runs, measure) {
+convertAlgoRunsToWideFormat = function(desc, algo.runs, measure) {
   checkArg(desc, "ASTaskDesc")
   checkArg(algo.runs, "data.frame")
   measure = checkMeasure(measure, desc)
