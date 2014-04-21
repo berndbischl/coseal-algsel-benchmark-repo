@@ -19,7 +19,7 @@ plotAlgoCorMatrix(astask, measure, order.method = "hclust",
   \dQuote{AOE} (angular order of eigenvectors),
   \dQuote{original} (original order) and \dQuote{alphabet}
   (alphabetical order).  See
-  \code{\link[corrplot]{corMatOrder}}.  Default is
+  \code{\link[corrplot]{corrMatOrder}}.  Default is
   \dQuote{hclust}.}
 
   \item{hclust.method}{[\code{character(1)}]\cr Method for
@@ -28,7 +28,7 @@ plotAlgoCorMatrix(astask, measure, order.method = "hclust",
   ignored.  Possible values are: \dQuote{ward},
   \dQuote{single}, \dQuote{complete}, \dQuote{average},
   \dQuote{mcquitty}, \dQuote{median} and \dQuote{centroid}.
-  See \code{\link[corrplot]{corMatOrder}}.  Default is
+  See \code{\link[corrplot]{corrMatOrder}}.  Default is
   \dQuote{ward}.}
 
   \item{cor.method}{[\code{character(1)}]\cr Method to be
@@ -38,7 +38,7 @@ plotAlgoCorMatrix(astask, measure, order.method = "hclust",
   \code{\link{cor}}.  Default is \dQuote{spearman}.}
 }
 \value{
-corrplot
+See \code{\link[corrplot]{corrplot}}.
 }
 \description{
 If NAs occur, they are imputed (before aggregation) by

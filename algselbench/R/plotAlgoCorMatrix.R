@@ -19,7 +19,7 @@
 #'   \dQuote{FPC} (first principal component order), \dQuote{AOE} (angular order
 #'   of eigenvectors), \dQuote{original} (original order) and \dQuote{alphabet}
 #'   (alphabetical order).
-#'   See \code{\link[corrplot]{corMatOrder}}.
+#'   See \code{\link[corrplot]{corrMatOrder}}.
 #'   Default is \dQuote{hclust}.
 #' @param hclust.method [\code{character(1)}]\cr
 #'   Method for hierarchical clustering. Only useful, when \code{order.method}
@@ -27,14 +27,14 @@
 #'   Possible values are: \dQuote{ward}, \dQuote{single},
 #'   \dQuote{complete}, \dQuote{average}, \dQuote{mcquitty}, \dQuote{median} and
 #'   \dQuote{centroid}.
-#'   See \code{\link[corrplot]{corMatOrder}}.
+#'   See \code{\link[corrplot]{corrMatOrder}}.
 #'   Default is \dQuote{ward}.
 #' @param cor.method [\code{character(1)}]\cr
 #'   Method to be used for calculating the correlation between the algorithms.
 #'   Possible values are \dQuote{pearson}, \dQuote{kendall} and \dQuote{spearman}.
 #'   See \code{\link{cor}}.
 #'   Default is \dQuote{spearman}.
-#' @return corrplot
+#' @return See \code{\link[corrplot]{corrplot}}.
 #' @export
 plotAlgoCorMatrix = function(astask, measure, order.method = "hclust", hclust.method = "ward",
   cor.method = "spearman") {
