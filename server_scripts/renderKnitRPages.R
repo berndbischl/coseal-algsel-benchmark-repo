@@ -1,6 +1,7 @@
 library(knitr)
 library(ggplot2)
 library(xtable)
+# load_all("../algselbench")
 library(algselbench)
 library(BBmisc)
 library(stringr)
@@ -12,7 +13,7 @@ data.dir =  normalizePath(file.path(coseal.svn.dir, "data"))
 task.dirs = list.files(data.dir, full = TRUE)
 # avoid bbob and machine learning for now
 task.dirs = task.dirs[!str_detect(task.dirs, "bbob|machine")]
-task.dirs = task.dirs[1]
+# task.dirs = task.dirs[1]
 rhtml.dir = normalizePath("../Rhtml")
 html.dir = normalizePath("../html")
 config.dir = normalizePath("../configs")
