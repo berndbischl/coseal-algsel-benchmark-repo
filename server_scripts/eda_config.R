@@ -1,18 +1,12 @@
 library(algselbench)
 
 makeEDAConfig = function(
-  algo.perf.boxplots.log = FALSE,
-  algo.perf.scatter.trafo = "identity",
-  algo.perf.densities.log = FALSE,
-  algo.perf.probabilities.log = TRUE,
+  algo.perf.log = FALSE,
   feature.steps.default
 ) {
 
   makeS3Obj("ASTaskHTMLConfig",
-    algo.perf.boxplots.log = algo.perf.boxplots.log,
-    algo.perf.densities.log = algo.perf.densities.log,
-    algo.perf.probabilities.log = algo.perf.probabilities.log,
-    algo.perf.scatter.trafo = algo.perf.scatter.trafo,
+    algo.perf.log = algo.perf.log,
     feature.steps.default = feature.steps.default
   )
 }

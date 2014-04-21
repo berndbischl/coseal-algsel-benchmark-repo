@@ -12,19 +12,18 @@ The following statistics were calculated from the performance values of each alg
 <ul>
 
   <li> <a>obs (number of observations within performance values)</a>
-  <li> <a>NAs (number of NAs, i.e., missing values, within performance values)</a>
-  <li> <a>run_ok (percentage of performance values without a crash)</a>
-  <li> <a>min (minimum), mean (arithmetic mean), max (maximum), std_dev (standard deviation)</a>
-  <li> <a>1st_qu (1st quartile = lower quartile = 25%-quantile)</a>
-  <li> <a>median (median = 50%-quantile)</a>
-  <li> <a>3rd_qu (3rd quartile = upper quartile = 75%-quantile)</a>
-  <li> <a>co_var (coefficient of variation = standard deviation / arithmetic mean)</a>
+  <li> <a>nas (number of NAs, i.e., missing values, within performance values)</a>
+  <li> <a>min (minimum), mean (arithmetic mean), max (maximum), sd (standard deviation)</a>
+  <li> <a>qu_1st (1st quartile = lower quartile = 25%-quantile)</a>
+  <li> <a>med (median = 50%-quantile)</a>
+  <li> <a>qu_3rd (3rd quartile = upper quartile = 75%-quantile)</a>
+  <li> <a>coeff_var (coefficient of variation = standard deviation / arithmetic mean)</a>
 
 </ul>
 
 <!--begin.rcode, results = "asis"
-  res = summarizeAlgoRuns(astask)
-  print(xtable(res, display = c("s", "d", "d", rep("g", 9))), "html")
+  res = summarizeAlgoPerf(astask)
+  print(xtable(res, digits = 6, display = c("s", "d", "d", rep("g", 8))), "html")
 end.rcode-->
 
 <br>
@@ -73,7 +72,7 @@ based on correlations, which is shown at the end of this page). </FONT>
 <br>
 
 <!--begin.rcode
-  plotAlgoPerfBoxplots(astask, log = config$algo.perf.boxplots.log)
+  plotAlgoPerfBoxplots(astask, log = config$algo.perf.log)
 end.rcode-->
 
 <br>
@@ -82,7 +81,7 @@ end.rcode-->
 <br>
 
 <!--begin.rcode
-  plotAlgoPerfDensities(astask, log = config$algo.perf.densities.log) 
+  plotAlgoPerfDensities(astask, log = config$algo.perf.log) 
 end.rcode-->
 
 <br>
@@ -91,7 +90,7 @@ end.rcode-->
 <br>
 
 <!--begin.rcode
-  plotAlgoPerfProbability(astask, log = config$algo.perf.probabilities.log) 
+  plotAlgoPerfCDFs(astask, log = config$algo.perf.log) 
 end.rcode-->
 
 <br>
@@ -111,7 +110,7 @@ within its config-file. The corresponding transformation is mentioned
 within the subtitle underneath the figure.
 
 <!--begin.rcode, results = "asis"
-  plotAlgoScattermatrix(astask, trafo = config$algo.perf.scatter.trafo)
+  plotAlgoPerfScatterMatrix(astask, log = config$algo.perf.log)
 end.rcode-->
 
 
