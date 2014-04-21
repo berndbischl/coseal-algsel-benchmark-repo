@@ -7,7 +7,7 @@ makeEDAConfig = function(
   algo.perf.probabilities.log = TRUE,
   feature.steps.default
 ) {
-  
+
   makeS3Obj("ASTaskHTMLConfig",
     algo.perf.boxplots.log = algo.perf.boxplots.log,
     algo.perf.densities.log = algo.perf.densities.log,
@@ -22,28 +22,30 @@ print.ASTaskHTMLConfig = function(x, ...) {
   for (i in seq_along(x)) {
    if (ns[i] == "feature.steps.default")
      x[[i]] = paste(x[[i]], collapse = ", ")
-   catf("%-30s : %s", ns[i], x[[i]]) 
-  }  
+   catf("%-30s : %s", ns[i], x[[i]])
+  }
 }
 
-readEDAConfig = function(conf.path, task.name, data.path) {
-  conffile = file.path(conf.path, paste(task.name, "R", sep = "."))
+# Sources config file and returns a config s3 object
+readEDAConfig = function(astask, confpath) {
+  checkArg(astask, "ASTask")
+  id = astask$desc$task_id
+  conffile = file.path(confpath, paste0(id, ".R"))
+  print(conffile)
   if (file.exists(conffile)) {
     # source config into envir, then construct
     conf = new.env()
-    x = try(sys.source(conffile, envir=conf))
+    x = try(sys.source(conffile, envir = conf))
     if (is.error(x)) {
-      stopf("There was an error in sourcing your configuration file '%s': %s!", 
-            conffile, as.character(x))
+      stopf("There was an error in sourcing your configuration file '%s': %s!",
+        conffile, as.character(x))
     }
-    conf.list = as.list(conf)
-    default.featsteps = getFeatureStepNames(parseASTask(paste(data.path, task.name, sep = "/")))
-    if (!("feature.steps.default" %in% names(conf.list)))
-      conf.list$feature.steps.default = default.featsteps
-    return(do.call(makeEDAConfig, conf.list))
+    conf = as.list(conf)
+    # if we do not have default steps, take all
+    if (is.null(conf$feature.steps.default))
+      conf$feature.steps.default = getFeatureStepNames(astask)
+    return(do.call(makeEDAConfig, conf))
   } else {
-    # warn, then use default config
-    warningf("Config file for task does not exist: %s", task.name)
-    return(makeEDAConfig())
+    stopf("Config file for task does not exist: %s", id)
   }
 }

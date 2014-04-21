@@ -3,6 +3,7 @@ library(ggplot2)
 library(xtable)
 library(algselbench)
 library(BBmisc)
+library(stringr)
 source("defs.R")
 source("eda_config.R")
 source("convertResultsToXTable.R")
@@ -10,7 +11,8 @@ source("convertResultsToXTable.R")
 data.dir =  normalizePath(file.path(coseal.svn.dir, "data"))
 task.dirs = list.files(data.dir, full = TRUE)
 # avoid bbob and machine learning for now
-task.dirs = task.dirs[-c(grep("bbob", task.dirs), grep("machine", task.dirs))]
+task.dirs = task.dirs[!str_detect(task.dirs, "bbob|machine")]
+task.dirs = task.dirs[1]
 rhtml.dir = normalizePath("../Rhtml")
 html.dir = normalizePath("../html")
 config.dir = normalizePath("../configs")
@@ -34,6 +36,7 @@ ee$astasks = list()
 try({
 
   for (task.dir in task.dirs) {
+    print(task.dir)
     setwd(old.wd)
     task.name = basename(task.dir)
     messagef("Create pages for: %s", task.name)
@@ -62,7 +65,7 @@ try({
     theme_set(theme_gray(base_size = 18))
 
     # read EDA HTML config for task
-    config = readEDAConfig(config.dir, task.name, data.dir)
+    config = readEDAConfig(astask, config.dir)
     ee$config = config
 
     # helper to knit rhtml files
