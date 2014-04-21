@@ -16,22 +16,7 @@ convertFeats = function(astask, feature.steps, with.instance.id) {
   }
 
   # impute feature values
-  # FIXME: why cant we impute without target
-  # FIXME: check whether imputing the median is useful
-#   cols = sapply(feats, function(x) any(is.na(x)) & (class(x) == "logical"))
-#   feats = impute(feats, target = character(0), classes = list(numeric = imputeMax(2),
-#     integer = imputeMax(2), character = imputeConstant("missing"),
-#     factor = imputeConstant("missing"), logical = imputeMode()),
-#     dummies = names(cols)[cols])$data
-  cols = sapply(feats, function(x) any(is.na(x)))
-  cols = names(cols)[cols]
-#   cols = setNames(lapply(cols, function(x) imputeMedian()), cols)
-  imputeMean = function () {
-    makeImputeMethod(learn = function(data, target, col)
-      mean(data[[col]], na.rm = TRUE), impute = mlr:::simpleImpute)
-  }
-  cols = setNames(lapply(cols, function(x) imputeMean()), cols)
-  feats = impute(feats, target = character(0), cols = cols)$data
+  feats = impute(feats, target = character(0), classes = list(numeric = imputeMean()))$data
   if (!with.instance.id)
     feats$instance_id = NULL
   return(feats)
