@@ -1,8 +1,8 @@
-\name{imputeAlgoRuns}
-\alias{imputeAlgoRuns}
-\title{Imputes algorithm runs which have NA performance values.}
+\name{imputeAlgoPerf}
+\alias{imputeAlgoPerf}
+\title{Imputes algorithm performance for runs which have NA performance values.}
 \usage{
-imputeAlgoRuns(astask, measure, base = NULL, range.scalar = 0.3,
+imputeAlgoPerf(astask, measure, base = NULL, range.scalar = 0.3,
   jitter = 0)
 }
 \arguments{

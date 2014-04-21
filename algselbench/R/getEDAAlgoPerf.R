@@ -18,7 +18,7 @@ getEDAAlgoPerf = function(astask, measure, jitter, check.log, format, with.insta
     desc$algorithm_cutoff_time
   else
     NULL
-  algo.runs = imputeAlgoRuns(astask, measure = measure,
+  algo.runs = imputeAlgoPerf(astask, measure = measure,
     base = base, range.scalar = 0.3, jitter = jitter2)
   # include fake repetition col, so we can convert to wide
   algo.runs = aggregateStochasticAlgoRuns(algo.runs, measure = measure, with.repetition = TRUE)

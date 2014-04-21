@@ -1,4 +1,4 @@
-#' @title Imputes algorithm runs which have NA performance values.
+#' @title Imputes algorithm performance for runs which have NA performance values.
 #'
 #' @description
 #' The following formula is used for imputation:
@@ -25,7 +25,7 @@
 #'   Default is 0.
 #' @return [\code{data.frame}].
 #' @export
-imputeAlgoRuns = function(astask, measure, base = NULL, range.scalar = 0.3, jitter = 0) {
+imputeAlgoPerf = function(astask, measure, base = NULL, range.scalar = 0.3, jitter = 0) {
 
   checkArg(astask, "ASTask")
   desc = astask$desc
