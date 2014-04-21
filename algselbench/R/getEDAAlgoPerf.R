@@ -25,7 +25,7 @@ getEDAAlgoPerf = function(astask, measure, jitter, check.log, format, with.insta
   
   checkLogarithm(check.log, algo.runs, measure)
   data = if (format == "wide")
-    convertAlgoTunsToWideFormat(algo.runs, desc = desc)
+    convertAlgoPerfToWideFormat(algo.runs, desc = desc)
   else
     algo.runs
   # remove fake repetition col
