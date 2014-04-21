@@ -7,7 +7,7 @@ plotAlgoPerfBoxplots = function(astask, measure, log = FALSE) {
     geom_boxplot() +
     theme(
       axis.title.x = element_blank(),
-      axis.text.x = element_text(angle = 40, vjust = 1)
+      axis.text.x = element_text(angle = 90, vjust = 1)
     )
   if (log)
     p = p + scale_y_log10()
