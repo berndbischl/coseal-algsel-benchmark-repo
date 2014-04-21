@@ -1,11 +1,9 @@
 # helper to convert feats to llama or mlr
-convertFeats = function(astask, feature.steps, with.id) {
-  desc = astask$desc
-  feats = astask$feature.values
-  allowed.features = getProvidedFeatures(astask, feature.steps)
-  
+convertFeats = function(astask, feature.steps, with.instance.id) {
   # reduce to inst + rep + allowed features
   # note that feats is ordered by instance, then repetition
+  allowed.features = getProvidedFeatures(astask, feature.steps)
+  feats = astask$feature.values
   feats = feats[, c("instance_id", "repetition", allowed.features), drop = FALSE]
 
   # aggregate features, only do this if repeated measurements to save time
@@ -34,7 +32,7 @@ convertFeats = function(astask, feature.steps, with.id) {
   }
   cols = setNames(lapply(cols, function(x) imputeMean()), cols)
   feats = impute(feats, target = character(0), cols = cols)$data
-  if (!with.id)
+  if (!with.instance.id)
     feats$instance_id = NULL
   return(feats)
 }

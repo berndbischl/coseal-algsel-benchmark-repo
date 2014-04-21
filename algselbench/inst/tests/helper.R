@@ -6,7 +6,7 @@ makeTestTask3 = function() {
 
   iids = c("i1", "i2", "i3")
 
-  desc = makeS3Obj("Description",
+  desc = makeS3Obj("ASTaskDesc",
     task_id = "foo",
     performance_measures = "m",
     performance_type = c(m = "runtime"),

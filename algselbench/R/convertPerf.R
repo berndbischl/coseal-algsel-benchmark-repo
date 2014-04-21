@@ -1,11 +1,11 @@
 # helper to convert perf to llama or mlr
-convertPerf = function(astask, measure, feature.steps, add.feature.costs) {
+convertPerf = function(astask, measure, feature.steps, add.feature.costs, with.instance.id) {
   desc = astask$desc
   # note that perf + runstatus + successes is ordered by instance, then repetition
-  perf = astask$algo.perf[[measure]]
+  perf = convertAlgoPerfToWideFormat(desc, astask$algo.runs, measure)
   runstatus = astask$algo.runstatus
   cutoff = desc$algorithm_cutoff_time
-  
+
   # FIXME: From here on the whole code does NOT work if we have repetitions
   # The reason is that we have not cleanly defined, what happens if on
   # one instance an algo crashes a sometimes but works otherwise 
@@ -14,6 +14,7 @@ convertPerf = function(astask, measure, feature.steps, add.feature.costs) {
   iid = perf$instance_id
   perf$instance_id = runstatus$instance_id = NULL
 
+  # FIXME: we shoould not really need runstatus here right?
   # construct successes, so far means: no NA in perf val and run status of algo is "OK"
   successes = !is.na(perf) & runstatus == "ok"
   # Note that all stuff in this object is ordered by instance_id
@@ -51,5 +52,9 @@ convertPerf = function(astask, measure, feature.steps, add.feature.costs) {
     # perf$repetition = NULL
   # }
   
+  if (with.instance.id) {
+    perf = cbind(instance_id = iid, perf)
+    successes = cbind(instance_id = iid, as.data.frame(successes))
+  }
   list(perf = perf, successes = successes)
 }
