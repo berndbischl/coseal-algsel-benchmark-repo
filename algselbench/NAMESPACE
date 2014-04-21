@@ -1,6 +1,5 @@
 S3method(predict,LlamaClassifMlrWrapper)
 S3method(print,ASTask)
-export(addDefaultsToASTask)
 export(checkDuplicatedInstances)
 export(convertAlgoPerfToWideFormat)
 export(convertMlrLearnerToLlama)
