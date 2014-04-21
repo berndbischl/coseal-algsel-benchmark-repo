@@ -23,18 +23,19 @@ printResultsAsHTMLTable = function(res, task.id, col.best = "#FF0000", col.best3
 
   for (m in measures) {
     dec = !m$minimize
+    minmax = if (m$minimize) min else max
     perf = res[, m$id]
-    # control display of numbers
-    res.char[, m$id] = sprintf("%5.2f", perf)
-    perf.order = order(perf, decreasing = dec)
     # remove vbs, it would always be best...
-    perf.order2 = setdiff(perf.order, ind.vbs)
-    j.best = perf.order2[1]
-    j.best3 = perf.order2[1:3]
+    perf2 = setdiff(perf, perf[ind.vbs])
+    # control display of numbers
+    res.char[, m$id] = sprintf("%6.3f", perf)
+    # vbs is always best
+    j.best = which(perf == minmax(perf2))
+    j.best3 = which(perf %in% sort(perf2, dec = dec)[1:3])
     for (g in groups) {
-      ind.group = which(res$algo == g)
-      j.group = intersect(perf.order2, ind.group)[1]
-      colorize(j.group, m$id, col.group)
+      ind.group = which(res$algo == g & res$model != "vbs")
+      k = which(perf[ind.group] == minmax(perf[ind.group]))
+      colorize(ind.group[k], m$id, col.group)
     }
     colorize(j.best3, m$id, col.best3)
     colorize(j.best, m$id, col.best)
