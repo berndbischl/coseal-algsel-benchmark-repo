@@ -7,10 +7,10 @@
 #'   Default is first measure in task.
 #' @return [\code{data.frame}].
 #' @export
-summarizeAlgoRuns = function(astask, measure) {
+summarizeAlgoPerf = function(astask, measure) {
   checkArg(astask, "ASTask")
   measure = checkMeasure(measure, astask$desc)
-  data = convertAlgoTunsToWideFormat(astask$desc, astask$algo.runs, measure)
+  data = convertAlgoPerfToWideFormat(astask$desc, astask$algo.runs, measure)
   data = dropNamed(data, c("instance_id", "repetition"))
   s = apply(data, 2, getStatistics)
   return(as.data.frame(t(s)))
