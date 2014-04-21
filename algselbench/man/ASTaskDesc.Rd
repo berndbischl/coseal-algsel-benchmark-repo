@@ -1,0 +1,31 @@
+\name{ASTaskDesc}
+\alias{ASTaskDesc}
+\title{S3 class for ASTaskDesc.}
+\description{
+Object members
+}
+\details{
+\describe{ \item{task_id [\code{character(1)}]}{Name of
+task.} \item{performance_measures [\code{character}]}{Names
+of measures.} \item{maximize [named
+\code{character}]}{Maximize measure?}
+\item{performance_type [named \code{character}]}{Either
+\dQuote{runtime} or \dQuote{solution_quality}.}
+\item{algorithm_cutoff_time [\code{numeric(1)}]}{Cutoff
+time for an algorithm run.} \item{algorithm_cutoff_memory
+[\code{numeric(1)}]}{Cutoff memory for an algorithm run.}
+\item{features_cutoff_time [\code{numeric(1)}]}{Cutoff time
+for a feature run.} \item{features_cutoff_memory
+[\code{numeric(1)}]}{Cutoff memory for a feature run.}
+\item{features_deterministic [\code{character}]}{Names of
+features that are deterministic.} \item{features_stochastic
+[\code{character}]}{Names of features that are stochastic.}
+\item{algorithms_deterministic [\code{character}]}{Names of
+algorithms that are deterministic.}
+\item{algorithms_stochastic [\code{character}]}{Names of
+algorithms that are stochastic.} \item{feature_steps [named
+\code{list} of \code{character}]}{Names of feature
+processing steps and as elements the features they
+influence.} }
+}
+
