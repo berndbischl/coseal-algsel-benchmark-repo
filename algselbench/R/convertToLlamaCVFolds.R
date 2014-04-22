@@ -51,7 +51,24 @@ convertToLlamaCVFolds = function(astask, measure, feature.steps, add.feature.cos
   splitFactors = folds[llamaFrame$data$instance_id, "fold"]
   parts = split(llamaFrame$data, splitFactors)
 
+  minimize = !astask$desc$maximize[measure]
+
   return(c(llamaFrame,
-            list(train = lapply(1:nfolds, function(x) { return(unsplit(parts[-x], folds$fold[folds$fold!=x])) }),
-                 test = lapply(1:nfolds, function(x) { return(parts[[x]]) }))))
+            list(train = lapply(1:nfolds, function(x) {
+                    part = unsplit(parts[-x], folds$fold[folds$fold!=x])
+                    perfs = subset(part, select=llamaFrame$performance)
+                    order = names(sort(sapply(perfs, sum), decreasing=!minimize))
+                    optfun = if(minimize) { which.min } else { which.max }
+                    part$best = factor(apply(perfs[order], 1, function(x) { order[optfun(unlist(x))] }))
+                    return(part)
+                }),
+             test = lapply(1:nfolds, function(x) {
+                    part = parts[[x]]
+                    otherPart = unsplit(parts[-x], folds$fold[folds$fold!=x])
+                    perfs = subset(part, select=llamaFrame$performance)
+                    order = names(sort(sapply(subset(otherPart, select=llamaFrame$performance), sum), decreasing=!minimize))
+                    optfun = if(minimize) { which.min } else { which.max }
+                    part$best = factor(apply(perfs[order], 1, function(x) { order[optfun(unlist(x))] }))
+                    return(part)
+                 }))))
 }
