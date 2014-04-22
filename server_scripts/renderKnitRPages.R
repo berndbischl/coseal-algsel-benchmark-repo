@@ -7,6 +7,7 @@ library(BBmisc)
 library(stringr)
 source("defs.R")
 source("eda_config.R")
+source("shortenPathsInValidator.R")
 source("convertResultsToXTable.R")
 
 data.dir =  normalizePath(file.path(coseal.svn.dir, "data"))

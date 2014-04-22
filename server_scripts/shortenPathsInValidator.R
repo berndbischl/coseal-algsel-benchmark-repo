@@ -1,4 +1,4 @@
-#' Refurbishes the llama experiments data frame by coloring the best values.
+#' Rename the directory names of the output from the validator script.
 #'
 #' @param s [\code{list(2)}]\cr
 #'   List, containing the output of the validator script.
