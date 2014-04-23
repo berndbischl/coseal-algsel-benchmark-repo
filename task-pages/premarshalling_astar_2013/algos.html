@@ -74,25 +74,23 @@ The following statistics were calculated from the performance values of each alg
 <ul>
 
   <li> <a>obs (number of observations within performance values)</a>
-  <li> <a>NAs (number of NAs, i.e., missing values, within performance values)</a>
-  <li> <a>run_ok (percentage of performance values without a crash)</a>
-  <li> <a>min (minimum), mean (arithmetic mean), max (maximum), std_dev (standard deviation)</a>
-  <li> <a>1st_qu (1st quartile = lower quartile = 25%-quantile)</a>
-  <li> <a>median (median = 50%-quantile)</a>
-  <li> <a>3rd_qu (3rd quartile = upper quartile = 75%-quantile)</a>
-  <li> <a>co_var (coefficient of variation = standard deviation / arithmetic mean)</a>
+  <li> <a>nas (number of NAs, i.e., missing values, within performance values)</a>
+  <li> <a>min (minimum), mean (arithmetic mean), max (maximum), sd (standard deviation)</a>
+  <li> <a>qu_1st (1st quartile = lower quartile = 25%-quantile)</a>
+  <li> <a>med (median = 50%-quantile)</a>
+  <li> <a>qu_3rd (3rd quartile = upper quartile = 75%-quantile)</a>
+  <li> <a>coeff_var (coefficient of variation = standard deviation / arithmetic mean)</a>
 
 </ul>
 
 <!-- html table generated in R 3.0.2 by xtable 1.7-3 package -->
-<!-- Sat Apr 19 00:55:28 2014 -->
+<!-- Wed Apr 23 20:19:22 2014 -->
 <TABLE border=1>
-<TR> <TH>  </TH> <TH> obs </TH> <TH> NAs </TH> <TH> run_ok </TH> <TH> min </TH> <TH> 1st_qu </TH> <TH> median </TH> <TH> mean </TH> <TH> 3rd_qu </TH> <TH> max </TH> <TH> std_dev </TH> <TH> co_var </TH>  </TR>
-  <TR> <TD align="right"> astar-symmulgt-transmul </TD> <TD align="right"> 527 </TD> <TD align="right"> 178 </TD> <TD align="right">  66 </TD> <TD align="right"> 0.012 </TD> <TD align="right"> 0.38 </TD> <TD align="right"> 2.8 </TD> <TD align="right"> 1.2e+02 </TD> <TD align="right">  46 </TD> <TD align="right"> 3e+03 </TD> <TD align="right"> 3.5e+02 </TD> <TD align="right"> 2.9 </TD> </TR>
-  <TR> <TD align="right"> astar-symmullt-transmul </TD> <TD align="right"> 527 </TD> <TD align="right"> 193 </TD> <TD align="right">  63 </TD> <TD align="right"> 0.016 </TD> <TD align="right"> 0.52 </TD> <TD align="right"> 3.5 </TD> <TD align="right"> 1.1e+02 </TD> <TD align="right">  55 </TD> <TD align="right"> 2e+03 </TD> <TD align="right"> 2.8e+02 </TD> <TD align="right"> 2.6 </TD> </TR>
-  <TR> <TD align="right"> idastar-symmulgt-transmul </TD> <TD align="right"> 527 </TD> <TD align="right">  99 </TD> <TD align="right">  81 </TD> <TD align="right">   0 </TD> <TD align="right"> 0.31 </TD> <TD align="right"> 7.3 </TD> <TD align="right"> 3e+02 </TD> <TD align="right"> 1.7e+02 </TD> <TD align="right"> 3.5e+03 </TD> <TD align="right"> 6.7e+02 </TD> <TD align="right"> 2.3 </TD> </TR>
-  <TR> <TD align="right"> idastar-symmullt-transmul </TD> <TD align="right"> 527 </TD> <TD align="right"> 112 </TD> <TD align="right">  79 </TD> <TD align="right"> 0.004 </TD> <TD align="right"> 0.79 </TD> <TD align="right">  21 </TD> <TD align="right"> 3.7e+02 </TD> <TD align="right"> 3e+02 </TD> <TD align="right"> 3.6e+03 </TD> <TD align="right"> 7.5e+02 </TD> <TD align="right">   2 </TD> </TR>
-  <TR> <TD align="right"> allAlgorithms </TD> <TD align="right"> 2108 </TD> <TD align="right"> 582 </TD> <TD align="right">  72 </TD> <TD align="right">   0 </TD> <TD align="right"> 0.48 </TD> <TD align="right"> 6.3 </TD> <TD align="right"> 2.4e+02 </TD> <TD align="right"> 1.2e+02 </TD> <TD align="right"> 3.6e+03 </TD> <TD align="right"> 5.8e+02 </TD> <TD align="right"> 2.4 </TD> </TR>
+<TR> <TH>  </TH> <TH> obs </TH> <TH> nas </TH> <TH> min </TH> <TH> qu_1st </TH> <TH> med </TH> <TH> mean </TH> <TH> qu_3rd </TH> <TH> max </TH> <TH> sd </TH> <TH> coeff_var </TH>  </TR>
+  <TR> <TD align="right"> astar-symmulgt-transmul </TD> <TD align="right">     527 </TD> <TD align="right">     178 </TD> <TD align="right">   0.012 </TD> <TD align="right">    0.38 </TD> <TD align="right">   2.832 </TD> <TD align="right"> 121.355 </TD> <TD align="right">  46.347 </TD> <TD align="right"> 3039.91 </TD> <TD align="right"> 352.288 </TD> <TD align="right"> 2.90295 </TD> </TR>
+  <TR> <TD align="right"> astar-symmullt-transmul </TD> <TD align="right">     527 </TD> <TD align="right">     193 </TD> <TD align="right">   0.016 </TD> <TD align="right">   0.523 </TD> <TD align="right">    3.51 </TD> <TD align="right"> 109.423 </TD> <TD align="right"> 55.0288 </TD> <TD align="right"> 1950.48 </TD> <TD align="right"> 279.665 </TD> <TD align="right"> 2.55583 </TD> </TR>
+  <TR> <TD align="right"> idastar-symmulgt-transmul </TD> <TD align="right">     527 </TD> <TD align="right">      99 </TD> <TD align="right">       0 </TD> <TD align="right">   0.308 </TD> <TD align="right">    7.29 </TD> <TD align="right"> 295.635 </TD> <TD align="right"> 165.728 </TD> <TD align="right"> 3512.67 </TD> <TD align="right">  665.53 </TD> <TD align="right"> 2.25119 </TD> </TR>
+  <TR> <TD align="right"> idastar-symmullt-transmul </TD> <TD align="right">     527 </TD> <TD align="right">     112 </TD> <TD align="right">   0.004 </TD> <TD align="right">   0.788 </TD> <TD align="right">  20.633 </TD> <TD align="right">  373.58 </TD> <TD align="right"> 298.165 </TD> <TD align="right"> 3588.98 </TD> <TD align="right"> 748.774 </TD> <TD align="right"> 2.00432 </TD> </TR>
    </TABLE>
 
 
@@ -104,7 +102,7 @@ The following table summarizes the runstatus of each algorithm over all instance
 <br>
 
 <!-- html table generated in R 3.0.2 by xtable 1.7-3 package -->
-<!-- Sat Apr 19 00:55:28 2014 -->
+<!-- Wed Apr 23 20:19:22 2014 -->
 <TABLE border=1>
 <TR> <TH>  </TH> <TH> ok </TH> <TH> timeout </TH> <TH> memout </TH> <TH> not_applicable </TH> <TH> crash </TH> <TH> other </TH>  </TR>
   <TR> <TD align="right"> astar-symmulgt-transmul </TD> <TD align="right"> 66.224 </TD> <TD align="right"> 0.000 </TD> <TD align="right"> 33.776 </TD> <TD align="right"> 0.000 </TD> <TD align="right"> 0.000 </TD> <TD align="right"> 0.000 </TD> </TR>
@@ -165,18 +163,7 @@ based on correlations, which is shown at the end of this page). </FONT>
 <br>
 <h2> Scatterplot matrix of the performance values </h2>
 
-The following figure creates pairwise scatterplots of the (possibly transformed) 
-performance values, including a regression line (cf. upper panel), a histogram 
-of each performance value (cf. diagonal), as well as the pairwise (pearson) 
-correlation (cf. lower panel).<br>
-In order to facilitate the lucidity of the correlations, they are colored
-depending on their value. Thus, a high positive correlation (&ge; 0.8) is
-colored green, light correlations (between 0.3 and 0.8, or -0.8 and -0.3)
-are orange, little to no correlations (&ge; -0.3 and &le; 0.3) are written
-in black and high negative correlations (&le; -0.8) are shown red.<br>
-Eventually, the performance values are transformed, based on the settings
-within its config-file. The corresponding transformation is mentioned
-within the subtitle underneath the figure.
+The figure underneath shows pairwise scatterplots of the performance values.<br>
 
 </div><div class="rimage default"><img src="figure/unnamed-chunk-7.png" title="plot of chunk unnamed-chunk-7" alt="plot of chunk unnamed-chunk-7" class="plot" /></div><div class="rcode">
 
@@ -186,11 +173,7 @@ within the subtitle underneath the figure.
 <br>
 <h2> Clustering algorithms based on their correlations </h2>
 The following figure shows the correlations of the <b>ranks</b> of the performance 
-values. Per default it will show the correlation coefficient of spearman. Missing values
-were imputed prior to computing the correlation coefficients. <br>
-In addition, the algorithms are ordered in a way that similar (highly
-correlated) algorithms are close to each other. Per default the clustering
-is based on hierarchical clustering, using Ward's method. <br>
+values. Per default it will show the correlation coefficient of spearman. Missing values were imputed <u>prior</u> to computing the correlation coefficients. The algorithms are ordered in a way that similar (highly correlated) algorithms are close to each other. Per default the clustering is based on hierarchical clustering, using Ward's method. <br>
 <br>
 
 <div class="chunk" id="unnamed-chunk-8"><div class="rimage default"><img src="figure/unnamed-chunk-8.png" title="plot of chunk unnamed-chunk-8" alt="plot of chunk unnamed-chunk-8" class="plot" /></div></div>
