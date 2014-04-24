@@ -96,17 +96,34 @@ solver always has a misclassification penalty of zero.</li>
 
 <p>
 
-<div class="warning"><pre class="knitr r">## Warning: kein nicht-fehlendes Argument für min; gebe Inf zurück
-## Warning: kein nicht-fehlendes Argument für max; gebe -Inf zurück
-## Warning: kein nicht-fehlendes Argument für min; gebe Inf zurück
-## Warning: Datenlänge überschreitet Größe der Matrix
-</pre></div>
 <!-- html table generated in R 3.0.2 by xtable 1.7-3 package -->
-<!-- Thu Apr 24 12:13:53 2014 -->
+<!-- Thu Apr 24 23:06:45 2014 -->
 <TABLE border=1>
-<CAPTION ALIGN="bottom"> html </CAPTION>
 <TR> <TH> algo </TH> <TH> model </TH> <TH> succ </TH> <TH> par10 </TH> <TH> mcp </TH>  </TR>
-  </TABLE>
+  <TR> <TD> baseline </TD> <TD> vbs </TD> <TD>  0.853 </TD> <TD> 3127.236 </TD> <TD>  0.000 </TD> </TR>
+  <TR> <TD> baseline </TD> <TD> singleBest </TD> <TD>  0.428 </TD> <TD> 12057.041 </TD> <TD> 903.778 </TD> </TR>
+  <TR> <TD> baseline </TD> <TD> singleBestByPar </TD> <TD> <b><FONT COLOR="#00FF00"> 0.769</FONT></b> </TD> <TD> <b><FONT COLOR="#00FF00">4893.141</FONT></b> </TD> <TD> <b><FONT COLOR="#00FF00">190.904</FONT></b> </TD> </TR>
+  <TR> <TD> baseline </TD> <TD> singleBestBySuccesses </TD> <TD> <b><FONT COLOR="#00FF00"> 0.769</FONT></b> </TD> <TD> <b><FONT COLOR="#00FF00">4893.141</FONT></b> </TD> <TD> <b><FONT COLOR="#00FF00">190.904</FONT></b> </TD> </TR>
+  <TR> <TD> classif </TD> <TD> meta/AdaBoostM1 </TD> <TD>  0.805 </TD> <TD> 4130.846 </TD> <TD> 97.338 </TD> </TR>
+  <TR> <TD> classif </TD> <TD> bayes/BayesNet </TD> <TD>  0.816 </TD> <TD> 3888.785 </TD> <TD> 71.030 </TD> </TR>
+  <TR> <TD> classif </TD> <TD> lazy/IBk </TD> <TD> <b><FONT COLOR="#FFAAAA"> 0.826</FONT></b> </TD> <TD> <b><FONT COLOR="#FFAAAA">3670.967</FONT></b> </TD> <TD> <b><FONT COLOR="#FFAAAA">47.390</FONT></b> </TD> </TR>
+  <TR> <TD> classif </TD> <TD> rules/OneR </TD> <TD>  0.807 </TD> <TD> 4092.553 </TD> <TD> 102.196 </TD> </TR>
+  <TR> <TD> classif </TD> <TD> trees/RandomTree </TD> <TD>  0.824 </TD> <TD> 3724.295 </TD> <TD> <b><FONT COLOR="#FFAAAA">57.568</FONT></b> </TD> </TR>
+  <TR> <TD> classif </TD> <TD> trees/J48 </TD> <TD>  0.821 </TD> <TD> 3792.070 </TD> <TD> 60.617 </TD> </TR>
+  <TR> <TD> classif </TD> <TD> rules/JRip </TD> <TD>  0.808 </TD> <TD> 4059.149 </TD> <TD> 90.367 </TD> </TR>
+  <TR> <TD> classif </TD> <TD> classif.ctree </TD> <TD>  0.811 </TD> <TD> 4008.208 </TD> <TD> 82.577 </TD> </TR>
+  <TR> <TD> classif </TD> <TD> classif.ksvm </TD> <TD>  0.813 </TD> <TD> 3960.941 </TD> <TD> 78.460 </TD> </TR>
+  <TR> <TD> classif </TD> <TD> classif.naiveBayes </TD> <TD>  0.689 </TD> <TD> 6575.873 </TD> <TD> 363.255 </TD> </TR>
+  <TR> <TD> classif </TD> <TD> classif.randomForest </TD> <TD>  0.822 </TD> <TD> 3767.973 </TD> <TD> 58.095 </TD> </TR>
+  <TR> <TD> classif </TD> <TD> classif.rpart </TD> <TD>  0.807 </TD> <TD> 4080.946 </TD> <TD> 90.589 </TD> </TR>
+  <TR> <TD> regr </TD> <TD> regr.lm </TD> <TD>  0.822 </TD> <TD> 3777.872 </TD> <TD> 67.994 </TD> </TR>
+  <TR> <TD> regr </TD> <TD> regr.rpart </TD> <TD>  0.821 </TD> <TD> 3812.837 </TD> <TD> 81.384 </TD> </TR>
+  <TR> <TD> regr </TD> <TD> regr.randomForest </TD> <TD> <b><FONT COLOR="#FF0000"> 0.842</FONT></b> </TD> <TD> <b><FONT COLOR="#FF0000">3345.319</FONT></b> </TD> <TD> <b><FONT COLOR="#FF0000">23.798</FONT></b> </TD> </TR>
+  <TR> <TD> regr </TD> <TD> regr.earth </TD> <TD> <b><FONT COLOR="#FFAAAA"> 0.828</FONT></b> </TD> <TD> <b><FONT COLOR="#FFAAAA">3663.769</FONT></b> </TD> <TD> 61.768 </TD> </TR>
+  <TR> <TD> cluster </TD> <TD> EM </TD> <TD>  0.805 </TD> <TD> 4133.977 </TD> <TD> <b><FONT COLOR="#00FF00">100.469</FONT></b> </TD> </TR>
+  <TR> <TD> cluster </TD> <TD> FarthestFirst </TD> <TD>  0.769 </TD> <TD> 4893.244 </TD> <TD> 190.901 </TD> </TR>
+  <TR> <TD> cluster </TD> <TD> SimpleKMeans </TD> <TD> <b><FONT COLOR="#00FF00"> 0.806</FONT></b> </TD> <TD> <b><FONT COLOR="#00FF00">4118.855</FONT></b> </TD> <TD> 106.923 </TD> </TR>
+   </TABLE>
 
 
 

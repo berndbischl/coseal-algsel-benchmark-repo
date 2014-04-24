@@ -96,17 +96,34 @@ solver always has a misclassification penalty of zero.</li>
 
 <p>
 
-<div class="warning"><pre class="knitr r">## Warning: kein nicht-fehlendes Argument für min; gebe Inf zurück
-## Warning: kein nicht-fehlendes Argument für max; gebe -Inf zurück
-## Warning: kein nicht-fehlendes Argument für min; gebe Inf zurück
-## Warning: Datenlänge überschreitet Größe der Matrix
-</pre></div>
 <!-- html table generated in R 3.0.2 by xtable 1.7-3 package -->
-<!-- Thu Apr 24 12:13:43 2014 -->
+<!-- Thu Apr 24 23:06:36 2014 -->
 <TABLE border=1>
-<CAPTION ALIGN="bottom"> html </CAPTION>
 <TR> <TH> algo </TH> <TH> model </TH> <TH> succ </TH> <TH> par10 </TH> <TH> mcp </TH>  </TR>
-  </TABLE>
+  <TR> <TD> baseline </TD> <TD> vbs </TD> <TD>  0.937 </TD> <TD> 400.179 </TD> <TD>  0.000 </TD> </TR>
+  <TR> <TD> baseline </TD> <TD> singleBest </TD> <TD> <b><FONT COLOR="#00FF00"> 0.859</FONT></b> </TD> <TD> <b><FONT COLOR="#00FF00">880.547</FONT></b> </TD> <TD> <b><FONT COLOR="#00FF00">58.884</FONT></b> </TD> </TR>
+  <TR> <TD> baseline </TD> <TD> singleBestByPar </TD> <TD> <b><FONT COLOR="#00FF00"> 0.859</FONT></b> </TD> <TD> <b><FONT COLOR="#00FF00">880.547</FONT></b> </TD> <TD> <b><FONT COLOR="#00FF00">58.884</FONT></b> </TD> </TR>
+  <TR> <TD> baseline </TD> <TD> singleBestBySuccesses </TD> <TD> <b><FONT COLOR="#00FF00"> 0.859</FONT></b> </TD> <TD> <b><FONT COLOR="#00FF00">880.547</FONT></b> </TD> <TD> <b><FONT COLOR="#00FF00">58.884</FONT></b> </TD> </TR>
+  <TR> <TD> classif </TD> <TD> meta/AdaBoostM1 </TD> <TD>  0.859 </TD> <TD> 881.326 </TD> <TD> 58.426 </TD> </TR>
+  <TR> <TD> classif </TD> <TD> bayes/BayesNet </TD> <TD>  0.884 </TD> <TD> 722.196 </TD> <TD> 37.008 </TD> </TR>
+  <TR> <TD> classif </TD> <TD> lazy/IBk </TD> <TD>  0.871 </TD> <TD> 795.643 </TD> <TD> 39.513 </TD> </TR>
+  <TR> <TD> classif </TD> <TD> rules/OneR </TD> <TD>  0.873 </TD> <TD> 782.371 </TD> <TD> 38.760 </TD> </TR>
+  <TR> <TD> classif </TD> <TD> trees/RandomTree </TD> <TD>  0.883 </TD> <TD> 728.557 </TD> <TD> 35.023 </TD> </TR>
+  <TR> <TD> classif </TD> <TD> trees/J48 </TD> <TD>  0.882 </TD> <TD> 731.406 </TD> <TD> 33.699 </TD> </TR>
+  <TR> <TD> classif </TD> <TD> rules/JRip </TD> <TD>  0.879 </TD> <TD> 751.048 </TD> <TD> 40.822 </TD> </TR>
+  <TR> <TD> classif </TD> <TD> classif.ctree </TD> <TD>  0.876 </TD> <TD> 770.383 </TD> <TD> 39.291 </TD> </TR>
+  <TR> <TD> classif </TD> <TD> classif.ksvm </TD> <TD>  0.880 </TD> <TD> 742.112 </TD> <TD> 36.059 </TD> </TR>
+  <TR> <TD> classif </TD> <TD> classif.naiveBayes </TD> <TD>  0.887 </TD> <TD> 704.988 </TD> <TD> 36.493 </TD> </TR>
+  <TR> <TD> classif </TD> <TD> classif.randomForest </TD> <TD> <b><FONT COLOR="#00FF00"> 0.890</FONT></b> </TD> <TD> <b><FONT COLOR="#00FF00">680.119</FONT></b> </TD> <TD> <b><FONT COLOR="#FFAAAA">28.317</FONT></b> </TD> </TR>
+  <TR> <TD> classif </TD> <TD> classif.rpart </TD> <TD>  0.885 </TD> <TD> 714.117 </TD> <TD> 33.102 </TD> </TR>
+  <TR> <TD> regr </TD> <TD> regr.lm </TD> <TD> <b><FONT COLOR="#FFAAAA"> 0.902</FONT></b> </TD> <TD> <b><FONT COLOR="#FFAAAA">614.977</FONT></b> </TD> <TD> <b><FONT COLOR="#FFAAAA">25.770</FONT></b> </TD> </TR>
+  <TR> <TD> regr </TD> <TD> regr.rpart </TD> <TD> <b><FONT COLOR="#FFAAAA"> 0.906</FONT></b> </TD> <TD> <b><FONT COLOR="#FFAAAA">600.676</FONT></b> </TD> <TD> 32.335 </TD> </TR>
+  <TR> <TD> regr </TD> <TD> regr.randomForest </TD> <TD> <b><FONT COLOR="#FF0000"> 0.917</FONT></b> </TD> <TD> <b><FONT COLOR="#FF0000">526.633</FONT></b> </TD> <TD> <b><FONT COLOR="#FF0000">16.716</FONT></b> </TD> </TR>
+  <TR> <TD> regr </TD> <TD> regr.earth </TD> <TD>  0.899 </TD> <TD> 635.373 </TD> <TD> 29.474 </TD> </TR>
+  <TR> <TD> cluster </TD> <TD> EM </TD> <TD>  0.845 </TD> <TD> 956.776 </TD> <TD> 62.933 </TD> </TR>
+  <TR> <TD> cluster </TD> <TD> FarthestFirst </TD> <TD>  0.845 </TD> <TD> 961.716 </TD> <TD> 63.700 </TD> </TR>
+  <TR> <TD> cluster </TD> <TD> SimpleKMeans </TD> <TD> <b><FONT COLOR="#00FF00"> 0.850</FONT></b> </TD> <TD> <b><FONT COLOR="#00FF00">929.896</FONT></b> </TD> <TD> <b><FONT COLOR="#00FF00">61.091</FONT></b> </TD> </TR>
+   </TABLE>
 
 
 

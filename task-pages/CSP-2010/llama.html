@@ -96,17 +96,34 @@ solver always has a misclassification penalty of zero.</li>
 
 <p>
 
-<div class="warning"><pre class="knitr r">## Warning: kein nicht-fehlendes Argument für min; gebe Inf zurück
-## Warning: kein nicht-fehlendes Argument für max; gebe -Inf zurück
-## Warning: kein nicht-fehlendes Argument für min; gebe Inf zurück
-## Warning: Datenlänge überschreitet Größe der Matrix
-</pre></div>
 <!-- html table generated in R 3.0.2 by xtable 1.7-3 package -->
-<!-- Thu Apr 24 12:13:49 2014 -->
+<!-- Thu Apr 24 23:06:42 2014 -->
 <TABLE border=1>
-<CAPTION ALIGN="bottom"> html </CAPTION>
 <TR> <TH> algo </TH> <TH> model </TH> <TH> succ </TH> <TH> par10 </TH> <TH> mcp </TH>  </TR>
-  </TABLE>
+  <TR> <TD> baseline </TD> <TD> vbs </TD> <TD>  0.875 </TD> <TD> 6344.251 </TD> <TD>  0.000 </TD> </TR>
+  <TR> <TD> baseline </TD> <TD> singleBest </TD> <TD> <b><FONT COLOR="#00FF00"> 0.858</FONT></b> </TD> <TD> <b><FONT COLOR="#00FF00">7201.556</FONT></b> </TD> <TD> <b><FONT COLOR="#00FF00">79.143</FONT></b> </TD> </TR>
+  <TR> <TD> baseline </TD> <TD> singleBestByPar </TD> <TD> <b><FONT COLOR="#00FF00"> 0.858</FONT></b> </TD> <TD> <b><FONT COLOR="#00FF00">7201.556</FONT></b> </TD> <TD> <b><FONT COLOR="#00FF00">79.143</FONT></b> </TD> </TR>
+  <TR> <TD> baseline </TD> <TD> singleBestBySuccesses </TD> <TD> <b><FONT COLOR="#00FF00"> 0.858</FONT></b> </TD> <TD> <b><FONT COLOR="#00FF00">7201.556</FONT></b> </TD> <TD> <b><FONT COLOR="#00FF00">79.143</FONT></b> </TD> </TR>
+  <TR> <TD> classif </TD> <TD> meta/AdaBoostM1 </TD> <TD>  0.866 </TD> <TD> 6802.677 </TD> <TD> 35.995 </TD> </TR>
+  <TR> <TD> classif </TD> <TD> bayes/BayesNet </TD> <TD>  0.867 </TD> <TD> 6753.415 </TD> <TD> 31.199 </TD> </TR>
+  <TR> <TD> classif </TD> <TD> lazy/IBk </TD> <TD>  0.867 </TD> <TD> 6753.529 </TD> <TD> 31.313 </TD> </TR>
+  <TR> <TD> classif </TD> <TD> rules/OneR </TD> <TD>  0.865 </TD> <TD> 6827.434 </TD> <TD> 38.518 </TD> </TR>
+  <TR> <TD> classif </TD> <TD> trees/RandomTree </TD> <TD> <b><FONT COLOR="#FFAAAA"> 0.868</FONT></b> </TD> <TD> 6704.023 </TD> <TD> 26.274 </TD> </TR>
+  <TR> <TD> classif </TD> <TD> trees/J48 </TD> <TD> <b><FONT COLOR="#FFAAAA"> 0.868</FONT></b> </TD> <TD> 6701.576 </TD> <TD> 23.827 </TD> </TR>
+  <TR> <TD> classif </TD> <TD> rules/JRip </TD> <TD>  0.866 </TD> <TD> 6802.945 </TD> <TD> 36.263 </TD> </TR>
+  <TR> <TD> classif </TD> <TD> classif.ctree </TD> <TD>  0.865 </TD> <TD> 6848.988 </TD> <TD> 37.840 </TD> </TR>
+  <TR> <TD> classif </TD> <TD> classif.ksvm </TD> <TD>  0.865 </TD> <TD> 6849.037 </TD> <TD> 37.889 </TD> </TR>
+  <TR> <TD> classif </TD> <TD> classif.naiveBayes </TD> <TD>  0.787 </TD> <TD> 10775.342 </TD> <TD> 473.581 </TD> </TR>
+  <TR> <TD> classif </TD> <TD> classif.randomForest </TD> <TD> <b><FONT COLOR="#FFAAAA"> 0.869</FONT></b> </TD> <TD> <b><FONT COLOR="#FFAAAA">6629.103</FONT></b> </TD> <TD> <b><FONT COLOR="#FF0000">18.053</FONT></b> </TD> </TR>
+  <TR> <TD> classif </TD> <TD> classif.rpart </TD> <TD>  0.864 </TD> <TD> 6874.495 </TD> <TD> 41.114 </TD> </TR>
+  <TR> <TD> regr </TD> <TD> regr.lm </TD> <TD> <b><FONT COLOR="#FFAAAA"> 0.869</FONT></b> </TD> <TD> <b><FONT COLOR="#FFAAAA">6633.481</FONT></b> </TD> <TD> <b><FONT COLOR="#FFAAAA">22.431</FONT></b> </TD> </TR>
+  <TR> <TD> regr </TD> <TD> regr.rpart </TD> <TD>  0.863 </TD> <TD> 6927.993 </TD> <TD> 50.145 </TD> </TR>
+  <TR> <TD> regr </TD> <TD> regr.randomForest </TD> <TD> <b><FONT COLOR="#FF0000"> 0.871</FONT></b> </TD> <TD> <b><FONT COLOR="#FF0000">6541.289</FONT></b> </TD> <TD> <b><FONT COLOR="#FFAAAA">19.173</FONT></b> </TD> </TR>
+  <TR> <TD> regr </TD> <TD> regr.earth </TD> <TD>  0.867 </TD> <TD> 6761.599 </TD> <TD> 39.383 </TD> </TR>
+  <TR> <TD> cluster </TD> <TD> EM </TD> <TD>  0.855 </TD> <TD> 7358.226 </TD> <TD> 102.413 </TD> </TR>
+  <TR> <TD> cluster </TD> <TD> FarthestFirst </TD> <TD> <b><FONT COLOR="#00FF00"> 0.858</FONT></b> </TD> <TD> <b><FONT COLOR="#00FF00">7201.556</FONT></b> </TD> <TD> <b><FONT COLOR="#00FF00">79.143</FONT></b> </TD> </TR>
+  <TR> <TD> cluster </TD> <TD> SimpleKMeans </TD> <TD> <b><FONT COLOR="#00FF00"> 0.858</FONT></b> </TD> <TD> <b><FONT COLOR="#00FF00">7201.556</FONT></b> </TD> <TD> <b><FONT COLOR="#00FF00">79.143</FONT></b> </TD> </TR>
+   </TABLE>
 
 
 
