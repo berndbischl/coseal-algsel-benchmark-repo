@@ -1,3 +1,6 @@
+#FIXME document that we can also use one task
+#FIXME: remove feature stesp as list
+
 #' @title Creates a registry which can be used for running several Llama models on a cluster.
 #'
 #' @description
@@ -13,6 +16,9 @@
 #'
 #' @param astasks [\code{list}]\cr
 #'   List of algorithm selection tasks (\code{\link{ASTask}}).
+#' @param feature.steps [\code{list} of \code{character}]\cr
+#'   Named list of feature steps we want to use.
+#'   Must be named with task ids.
 #' @param baselines [\code{character}]\cr
 #'   Vector of characters, defining the baseline models.
 #'   Default is c("vbs", "singleBest", "singleBestByPar", "singleBestBySuccesses").
@@ -30,13 +36,20 @@
 #'   By default no preprocessing is done.
 #' @return BatchExperiments registry.
 #' @export
-runLlamaModels = function(astasks, baselines,
+runLlamaModels = function(astasks, feature.steps.list, baselines,
  classifiers = character(0), regressors = character(0), clusterers = character(0), pre) {
 
   checkArg(astasks, c("list", "ASTask"))
   if (!missing(astasks) && inherits(astasks, "ASTask"))
     astasks = list(astasks)
   checkListElementClass(astasks, "ASTask")
+  task.ids = sapply(astasks, function(x) x$desc$task_id)
+
+  checkArg(feature.steps.list, "list")
+  checkListElementClass(feature.steps.list, "character")
+  stopifnot(setequal(names(feature.steps.list), task.ids))
+  # sort in correct order
+  feature.steps.list = feature.steps.list[task.ids]
 
   if (missing(pre)) {
     pre = function(x, y = NULL) {
@@ -47,14 +60,12 @@ runLlamaModels = function(astasks, baselines,
   # models and defaults
   baselines.all = c("vbs", "singleBest", "singleBestByPar", "singleBestBySuccesses")
 
+  # FIXME: we need a better interface to discrminate between learners from Weka, llama and mlr
   classifiers.weka = c("meta/AdaBoostM1", "bayes/BayesNet", "lazy/IBk", "rules/OneR",
     "trees/RandomTree", "trees/J48", "rules/JRip")
   classifiers.mlr = c("classif.ctree", "classif.kknn", "classif.ksvm", "classif.naiveBayes",
     "classif.randomForest", "classif.rpart")
   classifiers.all = c(classifiers.weka, classifiers.mlr)
-
-  regressors.mlr = c("regr.earth", "regr.lm", "regr.randomForest", "regr.rpart")
-  regressors.all = regressors.mlr
 
   clusterers.weka = c("XMeans", "EM", "FarthestFirst", "SimpleKMeans")
   clusterers.all = clusterers.weka
@@ -64,16 +75,17 @@ runLlamaModels = function(astasks, baselines,
     baselines = baselines.all
   else
     checkArg(baselines, subset = baselines.all)
+  # FIXME: the checks are bad in general... which models can be support?
   checkArg(classifiers, subset = classifiers.all)
-  checkArg(regressors, subset = regressors.all)
-  checkArg(clusterers, subset = clusterers.all)
+  checkArg(regressors, "character", na.ok = FALSE)
+  checkArg(clusterers, "character", na.ok = FALSE)
 
   packs = c("RWeka", "llama", "methods", "mlr", "BatchExperiments")
   requirePackages(packs, why = "runLlamaModels")
 
   makeModelFun = function(name, n.algos) {
     force(n.algos)
-    if (name %in% c(classifiers.mlr, regressors.mlr)) {
+    if (str_detect(name, "classif\\.|regr\\.")) {
       convertMlrLearnerToLlama(makeLearner(name))
     } else if (name %in% classifiers.weka) {
       make_Weka_classifier(paste("weka/classifiers", name, sep = "/"))
@@ -110,8 +122,11 @@ runLlamaModels = function(astasks, baselines,
   }
 
   # baseline models use these, no feature costs
-  llama.tasks = lapply(astasks, convertToLlama, add.feature.costs = FALSE)
+  llama.tasks = mapply(convertToLlama, astask = astasks, feature.steps = feature.steps.list,
+    MoreArgs = list(add.feature.costs = FALSE), SIMPLIFY = FALSE)
   # real models use these, use feature costs
+  llama.cvs = mapply(convertToLlamaCVFolds, astask = astasks, feature.steps = feature.steps.list,
+    MoreArgs = list(add.feature.costs = TRUE), SIMPLIFY = FALSE)
   llama.cvs = lapply(astasks, convertToLlamaCVFolds, add.feature.costs = TRUE)
 
   # FIXME:
@@ -128,6 +143,7 @@ runLlamaModels = function(astasks, baselines,
       NULL
     addProblem(reg, id = desc$task_id,
       static = list(
+        feature.steps = feature.steps.list[[desc$task_id]],
         timeout = timeout,
         llama.task = llama.tasks[[i]],
         llama.cv = llama.cvs[[i]],

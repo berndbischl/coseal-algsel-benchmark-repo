@@ -5,30 +5,47 @@ library(llama)
 library(stringr)
 load_all("../algselbench")
 source("defs.R")
+source("eda_config.R")
 
 ds.dirs = list.files(file.path(coseal.svn.dir, "data"), full.names = TRUE)
-ds.dirs = ds.dirs[!str_detect(ds.dirs, "bbob|machine")]
+ds.dirs = ds.dirs[!str_detect(ds.dirs, "BBOB|MACHINE")]
 print(ds.dirs)
+ds.dirs = ds.dirs
 astasks = lapply(ds.dirs, parseASTask)
-astasks = lapply(astasks, addDefaultsToASTask, "../configs/")
+configs = lapply(astasks, readEDAConfig, confpath = "../configs")
+feature.steps.list = extractSubList(configs, "feature.steps.default", simplify = FALSE)
+names(feature.steps.list) = sapply(astasks, function(x) x$desc$task_id)
 
-classifiers.weka = c("meta/AdaBoostM1", "bayes/BayesNet", "lazy/IBk", "rules/OneR",
-  "trees/RandomTree", "trees/J48", "rules/JRip")
-classifiers.mlr = c("classif.ctree", "classif.ksvm", "classif.naiveBayes",
-  "classif.randomForest", "classif.rpart")
+reg = runLlamaModels(astasks, feature.steps.list = feature.steps.list,
 
-reg = runLlamaModels(astasks, classifiers=c(classifiers.weka, classifiers.mlr), 
-  clusterers = c("EM", "FarthestFirst", "SimpleKMeans"), pre = normalize)
+  classifiers = c(
+    "meta/AdaBoostM1", "bayes/BayesNet", "lazy/IBk", "rules/OneR",
+    "trees/RandomTree", "trees/J48", "rules/JRip",
+
+    "classif.ctree", "classif.ksvm", "classif.naiveBayes", "classif.randomForest", "classif.rpart"
+  ),
+
+  regressors = c("regr.lm", "regr.rpart", "regr.randomForest", "regr.earth"),
+
+  clusterers = c("EM", "FarthestFirst", "SimpleKMeans"),
+
+  pre = normalize
+)
+
+# reg = runLlamaModels(astasks, feature.steps.list = feature.steps.list,
+  # classifiers = "classif.rpart")
 
 # jobs should be run with 2gig mem
 # run time of all jobs
 # summary(getJobInfo(reg)$time.running)
-   # Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
-      # 9      18      30     161      50    6320 
+   # Min. 1st Qu.  Median    Mean 3rd Qu.    Max.
+      # 9      18      30     161      50    6320
 # can be run on SLURM in a few hours in total
 
-# submitJobs(reg, resources = list(memory = 2048))
+# stop("we dont auto submit :)")
+submitJobs(reg, resources = list(memory = 2048))
+waitForJobs(reg)
 
 d = reduceResultsExperiments(reg, strings.as.factors = FALSE)
-save2(file = "llama_results.RData", res = d)
+# save2(file = "llama_results.RData", res = d)
 
