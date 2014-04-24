@@ -2,12 +2,17 @@
 \alias{runLlamaModels}
 \title{Creates a registry which can be used for running several Llama models on a cluster.}
 \usage{
-runLlamaModels(astasks, baselines, classifiers = character(0),
-  regressors = character(0), clusterers = character(0), pre)
+runLlamaModels(astasks, feature.steps.list, baselines,
+  classifiers = character(0), regressors = character(0),
+  clusterers = character(0), pre)
 }
 \arguments{
   \item{astasks}{[\code{list}]\cr List of algorithm
   selection tasks (\code{\link{ASTask}}).}
+
+  \item{feature.steps}{[\code{list} of \code{character}]\cr
+  Named list of feature steps we want to use.  Must be
+  named with task ids.}
 
   \item{baselines}{[\code{character}]\cr Vector of
   characters, defining the baseline models.  Default is

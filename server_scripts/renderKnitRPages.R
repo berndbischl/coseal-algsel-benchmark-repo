@@ -38,7 +38,6 @@ ee$astasks = list()
 try({
 
   for (task.dir in task.dirs) {
-    print(task.dir)
     setwd(old.wd)
     task.name = basename(task.dir)
     messagef("Create pages for: %s", task.name)

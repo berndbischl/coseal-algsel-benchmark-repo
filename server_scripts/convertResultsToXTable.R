@@ -19,7 +19,7 @@ printResultsAsHTMLTable = function(res, task.id, col.best = "#FF0000", col.best3
 
   # function to color cell(s) in res.char
   colorize = function(inds, meas, col)
-    res.char[inds, meas] <<- sprintf("<b><FONT COLOR=\"%s\">%5.2f</FONT></b>", col, res[inds, meas])
+    res.char[inds, meas] <<- sprintf("<b><FONT COLOR=\"%s\">%6.3f</FONT></b>", col, res[inds, meas])
 
   for (m in measures) {
     dec = !m$minimize
@@ -42,7 +42,7 @@ printResultsAsHTMLTable = function(res, task.id, col.best = "#FF0000", col.best3
   }
   # add vbs again and drop some cols
   res.char = dropNamed(res.char, c("id", "prob", "llama.fun", "repl"))
-  xt = xtable(res.char, "html")
+  xt = xtable(res.char)
   print(xt, "html", include.rownames = FALSE, sanitize.text.function = identity)
   invisible(NULL)
 }
