@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style type="text/css">
+.knitr.inline {
+  background-color: #f7f7f7;
+  border:solid 1px #B0B0B0;
+}
+.error {
+	font-weight: bold;
+	color: #FF0000;
+},
+.warning {
+	font-weight: bold;
+}
+.message {
+	font-style: italic;
+}
+.source, .output, .warning, .error, .message {
+	padding: 0em 1em;
+  border:solid 1px #F7F7F7;
+}
+.source {
+  background-color: #f5f5f5;
+}
+.rimage.left {
+  text-align: left;
+}
+.rimage.right {
+  text-align: right;
+}
+.rimage.center {
+  text-align: center;
+}
+.hl.num {
+  color: #AF0F91;
+}
+.hl.str {
+  color: #317ECC;
+}
+.hl.com {
+  color: #AD95AF;
+  font-style: italic;
+}
+.hl.opt {
+  color: #000000;
+}
+.hl.std {
+  color: #585858;
+}
+.hl.kwa {
+  color: #295F94;
+  font-weight: bold;
+}
+.hl.kwb {
+  color: #B05A65;
+}
+.hl.kwc {
+  color: #55aa55;
+}
+.hl.kwd {
+  color: #BC5A65;
+  font-weight: bold;
+}
+</style>
+<title>Algorithm selection tasks</title>
+</head>
+<body>
+
+
+<h1>Algorithm Selection Benchmark Library</h1>
+
+<b>
+CAUTION: Heavily work in progress, do not use data or results for papers until we remove
+this message. ETA: April 2014.
+</b>
+
+<br><br><br>
+
+<table border=1 cellpadding=10>
+<tr>
+  <th>Task Name</th>
+  <th>Instances</th>
+  <th>Algorithms</th>
+  <th>Features</th>
+  <th>Type</th>
+  <th>Stoch. Feat.</th>
+  <th>Stoch. Alg.</th>
+  <th>Feature Costs</th>
+</tr>
+
+<tr>
+<td>
+<a href='http://berndbischl.github.io/coseal-algsel-benchmark-repo/task-pages/ASP-POTASSCO/index.html'>ASP-POTASSCO</a>
+</td>
+<td align='right'>
+1294
+</td>
+<td align='right'>
+11
+</td>
+<td align='right'>
+138
+</td>
+<td align='right'>
+runtime
+</td>
+<td align='right'>
+FALSE, max. reps = 1
+</td>
+<td align='right'>
+FALSE, max. reps = 1
+</td>
+<td align='right'>
+TRUE
+</td>
+</tr>
+<tr>
+<td>
+<a href='http://berndbischl.github.io/coseal-algsel-benchmark-repo/task-pages/CSP-2010/index.html'>CSP-2010</a>
+</td>
+<td align='right'>
+2024
+</td>
+<td align='right'>
+2
+</td>
+<td align='right'>
+86
+</td>
+<td align='right'>
+runtime
+</td>
+<td align='right'>
+TRUE, max. reps = 1
+</td>
+<td align='right'>
+FALSE, max. reps = 1
+</td>
+<td align='right'>
+FALSE
+</td>
+</tr>
+<tr>
+<td>
+<a href='http://berndbischl.github.io/coseal-algsel-benchmark-repo/task-pages/MAXSAT12-PMS/index.html'>MAXSAT12-PMS</a>
+</td>
+<td align='right'>
+876
+</td>
+<td align='right'>
+6
+</td>
+<td align='right'>
+37
+</td>
+<td align='right'>
+runtime
+</td>
+<td align='right'>
+FALSE, max. reps = 1
+</td>
+<td align='right'>
+FALSE, max. reps = 1
+</td>
+<td align='right'>
+TRUE
+</td>
+</tr>
+<tr>
+<td>
+<a href='http://berndbischl.github.io/coseal-algsel-benchmark-repo/task-pages/PREMARSHALLING-ASTAR-2013/index.html'>PREMARSHALLING-ASTAR-2013</a>
+</td>
+<td align='right'>
+527
+</td>
+<td align='right'>
+4
+</td>
+<td align='right'>
+16
+</td>
+<td align='right'>
+runtime
+</td>
+<td align='right'>
+FALSE, max. reps = 1
+</td>
+<td align='right'>
+FALSE, max. reps = 1
+</td>
+<td align='right'>
+FALSE
+</td>
+</tr>
+<tr>
+<td>
+<a href='http://berndbischl.github.io/coseal-algsel-benchmark-repo/task-pages/QBF-2011/index.html'>QBF-2011</a>
+</td>
+<td align='right'>
+1368
+</td>
+<td align='right'>
+5
+</td>
+<td align='right'>
+46
+</td>
+<td align='right'>
+runtime
+</td>
+<td align='right'>
+FALSE, max. reps = 1
+</td>
+<td align='right'>
+FALSE, max. reps = 1
+</td>
+<td align='right'>
+FALSE
+</td>
+</tr>
+<tr>
+<td>
+<a href='http://berndbischl.github.io/coseal-algsel-benchmark-repo/task-pages/SAT11-HAND/index.html'>SAT11-HAND</a>
+</td>
+<td align='right'>
+296
+</td>
+<td align='right'>
+15
+</td>
+<td align='right'>
+115
+</td>
+<td align='right'>
+runtime
+</td>
+<td align='right'>
+FALSE, max. reps = 1
+</td>
+<td align='right'>
+FALSE, max. reps = 1
+</td>
+<td align='right'>
+TRUE
+</td>
+</tr>
+<tr>
+<td>
+<a href='http://berndbischl.github.io/coseal-algsel-benchmark-repo/task-pages/SAT11-INDU/index.html'>SAT11-INDU</a>
+</td>
+<td align='right'>
+300
+</td>
+<td align='right'>
+18
+</td>
+<td align='right'>
+115
+</td>
+<td align='right'>
+runtime
+</td>
+<td align='right'>
+FALSE, max. reps = 1
+</td>
+<td align='right'>
+FALSE, max. reps = 1
+</td>
+<td align='right'>
+TRUE
+</td>
+</tr>
+<tr>
+<td>
+<a href='http://berndbischl.github.io/coseal-algsel-benchmark-repo/task-pages/SAT11-RAND/index.html'>SAT11-RAND</a>
+</td>
+<td align='right'>
+600
+</td>
+<td align='right'>
+9
+</td>
+<td align='right'>
+115
+</td>
+<td align='right'>
+runtime
+</td>
+<td align='right'>
+FALSE, max. reps = 1
+</td>
+<td align='right'>
+FALSE, max. reps = 1
+</td>
+<td align='right'>
+TRUE
+</td>
+</tr>
+<tr>
+<td>
+<a href='http://berndbischl.github.io/coseal-algsel-benchmark-repo/task-pages/SAT12-ALL/index.html'>SAT12-ALL</a>
+</td>
+<td align='right'>
+1614
+</td>
+<td align='right'>
+31
+</td>
+<td align='right'>
+115
+</td>
+<td align='right'>
+runtime
+</td>
+<td align='right'>
+FALSE, max. reps = 1
+</td>
+<td align='right'>
+FALSE, max. reps = 1
+</td>
+<td align='right'>
+TRUE
+</td>
+</tr>
+<tr>
+<td>
+<a href='http://berndbischl.github.io/coseal-algsel-benchmark-repo/task-pages/SAT12-HAND/index.html'>SAT12-HAND</a>
+</td>
+<td align='right'>
+767
+</td>
+<td align='right'>
+31
+</td>
+<td align='right'>
+115
+</td>
+<td align='right'>
+runtime
+</td>
+<td align='right'>
+FALSE, max. reps = 1
+</td>
+<td align='right'>
+FALSE, max. reps = 1
+</td>
+<td align='right'>
+TRUE
+</td>
+</tr>
+<tr>
+<td>
+<a href='http://berndbischl.github.io/coseal-algsel-benchmark-repo/task-pages/SAT12-INDU/index.html'>SAT12-INDU</a>
+</td>
+<td align='right'>
+1167
+</td>
+<td align='right'>
+31
+</td>
+<td align='right'>
+115
+</td>
+<td align='right'>
+runtime
+</td>
+<td align='right'>
+FALSE, max. reps = 1
+</td>
+<td align='right'>
+FALSE, max. reps = 1
+</td>
+<td align='right'>
+TRUE
+</td>
+</tr>
+<tr>
+<td>
+<a href='http://berndbischl.github.io/coseal-algsel-benchmark-repo/task-pages/SAT12-RAND/index.html'>SAT12-RAND</a>
+</td>
+<td align='right'>
+1362
+</td>
+<td align='right'>
+31
+</td>
+<td align='right'>
+115
+</td>
+<td align='right'>
+runtime
+</td>
+<td align='right'>
+FALSE, max. reps = 1
+</td>
+<td align='right'>
+FALSE, max. reps = 1
+</td>
+<td align='right'>
+TRUE
+</td>
+</tr>
+
+
+</table>
+
+</body>
+</html>
+

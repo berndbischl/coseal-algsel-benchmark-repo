@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style type="text/css">
+.knitr.inline {
+  background-color: #f7f7f7;
+  border:solid 1px #B0B0B0;
+}
+.error {
+	font-weight: bold;
+	color: #FF0000;
+},
+.warning {
+	font-weight: bold;
+}
+.message {
+	font-style: italic;
+}
+.source, .output, .warning, .error, .message {
+	padding: 0em 1em;
+  border:solid 1px #F7F7F7;
+}
+.source {
+  background-color: #f5f5f5;
+}
+.rimage.left {
+  text-align: left;
+}
+.rimage.right {
+  text-align: right;
+}
+.rimage.center {
+  text-align: center;
+}
+.hl.num {
+  color: #AF0F91;
+}
+.hl.str {
+  color: #317ECC;
+}
+.hl.com {
+  color: #AD95AF;
+  font-style: italic;
+}
+.hl.opt {
+  color: #000000;
+}
+.hl.std {
+  color: #585858;
+}
+.hl.kwa {
+  color: #295F94;
+  font-weight: bold;
+}
+.hl.kwb {
+  color: #B05A65;
+}
+.hl.kwc {
+  color: #55aa55;
+}
+.hl.kwd {
+  color: #BC5A65;
+  font-weight: bold;
+}
+</style>
+<title>Some LLAMA benchmark results</title>
+</head>
+<body>
+
+
+<h2> LLAMA results </h2>
+
+All results were produced by using the cross-validation splits in the repository with
+<code class="knitr inline">10</code> folds and <code class="knitr inline">1</code> repetitions.<br>
+The best values within a type (i.e., baseline (except for vbs), classif, regr and cluster) and performance measure (i.e., Percentage solved, PAR10, MCP) are colored green. Furthermore, the three best values over all groups within a performance measure are colored pink, the absolute best one is red. 
+
+<p>
+
+The performance is measured in three different ways.
+<ul>
+<li><strong>Percentage solved</strong> records the percentage of problem
+instances in the data set for which the selector selected an algorithm that was
+able to solve it with runstatus "ok" and the algorithm time plus the feature
+computation time was at most the timeout.</li>
+<li>The <strong>penalized average runtime score (PAR10)</strong> measures the time required to
+run on all problem instances. If an instance was solved within the timeout by
+the algorithm the selector chose, the
+actual runtime is taken. If a timeout occurred, the timeout value was multiplied
+by 10.</li>
+<li>The <strong>misclassification penalty (mcp)</strong> measures the additional time required to run
+on all problems if sub-optimal algorithms were used. That is, if an algorithm is
+run on a problem instance that is not the best, a performance loss is incurred.
+There are no additional penalties or factors for timeouts. The virtual best
+solver always has a misclassification penalty of zero.</li>
+</ul>
+
+<p>
+
+<div class="warning"><pre class="knitr r">## Warning: kein nicht-fehlendes Argument für min; gebe Inf zurück
+## Warning: kein nicht-fehlendes Argument für max; gebe -Inf zurück
+## Warning: kein nicht-fehlendes Argument für min; gebe Inf zurück
+## Warning: Datenlänge überschreitet Größe der Matrix
+</pre></div>
+<!-- html table generated in R 3.0.2 by xtable 1.7-3 package -->
+<!-- Thu Apr 24 12:13:53 2014 -->
+<TABLE border=1>
+<CAPTION ALIGN="bottom"> html </CAPTION>
+<TR> <TH> algo </TH> <TH> model </TH> <TH> succ </TH> <TH> par10 </TH> <TH> mcp </TH>  </TR>
+  </TABLE>
+
+
+
+<p>
+
+
+The following default feature steps were used for model building:
+<p>
+<code class="knitr inline">group_basics</code>
+<p>
+Number of presolved instances: <code class="knitr inline">0</code>
+<p>
+The cost for using the feature steps (adapted for presolving) is: <code class="knitr inline">132.54</code>
+or on average: <code class="knitr inline">0.1513</code>
+<p>
+The feature steps correspond to the following <code class="knitr inline">37</code> / <code class="knitr inline">37</code> features:
+<p>
+numVars, numClauses, perc_soft, soft_mean, soft_std, <br>soft_min, soft_max, var_clauses_ratio, vcg_var_mean, vcg_var_std, <br>vcg_var_min, vcg_var_max, vcg_var_spread, vcg_cls_mean, vcg_cls_std, <br>vcg_cls_min, vcg_cls_max, vcg_cls_spread, pnr_var_mean, pnr_var_std, <br>pnr_var_min, pnr_var_max, pnr_var_spread, pnr_cls_mean, pnr_cls_std, <br>pnr_cls_min, pnr_cls_max, pnr_cls_spread, unary, binary, <br>trinary, horn_mean, horn_std, horn_min, horn_max, <br>horn_spread, horn, 
+
+<p>
+
+</body>
+</html>
+
