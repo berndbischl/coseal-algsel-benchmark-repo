@@ -25,7 +25,6 @@ readEDAConfig = function(astask, confpath) {
   checkArg(astask, "ASTask")
   id = astask$desc$task_id
   conffile = file.path(confpath, paste0(id, ".R"))
-  print(conffile)
   if (file.exists(conffile)) {
     # source config into envir, then construct
     conf = new.env()
