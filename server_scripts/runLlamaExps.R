@@ -10,7 +10,7 @@ source("eda_config.R")
 ds.dirs = list.files(file.path(coseal.svn.dir, "data"), full.names = TRUE)
 ds.dirs = ds.dirs[!str_detect(ds.dirs, "BBOB|MACHINE")]
 print(ds.dirs)
-ds.dirs = ds.dirs
+# ds.dirs = ds.dirs[1]
 astasks = lapply(ds.dirs, parseASTask)
 configs = lapply(astasks, readEDAConfig, confpath = "../configs")
 feature.steps.list = extractSubList(configs, "feature.steps.default", simplify = FALSE)
@@ -46,6 +46,7 @@ reg = runLlamaModels(astasks, feature.steps.list = feature.steps.list,
 submitJobs(reg, resources = list(memory = 2048))
 waitForJobs(reg)
 
-d = reduceResultsExperiments(reg, strings.as.factors = FALSE)
-# save2(file = "llama_results.RData", res = d)
+d = reduceResultsExperiments(reg, strings.as.factors = FALSE, 
+  impute.val = list(succ = 0, par10 = Inf, mcp = Inf))
+save2(file = "llama_results.RData", res = d)
 
