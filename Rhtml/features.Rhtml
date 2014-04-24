@@ -41,7 +41,7 @@ The following table summarizes the feature steps over all instances.
 
 <!--begin.rcode, results = "asis"
   res = summarizeFeatureSteps(astask)
-  print(xtable(res, display = c("s", "d", rep("g", 10))), "html")
+  print(xtable(res, display = c("s", "d", rep("g", ncol(res) - 1L))), "html")
 end.rcode-->
 
 <br>
