@@ -2,6 +2,7 @@
 #  - imputes it (in standard way)
 #  - aggregates replications
 #  - returns in wide or long format
+#  - returns also range of orig data and how often runs where successful
 
 
 getEDAAlgoPerf = function(astask, measure, jitter, impute.zero.vals, check.log, format, with.instance.id) {
@@ -12,6 +13,14 @@ getEDAAlgoPerf = function(astask, measure, jitter, impute.zero.vals, check.log, 
   checkArg(impute.zero.vals, "logical", len = 1L, na.ok = FALSE)
   checkArg(format, choices = c("wide", "long"))
   checkArg(with.instance.id, "logical", len = 1L, na.ok = FALSE)
+
+  # compute range and success.rate now
+  origdata = astask$algo.runs
+  range = range(origdata[, measure], na.rm = TRUE)
+  success.rate = ddply(origdata, "algorithm", function(d) {
+    mean(!is.na(d[, measure]))
+  })
+  success.rate = setNames(success.rate$V1, success.rate$algorithm)
 
   jitter2 = ifelse(jitter, 0.05, 0)
   # for runtime tasks set to cutoff, otherwise use default, which is min or max value of perfs
@@ -35,7 +44,8 @@ getEDAAlgoPerf = function(astask, measure, jitter, impute.zero.vals, check.log, 
   data$repetition = NULL
   if (!with.instance.id)
     data = dropNamed(data, "instance_id")
-  list(data = data, measure = measure)
+  list(data = data, measure = measure, range = range,
+    success.rate = success.rate)
 }
 
 

@@ -6,6 +6,8 @@
 #' \code{base} is is the cutoff value for runtimes tasks with cutoff or
 #' the worst performance for all others.
 #'
+#' For the CDFs we only show the visible area where successful runs occurred.
+#'
 #' Stochastic replications are aggregated by the mean value.
 #'
 #' @param astask [\code{\link{ASTask}}]\cr
