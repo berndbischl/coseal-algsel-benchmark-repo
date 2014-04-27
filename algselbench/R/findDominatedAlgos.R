@@ -25,7 +25,7 @@
 #' @export
 findDominatedAlgos = function(astask, measure, reduce = FALSE, type = "logical") {
   
-  z = getEDAAlgoPerf(astask, measure, jitter = FALSE, check.log = FALSE,
+  z = getEDAAlgoPerf(astask, measure, jitter = FALSE, impute.zero.vals = FALSE, check.log = FALSE,
     format = "wide", with.instance.id = FALSE)
 
   # convert maximization into minimization
