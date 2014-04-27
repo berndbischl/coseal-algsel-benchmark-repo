@@ -1,11 +1,13 @@
 library(algselbench)
 
 makeEDAConfig = function(
+  algo.perf.impute.zero.vals = FALSE,
   algo.perf.log = FALSE,
   feature.steps.default
 ) {
 
   makeS3Obj("ASTaskHTMLConfig",
+    algo.perf.impute.zero.vals = algo.perf.impute.zero.vals,
     algo.perf.log = algo.perf.log,
     feature.steps.default = feature.steps.default
   )
