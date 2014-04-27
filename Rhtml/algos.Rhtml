@@ -48,7 +48,7 @@ Here, you'll find an overview of dominating/dominated algorithms: <br>
     print(xtable(res), include.rownames = TRUE, "html")
   } else {
     cat("None of the algorithms was superior to any of the other.")
-  }  
+  }
 end.rcode-->
 
 <br> <br>
@@ -57,10 +57,9 @@ An algorithm (A) is considered to be superior to an other algorithm (B), if it h
 <br>
 <br>
 
-<b><FONT COLOR = "#FF0000"> Important note w.r.t. the following plots:</b><br>
-Depending on the configuration, missing values among the algorithms' performance values
-were imputed prior to the creation of the following plots.<br>
-Missing values were imputed to max + 0.3 * (max - min), in case of minimization problems, 
+<b><FONT COLOR = "#FF0000"> Important note w.r.t. some of the following plots:</b><br>
+If appropriate, we imputed performance values for failed runs.
+We used max + 0.3 * (max - min), in case of minimization problems,
 or min - 0.3 * (max - min), in case of maximization problems.<br>
 In addition, a small noise is added to the imputed values (except for the cluster matrix,
 based on correlations, which is shown at the end of this page). </FONT>
@@ -69,48 +68,51 @@ based on correlations, which is shown at the end of this page). </FONT>
 
 <h2> Boxplots of performance values </h2>
 
-<br>
-
+<br>Performance values with imputation.<br>
 <!--begin.rcode
-  plotAlgoPerfBoxplots(astask, log = config$algo.perf.log)
+  plotAlgoPerfBoxplots(astask, impute.zero.vals = config$algo.perf.impute.zero.vals, log = config$algo.perf.log)
 end.rcode-->
 
 <br>
 <h2> Estimated densitities of performance values </h2>
 
-<br>
-
+<br>Performance values with imputation.<br>
 <!--begin.rcode
-  plotAlgoPerfDensities(astask, log = config$algo.perf.log) 
+  plotAlgoPerfDensities(astask, impute.zero.vals = config$algo.perf.impute.zero.vals, log = config$algo.perf.log, impute.failed.runs = TRUE)
 end.rcode-->
 
+<br>Performance values without imputation.<br>
+<!--begin.rcode
+  plotAlgoPerfDensities(astask, impute.zero.vals = config$algo.perf.impute.zero.vals, log = config$algo.perf.log, impute.failed.runs = FALSE)
+end.rcode-->
 <br>
+
 <h2> Estimated cumulative distribution functions of performance values </h2>
 
-<br>
-
+<br>Performance values without imputation.<br>
 <!--begin.rcode
-  plotAlgoPerfCDFs(astask, log = config$algo.perf.log) 
+  plotAlgoPerfCDFs(astask, impute.zero.vals = config$algo.perf.impute.zero.vals, log = config$algo.perf.log)
 end.rcode-->
 
 <br>
 <h2> Scatterplot matrix of the performance values </h2>
-
 The figure underneath shows pairwise scatterplots of the performance values.<br>
+<br>
+Performance values with imputation.<br>
 
 <!--begin.rcode, results = "asis"
-  plotAlgoPerfScatterMatrix(astask, log = config$algo.perf.log)
+  plotAlgoPerfScatterMatrix(astask, impute.zero.vals = config$algo.perf.impute.zero.vals, log = config$algo.perf.log)
 end.rcode-->
 
 
 <br>
 <h2> Clustering algorithms based on their correlations </h2>
-The following figure shows the correlations of the <b>ranks</b> of the performance 
+The following figure shows the correlations of the <b>ranks</b> of the performance
 values. Per default it will show the correlation coefficient of spearman. Missing values were imputed <u>prior</u> to computing the correlation coefficients. The algorithms are ordered in a way that similar (highly correlated) algorithms are close to each other. Per default the clustering is based on hierarchical clustering, using Ward's method. <br>
 <br>
 
 <!--begin.rcode
-  plotAlgoCorMatrix(astask) 
+  plotAlgoCorMatrix(astask)
 end.rcode-->
 
 
