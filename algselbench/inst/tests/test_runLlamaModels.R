@@ -2,7 +2,8 @@ context("runLlamaModels")
 
 test_that("runLlamaModels", {
   cv = createCVSplits(testtask1, folds = 2, reps = 1L)
-  reg = runLlamaModels(testtask1,
+  fs = setNames(list(getFeatureStepNames(testtask1)), testtask1$desc$task_id)
+  reg = runLlamaModels(testtask1, feature.steps.list = fs,
     baselines = "vbs",
     classifiers = "trees/J48",
     regressors = "regr.rpart",
