@@ -3,7 +3,7 @@
 \title{Imputes algorithm performance for runs which have NA performance values.}
 \usage{
 imputeAlgoPerf(astask, measure, base = NULL, range.scalar = 0.3,
-  jitter = 0)
+  jitter = 0, impute.zero.vals = FALSE)
 }
 \arguments{
   \item{astask}{[\code{\link{ASTask}}]\cr Algorithm
@@ -22,6 +22,13 @@ imputeAlgoPerf(astask, measure, base = NULL, range.scalar = 0.3,
 
   \item{jitter}{[\code{numeric(1)}]\cr See formula.
   Default is 0.}
+
+  \item{impute.zero.vals}{[\code{logical(1)}]\cr Should
+  values which are exactly 0 be imputed to 1e-6?  This
+  allows to take the logarithm later on, handy for
+  subsequent visualizations.  Note that this really only
+  makes sense for non-negative measures!  Default is
+  FALSE.}
 }
 \value{
 [\code{data.frame}].

@@ -27,7 +27,7 @@
 #'   Should values which are exactly 0 be imputed to 1e-6?
 #'   This allows to take the logarithm later on, handy for subsequent visualizations.
 #'   Note that this really only makes sense for non-negative measures!
-#'   Default is 0.
+#'   Default is FALSE.
 #' @return [\code{data.frame}].
 #' @export
 imputeAlgoPerf = function(astask, measure, base = NULL, range.scalar = 0.3, jitter = 0,
