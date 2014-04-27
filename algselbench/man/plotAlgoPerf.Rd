@@ -6,14 +6,15 @@
 \alias{plotAlgoPerfScatterMatrix}
 \title{EDA plots for performance values of algorithms across all instances.}
 \usage{
-plotAlgoPerfBoxplots(astask, measure, log = FALSE)
+plotAlgoPerfBoxplots(astask, measure, impute.zero.vals = FALSE, log = FALSE)
 
 plotAlgoPerfCDFs(astask, measure, impute.zero.vals = FALSE, log = FALSE)
 
-plotAlgoPerfDensities(astask, measure, impute.zero.vals = FALSE,
-  log = FALSE)
+plotAlgoPerfDensities(astask, measure, impute.failed.runs = TRUE,
+  impute.zero.vals = FALSE, log = FALSE)
 
-plotAlgoPerfScatterMatrix(astask, measure, log = FALSE)
+plotAlgoPerfScatterMatrix(astask, measure, impute.zero.vals = FALSE,
+  log = FALSE)
 }
 \arguments{
   \item{astask}{[\code{\link{ASTask}}]\cr Algorithm
@@ -41,6 +42,9 @@ If NAs occur, they are imputed (before aggregation) by
 \code{base + 0.3 range + jitter} . \code{base} is is the
 cutoff value for runtimes tasks with cutoff or the worst
 performance for all others.
+
+For the CDFs we only show the visible area where successful
+runs occurred.
 
 Stochastic replications are aggregated by the mean value.
 }
