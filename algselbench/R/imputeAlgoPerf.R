@@ -58,16 +58,12 @@ imputeAlgoPerf = function(astask, measure, base = NULL, range.scalar = 0.3, jitt
   newvals = base + mult * range.scalar * rv
 
   # maybe add jitter
-  if (jitter) {
+  if (jitter != 0) {
     noise = rnorm(n.na, sd = jitter * rv)
     newvals = newvals + noise
   }
   ar[isna, measure] = newvals
 
-  # now impute zeros
-  if (impute.zero.vals) {
-    is0 = ar[, measure] == 0
-    ar[is0, measure] = 1e-6
-  }
+  ar = imputeZeroVals(ar, measure, impute.zero.vals)
   return(ar)
 }

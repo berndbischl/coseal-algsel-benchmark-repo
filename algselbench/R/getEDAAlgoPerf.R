@@ -5,10 +5,13 @@
 #  - returns also range of orig data and how often runs where successful
 
 
-getEDAAlgoPerf = function(astask, measure, jitter, impute.zero.vals, check.log, format, with.instance.id) {
+getEDAAlgoPerf = function(astask, measure, impute.failed.runs,  jitter,
+  impute.zero.vals, check.log, format, with.instance.id) {
+
   checkArg(astask, "ASTask")
   desc = astask$desc
   measure = checkMeasure(measure, desc)
+  checkArg(impute.failed.runs, "logical", len = 1L, na.ok = FALSE)
   checkArg(jitter, "logical", len = 1L, na.ok = FALSE)
   checkArg(impute.zero.vals, "logical", len = 1L, na.ok = FALSE)
   checkArg(format, choices = c("wide", "long"))
@@ -22,16 +25,22 @@ getEDAAlgoPerf = function(astask, measure, jitter, impute.zero.vals, check.log, 
   })
   success.rate = setNames(success.rate$V1, success.rate$algorithm)
 
-  jitter2 = ifelse(jitter, 0.05, 0)
-  # for runtime tasks set to cutoff, otherwise use default, which is min or max value of perfs
-  base = if (desc$performance_type[[measure]] == "runtime" && !is.na(desc$algorithm_cutoff_time))
-    desc$algorithm_cutoff_time
-  else
-    NULL
-  # potentially set zero values to something small here
-  algo.runs = imputeAlgoPerf(astask, measure = measure,
-    base = base, range.scalar = 0.3, jitter = jitter2, impute.zero.vals = impute.zero.vals)
-
+  if (impute.failed.runs) {
+    jitter2 = ifelse(jitter, 0.00, 0)
+    print(jitter2)
+    # for runtime tasks set to cutoff, otherwise use default, which is min or max value of perfs
+    base = if (desc$performance_type[[measure]] == "runtime" && !is.na(desc$algorithm_cutoff_time))
+      desc$algorithm_cutoff_time
+    else
+      NULL
+    # potentially set zero values to something small here
+    algo.runs = imputeAlgoPerf(astask, measure = measure,
+      base = base, range.scalar = 0.3, jitter = jitter2, impute.zero.vals = impute.zero.vals)
+  } else {
+    # only impute zeros as extra operation
+    algo.runs = imputeZeroVals(astask$algo.runs, measure, impute.zero.vals)
+  }
+  print(summary(algo.runs))
   # include fake repetition col, so we can convert to wide
   algo.runs = aggregateStochasticAlgoRuns(algo.runs, measure = measure, with.repetition = TRUE)
 
