@@ -44,8 +44,8 @@ plotAlgoCorMatrix = function(astask, measure, order.method = "hclust", hclust.me
     c("ward", "single", "complete", "average", "mcquitty", "median", "centroid"))
   checkArg(cor.method, choices = c("pearson", "kendall", "spearman"))
 
-  z = getEDAAlgoPerf(astask, measure, jitter = FALSE, impute.zero.vals = FALSE, check.log = FALSE,
-    format = "wide", with.instance.id = FALSE)
+  z = getEDAAlgoPerf(astask, measure, impute.failed.runs = TRUE, jitter = FALSE,
+    impute.zero.vals = FALSE, check.log = FALSE, format = "wide", with.instance.id = FALSE)
 
   cor.matrix = cor(z$data, method = cor.method)
   ind = corrMatOrder(cor.matrix, order = order.method, hclust.method = hclust.method)
