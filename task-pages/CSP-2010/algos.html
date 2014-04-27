@@ -83,10 +83,13 @@ The following statistics were calculated from the performance values of each alg
 
 </ul>
 
-<div class="error"><pre class="knitr r">## Error: could not find function "summarizeAlgoPerf"
-</pre></div>
-<div class="error"><pre class="knitr r">## Error: "display" must have length equal to 4 ( ncol(x) + 1 )
-</pre></div>
+<!-- html table generated in R 3.1.0 by xtable 1.7-3 package -->
+<!-- Sun Apr 27 19:10:34 2014 -->
+<TABLE border=1>
+<TR> <TH>  </TH> <TH> obs </TH> <TH> nas </TH> <TH> min </TH> <TH> qu_1st </TH> <TH> med </TH> <TH> mean </TH> <TH> qu_3rd </TH> <TH> max </TH> <TH> sd </TH> <TH> coeff_var </TH>  </TR>
+  <TR> <TD align="right"> standard </TD> <TD align="right">    2024 </TD> <TD align="right">     288 </TD> <TD align="right"> 0.022996 </TD> <TD align="right"> 0.189971 </TD> <TD align="right"> 0.504423 </TD> <TD align="right"> 101.353 </TD> <TD align="right"> 8.13751 </TD> <TD align="right"> 4926.86 </TD> <TD align="right"> 476.263 </TD> <TD align="right"> 4.69905 </TD> </TR>
+  <TR> <TD align="right"> learning </TD> <TD align="right">    2024 </TD> <TD align="right">     504 </TD> <TD align="right"> 0.026995 </TD> <TD align="right"> 0.196969 </TD> <TD align="right"> 0.347947 </TD> <TD align="right">  250.36 </TD> <TD align="right">  1.9492 </TD> <TD align="right"> 4954.72 </TD> <TD align="right"> 823.735 </TD> <TD align="right">  3.2902 </TD> </TR>
+   </TABLE>
 
 
 
@@ -97,7 +100,7 @@ The following table summarizes the runstatus of each algorithm over all instance
 <br>
 
 <!-- html table generated in R 3.1.0 by xtable 1.7-3 package -->
-<!-- Sun Apr 27 18:53:44 2014 -->
+<!-- Sun Apr 27 19:10:34 2014 -->
 <TABLE border=1>
 <TR> <TH>  </TH> <TH> ok </TH> <TH> timeout </TH> <TH> memout </TH> <TH> not_applicable </TH> <TH> crash </TH> <TH> other </TH>  </TR>
   <TR> <TD align="right"> learning </TD> <TD align="right"> 75.099 </TD> <TD align="right"> 24.901 </TD> <TD align="right"> 0.000 </TD> <TD align="right"> 0.000 </TD> <TD align="right"> 0.000 </TD> <TD align="right"> 0.000 </TD> </TR>
@@ -111,16 +114,7 @@ The following table summarizes the runstatus of each algorithm over all instance
 
 Here, you'll find an overview of dominating/dominated algorithms: <br>
 
-<div class="error"><pre class="knitr r">## Error: unused arguments (reduce = TRUE, type = "character")
-</pre></div>
-<!-- html table generated in R 3.1.0 by xtable 1.7-3 package -->
-<!-- Sun Apr 27 18:53:44 2014 -->
-<TABLE border=1>
-<TR> <TH>  </TH> <TH> ok </TH> <TH> timeout </TH> <TH> memout </TH> <TH> not_applicable </TH> <TH> crash </TH> <TH> other </TH>  </TR>
-  <TR> <TD align="right"> learning </TD> <TD align="right"> 75.10 </TD> <TD align="right"> 24.90 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.00 </TD> </TR>
-  <TR> <TD align="right"> standard </TD> <TD align="right"> 85.77 </TD> <TD align="right"> 14.23 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.00 </TD> <TD align="right"> 0.00 </TD> </TR>
-   </TABLE>
-
+None of the algorithms was superior to any of the other.
 
 
 <br> <br>
@@ -141,36 +135,28 @@ based on correlations, which is shown at the end of this page). </FONT>
 <h2> Boxplots of performance values </h2>
 
 <br>Performance values with imputation.<br>
-<div class="chunk" id="unnamed-chunk-4"><div class="rcode"><div class="error"><pre class="knitr r">## Error: unused argument (impute.zero.vals =
-## config$algo.perf.impute.zero.vals)
-</pre></div>
-</div></div>
+<div class="chunk" id="unnamed-chunk-4"><div class="rimage default"><img src="figure/unnamed-chunk-4.png" title="plot of chunk unnamed-chunk-4" alt="plot of chunk unnamed-chunk-4" class="plot" /></div></div>
 
 
 <br>
 <h2> Estimated densitities of performance values </h2>
 
 <br>Performance values with imputation.<br>
-<div class="chunk" id="unnamed-chunk-5"><div class="rcode"><div class="error"><pre class="knitr r">## Error: unused arguments (impute.zero.vals =
-## config$algo.perf.impute.zero.vals, impute.failed.runs = TRUE)
-</pre></div>
-</div></div>
+<div class="chunk" id="unnamed-chunk-5"><div class="rimage default"><img src="figure/unnamed-chunk-5.png" title="plot of chunk unnamed-chunk-5" alt="plot of chunk unnamed-chunk-5" class="plot" /></div></div>
 
 
 <br>Performance values without imputation.<br>
-<div class="chunk" id="unnamed-chunk-6"><div class="rcode"><div class="error"><pre class="knitr r">## Error: unused arguments (impute.zero.vals =
-## config$algo.perf.impute.zero.vals, impute.failed.runs = FALSE)
+<div class="chunk" id="unnamed-chunk-6"><div class="rcode"><div class="warning"><pre class="knitr r">## Warning: Removed 504 rows containing non-finite values (stat_density).
+## Warning: Removed 288 rows containing non-finite values (stat_density).
 </pre></div>
-</div></div>
+</div><div class="rimage default"><img src="figure/unnamed-chunk-6.png" title="plot of chunk unnamed-chunk-6" alt="plot of chunk unnamed-chunk-6" class="plot" /></div></div>
 
 <br>
 
 <h2> Estimated cumulative distribution functions of performance values </h2>
 
 <br>Performance values without imputation.<br>
-<div class="chunk" id="unnamed-chunk-7"><div class="rcode"><div class="error"><pre class="knitr r">## Error: could not find function "plotAlgoPerfCDFs"
-</pre></div>
-</div></div>
+<div class="chunk" id="unnamed-chunk-7"><div class="rimage default"><img src="figure/unnamed-chunk-7.png" title="plot of chunk unnamed-chunk-7" alt="plot of chunk unnamed-chunk-7" class="plot" /></div></div>
 
 
 <br>
@@ -179,8 +165,7 @@ The figure underneath shows pairwise scatterplots of the performance values.<br>
 <br>
 Performance values with imputation.<br>
 
-<div class="error"><pre class="knitr r">## Error: could not find function "plotAlgoPerfScatterMatrix"
-</pre></div>
+</div><div class="rimage default"><img src="figure/unnamed-chunk-8.png" title="plot of chunk unnamed-chunk-8" alt="plot of chunk unnamed-chunk-8" class="plot" /></div><div class="rcode">
 
 
 
