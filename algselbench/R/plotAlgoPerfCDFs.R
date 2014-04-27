@@ -8,7 +8,8 @@ plotAlgoPerfCDFs = function(astask, measure, impute.zero.vals = FALSE, log = FAL
 
   # only plot area where we have successful runs
   ylim = c(0, max(z$success.rate) * 1.1)
-  p = p + coord_cartesian(xlim = z$range, ylim = ylim)
+  #FIXME: bad magic value
+  p = p + coord_cartesian(xlim = c(z$range[1] + 1e-6, z$range[2]), ylim = ylim)
   if (log)
     p = p + scale_x_log10()
   p
