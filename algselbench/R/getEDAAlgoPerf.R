@@ -27,7 +27,6 @@ getEDAAlgoPerf = function(astask, measure, impute.failed.runs,  jitter,
 
   if (impute.failed.runs) {
     jitter2 = ifelse(jitter, 0.00, 0)
-    print(jitter2)
     # for runtime tasks set to cutoff, otherwise use default, which is min or max value of perfs
     base = if (desc$performance_type[[measure]] == "runtime" && !is.na(desc$algorithm_cutoff_time))
       desc$algorithm_cutoff_time
@@ -40,7 +39,6 @@ getEDAAlgoPerf = function(astask, measure, impute.failed.runs,  jitter,
     # only impute zeros as extra operation
     algo.runs = imputeZeroVals(astask$algo.runs, measure, impute.zero.vals)
   }
-  print(summary(algo.runs))
   # include fake repetition col, so we can convert to wide
   algo.runs = aggregateStochasticAlgoRuns(algo.runs, measure = measure, with.repetition = TRUE)
 

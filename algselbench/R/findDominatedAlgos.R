@@ -24,16 +24,16 @@
 #' @return [\code{matrix}]. See above.
 #' @export
 findDominatedAlgos = function(astask, measure, reduce = FALSE, type = "logical") {
-  
-  z = getEDAAlgoPerf(astask, measure, jitter = FALSE, impute.zero.vals = FALSE, check.log = FALSE,
-    format = "wide", with.instance.id = FALSE)
+
+  z = getEDAAlgoPerf(astask, measure, impute.failed.runs = TRUE, jitter = FALSE,
+    impute.zero.vals = FALSE, check.log = FALSE, format = "wide", with.instance.id = FALSE)
 
   # convert maximization into minimization
   perf = if (astask$desc$maximize[z$measure])
    -1 * z$data
   else
     z$data
- 
+
   ns = colnames(perf)
   k = length(ns)
   res = matrix(FALSE, k, k)
