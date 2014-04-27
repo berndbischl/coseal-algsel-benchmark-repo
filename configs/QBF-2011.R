@@ -1,1 +1,1 @@
-algo.perf.log = FALSE
+algo.perf.log = TRUE
