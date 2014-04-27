@@ -4,11 +4,12 @@
 #  - returns in wide or long format
 
 
-getEDAAlgoPerf = function(astask, measure, jitter, check.log, format, with.instance.id) {
+getEDAAlgoPerf = function(astask, measure, jitter, impute.zero.vals, check.log, format, with.instance.id) {
   checkArg(astask, "ASTask")
   desc = astask$desc
   measure = checkMeasure(measure, desc)
   checkArg(jitter, "logical", len = 1L, na.ok = FALSE)
+  checkArg(impute.zero.vals, "logical", len = 1L, na.ok = FALSE)
   checkArg(format, choices = c("wide", "long"))
   checkArg(with.instance.id, "logical", len = 1L, na.ok = FALSE)
 
@@ -18,11 +19,13 @@ getEDAAlgoPerf = function(astask, measure, jitter, check.log, format, with.insta
     desc$algorithm_cutoff_time
   else
     NULL
+  # potentially set zero values to something small here
   algo.runs = imputeAlgoPerf(astask, measure = measure,
-    base = base, range.scalar = 0.3, jitter = jitter2)
+    base = base, range.scalar = 0.3, jitter = jitter2, impute.zero.vals = impute.zero.vals)
+
   # include fake repetition col, so we can convert to wide
   algo.runs = aggregateStochasticAlgoRuns(algo.runs, measure = measure, with.repetition = TRUE)
-  
+
   checkLogarithm(check.log, algo.runs, measure)
   data = if (format == "wide")
     convertAlgoPerfToWideFormat(algo.runs, desc = desc)

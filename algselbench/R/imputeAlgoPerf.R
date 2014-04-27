@@ -23,9 +23,15 @@
 #' @param jitter [\code{numeric(1)}]\cr
 #'   See formula.
 #'   Default is 0.
+#' @param impute.zero.vals [\code{logical(1)}]\cr
+#'   Should values which are exactly 0 be imputed to 1e-6?
+#'   This allows to take the logarithm later on, handy for subsequent visualizations.
+#'   Note that this really only makes sense for non-negative measures!
+#'   Default is 0.
 #' @return [\code{data.frame}].
 #' @export
-imputeAlgoPerf = function(astask, measure, base = NULL, range.scalar = 0.3, jitter = 0) {
+imputeAlgoPerf = function(astask, measure, base = NULL, range.scalar = 0.3, jitter = 0,
+  impute.zero.vals = FALSE) {
 
   checkArg(astask, "ASTask")
   desc = astask$desc
@@ -43,6 +49,7 @@ imputeAlgoPerf = function(astask, measure, base = NULL, range.scalar = 0.3, jitt
     checkArg(base, "numeric", len = 1L, na.ok = FALSE)
   checkArg(range.scalar, "numeric", len = 1L, na.ok = FALSE, lower = 0)
   checkArg(jitter, "numeric", len = 1L, na.ok = FALSE, lower = 0)
+  checkArg(impute.zero.vals, "logical", len = 1L, na.ok = FALSE)
 
   isna = is.na(perf)
   n.na = sum(isna)
@@ -57,5 +64,10 @@ imputeAlgoPerf = function(astask, measure, base = NULL, range.scalar = 0.3, jitt
   }
   ar[isna, measure] = newvals
 
+  # now impute zeros
+  if (impute.zero.vals) {
+    is0 = ar[, measure] == 0
+    ar[is0, measure] = 1e-6
+  }
   return(ar)
 }
