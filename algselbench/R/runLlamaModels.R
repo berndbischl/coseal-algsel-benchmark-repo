@@ -151,9 +151,9 @@ runLlamaModels = function(astasks, feature.steps.list, baselines,
         n.algos = length(getAlgorithmNames(astask)),
         makeRes = function(data, p, timeout) {
           list(
-            succ = mean(unlist(successes(data, p))),
-            par10 = mean(unlist(parscores(data, p, timeout = timeout))),
-            mcp = mean(unlist(misclassificationPenalties(data, p)))
+            succ = mean(successes(data, p)),
+            par10 = mean(parscores(data, p, timeout = timeout)),
+            mcp = mean(misclassificationPenalties(data, p))
           )
         }
       )
@@ -173,7 +173,7 @@ runLlamaModels = function(astasks, feature.steps.list, baselines,
     #FIXME: get from llama package envir
     llama.fun = get(llama.fun)
     fun = static$makeModelFun(model, n.algos = static$n.algos)
-    p = llama.fun(fun, data = static$llama.cv, pre = pre)$predictions
+    p = llama.fun(fun, data = static$llama.cv, pre = pre)
     static$makeRes(static$llama.cv, p, static$timeout)
   }
 
