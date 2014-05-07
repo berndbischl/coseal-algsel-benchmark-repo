@@ -2,11 +2,11 @@
 \alias{getNumberOfCVFolds}
 \title{Returns number of CV folds.}
 \usage{
-getNumberOfCVFolds(astask)
+getNumberOfCVFolds(asscenario)
 }
 \arguments{
-  \item{astask}{[\code{\link{ASTask}}]\cr Algorithm
-  selection task.}
+  \item{asscenario}{[\code{\link{ASScenario}}]\cr Algorithm
+  selection scenario.}
 }
 \value{
 [\code{integer(1)}].

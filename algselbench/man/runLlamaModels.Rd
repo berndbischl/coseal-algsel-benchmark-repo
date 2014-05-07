@@ -2,17 +2,17 @@
 \alias{runLlamaModels}
 \title{Creates a registry which can be used for running several Llama models on a cluster.}
 \usage{
-runLlamaModels(astasks, feature.steps.list, baselines,
+runLlamaModels(asscenarios, feature.steps.list, baselines,
   classifiers = character(0), regressors = character(0),
   clusterers = character(0), pre)
 }
 \arguments{
-  \item{astasks}{[\code{list}]\cr List of algorithm
-  selection tasks (\code{\link{ASTask}}).}
+  \item{asscenarios}{[\code{list}]\cr List of algorithm
+  selection scenarios (\code{\link{ASScenario}}).}
 
   \item{feature.steps}{[\code{list} of \code{character}]\cr
   Named list of feature steps we want to use.  Must be
-  named with task ids.}
+  named with scenario ids.}
 
   \item{baselines}{[\code{character}]\cr Vector of
   characters, defining the baseline models.  Default is
@@ -49,7 +49,7 @@ for baseline models.
 
 Machine learning models are run with their default
 settings. For the clusterers we set the number of clusters
-(N) to the number of algorithms in the task. Except for
+(N) to the number of algorithms in the scenario. Except for
 XMeans where we set the maximum number of clusters (H) in
 the same way, as a parameter for the number of clusters
 does not exist.

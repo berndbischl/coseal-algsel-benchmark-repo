@@ -9,7 +9,7 @@
 <h2> LLAMA results </h2>
 
 All results were produced by using the cross-validation splits in the repository with
-<!--rinline getNumberOfCVFolds(astask) --> folds and <!--rinline getNumberOfCVReps(astask) --> repetitions.<br>
+<!--rinline getNumberOfCVFolds(asscenario) --> folds and <!--rinline getNumberOfCVReps(asscenario) --> repetitions.<br>
 The best values within a type (i.e., baseline (except for vbs), classif, regr and cluster) and performance measure (i.e., Percentage solved, PAR10, MCP) are colored green. Furthermore, the three best values over all groups within a performance measure are colored pink, the absolute best one is red. 
 
 <p>
@@ -35,13 +35,13 @@ solver always has a misclassification penalty of zero.</li>
 <p>
 
 <!--begin.rcode, results = "asis"
-  allfeats = getFeatureNames(astask)
+  allfeats = getFeatureNames(asscenario)
   fsteps = config$feature.steps.default
-  presolve = getCostsAndPresolvedStatus(astask)
+  presolve = getCostsAndPresolvedStatus(asscenario)
 #   if (is.null(fsteps))
-#     fsteps = getFeatureStepNames(astask)
-  feats = getProvidedFeatures(astask, fsteps)
-  printResultsAsHTMLTable(llama.results, task.id = astask$desc$task_id)
+#     fsteps = getFeatureStepNames(asscenario)
+  feats = getProvidedFeatures(asscenario, fsteps)
+  printResultsAsHTMLTable(llama.results, scenario.id = asscenario$desc$scenario_id)
 end.rcode-->
 
 <p>

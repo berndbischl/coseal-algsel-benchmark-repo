@@ -2,11 +2,11 @@
 \alias{getCostsAndPresolvedStatus}
 \title{Return wether an instance was presolved and which step did it.}
 \usage{
-getCostsAndPresolvedStatus(astask, feature.steps)
+getCostsAndPresolvedStatus(asscenario, feature.steps)
 }
 \arguments{
-  \item{astask}{[\code{\link{ASTask}}]\cr Algorithm
-  selection task.}
+  \item{asscenario}{[\code{\link{ASScenario}}]\cr Algorithm
+  selection scenario.}
 
   \item{feature.steps}{[\code{character}]\cr Which feature
   steps are allowed?  Default is all steps.}

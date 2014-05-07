@@ -1,16 +1,16 @@
 #' Creates summary data.frame for algorithm performance values across all instances.
 #'
-#' @param astask [\code{\link{ASTask}}]\cr
-#'   Algorithm selection task.
+#' @param asscenario [\code{\link{ASScenario}}]\cr
+#'   Algorithm selection scenario.
 #' @param measure [\code{character(1)}]\cr
 #'   Selected measure.
-#'   Default is first measure in task.
+#'   Default is first measure in scenario.
 #' @return [\code{data.frame}].
 #' @export
-summarizeAlgoPerf = function(astask, measure) {
-  checkArg(astask, "ASTask")
-  measure = checkMeasure(measure, astask$desc)
-  data = convertAlgoPerfToWideFormat(astask$desc, astask$algo.runs, measure)
+summarizeAlgoPerf = function(asscenario, measure) {
+  checkArg(asscenario, "ASScenario")
+  measure = checkMeasure(measure, asscenario$desc)
+  data = convertAlgoPerfToWideFormat(asscenario$desc, asscenario$algo.runs, measure)
   data = dropNamed(data, c("instance_id", "repetition"))
   s = apply(data, 2, getStatistics)
   return(as.data.frame(t(s)))

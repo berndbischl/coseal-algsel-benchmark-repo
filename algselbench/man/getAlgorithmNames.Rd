@@ -1,17 +1,17 @@
 \name{getAlgorithmNames}
 \alias{getAlgorithmNames}
-\title{Returns algorithm names of task.}
+\title{Returns algorithm names of scenario.}
 \usage{
-getAlgorithmNames(astask)
+getAlgorithmNames(asscenario)
 }
 \arguments{
-  \item{astask}{[\code{\link{ASTask}}]\cr Algorithm
-  selection task.}
+  \item{asscenario}{[\code{\link{ASScenario}}]\cr Algorithm
+  selection scenario.}
 }
 \value{
 [\code{character}].
 }
 \description{
-Returns algorithm names of task.
+Returns algorithm names of scenario.
 }
 

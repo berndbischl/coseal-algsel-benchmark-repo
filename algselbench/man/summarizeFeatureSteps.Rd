@@ -2,11 +2,11 @@
 \alias{summarizeFeatureSteps}
 \title{Creates a data.frame that summarizes the feature steps.}
 \usage{
-summarizeFeatureSteps(astask)
+summarizeFeatureSteps(asscenario)
 }
 \arguments{
-  \item{astask}{[\code{\link{ASTask}}]\cr Algorithm
-  selection task.}
+  \item{asscenario}{[\code{\link{ASScenario}}]\cr Algorithm
+  selection scenario.}
 }
 \value{
 [\code{data.frame}].

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Algorithm selection tasks</title>
+<title>Algorithm selection scenarios</title>
 </head>
 <body>
 
@@ -12,7 +12,7 @@
 
 <table border=1 cellpadding=10>
 <tr>
-  <th>Task Name</th>
+  <th>Scenario Name</th>
   <th>Instances</th>
   <th>Algorithms</th>
   <th>Features</th>
@@ -35,23 +35,23 @@ printTDLogical = function(x) {
 }
 
 
-for (i in seq_along(astasks)) {
-  astask = astasks[[i]]
-  desc = astask$desc
-  task.dir = task.dirs[i]
-  bn = basename(task.dir)
+for (i in seq_along(asscenarios)) {
+  asscenario = asscenarios[[i]]
+  desc = asscenario$desc
+  scenario.dir = scenario.dirs[i]
+  bn = basename(scenario.dir)
   url = sprintf("%s/%s/index.html", url.prefix, bn)
   catf("<tr>")
-  catf("<td>"); catf("<a href='%s'>%s</a>", url, desc$task_id); catf("</td>")
-  printTDNumber(length(getInstanceNames(astask)))
-  printTDNumber(length(getAlgorithmNames(astask)))
-  printTDNumber(length(getFeatureNames(astask)))
-  printTDString(astask$desc$performance_type[[1]])
+  catf("<td>"); catf("<a href='%s'>%s</a>", url, desc$scenario_id); catf("</td>")
+  printTDNumber(length(getInstanceNames(asscenario)))
+  printTDNumber(length(getAlgorithmNames(asscenario)))
+  printTDNumber(length(getFeatureNames(asscenario)))
+  printTDString(asscenario$desc$performance_type[[1]])
   printTDString(sprintf("%s, max. reps = %i",
-    length(astask$desc$features_stochastic) > 0L, max(astask$feature.values$repetition)))
+    length(asscenario$desc$features_stochastic) > 0L, max(asscenario$feature.values$repetition)))
   printTDString(sprintf("%s, max. reps = %i",
-    length(astask$desc$algorithms_stochastic) > 0L, max(astask$algo.runs$repetition)))
-  printTDLogical(!is.null(astask$feature.costs))
+    length(asscenario$desc$algorithms_stochastic) > 0L, max(asscenario$algo.runs$repetition)))
+  printTDLogical(!is.null(asscenario$feature.costs))
   catf("</tr>")
 }
 

@@ -1,9 +1,9 @@
 # helper to convert perf to llama or mlr
-convertPerf = function(astask, measure, feature.steps, add.feature.costs, with.instance.id) {
-  desc = astask$desc
+convertPerf = function(asscenario, measure, feature.steps, add.feature.costs, with.instance.id) {
+  desc = asscenario$desc
   # note that perf + runstatus + successes is ordered by instance, then repetition
-  perf = convertAlgoPerfToWideFormat(desc, astask$algo.runs, measure)
-  runstatus = astask$algo.runstatus
+  perf = convertAlgoPerfToWideFormat(desc, asscenario$algo.runs, measure)
+  runstatus = asscenario$algo.runstatus
   cutoff = desc$algorithm_cutoff_time
 
   # FIXME: From here on the whole code does NOT work if we have repetitions
@@ -18,17 +18,17 @@ convertPerf = function(astask, measure, feature.steps, add.feature.costs, with.i
   # construct successes, so far means: no NA in perf val and run status of algo is "OK"
   successes = !is.na(perf) & runstatus == "ok"
   # Note that all stuff in this object is ordered by instance_id
-  presolve = getCostsAndPresolvedStatus(astask, feature.steps = feature.steps)
+  presolve = getCostsAndPresolvedStatus(asscenario, feature.steps = feature.steps)
 
   # FIXME: do we have to think about min / max in the next code?
-  # impute performance values and add feature costs for run time tasks
+  # impute performance values and add feature costs for run time scenarios
   if (desc$performance_type[measure] == "runtime" & !is.na(cutoff)) {
     impute.val = desc$algorithm_cutoff_time
     if (add.feature.costs) {
       m = ncol(perf)
       # set algorithm costs to 0 for presolved instances, they wont run
       perf[presolve$is.presolved, ] = 0
-      if (is.null(astask$feature.costs))
+      if (is.null(asscenario$feature.costs))
         add = 0
       else
         add = matrix(rep(presolve$costs, m), ncol = m, byrow = FALSE)

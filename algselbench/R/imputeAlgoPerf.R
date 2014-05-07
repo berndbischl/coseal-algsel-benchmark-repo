@@ -5,14 +5,14 @@
 #' \code{base +- range.scalar * range.span + N(0, sd = jitter * range.span)}\cr
 #' With \code{range.span = max - min}.
 #'
-#' Returns an object like \code{algo.runs} of \code{astask}, but drops
+#' Returns an object like \code{algo.runs} of \code{asscenario}, but drops
 #' the runstatus and all other measures.
 #'
-#' @param astask [\code{\link{ASTask}}]\cr
-#'   Algorithm selection task.
+#' @param asscenario [\code{\link{ASScenario}}]\cr
+#'   Algorithm selection scenario.
 #' @param measure [\code{character(1)}]\cr
 #'   Measure to impute.
-#'   Default is first measure in task.
+#'   Default is first measure in scenario.
 #' @param base [\code{numeric(1)}]\cr
 #'   See formula.
 #'   Default is \code{NULL}, which means maximum of performance values if measure should be minimized,
@@ -30,13 +30,13 @@
 #'   Default is FALSE.
 #' @return [\code{data.frame}].
 #' @export
-imputeAlgoPerf = function(astask, measure, base = NULL, range.scalar = 0.3, jitter = 0,
+imputeAlgoPerf = function(asscenario, measure, base = NULL, range.scalar = 0.3, jitter = 0,
   impute.zero.vals = FALSE) {
 
-  checkArg(astask, "ASTask")
-  desc = astask$desc
-  measure = checkMeasure(measure, astask$desc)
-  ar = astask$algo.runs
+  checkArg(asscenario, "ASScenario")
+  desc = asscenario$desc
+  measure = checkMeasure(measure, asscenario$desc)
+  ar = asscenario$algo.runs
   maxi = desc$maximize[measure]
   # reduce to relevant cols
   ar = ar[, c("instance_id", "repetition", "algorithm", measure)]

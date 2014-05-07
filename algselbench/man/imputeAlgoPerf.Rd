@@ -2,15 +2,15 @@
 \alias{imputeAlgoPerf}
 \title{Imputes algorithm performance for runs which have NA performance values.}
 \usage{
-imputeAlgoPerf(astask, measure, base = NULL, range.scalar = 0.3,
+imputeAlgoPerf(asscenario, measure, base = NULL, range.scalar = 0.3,
   jitter = 0, impute.zero.vals = FALSE)
 }
 \arguments{
-  \item{astask}{[\code{\link{ASTask}}]\cr Algorithm
-  selection task.}
+  \item{asscenario}{[\code{\link{ASScenario}}]\cr Algorithm
+  selection scenario.}
 
   \item{measure}{[\code{character(1)}]\cr Measure to
-  impute.  Default is first measure in task.}
+  impute.  Default is first measure in scenario.}
 
   \item{base}{[\code{numeric(1)}]\cr See formula.  Default
   is \code{NULL}, which means maximum of performance values
@@ -38,7 +38,8 @@ The following formula is used for imputation: \code{base +-
 range.scalar * range.span + N(0, sd = jitter *
 range.span)}\cr With \code{range.span = max - min}.
 
-Returns an object like \code{algo.runs} of \code{astask},
-but drops the runstatus and all other measures.
+Returns an object like \code{algo.runs} of
+\code{asscenario}, but drops the runstatus and all other
+measures.
 }
 

@@ -11,12 +11,12 @@ ds.dirs = list.files(file.path(coseal.svn.dir, "data"), full.names = TRUE)
 ds.dirs = ds.dirs[!str_detect(ds.dirs, "BBOB|MACHINE")]
 print(ds.dirs)
 # ds.dirs = ds.dirs[1]
-astasks = lapply(ds.dirs, parseASTask)
-configs = lapply(astasks, readEDAConfig, confpath = "../configs")
+asscenarios = lapply(ds.dirs, parseASScenario)
+configs = lapply(asscenarios, readEDAConfig, confpath = "../configs")
 feature.steps.list = extractSubList(configs, "feature.steps.default", simplify = FALSE)
-names(feature.steps.list) = sapply(astasks, function(x) x$desc$task_id)
+names(feature.steps.list) = sapply(asscenarios, function(x) x$desc$scenario_id)
 
-reg = runLlamaModels(astasks, feature.steps.list = feature.steps.list,
+reg = runLlamaModels(asscenarios, feature.steps.list = feature.steps.list,
 
   classifiers = c(
     "meta/AdaBoostM1", "bayes/BayesNet", "lazy/IBk", "rules/OneR",
@@ -32,7 +32,7 @@ reg = runLlamaModels(astasks, feature.steps.list = feature.steps.list,
   pre = normalize
 )
 
-# reg = runLlamaModels(astasks, feature.steps.list = feature.steps.list,
+# reg = runLlamaModels(asscenarios, feature.steps.list = feature.steps.list,
   # classifiers = "classif.rpart")
 
 # jobs should be run with 2gig mem

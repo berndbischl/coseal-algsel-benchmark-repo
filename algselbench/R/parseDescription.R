@@ -1,9 +1,9 @@
-#' S3 class for ASTaskDesc.
+#' S3 class for ASScenarioDesc.
 #'
 #' Object members
 #'
 #' \describe{
-#' \item{task_id [\code{character(1)}]}{Name of task.}
+#' \item{scenario_id [\code{character(1)}]}{Name of scenario.}
 #' \item{performance_measures [\code{character}]}{Names of measures.}
 #' \item{maximize [named \code{character}]}{Maximize measure?}
 #' \item{performance_type [named \code{character}]}{Either \dQuote{runtime} or
@@ -19,8 +19,8 @@
 #' \item{feature_steps [named \code{list} of \code{character}]}{Names of feature processing steps and
 #'   as elements the features they influence.}
 #' }
-#' @name ASTaskDesc
-#' @rdname ASTaskDesc
+#' @name ASScenarioDesc
+#' @rdname ASScenarioDesc
 NULL
 
 # Parses description file and returns an S3 class of the contents
@@ -75,6 +75,6 @@ parseDescription = function(path) {
   }
   desc[f.steps] = NULL
   desc$feature_steps = feature.steps
-  addClasses(desc, "ASTaskDesc")
+  addClasses(desc, "ASScenarioDesc")
 }
 

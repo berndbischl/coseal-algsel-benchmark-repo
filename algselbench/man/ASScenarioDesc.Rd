@@ -1,14 +1,14 @@
-\name{ASTaskDesc}
-\alias{ASTaskDesc}
-\title{S3 class for ASTaskDesc.}
+\name{ASScenarioDesc}
+\alias{ASScenarioDesc}
+\title{S3 class for ASScenarioDesc.}
 \description{
 Object members
 }
 \details{
-\describe{ \item{task_id [\code{character(1)}]}{Name of
-task.} \item{performance_measures [\code{character}]}{Names
-of measures.} \item{maximize [named
-\code{character}]}{Maximize measure?}
+\describe{ \item{scenario_id [\code{character(1)}]}{Name of
+scenario.} \item{performance_measures
+[\code{character}]}{Names of measures.} \item{maximize
+[named \code{character}]}{Maximize measure?}
 \item{performance_type [named \code{character}]}{Either
 \dQuote{runtime} or \dQuote{solution_quality}.}
 \item{algorithm_cutoff_time [\code{numeric(1)}]}{Cutoff

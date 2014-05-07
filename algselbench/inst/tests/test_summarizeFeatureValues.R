@@ -1,5 +1,5 @@
 context("summarizeFeatureValues")
 
 test_that("summarizeFeatureValues", {
-  s = summarizeFeatureValues(testtask1)
+  s = summarizeFeatureValues(testscenario1)
 })

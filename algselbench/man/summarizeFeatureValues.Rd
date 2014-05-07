@@ -2,11 +2,11 @@
 \alias{summarizeFeatureValues}
 \title{Creates summary data.frame for feature values across all instances.}
 \usage{
-summarizeFeatureValues(astask)
+summarizeFeatureValues(asscenario)
 }
 \arguments{
-  \item{astask}{[\code{\link{ASTask}}]\cr Algorithm
-  selection task.}
+  \item{asscenario}{[\code{\link{ASScenario}}]\cr Algorithm
+  selection scenario.}
 }
 \value{
 [\code{data.frame}].

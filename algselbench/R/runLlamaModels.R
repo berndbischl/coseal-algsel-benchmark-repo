@@ -1,4 +1,4 @@
-#FIXME document that we can also use one task
+#FIXME document that we can also use one scenario
 #FIXME: remove feature stesp as list
 
 #' @title Creates a registry which can be used for running several Llama models on a cluster.
@@ -10,15 +10,15 @@
 #' Feature costs are added for real prognostic models but not for baseline models.
 #'
 #' Machine learning models are run with their default settings.
-#' For the clusterers we set the number of clusters (N) to the number of algorithms in the task.
+#' For the clusterers we set the number of clusters (N) to the number of algorithms in the scenario.
 #' Except for XMeans where we set the maximum number of clusters (H) in the same way, as
 #' a parameter for the number of clusters does not exist.
 #'
-#' @param astasks [\code{list}]\cr
-#'   List of algorithm selection tasks (\code{\link{ASTask}}).
+#' @param asscenarios [\code{list}]\cr
+#'   List of algorithm selection scenarios (\code{\link{ASScenario}}).
 #' @param feature.steps [\code{list} of \code{character}]\cr
 #'   Named list of feature steps we want to use.
-#'   Must be named with task ids.
+#'   Must be named with scenario ids.
 #' @param baselines [\code{character}]\cr
 #'   Vector of characters, defining the baseline models.
 #'   Default is c("vbs", "singleBest", "singleBestByPar", "singleBestBySuccesses").
@@ -36,20 +36,20 @@
 #'   By default no preprocessing is done.
 #' @return BatchExperiments registry.
 #' @export
-runLlamaModels = function(astasks, feature.steps.list, baselines,
+runLlamaModels = function(asscenarios, feature.steps.list, baselines,
  classifiers = character(0), regressors = character(0), clusterers = character(0), pre) {
 
-  checkArg(astasks, c("list", "ASTask"))
-  if (!missing(astasks) && inherits(astasks, "ASTask"))
-    astasks = list(astasks)
-  checkListElementClass(astasks, "ASTask")
-  task.ids = sapply(astasks, function(x) x$desc$task_id)
+  checkArg(asscenarios, c("list", "ASScenario"))
+  if (!missing(asscenarios) && inherits(asscenarios, "ASScenario"))
+    asscenarios = list(asscenarios)
+  checkListElementClass(asscenarios, "ASScenario")
+  scenario.ids = sapply(asscenarios, function(x) x$desc$scenario_id)
 
   checkArg(feature.steps.list, "list")
   checkListElementClass(feature.steps.list, "character")
-  stopifnot(setequal(names(feature.steps.list), task.ids))
+  stopifnot(setequal(names(feature.steps.list), scenario.ids))
   # sort in correct order
-  feature.steps.list = feature.steps.list[task.ids]
+  feature.steps.list = feature.steps.list[scenario.ids]
 
   if (missing(pre)) {
     pre = function(x, y = NULL) {
@@ -122,33 +122,33 @@ runLlamaModels = function(astasks, feature.steps.list, baselines,
   }
 
   # baseline models use these, no feature costs
-  llama.tasks = mapply(convertToLlama, astask = astasks, feature.steps = feature.steps.list,
+  llama.scenarios = mapply(convertToLlama, asscenario = asscenarios, feature.steps = feature.steps.list,
     MoreArgs = list(add.feature.costs = FALSE), SIMPLIFY = FALSE)
   # real models use these, use feature costs
-  llama.cvs = mapply(convertToLlamaCVFolds, astask = astasks, feature.steps = feature.steps.list,
+  llama.cvs = mapply(convertToLlamaCVFolds, asscenario = asscenarios, feature.steps = feature.steps.list,
     MoreArgs = list(add.feature.costs = TRUE), SIMPLIFY = FALSE)
-  llama.cvs = lapply(astasks, convertToLlamaCVFolds, add.feature.costs = TRUE)
+  llama.cvs = lapply(asscenarios, convertToLlamaCVFolds, add.feature.costs = TRUE)
 
   # FIXME:
   unlink("run_llama_models-files", recursive = TRUE)
   reg = makeExperimentRegistry("run_llama_models", packages = packs)
 
-  for (i in seq_along(astasks)) {
-    astask = astasks[[i]]
-    desc = astask$desc
+  for (i in seq_along(asscenarios)) {
+    asscenario = asscenarios[[i]]
+    desc = asscenario$desc
     cutoff = desc$algorithm_cutoff_time
     timeout = if (desc$performance_type[[1L]] == "runtime" && !is.na(cutoff))
       cutoff
     else
       NULL
-    addProblem(reg, id = desc$task_id,
+    addProblem(reg, id = desc$scenario_id,
       static = list(
-        feature.steps = feature.steps.list[[desc$task_id]],
+        feature.steps = feature.steps.list[[desc$scenario_id]],
         timeout = timeout,
-        llama.task = llama.tasks[[i]],
+        llama.scenario = llama.scenarios[[i]],
         llama.cv = llama.cvs[[i]],
         makeModelFun = makeModelFun,
-        n.algos = length(getAlgorithmNames(astask)),
+        n.algos = length(getAlgorithmNames(asscenario)),
         makeRes = function(data, p, timeout) {
           list(
             succ = mean(successes(data, p)),
@@ -162,8 +162,8 @@ runLlamaModels = function(astasks, feature.steps.list, baselines,
 
   algoBaseline = function(static, llama.fun, model) {
     fun = static$makeModelFun(model, n.algos = static$n.algos)
-    p = fun(data = static$llama.task)
-    static$makeRes(static$llama.task, p, static$timeout)
+    p = fun(data = static$llama.scenario)
+    static$makeRes(static$llama.scenario, p, static$timeout)
   }
 
   algoLlama = function(static, llama.fun, model) {

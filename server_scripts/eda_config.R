@@ -6,14 +6,14 @@ makeEDAConfig = function(
   feature.steps.default
 ) {
 
-  makeS3Obj("ASTaskHTMLConfig",
+  makeS3Obj("ASScenarioHTMLConfig",
     algo.perf.impute.zero.vals = algo.perf.impute.zero.vals,
     algo.perf.log = algo.perf.log,
     feature.steps.default = feature.steps.default
   )
 }
 
-print.ASTaskHTMLConfig = function(x, ...) {
+print.ASScenarioHTMLConfig = function(x, ...) {
   ns = names(x)
   for (i in seq_along(x)) {
    if (ns[i] == "feature.steps.default")
@@ -23,9 +23,9 @@ print.ASTaskHTMLConfig = function(x, ...) {
 }
 
 # Sources config file and returns a config s3 object
-readEDAConfig = function(astask, confpath) {
-  checkArg(astask, "ASTask")
-  id = astask$desc$task_id
+readEDAConfig = function(asscenario, confpath) {
+  checkArg(asscenario, "ASScenario")
+  id = asscenario$desc$scenario_id
   conffile = file.path(confpath, paste0(id, ".R"))
   if (file.exists(conffile)) {
     # source config into envir, then construct
@@ -38,9 +38,9 @@ readEDAConfig = function(astask, confpath) {
     conf = as.list(conf)
     # if we do not have default steps, take all
     if (is.null(conf$feature.steps.default))
-      conf$feature.steps.default = getFeatureStepNames(astask)
+      conf$feature.steps.default = getFeatureStepNames(asscenario)
     return(do.call(makeEDAConfig, conf))
   } else {
-    stopf("Config file for task does not exist: %s", id)
+    stopf("Config file for scenario does not exist: %s", id)
   }
 }

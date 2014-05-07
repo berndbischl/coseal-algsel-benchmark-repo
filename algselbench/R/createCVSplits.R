@@ -1,15 +1,15 @@
-#' @title Create cross-validation splits for a task.
+#' @title Create cross-validation splits for a scenario.
 #'
 #' @description
-#' Create a data.frame that defines cross-validation splits for a task,
+#' Create a data.frame that defines cross-validation splits for a scenario,
 #'
 #' and potentially store it in an ARFF file.
 #'
 #' The \code{mlr} package is used to generate the splits, see
 #' \code{\link[mlr]{makeResampleDesc}} and \code{\link[mlr]{makeResampleInstance}}.
 #'
-#' @param astask [\code{\link{ASTask}}]\cr
-#'   Algorithm selection task.
+#' @param asscenario [\code{\link{ASScenario}}]\cr
+#'   Algorithm selection scenario.
 #' @param reps [\code{integer}]\cr
 #'   CV repetitions.
 #'   Default is 1.
@@ -26,8 +26,8 @@
 #'   The training set are the remaining instances, in exactly the order as given by the data.frame
 #'   for the current repetition.
 #' @export
-createCVSplits = function(astask, reps = 1L, folds = 10L, file = NULL) {
-  checkArg(astask, "ASTask")
+createCVSplits = function(asscenario, reps = 1L, folds = 10L, file = NULL) {
+  checkArg(asscenario, "ASScenario")
   reps = convertInteger(reps)
   checkArg(reps, "integer", len = 1L, na.ok = FALSE)
   folds = convertInteger(folds)
@@ -35,7 +35,7 @@ createCVSplits = function(astask, reps = 1L, folds = 10L, file = NULL) {
   if (!missing(file))
     checkArg(file, "character", len = 1L, na.ok = FALSE)
 
-  instances = getInstanceNames(astask)
+  instances = getInstanceNames(asscenario)
   size = length(instances)
   if (reps == 1L)
     rdesc = makeResampleDesc("CV", iters = folds)

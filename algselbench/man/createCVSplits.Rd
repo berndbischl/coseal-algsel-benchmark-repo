@@ -1,12 +1,12 @@
 \name{createCVSplits}
 \alias{createCVSplits}
-\title{Create cross-validation splits for a task.}
+\title{Create cross-validation splits for a scenario.}
 \usage{
-createCVSplits(astask, reps = 1L, folds = 10L, file = NULL)
+createCVSplits(asscenario, reps = 1L, folds = 10L, file = NULL)
 }
 \arguments{
-  \item{astask}{[\code{\link{ASTask}}]\cr Algorithm
-  selection task.}
+  \item{asscenario}{[\code{\link{ASScenario}}]\cr Algorithm
+  selection scenario.}
 
   \item{reps}{[\code{integer}]\cr CV repetitions.  Default
   is 1.}
@@ -29,7 +29,7 @@ for the current repetition.
 }
 \description{
 Create a data.frame that defines cross-validation splits
-for a task,
+for a scenario,
 
 and potentially store it in an ARFF file.
 

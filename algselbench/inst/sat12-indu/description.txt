@@ -1,4 +1,4 @@
-task_id: SAT12-INDU
+scenario_id: SAT12-INDU
 performance_measures: runtime
 maximize: false
 performance_type: runtime

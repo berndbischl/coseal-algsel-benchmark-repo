@@ -5,7 +5,7 @@
   <br>
   
   <!--begin.rcode, results = "asis"
-res = findUselessInstances(astask)
+res = findUselessInstances(asscenario)
 cat("Feature Values:\n")
 if(nrow(res$feature.values) >= 1) {
   print(xtable(res$feature.values, digits = c(0, 4, 0)), "html")

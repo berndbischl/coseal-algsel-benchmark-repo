@@ -1,16 +1,16 @@
-\name{parseASTask}
-\alias{ASTask}
-\alias{parseASTask}
-\title{Parses the data files of an algorithm selection task into an S3 object.}
+\name{parseASScenario}
+\alias{ASScenario}
+\alias{parseASScenario}
+\title{Parses the data files of an algorithm selection scenario into an S3 object.}
 \usage{
-parseASTask(path)
+parseASScenario(path)
 }
 \arguments{
   \item{path}{[\code{character(1)}]\cr Path to directory of
   benchmark data set.}
 }
 \value{
-[\code{\link{ASTask}}]. Description object.
+[\code{\link{ASScenario}}]. Description object.
 }
 \description{
 Object members
@@ -18,8 +18,8 @@ Object members
 Let n be the number of (replicated) instances, m the number
 of unique instances, p the number of features, s the number
 of feature steps and k the number of algorithms. \describe{
-\item{desc [\code{\link{ASTaskDesc}}]}{Description object,
-containing further info.} \item{feature.runstatus
+\item{desc [\code{\link{ASScenarioDesc}}]}{Description
+object, containing further info.} \item{feature.runstatus
 [\code{data.frame(n, s + 2)}]}{Runstatus of feature
 computation steps.  The first 2 columns are
 \dQuote{instance_id} and \dQuote{repetition}, the remaining

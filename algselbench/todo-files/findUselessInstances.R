@@ -1,24 +1,24 @@
 #' Checks algorithm and feature data sets for useless instances.
 #'
-#' @param astask [\code{\link{ASTask}}]\cr
-#'   Algorithm selection task.
+#' @param asscenario [\code{\link{ASScenario}}]\cr
+#'   Algorithm selection scenario.
 #' @param measure [\code{character(1)}]\cr
 #'   Measure that's been used for analyzing the algorithm performances.
-#'   Default is first measure in task.
+#'   Default is first measure in scenario.
 #' @return [\code{list}]. List of data frames, which give an overview of instances that 
 #'  consists of only one single value (and eventually some NAs) per instance.
 #'  The output consists of three data frames: one for the algo runs, the feature values and the
 #'  feature runstatus, respectively.
 #' @export
-findUselessInstances = function(astask, measure) {
-  checkArg(astask, "ASTask")
+findUselessInstances = function(asscenario, measure) {
+  checkArg(asscenario, "ASScenario")
   if (missing(measure))
-    measure = astask$desc$performance_measures[1]
+    measure = asscenario$desc$performance_measures[1]
   else
     checkArg(measure, "character", len = 1L, na.ok = FALSE)
-  algo.performances = astask$algo.runs
-  feat.vals = astask$feature.values
-  feat.runs = astask$feature.runstatus
+  algo.performances = asscenario$algo.runs
+  feat.vals = asscenario$feature.values
+  feat.runs = asscenario$feature.runstatus
   splitted.algos = split(algo.performances[[measure]], 
                          algo.performances$algorithm)
   checked.algos = findUniqueValues(splitted.algos)

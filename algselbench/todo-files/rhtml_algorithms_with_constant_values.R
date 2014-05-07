@@ -6,7 +6,7 @@
   <br>
   
   <!--begin.rcode, results = "asis"
-res = findUselessInstances(astask)$algo.runs
+res = findUselessInstances(asscenario)$algo.runs
 if(nrow(res) >= 1) {
   print(xtable(res), "html")
 } else {

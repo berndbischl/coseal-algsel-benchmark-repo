@@ -7,7 +7,7 @@ library(mlr)
 library(rpart)
 load_all(".")
 
-ast = parseASTask("/home/bischl/cos/coseal/data/csp_2010")
+ast = parseASScenario("/home/bischl/cos/coseal/data/csp_2010")
 lt = convertToLlama(ast, add.feature.costs = F)
 lt2 = convertToLlamaCVFolds(ast, add.feature.costs = F)
 lrn = makeLearner("classif.rpart")

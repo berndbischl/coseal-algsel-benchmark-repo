@@ -6,28 +6,28 @@ DELETE	:= rm -fR
 
 usage:
 	echo "Available targets:"
-	echo " clean               - Clean up"
-	echo " render-task-pages   - Render HTML pages for task"
-	echo " push-task-pages     - Render pages and push to gh-pages"
+	echo " clean                   - Clean up"
+	echo " render-scenario-pages   - Render HTML pages for scenario"
+	echo " push-scenario-pages     - Render pages and push to gh-pages"
 
 clean:
 	echo  "Cleaning up."
 	${DELETE} html
 	mkdir html
 
-render-task-pages: clean
-	echo "Creating task html pages"
+render-scenario-pages: clean
+	echo "Creating scenario html pages"
 	cd server_scripts; ${RSCRIPT} renderKnitRPages.R; cd .. 
 
-push-task-pages: render-task-pages
+push-scenario-pages: render-scenario-pages
 	rm -rf /tmp/html
 	cp -r html /tmp/
 	git checkout gh-pages
 	git pull
-	${DELETE} task-pages
-	cp -r /tmp/html task-pages 
-	git add task-pages 
-	git commit -am "new task pages"
+	${DELETE} scenario-pages
+	cp -r /tmp/html scenario-pages 
+	git add scenario-pages 
+	git commit -am "new scenario pages"
 	git push origin gh-pages
 	git checkout master
 

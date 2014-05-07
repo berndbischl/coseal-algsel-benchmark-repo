@@ -1,9 +1,9 @@
 # converts llama results to xtable
-printResultsAsHTMLTable = function(res, task.id, col.best = "#FF0000", col.best3 =  "#FFAAAA",
+printResultsAsHTMLTable = function(res, scenario.id, col.best = "#FF0000", col.best3 =  "#FFAAAA",
   col.group = "#00FF00") {
 
   require("xtable")
-  res = subset(res, prob == task.id)
+  res = subset(res, prob == scenario.id)
   groups = unique(res$algo)
 
   # display config for measures

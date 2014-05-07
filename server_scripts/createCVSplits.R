@@ -3,22 +3,22 @@ library(BBmisc)
 source("defs.R")
 
 data.dir =  file.path(coseal.svn.dir, "data")
-task.dirs = list.files(data.dir, full = TRUE)
+scenario.dirs = list.files(data.dir, full = TRUE)
 
-createCVSplitFiles = function(task.dirs, data.dir, overwrite = FALSE, warn = TRUE) {
-  for (task.dir in task.dirs) {
-    task.name = basename(task.dir)
-    messagef("Create CV file for: %s", task.name)
-    astask = parseASTask(task.dir)
-    fn = file.path(data.dir, task.name, "cv.arff")
+createCVSplitFiles = function(scenario.dirs, data.dir, overwrite = FALSE, warn = TRUE) {
+  for (scenario.dir in scenario.dirs) {
+    scenario.name = basename(scenario.dir)
+    messagef("Create CV file for: %s", scenario.name)
+    asscenario = parseASScenario(scenario.dir)
+    fn = file.path(data.dir, scenario.name, "cv.arff")
     if (file.exists(fn)) {
       if (!overwrite)
         stopf("CV file already exist: %s", fn)
       if (warn)
         warningf("CV file already exist: %s", fn)
     }
-    s = createCVSplits(astask, folds = 10L, rep = 1L, file = fn)
+    s = createCVSplits(asscenario, folds = 10L, rep = 1L, file = fn)
   }
 }
 
-createCVSplitFiles(task.dirs, data.dir, overwrite = TRUE, warn = FALSE)
+createCVSplitFiles(scenario.dirs, data.dir, overwrite = TRUE, warn = FALSE)

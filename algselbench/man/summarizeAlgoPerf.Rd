@@ -2,14 +2,14 @@
 \alias{summarizeAlgoPerf}
 \title{Creates summary data.frame for algorithm performance values across all instances.}
 \usage{
-summarizeAlgoPerf(astask, measure)
+summarizeAlgoPerf(asscenario, measure)
 }
 \arguments{
-  \item{astask}{[\code{\link{ASTask}}]\cr Algorithm
-  selection task.}
+  \item{asscenario}{[\code{\link{ASScenario}}]\cr Algorithm
+  selection scenario.}
 
   \item{measure}{[\code{character(1)}]\cr Selected measure.
-  Default is first measure in task.}
+  Default is first measure in scenario.}
 }
 \value{
 [\code{data.frame}].

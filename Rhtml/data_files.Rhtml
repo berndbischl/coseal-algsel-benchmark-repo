@@ -6,16 +6,16 @@
 <body>
 
 
-<h1>Task <!--rinline I(astask$desc$task_id)--></h1>
+<h1>Scenario <!--rinline I(asscenario$desc$scenario_id)--></h1>
 
 <ul>
 
 <!--begin.rcode, echo = FALSE, results = "asis"
 
-  fs = list.files(task.dir)
+  fs = list.files(scenario.dir)
   coseal.svn.prefix = "http://coseal.googlecode.com/svn/trunk/data"
   for (f in fs) {
-    bn = basename(task.dir)
+    bn = basename(scenario.dir)
     url = sprintf("%s/%s/%s", coseal.svn.prefix, bn, f)
     catf("<li>")
     catf("<a href='%s'>%s</a>", url, f)
@@ -28,7 +28,7 @@ end.rcode-->
 
 <br><br>
 
-<a href="../index.html">Back to task list</a>
+<a href="../index.html">Back to scenario list</a>
 
 </body>
 </html>

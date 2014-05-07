@@ -22,7 +22,7 @@ The following statistics were calculated from the performance values of each alg
 </ul>
 
 <!--begin.rcode, results = "asis"
-  res = summarizeAlgoPerf(astask)
+  res = summarizeAlgoPerf(asscenario)
   print(xtable(res, digits = 6, display = c("s", "d", "d", rep("g", 8))), "html")
 end.rcode-->
 
@@ -33,7 +33,7 @@ The following table summarizes the runstatus of each algorithm over all instance
 <br>
 
 <!--begin.rcode, results = "asis"
-  res = summarizeAlgoRunstatus(astask)
+  res = summarizeAlgoRunstatus(asscenario)
   print(xtable(res, digits = 3), "html")
 end.rcode-->
 
@@ -43,7 +43,7 @@ end.rcode-->
 Here, you'll find an overview of dominating/dominated algorithms: <br>
 
 <!--begin.rcode, results = "asis"
-  res = findDominatedAlgos(astask, reduce = TRUE, type = "character")
+  res = findDominatedAlgos(asscenario, reduce = TRUE, type = "character")
   if (nrow(res) != 0) {
     print(xtable(res), include.rownames = TRUE, "html")
   } else {
@@ -70,7 +70,7 @@ based on correlations, which is shown at the end of this page). </FONT>
 
 <br>Performance values with imputation.<br>
 <!--begin.rcode
-  plotAlgoPerfBoxplots(astask, impute.zero.vals = config$algo.perf.impute.zero.vals, log = config$algo.perf.log)
+  plotAlgoPerfBoxplots(asscenario, impute.zero.vals = config$algo.perf.impute.zero.vals, log = config$algo.perf.log)
 end.rcode-->
 
 <br>
@@ -78,12 +78,12 @@ end.rcode-->
 
 <br>Performance values with imputation.<br>
 <!--begin.rcode
-  plotAlgoPerfDensities(astask, impute.zero.vals = config$algo.perf.impute.zero.vals, log = config$algo.perf.log, impute.failed.runs = TRUE)
+  plotAlgoPerfDensities(asscenario, impute.zero.vals = config$algo.perf.impute.zero.vals, log = config$algo.perf.log, impute.failed.runs = TRUE)
 end.rcode-->
 
 <br>Performance values without imputation.<br>
 <!--begin.rcode
-  plotAlgoPerfDensities(astask, impute.zero.vals = config$algo.perf.impute.zero.vals, log = config$algo.perf.log, impute.failed.runs = FALSE)
+  plotAlgoPerfDensities(asscenario, impute.zero.vals = config$algo.perf.impute.zero.vals, log = config$algo.perf.log, impute.failed.runs = FALSE)
 end.rcode-->
 <br>
 
@@ -91,7 +91,7 @@ end.rcode-->
 
 <br>Performance values without imputation.<br>
 <!--begin.rcode
-  plotAlgoPerfCDFs(astask, impute.zero.vals = config$algo.perf.impute.zero.vals, log = config$algo.perf.log)
+  plotAlgoPerfCDFs(asscenario, impute.zero.vals = config$algo.perf.impute.zero.vals, log = config$algo.perf.log)
 end.rcode-->
 
 <br>
@@ -101,7 +101,7 @@ The figure underneath shows pairwise scatterplots of the performance values.<br>
 Performance values with imputation.<br>
 
 <!--begin.rcode, results = "asis"
-  plotAlgoPerfScatterMatrix(astask, impute.zero.vals = config$algo.perf.impute.zero.vals, log = config$algo.perf.log)
+  plotAlgoPerfScatterMatrix(asscenario, impute.zero.vals = config$algo.perf.impute.zero.vals, log = config$algo.perf.log)
 end.rcode-->
 
 
@@ -112,7 +112,7 @@ values. Per default it will show the correlation coefficient of spearman. Missin
 <br>
 
 <!--begin.rcode
-  plotAlgoCorMatrix(astask)
+  plotAlgoCorMatrix(asscenario)
 end.rcode-->
 
 

@@ -1,5 +1,5 @@
 context("getFeatureNames")
 
 test_that("getFeatureNames", {
-  g = getFeatureNames(testtask1)
+  g = getFeatureNames(testscenario1)
 })

@@ -1,5 +1,5 @@
 context("plotAlgoCorMatrix")
 
 test_that("plotAlgoCorMatrix", {
-  p = plotAlgoCorMatrix(testtask1)
+  p = plotAlgoCorMatrix(testscenario1)
 })

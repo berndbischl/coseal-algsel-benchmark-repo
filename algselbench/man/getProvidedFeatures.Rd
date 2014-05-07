@@ -2,11 +2,11 @@
 \alias{getProvidedFeatures}
 \title{Return features that are useable for a given set of feature steps.}
 \usage{
-getProvidedFeatures(astask, steps)
+getProvidedFeatures(asscenario, steps)
 }
 \arguments{
-  \item{astask}{[\code{\link{ASTask}}]\cr Algorithm
-  selection task.}
+  \item{asscenario}{[\code{\link{ASScenario}}]\cr Algorithm
+  selection scenario.}
 
   \item{steps}{[\code{character}]\cr Feature steps.
   Default are all feature steps.}

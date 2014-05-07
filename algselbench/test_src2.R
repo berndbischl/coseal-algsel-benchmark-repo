@@ -4,7 +4,7 @@ library(RWeka)
 load_all(".")
 
 
-ast = parseASTask("/home/bischl/cos/coseal/data/QBF_2011")
+ast = parseASScenario("/home/bischl/cos/coseal/data/QBF_2011")
 lt = convertToLlamaCVFolds(ast, add.feature.costs = F)
 lres = classify(classifier = J48, data = lt)
 mcps1 = unlist(misclassificationPenalties(lt, lres$predictions))

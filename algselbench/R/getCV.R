@@ -1,24 +1,24 @@
 #' Returns number of CV folds.
 #'
-#' @param astask [\code{\link{ASTask}}]\cr
-#'   Algorithm selection task.
+#' @param asscenario [\code{\link{ASScenario}}]\cr
+#'   Algorithm selection scenario.
 #' @return [\code{integer(1)}].
 #' @export
-getNumberOfCVFolds = function(astask) {
-  checkArg(astask, "ASTask")
-  return(max(astask$cv.splits$fold))
+getNumberOfCVFolds = function(asscenario) {
+  checkArg(asscenario, "ASScenario")
+  return(max(asscenario$cv.splits$fold))
 }
 
 
 #' Returns number of CV repetitions.
 #'
-#' @param astask [\code{\link{ASTask}}]\cr
-#'   Algorithm selection task.
+#' @param asscenario [\code{\link{ASScenario}}]\cr
+#'   Algorithm selection scenario.
 #' @return [\code{integer(1)}].
 #' @export
-getNumberOfCVReps = function(astask) {
-  checkArg(astask, "ASTask")
-  return(max(astask$cv.splits$repetition))
+getNumberOfCVReps = function(asscenario) {
+  checkArg(asscenario, "ASScenario")
+  return(max(asscenario$cv.splits$repetition))
 }
 
 

@@ -1,12 +1,12 @@
 \name{getSummedFeatureCosts}
 \alias{getSummedFeatureCosts}
-\title{Returns feature costs of task, summed over all instances.}
+\title{Returns feature costs of scenario, summed over all instances.}
 \usage{
-getSummedFeatureCosts(astask, feature.steps)
+getSummedFeatureCosts(asscenario, feature.steps)
 }
 \arguments{
-  \item{astask}{[\code{\link{ASTask}}]\cr Algorithm
-  selection task.}
+  \item{asscenario}{[\code{\link{ASScenario}}]\cr Algorithm
+  selection scenario.}
 
   \item{feature.steps}{[\code{character}]\cr Sum costs only
   for these selected steps.  Default are all feature
@@ -16,6 +16,7 @@ getSummedFeatureCosts(astask, feature.steps)
 [\code{character}].
 }
 \description{
-Returns feature costs of task, summed over all instances.
+Returns feature costs of scenario, summed over all
+instances.
 }
 

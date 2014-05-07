@@ -3,15 +3,15 @@
 #' Potentially duplicated instances are detected by grouping all instances
 #' with equal feature vectors.
 #'
-#' @param astask [\code{\link{ASTask}}]\cr
-#'   Algorithm selection task.
+#' @param asscenario [\code{\link{ASScenario}}]\cr
+#'   Algorithm selection scenario.
 #' @return [\code{list} of \code{character}]. List of instance id vectors where
 #'   corresponding feature vectors are the same. Only groups of at least 2 elements are returned.
 #' @export
-checkDuplicatedInstances = function(astask) {
-  checkArg(astask, "ASTask")
+checkDuplicatedInstances = function(asscenario) {
+  checkArg(asscenario, "ASScenario")
   #FIXME: how do we handle stochastic features / repetions? think again about it.
-  data = astask$feature.values
+  data = asscenario$feature.values
   # only take first repetition, might be wrong...
   data = subset(data, data$repetition == 1L)
   # remove instance_id

@@ -1,13 +1,13 @@
-#' Convert an ASTask task object to a llama data object with cross-validation folds.
+#' Convert an ASScenario scenario object to a llama data object with cross-validation folds.
 #'
 #' For features, mean values are computed across repetitions.
 #' For algorithms, repetitions are not supported at the moment and will result in an error.
 #'
-#' @param astask [\code{\link{ASTask}}]\cr
-#'   Algorithm selection task.
+#' @param asscenario [\code{\link{ASScenario}}]\cr
+#'   Algorithm selection scenario.
 #' @param measure [\code{character(1)}]\cr
 #'   Measure to use for modelling.
-#'   Default is first measure in task.
+#'   Default is first measure in scenario.
 #' @param feature.steps [\code{character}]\cr
 #'   Which feature steps are allowed?
 #'   Default are the default feature steps or all steps
@@ -18,22 +18,22 @@
 #' @param cv.splits [\code{data.frame}]\cr
 #'   Data frame defining the split of the data into cross-validation folds,
 #'   as returned by \code{\link{createCVSplits}}.
-#'   Default are the splits \code{astask$cv.splits}
+#'   Default are the splits \code{asscenario$cv.splits}
 #' @return Result of calling \code{\link[llama]{input}} with data partitioned into folds.
 #' @export
-convertToLlamaCVFolds = function(astask, measure, feature.steps, add.feature.costs = TRUE, cv.splits) {
-  checkArg(astask, "ASTask")
+convertToLlamaCVFolds = function(asscenario, measure, feature.steps, add.feature.costs = TRUE, cv.splits) {
+  checkArg(asscenario, "ASScenario")
   if (missing(measure))
-    measure = astask$desc$performance_measures[1]
+    measure = asscenario$desc$performance_measures[1]
   else
     checkArg(measure, "character", len = 1L, na.ok = FALSE)
   if (missing(cv.splits))
-    cv.splits = astask$cv.splits
+    cv.splits = asscenario$cv.splits
   else
     checkArg(cv.splits, "data.frame")
-  allsteps = names(astask$desc$feature_steps)
+  allsteps = names(asscenario$desc$feature_steps)
   if (missing(feature.steps))
-    feature.steps = getDefaultFeatureStepNames(astask)
+    feature.steps = getDefaultFeatureStepNames(asscenario)
   else
     checkArg(feature.steps, subset = allsteps)
 
@@ -43,7 +43,7 @@ convertToLlamaCVFolds = function(astask, measure, feature.steps, add.feature.cos
 
   folds = cv.splits
 
-  llamaFrame = convertToLlama(astask, measure = measure,
+  llamaFrame = convertToLlama(asscenario, measure = measure,
     feature.steps = feature.steps, add.feature.costs = add.feature.costs)
 
   nfolds = length(unique(folds$fold))
@@ -51,7 +51,7 @@ convertToLlamaCVFolds = function(astask, measure, feature.steps, add.feature.cos
   splitFactors = folds[llamaFrame$data$instance_id, "fold"]
   parts = split(llamaFrame$data, splitFactors)
 
-  minimize = !astask$desc$maximize[measure]
+  minimize = !asscenario$desc$maximize[measure]
 
   return(c(llamaFrame,
             list(train = lapply(1:nfolds, function(x) {

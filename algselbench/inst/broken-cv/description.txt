@@ -1,4 +1,4 @@
-task_id: QBF_2011
+scenario_id: QBF_2011
 performance_measures: performance
 maximize: false
 performance_type: runtime

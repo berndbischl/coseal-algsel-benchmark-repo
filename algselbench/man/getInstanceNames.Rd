@@ -1,17 +1,17 @@
 \name{getInstanceNames}
 \alias{getInstanceNames}
-\title{Returns instance names of task.}
+\title{Returns instance names of scenario.}
 \usage{
-getInstanceNames(astask)
+getInstanceNames(asscenario)
 }
 \arguments{
-  \item{astask}{[\code{\link{ASTask}}]\cr Algorithm
-  selection task.}
+  \item{asscenario}{[\code{\link{ASScenario}}]\cr Algorithm
+  selection scenario.}
 }
 \value{
 [\code{character}].
 }
 \description{
-Returns instance names of task.
+Returns instance names of scenario.
 }
 

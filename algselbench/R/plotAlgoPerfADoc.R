@@ -3,18 +3,18 @@
 #' @description
 #' If NAs occur, they are imputed (before aggregation) by
 #' \code{base + 0.3 range + jitter} .
-#' \code{base} is is the cutoff value for runtimes tasks with cutoff or
+#' \code{base} is is the cutoff value for runtimes scenarios with cutoff or
 #' the worst performance for all others.
 #'
 #' For the CDFs we only show the visible area where successful runs occurred.
 #'
 #' Stochastic replications are aggregated by the mean value.
 #'
-#' @param astask [\code{\link{ASTask}}]\cr
-#'   Algorithm selection task.
+#' @param asscenario [\code{\link{ASScenario}}]\cr
+#'   Algorithm selection scenario.
 #' @param measure [\code{character(1)}]\cr
 #'   Measure to plot.
-#'   Default is first measure in task.
+#'   Default is first measure in scenario.
 #' @param impute.zero.vals [\code{logical(1)}]\cr
 #'   Should values which are exactly 0 be imputed to 1e-6?
 #'   This allows to take the logarithm later on, handy for subsequent visualizations.

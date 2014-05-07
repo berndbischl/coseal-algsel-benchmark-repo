@@ -3,16 +3,16 @@
 #' @description
 #' If NAs occur, they are imputed (before aggregation) by
 #' \code{base + 0.3 * range}.
-#' \code{base} is the cutoff value for runtimes tasks with cutoff or
+#' \code{base} is the cutoff value for runtimes scenarios with cutoff or
 #' the worst performance for all others.
 #'
 #' Stochastic replications are aggregated by the mean value.
 #'
-#' @param astask [\code{\link{ASTask}}]\cr
-#'   Algorithm selection task.
+#' @param asscenario [\code{\link{ASScenario}}]\cr
+#'   Algorithm selection scenario.
 #' @param measure [\code{character(1)}]\cr
 #'   Measure for algorithm performance.
-#'   Default is first measure in task.
+#'   Default is first measure in scenario.
 #' @param reduce [\code{logical(1)}]\cr
 #'   Should the resulting matrix be reduced to algorithms that a are either dominated by or dominate
 #'   another algorithm?
@@ -23,13 +23,13 @@
 #'   \dQuote{character}: Same information but more human-readable. States how the row relates to the column.
 #' @return [\code{matrix}]. See above.
 #' @export
-findDominatedAlgos = function(astask, measure, reduce = FALSE, type = "logical") {
+findDominatedAlgos = function(asscenario, measure, reduce = FALSE, type = "logical") {
 
-  z = getEDAAlgoPerf(astask, measure, impute.failed.runs = TRUE, jitter = FALSE,
+  z = getEDAAlgoPerf(asscenario, measure, impute.failed.runs = TRUE, jitter = FALSE,
     impute.zero.vals = FALSE, check.log = FALSE, format = "wide", with.instance.id = FALSE)
 
   # convert maximization into minimization
-  perf = if (astask$desc$maximize[z$measure])
+  perf = if (asscenario$desc$maximize[z$measure])
    -1 * z$data
   else
     z$data

@@ -1,17 +1,17 @@
 \name{getDefaultFeatureStepNames}
 \alias{getDefaultFeatureStepNames}
-\title{Returns the default feature step names of task.}
+\title{Returns the default feature step names of scenario.}
 \usage{
-getDefaultFeatureStepNames(astask)
+getDefaultFeatureStepNames(asscenario)
 }
 \arguments{
-  \item{astask}{[\code{\link{ASTask}}]\cr Algorithm
-  selection task.}
+  \item{asscenario}{[\code{\link{ASScenario}}]\cr Algorithm
+  selection scenario.}
 }
 \value{
 [\code{character}].
 }
 \description{
-Returns the default feature step names of task.
+Returns the default feature step names of scenario.
 }
 

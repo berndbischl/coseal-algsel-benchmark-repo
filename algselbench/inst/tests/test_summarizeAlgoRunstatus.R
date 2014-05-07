@@ -1,5 +1,5 @@
 context("summarizeAlgoRunstatus")
 
 test_that("summarizeAlgoRunstatus", {
-  s = summarizeAlgoRunstatus(testtask1)
+  s = summarizeAlgoRunstatus(testscenario1)
 })

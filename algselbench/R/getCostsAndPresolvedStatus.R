@@ -2,8 +2,8 @@
 
 #' Return wether an instance was presolved and which step did it.
 #'
-#' @param astask [\code{\link{ASTask}}]\cr
-#'   Algorithm selection task.
+#' @param asscenario [\code{\link{ASScenario}}]\cr
+#'   Algorithm selection scenario.
 #' @param feature.steps [\code{character}]\cr
 #'   Which feature steps are allowed?
 #'   Default is all steps.
@@ -12,14 +12,14 @@
 #'   \item{solve.steps [\code{character(n)}]}{Which step solved it? NA if no step did it. Named by instance ids.}
 #'   \item{costs [\code{numeric(n)}]}{Feature costs for using the steps. Named by instance ids. NULL if no costs are present.}
 #' @export
-getCostsAndPresolvedStatus = function(astask, feature.steps) {
-  checkArg(astask, "ASTask")
-  allsteps = getFeatureStepNames(astask)
+getCostsAndPresolvedStatus = function(asscenario, feature.steps) {
+  checkArg(asscenario, "ASScenario")
+  allsteps = getFeatureStepNames(asscenario)
   if (missing(feature.steps))
     feature.steps = allsteps
   else
     checkArg(feature.steps, subset = allsteps)
-  frs = astask$feature.runstatus
+  frs = asscenario$feature.runstatus
   #FIXME:
   stopifnot(max(frs$repetition) == 1L)
   # note that frs and costs are ordered by instance_id 
@@ -28,14 +28,14 @@ getCostsAndPresolvedStatus = function(astask, feature.steps) {
   frs = frs[, feature.steps, drop = FALSE]
   isps = frs == "presolved"
   ps = apply(isps, 1, any)
-  # steps are in correct order of execution after parseASTask
+  # steps are in correct order of execution after parseASScenario
   # now get the first step that solves as index, or NA
   solve.steps1 = apply(isps, 1, function(x)
     ifelse(any(x), which.first(x), NA_integer_))
   # set NA to nr of steps (means we use all in costs)
   solve.steps2 = ifelse(is.na(solve.steps1), length(feature.steps), solve.steps1)
-  if (!is.null(astask$feature.costs)) {
-    costs = astask$feature.costs[, feature.steps, drop = FALSE]
+  if (!is.null(asscenario$feature.costs)) {
+    costs = asscenario$feature.costs[, feature.steps, drop = FALSE]
     # FIXME: is this really ok??? we just dont know the costs if we got NA. check this
     costs[is.na(costs)] = 0
     # add up costs to solving step (or add up all)

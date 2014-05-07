@@ -1,16 +1,16 @@
 \name{convertToLlamaCVFolds}
 \alias{convertToLlamaCVFolds}
-\title{Convert an ASTask task object to a llama data object with cross-validation folds.}
+\title{Convert an ASScenario scenario object to a llama data object with cross-validation folds.}
 \usage{
-convertToLlamaCVFolds(astask, measure, feature.steps,
+convertToLlamaCVFolds(asscenario, measure, feature.steps,
   add.feature.costs = TRUE, cv.splits)
 }
 \arguments{
-  \item{astask}{[\code{\link{ASTask}}]\cr Algorithm
-  selection task.}
+  \item{asscenario}{[\code{\link{ASScenario}}]\cr Algorithm
+  selection scenario.}
 
   \item{measure}{[\code{character(1)}]\cr Measure to use
-  for modelling.  Default is first measure in task.}
+  for modelling.  Default is first measure in scenario.}
 
   \item{feature.steps}{[\code{character}]\cr Which feature
   steps are allowed?  Default are the default feature steps
@@ -22,7 +22,7 @@ convertToLlamaCVFolds(astask, measure, feature.steps,
   \item{cv.splits}{[\code{data.frame}]\cr Data frame
   defining the split of the data into cross-validation
   folds, as returned by \code{\link{createCVSplits}}.
-  Default are the splits \code{astask$cv.splits}}
+  Default are the splits \code{asscenario$cv.splits}}
 }
 \value{
 Result of calling \code{\link[llama]{input}} with data

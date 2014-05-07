@@ -2,15 +2,15 @@
 \alias{findDominatedAlgos}
 \title{Creates a table that shows the dominance of one algorithm over another one.}
 \usage{
-findDominatedAlgos(astask, measure, reduce = FALSE, type = "logical")
+findDominatedAlgos(asscenario, measure, reduce = FALSE, type = "logical")
 }
 \arguments{
-  \item{astask}{[\code{\link{ASTask}}]\cr Algorithm
-  selection task.}
+  \item{asscenario}{[\code{\link{ASScenario}}]\cr Algorithm
+  selection scenario.}
 
   \item{measure}{[\code{character(1)}]\cr Measure for
   algorithm performance.  Default is first measure in
-  task.}
+  scenario.}
 
   \item{reduce}{[\code{logical(1)}]\cr Should the resulting
   matrix be reduced to algorithms that a are either
@@ -30,8 +30,8 @@ findDominatedAlgos(astask, measure, reduce = FALSE, type = "logical")
 \description{
 If NAs occur, they are imputed (before aggregation) by
 \code{base + 0.3 * range}. \code{base} is the cutoff value
-for runtimes tasks with cutoff or the worst performance for
-all others.
+for runtimes scenarios with cutoff or the worst performance
+for all others.
 
 Stochastic replications are aggregated by the mean value.
 }

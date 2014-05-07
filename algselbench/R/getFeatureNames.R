@@ -1,10 +1,10 @@
-#' Returns feature names of task.
+#' Returns feature names of scenario.
 #'
-#' @param astask [\code{\link{ASTask}}]\cr
-#'   Algorithm selection task.
+#' @param asscenario [\code{\link{ASScenario}}]\cr
+#'   Algorithm selection scenario.
 #' @return [\code{character}].
 #' @export
-getFeatureNames = function(astask) {
-  checkArg(astask, "ASTask")
-  c(astask$desc$features_deterministic, astask$desc$features_stochastic)
+getFeatureNames = function(asscenario) {
+  checkArg(asscenario, "ASScenario")
+  c(asscenario$desc$features_deterministic, asscenario$desc$features_stochastic)
 }

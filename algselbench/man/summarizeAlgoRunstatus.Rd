@@ -2,11 +2,11 @@
 \alias{summarizeAlgoRunstatus}
 \title{Creates summary data.frame for algorithm runstatus across all instances.}
 \usage{
-summarizeAlgoRunstatus(astask)
+summarizeAlgoRunstatus(asscenario)
 }
 \arguments{
-  \item{astask}{[\code{\link{ASTask}}]\cr Algorithm
-  selection task.}
+  \item{asscenario}{[\code{\link{ASScenario}}]\cr Algorithm
+  selection scenario.}
 }
 \value{
 [\code{data.frame}].

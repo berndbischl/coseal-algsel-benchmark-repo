@@ -1,4 +1,4 @@
-#' @title Parses the data files of an algorithm selection task into an S3 object.
+#' @title Parses the data files of an algorithm selection scenario into an S3 object.
 #'
 #' @description
 #'
@@ -9,7 +9,7 @@
 #
 #  @details
 #' \describe{
-#' \item{desc [\code{\link{ASTaskDesc}}]}{Description object, containing further info.}
+#' \item{desc [\code{\link{ASScenarioDesc}}]}{Description object, containing further info.}
 #' \item{feature.runstatus [\code{data.frame(n, s + 2)}]}{Runstatus of feature computation steps.
 #'   The first 2 columns are \dQuote{instance_id} and \dQuote{repetition}, the remaining are the status factors.
 #'   The step columns are in the same order as the feature steps in the description object.
@@ -52,10 +52,10 @@
 #'
 #' @param path [\code{character(1)}]\cr
 #'   Path to directory of benchmark data set.
-#' @return [\code{\link{ASTask}}]. Description object.
+#' @return [\code{\link{ASScenario}}]. Description object.
 #' @export
-#' @aliases ASTask
-parseASTask = function(path) {
+#' @aliases ASScenario
+parseASScenario = function(path) {
   checkArg(path, "character", len = 1L, na.ok = FALSE)
 
   desc = parseDescription(path)
@@ -117,11 +117,11 @@ parseASTask = function(path) {
     cv.splits = cv.splits[, c("instance_id", "repetition", "fold")]
     cv.splits = sortByCol(cv.splits, c("repetition", "fold", "instance_id"))
   } else {
-    warningf("No cv file exists for task at:\n%s", path)
+    warningf("No cv file exists for scenario at:\n%s", path)
     cv.splits = NULL
   }
 
-  makeS3Obj("ASTask",
+  makeS3Obj("ASScenario",
     desc = desc,
     feature.runstatus = feature.runstatus,
     feature.costs= feature.costs,
@@ -132,8 +132,8 @@ parseASTask = function(path) {
   )
 }
 
-#' @S3method print ASTask
-print.ASTask = function(x, ...) {
+#' @S3method print ASScenario
+print.ASScenario = function(x, ...) {
   d = x$desc
   printField1 = function(name, val) {
     k = length(val)
@@ -145,7 +145,7 @@ print.ASTask = function(x, ...) {
       catf("%-30s (%3i)  : %s", name, k, clipString(collapse(val, sep = ", "), 60L))
   }
   x$feature_steps = names(x$feature_steps)
-  printField1("Task id", d$task_id)
+  printField1("Scenario id", d$scenario_id)
   printField1("Performance measures", d$performance_measures)
   printField1("Performance types", d$performance_type)
   printField1("Algorithm cutoff time", d$algorithm_cutoff_time)

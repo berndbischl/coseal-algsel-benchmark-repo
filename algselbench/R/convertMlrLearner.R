@@ -10,17 +10,17 @@ convertMlrLearnerToLlama = function(learner) {
     theterms = terms(as.formula(formula), data=get("data"), envir=environment(formula))
     y = eval(attr(theterms, "variables")[[2]], envir=environment(formula))
     mydata = cbind(..best..=y, data)
-    task = if (learner$type == "classif")
-      makeClassifTask(target="..best..", data = mydata)
+    scenario = if (learner$type == "classif")
+      makeClassifScenario(target="..best..", data = mydata)
     else
-      makeRegrTask(target="..best..", data = mydata)
+      makeRegrScenario(target="..best..", data = mydata)
     f = as.character(formula)
     features = f[-(1:2)]
     # FIXME: does not work for subset of features
     if (features != ".") {
-      task = subsetTask(task, features = features)
+      scenario = subsetScenario(scenario, features = features)
     }
-    m = train(learner, task)
+    m = train(learner, scenario)
     m = addClasses(m, "LlamaClassifMlrWrapper")
     return(m)
   }

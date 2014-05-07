@@ -1,5 +1,5 @@
 context("plotAlgoPerfDensities")
 
 test_that("plotAlgoPerfDensities", {
-  s = plotAlgoPerfDensities(testtask1)
+  s = plotAlgoPerfDensities(testscenario1)
 })

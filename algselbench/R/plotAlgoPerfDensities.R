@@ -1,7 +1,7 @@
 #' @rdname plotAlgoPerf
 #' @export
-plotAlgoPerfDensities = function(astask, measure, impute.failed.runs = TRUE, impute.zero.vals = FALSE, log = FALSE) {
-  z = getEDAAlgoPerf(astask, measure, impute.failed.runs = impute.failed.runs, jitter = TRUE,
+plotAlgoPerfDensities = function(asscenario, measure, impute.failed.runs = TRUE, impute.zero.vals = FALSE, log = FALSE) {
+  z = getEDAAlgoPerf(asscenario, measure, impute.failed.runs = impute.failed.runs, jitter = TRUE,
     impute.zero.vals = impute.zero.vals, check.log = log, format = "long", with.instance.id = FALSE)
   # FIXME: had to remove failed runs manually as na.rm does not work properly
   if (!impute.failed.runs)

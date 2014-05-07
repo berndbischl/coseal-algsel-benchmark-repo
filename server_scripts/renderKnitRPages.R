@@ -11,10 +11,10 @@ source("shortenPathsInValidator.R")
 source("convertResultsToXTable.R")
 
 data.dir =  normalizePath(file.path(coseal.svn.dir, "data"))
-task.dirs = list.files(data.dir, full = TRUE)
+scenario.dirs = list.files(data.dir, full = TRUE)
 # avoid bbob and machine learning for now
-task.dirs = task.dirs[!str_detect(task.dirs, "BBOB|MACHINE")]
-# task.dirs = task.dirs[1]
+scenario.dirs = scenario.dirs[!str_detect(scenario.dirs, "BBOB|MACHINE")]
+# scenario.dirs = scenario.dirs[1]
 rhtml.dir = normalizePath("../Rhtml")
 html.dir = normalizePath("../html")
 config.dir = normalizePath("../configs")
@@ -24,32 +24,32 @@ old.wd = getwd()
 if (interactive()) {
   url.prefix =  sprintf("file://%s", html.dir)
 } else {
-  url.prefix = "http://berndbischl.github.io/coseal-algsel-benchmark-repo/task-pages"
+  url.prefix = "http://berndbischl.github.io/coseal-algsel-benchmark-repo/scenario-pages"
 }
 
 ee = new.env()
 ee$data.dir = data.dir
-ee$task.dirs = task.dirs
+ee$scenario.dirs = scenario.dirs
 ee$url.prefix = url.prefix
 ee$llama.results = load2("llama_results.RData")
-ee$astasks = list()
+ee$asscenarios = list()
 
 
 try({
 
-  for (task.dir in task.dirs) {
+  for (scenario.dir in scenario.dirs) {
     setwd(old.wd)
-    task.name = basename(task.dir)
-    messagef("Create pages for: %s", task.name)
+    scenario.name = basename(scenario.dir)
+    messagef("Create pages for: %s", scenario.name)
 
-    # set task data for knitr
-    astask = parseASTask(task.dir)
-    ee$astasks[[astask$desc$task_id]] = astask
-    ee$task.dir = task.dir
-    ee$astask = astask
+    # set scenario data for knitr
+    asscenario = parseASScenario(scenario.dir)
+    ee$asscenarios[[asscenario$desc$scenario_id]] = asscenario
+    ee$scenario.dir = scenario.dir
+    ee$asscenario = asscenario
 
     # create output dir
-    out.dir = file.path(html.dir, task.name)
+    out.dir = file.path(html.dir, scenario.name)
     unlink(out.dir, recursive = TRUE)
     dir.create(out.dir)
     setwd(out.dir)
@@ -65,8 +65,8 @@ try({
     # set global ggplot options
     theme_set(theme_gray(base_size = 18))
 
-    # read EDA HTML config for task
-    config = readEDAConfig(astask, config.dir)
+    # read EDA HTML config for scenario
+    config = readEDAConfig(asscenario, config.dir)
     ee$config = config
 
     # helper to knit rhtml files
@@ -79,8 +79,8 @@ try({
     }
 
     # create all subpages and copy readme
-    knitIt("task_index", "index")
-    file.copy(file.path(task.dir, "readme.txt"), out.dir)
+    knitIt("scenario_index", "index")
+    file.copy(file.path(scenario.dir, "readme.txt"), out.dir)
     knitIt("data_files")
     knitIt("algos")
     knitIt("features")

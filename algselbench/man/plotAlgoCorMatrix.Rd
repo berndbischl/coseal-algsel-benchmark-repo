@@ -2,15 +2,15 @@
 \alias{plotAlgoCorMatrix}
 \title{Plots the correlation matrix of the algorithms.}
 \usage{
-plotAlgoCorMatrix(astask, measure, order.method = "hclust",
+plotAlgoCorMatrix(asscenario, measure, order.method = "hclust",
   hclust.method = "ward", cor.method = "spearman")
 }
 \arguments{
-  \item{astask}{[\code{\link{ASTask}}]\cr Algorithm
-  selection task.}
+  \item{asscenario}{[\code{\link{ASScenario}}]\cr Algorithm
+  selection scenario.}
 
   \item{measure}{[\code{character(1)}]\cr Measure to plot.
-  Default is first measure in task.}
+  Default is first measure in scenario.}
 
   \item{order.method}{[\code{character(1)}]\cr Method for
   ordering the algorithms within the plot.  Possible values
@@ -43,8 +43,8 @@ See \code{\link[corrplot]{corrplot}}.
 \description{
 If NAs occur, they are imputed (before aggregation) by
 \code{base + 0.3 * range}. \code{base} is the cutoff value
-for runtimes tasks with cutoff or the worst performance for
-all others.
+for runtimes scenarios with cutoff or the worst performance
+for all others.
 
 Stochastic replications are aggregated by the mean value.
 }

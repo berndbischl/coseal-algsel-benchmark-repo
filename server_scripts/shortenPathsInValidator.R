@@ -7,16 +7,16 @@
 #' 
 #' @param s [\code{list(2)}]\cr
 #'   List, containing the output of the validator script.
-#' @param task.dir [\code{character(2)}]\cr
-#'   Path to the algorithm task's directory.
+#' @param scenario.dir [\code{character(2)}]\cr
+#'   Path to the algorithm scenario's directory.
 #' @return [\code{list(2)}].\cr
 #'   Same list as the input parameter, but without showing the full paths to
-#'   the files within the task directory.
+#'   the files within the scenario directory.
 #' @export
-shortenPathsInValidator = function(s, task.dir) {
+shortenPathsInValidator = function(s, scenario.dir) {
   output = s$output
-  task.dir = strsplit(task.dir, "/")[[1]]
-  task.dir = paste(task.dir[-length(task.dir)], collapse = "/")
+  scenario.dir = strsplit(scenario.dir, "/")[[1]]
+  scenario.dir = paste(scenario.dir[-length(scenario.dir)], collapse = "/")
   files = c("ground_truth.arff", "citation.bib", "description.txt", 
     "algorithm_runs.arff", "feature_values.arff", "feature_runstatus.arff",
     "feature_costs.arff")
@@ -24,7 +24,7 @@ shortenPathsInValidator = function(s, task.dir) {
   for (file in files) {
     index = grep(file, output)
     output[index] = sapply(index, function(i) 
-      paste(strsplit(output[[i]], paste(task.dir, "/", sep = ""))[[1]], collapse = ""))
+      paste(strsplit(output[[i]], paste(scenario.dir, "/", sep = ""))[[1]], collapse = ""))
   }
   output = alignOutput(output, "Instances", "\t\t")
   output = alignOutput(output, "Valid Instances", "\t")

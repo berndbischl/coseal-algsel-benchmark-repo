@@ -1,10 +1,10 @@
-#' Returns algorithm names of task.
+#' Returns algorithm names of scenario.
 #'
-#' @param astask [\code{\link{ASTask}}]\cr
-#'   Algorithm selection task.
+#' @param asscenario [\code{\link{ASScenario}}]\cr
+#'   Algorithm selection scenario.
 #' @return [\code{character}].
 #' @export
-getAlgorithmNames = function(astask) {
-  c(astask$desc$algorithms_deterministic, astask$desc$algorithms_stochastic)
+getAlgorithmNames = function(asscenario) {
+  c(asscenario$desc$algorithms_deterministic, asscenario$desc$algorithms_stochastic)
 }
 

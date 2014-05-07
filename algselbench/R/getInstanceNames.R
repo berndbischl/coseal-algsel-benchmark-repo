@@ -1,12 +1,12 @@
-#' Returns instance names of task.
+#' Returns instance names of scenario.
 #'
-#' @param astask [\code{\link{ASTask}}]\cr
-#'   Algorithm selection task.
+#' @param asscenario [\code{\link{ASScenario}}]\cr
+#'   Algorithm selection scenario.
 #' @return [\code{character}].
 #' @export
-getInstanceNames = function(astask) {
-  checkArg(astask, "ASTask")
-  return(unique(astask$feature.values$instance_id))
+getInstanceNames = function(asscenario) {
+  checkArg(asscenario, "ASScenario")
+  return(unique(asscenario$feature.values$instance_id))
 }
 
 

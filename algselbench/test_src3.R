@@ -3,8 +3,8 @@ library(RWeka)
 load_all("~/cos/mlr")
 load_all(".")
 
-# ast = parseASTask("/home/bischl/cos/coseal/data/sat12-rand")
-# ast = parseASTask("/home/bischl/cos/coseal/data/QBF_2011")
+# ast = parseASScenario("/home/bischl/cos/coseal/data/sat12-rand")
+# ast = parseASScenario("/home/bischl/cos/coseal/data/QBF_2011")
 
 feats = ast$feature.values
 cvs = ast$cv.splits
@@ -36,12 +36,12 @@ print(mcp1)
 # preds1 = as.character(foo(lapply(lres$predictions, foo))$algorithm)
 # print(table(preds1))
 
-z = convertToMlr(ast, add.feature.costs = F); mt = z$mlr.task; rin = z$mlr.rin
+z = convertToMlr(ast, add.feature.costs = F); mt = z$mlr.scenario; rin = z$mlr.rin
 mi = do.call(c, rin$test.inds)
-test2 = z$mlr.task$env$data
+test2 = z$mlr.scenario$env$data
 test2 = test2[mi, ]
 print(test2[1, 1:5])
-cost2 = z$mlr.task$env$costs
+cost2 = z$mlr.scenario$env$costs
 cost2 = cost2[mi, ]
 # lab2 = getMinIndexOfRows(cost2)
 lab2 = apply(cost2, 1, which.min)
@@ -54,7 +54,7 @@ print(table(lab2))
 # print(mt$env$data[rin$train.inds[[1]][1], 1:3])
 
 lrn = makeCostSensClassifWrapper(makeLearner("classif.J48"))
-r = resample(lrn, z$mlr.task, z$mlr.rin, show.info = FALSE)
+r = resample(lrn, z$mlr.scenario, z$mlr.rin, show.info = FALSE)
 mcp2 = r$aggr[1]
 print(mcp2)
 # preds2 = as.character(as.data.frame(r$pred)$response)

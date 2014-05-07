@@ -1,18 +1,19 @@
 \name{convertAlgoPerfToWideFormat}
 \alias{convertAlgoPerfToWideFormat}
-\title{Converts \code{algo.runs} object of a task to wide format.}
+\title{Converts \code{algo.runs} object of a scenario to wide format.}
 \usage{
 convertAlgoPerfToWideFormat(desc, algo.runs, measure)
 }
 \arguments{
-  \item{desc}{[\code{\link{ASTaskDesc}}]\cr Description
-  object of task.}
+  \item{desc}{[\code{\link{ASScenarioDesc}}]\cr Description
+  object of scenario.}
 
   \item{algo.runs}{[\code{data.frame}]\cr Algo runs
-  data.frame from task.}
+  data.frame from scenario.}
 
   \item{measure}{[\code{character(1)}]\cr Selected
-  performance measure.  Default is first measure in task.}
+  performance measure.  Default is first measure in
+  scenario.}
 }
 \value{
 [\code{data.frame}].

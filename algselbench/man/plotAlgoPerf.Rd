@@ -6,22 +6,23 @@
 \alias{plotAlgoPerfScatterMatrix}
 \title{EDA plots for performance values of algorithms across all instances.}
 \usage{
-plotAlgoPerfBoxplots(astask, measure, impute.zero.vals = FALSE, log = FALSE)
+plotAlgoPerfBoxplots(asscenario, measure, impute.zero.vals = FALSE,
+  log = FALSE)
 
-plotAlgoPerfCDFs(astask, measure, impute.zero.vals = FALSE, log = FALSE)
+plotAlgoPerfCDFs(asscenario, measure, impute.zero.vals = FALSE, log = FALSE)
 
-plotAlgoPerfDensities(astask, measure, impute.failed.runs = TRUE,
+plotAlgoPerfDensities(asscenario, measure, impute.failed.runs = TRUE,
   impute.zero.vals = FALSE, log = FALSE)
 
-plotAlgoPerfScatterMatrix(astask, measure, impute.zero.vals = FALSE,
+plotAlgoPerfScatterMatrix(asscenario, measure, impute.zero.vals = FALSE,
   log = FALSE)
 }
 \arguments{
-  \item{astask}{[\code{\link{ASTask}}]\cr Algorithm
-  selection task.}
+  \item{asscenario}{[\code{\link{ASScenario}}]\cr Algorithm
+  selection scenario.}
 
   \item{measure}{[\code{character(1)}]\cr Measure to plot.
-  Default is first measure in task.}
+  Default is first measure in scenario.}
 
   \item{impute.zero.vals}{[\code{logical(1)}]\cr Should
   values which are exactly 0 be imputed to 1e-6?  This
@@ -40,8 +41,8 @@ ggplot2 plot object.
 \description{
 If NAs occur, they are imputed (before aggregation) by
 \code{base + 0.3 range + jitter} . \code{base} is is the
-cutoff value for runtimes tasks with cutoff or the worst
-performance for all others.
+cutoff value for runtimes scenarios with cutoff or the
+worst performance for all others.
 
 For the CDFs we only show the visible area where successful
 runs occurred.

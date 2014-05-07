@@ -2,11 +2,11 @@
 \alias{getNumberOfCVReps}
 \title{Returns number of CV repetitions.}
 \usage{
-getNumberOfCVReps(astask)
+getNumberOfCVReps(asscenario)
 }
 \arguments{
-  \item{astask}{[\code{\link{ASTask}}]\cr Algorithm
-  selection task.}
+  \item{asscenario}{[\code{\link{ASScenario}}]\cr Algorithm
+  selection scenario.}
 }
 \value{
 [\code{integer(1)}].

@@ -1,17 +1,17 @@
 \name{getFeatureStepNames}
 \alias{getFeatureStepNames}
-\title{Returns feature step names of task.}
+\title{Returns feature step names of scenario.}
 \usage{
-getFeatureStepNames(astask)
+getFeatureStepNames(asscenario)
 }
 \arguments{
-  \item{astask}{[\code{\link{ASTask}}]\cr Algorithm
-  selection task.}
+  \item{asscenario}{[\code{\link{ASScenario}}]\cr Algorithm
+  selection scenario.}
 }
 \value{
 [\code{character}].
 }
 \description{
-Returns feature step names of task.
+Returns feature step names of scenario.
 }
 
