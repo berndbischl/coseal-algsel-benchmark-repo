@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style type="text/css">
+.knitr.inline {
+  background-color: #f7f7f7;
+  border:solid 1px #B0B0B0;
+}
+.error {
+	font-weight: bold;
+	color: #FF0000;
+},
+.warning {
+	font-weight: bold;
+}
+.message {
+	font-style: italic;
+}
+.source, .output, .warning, .error, .message {
+	padding: 0em 1em;
+  border:solid 1px #F7F7F7;
+}
+.source {
+  background-color: #f5f5f5;
+}
+.rimage.left {
+  text-align: left;
+}
+.rimage.right {
+  text-align: right;
+}
+.rimage.center {
+  text-align: center;
+}
+.hl.num {
+  color: #AF0F91;
+}
+.hl.str {
+  color: #317ECC;
+}
+.hl.com {
+  color: #AD95AF;
+  font-style: italic;
+}
+.hl.opt {
+  color: #000000;
+}
+.hl.std {
+  color: #585858;
+}
+.hl.kwa {
+  color: #295F94;
+  font-weight: bold;
+}
+.hl.kwb {
+  color: #B05A65;
+}
+.hl.kwc {
+  color: #55aa55;
+}
+.hl.kwd {
+  color: #BC5A65;
+  font-weight: bold;
+}
+</style>
+  <title>Algorithm performance overview</title>
+</head>
+<body>
+
+
+<h2> Overview of performance values </h2>
+
+The following statistics were calculated from the performance values of each algorithm:
+<ul>
+
+  <li> <a>obs (number of observations within performance values)</a>
+  <li> <a>nas (number of NAs, i.e., missing values, within performance values)</a>
+  <li> <a>min (minimum), mean (arithmetic mean), max (maximum), sd (standard deviation)</a>
+  <li> <a>qu_1st (1st quartile = lower quartile = 25%-quantile)</a>
+  <li> <a>med (median = 50%-quantile)</a>
+  <li> <a>qu_3rd (3rd quartile = upper quartile = 75%-quantile)</a>
+  <li> <a>coeff_var (coefficient of variation = standard deviation / arithmetic mean)</a>
+
+</ul>
+
+<!-- html table generated in R 3.1.0 by xtable 1.7-3 package -->
+<!-- Wed May  7 14:58:43 2014 -->
+<TABLE border=1>
+<TR> <TH>  </TH> <TH> obs </TH> <TH> nas </TH> <TH> min </TH> <TH> qu_1st </TH> <TH> med </TH> <TH> mean </TH> <TH> qu_3rd </TH> <TH> max </TH> <TH> sd </TH> <TH> coeff_var </TH>  </TR>
+  <TR> <TD align="right"> astar-symmulgt-transmul </TD> <TD align="right">     527 </TD> <TD align="right">     178 </TD> <TD align="right">   0.012 </TD> <TD align="right">    0.38 </TD> <TD align="right">   2.832 </TD> <TD align="right"> 121.355 </TD> <TD align="right">  46.347 </TD> <TD align="right"> 3039.91 </TD> <TD align="right"> 352.288 </TD> <TD align="right"> 2.90295 </TD> </TR>
+  <TR> <TD align="right"> astar-symmullt-transmul </TD> <TD align="right">     527 </TD> <TD align="right">     193 </TD> <TD align="right">   0.016 </TD> <TD align="right">   0.523 </TD> <TD align="right">    3.51 </TD> <TD align="right"> 109.423 </TD> <TD align="right"> 55.0288 </TD> <TD align="right"> 1950.48 </TD> <TD align="right"> 279.665 </TD> <TD align="right"> 2.55583 </TD> </TR>
+  <TR> <TD align="right"> idastar-symmulgt-transmul </TD> <TD align="right">     527 </TD> <TD align="right">      99 </TD> <TD align="right">       0 </TD> <TD align="right">   0.308 </TD> <TD align="right">    7.29 </TD> <TD align="right"> 295.635 </TD> <TD align="right"> 165.728 </TD> <TD align="right"> 3512.67 </TD> <TD align="right">  665.53 </TD> <TD align="right"> 2.25119 </TD> </TR>
+  <TR> <TD align="right"> idastar-symmullt-transmul </TD> <TD align="right">     527 </TD> <TD align="right">     112 </TD> <TD align="right">   0.004 </TD> <TD align="right">   0.788 </TD> <TD align="right">  20.633 </TD> <TD align="right">  373.58 </TD> <TD align="right"> 298.165 </TD> <TD align="right"> 3588.98 </TD> <TD align="right"> 748.774 </TD> <TD align="right"> 2.00432 </TD> </TR>
+   </TABLE>
+
+
+
+<br>
+<h2> Summary of the runstatus per algorithm </h2>
+
+The following table summarizes the runstatus of each algorithm over all instances (in %).<br>
+<br>
+
+<!-- html table generated in R 3.1.0 by xtable 1.7-3 package -->
+<!-- Wed May  7 14:58:44 2014 -->
+<TABLE border=1>
+<TR> <TH>  </TH> <TH> ok </TH> <TH> timeout </TH> <TH> memout </TH> <TH> not_applicable </TH> <TH> crash </TH> <TH> other </TH>  </TR>
+  <TR> <TD align="right"> astar-symmulgt-transmul </TD> <TD align="right"> 66.224 </TD> <TD align="right"> 0.000 </TD> <TD align="right"> 33.776 </TD> <TD align="right"> 0.000 </TD> <TD align="right"> 0.000 </TD> <TD align="right"> 0.000 </TD> </TR>
+  <TR> <TD align="right"> astar-symmullt-transmul </TD> <TD align="right"> 63.378 </TD> <TD align="right"> 0.000 </TD> <TD align="right"> 36.622 </TD> <TD align="right"> 0.000 </TD> <TD align="right"> 0.000 </TD> <TD align="right"> 0.000 </TD> </TR>
+  <TR> <TD align="right"> idastar-symmulgt-transmul </TD> <TD align="right"> 81.214 </TD> <TD align="right"> 18.786 </TD> <TD align="right"> 0.000 </TD> <TD align="right"> 0.000 </TD> <TD align="right"> 0.000 </TD> <TD align="right"> 0.000 </TD> </TR>
+  <TR> <TD align="right"> idastar-symmullt-transmul </TD> <TD align="right"> 78.748 </TD> <TD align="right"> 21.252 </TD> <TD align="right"> 0.000 </TD> <TD align="right"> 0.000 </TD> <TD align="right"> 0.000 </TD> <TD align="right"> 0.000 </TD> </TR>
+   </TABLE>
+
+
+
+<br>
+<h2> Dominated Algorithms </h2>
+
+Here, you'll find an overview of dominating/dominated algorithms: <br>
+
+None of the algorithms was superior to any of the other.
+
+
+<br> <br>
+An algorithm (A) is considered to be superior to an other algorithm (B), if it has at least an equal performance on all instances (compared to B) <u>and</u> if it is better on at least one of them. A missing value is automatically a worse performance. However, instances which could not be solved by either one of the algorithms, were not considered for the dominance relation.<br>
+
+<br>
+<br>
+
+<b><FONT COLOR = "#FF0000"> Important note w.r.t. some of the following plots:</b><br>
+If appropriate, we imputed performance values for failed runs.
+We used max + 0.3 * (max - min), in case of minimization problems,
+or min - 0.3 * (max - min), in case of maximization problems.<br>
+In addition, a small noise is added to the imputed values (except for the cluster matrix,
+based on correlations, which is shown at the end of this page). </FONT>
+<br>
+<br>
+
+<h2> Boxplots of performance values </h2>
+
+<br>Performance values with imputation.<br>
+<div class="chunk" id="unnamed-chunk-4"><div class="rimage default"><img src="figure/unnamed-chunk-4.png" title="plot of chunk unnamed-chunk-4" alt="plot of chunk unnamed-chunk-4" class="plot" /></div></div>
+
+
+<br>
+<h2> Estimated densitities of performance values </h2>
+
+<br>Performance values with imputation.<br>
+<div class="chunk" id="unnamed-chunk-5"><div class="rimage default"><img src="figure/unnamed-chunk-5.png" title="plot of chunk unnamed-chunk-5" alt="plot of chunk unnamed-chunk-5" class="plot" /></div></div>
+
+
+<br>Performance values without imputation.<br>
+<div class="chunk" id="unnamed-chunk-6"><div class="rimage default"><img src="figure/unnamed-chunk-6.png" title="plot of chunk unnamed-chunk-6" alt="plot of chunk unnamed-chunk-6" class="plot" /></div></div>
+
+<br>
+
+<h2> Estimated cumulative distribution functions of performance values </h2>
+
+<br>Performance values without imputation.<br>
+<div class="chunk" id="unnamed-chunk-7"><div class="rimage default"><img src="figure/unnamed-chunk-7.png" title="plot of chunk unnamed-chunk-7" alt="plot of chunk unnamed-chunk-7" class="plot" /></div></div>
+
+
+<br>
+<h2> Scatterplot matrix of the performance values </h2>
+The figure underneath shows pairwise scatterplots of the performance values.<br>
+<br>
+Performance values with imputation.<br>
+
+</div><div class="rimage default"><img src="figure/unnamed-chunk-8.png" title="plot of chunk unnamed-chunk-8" alt="plot of chunk unnamed-chunk-8" class="plot" /></div><div class="rcode">
+
+
+
+
+<br>
+<h2> Clustering algorithms based on their correlations </h2>
+The following figure shows the correlations of the <b>ranks</b> of the performance
+values. Per default it will show the correlation coefficient of spearman. Missing values were imputed <u>prior</u> to computing the correlation coefficients. The algorithms are ordered in a way that similar (highly correlated) algorithms are close to each other. Per default the clustering is based on hierarchical clustering, using Ward's method. <br>
+<br>
+
+<div class="chunk" id="unnamed-chunk-9"><div class="rcode"><div class="message"><pre class="knitr r">## The "ward" method has been renamed to "ward.D"; note new "ward.D2"
+</pre></div>
+</div><div class="rimage default"><img src="figure/unnamed-chunk-9.png" title="plot of chunk unnamed-chunk-9" alt="plot of chunk unnamed-chunk-9" class="plot" /></div></div>
+
+
+
+</body>
+</html>

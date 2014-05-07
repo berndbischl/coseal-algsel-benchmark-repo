@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style type="text/css">
+.knitr.inline {
+  background-color: #f7f7f7;
+  border:solid 1px #B0B0B0;
+}
+.error {
+	font-weight: bold;
+	color: #FF0000;
+},
+.warning {
+	font-weight: bold;
+}
+.message {
+	font-style: italic;
+}
+.source, .output, .warning, .error, .message {
+	padding: 0em 1em;
+  border:solid 1px #F7F7F7;
+}
+.source {
+  background-color: #f5f5f5;
+}
+.rimage.left {
+  text-align: left;
+}
+.rimage.right {
+  text-align: right;
+}
+.rimage.center {
+  text-align: center;
+}
+.hl.num {
+  color: #AF0F91;
+}
+.hl.str {
+  color: #317ECC;
+}
+.hl.com {
+  color: #AD95AF;
+  font-style: italic;
+}
+.hl.opt {
+  color: #000000;
+}
+.hl.std {
+  color: #585858;
+}
+.hl.kwa {
+  color: #295F94;
+  font-weight: bold;
+}
+.hl.kwb {
+  color: #B05A65;
+}
+.hl.kwc {
+  color: #55aa55;
+}
+.hl.kwd {
+  color: #BC5A65;
+  font-weight: bold;
+}
+</style>
+<title>Some LLAMA benchmark results</title>
+</head>
+<body>
+
+
+<h2> LLAMA results </h2>
+
+All results were produced by using the cross-validation splits in the repository with
+<code class="knitr inline">10</code> folds and <code class="knitr inline">1</code> repetitions.<br>
+The best values within a type (i.e., baseline (except for vbs), classif, regr and cluster) and performance measure (i.e., Percentage solved, PAR10, MCP) are colored green. Furthermore, the three best values over all groups within a performance measure are colored pink, the absolute best one is red. 
+
+<p>
+
+The performance is measured in three different ways.
+<ul>
+<li><strong>Percentage solved</strong> records the percentage of problem
+instances in the data set for which the selector selected an algorithm that was
+able to solve it with runstatus "ok" and the algorithm time plus the feature
+computation time was at most the timeout.</li>
+<li>The <strong>penalized average runtime score (PAR10)</strong> measures the time required to
+run on all problem instances. If an instance was solved within the timeout by
+the algorithm the selector chose, the
+actual runtime is taken. If a timeout occurred, the timeout value was multiplied
+by 10.</li>
+<li>The <strong>misclassification penalty (mcp)</strong> measures the additional time required to run
+on all problems if sub-optimal algorithms were used. That is, if an algorithm is
+run on a problem instance that is not the best, a performance loss is incurred.
+There are no additional penalties or factors for timeouts. The virtual best
+solver always has a misclassification penalty of zero.</li>
+</ul>
+
+<p>
+
+<!-- html table generated in R 3.1.0 by xtable 1.7-3 package -->
+<!-- Wed May  7 14:58:51 2014 -->
+<TABLE border=1>
+<TR> <TH> algo </TH> <TH> model </TH> <TH> succ </TH> <TH> par10 </TH> <TH> mcp </TH>  </TR>
+  <TR> <TD> baseline </TD> <TD> vbs </TD> <TD>  0.770 </TD> <TD> 8337.099 </TD> <TD>  0.000 </TD> </TR>
+  <TR> <TD> baseline </TD> <TD> singleBest </TD> <TD>  0.396 </TD> <TD> 21884.319 </TD> <TD> 1420.904 </TD> </TR>
+  <TR> <TD> baseline </TD> <TD> singleBestByPar </TD> <TD> <b><FONT COLOR="#00FF00"> 0.577</FONT></b> </TD> <TD> <b><FONT COLOR="#00FF00">15330.171</FONT></b> </TD> <TD> <b><FONT COLOR="#00FF00">716.756</FONT></b> </TD> </TR>
+  <TR> <TD> baseline </TD> <TD> singleBestBySuccesses </TD> <TD> <b><FONT COLOR="#00FF00"> 0.577</FONT></b> </TD> <TD> <b><FONT COLOR="#00FF00">15330.171</FONT></b> </TD> <TD> <b><FONT COLOR="#00FF00">716.756</FONT></b> </TD> </TR>
+  <TR> <TD> classif </TD> <TD> meta/AdaBoostM1 </TD> <TD>  0.577 </TD> <TD> 15330.171 </TD> <TD> 716.756 </TD> </TR>
+  <TR> <TD> classif </TD> <TD> lazy/IBk </TD> <TD>  0.692 </TD> <TD> 11159.665 </TD> <TD> 288.355 </TD> </TR>
+  <TR> <TD> classif </TD> <TD> rules/OneR </TD> <TD>  0.651 </TD> <TD> 12657.656 </TD> <TD> 436.346 </TD> </TR>
+  <TR> <TD> classif </TD> <TD> trees/RandomTree </TD> <TD>  0.716 </TD> <TD> 10305.316 </TD> <TD> 215.585 </TD> </TR>
+  <TR> <TD> classif </TD> <TD> trees/J48 </TD> <TD>  0.707 </TD> <TD> 10637.255 </TD> <TD> 239.629 </TD> </TR>
+  <TR> <TD> classif </TD> <TD> rules/JRip </TD> <TD>  0.700 </TD> <TD> 10878.806 </TD> <TD> 268.023 </TD> </TR>
+  <TR> <TD> classif </TD> <TD> classif.ctree </TD> <TD>  0.691 </TD> <TD> 11224.438 </TD> <TD> 305.760 </TD> </TR>
+  <TR> <TD> classif </TD> <TD> classif.ksvm </TD> <TD>  0.691 </TD> <TD> 11221.558 </TD> <TD> 302.879 </TD> </TR>
+  <TR> <TD> classif </TD> <TD> classif.naiveBayes </TD> <TD>  0.491 </TD> <TD> 18410.085 </TD> <TD> 1025.617 </TD> </TR>
+  <TR> <TD> classif </TD> <TD> classif.randomForest </TD> <TD> <b><FONT COLOR="#FFAAAA"> 0.730</FONT></b> </TD> <TD> <b><FONT COLOR="#FFAAAA">9800.574</FONT></b> </TD> <TD> <b><FONT COLOR="#FFAAAA">160.843</FONT></b> </TD> </TR>
+  <TR> <TD> classif </TD> <TD> classif.rpart </TD> <TD>  0.689 </TD> <TD> 11288.085 </TD> <TD> 298.354 </TD> </TR>
+  <TR> <TD> regr </TD> <TD> regr.lm </TD> <TD>  0.714 </TD> <TD> 10388.712 </TD> <TD> 227.928 </TD> </TR>
+  <TR> <TD> regr </TD> <TD> regr.rpart </TD> <TD>  0.714 </TD> <TD> 10405.535 </TD> <TD> 244.751 </TD> </TR>
+  <TR> <TD> regr </TD> <TD> regr.randomForest </TD> <TD> <b><FONT COLOR="#FF0000"> 0.749</FONT></b> </TD> <TD> <b><FONT COLOR="#FF0000">9152.113</FONT></b> </TD> <TD> <b><FONT COLOR="#FF0000">104.487</FONT></b> </TD> </TR>
+  <TR> <TD> regr </TD> <TD> regr.earth </TD> <TD> <b><FONT COLOR="#FFAAAA"> 0.721</FONT></b> </TD> <TD> <b><FONT COLOR="#FFAAAA">10132.304</FONT></b> </TD> <TD> <b><FONT COLOR="#FFAAAA">208.362</FONT></b> </TD> </TR>
+  <TR> <TD> cluster </TD> <TD> EM </TD> <TD> <b><FONT COLOR="#00FF00"> 0.641</FONT></b> </TD> <TD> <b><FONT COLOR="#00FF00">13022.871</FONT></b> </TD> <TD> <b><FONT COLOR="#00FF00">493.666</FONT></b> </TD> </TR>
+  <TR> <TD> cluster </TD> <TD> FarthestFirst </TD> <TD>  0.577 </TD> <TD> 15330.171 </TD> <TD> 716.756 </TD> </TR>
+  <TR> <TD> cluster </TD> <TD> SimpleKMeans </TD> <TD>  0.577 </TD> <TD> 15330.171 </TD> <TD> 716.756 </TD> </TR>
+   </TABLE>
+
+
+
+<p>
+
+
+The following default feature steps were used for model building:
+<p>
+<code class="knitr inline">all_feats</code>
+<p>
+Number of presolved instances: <code class="knitr inline">0</code>
+<p>
+The cost for using the feature steps (adapted for presolving) is: <code class="knitr inline">0</code>
+or on average: <code class="knitr inline">NA</code>
+<p>
+The feature steps correspond to the following <code class="knitr inline">46</code> / <code class="knitr inline">46</code> features:
+<p>
+EXIST_VARS, FORALL_VARS, TOTAL_VARS, CLAUSES, LITERALS, <br>EXIST_SET, FORALL_SET, TOTAL_SET, UNARY_CLAUSES, BINARY_CLAUSES, <br>TERNARY_MORE_CLAUSES, POS_HORN, NEG_HORN, EXIST_LIT_PER_CLAUSE, FORALL_LIT_PER_CLAUSE, <br>EXIST_VARS_PER_SET, FORALL_POS_LITS_PER_CLAUSE, FORALL_NEG_LITS_PER_CLAUSE, OCCS_POS_NO_PER_VAR, OCCS_FORALL_NO_PER_VAR, <br>OCCS_FORALL_POS_NO_PER_VAR, W_OCCS_POS_NO_PER_VAR, W_OCCS_FORALL_NO_PER_VAR, W_OCCS_FORALL_POS_NO_PER_VAR, W_PRODUCTS, <br>LITN_LIT, LITEP_LIT, LITEN_LITE, LITEN_LITN, LITFN_LIT, <br>LITFP_LITFN, OCCP_OCCN, OCCE_OCC, OCCEN_OCC, OCCFP_OCCF, <br>OCCEN_OCCE, OCCEN_OCCN, OCCFP_OCCFN, TERMORE_CLAUSE, NEG_HORN_CLAUSE, <br>WOCCN_WOCC, WOCCEP_WOCC, WOCCFN_WOCC, WOCCEP_WOCCE, WOCCEP_WOCCP, <br>WOCCFN_WOCCN, 
+
+<p>
+
+</body>
+</html>
+

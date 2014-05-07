@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style type="text/css">
+.knitr.inline {
+  background-color: #f7f7f7;
+  border:solid 1px #B0B0B0;
+}
+.error {
+	font-weight: bold;
+	color: #FF0000;
+},
+.warning {
+	font-weight: bold;
+}
+.message {
+	font-style: italic;
+}
+.source, .output, .warning, .error, .message {
+	padding: 0em 1em;
+  border:solid 1px #F7F7F7;
+}
+.source {
+  background-color: #f5f5f5;
+}
+.rimage.left {
+  text-align: left;
+}
+.rimage.right {
+  text-align: right;
+}
+.rimage.center {
+  text-align: center;
+}
+.hl.num {
+  color: #AF0F91;
+}
+.hl.str {
+  color: #317ECC;
+}
+.hl.com {
+  color: #AD95AF;
+  font-style: italic;
+}
+.hl.opt {
+  color: #000000;
+}
+.hl.std {
+  color: #585858;
+}
+.hl.kwa {
+  color: #295F94;
+  font-weight: bold;
+}
+.hl.kwb {
+  color: #B05A65;
+}
+.hl.kwc {
+  color: #55aa55;
+}
+.hl.kwd {
+  color: #BC5A65;
+  font-weight: bold;
+}
+</style>
+  <title>Algorithm performance overview</title>
+</head>
+<body>
+
+
+<h2> Overview of performance values </h2>
+
+The following statistics were calculated from the performance values of each algorithm:
+<ul>
+
+  <li> <a>obs (number of observations within performance values)</a>
+  <li> <a>nas (number of NAs, i.e., missing values, within performance values)</a>
+  <li> <a>min (minimum), mean (arithmetic mean), max (maximum), sd (standard deviation)</a>
+  <li> <a>qu_1st (1st quartile = lower quartile = 25%-quantile)</a>
+  <li> <a>med (median = 50%-quantile)</a>
+  <li> <a>qu_3rd (3rd quartile = upper quartile = 75%-quantile)</a>
+  <li> <a>coeff_var (coefficient of variation = standard deviation / arithmetic mean)</a>
+
+</ul>
+
+<!-- html table generated in R 3.1.0 by xtable 1.7-3 package -->
+<!-- Wed May  7 14:59:02 2014 -->
+<TABLE border=1>
+<TR> <TH>  </TH> <TH> obs </TH> <TH> nas </TH> <TH> min </TH> <TH> qu_1st </TH> <TH> med </TH> <TH> mean </TH> <TH> qu_3rd </TH> <TH> max </TH> <TH> sd </TH> <TH> coeff_var </TH>  </TR>
+  <TR> <TD align="right"> RestartSAT_B95 </TD> <TD align="right">     300 </TD> <TD align="right">      99 </TD> <TD align="right"> 0.002998 </TD> <TD align="right"> 6.28204 </TD> <TD align="right"> 83.4803 </TD> <TD align="right"> 514.646 </TD> <TD align="right"> 560.161 </TD> <TD align="right"> 4768.12 </TD> <TD align="right"> 906.466 </TD> <TD align="right"> 1.76134 </TD> </TR>
+  <TR> <TD align="right"> glueminisat_2.2.5 </TD> <TD align="right">     300 </TD> <TD align="right">      89 </TD> <TD align="right"> 0.002999 </TD> <TD align="right">  5.8906 </TD> <TD align="right"> 56.2754 </TD> <TD align="right"> 672.689 </TD> <TD align="right">  626.67 </TD> <TD align="right"> 4976.85 </TD> <TD align="right"> 1194.85 </TD> <TD align="right"> 1.77624 </TD> </TR>
+  <TR> <TD align="right"> SAT09referencesolverprecosat_236 </TD> <TD align="right">     300 </TD> <TD align="right">      94 </TD> <TD align="right"> 0.001999 </TD> <TD align="right"> 14.6505 </TD> <TD align="right"> 113.429 </TD> <TD align="right"> 592.742 </TD> <TD align="right"> 539.684 </TD> <TD align="right"> 4493.76 </TD> <TD align="right"> 996.844 </TD> <TD align="right"> 1.68175 </TD> </TR>
+  <TR> <TD align="right"> minisathackcir_minisat_2011-05-13\(simp\) </TD> <TD align="right">     300 </TD> <TD align="right">      98 </TD> <TD align="right"> 0.002998 </TD> <TD align="right"> 6.44252 </TD> <TD align="right"> 69.9904 </TD> <TD align="right"> 634.286 </TD> <TD align="right"> 593.067 </TD> <TD align="right"> 4971.39 </TD> <TD align="right"> 1133.44 </TD> <TD align="right"> 1.78695 </TD> </TR>
+  <TR> <TD align="right"> minisathackreferenceminisat_2.2.0 </TD> <TD align="right">     300 </TD> <TD align="right">     106 </TD> <TD align="right"> 0.002998 </TD> <TD align="right"> 4.57705 </TD> <TD align="right"> 62.1221 </TD> <TD align="right"> 523.191 </TD> <TD align="right"> 538.832 </TD> <TD align="right"> 4972.16 </TD> <TD align="right"> 943.145 </TD> <TD align="right"> 1.80268 </TD> </TR>
+  <TR> <TD align="right"> minisathackEBMiniSAT_2011-03-02 </TD> <TD align="right">     300 </TD> <TD align="right">     104 </TD> <TD align="right"> 0.000999 </TD> <TD align="right"> 4.32509 </TD> <TD align="right"> 67.0138 </TD> <TD align="right"> 549.353 </TD> <TD align="right"> 455.512 </TD> <TD align="right"> 4962.99 </TD> <TD align="right">  995.74 </TD> <TD align="right"> 1.81257 </TD> </TR>
+  <TR> <TD align="right"> minisathackcontrasat_2011-03-02 </TD> <TD align="right">     300 </TD> <TD align="right">     101 </TD> <TD align="right"> 0.001999 </TD> <TD align="right"> 8.64669 </TD> <TD align="right">  79.051 </TD> <TD align="right"> 666.966 </TD> <TD align="right"> 627.861 </TD> <TD align="right"> 4923.53 </TD> <TD align="right"> 1183.61 </TD> <TD align="right"> 1.77461 </TD> </TR>
+  <TR> <TD align="right"> minisathackLR_GL_SHR_2011-03-02 </TD> <TD align="right">     300 </TD> <TD align="right">     109 </TD> <TD align="right"> 0.001999 </TD> <TD align="right"> 4.53731 </TD> <TD align="right"> 60.9417 </TD> <TD align="right">  584.94 </TD> <TD align="right"> 613.238 </TD> <TD align="right"> 4999.77 </TD> <TD align="right">  1058.2 </TD> <TD align="right"> 1.80908 </TD> </TR>
+  <TR> <TD align="right"> minisathackMiniSAT_2.2.0-agile-26 </TD> <TD align="right">     300 </TD> <TD align="right">     111 </TD> <TD align="right"> 0.002998 </TD> <TD align="right"> 4.69129 </TD> <TD align="right"> 49.6305 </TD> <TD align="right"> 484.042 </TD> <TD align="right"> 403.722 </TD> <TD align="right"> 4986.02 </TD> <TD align="right"> 933.092 </TD> <TD align="right"> 1.92771 </TD> </TR>
+  <TR> <TD align="right"> SAT09referencesolverglucose_1.0 </TD> <TD align="right">     300 </TD> <TD align="right">     103 </TD> <TD align="right"> 0.005998 </TD> <TD align="right"> 9.66453 </TD> <TD align="right"> 97.4652 </TD> <TD align="right">  651.73 </TD> <TD align="right"> 706.262 </TD> <TD align="right"> 4987.71 </TD> <TD align="right"> 1095.68 </TD> <TD align="right"> 1.68118 </TD> </TR>
+  <TR> <TD align="right"> glucose_2 </TD> <TD align="right">     300 </TD> <TD align="right">      85 </TD> <TD align="right"> 0.004998 </TD> <TD align="right"> 7.66733 </TD> <TD align="right"> 80.1738 </TD> <TD align="right">  612.89 </TD> <TD align="right"> 669.102 </TD> <TD align="right"> 4269.69 </TD> <TD align="right"> 1025.95 </TD> <TD align="right"> 1.67396 </TD> </TR>
+  <TR> <TD align="right"> EBGlucose_1.0 </TD> <TD align="right">     300 </TD> <TD align="right">     101 </TD> <TD align="right"> 0.006998 </TD> <TD align="right"> 8.24825 </TD> <TD align="right">  59.441 </TD> <TD align="right"> 715.775 </TD> <TD align="right"> 628.378 </TD> <TD align="right"> 4933.57 </TD> <TD align="right"> 1271.07 </TD> <TD align="right">  1.7758 </TD> </TR>
+  <TR> <TD align="right"> Lingeling_587f\(fixed\) </TD> <TD align="right">     300 </TD> <TD align="right">      92 </TD> <TD align="right"> 0.008997 </TD> <TD align="right"> 18.9666 </TD> <TD align="right">  71.818 </TD> <TD align="right"> 566.775 </TD> <TD align="right"> 591.495 </TD> <TD align="right"> 4860.35 </TD> <TD align="right"> 1023.89 </TD> <TD align="right"> 1.80651 </TD> </TR>
+  <TR> <TD align="right"> minisathackminisat_psm_2011-04-01 </TD> <TD align="right">     300 </TD> <TD align="right">     103 </TD> <TD align="right"> 0.007998 </TD> <TD align="right">  7.2089 </TD> <TD align="right"> 59.6259 </TD> <TD align="right">  587.73 </TD> <TD align="right"> 487.672 </TD> <TD align="right"> 4930.12 </TD> <TD align="right"> 1074.39 </TD> <TD align="right"> 1.82803 </TD> </TR>
+  <TR> <TD align="right"> CryptoMiniSat_Strange-Night2-st\(fixed\) </TD> <TD align="right">     300 </TD> <TD align="right">      93 </TD> <TD align="right"> 0.003998 </TD> <TD align="right"> 21.2918 </TD> <TD align="right"> 96.6873 </TD> <TD align="right"> 512.568 </TD> <TD align="right"> 512.486 </TD> <TD align="right"> 4573.78 </TD> <TD align="right"> 872.647 </TD> <TD align="right">  1.7025 </TD> </TR>
+  <TR> <TD align="right"> rcl_2011-04-01 </TD> <TD align="right">     300 </TD> <TD align="right">     116 </TD> <TD align="right"> 0.008998 </TD> <TD align="right"> 9.59554 </TD> <TD align="right"> 67.9777 </TD> <TD align="right"> 533.866 </TD> <TD align="right"> 479.587 </TD> <TD align="right"> 4394.07 </TD> <TD align="right"> 1010.23 </TD> <TD align="right">  1.8923 </TD> </TR>
+  <TR> <TD align="right"> MPhaseSAT64_2011-05-14\(fixed\) </TD> <TD align="right">     300 </TD> <TD align="right">      99 </TD> <TD align="right"> 0.005999 </TD> <TD align="right"> 16.1855 </TD> <TD align="right">  104.29 </TD> <TD align="right"> 630.668 </TD> <TD align="right"> 570.279 </TD> <TD align="right"> 4915.63 </TD> <TD align="right"> 1123.85 </TD> <TD align="right">   1.782 </TD> </TR>
+  <TR> <TD align="right"> QuteRSat_2011-05-12\(fixed\) </TD> <TD align="right">     300 </TD> <TD align="right">      94 </TD> <TD align="right"> 0.011997 </TD> <TD align="right"> 16.7085 </TD> <TD align="right"> 93.7903 </TD> <TD align="right"> 553.981 </TD> <TD align="right"> 550.534 </TD> <TD align="right"> 4487.98 </TD> <TD align="right"> 967.455 </TD> <TD align="right"> 1.74637 </TD> </TR>
+   </TABLE>
+
+
+
+<br>
+<h2> Summary of the runstatus per algorithm </h2>
+
+The following table summarizes the runstatus of each algorithm over all instances (in %).<br>
+<br>
+
+<!-- html table generated in R 3.1.0 by xtable 1.7-3 package -->
+<!-- Wed May  7 14:59:02 2014 -->
+<TABLE border=1>
+<TR> <TH>  </TH> <TH> ok </TH> <TH> timeout </TH> <TH> memout </TH> <TH> not_applicable </TH> <TH> crash </TH> <TH> other </TH>  </TR>
+  <TR> <TD align="right"> CryptoMiniSat_Strange-Night2-st\(fixed\) </TD> <TD align="right"> 69.000 </TD> <TD align="right"> 31.000 </TD> <TD align="right"> 0.000 </TD> <TD align="right"> 0.000 </TD> <TD align="right"> 0.000 </TD> <TD align="right"> 0.000 </TD> </TR>
+  <TR> <TD align="right"> EBGlucose_1.0 </TD> <TD align="right"> 66.333 </TD> <TD align="right"> 33.667 </TD> <TD align="right"> 0.000 </TD> <TD align="right"> 0.000 </TD> <TD align="right"> 0.000 </TD> <TD align="right"> 0.000 </TD> </TR>
+  <TR> <TD align="right"> glucose_2 </TD> <TD align="right"> 71.667 </TD> <TD align="right"> 28.333 </TD> <TD align="right"> 0.000 </TD> <TD align="right"> 0.000 </TD> <TD align="right"> 0.000 </TD> <TD align="right"> 0.000 </TD> </TR>
+  <TR> <TD align="right"> glueminisat_2.2.5 </TD> <TD align="right"> 70.333 </TD> <TD align="right"> 29.667 </TD> <TD align="right"> 0.000 </TD> <TD align="right"> 0.000 </TD> <TD align="right"> 0.000 </TD> <TD align="right"> 0.000 </TD> </TR>
+  <TR> <TD align="right"> Lingeling_587f\(fixed\) </TD> <TD align="right"> 69.333 </TD> <TD align="right"> 30.667 </TD> <TD align="right"> 0.000 </TD> <TD align="right"> 0.000 </TD> <TD align="right"> 0.000 </TD> <TD align="right"> 0.000 </TD> </TR>
+  <TR> <TD align="right"> minisathackcir_minisat_2011-05-13\(simp\) </TD> <TD align="right"> 67.333 </TD> <TD align="right"> 32.667 </TD> <TD align="right"> 0.000 </TD> <TD align="right"> 0.000 </TD> <TD align="right"> 0.000 </TD> <TD align="right"> 0.000 </TD> </TR>
+  <TR> <TD align="right"> minisathackcontrasat_2011-03-02 </TD> <TD align="right"> 66.333 </TD> <TD align="right"> 33.667 </TD> <TD align="right"> 0.000 </TD> <TD align="right"> 0.000 </TD> <TD align="right"> 0.000 </TD> <TD align="right"> 0.000 </TD> </TR>
+  <TR> <TD align="right"> minisathackEBMiniSAT_2011-03-02 </TD> <TD align="right"> 65.333 </TD> <TD align="right"> 34.667 </TD> <TD align="right"> 0.000 </TD> <TD align="right"> 0.000 </TD> <TD align="right"> 0.000 </TD> <TD align="right"> 0.000 </TD> </TR>
+  <TR> <TD align="right"> minisathackLR_GL_SHR_2011-03-02 </TD> <TD align="right"> 63.667 </TD> <TD align="right"> 36.333 </TD> <TD align="right"> 0.000 </TD> <TD align="right"> 0.000 </TD> <TD align="right"> 0.000 </TD> <TD align="right"> 0.000 </TD> </TR>
+  <TR> <TD align="right"> minisathackMiniSAT_2.2.0-agile-26 </TD> <TD align="right"> 63.000 </TD> <TD align="right"> 37.000 </TD> <TD align="right"> 0.000 </TD> <TD align="right"> 0.000 </TD> <TD align="right"> 0.000 </TD> <TD align="right"> 0.000 </TD> </TR>
+  <TR> <TD align="right"> minisathackminisat_psm_2011-04-01 </TD> <TD align="right"> 65.667 </TD> <TD align="right"> 34.333 </TD> <TD align="right"> 0.000 </TD> <TD align="right"> 0.000 </TD> <TD align="right"> 0.000 </TD> <TD align="right"> 0.000 </TD> </TR>
+  <TR> <TD align="right"> minisathackreferenceminisat_2.2.0 </TD> <TD align="right"> 64.667 </TD> <TD align="right"> 35.333 </TD> <TD align="right"> 0.000 </TD> <TD align="right"> 0.000 </TD> <TD align="right"> 0.000 </TD> <TD align="right"> 0.000 </TD> </TR>
+  <TR> <TD align="right"> MPhaseSAT64_2011-05-14\(fixed\) </TD> <TD align="right"> 67.000 </TD> <TD align="right"> 33.000 </TD> <TD align="right"> 0.000 </TD> <TD align="right"> 0.000 </TD> <TD align="right"> 0.000 </TD> <TD align="right"> 0.000 </TD> </TR>
+  <TR> <TD align="right"> QuteRSat_2011-05-12\(fixed\) </TD> <TD align="right"> 68.667 </TD> <TD align="right"> 31.333 </TD> <TD align="right"> 0.000 </TD> <TD align="right"> 0.000 </TD> <TD align="right"> 0.000 </TD> <TD align="right"> 0.000 </TD> </TR>
+  <TR> <TD align="right"> rcl_2011-04-01 </TD> <TD align="right"> 61.333 </TD> <TD align="right"> 38.667 </TD> <TD align="right"> 0.000 </TD> <TD align="right"> 0.000 </TD> <TD align="right"> 0.000 </TD> <TD align="right"> 0.000 </TD> </TR>
+  <TR> <TD align="right"> RestartSAT_B95 </TD> <TD align="right"> 67.000 </TD> <TD align="right"> 33.000 </TD> <TD align="right"> 0.000 </TD> <TD align="right"> 0.000 </TD> <TD align="right"> 0.000 </TD> <TD align="right"> 0.000 </TD> </TR>
+  <TR> <TD align="right"> SAT09referencesolverglucose_1.0 </TD> <TD align="right"> 65.667 </TD> <TD align="right"> 34.333 </TD> <TD align="right"> 0.000 </TD> <TD align="right"> 0.000 </TD> <TD align="right"> 0.000 </TD> <TD align="right"> 0.000 </TD> </TR>
+  <TR> <TD align="right"> SAT09referencesolverprecosat_236 </TD> <TD align="right"> 68.667 </TD> <TD align="right"> 31.333 </TD> <TD align="right"> 0.000 </TD> <TD align="right"> 0.000 </TD> <TD align="right"> 0.000 </TD> <TD align="right"> 0.000 </TD> </TR>
+   </TABLE>
+
+
+
+<br>
+<h2> Dominated Algorithms </h2>
+
+Here, you'll find an overview of dominating/dominated algorithms: <br>
+
+None of the algorithms was superior to any of the other.
+
+
+<br> <br>
+An algorithm (A) is considered to be superior to an other algorithm (B), if it has at least an equal performance on all instances (compared to B) <u>and</u> if it is better on at least one of them. A missing value is automatically a worse performance. However, instances which could not be solved by either one of the algorithms, were not considered for the dominance relation.<br>
+
+<br>
+<br>
+
+<b><FONT COLOR = "#FF0000"> Important note w.r.t. some of the following plots:</b><br>
+If appropriate, we imputed performance values for failed runs.
+We used max + 0.3 * (max - min), in case of minimization problems,
+or min - 0.3 * (max - min), in case of maximization problems.<br>
+In addition, a small noise is added to the imputed values (except for the cluster matrix,
+based on correlations, which is shown at the end of this page). </FONT>
+<br>
+<br>
+
+<h2> Boxplots of performance values </h2>
+
+<br>Performance values with imputation.<br>
+<div class="chunk" id="unnamed-chunk-4"><div class="rimage default"><img src="figure/unnamed-chunk-4.png" title="plot of chunk unnamed-chunk-4" alt="plot of chunk unnamed-chunk-4" class="plot" /></div></div>
+
+
+<br>
+<h2> Estimated densitities of performance values </h2>
+
+<br>Performance values with imputation.<br>
+<div class="chunk" id="unnamed-chunk-5"><div class="rimage default"><img src="figure/unnamed-chunk-5.png" title="plot of chunk unnamed-chunk-5" alt="plot of chunk unnamed-chunk-5" class="plot" /></div></div>
+
+
+<br>Performance values without imputation.<br>
+<div class="chunk" id="unnamed-chunk-6"><div class="rimage default"><img src="figure/unnamed-chunk-6.png" title="plot of chunk unnamed-chunk-6" alt="plot of chunk unnamed-chunk-6" class="plot" /></div></div>
+
+<br>
+
+<h2> Estimated cumulative distribution functions of performance values </h2>
+
+<br>Performance values without imputation.<br>
+<div class="chunk" id="unnamed-chunk-7"><div class="rimage default"><img src="figure/unnamed-chunk-7.png" title="plot of chunk unnamed-chunk-7" alt="plot of chunk unnamed-chunk-7" class="plot" /></div></div>
+
+
+<br>
+<h2> Scatterplot matrix of the performance values </h2>
+The figure underneath shows pairwise scatterplots of the performance values.<br>
+<br>
+Performance values with imputation.<br>
+
+</div><div class="rimage default"><img src="figure/unnamed-chunk-8.png" title="plot of chunk unnamed-chunk-8" alt="plot of chunk unnamed-chunk-8" class="plot" /></div><div class="rcode">
+
+
+
+
+<br>
+<h2> Clustering algorithms based on their correlations </h2>
+The following figure shows the correlations of the <b>ranks</b> of the performance
+values. Per default it will show the correlation coefficient of spearman. Missing values were imputed <u>prior</u> to computing the correlation coefficients. The algorithms are ordered in a way that similar (highly correlated) algorithms are close to each other. Per default the clustering is based on hierarchical clustering, using Ward's method. <br>
+<br>
+
+<div class="chunk" id="unnamed-chunk-9"><div class="rcode"><div class="message"><pre class="knitr r">## The "ward" method has been renamed to "ward.D"; note new "ward.D2"
+</pre></div>
+</div><div class="rimage default"><img src="figure/unnamed-chunk-9.png" title="plot of chunk unnamed-chunk-9" alt="plot of chunk unnamed-chunk-9" class="plot" /></div></div>
+
+
+
+</body>
+</html>
