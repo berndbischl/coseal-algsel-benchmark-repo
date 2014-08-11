@@ -5,9 +5,9 @@ test_that("runLlamaModels", {
   fs = setNames(list(getFeatureStepNames(testscenario1)), testscenario1$desc$scenario_id)
   reg = runLlamaModels(testscenario1, feature.steps.list = fs,
     baselines = "vbs",
-    classifiers = "trees/J48",
+    classifiers = "classif.J48",
     regressors = "regr.rpart",
-    clusterers = character(0)
+    clusterers = "cluster.SimpleKMeans"
   )
   submitJobs(reg)
   waitForJobs(reg)

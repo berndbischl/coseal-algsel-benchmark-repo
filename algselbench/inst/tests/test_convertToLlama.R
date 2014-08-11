@@ -21,19 +21,19 @@ test_that("convertToLlama", {
   library(RWeka)
   llama.scenario = convertToLlama(testscenario1, add.feature.costs = FALSE)
   cv = cvFolds(llama.scenario, nfolds = 2L)
-  res = classify(classifier = J48, data = cv)
+  res = classify(classifier = makeLearner("classif.J48"), data = cv)
   expect_warning({
     llama.scenario = convertToLlama(testscenario1, add.feature.costs = TRUE)
   }, "Adding always 0")
   cv = cvFolds(llama.scenario, nfolds = 2L)
-  res = classify(classifier = J48, data = cv)
+  res = classify(classifier = makeLearner("classif.J48"), data = cv)
 
   llama.scenario = convertToLlama(testscenario2, add.feature.costs = FALSE)
   cv = cvFolds(llama.scenario, nfolds = 2L)
-  res = classify(classifier = J48, data = cv)
+  res = classify(classifier = makeLearner("classif.J48"), data = cv)
   llama.scenario = convertToLlama(testscenario2, add.feature.costs = TRUE)
   cv = cvFolds(llama.scenario, nfolds = 2L)
-  res = classify(classifier = J48, data = cv)
+  res = classify(classifier = makeLearner("classif.J48"), data = cv)
 })
 
 

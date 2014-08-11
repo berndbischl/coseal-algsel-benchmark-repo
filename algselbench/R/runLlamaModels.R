@@ -60,15 +60,10 @@ runLlamaModels = function(asscenarios, feature.steps.list, baselines,
   # models and defaults
   baselines.all = c("vbs", "singleBest", "singleBestByPar", "singleBestBySuccesses")
 
-  # FIXME: we need a better interface to discrminate between learners from Weka, llama and mlr
-  classifiers.weka = c("meta/AdaBoostM1", "bayes/BayesNet", "lazy/IBk", "rules/OneR",
-    "trees/RandomTree", "trees/J48", "rules/JRip")
-  classifiers.mlr = c("classif.ctree", "classif.kknn", "classif.ksvm", "classif.naiveBayes",
+  classifiers.all = c("classif.ada", "classif.ctree", "classif.IBk", "classif.J48", "classif.JRip", "classif.kknn", "classif.ksvm", "classif.naiveBayes", "classif.OneR",
     "classif.randomForest", "classif.rpart")
-  classifiers.all = c(classifiers.weka, classifiers.mlr)
 
-  clusterers.weka = c("XMeans", "EM", "FarthestFirst", "SimpleKMeans")
-  clusterers.all = clusterers.weka
+  clusterers.all = c("cluster.XMeans", "cluster.EM", "cluster.SimpleKMeans")
 
   # check model args
   if (missing(baselines))
@@ -85,39 +80,18 @@ runLlamaModels = function(asscenarios, feature.steps.list, baselines,
 
   makeModelFun = function(name, n.algos) {
     force(n.algos)
-    if (str_detect(name, "classif\\.|regr\\.")) {
-      convertMlrLearnerToLlama(makeLearner(name))
-    } else if (name %in% classifiers.weka) {
-      make_Weka_classifier(paste("weka/classifiers", name, sep = "/"))
-    } else if (name %in% clusterers.weka) {
-      # we set nr of clusters to nr of algos, for XMEANs it is the max nr, as we split by BIC value
-      if (name == "XMeans") {
-        function(data) {
-          XMeans(data, control = Weka_control(H = n.algos))
-        }
-      } else if (name == "EM") {
-        function(data) {
-          wekaEM = make_Weka_clusterer("weka/clusterers/EM",
-            init = Weka_control(N = n.algos))
-          wekaEM(data)
-        }
-      } else if (name == "FarthestFirst") {
-        function(data) {
-          wekaFF = make_Weka_clusterer("weka/clusterers/FarthestFirst",
-            init = Weka_control(N = n.algos))
-          wekaFF(data)
-        }
-      } else if (name == "SimpleKMeans") {
-        function(data) {
-          wekaSimpleKMeans = make_Weka_clusterer("weka/clusterers/SimpleKMeans",
-            init = Weka_control(N = n.algos))
-          wekaSimpleKMeans(data)
-        }
-      } else {
-        make_Weka_clusterer(paste("weka/clusterers", name, sep = "/"))
-      }
-    } else {
+    if(name %in% baselines.all) {
       get(name)
+    } else {
+      if (name == "cluster.XMeans") {
+        makeLearner(name, L=n.algos, H=n.algos^2)
+      } else if (name == "cluster.EM") {
+        makeLearner(name, N=n.algos^2)
+      } else if (name == "cluster.SimpleKMeans") {
+        makeLearner(name, N=n.algos^2)
+      } else {
+        makeLearner(name)
+      }
     }
   }
 

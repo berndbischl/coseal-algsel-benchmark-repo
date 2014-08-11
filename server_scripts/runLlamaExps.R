@@ -19,15 +19,15 @@ names(feature.steps.list) = sapply(asscenarios, function(x) x$desc$scenario_id)
 reg = runLlamaModels(asscenarios, feature.steps.list = feature.steps.list,
 
   classifiers = c(
-    "meta/AdaBoostM1", "bayes/BayesNet", "lazy/IBk", "rules/OneR",
-    "trees/RandomTree", "trees/J48", "rules/JRip",
+    "classif.ada", "classif.IBk", "classif.OneR",
+    "classif.J48", "classif.JRip",
 
     "classif.ctree", "classif.ksvm", "classif.naiveBayes", "classif.randomForest", "classif.rpart"
   ),
 
   regressors = c("regr.lm", "regr.rpart", "regr.randomForest", "regr.earth"),
 
-  clusterers = c("EM", "FarthestFirst", "SimpleKMeans"),
+  clusterers = c("cluster.EM", "cluster.XMeans", "cluster.SimpleKMeans"),
 
   pre = normalize
 )
