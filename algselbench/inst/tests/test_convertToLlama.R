@@ -18,7 +18,6 @@ test_that("convertToLlama", {
   expect_equal(llama.scenario$data$a1, c(60, 30, 80))
   expect_equal(llama.scenario$data$a2, c(80, 30, 100))
 
-  library(RWeka)
   llama.scenario = convertToLlama(testscenario1, add.feature.costs = FALSE)
   cv = cvFolds(llama.scenario, nfolds = 2L)
   res = classify(classifier = makeLearner("classif.J48"), data = cv)
