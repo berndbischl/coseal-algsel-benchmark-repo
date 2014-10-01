@@ -137,6 +137,7 @@ runLlamaModels = function(asscenarios, feature.steps.list, baselines,
   algoBaseline = function(static, llama.fun, model) {
     fun = static$makeModelFun(model, n.algos = static$n.algos)
     p = fun(data = static$llama.scenario)
+    p = list(predictions = p)
     static$makeRes(static$llama.scenario, p, static$timeout)
   }
 
