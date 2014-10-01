@@ -18,9 +18,9 @@ convertToMlr = function(asscenario, measure, feature.steps, add.feature.costs = 
   cns = colnames(costs)
   cns = paste0("xx", cns)
   colnames(costs) = cns
-  mlr.scenario = makeCostSensScenario(id = desc$scenario_id, data = feats, costs = as.matrix(costs))
+  mlr.scenario = makeCostSensTask(id = desc$scenario_id, data = feats, costs = as.matrix(costs))
 
-  ### CV 
+  ### CV
   cv.splits = asscenario$cv.splits
   folds = max(cv.splits$fold)
   n = length(unique(cv.splits$instance_id))
