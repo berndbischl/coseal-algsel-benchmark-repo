@@ -1,8 +1,7 @@
 optimise = function(bitstring, ldf) {
     sel = (charToRaw(bitstring) == charToRaw("1"))
     ldf$features = ldf$features[sel]
-    folds = cvFolds(ldf)
-    model = regression(makeLearner("regr.randomForest"), folds)
-    score = mean(parscores(folds, model))
+    model = regression(makeLearner("regr.randomForest"), ldf)
+    score = mean(parscores(ldf, model))
     return(score)
 }
