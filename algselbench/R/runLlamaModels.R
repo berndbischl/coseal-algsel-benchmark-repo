@@ -38,6 +38,7 @@
 runLlamaModels = function(asscenarios, feature.steps.list, baselines,
  classifiers = list(), regressors = list(), clusterers = list(), pre) {
 
+  asscenarios = ensureVector(asscenarios, 1L, cl = "ASScenario")
   assertList(asscenarios, types = "ASScenario")
   scenario.ids = sapply(asscenarios, function(x) x$desc$scenario_id)
 
@@ -67,7 +68,9 @@ runLlamaModels = function(asscenarios, feature.steps.list, baselines,
   else
     assertSubset(baselines, baselines.all)
 
-  checkType = function(lrns, type, arg.name) {
+  checkLearners = function(lrns, type, arg.name) {
+    lrns = ensureVector(lrns, n = 1L, cl = "Learner")
+    assertList(lrns, types = "Learner")
     types = extractSubList(lrns, "type")
     if (any(types != type))
       stopf("%s: All learners must be of type '%s'!", arg.name, type)
