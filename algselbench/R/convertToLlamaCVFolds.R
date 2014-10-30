@@ -22,20 +22,20 @@
 #' @return Result of calling \code{\link[llama]{input}} with data partitioned into folds.
 #' @export
 convertToLlamaCVFolds = function(asscenario, measure, feature.steps, add.feature.costs = TRUE, cv.splits) {
-  checkArg(asscenario, "ASScenario")
+  assertClass(asscenario, "ASScenario")
   if (missing(measure))
     measure = asscenario$desc$performance_measures[1]
   else
-    checkArg(measure, "character", len = 1L, na.ok = FALSE)
+    assertString(measure)
   if (missing(cv.splits))
     cv.splits = asscenario$cv.splits
   else
-    checkArg(cv.splits, "data.frame")
+    assertClass(cv.splits, "data.frame")
   allsteps = names(asscenario$desc$feature_steps)
   if (missing(feature.steps))
     feature.steps = getDefaultFeatureStepNames(asscenario)
   else
-    checkArg(feature.steps, subset = allsteps)
+    assertSubset(feature.steps, allsteps)
 
   reps = max(cv.splits$repetition)
   if (reps > 1L)
