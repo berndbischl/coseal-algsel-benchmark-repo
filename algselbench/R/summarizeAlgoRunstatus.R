@@ -2,10 +2,10 @@
 #'
 #' @param asscenario [\code{\link{ASScenario}}]\cr
 #'   Algorithm selection scenario.
-#' @return [\code{data.frame}]. 
+#' @return [\code{data.frame}].
 #' @export
 summarizeAlgoRunstatus = function(asscenario) {
-  checkArg(asscenario, "ASScenario")
+  assertClass(asscenario, "ASScenario")
   tab = table(asscenario$algo.runs[, c("algorithm", "runstatus")])
   # to percentages
   tab = apply(tab, 1, function(z) 100 * z / sum(z))

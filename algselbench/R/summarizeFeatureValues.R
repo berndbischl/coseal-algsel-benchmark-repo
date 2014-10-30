@@ -2,10 +2,10 @@
 #'
 #' @param asscenario [\code{\link{ASScenario}}]\cr
 #'   Algorithm selection scenario.
-#' @return [\code{data.frame}]. 
+#' @return [\code{data.frame}].
 #' @export
 summarizeFeatureValues = function(asscenario) {
-  checkArg(asscenario, "ASScenario")
+  assertClass(asscenario, "ASScenario")
   data = dropNamed(asscenario$feature.values, c("instance_id", "repetition"))
   s = apply(data, 2, getStatistics)
   return(as.data.frame(t(s)))

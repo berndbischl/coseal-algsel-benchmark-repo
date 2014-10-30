@@ -27,13 +27,11 @@
 #'   for the current repetition.
 #' @export
 createCVSplits = function(asscenario, reps = 1L, folds = 10L, file = NULL) {
-  checkArg(asscenario, "ASScenario")
-  reps = convertInteger(reps)
-  checkArg(reps, "integer", len = 1L, na.ok = FALSE)
-  folds = convertInteger(folds)
-  checkArg(folds, "integer", len = 1L, na.ok = FALSE)
+  assertClass(asscenario, "ASScenario")
+  reps = asInt(reps)
+  folds = asInt(folds)
   if (!missing(file))
-    checkArg(file, "character", len = 1L, na.ok = FALSE)
+    assertPathForOutput(file)
 
   instances = getInstanceNames(asscenario)
   size = length(instances)

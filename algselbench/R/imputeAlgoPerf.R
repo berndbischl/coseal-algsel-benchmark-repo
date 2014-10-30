@@ -33,7 +33,7 @@
 imputeAlgoPerf = function(asscenario, measure, base = NULL, range.scalar = 0.3, jitter = 0,
   impute.zero.vals = FALSE) {
 
-  checkArg(asscenario, "ASScenario")
+  assertClass(asscenario, "ASScenario")
   desc = asscenario$desc
   measure = checkMeasure(measure, asscenario$desc)
   ar = asscenario$algo.runs
@@ -46,10 +46,10 @@ imputeAlgoPerf = function(asscenario, measure, base = NULL, range.scalar = 0.3, 
   if (is.null(base))
     base = ifelse(maxi, min(perf, na.rm = TRUE), max(perf, na.rm = TRUE))
   else
-    checkArg(base, "numeric", len = 1L, na.ok = FALSE)
-  checkArg(range.scalar, "numeric", len = 1L, na.ok = FALSE, lower = 0)
-  checkArg(jitter, "numeric", len = 1L, na.ok = FALSE, lower = 0)
-  checkArg(impute.zero.vals, "logical", len = 1L, na.ok = FALSE)
+    assertNumber(base)
+  assertNumber(range.scalar, lower = 0)
+  assertNumber(jitter, lower = 0)
+  assertFlag(impute.zero.vals)
 
   isna = is.na(perf)
   n.na = sum(isna)

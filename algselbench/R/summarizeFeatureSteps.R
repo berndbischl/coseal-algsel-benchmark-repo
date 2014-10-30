@@ -5,7 +5,7 @@
 #' @return [\code{data.frame}].
 #' @export
 summarizeFeatureSteps= function(asscenario) {
-  checkArg(asscenario, "ASScenario")
+  assertClass(asscenario, "ASScenario")
   rs = asscenario$feature.runstatus
   # First 2 cols are instanceid and rep
   # create prop table for the subsequent step columns over their levels
