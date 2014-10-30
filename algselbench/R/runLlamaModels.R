@@ -57,46 +57,27 @@ runLlamaModels = function(asscenarios, feature.steps.list, baselines,
   # models and defaults
   baselines.all = c("vbs", "singleBest", "singleBestByPar", "singleBestBySuccesses")
 
-  classifiers.all = c("classif.ada", "classif.ctree", "classif.IBk", "classif.J48", "classif.JRip", "classif.kknn", "classif.ksvm", "classif.naiveBayes", "classif.OneR",
-    "classif.randomForest", "classif.rpart")
-
-  clusterers.all = c("cluster.XMeans", "cluster.EM", "cluster.SimpleKMeans")
-
   # check model args
   if (missing(baselines))
     baselines = baselines.all
   else
     assertSubset(baselines, baselines.all)
+  baselines = lapply(baselines, get, envir = asNamespace("llama"))
 
-  checkType = function(lrns, type, arg.name) {
+  checkLearners = function(lrns, type, arg.name) {
+    lrns = ensureVector(lrns, n = 1L, cl = "Learner")
     assertList(lrns, types = "Learner")
     types = extractSubList(lrns, "type")
     if (any(types != type))
       stopf("%s: All learners must be of type '%s'!", arg.name, type)
+    lrns
   }
-  checkType(classifiers, "classif", "classifiers")
-  checkType(regressors, "regr", "regressors")
-  checkType(clusterers, "cluster", "clusterers")
+  classifiers = checkLearners(classifiers, "classif", "classifiers")
+  regressors = checkLearners(regressors, "regr", "regressors")
+  clusterers = checkLearners(clusterers, "cluster", "clusterers")
 
   packs = c("RWeka", "llama", "methods", "mlr", "BatchExperiments")
   requirePackages(packs, why = "runLlamaModels")
-
-  makeModelFun = function(name, n.algos) {
-    force(n.algos)
-    if(name %in% baselines.all) {
-      get(name)
-    } else {
-      if (name == "cluster.XMeans") {
-        makeLearner(name, L=n.algos, H=n.algos^2)
-      } else if (name == "cluster.EM") {
-        makeLearner(name, N=n.algos^2)
-      } else if (name == "cluster.SimpleKMeans") {
-        makeLearner(name, N=n.algos^2)
-      } else {
-        makeLearner(name)
-      }
-    }
-  }
 
   # baseline models use these, no feature costs
   llama.scenarios = mapply(convertToLlama, asscenario = asscenarios, feature.steps = feature.steps.list,
@@ -124,7 +105,6 @@ runLlamaModels = function(asscenarios, feature.steps.list, baselines,
         timeout = timeout,
         llama.scenario = llama.scenarios[[i]],
         llama.cv = llama.cvs[[i]],
-        makeModelFun = makeModelFun,
         n.algos = length(getAlgorithmNames(asscenario)),
         makeRes = function(data, p, timeout) {
           list(
@@ -138,31 +118,29 @@ runLlamaModels = function(asscenarios, feature.steps.list, baselines,
   }
 
   algoBaseline = function(static, llama.fun, model) {
-    fun = static$makeModelFun(model, n.algos = static$n.algos)
-    p = fun(data = static$llama.scenario)
+    p = model(data = static$llama.scenario)
     p = list(predictions = p)
     static$makeRes(static$llama.scenario, p, static$timeout)
   }
 
   algoLlama = function(static, llama.fun, model) {
     llama.fun = get(llama.fun, envir = asNamespace("llama"))
-    fun = static$makeModelFun(model, n.algos = static$n.algos)
-    p = llama.fun(fun, data = static$llama.cv, pre = pre)
+    p = llama.fun(model, data = static$llama.cv, pre = pre)
     static$makeRes(static$llama.cv, p, static$timeout)
   }
 
   addExps = function(id, algo, llama.fun, models) {
     if (length(models) > 0L) {
       addAlgorithm(reg, id = id, fun = algo)
-      des = makeDesign(id, exhaustive = list(model = models, llama.fun = llama.fun))
+      des = makeDesign(id, exhaustive = list(model = unlist(models), llama.fun = llama.fun))
       addExperiments(reg, algo.designs = des)
     }
   }
 
   addExps("baseline", algoBaseline, "foo", baselines)
-  addExps("classif", algoLlama, "classify", unlist(classifiers))
-  addExps("regr", algoLlama, "regression", unlist(regressors))
-  addExps("cluster", algoLlama, "cluster", unlist(clusterers))
+  addExps("classif", algoLlama, "classify", classifiers)
+  addExps("regr", algoLlama, "regression", regressors)
+  addExps("cluster", algoLlama, "cluster", clusterers)
 
   return(reg)
 }
