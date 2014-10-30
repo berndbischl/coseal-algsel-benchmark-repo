@@ -13,6 +13,6 @@ getSummedFeatureCosts = function(asscenario, feature.steps) {
   if (missing(feature.steps))
     feature.steps = fs
   else
-    assertSubset(feature.steps, subset = fs)
+    assertSubset(feature.steps, fs)
   sum(asscenario$feature.costs[, feature.steps])
 }

@@ -18,7 +18,7 @@ getCostsAndPresolvedStatus = function(asscenario, feature.steps) {
   if (missing(feature.steps))
     feature.steps = allsteps
   else
-    assertSubset(feature.steps, subset = allsteps)
+    assertSubset(feature.steps, allsteps)
   frs = asscenario$feature.runstatus
   #FIXME:
   stopifnot(max(frs$repetition) == 1L)

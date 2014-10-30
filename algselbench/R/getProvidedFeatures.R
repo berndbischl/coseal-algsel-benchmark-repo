@@ -12,7 +12,7 @@ getProvidedFeatures = function(asscenario, steps) {
   if (missing(steps))
     steps = names(asscenario$desc$feature_steps)
   else
-    assertSubset(steps, subset = names(asscenario$desc$feature_steps))
+    assertSubset(steps, names(asscenario$desc$feature_steps))
   allfeats = getFeatureNames(asscenario)
   step.list = asscenario$desc$feature_steps
   allsteps = names(step.list)
