@@ -9,6 +9,7 @@ License: GPL-3
 Imports:
     BatchExperiments,
     BBmisc,
+    checkmate,
     corrplot,
     ggplot2,
     llama,

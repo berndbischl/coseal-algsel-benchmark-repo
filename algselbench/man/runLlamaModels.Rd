@@ -4,8 +4,7 @@
 \title{Creates a registry which can be used for running several Llama models on a cluster.}
 \usage{
 runLlamaModels(asscenarios, feature.steps.list, baselines,
-  classifiers = character(0), regressors = character(0),
-  clusterers = character(0), pre)
+  classifiers = list(), regressors = list(), clusterers = list(), pre)
 }
 \arguments{
 \item{asscenarios}{[\code{list}]\cr
@@ -15,16 +14,16 @@ List of algorithm selection scenarios (\code{\link{ASScenario}}).}
 Vector of characters, defining the baseline models.
 Default is c("vbs", "singleBest", "singleBestByPar", "singleBestBySuccesses").}
 
-\item{classifiers}{[\code{character}]\cr
-Vector of characters, defining the classification models.
+\item{classifiers}{[list of \code{\link[mlr]{Learner}}]\cr
+Classification learners.
 Default is none.}
 
-\item{regressors}{[\code{character}]\cr
-Vector of characters, defining the regression models.
+\item{regressors}{[list of \code{\link[mlr]{Learner}}]\cr
+Regression learners.
 Default is none.}
 
-\item{clusterers}{[\code{character}]\cr
-Vector of characters, defining the cluster models.
+\item{clusterers}{[list of \code{\link[mlr]{Learner}}]\cr
+Cluster learners.
 Default is none.}
 
 \item{pre}{[\code{function}]\cr

@@ -66,7 +66,7 @@ runLlamaModels = function(asscenarios, feature.steps.list, baselines,
   if (missing(baselines))
     baselines = baselines.all
   else
-    checkArg(baselines, subset = baselines.all)
+    assertSubset(baselines, subset = baselines.all)
 
   checkType = function(lrns, type, arg.name) {
     types = extractSubList(lrns, "type")
