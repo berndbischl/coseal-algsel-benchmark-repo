@@ -1,6 +1,8 @@
 coseal-algsel-benchmark-repo
 ============================
 
+## R package algselbench
+
 * Offical CRAN release site:
   http://cran.r-project.org/web/packages/algselbench/index.html
 
@@ -14,7 +16,7 @@ coseal-algsel-benchmark-repo
 
 * [Further installation instructions](https://github.com/tudo-r/PackagesInfo/wiki/Installation-Information)
 
-* Travis CI: [![Build Status](https://travis-ci.org/berndbischl/algselbench.png)](https://travis-ci.org/berndbischl/alg)
+* Travis CI: [![Build Status](https://travis-ci.org/berndbischl/coseal-algsel-benchmark-repo.png)](https://travis-ci.org/berndbischl/coseal-algsel-benchmark-repo)
 
 
 ## Validating the structure of a benchmark data set
