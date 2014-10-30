@@ -16,7 +16,7 @@
 #' @param feature.steps [\code{list} of \code{character}]\cr
 #'   Named list of feature steps we want to use.
 #'   Must be named with scenario ids.
-#'   Default is to take all feature steps from the scenario.
+#'   Default is to take the default feature steps from the scenario.
 #' @param baselines [\code{character}]\cr
 #'   Vector of characters, defining the baseline models.
 #'   Default is c("vbs", "singleBest", "singleBestByPar", "singleBestBySuccesses").
@@ -46,7 +46,7 @@ runLlamaModels = function(asscenarios, feature.steps.list = NULL, baselines,
     feature.steps.list = extractSubList(asscenarios, c("desc", "default_steps"),
       simplify = FALSE, use.names = TRUE)
   } else {
-    feature.steps.list = ensureVector(asscenarios, 1L, cl = "character")
+    feature.steps.list = ensureVector(feature.steps.list, 1L, cl = "character")
     assertList(feature.steps.list, types = "character", names = "unique")
     assertSetEqual(names(feature.steps.list), scenario.ids, ordered = FALSE)
   }
