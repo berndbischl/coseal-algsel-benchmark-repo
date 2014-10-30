@@ -13,16 +13,16 @@
 #'   \item{costs [\code{numeric(n)}]}{Feature costs for using the steps. Named by instance ids. NULL if no costs are present.}
 #' @export
 getCostsAndPresolvedStatus = function(asscenario, feature.steps) {
-  checkArg(asscenario, "ASScenario")
+  assertClass(asscenario, "ASScenario")
   allsteps = getFeatureStepNames(asscenario)
   if (missing(feature.steps))
     feature.steps = allsteps
   else
-    checkArg(feature.steps, subset = allsteps)
+    assertSubset(feature.steps, subset = allsteps)
   frs = asscenario$feature.runstatus
   #FIXME:
   stopifnot(max(frs$repetition) == 1L)
-  # note that frs and costs are ordered by instance_id 
+  # note that frs and costs are ordered by instance_id
   iids = frs$instance_id
   # reduce to allowed feature steps
   frs = frs[, feature.steps, drop = FALSE]
