@@ -25,7 +25,7 @@ NULL
 
 # Parses description file and returns an S3 class of the contents
 parseDescription = function(path) {
-  assertFile(path, access = "r")
+  assertDirectory(path, access = "r")
 
   # do not warn about EOL
   lines = readLines(file.path(path, "description.txt"), warn = FALSE)
