@@ -22,14 +22,14 @@
 #' @param baselines [\code{character}]\cr
 #'   Vector of characters, defining the baseline models.
 #'   Default is c("vbs", "singleBest", "singleBestByPar", "singleBestBySuccesses").
-#' @param classifiers [\code{character}]\cr
-#'   Vector of characters, defining the classification models.
+#' @param classifiers [list of \code{\link[mlr]{Learner}}]\cr
+#'   Classification learners.
 #'   Default is none.
-#' @param regressors [\code{character}]\cr
-#'   Vector of characters, defining the regression models.
+#' @param regressors [list of \code{\link[mlr]{Learner}}]\cr
+#'   Regression learners.
 #'   Default is none.
-#' @param clusterers [\code{character}]\cr
-#'   Vector of characters, defining the cluster models.
+#' @param clusterers [list of \code{\link[mlr]{Learner}}]\cr
+#'   Cluster learners.
 #'   Default is none.
 #' @param pre [\code{function}]\cr
 #'   A function (e.g. normalize) to preprocess the feature data.
@@ -37,16 +37,13 @@
 #' @return BatchExperiments registry.
 #' @export
 runLlamaModels = function(asscenarios, feature.steps.list, baselines,
- classifiers = character(0), regressors = character(0), clusterers = character(0), pre) {
+ classifiers = list(), regressors = list(), clusterers = list(), pre) {
 
-  checkArg(asscenarios, c("list", "ASScenario"))
-  if (!missing(asscenarios) && inherits(asscenarios, "ASScenario"))
-    asscenarios = list(asscenarios)
-  checkListElementClass(asscenarios, "ASScenario")
+  assertList(asscenarios, types = "ASScenario")
   scenario.ids = sapply(asscenarios, function(x) x$desc$scenario_id)
 
-  checkArg(feature.steps.list, "list")
-  checkListElementClass(feature.steps.list, "character")
+  assertList(feature.steps.list, types = "character")
+  # FIXME remove bad check
   stopifnot(setequal(names(feature.steps.list), scenario.ids))
   # sort in correct order
   feature.steps.list = feature.steps.list[scenario.ids]
@@ -70,10 +67,18 @@ runLlamaModels = function(asscenarios, feature.steps.list, baselines,
     baselines = baselines.all
   else
     checkArg(baselines, subset = baselines.all)
-  # FIXME: the checks are bad in general... which models can be support?
-  checkArg(classifiers, subset = classifiers.all)
-  checkArg(regressors, "character", na.ok = FALSE)
-  checkArg(clusterers, "character", na.ok = FALSE)
+
+  checkType = function(lrns, type, arg.name) {
+    types = extractSubList(lrns, "type")
+    if (any(types != type))
+      stopf("%s: All learners must be of type '%s'!", arg.name, type)
+  }
+  assertList(classifiers, types = "Learner")
+  assertList(regressors, types = "Learner")
+  assertList(clusterers, types = "Learner")
+  checkType(classifiers, "classif", "classifiers")
+  checkType(regressors, "classif", "regressors")
+  checkType(clusterers, "cluster", "clusterers")
 
   packs = c("RWeka", "llama", "methods", "mlr", "BatchExperiments")
   requirePackages(packs, why = "runLlamaModels")
