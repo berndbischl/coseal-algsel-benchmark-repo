@@ -1,4 +1,3 @@
-#FIXME document that we can also use one scenario
 #FIXME: remove feature stesp as list
 
 #' @title Creates a registry which can be used for running several Llama models on a cluster.

@@ -13,11 +13,6 @@ convertToMlr = function(asscenario, measure, feature.steps, add.feature.costs = 
     -cp$perf
   else
     cp$perf
-  # FIXME: bad, we do it as some cns start with numbers, also in this case mlr error msg is wrong: "special chars"
-  # this problems also occurs in other plcaces, we need to handle it generally
-  cns = colnames(costs)
-  cns = paste0("xx", cns)
-  colnames(costs) = cns
   mlr.scenario = makeCostSensTask(id = desc$scenario_id, data = feats, costs = as.matrix(costs))
 
   ### CV
