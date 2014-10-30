@@ -36,10 +36,8 @@ getCostsAndPresolvedStatus = function(asscenario, feature.steps) {
   solve.steps2 = ifelse(is.na(solve.steps1), length(feature.steps), solve.steps1)
   if (!is.null(asscenario$feature.costs)) {
     costs = asscenario$feature.costs[, feature.steps, drop = FALSE]
-    # FIXME: is this really ok??? we just dont know the costs if we got NA. check this
-    costs[is.na(costs)] = 0
-    # add up costs to solving step (or add up all)
-    costs = sapply(seq_row(costs), function(i) sum(costs[i, 1:solve.steps2[i]]))
+    # add up costs to solving step (or add up all), removing any NAs
+    costs = sapply(seq_row(costs), function(i) sum(costs[i, 1:solve.steps2[i]], na.rm = TRUE))
     costs = setNames(costs, iids)
   } else {
     costs = NULL
