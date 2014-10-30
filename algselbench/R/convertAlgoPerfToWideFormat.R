@@ -17,8 +17,8 @@
 #' @return [\code{data.frame}].
 #' @export
 convertAlgoPerfToWideFormat = function(desc, algo.runs, measure) {
-  checkArg(desc, "ASScenarioDesc")
-  checkArg(algo.runs, "data.frame")
+  assertClass(desc, "ASScenarioDesc")
+  assertClass(algo.runs, "data.frame")
   measure = checkMeasure(measure, desc)
 
   ap = dcast(algo.runs, instance_id + repetition ~ algorithm, value.var = measure)

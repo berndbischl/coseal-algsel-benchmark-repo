@@ -39,10 +39,10 @@
 plotAlgoCorMatrix = function(asscenario, measure, order.method = "hclust", hclust.method = "ward",
   cor.method = "spearman") {
 
-  checkArg(order.method, choices = c("hclust", "FPC", "AOE", "original", "alphabet"))
-  checkArg(hclust.method, choices =
+  assertChoice(order.method, choices = c("hclust", "FPC", "AOE", "original", "alphabet"))
+  assertChoice(hclust.method, choices =
     c("ward", "single", "complete", "average", "mcquitty", "median", "centroid"))
-  checkArg(cor.method, choices = c("pearson", "kendall", "spearman"))
+  assertChoice(cor.method, choices = c("pearson", "kendall", "spearman"))
 
   z = getEDAAlgoPerf(asscenario, measure, impute.failed.runs = TRUE, jitter = FALSE,
     impute.zero.vals = FALSE, check.log = FALSE, format = "wide", with.instance.id = FALSE)

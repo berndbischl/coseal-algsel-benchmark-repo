@@ -9,7 +9,7 @@
 #'   corresponding feature vectors are the same. Only groups of at least 2 elements are returned.
 #' @export
 checkDuplicatedInstances = function(asscenario) {
-  checkArg(asscenario, "ASScenario")
+  assertClass(asscenario, "ASScenario")
   #FIXME: how do we handle stochastic features / repetions? think again about it.
   data = asscenario$feature.values
   # only take first repetition, might be wrong...

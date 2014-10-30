@@ -8,11 +8,11 @@
 #' @return [\code{character}].
 #' @export
 getSummedFeatureCosts = function(asscenario, feature.steps) {
-  checkArg(asscenario, "ASScenario")
+  assertClass(asscenario, "ASScenario")
   fs = names(asscenario$desc$feature_steps)
   if (missing(feature.steps))
     feature.steps = fs
   else
-    checkArg(feature.steps, subset=fs)
+    assertSubset(feature.steps, fs)
   sum(asscenario$feature.costs[, feature.steps])
 }

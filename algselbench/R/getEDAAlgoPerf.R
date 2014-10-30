@@ -8,14 +8,14 @@
 getEDAAlgoPerf = function(asscenario, measure, impute.failed.runs,  jitter,
   impute.zero.vals, check.log, format, with.instance.id) {
 
-  checkArg(asscenario, "ASScenario")
+  assertClass(asscenario, "ASScenario")
   desc = asscenario$desc
   measure = checkMeasure(measure, desc)
-  checkArg(impute.failed.runs, "logical", len = 1L, na.ok = FALSE)
-  checkArg(jitter, "logical", len = 1L, na.ok = FALSE)
-  checkArg(impute.zero.vals, "logical", len = 1L, na.ok = FALSE)
-  checkArg(format, choices = c("wide", "long"))
-  checkArg(with.instance.id, "logical", len = 1L, na.ok = FALSE)
+  assertFlag(impute.failed.runs)
+  assertFlag(jitter)
+  assertFlag(impute.zero.vals)
+  assertChoice(format, choices = c("wide", "long"))
+  assertFlag(with.instance.id)
 
   # compute range and success.rate now
   origdata = asscenario$algo.runs

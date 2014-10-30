@@ -56,7 +56,7 @@
 #' @export
 #' @aliases ASScenario
 parseASScenario = function(path) {
-  checkArg(path, "character", len = 1L, na.ok = FALSE)
+  assertFile(path, access = "r")
 
   desc = parseDescription(path)
   fsteps = names(desc$feature_steps)

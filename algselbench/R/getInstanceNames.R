@@ -5,7 +5,7 @@
 #' @return [\code{character}].
 #' @export
 getInstanceNames = function(asscenario) {
-  checkArg(asscenario, "ASScenario")
+  assertClass(asscenario, "ASScenario")
   return(unique(asscenario$feature.values$instance_id))
 }
 

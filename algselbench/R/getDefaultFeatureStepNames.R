@@ -5,7 +5,7 @@
 #' @return [\code{character}].
 #' @export
 getDefaultFeatureStepNames = function(asscenario) {
-  checkArg(asscenario, "ASScenario")
+  assertClass(asscenario, "ASScenario")
   if (is.null(asscenario$desc$default_feature_steps))
     return(names(asscenario$desc$feature_steps))
   else

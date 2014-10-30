@@ -32,7 +32,7 @@ convertToMlr = function(asscenario, measure, feature.steps, add.feature.costs = 
   # get position into sorted ids
   idsToIndices = function(ids) match(ids, all.ids)
   for (i in 1:folds) {
-    s = subset(cv.splits, fold == i)
+    s = cv.splits[cv.splits$fold == i, , drop = FALSE]
     test.ids = s$instance_id
     train.ids = setdiff(cv.splits$instance_id, test.ids)
     rin$train.inds[[i]] = idsToIndices(train.ids)
