@@ -36,7 +36,7 @@ solver always has a misclassification penalty of zero.</li>
 
 <!--begin.rcode, results = "asis"
   allfeats = getFeatureNames(asscenario)
-  fsteps = config$feature.steps.default
+  fsteps = getDefaultFeatureStepNames(asscenario)
   presolve = getCostsAndPresolvedStatus(asscenario)
 #   if (is.null(fsteps))
 #     fsteps = getFeatureStepNames(asscenario)

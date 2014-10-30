@@ -2,22 +2,18 @@ library(algselbench)
 
 makeEDAConfig = function(
   algo.perf.impute.zero.vals = FALSE,
-  algo.perf.log = FALSE,
-  feature.steps.default
+  algo.perf.log = FALSE
 ) {
 
   makeS3Obj("ASScenarioHTMLConfig",
     algo.perf.impute.zero.vals = algo.perf.impute.zero.vals,
-    algo.perf.log = algo.perf.log,
-    feature.steps.default = feature.steps.default
+    algo.perf.log = algo.perf.log
   )
 }
 
 print.ASScenarioHTMLConfig = function(x, ...) {
   ns = names(x)
   for (i in seq_along(x)) {
-   if (ns[i] == "feature.steps.default")
-     x[[i]] = paste(x[[i]], collapse = ", ")
    catf("%-30s : %s", ns[i], x[[i]])
   }
 }
@@ -36,9 +32,6 @@ readEDAConfig = function(asscenario, confpath) {
         conffile, as.character(x))
     }
     conf = as.list(conf)
-    # if we do not have default steps, take all
-    if (is.null(conf$feature.steps.default))
-      conf$feature.steps.default = getFeatureStepNames(asscenario)
     return(do.call(makeEDAConfig, conf))
   } else {
     stopf("Config file for scenario does not exist: %s", id)

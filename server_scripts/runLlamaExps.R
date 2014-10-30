@@ -5,16 +5,12 @@ library(stringr)
 library(mlr)
 load_all("../algselbench")
 source("defs.R")
-source("eda_config.R")
 
 ds.dirs = list.files(file.path(coseal.svn.dir, "data"), full.names = TRUE)
 ds.dirs = ds.dirs[!str_detect(ds.dirs, "BBOB|MACHINE")][6]
 print(ds.dirs)
 # ds.dirs = ds.dirs[1]
 asscenarios = lapply(ds.dirs, parseASScenario)
-configs = lapply(asscenarios, readEDAConfig, confpath = "../configs")
-feature.steps.list = extractSubList(configs, "feature.steps.default", simplify = FALSE)
-names(feature.steps.list) = sapply(asscenarios, function(x) x$desc$scenario_id)
 
 # untuned learners, so we can see whether tuning helped
 classif.untuned = list(
