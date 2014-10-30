@@ -1,5 +1,3 @@
-#FIXME: remove feature stesp as list
-
 #' @title Creates a registry which can be used for running several Llama models on a cluster.
 #'
 #' @description
@@ -13,21 +11,22 @@
 #' Except for XMeans where we set the maximum number of clusters (H) in the same way, as
 #' a parameter for the number of clusters does not exist.
 #'
-#' @param asscenarios [\code{list}]\cr
-#'   List of algorithm selection scenarios (\code{\link{ASScenario}}).
+#' @param asscenarios [(list of) \code{\link{ASScenario}}]\cr
+#'   Algorithm selection scenarios.
 #' @param feature.steps [\code{list} of \code{character}]\cr
 #'   Named list of feature steps we want to use.
 #'   Must be named with scenario ids.
+#'   Default is to take all feature steps from the scenario.
 #' @param baselines [\code{character}]\cr
 #'   Vector of characters, defining the baseline models.
 #'   Default is c("vbs", "singleBest", "singleBestByPar", "singleBestBySuccesses").
-#' @param classifiers [list of \code{\link[mlr]{Learner}}]\cr
+#' @param classifiers [(list of) \code{\link[mlr]{Learner}}]\cr
 #'   Classification learners.
 #'   Default is none.
-#' @param regressors [list of \code{\link[mlr]{Learner}}]\cr
+#' @param regressors [(list of) \code{\link[mlr]{Learner}}]\cr
 #'   Regression learners.
 #'   Default is none.
-#' @param clusterers [list of \code{\link[mlr]{Learner}}]\cr
+#' @param clusterers [(list of) \code{\link[mlr]{Learner}}]\cr
 #'   Cluster learners.
 #'   Default is none.
 #' @param pre [\code{function}]\cr
@@ -35,16 +34,22 @@
 #'   By default no preprocessing is done.
 #' @return BatchExperiments registry.
 #' @export
-runLlamaModels = function(asscenarios, feature.steps.list, baselines,
+runLlamaModels = function(asscenarios, feature.steps.list = NULL, baselines,
  classifiers = list(), regressors = list(), clusterers = list(), pre) {
 
   asscenarios = ensureVector(asscenarios, 1L, cl = "ASScenario")
   assertList(asscenarios, types = "ASScenario")
-  scenario.ids = sapply(asscenarios, function(x) x$desc$scenario_id)
+  scenario.ids = extractSubList(asscenarios, c("desc", "scenario_id"), use.names = FALSE)
+  names(asscenarios) = scenario.ids
 
-  assertList(feature.steps.list, types = "character")
-  # FIXME remove bad check
-  stopifnot(setequal(names(feature.steps.list), scenario.ids))
+  if (is.null(feature.steps.list)) {
+    feature.steps.list = extractSubList(asscenarios, c("desc", "default_steps"),
+      simplify = FALSE, use.names = TRUE)
+  } else {
+    feature.steps.list = ensureVector(asscenarios, 1L, cl = "character")
+    assertList(feature.steps.list, types = "character", names = "unique")
+    assertSetEqual(names(feature.steps.list), scenario.ids, ordered = FALSE)
+  }
   # sort in correct order
   feature.steps.list = feature.steps.list[scenario.ids]
 
@@ -62,7 +67,6 @@ runLlamaModels = function(asscenarios, feature.steps.list, baselines,
     baselines = baselines.all
   else
     assertSubset(baselines, baselines.all)
-  baselines = lapply(baselines, get, envir = asNamespace("llama"))
 
   checkLearners = function(lrns, type, arg.name) {
     lrns = ensureVector(lrns, n = 1L, cl = "Learner")
@@ -117,30 +121,33 @@ runLlamaModels = function(asscenarios, feature.steps.list, baselines,
     )
   }
 
-  algoBaseline = function(static, llama.fun, model) {
-    p = model(data = static$llama.scenario)
+  # add baselines to reg
+  addAlgorithm(reg, id = "baseline", fun = function(static, type) {
+    llama.fun = get(type, envir = asNamespace("llama"))
+    p = llama.fun(data = static$llama.scenario)
     p = list(predictions = p)
     static$makeRes(static$llama.scenario, p, static$timeout)
+  })
+  des = makeDesign("baseline", exhaustive = list(type = baselines))
+  addExperiments(reg, algo.designs = des)
+
+  # add real selectors
+  addLearnerAlgoAndExps = function(lrn) {
+    # BE does not like the dots in mlr ids
+    id = str_replace_all(lrn$id, "\\.", "_")
+    addAlgorithm(reg, id = id, fun = function(static) {
+      llama.fun = switch(lrn$type,
+        classif = llama::classify,
+        regr = llama::regression,
+        cluster = llama::cluster
+      )
+      p = llama.fun(lrn, data = static$llama.cv, pre = pre)
+      static$makeRes(static$llama.cv, p, static$timeout)
+    })
+    addExperiments(reg, algo.designs = id)
   }
 
-  algoLlama = function(static, llama.fun, model) {
-    llama.fun = get(llama.fun, envir = asNamespace("llama"))
-    p = llama.fun(model, data = static$llama.cv, pre = pre)
-    static$makeRes(static$llama.cv, p, static$timeout)
-  }
-
-  addExps = function(id, algo, llama.fun, models) {
-    if (length(models) > 0L) {
-      addAlgorithm(reg, id = id, fun = algo)
-      des = makeDesign(id, exhaustive = list(model = unlist(models), llama.fun = llama.fun))
-      addExperiments(reg, algo.designs = des)
-    }
-  }
-
-  addExps("baseline", algoBaseline, "foo", baselines)
-  addExps("classif", algoLlama, "classify", classifiers)
-  addExps("regr", algoLlama, "regression", regressors)
-  addExps("cluster", algoLlama, "cluster", clusterers)
+  lapply(c(classifiers, regressors, clusterers), addLearnerAlgoAndExps)
 
   return(reg)
 }
