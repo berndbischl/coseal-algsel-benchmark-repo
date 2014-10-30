@@ -5,10 +5,6 @@ library(llama)
 library(mlr)
 library(BatchExperiments)
 
-if (interactive()) {
-  load_all(".")
-} else {
-  library(algselbench)  
-}
-test_dir("inst/tests")
+load_all(".")
+test_dir("tests/testthat")
 
