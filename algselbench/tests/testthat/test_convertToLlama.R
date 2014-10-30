@@ -11,12 +11,14 @@ test_that("convertToLlama", {
   expect_equal(llama.scenario$data$a2_success, c(TRUE, TRUE, FALSE))
   expect_equal(llama.scenario$data$a1, c(30, 90, 70))
   expect_equal(llama.scenario$data$a2, c(50, 30, 100))
+  expect_equal(llama.scenario$data$best, c("a1", "a2", "a1"))
 
   llama.scenario = convertToLlama(testscenario3, add.feature.costs = TRUE)
   expect_equal(llama.scenario$data$a1_success, c(TRUE, TRUE, TRUE))
   expect_equal(llama.scenario$data$a2_success, c(TRUE, TRUE, FALSE))
   expect_equal(llama.scenario$data$a1, c(60, 30, 80))
   expect_equal(llama.scenario$data$a2, c(80, 30, 100))
+  expect_equal(llama.scenario$data$best, list("a1", c("a1", "a2"), "a1"))
 
   llama.scenario = convertToLlama(testscenario1, add.feature.costs = FALSE)
   cv = cvFolds(llama.scenario, nfolds = 2L)
@@ -35,6 +37,10 @@ test_that("convertToLlama", {
   res = classify(classifier = makeLearner("classif.J48"), data = cv)
 })
 
+test_that("convertToLlama always sets best algorithm", {
+  llama.scenario = convertToLlama(testscenario4)
+  expect_equal(llama.scenario$data$best, list("a1", c("a1", "a2"), "a1"))
+})
 
 test_that("convertToLlama parses real scenario correctly", {
   llama.scenario = convertToLlama(testscenario1, add.feature.costs = FALSE)

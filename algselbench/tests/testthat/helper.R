@@ -52,3 +52,6 @@ makeTestScenario3 = function() {
 }
 
 testscenario3 = makeTestScenario3()
+testscenario4 = makeTestScenario3()
+testscenario4$algo.runs$runstatus = factor(c("ok", "ok", "crash", "ok", "ok", "crash"))
+testscenario4$algo.runstatus$a1 = factor(c("ok", "ok", "crash"))

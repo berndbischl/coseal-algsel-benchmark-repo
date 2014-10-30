@@ -30,6 +30,16 @@ convertToLlama = function(asscenario, measure, feature.steps, add.feature.costs 
   cp = convertPerf(asscenario, measure = measure, feature.steps = feature.steps,
     add.feature.costs = add.feature.costs, with.instance.id = TRUE)
 
-  input(feats, cp$perf, successes = cp$successes, minimize = !asscenario$desc$maximize[measure])
+  ldf = input(feats, cp$perf, successes = cp$successes, minimize = !asscenario$desc$maximize[measure])
+  # LLAMA set the best algorithm for instances that were not solved by anything to NA,
+  # set those to the single best solver over the entire set
+  sb = as.character(singleBest(ldf)[[1]]$algorithm)
+  for(i in seq_along(ldf$data$best)) {
+    if(all(sapply(ldf$data$best[[i]], is.na))) {
+        ldf$data$best[[i]] = sb
+    }
+  }
+
+  return(ldf)
 }
 
