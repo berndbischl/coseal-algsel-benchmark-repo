@@ -3,11 +3,11 @@ context("runLlamaModels")
 test_that("runLlamaModels", {
   cv = createCVSplits(testscenario1, folds = 2, reps = 1L)
   fs = setNames(list(getFeatureStepNames(testscenario1)), testscenario1$desc$scenario_id)
-  reg = runLlamaModels(testscenario1, feature.steps.list = fs,
-    baselines = "vbs",
-    classifiers = "classif.J48",
-    regressors = "regr.rpart",
-    clusterers = "cluster.SimpleKMeans"
+  reg = runLlamaModels(list(testscenario1), feature.steps.list = fs,
+    baselines = c("vbs"),
+    classifiers = list(makeLearner("classif.J48")),
+    regressors = list(makeLearner("regr.rpart")),
+    clusterers = list(makeLearner("cluster.SimpleKMeans"))
   )
   submitJobs(reg)
   waitForJobs(reg)

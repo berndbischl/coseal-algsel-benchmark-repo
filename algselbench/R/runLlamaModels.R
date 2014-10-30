@@ -76,7 +76,7 @@ runLlamaModels = function(asscenarios, feature.steps.list, baselines,
   assertList(regressors, types = "Learner")
   assertList(clusterers, types = "Learner")
   checkType(classifiers, "classif", "classifiers")
-  checkType(regressors, "classif", "regressors")
+  checkType(regressors, "regr", "regressors")
   checkType(clusterers, "cluster", "clusterers")
 
   packs = c("RWeka", "llama", "methods", "mlr", "BatchExperiments")
@@ -146,11 +146,7 @@ runLlamaModels = function(asscenarios, feature.steps.list, baselines,
   }
 
   algoLlama = function(static, llama.fun, model) {
-    # FIXME: how to better load this? think about interactive test and so on...
-    if (!interactive())
-      library(algselbench)
-    #FIXME: get from llama package envir
-    llama.fun = get(llama.fun)
+    llama.fun = get(llama.fun, envir = asNamespace("llama"))
     fun = static$makeModelFun(model, n.algos = static$n.algos)
     p = llama.fun(fun, data = static$llama.cv, pre = pre)
     static$makeRes(static$llama.cv, p, static$timeout)
@@ -165,9 +161,9 @@ runLlamaModels = function(asscenarios, feature.steps.list, baselines,
   }
 
   addExps("baseline", algoBaseline, "foo", baselines)
-  addExps("classif", algoLlama, "classify", classifiers)
-  addExps("regr", algoLlama, "regression", regressors)
-  addExps("cluster", algoLlama, "cluster", clusterers)
+  addExps("classif", algoLlama, "classify", unlist(classifiers))
+  addExps("regr", algoLlama, "regression", unlist(regressors))
+  addExps("cluster", algoLlama, "cluster", unlist(clusterers))
 
   return(reg)
 }

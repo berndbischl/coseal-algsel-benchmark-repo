@@ -16,7 +16,7 @@ print(ds.dirs)
 #ds.dirs = ds.dirs[1]
 asscenarios = lapply(ds.dirs, parseASScenario)
 
-file.dir <- tempfile("selection_exps_")
+file.dir = tempfile("selection_exps_")
 reg = makeRegistry("run_selection_exps", file.dir = file.dir, packages = c("llama", "mlr", "BatchExperiments", "parallelMap"), seed = 123)
 
 ctrl = makeSSControl(method = "sbs")

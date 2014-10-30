@@ -1,8 +1,8 @@
 library(BBmisc)
 library(devtools)
-library(RWeka)
 library(llama)
 library(stringr)
+library(mlr)
 load_all("../algselbench")
 source("defs.R")
 source("eda_config.R")
@@ -18,22 +18,17 @@ names(feature.steps.list) = sapply(asscenarios, function(x) x$desc$scenario_id)
 
 reg = runLlamaModels(asscenarios, feature.steps.list = feature.steps.list,
 
-  classifiers = c(
-    "classif.ada", "classif.IBk", "classif.OneR",
-    "classif.J48", "classif.JRip",
+  classifiers = list(makeLearner("classif.rpart"), makeLearner("classif.ksvm"), makeLearner("classif.randomForest")),
 
-    "classif.ctree", "classif.ksvm", "classif.naiveBayes", "classif.randomForest", "classif.rpart"
-  ),
+  regressors = list(makeLearner("regr.lm"), makeLearner("regr.rpart"), makeLearner("regr.randomForest"), makeLearner("regr.gbm"), makeLearner("regr.mars")),
 
-  regressors = c("regr.lm", "regr.rpart", "regr.randomForest", "regr.earth"),
-
-  clusterers = c("cluster.EM", "cluster.XMeans", "cluster.SimpleKMeans"),
+  clusterers = list(makeLearner("cluster.XMeans")),
 
   pre = normalize
 )
 
 # reg = runLlamaModels(asscenarios, feature.steps.list = feature.steps.list,
-  # classifiers = "classif.rpart")
+  # classifiers = list(makeLearner("classif.rpart")))
 
 # jobs should be run with 2gig mem
 # run time of all jobs
