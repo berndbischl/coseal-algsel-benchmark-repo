@@ -15,11 +15,11 @@ convertFeats = function(asscenario, feature.steps, with.instance.id) {
     feats$repetition = NULL
   }
 
-  # FIXME: 
+  # FIXME:
   # remove constant features, currently we do not count NAs as an extra-level
   # the feature would still be completely constant if we impute just with mean
   # THIS CHANGES IF WE CREATE  DUMMIES FOR NAs LIKE WE SHOULD!
-  feats = removeConstantFeatures(feats, na.ignore = TRUE, show.info = TRUE)
+  feats = removeConstScenFeats(feats)
 
   # impute feature values
   feats = impute(feats, target = character(0), classes = list(numeric = imputeMean()))$data

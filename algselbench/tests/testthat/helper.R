@@ -1,6 +1,5 @@
-testscenario1 = parseASScenario("../qbf_2011")
-
-testscenario2 = parseASScenario("../sat12-indu")
+testscenario1 = parseASScenario("../../inst/qbf_2011")
+testscenario2 = parseASScenario("../../inst/sat12-indu")
 
 makeTestScenario3 = function() {
 
@@ -36,9 +35,9 @@ makeTestScenario3 = function() {
     data.frame(instance_id = iids, repetition = 1L, algorithm = "a2",
       m = c(50, 30, 10), runstatus = c("ok", "ok", "crash"))
   )
-  algo.runstatus = data.frame(instance_id = iids, repetition = 1L, 
+  algo.runstatus = data.frame(instance_id = iids, repetition = 1L,
       a1 = c("ok", "ok", "ok"), a2 = c("ok", "ok", "crash"))
-  algo.perf = data.frame(instance_id = iids, repetition = 1L, 
+  algo.perf = data.frame(instance_id = iids, repetition = 1L,
       a1 = c(30, 90, 70), a2 = c(50, 30, 10))
   makeS3Obj("ASScenario",
     desc = desc,
