@@ -12,15 +12,15 @@ source("~/work/coseal-algsel-benchmark-repo/server_scripts/searchSequential.R")
 source("~/work/coseal-algsel-benchmark-repo/server_scripts/searchSequentialObjective.R")
 
 # ast = parseASScenario("/home/bischl/cos/coseal/data/QBF-2011")
-#ast = parseASScenario("/home/bischl/cos/coseal/data/CSP-2010/")
-ast = parseASScenario("/home/larsko/work/coseal/data/CSP-2010/")
+#ast = parseASScenario("/home/bischl/cos/coseal/data/QBF-2011/")
+ast = parseASScenario("/home/larsko/work/coseal/data/QBF-2011/")
 #
 ldf = convertToLlamaCVFolds(ast)
 
-n.bits = length(getFeatureNames(ast))
-ctrl = makeSSControl(method = "sbs")
-z = searchSequential(searchSequentialObjectiveFeatures, n.bits, control = ctrl, ldf = ldf,
-  llama.model.fun = classify, mlr.learner = makeLearner("classif.rpart"))
+n.bits = length(getAlgorithmNames(ast))
+ctrl = makeSSControl(method = "sfs")
+z = searchSequential(searchSequentialObjectiveSolvers, n.bits, control = ctrl, ldf = ldf,
+  llama.model.fun = regression, mlr.learner = makeLearner("regr.lm"))
 
 
 
