@@ -8,7 +8,7 @@ source("defs.R")
 source("eda_config.R")
 
 ds.dirs = list.files(file.path(coseal.svn.dir, "data"), full.names = TRUE)
-ds.dirs = ds.dirs[!str_detect(ds.dirs, "BBOB|MACHINE")]
+ds.dirs = ds.dirs[!str_detect(ds.dirs, "BBOB|MACHINE")][6]
 print(ds.dirs)
 # ds.dirs = ds.dirs[1]
 asscenarios = lapply(ds.dirs, parseASScenario)
@@ -16,21 +16,61 @@ configs = lapply(asscenarios, readEDAConfig, confpath = "../configs")
 feature.steps.list = extractSubList(configs, "feature.steps.default", simplify = FALSE)
 names(feature.steps.list) = sapply(asscenarios, function(x) x$desc$scenario_id)
 
-reg = runLlamaModels(asscenarios, feature.steps.list = feature.steps.list,
-
-  classifiers = c(
-    "classif.ada", "classif.IBk", "classif.OneR",
-    "classif.J48", "classif.JRip",
-
-    "classif.ctree", "classif.ksvm", "classif.naiveBayes", "classif.randomForest", "classif.rpart"
-  ),
-
-  regressors = c("regr.lm", "regr.rpart", "regr.randomForest", "regr.earth"),
-
-  clusterers = c("cluster.EM", "cluster.XMeans", "cluster.SimpleKMeans"),
-
-  pre = normalize
+# untuned learners, so we can see whether tuning helped
+classif.untuned = list(
+  makeLearner("classif.rpart"),
+  makeLearner("classif.randomForest"),
+  makeLearner("classif.ksvm")
 )
+
+regr.untuned = list(
+  makeLearner("regr.lm"),
+  makeLearner("regr.rpart"),
+  makeLearner("regr.randomForest"),
+  makeLearner("regr.mars")
+)
+
+cluster.untuned = list(
+  makeLearner("cluster.XMeans")
+)
+
+# tuned learners
+# FIXME: the whole code here is crappy prototype!!!
+tune.svm = makeLearner("classif.ksvm")
+ps.svm = makeParamSet(
+  makeNumericParam("C",     lower = -12, upper = 12, trafo = function(x) 2^x),
+  makeNumericParam("sigma", lower = -12, upper = 12, trafo = function(x) 2^x)
+)
+ps.rf = makeParamSet(
+  makeIntegerParam("ntree", lower = 10, upper = 1000),
+  makeIntegerParam("mtry", lower = 1, upper = 10)
+)
+
+makeTuneW = function(cl, ps) {
+  ctrl = makeTuneControlRandom(maxit = 10L)
+  inner = makeResampleDesc("CV", iters = 2L)
+  #FIXME set measure
+  makeTuneWrapper(cl, resampling = inner,  par.set = ps, control = ctrl)
+}
+
+classif.tuned = list(
+  makeTuneW("classif.ksvm", ps.svm),
+  makeTuneW("classif.randomForest", ps.rf)
+)
+
+regr.tuned = list(
+  makeTuneW("regr.randomForest", ps.rf)
+)
+
+
+# merge tuned and untuned learners to one list
+classif = c(classif.untuned, classif.tuned)
+regr = c(regr.untuned, regr.tuned)
+cluster = cluster.untuned
+
+
+reg = runLlamaModels(asscenarios, feature.steps.list = feature.steps.list, pre = normalize,
+  classifiers = classif, regr = regr, clusterers = cluster)
 
 # reg = runLlamaModels(asscenarios, feature.steps.list = feature.steps.list,
   # classifiers = "classif.rpart")
@@ -46,7 +86,7 @@ reg = runLlamaModels(asscenarios, feature.steps.list = feature.steps.list,
 submitJobs(reg, resources = list(memory = 2048))
 waitForJobs(reg)
 
-d = reduceResultsExperiments(reg, strings.as.factors = FALSE, 
+d = reduceResultsExperiments(reg, strings.as.factors = FALSE,
   impute.val = list(succ = 0, par10 = Inf, mcp = Inf))
 save2(file = "llama_results.RData", res = d)
 
