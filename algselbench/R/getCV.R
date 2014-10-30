@@ -5,7 +5,7 @@
 #' @return [\code{integer(1)}].
 #' @export
 getNumberOfCVFolds = function(asscenario) {
-  checkArg(asscenario, "ASScenario")
+  assertClass(asscenario, "ASScenario")
   return(max(asscenario$cv.splits$fold))
 }
 
@@ -17,7 +17,7 @@ getNumberOfCVFolds = function(asscenario) {
 #' @return [\code{integer(1)}].
 #' @export
 getNumberOfCVReps = function(asscenario) {
-  checkArg(asscenario, "ASScenario")
+  assertClass(asscenario, "ASScenario")
   return(max(asscenario$cv.splits$repetition))
 }
 

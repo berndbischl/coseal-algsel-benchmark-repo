@@ -8,7 +8,7 @@
 #' @return [\code{data.frame}].
 #' @export
 summarizeAlgoPerf = function(asscenario, measure) {
-  checkArg(asscenario, "ASScenario")
+  assertClass(asscenario, "ASScenario")
   measure = checkMeasure(measure, asscenario$desc)
   data = convertAlgoPerfToWideFormat(asscenario$desc, asscenario$algo.runs, measure)
   data = dropNamed(data, c("instance_id", "repetition"))

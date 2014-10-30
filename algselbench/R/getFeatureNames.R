@@ -5,6 +5,6 @@
 #' @return [\code{character}].
 #' @export
 getFeatureNames = function(asscenario) {
-  checkArg(asscenario, "ASScenario")
+  assertClass(asscenario, "ASScenario")
   c(asscenario$desc$features_deterministic, asscenario$desc$features_stochastic)
 }

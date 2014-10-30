@@ -5,7 +5,7 @@
 #' @return [\code{character}].
 #' @export
 getFeatureStepNames = function(asscenario) {
-  checkArg(asscenario, "ASScenario")
+  assertClass(asscenario, "ASScenario")
   return(names(asscenario$desc$feature_steps))
 }
 
