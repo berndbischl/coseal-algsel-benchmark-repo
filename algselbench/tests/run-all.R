@@ -1,4 +1,4 @@
 library(testthat)
 library(algselbench)
 
-test_package("algselbench")
+test_check("algselbench")
