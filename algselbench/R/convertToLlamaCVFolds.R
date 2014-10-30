@@ -48,27 +48,14 @@ convertToLlamaCVFolds = function(asscenario, measure, feature.steps, add.feature
 
   nfolds = length(unique(folds$fold))
   rownames(folds) = folds$instance_id
-  splitFactors = folds[llamaFrame$data$instance_id, "fold"]
+  splitFactors = folds[match(llamaFrame$data$instance_id, folds$instance_id), "fold"]
   parts = split(llamaFrame$data, splitFactors)
-
-  minimize = !asscenario$desc$maximize[measure]
 
   return(c(llamaFrame,
             list(train = lapply(1:nfolds, function(x) {
-                    part = unsplit(parts[-x], folds$fold[folds$fold!=x])
-                    perfs = subset(part, select=llamaFrame$performance)
-                    order = names(sort(sapply(perfs, sum), decreasing=!minimize))
-                    optfun = if(minimize) { which.min } else { which.max }
-                    part$best = factor(apply(perfs[order], 1, function(x) { order[optfun(unlist(x))] }))
-                    return(part)
+                    return(unsplit(parts[-x], folds$fold[folds$fold!=x]))
                 }),
-             test = lapply(1:nfolds, function(x) {
-                    part = parts[[x]]
-                    otherPart = unsplit(parts[-x], folds$fold[folds$fold!=x])
-                    perfs = subset(part, select=llamaFrame$performance)
-                    order = names(sort(sapply(subset(otherPart, select=llamaFrame$performance), sum), decreasing=!minimize))
-                    optfun = if(minimize) { which.min } else { which.max }
-                    part$best = factor(apply(perfs[order], 1, function(x) { order[optfun(unlist(x))] }))
-                    return(part)
+                 test = lapply(1:nfolds, function(x) {
+                    return(parts[[x]])
                  }))))
 }

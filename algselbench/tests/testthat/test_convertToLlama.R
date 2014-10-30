@@ -38,8 +38,11 @@ test_that("convertToLlama", {
 
 test_that("convertToLlama parses real scenario correctly", {
   llama.scenario = convertToLlama(testscenario1, add.feature.costs = FALSE)
-  expect_equal(llama.scenario$performance, c("2clsQ", "quantor", "QuBE", "sKizzo", "sSolve"))
-  expect_equal(llama.scenario$success, c("2clsQ_success", "quantor_success", "QuBE_success", "sKizzo_success", "sSolve_success"))
+  iid1 = as.character(llama.scenario$data$instance_id)
+  iid2 = as.character(testscenario1$algo.runs$instance_id)
+  expect_true(setequal(iid1, iid2))
+  expect_equal(llama.scenario$performance, c("X2clsQ", "quantor", "QuBE", "sKizzo", "sSolve"))
+  expect_equal(llama.scenario$success, c("X2clsQ_success", "quantor_success", "QuBE_success", "sKizzo_success", "sSolve_success"))
   expect_equal(llama.scenario$features, c( "EXIST_VARS", "FORALL_VARS",
         "TOTAL_VARS", "CLAUSES",
         "LITERALS", "EXIST_SET",
