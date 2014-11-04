@@ -124,6 +124,8 @@ runLlamaModels = function(asscenarios, feature.steps.list = NULL, baselines,
   # add baselines to reg
   addAlgorithm(reg, id = "baseline", fun = function(static, type) {
     llama.fun = get(type, envir = asNamespace("llama"))
+    # FIXME: do not use preprocessed algo data, where feature costs wwere added and
+    # presolving was considered. only use raw algo perf data.
     p = llama.fun(data = static$llama.scenario)
     p = list(predictions = p)
     static$makeRes(static$llama.scenario, p, static$timeout)
