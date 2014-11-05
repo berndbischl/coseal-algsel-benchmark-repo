@@ -83,13 +83,9 @@ runLlamaModels = function(asscenarios, feature.steps.list = NULL, baselines,
   packs = c("RWeka", "llama", "methods", "mlr", "BatchExperiments")
   requirePackages(packs, why = "runLlamaModels")
 
-  # baseline models use these, no feature costs
   llama.scenarios = mapply(convertToLlama, asscenario = asscenarios, feature.steps = feature.steps.list,
-    MoreArgs = list(add.feature.costs = FALSE), SIMPLIFY = FALSE)
-  # real models use these, use feature costs
-  llama.cvs = mapply(convertToLlamaCVFolds, asscenario = asscenarios, feature.steps = feature.steps.list,
-    MoreArgs = list(add.feature.costs = TRUE), SIMPLIFY = FALSE)
-  llama.cvs = lapply(asscenarios, convertToLlamaCVFolds, add.feature.costs = TRUE)
+    SIMPLIFY = FALSE)
+  llama.cvs = lapply(asscenarios, convertToLlamaCVFolds)
 
   # FIXME:
   unlink("run_llama_models-files", recursive = TRUE)
@@ -99,10 +95,11 @@ runLlamaModels = function(asscenarios, feature.steps.list = NULL, baselines,
     asscenario = asscenarios[[i]]
     desc = asscenario$desc
     cutoff = desc$algorithm_cutoff_time
-    timeout = if (desc$performance_type[[1L]] == "runtime" && !is.na(cutoff))
+    timeout = if (desc$performance_type[[1L]] == "runtime" && !is.na(cutoff)) {
       cutoff
-    else
+    } else {
       NULL
+    }
     addProblem(reg, id = desc$scenario_id,
       static = list(
         feature.steps = feature.steps.list[[desc$scenario_id]],
@@ -110,10 +107,10 @@ runLlamaModels = function(asscenarios, feature.steps.list = NULL, baselines,
         llama.scenario = llama.scenarios[[i]],
         llama.cv = llama.cvs[[i]],
         n.algos = length(getAlgorithmNames(asscenario)),
-        makeRes = function(data, p, timeout) {
+        makeRes = function(data, p, timeout, addCosts) {
           list(
-            succ = mean(successes(data, p)),
-            par10 = mean(parscores(data, p, timeout = timeout)),
+            succ = mean(successes(data, p, timeout = timeout, addCosts = addCosts)),
+            par10 = mean(parscores(data, p, timeout = timeout, addCosts = addCosts)),
             mcp = mean(misclassificationPenalties(data, p))
           )
         }
@@ -124,11 +121,11 @@ runLlamaModels = function(asscenarios, feature.steps.list = NULL, baselines,
   # add baselines to reg
   addAlgorithm(reg, id = "baseline", fun = function(static, type) {
     llama.fun = get(type, envir = asNamespace("llama"))
-    # FIXME: do not use preprocessed algo data, where feature costs wwere added and
-    # presolving was considered. only use raw algo perf data.
     p = llama.fun(data = static$llama.scenario)
     p = list(predictions = p)
-    static$makeRes(static$llama.scenario, p, static$timeout)
+    # this is how LLAMA checks what type of argument is given to the evaluation function
+    attr(p, "hasPredictions") = TRUE
+    static$makeRes(static$llama.scenario, p, static$timeout, FALSE)
   })
   des = makeDesign("baseline", exhaustive = list(type = baselines))
   addExperiments(reg, algo.designs = des)
@@ -144,7 +141,7 @@ runLlamaModels = function(asscenarios, feature.steps.list = NULL, baselines,
         cluster = llama::cluster
       )
       p = llama.fun(lrn, data = static$llama.cv, pre = pre)
-      static$makeRes(static$llama.cv, p, static$timeout)
+      static$makeRes(static$llama.cv, p, static$timeout, TRUE)
     })
     addExperiments(reg, algo.designs = id)
   }

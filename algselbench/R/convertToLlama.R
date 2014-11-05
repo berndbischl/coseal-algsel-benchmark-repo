@@ -12,25 +12,27 @@
 #'   Which feature steps are allowed?
 #'   Default are the default feature steps or all steps
 #'   in case no defaults were defined.
-#' @param add.feature.costs [\code{logical(1)}]\cr
-#'   If costs for features are present in runtime scenarios, should they be added to the algorithm costs
-#'   (because in reality you would  have to pay them)? Whether the algorithms hit the cutoff runtime
-#'   is also recalculated in this case.
-#'   Adding the feature costs should not be done for the
-#'   baseline models, but only for proper prognostic models.
-#'   If no costs are present, 0 is added as cost and a warning is issued.
-#'   Default is \code{TRUE}.
 #' @return Result of calling \code{\link[llama]{input}}.
 #' @export
-convertToLlama = function(asscenario, measure, feature.steps, add.feature.costs = TRUE) {
-  ch = convertToCheck(asscenario, measure, feature.steps, add.feature.costs)
+convertToLlama = function(asscenario, measure, feature.steps) {
+  ch = convertToCheck(asscenario, measure, feature.steps, TRUE)
   measure = ch$measure; feature.steps = ch$feature.steps
 
   feats = convertFeats(asscenario, with.instance.id = TRUE)
   cp = convertPerf(asscenario, measure = measure, feature.steps = feature.steps,
-    add.feature.costs = add.feature.costs, with.instance.id = TRUE)
+    add.feature.costs = FALSE, with.instance.id = TRUE)
 
-  ldf = input(feats, cp$perf, successes = cp$successes, minimize = !asscenario$desc$maximize[measure])
+  if(!is.null(asscenario$feature.costs)) {
+      # FIXME: figure out how to do this properly
+      asscenario$feature.costs[is.na(asscenario$feature.costs)] = 0
+      costs = list(groups=asscenario$desc$feature_steps[feature.steps],
+          values=asscenario$feature.costs)
+      ldf = input(feats, cp$perf, successes = cp$successes,
+          minimize = !asscenario$desc$maximize[measure], costs = costs)
+  } else {
+      ldf = input(feats, cp$perf, successes = cp$successes,
+          minimize = !asscenario$desc$maximize[measure])
+  }
   # LLAMA set the best algorithm for instances that were not solved by anything to NA,
   # set those to the single best solver over the entire set
   sb = as.character(singleBest(ldf)[[1]]$algorithm)
