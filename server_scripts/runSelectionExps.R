@@ -13,7 +13,7 @@ source("searchSequentialObjective.R")
 ds.dirs = list.files(file.path(coseal.svn.dir, "data"), full.names = TRUE)
 ds.dirs = ds.dirs[!str_detect(ds.dirs, "BBOB|MACHINE")]
 print(ds.dirs)
-#ds.dirs = ds.dirs[1]
+#ds.dirs = ds.dirs[7]
 asscenarios = lapply(ds.dirs, parseASScenario)
 
 file.dir = tempfile("selection_exps_")

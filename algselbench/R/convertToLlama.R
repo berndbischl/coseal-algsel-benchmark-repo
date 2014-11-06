@@ -52,20 +52,24 @@ fixFeckingPresolve = function(asscenario, ldf) {
     # are we using any of the feature steps that cause presolving?
     if(length(intersect(presolvedGroups, usedGroups)) > 0) {
         presolved = asscenario$feature.runstatus[apply(asscenario$feature.runstatus, 1, function(x) { any(x == "presolved") }),]
-        presolvedTimes = sapply(rownames(presolved), function(x) {
-            pCosts = asscenario$feature.costs[x,presolved[x,] == "presolved"]
-            pCosts[is.na(pCosts)] = 0
-            as.numeric(pCosts[1])
-        })
-        rows = match(presolved$instance_id, ldf$data$instance_id)
-        ldf$data[rows,ldf$performance] = presolvedTimes
-        ldf$data[rows,ldf$success] = T
-        if(length(ldf$test) > 0) {
-            for(i in 1:length(ldf$test)) {
-                rows = na.omit(match(presolved$instance_id, ldf$test[[i]]$instance_id))
-                ts = presolvedTimes[na.omit(match(ldf$test[[i]]$instance_id, presolved$instance_id))]
-                ldf$test[[i]][rows,ldf$performance] = ts
-                ldf$test[[i]][rows,ldf$success] = T
+        if(nrow(presolved) > 0) {
+            presolvedTimes = sapply(rownames(presolved), function(x) {
+                pCosts = asscenario$feature.costs[x,presolved[x,] == "presolved"]
+                pCosts[is.na(pCosts)] = 0
+                as.numeric(pCosts[1])
+            })
+            rows = match(presolved$instance_id, ldf$data$instance_id)
+            ldf$data[rows,ldf$performance] = presolvedTimes
+            ldf$data[rows,ldf$success] = T
+            if(length(ldf$test) > 0) {
+                for(i in 1:length(ldf$test)) {
+                    rows = na.omit(match(presolved$instance_id, ldf$test[[i]]$instance_id))
+                    if(length(rows) > 0) {
+                        ts = presolvedTimes[na.omit(match(ldf$test[[i]]$instance_id, presolved$instance_id))]
+                        ldf$test[[i]][rows,ldf$performance] = ts
+                        ldf$test[[i]][rows,ldf$success] = T
+                    }
+                }
             }
         }
     }
