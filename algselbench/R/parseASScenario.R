@@ -63,7 +63,7 @@ parseASScenario = function(path) {
 
   ### build feature.runstatus
   feature.runstatus = read.arff(file.path(path, "feature_runstatus.arff"))
-  statusLevels = c("ok", "timeout", "memout", "presolved", "crash", "other")
+  statusLevels = c("ok", "timeout", "memout", "presolved", "crash", "other", "unknown")
   # make sure we have correct levels
   for (j in 3:ncol(feature.runstatus)) {
     factors = factor(feature.runstatus[, j])

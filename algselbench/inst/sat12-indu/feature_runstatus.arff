@@ -1,23 +1,23 @@
-@RELATION FEATURE_RUNSTATUSSAT12-INDU
+@relation FEATURE_RUNSTATUSSAT12-INDU
 
-@ATTRIBUTE instance_id STRING
-@ATTRIBUTE repetition NUMERIC
-@ATTRIBUTE KLB_featuretime {ok, timeout, memout, presolved, crash, other}
-@ATTRIBUTE cl_featuretime {ok, timeout, memout, presolved, crash, other}
-@ATTRIBUTE lobjois_featuretime {ok, timeout, memout, presolved, crash, other}
-@ATTRIBUTE DIAMETER_featuretime {ok, timeout, memout, presolved, crash, other}
-@ATTRIBUTE CG_featuretime {ok, timeout, memout, presolved, crash, other}
-@ATTRIBUTE Pre_featuretime {ok, timeout, memout, presolved, crash, other}
-@ATTRIBUTE sp_featuretime {ok, timeout, memout, presolved, crash, other}
-@ATTRIBUTE ls_gsat_featuretime {ok, timeout, memout, presolved, crash, other}
-@ATTRIBUTE Basic_featuretime {ok, timeout, memout, presolved, crash, other}
-@ATTRIBUTE ls_saps_featuretime {ok, timeout, memout, presolved, crash, other}
+@attribute instance_id string
+@attribute repetition numeric
+@attribute KLB {ok,timeout,memout,presolved,crash,unknown,other}
+@attribute cl {ok,timeout,memout,presolved,crash,unknown,other}
+@attribute lobjois {ok,timeout,memout,presolved,crash,unknown,other}
+@attribute DIAMETER {ok,timeout,memout,presolved,crash,unknown,other}
+@attribute CG {ok,timeout,memout,presolved,crash,unknown,other}
+@attribute Pre {ok,timeout,memout,presolved,crash,unknown,other}
+@attribute sp {ok,timeout,memout,presolved,crash,unknown,other}
+@attribute ls_gsat {ok,timeout,memout,presolved,crash,unknown,other}
+@attribute Basic {ok,timeout,memout,presolved,crash,unknown,other}
+@attribute ls_saps {ok,timeout,memout,presolved,crash,unknown,other}
 
-@DATA
+@data
 SAT_Competition2009/APPLICATION/SAT07/industrial/anbulagan/hard-unsat/total-10-19-u.cnf,1,ok,ok,ok,ok,crash,ok,ok,ok,ok,ok
 SAT_RACE2008/simon-s02b-r4b1k1.2.cnf,1,ok,ok,ok,ok,ok,ok,ok,ok,ok,ok
 SAT_Competition2011/SAT11/application/kullmann/AES/Benchmarks/128/aes_128_2_keyfind_1.cnf,1,ok,ok,ok,ok,crash,ok,ok,ok,ok,ok
-SAT_Competition2007/industrial/industrial/babic/hsatv17/hsat_vc11773.cnf,1,presolved,presolved,presolved,presolved,presolved,presolved,presolved,presolved,presolved,presolved
+SAT_Competition2007/industrial/industrial/babic/hsatv17/hsat_vc11773.cnf,1,unknown,unknown,unknown,unknown,unknown,presolved,unknown,unknown,unknown,unknown
 SAT_RACE2008/velev-vliw-sat-4.0-b4.cnf,1,ok,ok,ok,ok,crash,ok,ok,ok,ok,ok
 SAT_RACE2006/SAT-Race_TS_1/velev-sss-1.0-cl.cnf,1,ok,ok,ok,ok,crash,ok,ok,ok,ok,ok
 SAT_RACE2006/SAT-Race-Benchmarks/mizh-sha0-35-5.cnf,1,ok,ok,ok,ok,ok,ok,ok,ok,ok,ok
@@ -31,7 +31,7 @@ SAT-Race-2010-CNF/mixed/anbulagan/dated-10-19-u.cnf,1,ok,ok,ok,ok,ok,ok,ok,ok,ok
 SAT-Race-2010-CNF/software-verification/bitverif/minxorminand128.cnf,1,ok,ok,ok,ok,crash,ok,ok,ok,ok,ok
 SAT_Competition2009/APPLICATION/SAT09/APPLICATIONS/bitverif/minor/minor064.cnf,1,ok,ok,ok,ok,crash,ok,ok,ok,ok,ok
 SAT_Competition2011/SAT07/industrial/anbulagan/hard-sat/partial-10-17-s.cnf,1,ok,ok,ok,ok,crash,ok,ok,ok,ok,ok
-SAT_Competition2007/industrial/industrial/babic/dspam/dspam_dump_vc1080.cnf,1,presolved,presolved,presolved,presolved,presolved,presolved,presolved,presolved,presolved,presolved
+SAT_Competition2007/industrial/industrial/babic/dspam/dspam_dump_vc1080.cnf,1,unknown,unknown,unknown,unknown,unknown,presolved,unknown,unknown,unknown,unknown
 SAT_RACE2008/fuhs-aprove-15.cnf,1,ok,ok,ok,ok,ok,ok,ok,ok,ok,ok
 SAT_Competition2011/SAT11/application/leberre/2dimensionalstrippacking/E02F17.cnf,1,ok,ok,ok,ok,crash,ok,ok,ok,ok,ok
 SAT_Competition2011/SAT07/industrial/anbulagan/hard-unsat/dated-5-13-u.cnf,1,ok,ok,ok,ok,ok,ok,ok,ok,ok,ok
@@ -63,7 +63,7 @@ SAT_Competition2007/industrial/industrial/manolios/manol-pipe-g10bidw.cnf,1,ok,o
 SAT_RACE2006/SAT-Race-Benchmarks/manol-pipe-c7bidw_i.cnf,1,ok,ok,ok,ok,crash,ok,ok,ok,ok,ok
 SAT_Competition2009/APPLICATION/SAT07/industrial/grieu/vmpc_24.cnf,1,ok,ok,ok,ok,crash,ok,ok,ok,ok,ok
 SAT_RACE2006/SAT-Race_TS_1/simon-mixed-s02bis-01.cnf,1,ok,ok,ok,ok,ok,ok,ok,ok,ok,ok
-SAT_Competition2011/SAT-Race-2010-CNF/software-verification/nec/hard-25-U-7061.cnf,1,presolved,presolved,presolved,presolved,presolved,presolved,presolved,presolved,presolved,presolved
+SAT_Competition2011/SAT-Race-2010-CNF/software-verification/nec/hard-25-U-7061.cnf,1,unknown,unknown,unknown,unknown,unknown,presolved,unknown,unknown,unknown,unknown
 SAT_Competition2011/SAT09/APPLICATIONS/satComp09_BioInstances/rbcl_xits_08_UNSAT.cnf,1,ok,ok,ok,ok,crash,ok,ok,ok,ok,ok
 SAT_RACE2006/SAT-Race-Benchmarks/ibm-2004-1_31_2-k25.cnf,1,ok,ok,ok,ok,ok,ok,ok,ok,ok,ok
 SAT_Competition2011/SAT11/application/manthey/traffic/traffic_f_unknown.cnf,1,ok,ok,ok,ok,crash,ok,ok,ok,ok,ok
@@ -87,14 +87,14 @@ SAT_Competition2009/APPLICATION/SAT_RACE06/velev-pipe-o-uns-1.1-6.cnf,1,ok,ok,ok
 SAT_Competition2011/SAT07/industrial/IBM_FV_2002_13_rule_1/SAT_dat.k80.cnf,1,ok,ok,ok,ok,crash,ok,ok,ok,ok,ok
 SAT_Competition2011/SAT11/application/fuhs/slp-synthesis-AES/slp-synthesis-aes-bottom15.cnf,1,ok,ok,ok,ok,crash,ok,ok,ok,ok,ok
 SAT_Competition2011/SAT11/application/manthey/traffic/traffic_b_unsat.cnf,1,ok,ok,ok,ok,crash,ok,ok,ok,ok,ok
-SAT_RACE2008/babic-dspam-vc973.cnf,1,presolved,presolved,presolved,presolved,presolved,presolved,presolved,presolved,presolved,presolved
+SAT_RACE2008/babic-dspam-vc973.cnf,1,unknown,unknown,unknown,unknown,unknown,presolved,unknown,unknown,unknown,unknown
 SAT_RACE2006/SAT-Race-Benchmarks/ibm-2002-26r-k45.cnf,1,ok,ok,ok,ok,crash,ok,ok,ok,ok,ok
 SAT_Competition2009/APPLICATION/SAT09/APPLICATIONS/satComp09_BioInstances/rbcl_xits_12_UNKNOWN.cnf,1,ok,ok,ok,ok,crash,ok,ok,ok,ok,ok
 SAT_RACE2008/ibm-2004-29-k25.cnf,1,ok,ok,ok,ok,ok,ok,ok,ok,ok,ok
 SAT_Competition2009/APPLICATION/SAT09/APPLICATIONS/aprove09/AProVE09-03.cnf,1,ok,ok,ok,ok,crash,ok,ok,ok,ok,ok
 SAT_Competition2009/APPLICATION/SAT07/industrial/anbulagan/hard-unsat/dated-5-17-u.cnf,1,ok,ok,ok,ok,ok,ok,ok,ok,ok,ok
 SAT_Competition2011/SAT11/application/fuhs/slp-synthesis-AES/slp-synthesis-aes-top22.cnf,1,ok,ok,ok,ok,crash,ok,ok,ok,ok,ok
-SAT-Race-2010-CNF/software-verification/nec/hard-11-U-7061.cnf,1,presolved,presolved,presolved,presolved,presolved,presolved,presolved,presolved,presolved,presolved
+SAT-Race-2010-CNF/software-verification/nec/hard-11-U-7061.cnf,1,unknown,unknown,unknown,unknown,unknown,presolved,unknown,unknown,unknown,unknown
 SAT_Competition2009/APPLICATION/SAT07/industrial/palacios/hard/safe-50-h49-unsat.cnf,1,ok,ok,ok,ok,crash,ok,ok,ok,ok,ok
 SAT_Competition2011/SAT11/application/jarvisalo/AAAI2010-SATPlanning/aaai10-planning-ipc5-pipesworld-18-step15.cnf,1,ok,ok,ok,ok,crash,ok,ok,ok,ok,ok
 SAT_Competition2009/APPLICATION/SAT09/APPLICATIONS/aprove09/AProVE09-15.cnf,1,ok,ok,ok,ok,crash,ok,ok,ok,ok,ok
@@ -108,24 +108,24 @@ SAT_RACE2008/mizh-md5-48-2.cnf,1,ok,ok,ok,ok,ok,ok,ok,ok,ok,ok
 SAT_RACE2006/SAT-Race_TS_2/miza-sr06-md5-47-03.cnf,1,ok,ok,ok,ok,ok,ok,ok,ok,ok,ok
 SAT-Race-2010-CNF/software-verification/babic/dspam_dump_vc972.cnf,1,ok,ok,ok,ok,crash,ok,ok,ok,ok,ok
 SAT_RACE2008/manol-pipe-f7nidw.cnf,1,ok,ok,ok,ok,crash,ok,ok,ok,ok,ok
-SAT_Competition2007/industrial/industrial/babic/hsatv17/hsat_vc12070.cnf,1,presolved,presolved,presolved,presolved,presolved,presolved,presolved,presolved,presolved,presolved
+SAT_Competition2007/industrial/industrial/babic/hsatv17/hsat_vc12070.cnf,1,unknown,unknown,unknown,unknown,unknown,presolved,unknown,unknown,unknown,unknown
 SAT_Competition2007/industrial/industrial/babic/xinetd/itox_vc909.cnf,1,ok,ok,ok,ok,crash,ok,ok,ok,ok,ok
 SAT_RACE2006/SAT-Race_TS_1/narai-vpn-10s.cnf,1,ok,ok,ok,ok,crash,ok,ok,ok,ok,ok
 SAT_Competition2011/SAT11/application/jarvisalo/HWMCC10-combination-timeframe-expansion/hwmcc10-timeframe-expansion-k50-bjrb07amba2andenv-tseitin.cnf,1,ok,ok,ok,ok,crash,ok,ok,ok,ok,ok
 SAT_Competition2011/SAT11/application/jarvisalo/AAAI2010-SATPlanning/aaai10-planning-ipc5-pipesworld-12-step15.cnf,1,ok,ok,ok,ok,crash,ok,ok,ok,ok,ok
 SAT_Competition2009/APPLICATION/SAT09/APPLICATIONS/bitverif/icbrt/icbrt1_32.cnf,1,ok,ok,ok,ok,ok,ok,ok,ok,ok,ok
 SAT-Race-2010-CNF/mixed/diagnosis/UCG-20-10p1.cnf,1,ok,ok,ok,ok,crash,ok,ok,ok,ok,ok
-SAT_Competition2011/SAT07/industrial/babic/hsatv17/hsat_vc12062.cnf,1,presolved,presolved,presolved,presolved,presolved,presolved,presolved,presolved,presolved,presolved
+SAT_Competition2011/SAT07/industrial/babic/hsatv17/hsat_vc12062.cnf,1,unknown,unknown,unknown,unknown,unknown,presolved,unknown,unknown,unknown,unknown
 SAT_RACE2008/velev-vliw-uns-2.0-iq1.cnf,1,ok,ok,ok,ok,crash,ok,ok,ok,ok,ok
 SAT_RACE2006/SAT-Race_TS_1/velev-pipe-1.1-03.cnf,1,ok,ok,ok,ok,crash,ok,ok,ok,ok,ok
 SAT_Competition2009/APPLICATION/SAT09/APPLICATIONS/satComp09_BioInstances/rpoc_xits_12_UNKNOWN.cnf,1,ok,ok,ok,ok,crash,ok,ok,ok,ok,ok
 SAT_Competition2009/APPLICATION/SAT_RACE06/manol-pipe-f10ni.cnf,1,ok,ok,ok,ok,crash,ok,ok,ok,ok,ok
-SAT_Competition2011/SAT11/application/jarvisalo/smtqfbv-aigs/smtlib-qfbv-aigs-ext_con_032_008_0256-tseitin.cnf,1,presolved,presolved,presolved,presolved,presolved,presolved,presolved,presolved,presolved,presolved
+SAT_Competition2011/SAT11/application/jarvisalo/smtqfbv-aigs/smtlib-qfbv-aigs-ext_con_032_008_0256-tseitin.cnf,1,unknown,unknown,unknown,unknown,unknown,presolved,unknown,unknown,unknown,unknown
 SAT_Competition2009/APPLICATION/SAT07/industrial/palacios/uts/uts-l05-ipc5-h27-unknown.cnf,1,ok,ok,ok,ok,crash,ok,ok,ok,ok,ok
 SAT-Race-2010-CNF/cryptography/mizh/sha0_36_5.cnf,1,ok,ok,ok,ok,ok,ok,ok,ok,ok,ok
 SAT_Competition2011/SAT_RACE06/ibm-2002-21r-k95.cnf,1,ok,ok,ok,ok,crash,ok,ok,ok,ok,ok
 SAT_Competition2011/SAT09/APPLICATIONS/bitverif/countbitsrotate/countbitsrotate032.cnf,1,ok,ok,ok,ok,ok,ok,ok,ok,ok,ok
-SAT_Competition2007/industrial/industrial/babic/hsatv17/hsat_vc11803.cnf,1,presolved,presolved,presolved,presolved,presolved,presolved,presolved,presolved,presolved,presolved
+SAT_Competition2007/industrial/industrial/babic/hsatv17/hsat_vc11803.cnf,1,unknown,unknown,unknown,unknown,unknown,presolved,unknown,unknown,unknown,unknown
 SAT_Competition2011/SAT-Race-2010-CNF/software-verification/nec/hard-18-U-10652.cnf,1,ok,ok,ok,ok,crash,ok,ok,ok,ok,ok
 SAT_Competition2007/industrial/industrial/anbulagan/hard-unsat/partial-5-17-u.cnf,1,ok,ok,ok,ok,ok,ok,ok,ok,ok,ok
 SAT_RACE2006/SAT-Race-Benchmarks/velev-pipe-uns-1.1-7.cnf,1,ok,ok,ok,ok,crash,ok,ok,ok,ok,ok
@@ -142,7 +142,7 @@ SAT_Competition2011/SAT11/application/leberre/2dimensionalstrippacking/E02F20.cn
 SAT_RACE2008/schup-l2s-bc56s-1-k391.cnf,1,ok,ok,ok,ok,crash,ok,ok,ok,ok,ok
 SAT_Competition2011/SAT09/APPLICATIONS/crypto/desgen/gss-22-s100.cnf,1,ok,ok,ok,ok,ok,ok,ok,ok,ok,ok
 SAT_Competition2007/industrial/industrial/crypto/mizh-md5-47-4.cnf,1,ok,ok,ok,ok,ok,ok,ok,ok,ok,ok
-SAT_RACE2008/babic-dspam-vc1080.cnf,1,presolved,presolved,presolved,presolved,presolved,presolved,presolved,presolved,presolved,presolved
+SAT_RACE2008/babic-dspam-vc1080.cnf,1,unknown,unknown,unknown,unknown,unknown,presolved,unknown,unknown,unknown,unknown
 SAT_Competition2007/industrial/industrial/babic/dspam/dspam_dump_vc972.cnf,1,ok,ok,ok,ok,crash,ok,ok,ok,ok,ok
 SAT_RACE2006/SAT-Race_TS_1/velev-fvp-sat-3.0-07.cnf,1,ok,ok,ok,ok,crash,ok,ok,ok,ok,ok
 SAT_RACE2006/SAT-Race_TS_2/manol-pipe-c6ni_s.cnf,1,ok,ok,ok,ok,crash,ok,ok,ok,ok,ok
@@ -166,7 +166,7 @@ SAT_Competition2009/APPLICATION/SAT09/APPLICATIONS/bitverif/maxxororand/maxxoror
 SAT_Competition2009/APPLICATION/SAT07/industrial/jarvisalo/eq.atree.braun.10.unsat.cnf,1,ok,ok,ok,ok,ok,ok,ok,ok,ok,ok
 SAT_Competition2011/SAT11/application/rintanen/SATPlanning/openstacks-sequencedstrips-nonadl-nonnegated-os-sequencedstrips-p30_3.025-NOTKNOWN.cnf,1,ok,ok,ok,ok,crash,ok,ok,ok,ok,ok
 SAT_Competition2009/APPLICATION/SAT09/APPLICATIONS/bitverif/maxor/maxor128.cnf,1,ok,ok,ok,ok,crash,ok,ok,ok,ok,ok
-SAT-Race-2010-CNF/software-verification/post/zfcp.cnf,1,presolved,presolved,presolved,presolved,presolved,presolved,presolved,presolved,presolved,presolved
+SAT-Race-2010-CNF/software-verification/post/zfcp.cnf,1,unknown,unknown,unknown,unknown,unknown,presolved,unknown,unknown,unknown,unknown
 SAT_Competition2007/industrial/industrial/palacios/uts/uts-l06-ipc5-h32-unknown.cnf,1,ok,ok,ok,ok,crash,ok,ok,ok,ok,ok
 SAT_Competition2011/SAT04/industrial/velev/pipe-sat-1-1/12pipe_bug4_q0.used-as.sat04-723.cnf,1,ok,ok,ok,ok,crash,ok,ok,ok,ok,ok
 SAT_Competition2007/industrial/industrial/palacios/hard/safe-50-h49-unsat.cnf,1,ok,ok,ok,ok,crash,ok,ok,ok,ok,ok
@@ -179,7 +179,7 @@ SAT_Competition2007/industrial/industrial/manolios/manol-pipe-f7idw.cnf,1,ok,ok,
 SAT_RACE2006/SAT-Race-Benchmarks/velev-pipe-uns-1.0-9.cnf,1,ok,ok,ok,ok,crash,ok,ok,ok,ok,ok
 SAT_Competition2011/SAT11/application/rintanen/SATPlanning/blocks-blocks-37-1.150-SAT.cnf,1,ok,ok,ok,ok,crash,ok,ok,ok,ok,ok
 SAT_RACE2006/SAT-Race-Benchmarks/schup-l2s-guid-1-k56.cnf,1,ok,ok,ok,ok,ok,ok,ok,ok,ok,ok
-SAT_Competition2007/industrial/industrial/babic/hsatv17/hsat_vc11813.cnf,1,presolved,presolved,presolved,presolved,presolved,presolved,presolved,presolved,presolved,presolved
+SAT_Competition2007/industrial/industrial/babic/hsatv17/hsat_vc11813.cnf,1,unknown,unknown,unknown,unknown,unknown,presolved,unknown,unknown,unknown,unknown
 SAT-Race-2010-CNF/hardware-verification/velev/12pipe_q0_k.cnf,1,ok,ok,ok,ok,crash,ok,ok,ok,ok,ok
 SAT_Competition2011/SAT11/application/fuhs/slp-synthesis-AES/slp-synthesis-aes-bottom22.cnf,1,ok,ok,ok,ok,crash,ok,ok,ok,ok,ok
 SAT_Competition2007/industrial/industrial/anbulagan/hard-unsat/dated-10-17-u.cnf,1,ok,ok,ok,ok,ok,ok,ok,ok,ok,ok
@@ -189,7 +189,7 @@ SAT_Competition2011/SAT_RACE08/cnf/manol-pipe-c6bidw_i.cnf,1,ok,ok,ok,ok,crash,o
 SAT_Competition2007/industrial/industrial/fuhs/hard/AProVE07-08.cnf,1,ok,ok,ok,ok,ok,ok,ok,ok,ok,ok
 SAT_RACE2006/SAT-Race-Benchmarks/ibm-2004-2_14-k45.cnf,1,ok,ok,ok,ok,crash,ok,ok,ok,ok,ok
 SAT_Competition2009/APPLICATION/SAT09/APPLICATIONS/bitverif/countbitsarray/countbitsarray08_32.cnf,1,ok,ok,ok,ok,ok,ok,ok,ok,ok,ok
-SAT_Competition2009/APPLICATION/SAT07/industrial/babic/hsatv17/hsat_vc11803.cnf,1,presolved,presolved,presolved,presolved,presolved,presolved,presolved,presolved,presolved,presolved
+SAT_Competition2009/APPLICATION/SAT07/industrial/babic/hsatv17/hsat_vc11803.cnf,1,unknown,unknown,unknown,unknown,unknown,presolved,unknown,unknown,unknown,unknown
 SAT_Competition2007/industrial/industrial/anbulagan/hard-unsat/partial-10-15-u.cnf,1,ok,ok,ok,ok,ok,ok,ok,ok,ok,ok
 SAT_Competition2011/SAT11/application/jarvisalo/HWMCC10-combination-timeframe-expansion/hwmcc10-timeframe-expansion-k45-pdtviseisenberg1-tseitin.cnf,1,ok,ok,ok,ok,crash,ok,ok,ok,ok,ok
 SAT_RACE2008/ibm-2002-22r-k60.cnf,1,ok,ok,ok,ok,crash,ok,ok,ok,ok,ok
@@ -278,7 +278,7 @@ SAT_Competition2011/SAT11/application/rintanen/SATPlanning/sokoban-sequential-p1
 SAT-Race-2010-CNF/cryptography/mizh/md5_47_4.cnf,1,ok,ok,ok,ok,ok,ok,ok,ok,ok,ok
 SAT_Competition2007/industrial/industrial/palacios/medium/emptyroom-4-h21-unsat.cnf,1,ok,ok,ok,ok,crash,ok,ok,ok,ok,ok
 SAT_Competition2009/APPLICATION/SAT_RACE08/cnf/een-tip-sat-texas-tp-5e.cnf,1,ok,ok,ok,ok,ok,ok,ok,ok,ok,ok
-SAT_Competition2007/industrial/industrial/babic/xinetd/itox_vc979.cnf,1,presolved,presolved,presolved,presolved,presolved,presolved,presolved,presolved,presolved,presolved
+SAT_Competition2007/industrial/industrial/babic/xinetd/itox_vc979.cnf,1,unknown,unknown,unknown,unknown,unknown,presolved,unknown,unknown,unknown,unknown
 SAT_Competition2011/SAT09/APPLICATIONS/satComp09_BioInstances/rbcl_xits_18_SAT.cnf,1,ok,ok,ok,ok,crash,ok,ok,ok,ok,ok
 SAT_Competition2009/APPLICATION/SAT09/APPLICATIONS/diagnosis/UCG-20-10p1.cnf,1,ok,ok,ok,ok,crash,ok,ok,ok,ok,ok
 SAT_Competition2009/APPLICATION/SAT09/APPLICATIONS/bitverif/smulo/smulo128.cnf,1,ok,ok,ok,ok,crash,ok,ok,ok,ok,ok
@@ -286,7 +286,7 @@ SAT_Competition2007/industrial/industrial/fuhs/medium/AProVE07-06.cnf,1,ok,ok,ok
 SAT_Competition2007/industrial/industrial/grieu/vmpc_27.cnf,1,ok,ok,ok,ok,crash,ok,ok,ok,ok,ok
 SAT-Race-2010-CNF/software-verification/nec/hard-12-U-7061.cnf,1,ok,ok,ok,ok,crash,ok,ok,ok,ok,ok
 SAT_Competition2011/SAT02/industrial/goldberg/rand_net/rand_net60-30-1.shuffled.cnf,1,ok,ok,ok,ok,ok,ok,ok,ok,ok,ok
-SAT_Competition2007/industrial/industrial/babic/dspam/dspam_dump_vc949.cnf,1,presolved,presolved,presolved,presolved,presolved,presolved,presolved,presolved,presolved,presolved
+SAT_Competition2007/industrial/industrial/babic/dspam/dspam_dump_vc949.cnf,1,unknown,unknown,unknown,unknown,unknown,presolved,unknown,unknown,unknown,unknown
 SAT_RACE2008/ibm-2002-04r-k80.cnf,1,ok,ok,ok,ok,crash,ok,ok,ok,ok,ok
 SAT_Competition2007/industrial/industrial/anbulagan/hard-sat/partial-10-15-s.cnf,1,ok,ok,ok,ok,ok,ok,ok,ok,ok,ok
 SAT_RACE2006/SAT-Race-Benchmarks/ibm-2004-03-k70.cnf,1,ok,ok,ok,ok,crash,ok,ok,ok,ok,ok
@@ -366,7 +366,7 @@ SAT_Competition2009/APPLICATION/SAT07/industrial/palacios/medium/cube-11-h13-uns
 SAT_RACE2006/SAT-Race_TS_1/velev-pipe-1.0-08.cnf,1,ok,ok,ok,ok,crash,ok,ok,ok,ok,ok
 SAT_Competition2011/SAT-Race-2010-CNF/cryptography/mizh/sha0_36_5.cnf,1,ok,ok,ok,ok,ok,ok,ok,ok,ok,ok
 SAT_RACE2006/SAT-Race_TS_1/velev-live-sat-1.0-03.cnf,1,ok,ok,ok,ok,crash,ok,ok,ok,ok,ok
-SAT_Competition2011/SAT09/APPLICATIONS/c32sat/post-cbmc-zfcp-2.8-u2-noholes.cnf,1,presolved,presolved,presolved,presolved,presolved,presolved,presolved,presolved,presolved,presolved
+SAT_Competition2011/SAT09/APPLICATIONS/c32sat/post-cbmc-zfcp-2.8-u2-noholes.cnf,1,unknown,unknown,presolved,unknown,unknown,unknown,unknown,unknown,unknown,unknown
 SAT_Competition2007/industrial/industrial/anbulagan/hard-sat/partial-10-17-s.cnf,1,ok,ok,ok,ok,crash,ok,ok,ok,ok,ok
 SAT_Competition2009/APPLICATION/SAT07/industrial/palacios/hard/sortnet-8-ipc5-h19-sat.cnf,1,ok,ok,ok,ok,crash,ok,ok,ok,ok,ok
 SAT-Race-2010-CNF/mixed/grieu/vmpc_27.cnf,1,ok,ok,ok,ok,crash,ok,ok,ok,ok,ok
@@ -415,7 +415,7 @@ SAT_Competition2009/APPLICATION/SAT_RACE06/mizh-sha0-36-2.cnf,1,ok,ok,ok,ok,ok,o
 SAT_RACE2006/SAT-Race_TS_1/velev-npe-1.0-03.cnf,1,ok,ok,ok,ok,crash,ok,ok,ok,ok,ok
 SAT_Competition2007/industrial/industrial/fuhs/medium/AProVE07-22.cnf,1,ok,ok,ok,ok,ok,ok,ok,ok,ok,ok
 SAT_Competition2007/industrial/industrial/palacios/uts/uts-l06-ipc5-h31-unknown.cnf,1,ok,ok,ok,ok,crash,ok,ok,ok,ok,ok
-SAT_Competition2009/APPLICATION/SAT07/industrial/babic/xinetd/xinetd_vc56703.cnf,1,presolved,presolved,presolved,presolved,presolved,presolved,presolved,presolved,presolved,presolved
+SAT_Competition2009/APPLICATION/SAT07/industrial/babic/xinetd/xinetd_vc56703.cnf,1,unknown,unknown,unknown,unknown,unknown,presolved,unknown,unknown,unknown,unknown
 SAT_RACE2006/SAT-Race_TS_1/velev-eng-uns-1.0-04a.cnf,1,ok,ok,ok,ok,crash,ok,ok,ok,ok,ok
 SAT_RACE2006/SAT-Race_TS_1/velev-pipe-uns-1.1-07.cnf,1,ok,ok,ok,ok,crash,ok,ok,ok,ok,ok
 SAT_Competition2009/APPLICATION/SAT07/industrial/vliw_sat_4.0/9vliw_m_9stages_iq3_C1_bug5.cnf,1,ok,ok,ok,ok,crash,ok,ok,ok,ok,ok
@@ -425,7 +425,7 @@ SAT_Competition2011/SAT_RACE06/velev-pipe-o-uns-1.0-7.cnf,1,ok,ok,ok,ok,crash,ok
 SAT-Race-2010-CNF/hardware-verification/velev/1dlx_c_iq57_a.cnf,1,ok,ok,ok,ok,crash,ok,ok,ok,ok,ok
 SAT_Competition2011/SAT07/industrial/IBM_FV_2004_30/IBM_FV_2004_rule_batch_30_SAT_dat.k80.cnf,1,ok,ok,ok,ok,crash,ok,ok,ok,ok,ok
 SAT_RACE2006/SAT-Race-Benchmarks/een-pico-prop01-75.cnf,1,ok,ok,ok,ok,crash,ok,ok,ok,ok,ok
-SAT_Competition2011/SAT07/industrial/babic/dspam/dspam_dump_vc949.cnf,1,presolved,presolved,presolved,presolved,presolved,presolved,presolved,presolved,presolved,presolved
+SAT_Competition2011/SAT07/industrial/babic/dspam/dspam_dump_vc949.cnf,1,unknown,unknown,unknown,unknown,unknown,presolved,unknown,unknown,unknown,unknown
 SAT_RACE2006/SAT-Race-Benchmarks/vange-col-inithx.i.1-cn-54.cnf,1,ok,ok,ok,ok,crash,ok,ok,ok,ok,ok
 SAT_Competition2011/SAT09/APPLICATIONS/diagnosis/UR-10-10p1.cnf,1,ok,ok,ok,ok,ok,ok,ok,ok,ok,ok
 SAT_Competition2011/SAT-Race-2010-CNF/hardware-verification/velev/1dlx_c_iq57_a.cnf,1,ok,ok,ok,ok,crash,ok,ok,ok,ok,ok
@@ -470,7 +470,7 @@ SAT_Competition2009/APPLICATION/SAT09/APPLICATIONS/diagnosis/UTI-20-10p1.cnf,1,o
 SAT_Competition2009/APPLICATION/SAT09/APPLICATIONS/aprove09/AProVE09-10.cnf,1,ok,ok,ok,ok,crash,ok,ok,ok,ok,ok
 SAT_Competition2011/SAT07/industrial/IBM_FV_2004_30/IBM_FV_2004_rule_batch_30_SAT_dat.k55.cnf,1,ok,ok,ok,ok,crash,ok,ok,ok,ok,ok
 SAT_Competition2009/APPLICATION/SAT_RACE06/velev-pipe-uns-1.0-8.cnf,1,ok,ok,ok,ok,crash,ok,ok,ok,ok,ok
-SAT_Competition2007/industrial/industrial/babic/hsatv17/hsat_vc12072.cnf,1,presolved,presolved,presolved,presolved,presolved,presolved,presolved,presolved,presolved,presolved
+SAT_Competition2007/industrial/industrial/babic/hsatv17/hsat_vc12072.cnf,1,unknown,unknown,unknown,unknown,unknown,presolved,unknown,unknown,unknown,unknown
 SAT_Competition2011/SAT11/application/jarvisalo/HWMCC10-combination-timeframe-expansion/hwmcc10-timeframe-expansion-k45-pdtvissoap1-tseitin.cnf,1,ok,ok,ok,ok,crash,ok,ok,ok,ok,ok
 SAT_RACE2006/SAT-Race-Benchmarks/manol-pipe-g6bi.cnf,1,ok,ok,ok,ok,ok,ok,ok,ok,ok,ok
 SAT_Competition2009/APPLICATION/SAT09/APPLICATIONS/satComp09_BioInstances/rbcl_xits_09_UNKNOWN.cnf,1,ok,ok,ok,ok,crash,ok,ok,ok,ok,ok
@@ -485,7 +485,7 @@ SAT_Competition2009/APPLICATION/SAT07/industrial/vliw_sat_4.0/9vliw_m_9stages_iq
 SAT_RACE2006/SAT-Race-Benchmarks/velev-pipe-sat-1.0-b7.cnf,1,ok,ok,ok,ok,crash,ok,ok,ok,ok,ok
 SAT_Competition2011/SAT03/industrial/kukula/addm_bench/am_7_7.shuffled-as.sat03-363.cnf,1,ok,ok,ok,ok,ok,ok,ok,ok,ok,ok
 SAT_Competition2009/APPLICATION/SAT_RACE08/cnf/manol-pipe-g10nid.cnf,1,ok,ok,ok,ok,crash,ok,ok,ok,ok,ok
-SAT_Competition2007/industrial/industrial/babic/dspam/dspam_dump_vc950.cnf,1,presolved,presolved,presolved,presolved,presolved,presolved,presolved,presolved,presolved,presolved
+SAT_Competition2007/industrial/industrial/babic/dspam/dspam_dump_vc950.cnf,1,unknown,unknown,unknown,unknown,unknown,presolved,unknown,unknown,unknown,unknown
 SAT_Competition2011/SAT02/industrial/goldberg/rand_net/rand_net60-25-10.shuffled.cnf,1,ok,ok,ok,ok,ok,ok,ok,ok,ok,ok
 SAT_Competition2007/industrial/industrial/crypto/mizh-sha0-36-2.cnf,1,ok,ok,ok,ok,ok,ok,ok,ok,ok,ok
 SAT_Competition2009/APPLICATION/SAT09/APPLICATIONS/aprove09/AProVE09-24.cnf,1,ok,ok,ok,ok,crash,ok,ok,ok,ok,ok
@@ -514,7 +514,7 @@ SAT_Competition2011/SAT11/application/jarvisalo/HWMCC10-combination-timeframe-ex
 SAT_Competition2011/SAT02/industrial/goldberg/rand_net/rand_net60-40-10.shuffled.cnf,1,ok,ok,ok,ok,ok,ok,ok,ok,ok,ok
 SAT_Competition2011/SAT09/APPLICATIONS/satComp09_BioInstances/ndhf_xits_19_UNKNOWN.cnf,1,ok,ok,ok,ok,crash,ok,ok,ok,ok,ok
 SAT_RACE2006/SAT-Race_TS_1/manol-pipe-c8_i.cnf,1,ok,ok,ok,ok,ok,ok,ok,ok,ok,ok
-SAT_RACE2008/post-cbmc-zfcp-2.8-u2.cnf,1,presolved,presolved,presolved,presolved,presolved,presolved,presolved,presolved,presolved,presolved
+SAT_RACE2008/post-cbmc-zfcp-2.8-u2.cnf,1,unknown,unknown,presolved,unknown,unknown,unknown,unknown,unknown,unknown,unknown
 SAT_RACE2006/SAT-Race_TS_2/een-pico-sr06-pr02-02.cnf,1,ok,ok,ok,ok,crash,ok,ok,ok,ok,ok
 SAT-Race-2010-CNF/software-verification/nec/hard-9-U-10652.cnf,1,ok,ok,ok,ok,crash,ok,ok,ok,ok,ok
 SAT_RACE2006/SAT-Race-Benchmarks/mizh-sha0-35-2.cnf,1,ok,ok,ok,ok,ok,ok,ok,ok,ok,ok
@@ -536,7 +536,7 @@ SAT_Competition2007/industrial/industrial/palacios/hard/sortnet-6-ipc5-h11-unsat
 SAT_RACE2006/SAT-Race_TS_2/manol-pipe-cha05-143.cnf,1,ok,ok,ok,ok,crash,ok,ok,ok,ok,ok
 SAT_Competition2011/SAT07/industrial/vliw_sat_4.0/9vliw_m_9stages_iq3_C1_bug5.cnf,1,ok,ok,ok,ok,crash,ok,ok,ok,ok,ok
 SAT_Competition2009/APPLICATION/SAT09/APPLICATIONS/bitverif/countbitssrl/countbitssrl032.cnf,1,ok,ok,ok,ok,ok,ok,ok,ok,ok,ok
-SAT_Competition2007/industrial/industrial/babic/hsatv17/hsat_vc11935.cnf,1,presolved,presolved,presolved,presolved,presolved,presolved,presolved,presolved,presolved,presolved
+SAT_Competition2007/industrial/industrial/babic/hsatv17/hsat_vc11935.cnf,1,unknown,unknown,unknown,unknown,unknown,presolved,unknown,unknown,unknown,unknown
 SAT_Competition2011/SAT09/APPLICATIONS/c32sat/post-c32s-gcdm16-23.cnf,1,ok,ok,ok,ok,crash,ok,ok,ok,ok,ok
 SAT_Competition2011/SAT11/application/fuhs/slp-synthesis-AES/slp-synthesis-aes-bottom17.cnf,1,ok,ok,ok,ok,crash,ok,ok,ok,ok,ok
 SAT_Competition2011/SAT11/application/jarvisalo/AAAI2010-SATPlanning/aaai10-planning-ipc5-pipesworld-27-step13.cnf,1,ok,ok,ok,ok,crash,ok,ok,ok,ok,ok
@@ -612,9 +612,9 @@ SAT_Competition2009/APPLICATION/SAT09/APPLICATIONS/c32sat/post-cbmc-aes-ele-noho
 SAT_Competition2011/SAT05/industrial/grieu05/vmpc/vmpc_35.renamed-as.sat05-1921.cnf,1,ok,ok,ok,ok,crash,ok,ok,ok,ok,ok
 SAT_RACE2008/post-c32s-gcdm16-23.cnf,1,ok,ok,ok,ok,crash,ok,ok,ok,ok,ok
 SAT_RACE2006/SAT-Race_TS_2/velev-pipe-uns-1.0-14.cnf,1,ok,ok,ok,ok,crash,ok,ok,ok,ok,ok
-SAT_Competition2011/SAT11/application/leberre/2dimensionalstrippacking/E07N15.cnf,1,presolved,presolved,presolved,presolved,presolved,presolved,presolved,presolved,presolved,presolved
+SAT_Competition2011/SAT11/application/leberre/2dimensionalstrippacking/E07N15.cnf,1,unknown,unknown,unknown,unknown,unknown,presolved,unknown,unknown,unknown,unknown
 SAT_Competition2009/APPLICATION/SAT_RACE08/cnf/vange-col-abb313GPIA-9-c.cnf,1,ok,ok,ok,ok,crash,ok,ok,ok,ok,ok
-SAT_Competition2007/industrial/industrial/babic/dspam/dspam_dump_vc1081.cnf,1,presolved,presolved,presolved,presolved,presolved,presolved,presolved,presolved,presolved,presolved
+SAT_Competition2007/industrial/industrial/babic/dspam/dspam_dump_vc1081.cnf,1,unknown,unknown,unknown,unknown,unknown,presolved,unknown,unknown,unknown,unknown
 SAT_RACE2006/SAT-Race_TS_2/velev-pipe-sat-1.1-01.cnf,1,ok,ok,ok,ok,crash,ok,ok,ok,ok,ok
 SAT_Competition2009/APPLICATION/SAT09/APPLICATIONS/crypto/desgen/gss-31-s100.cnf,1,ok,ok,ok,ok,ok,ok,ok,ok,ok,ok
 SAT_Competition2009/APPLICATION/SAT09/APPLICATIONS/aprove09/AProVE09-22.cnf,1,ok,ok,ok,ok,ok,ok,ok,ok,ok,ok
@@ -628,7 +628,7 @@ SAT-Race-2010-CNF/hardware-verification/manolios/f7idw.cnf,1,ok,ok,ok,ok,crash,o
 SAT-Race-2010-CNF/hardware-verification/manolios/c7n.cnf,1,ok,ok,ok,ok,crash,ok,ok,ok,ok,ok
 SAT_RACE2008/mizh-md5-47-5.cnf,1,ok,ok,ok,ok,ok,ok,ok,ok,ok,ok
 SAT_Competition2011/SAT11/application/leberre/2dimensionalstrippacking/E05F20.cnf,1,ok,ok,ok,ok,crash,ok,ok,ok,ok,ok
-SAT_Competition2007/industrial/industrial/babic/hsatv17/hsat_vc12016.cnf,1,presolved,presolved,presolved,presolved,presolved,presolved,presolved,presolved,presolved,presolved
+SAT_Competition2007/industrial/industrial/babic/hsatv17/hsat_vc12016.cnf,1,unknown,unknown,unknown,unknown,unknown,presolved,unknown,unknown,unknown,unknown
 SAT_Competition2009/APPLICATION/SAT09/APPLICATIONS/bioinfo/q_query_3_l43_lambda.cnf,1,ok,ok,ok,ok,crash,ok,ok,ok,ok,ok
 SAT-Race-2010-CNF/hardware-verification/manolios/c8idw_s.cnf,1,ok,ok,ok,ok,crash,ok,ok,ok,ok,ok
 SAT_RACE2008/manol-pipe-g8nidw.cnf,1,ok,ok,ok,ok,crash,ok,ok,ok,ok,ok
@@ -636,7 +636,7 @@ SAT_Competition2007/industrial/industrial/babic/xinetd/itox_vc1130.cnf,1,ok,ok,o
 SAT_Competition2011/SAT09/APPLICATIONS/diagnosis/UTI-20-10p0.cnf,1,ok,ok,ok,ok,crash,ok,ok,ok,ok,ok
 SAT_Competition2011/SAT05/industrial/grieu05/vmpc/vmpc_25.renamed-as.sat05-1913.cnf,1,ok,ok,ok,ok,crash,ok,ok,ok,ok,ok
 SAT_Competition2011/SAT07/industrial/anbulagan/hard-unsat/dated-10-17-u.cnf,1,ok,ok,ok,ok,ok,ok,ok,ok,ok,ok
-SAT_Competition2007/industrial/industrial/babic/xinetd/itox_vc1216.cnf,1,presolved,presolved,presolved,presolved,presolved,presolved,presolved,presolved,presolved,presolved
+SAT_Competition2007/industrial/industrial/babic/xinetd/itox_vc1216.cnf,1,unknown,unknown,unknown,unknown,unknown,presolved,unknown,unknown,unknown,unknown
 SAT-Race-2010-CNF/mixed/bioinf/ndhf_xits_13_UNSAT.cnf,1,ok,ok,ok,ok,crash,ok,ok,ok,ok,ok
 SAT_RACE2006/SAT-Race_TS_1/velev-pipe-1.0-09.cnf,1,ok,ok,ok,ok,crash,ok,ok,ok,ok,ok
 SAT_RACE2006/SAT-Race_TS_2/aloul-sr06-chnl10-13.cnf,1,ok,ok,ok,ok,ok,ok,ok,ok,ok,ok
@@ -746,7 +746,7 @@ SAT_Competition2011/SAT02/industrial/aloul/Homer/homer16.shuffled.cnf,1,ok,ok,ok
 SAT_Competition2009/APPLICATION/SAT09/APPLICATIONS/diagnosis/UR-20-10p1.cnf,1,ok,ok,ok,ok,crash,ok,ok,ok,ok,ok
 SAT_Competition2011/SAT11/application/leberre/2dimensionalstrippacking/E04F20.cnf,1,ok,ok,ok,ok,crash,ok,ok,ok,ok,ok
 SAT_Competition2009/APPLICATION/SAT07/industrial/anbulagan/hard-unsat/total-10-17-u.cnf,1,ok,ok,ok,ok,ok,ok,ok,ok,ok,ok
-SAT_Competition2007/industrial/industrial/babic/hsatv17/hsat_vc11944.cnf,1,presolved,presolved,presolved,presolved,presolved,presolved,presolved,presolved,presolved,presolved
+SAT_Competition2007/industrial/industrial/babic/hsatv17/hsat_vc11944.cnf,1,unknown,unknown,unknown,unknown,unknown,presolved,unknown,unknown,unknown,unknown
 SAT_Competition2011/SAT11/application/fuhs/AProVE11/AProVE11-11.cnf,1,ok,ok,ok,ok,crash,ok,ok,ok,ok,ok
 SAT-Race-2010-CNF/hardware-verification/manolios/f6bid.cnf,1,ok,ok,ok,ok,crash,ok,ok,ok,ok,ok
 SAT_RACE2006/SAT-Race_TS_2/velev-dlx-uns-1.0-05.cnf,1,ok,ok,ok,ok,crash,ok,ok,ok,ok,ok
@@ -788,14 +788,14 @@ SAT_RACE2006/SAT-Race-Benchmarks/ibm-2004-26-k25.cnf,1,ok,ok,ok,ok,crash,ok,ok,o
 SAT_Competition2011/SAT04/industrial/hoonsang/vis-bmc/dekker.used-as.sat04-989.cnf,1,ok,ok,ok,ok,crash,ok,ok,ok,ok,ok
 SAT_Competition2011/SAT04/industrial/velev/pipe-sat-1-1/12pipe_bug6_q0.used-as.sat04-725.cnf,1,ok,ok,ok,ok,crash,ok,ok,ok,ok,ok
 SAT_Competition2007/industrial/industrial/anbulagan/diag-sat/total-5-13-s.cnf,1,ok,ok,ok,ok,ok,ok,ok,ok,ok,ok
-SAT_Competition2007/industrial/industrial/babic/hsatv17/hsat_vc12062.cnf,1,presolved,presolved,presolved,presolved,presolved,presolved,presolved,presolved,presolved,presolved
+SAT_Competition2007/industrial/industrial/babic/hsatv17/hsat_vc12062.cnf,1,unknown,unknown,unknown,unknown,unknown,presolved,unknown,unknown,unknown,unknown
 SAT_Competition2009/APPLICATION/SAT09/APPLICATIONS/bioinfo/q_query_3_L80_coli.sat.cnf,1,ok,ok,ok,ok,crash,ok,ok,ok,ok,ok
 SAT-Race-2010-CNF/software-verification/nec/hard-2-U-10652.cnf,1,ok,ok,ok,ok,crash,ok,ok,ok,ok,ok
 SAT_Competition2009/APPLICATION/SAT09/APPLICATIONS/crypto/desgen/gss-21-s100.cnf,1,ok,ok,ok,ok,ok,ok,ok,ok,ok,ok
 SAT_RACE2008/ibm-2004-1_11-k80.cnf,1,ok,ok,ok,ok,crash,ok,ok,ok,ok,ok
 SAT_Competition2009/APPLICATION/SAT09/APPLICATIONS/aprove09/AProVE09-07.cnf,1,ok,ok,ok,ok,ok,ok,ok,ok,ok,ok
 SAT_RACE2008/manol-pipe-g10nid.cnf,1,ok,ok,ok,ok,crash,ok,ok,ok,ok,ok
-SAT_Competition2007/industrial/industrial/babic/dspam/dspam_dump_vc1093.cnf,1,presolved,presolved,presolved,presolved,presolved,presolved,presolved,presolved,presolved,presolved
+SAT_Competition2007/industrial/industrial/babic/dspam/dspam_dump_vc1093.cnf,1,unknown,unknown,unknown,unknown,unknown,presolved,unknown,unknown,unknown,unknown
 SAT_Competition2009/APPLICATION/SAT09/APPLICATIONS/crypto/md5gen/gus-md5-09.cnf,1,ok,ok,ok,ok,ok,ok,ok,ok,ok,ok
 SAT_RACE2006/SAT-Race_TS_1/velev-npe-1.0-02.cnf,1,ok,ok,ok,ok,crash,ok,ok,ok,ok,ok
 SAT_Competition2011/SAT09/APPLICATIONS/bitverif/smulo/smulo064.cnf,1,ok,ok,ok,ok,crash,ok,ok,ok,ok,ok
@@ -810,17 +810,17 @@ SAT-Race-2010-CNF/hardware-verification/manolios/c10ni_s.cnf,1,ok,ok,ok,ok,crash
 SAT_RACE2008/ibm-2002-20r-k75.cnf,1,ok,ok,ok,ok,crash,ok,ok,ok,ok,ok
 SAT_Competition2009/APPLICATION/SAT09/APPLICATIONS/diagnosis/UTI-15-5p1.cnf,1,ok,ok,ok,ok,crash,ok,ok,ok,ok,ok
 SAT_Competition2007/industrial/industrial/anbulagan/hard-unsat/total-5-19-u.cnf,1,ok,ok,ok,ok,crash,ok,ok,ok,ok,ok
-SAT_Competition2007/industrial/industrial/babic/xinetd/itox_vc965.cnf,1,presolved,presolved,presolved,presolved,presolved,presolved,presolved,presolved,presolved,presolved
+SAT_Competition2007/industrial/industrial/babic/xinetd/itox_vc965.cnf,1,unknown,unknown,unknown,unknown,unknown,presolved,unknown,unknown,unknown,unknown
 SAT_Competition2007/industrial/industrial/palacios/hard/sortnet-8-ipc5-h18-unsat.cnf,1,ok,ok,ok,ok,crash,ok,ok,ok,ok,ok
 SAT_Competition2009/APPLICATION/SAT07/industrial/anbulagan/hard-unsat/partial-5-11-u.cnf,1,ok,ok,ok,ok,ok,ok,ok,ok,ok,ok
 SAT_Competition2009/APPLICATION/SAT09/APPLICATIONS/diagnosis/ACG-20-5p1.cnf,1,ok,ok,ok,ok,crash,ok,ok,ok,ok,ok
-SAT_Competition2009/APPLICATION/SAT07/industrial/babic/hsatv17/hsat_vc11813.cnf,1,presolved,presolved,presolved,presolved,presolved,presolved,presolved,presolved,presolved,presolved
+SAT_Competition2009/APPLICATION/SAT07/industrial/babic/hsatv17/hsat_vc11813.cnf,1,unknown,unknown,unknown,unknown,unknown,presolved,unknown,unknown,unknown,unknown
 SAT_RACE2006/SAT-Race_TS_2/manol-pipe-f7idw.cnf,1,ok,ok,ok,ok,crash,ok,ok,ok,ok,ok
 SAT_Competition2009/APPLICATION/SAT09/APPLICATIONS/crypto/md5gen/gus-md5-06.cnf,1,ok,ok,ok,ok,ok,ok,ok,ok,ok,ok
 SAT_RACE2006/SAT-Race_TS_2/manol-pipe-c6bid_i.cnf,1,ok,ok,ok,ok,crash,ok,ok,ok,ok,ok
 SAT_Competition2011/SAT09/APPLICATIONS/bitverif/countbitswegner/countbitswegner128.cnf,1,ok,ok,ok,ok,ok,ok,ok,ok,ok,ok
 SAT_Competition2011/SAT11/application/jarvisalo/smtqfbv-aigs/smtlib-qfbv-aigs-lfsr_004_127_112-tseitin.cnf,1,ok,ok,ok,ok,crash,ok,ok,ok,ok,ok
-SAT_Competition2011/SAT11/application/leberre/2dimensionalstrippacking/E15N15.cnf,1,presolved,presolved,presolved,presolved,presolved,presolved,presolved,presolved,presolved,presolved
+SAT_Competition2011/SAT11/application/leberre/2dimensionalstrippacking/E15N15.cnf,1,unknown,unknown,unknown,unknown,unknown,presolved,unknown,unknown,unknown,unknown
 SAT_Competition2011/SAT11/application/fuhs/slp-synthesis-AES/slp-synthesis-aes-bottom14.cnf,1,ok,ok,ok,ok,crash,ok,ok,ok,ok,ok
 SAT_RACE2008/manol-pipe-f9b.cnf,1,ok,ok,ok,ok,crash,ok,ok,ok,ok,ok
 SAT_Competition2009/APPLICATION/SAT09/APPLICATIONS/bitverif/minand/minand128.cnf,1,ok,ok,ok,ok,crash,ok,ok,ok,ok,ok
@@ -903,7 +903,7 @@ SAT_Competition2011/SAT02/industrial/biere/dinphil/dp04u03.shuffled.cnf,1,ok,ok,
 SAT_Competition2011/SAT03/industrial/goldberg/hard_eq_check/x1mul.miter.shuffled-as.sat03-359.cnf,1,ok,ok,ok,ok,crash,ok,ok,ok,ok,ok
 SAT_Competition2011/SAT09/APPLICATIONS/bitverif/countbitsarray/countbitsarray04_32.cnf,1,ok,ok,ok,ok,ok,ok,ok,ok,ok,ok
 SAT_Competition2009/APPLICATION/SAT09/APPLICATIONS/bitverif/minxorminand/minxorminand032.cnf,1,ok,ok,ok,ok,ok,ok,ok,ok,ok,ok
-SAT_Competition2009/APPLICATION/SAT09/APPLICATIONS/c32sat/post-cbmc-zfcp-2.8-u2-noholes.cnf,1,presolved,presolved,presolved,presolved,presolved,presolved,presolved,presolved,presolved,presolved
+SAT_Competition2009/APPLICATION/SAT09/APPLICATIONS/c32sat/post-cbmc-zfcp-2.8-u2-noholes.cnf,1,unknown,unknown,presolved,unknown,unknown,unknown,unknown,unknown,unknown,unknown
 SAT_Competition2011/SAT02/industrial/aloul/Homer/homer14.shuffled.cnf,1,ok,ok,ok,ok,ok,ok,ok,ok,ok,ok
 SAT_Competition2011/SAT11/application/fuhs/slp-synthesis-AES/slp-synthesis-aes-bottom25.cnf,1,ok,ok,ok,ok,crash,ok,ok,ok,ok,ok
 SAT_Competition2007/industrial/industrial/anbulagan/diag-sat/dated-5-17-s.cnf,1,ok,ok,ok,ok,ok,ok,ok,ok,ok,ok
@@ -979,7 +979,7 @@ SAT_Competition2009/APPLICATION/SAT09/APPLICATIONS/satComp09_BioInstances/rbcl_x
 SAT_Competition2009/APPLICATION/SAT09/APPLICATIONS/bitverif/smulo/smulo016.cnf,1,ok,ok,ok,ok,ok,ok,ok,ok,ok,ok
 SAT_Competition2011/SAT11/application/rintanen/SATPlanning/openstacks-sequencedstrips-nonadl-nonnegated-os-sequencedstrips-p30_3.035-NOTKNOWN.cnf,1,ok,ok,ok,ok,crash,ok,ok,ok,ok,ok
 SAT_Competition2007/industrial/industrial/manolios/manol-pipe-c6nidw_i.cnf,1,ok,ok,ok,ok,crash,ok,ok,ok,ok,ok
-SAT_Competition2007/industrial/industrial/babic/dspam/dspam_dump_vc1103.cnf,1,presolved,presolved,presolved,presolved,presolved,presolved,presolved,presolved,presolved,presolved
+SAT_Competition2007/industrial/industrial/babic/dspam/dspam_dump_vc1103.cnf,1,unknown,unknown,unknown,unknown,unknown,presolved,unknown,unknown,unknown,unknown
 SAT_Competition2009/APPLICATION/SAT_RACE06/goldb-heqc-i10mul.cnf,1,ok,ok,ok,ok,crash,ok,ok,ok,ok,ok
 SAT_Competition2009/APPLICATION/SAT07/industrial/palacios/uts/uts-l06-ipc5-h35-unknown.cnf,1,ok,ok,ok,ok,crash,ok,ok,ok,ok,ok
 SAT_Competition2007/industrial/industrial/fuhs/hard/AProVE07-01.cnf,1,ok,ok,ok,ok,ok,ok,ok,ok,ok,ok
@@ -999,7 +999,7 @@ SAT-Race-2010-CNF/software-verification/nec/hard-6-U-7061.cnf,1,ok,ok,ok,ok,cras
 SAT_Competition2011/SAT11/application/rintanen/SATPlanning/blocks-blocks-37-1.130-NOTKNOWN.cnf,1,ok,ok,ok,ok,crash,ok,ok,ok,ok,ok
 SAT_Competition2007/industrial/industrial/palacios/medium/emptyroom-4-h22-sat.cnf,1,ok,ok,ok,ok,crash,ok,ok,ok,ok,ok
 SAT_Competition2009/APPLICATION/SAT_RACE08/cnf/schup-l2s-bc56s-1-k391.cnf,1,ok,ok,ok,ok,crash,ok,ok,ok,ok,ok
-SAT_Competition2007/industrial/industrial/babic/dspam/dspam_dump_vc973.cnf,1,presolved,presolved,presolved,presolved,presolved,presolved,presolved,presolved,presolved,presolved
+SAT_Competition2007/industrial/industrial/babic/dspam/dspam_dump_vc973.cnf,1,unknown,unknown,unknown,unknown,unknown,presolved,unknown,unknown,unknown,unknown
 SAT_RACE2006/SAT-Race_TS_2/velev-pipe-oun-1.1-05.cnf,1,ok,ok,ok,ok,crash,ok,ok,ok,ok,ok
 SAT_Competition2009/APPLICATION/SAT09/APPLICATIONS/diagnosis/ACG-10-5p0.cnf,1,ok,ok,ok,ok,ok,ok,ok,ok,ok,ok
 SAT_RACE2006/SAT-Race-Benchmarks/schup-l2s-motst-2-k315.cnf,1,ok,ok,ok,ok,crash,ok,ok,ok,ok,ok
@@ -1019,12 +1019,12 @@ SAT_RACE2008/post-cbmc-aes-ee-r3.cnf,1,ok,ok,ok,ok,crash,ok,ok,ok,ok,ok
 SAT-Race-2010-CNF/mixed/anbulagan/dated-10-13-u.cnf,1,ok,ok,ok,ok,ok,ok,ok,ok,ok,ok
 SAT_RACE2006/SAT-Race_TS_1/een-tipb-sr06-par1.cnf,1,ok,ok,ok,ok,ok,ok,ok,ok,ok,ok
 SAT_Competition2009/APPLICATION/SAT_RACE08/cnf/mizh-md5-48-5.cnf,1,ok,ok,ok,ok,ok,ok,ok,ok,ok,ok
-SAT_RACE2008/babic-dspam-vc949.cnf,1,presolved,presolved,presolved,presolved,presolved,presolved,presolved,presolved,presolved,presolved
+SAT_RACE2008/babic-dspam-vc949.cnf,1,unknown,unknown,unknown,unknown,unknown,presolved,unknown,unknown,unknown,unknown
 SAT_RACE2006/SAT-Race_TS_2/velev-live-sat-1.0-05.cnf,1,ok,ok,ok,ok,crash,ok,ok,ok,ok,ok
 SAT_Competition2009/APPLICATION/SAT09/APPLICATIONS/crypto/md5gen/gus-md5-14.cnf,1,ok,ok,ok,ok,ok,ok,ok,ok,ok,ok
 SAT-Race-2010-CNF/mixed/anbulagan/partial-5-17-u.cnf,1,ok,ok,ok,ok,ok,ok,ok,ok,ok,ok
 SAT_Competition2009/APPLICATION/SAT_RACE06/schup-l2s-guid-1-k56.cnf,1,ok,ok,ok,ok,ok,ok,ok,ok,ok,ok
-SAT_Competition2007/industrial/industrial/babic/xinetd/xinetd_vc56687.cnf,1,presolved,presolved,presolved,presolved,presolved,presolved,presolved,presolved,presolved,presolved
+SAT_Competition2007/industrial/industrial/babic/xinetd/xinetd_vc56687.cnf,1,unknown,unknown,unknown,unknown,unknown,presolved,unknown,unknown,unknown,unknown
 SAT_RACE2006/SAT-Race_TS_1/vange-color-inc-54.cnf,1,ok,ok,ok,ok,crash,ok,ok,ok,ok,ok
 SAT_Competition2011/SAT_RACE08/cnf/manol-pipe-f7nidw.cnf,1,ok,ok,ok,ok,crash,ok,ok,ok,ok,ok
 SAT_Competition2007/industrial/industrial/palacios/uts/uts-l06-ipc5-h28-unknown.cnf,1,ok,ok,ok,ok,crash,ok,ok,ok,ok,ok
@@ -1048,7 +1048,7 @@ SAT_Competition2011/SAT07/industrial/IBM_FV_2002_13_rule_1/SAT_dat.k100.cnf,1,ok
 SAT_Competition2009/APPLICATION/SAT09/APPLICATIONS/bioinfo/q_query_3_l46_lambda.cnf,1,ok,ok,ok,ok,crash,ok,ok,ok,ok,ok
 SAT_Competition2011/SAT11/application/kullmann/AES/Benchmarks/64/aes_64_2_keyfind_1.cnf,1,ok,ok,ok,ok,ok,ok,ok,ok,ok,ok
 SAT_Competition2007/industrial/industrial/anbulagan/diag-sat/dated-10-11-s.cnf,1,ok,ok,ok,ok,ok,ok,ok,ok,ok,ok
-SAT_Competition2007/industrial/industrial/babic/hsatv17/hsat_vc11817.cnf,1,presolved,presolved,presolved,presolved,presolved,presolved,presolved,presolved,presolved,presolved
+SAT_Competition2007/industrial/industrial/babic/hsatv17/hsat_vc11817.cnf,1,unknown,unknown,unknown,unknown,unknown,presolved,unknown,unknown,unknown,unknown
 SAT_RACE2006/SAT-Race-Benchmarks/goldb-heqc-alu4mul.cnf,1,ok,ok,ok,ok,crash,ok,ok,ok,ok,ok
 SAT_Competition2011/SAT07/industrial/fuhs/hard/AProVE07-03.cnf,1,ok,ok,ok,ok,ok,ok,ok,ok,ok,ok
 SAT_Competition2007/industrial/industrial/anbulagan/hard-unsat/dated-5-19-u.cnf,1,ok,ok,ok,ok,ok,ok,ok,ok,ok,ok
@@ -1084,7 +1084,7 @@ SAT_Competition2009/APPLICATION/SAT09/APPLICATIONS/satComp09_BioInstances/rbcl_x
 SAT_Competition2009/APPLICATION/SAT09/APPLICATIONS/crypto/desgen/gss-33-s100.cnf,1,ok,ok,ok,ok,ok,ok,ok,ok,ok,ok
 SAT_Competition2009/APPLICATION/SAT07/industrial/anbulagan/hard-unsat/dated-10-19-u.cnf,1,ok,ok,ok,ok,ok,ok,ok,ok,ok,ok
 SAT_Competition2011/SAT05/industrial/grieu05/vmpc/vmpc_34.renamed-as.sat05-1926.cnf,1,ok,ok,ok,ok,crash,ok,ok,ok,ok,ok
-SAT-Race-2010-CNF/software-verification/post/zfcp-2.8-u2-nh.cnf,1,presolved,presolved,presolved,presolved,presolved,presolved,presolved,presolved,presolved,presolved
+SAT-Race-2010-CNF/software-verification/post/zfcp-2.8-u2-nh.cnf,1,unknown,unknown,presolved,unknown,unknown,unknown,unknown,unknown,unknown,unknown
 SAT_RACE2006/SAT-Race-Benchmarks/mizh-md5-48-2.cnf,1,ok,ok,ok,ok,ok,ok,ok,ok,ok,ok
 SAT-Race-2010-CNF/software-verification/nec/hard-7-U-10652.cnf,1,ok,ok,ok,ok,crash,ok,ok,ok,ok,ok
 SAT_Competition2011/SAT09/APPLICATIONS/diagnosis/UTI-10-5t1.cnf,1,ok,ok,ok,ok,ok,ok,ok,ok,ok,ok
@@ -1094,7 +1094,7 @@ SAT_Competition2011/SAT11/application/fuhs/slp-synthesis-AES/slp-synthesis-aes-t
 SAT_RACE2006/SAT-Race-Benchmarks/manol-pipe-c7b.cnf,1,ok,ok,ok,ok,ok,ok,ok,ok,ok,ok
 SAT_RACE2008/velev-vliw-uns-2.0-uq5.cnf,1,ok,ok,ok,ok,crash,ok,ok,ok,ok,ok
 SAT_Competition2009/APPLICATION/SAT09/APPLICATIONS/c32sat/post-cbmc-aes-ee-r3-noholes.cnf,1,ok,ok,ok,ok,crash,ok,ok,ok,ok,ok
-SAT_Competition2007/industrial/industrial/babic/xinetd/xinetd_vc56703.cnf,1,presolved,presolved,presolved,presolved,presolved,presolved,presolved,presolved,presolved,presolved
+SAT_Competition2007/industrial/industrial/babic/xinetd/xinetd_vc56703.cnf,1,unknown,unknown,unknown,unknown,unknown,presolved,unknown,unknown,unknown,unknown
 SAT_RACE2006/SAT-Race-Benchmarks/manol-pipe-g10nid.cnf,1,ok,ok,ok,ok,crash,ok,ok,ok,ok,ok
 SAT_Competition2009/APPLICATION/SAT_RACE06/simon-s03-fifo8-300.cnf,1,ok,ok,ok,ok,ok,ok,ok,ok,ok,ok
 SAT_Competition2011/SAT11/application/jarvisalo/HWMCC10-combination-timeframe-expansion/hwmcc10-timeframe-expansion-k50-pdtvisns3p00-tseitin.cnf,1,ok,ok,ok,ok,crash,ok,ok,ok,ok,ok
@@ -1132,11 +1132,11 @@ SAT_Competition2007/industrial/industrial/grieu/vmpc_30.cnf,1,ok,ok,ok,ok,crash,
 SAT-Race-2010-CNF/hardware-verification/manolios/g7nidw.cnf,1,ok,ok,ok,ok,crash,ok,ok,ok,ok,ok
 SAT_Competition2007/industrial/industrial/crypto/mizh-sha0-35-2.cnf,1,ok,ok,ok,ok,ok,ok,ok,ok,ok,ok
 SAT_Competition2009/APPLICATION/SAT09/APPLICATIONS/bitverif/countbitsrotate/countbitsrotate016.cnf,1,ok,ok,ok,ok,ok,ok,ok,ok,ok,ok
-SAT_Competition2007/industrial/industrial/babic/dspam/dspam_dump_vc962.cnf,1,presolved,presolved,presolved,presolved,presolved,presolved,presolved,presolved,presolved,presolved
+SAT_Competition2007/industrial/industrial/babic/dspam/dspam_dump_vc962.cnf,1,unknown,unknown,unknown,unknown,unknown,presolved,unknown,unknown,unknown,unknown
 SAT_RACE2008/hoons-vbmc-lucky7.cnf,1,ok,ok,ok,ok,ok,ok,ok,ok,ok,ok
 SAT_Competition2007/industrial/industrial/anbulagan/hard-unsat/partial-5-19-u.cnf,1,ok,ok,ok,ok,crash,ok,ok,ok,ok,ok
 SAT_Competition2007/industrial/industrial/palacios/medium/cube-9-h10-unsat.cnf,1,ok,ok,ok,ok,crash,ok,ok,ok,ok,ok
-SAT-Race-2010-CNF/software-verification/nec/hard-25-U-7061.cnf,1,presolved,presolved,presolved,presolved,presolved,presolved,presolved,presolved,presolved,presolved
+SAT-Race-2010-CNF/software-verification/nec/hard-25-U-7061.cnf,1,unknown,unknown,unknown,unknown,unknown,presolved,unknown,unknown,unknown,unknown
 SAT_Competition2009/APPLICATION/SAT09/APPLICATIONS/diagnosis/UCG-20-5p1.cnf,1,ok,ok,ok,ok,crash,ok,ok,ok,ok,ok
 SAT_RACE2006/SAT-Race_TS_1/manol-pipe-c6nid_s.cnf,1,ok,ok,ok,ok,crash,ok,ok,ok,ok,ok
 SAT_RACE2008/post-c32s-col400-16.cnf,1,ok,ok,ok,ok,ok,ok,ok,ok,ok,ok
@@ -1150,7 +1150,7 @@ SAT_Competition2009/APPLICATION/SAT07/industrial/grieu/vmpc_26.cnf,1,ok,ok,ok,ok
 SAT_Competition2009/APPLICATION/SAT09/APPLICATIONS/aprove09/AProVE09-13.cnf,1,ok,ok,ok,ok,ok,ok,ok,ok,ok,ok
 SAT_Competition2009/APPLICATION/SAT_RACE06/velev-pipe-sat-1.0-b10.cnf,1,ok,ok,ok,ok,crash,ok,ok,ok,ok,ok
 SAT-Race-2010-CNF/cryptography/desgen/gss-31-s100.cnf,1,ok,ok,ok,ok,ok,ok,ok,ok,ok,ok
-SAT_Competition2011/SAT05/industrial/maris05/DriverLog/driverlog1_ks99i.renamed-as.sat05-3951.cnf,1,presolved,presolved,presolved,presolved,ok,presolved,presolved,presolved,presolved,presolved
+SAT_Competition2011/SAT05/industrial/maris05/DriverLog/driverlog1_ks99i.renamed-as.sat05-3951.cnf,1,presolved,unknown,unknown,unknown,ok,presolved,unknown,unknown,presolved,unknown
 SAT_Competition2009/APPLICATION/SAT09/APPLICATIONS/aprove09/AProVE09-08.cnf,1,ok,ok,ok,ok,ok,ok,ok,ok,ok,ok
 SAT_Competition2011/SAT11/application/jarvisalo/smtqfbv-aigs/smtlib-qfbv-aigs-lfsr_008_063_080-tseitin.cnf,1,ok,ok,ok,ok,crash,ok,ok,ok,ok,ok
 SAT_Competition2011/SAT_RACE08/cnf/manol-pipe-c10nidw.cnf,1,ok,ok,ok,ok,crash,ok,ok,ok,ok,ok
