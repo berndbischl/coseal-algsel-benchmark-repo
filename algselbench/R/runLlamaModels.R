@@ -108,6 +108,9 @@ runLlamaModels = function(asscenarios, feature.steps.list = NULL, baselines,
         llama.cv = llama.cvs[[i]],
         n.algos = length(getAlgorithmNames(asscenario)),
         makeRes = function(data, p, timeout, addCosts) {
+          if(addCosts) {
+            data = fixFeckingPresolve(asscenario, data)
+          }
           list(
             succ = mean(successes(data, p, timeout = timeout, addCosts = addCosts)),
             par10 = mean(parscores(data, p, timeout = timeout, addCosts = addCosts)),

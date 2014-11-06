@@ -71,4 +71,15 @@ test_that("convertToLlama handles costs correctly", {
   iid2 = as.character(testscenario2$algo.runs$instance_id)
   expect_true(setequal(iid1, iid2))
   expect_equal(llama.scenario$costGroups, testscenario2$desc$feature_steps)
+  expect_false("repetition" %in% llama.scenario$costs)
+})
+
+test_that("fixFeckingPresolve", {
+  llama.scenario1 = convertToLlama(testscenario2)
+  vbs1 = sum(parscores(llama.scenario1, vbs))
+  llama.scenario2 = fixFeckingPresolve(testscenario2, llama.scenario1)
+  vbs2 = sum(parscores(llama.scenario2, vbs))
+
+  # You would think so, wouldn't you. But no...
+  # expect_true(vbs2 < vbs1)
 })

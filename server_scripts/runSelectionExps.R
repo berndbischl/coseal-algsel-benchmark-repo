@@ -23,11 +23,11 @@ ctrl = makeSSControl(method = "sbs")
 
 batchMap(reg, fun = function(ast) {
   ldf = convertToLlamaCVFolds(ast)
-  n.bits = length(getFeatureNames(ast))
-  feats = searchSequential(searchSequentialObjectiveFeatures, n.bits, control = ctrl, ldf = ldf,
+  n.bits = length(ldf$features)
+  feats = searchSequential(searchSequentialObjectiveFeatures, n.bits, control = ctrl, scenario = ast, ldf = ldf,
     llama.model.fun = regression, mlr.learner = makeLearner("regr.randomForest"))
-  n.bits = length(getAlgorithmNames(ast))
-  solvs = searchSequential(searchSequentialObjectiveSolvers, n.bits, control = ctrl, ldf = ldf,
+  n.bits = length(ldf$performance)
+  solvs = searchSequential(searchSequentialObjectiveSolvers, n.bits, control = ctrl, scenario = ast, ldf = ldf,
     llama.model.fun = regression, mlr.learner = makeLearner("regr.randomForest"))
 
   cbind(data.frame(id = ast$desc$scenario_id, perfFeats = feats$y, perfSolvers = solvs$y),

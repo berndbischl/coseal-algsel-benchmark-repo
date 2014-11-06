@@ -54,8 +54,5 @@ convertPerf = function(asscenario, measure, feature.steps, add.feature.costs, wi
     perf = cbind(instance_id = iid, perf)
     successes = cbind(instance_id = iid, as.data.frame(successes))
   }
-  # make sure everything has a valid name
-  colnames(perf) = make.names(colnames(perf))
-  colnames(successes) = make.names(colnames(successes))
   list(perf = perf, successes = successes)
 }

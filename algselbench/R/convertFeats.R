@@ -25,7 +25,5 @@ convertFeats = function(asscenario, feature.steps, with.instance.id) {
   feats = impute(feats, target = character(0), classes = list(numeric = imputeMean()))$data
   if (!with.instance.id)
     feats$instance_id = NULL
-  # make sure everything has a valid name
-  colnames(feats) = make.names(colnames(feats))
   return(feats)
 }
