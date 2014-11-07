@@ -51,10 +51,11 @@ fixFeckingPresolve = function(asscenario, ldf) {
         function(x) { length(intersect(asscenario$desc$feature_steps[[x]], ldf$features)) > 0 }))
     # are we using any of the feature steps that cause presolving?
     if(length(intersect(presolvedGroups, usedGroups)) > 0) {
-        presolved = asscenario$feature.runstatus[apply(asscenario$feature.runstatus, 1, function(x) { any(x == "presolved") }),]
+        presolved = asscenario$feature.runstatus[apply(asscenario$feature.runstatus[,usedGroups], 1, function(x) { any(x == "presolved") }),]
         if(nrow(presolved) > 0) {
             presolvedTimes = sapply(rownames(presolved), function(x) {
-                pCosts = asscenario$feature.costs[x,presolved[x,] == "presolved"]
+                pCosts = subset(asscenario$feature.costs[x,], T, presolved[x,] == "presolved")
+                pCosts = pCosts[intersect(names(pCosts), usedGroups)]
                 pCosts[is.na(pCosts)] = 0
                 as.numeric(pCosts[1])
             })
