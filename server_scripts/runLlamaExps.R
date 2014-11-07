@@ -42,20 +42,19 @@ ps.rf = makeParamSet(
   makeIntegerParam("mtry", lower = 1, upper = 10)
 )
 
-makeTuneW = function(cl, ps) {
+makeTuneW = function(cl, ps, measures) {
   ctrl = makeTuneControlRandom(maxit = 10L)
   inner = makeResampleDesc("CV", iters = 2L)
-  #FIXME set measure
-  makeTuneWrapper(cl, resampling = inner,  par.set = ps, control = ctrl)
+  makeTuneWrapper(cl, resampling = inner, measures = measures, par.set = ps, control = ctrl)
 }
 
 classif.tuned = list(
-  makeTuneW("classif.ksvm", ps.svm),
-  makeTuneW("classif.randomForest", ps.rf)
+  makeTuneW("classif.ksvm", ps.svm, mmce),
+  makeTuneW("classif.randomForest", ps.rf, mmce)
 )
 
 regr.tuned = list(
-  makeTuneW("regr.randomForest", ps.rf)
+  makeTuneW("regr.randomForest", ps.rf, mse)
 )
 
 
@@ -65,10 +64,11 @@ regr = c(regr.untuned, regr.tuned)
 cluster = cluster.untuned
 
 
-reg = runLlamaModels(asscenarios, feature.steps.list = feature.steps.list, pre = normalize,
+fs = sapply(asscenarios, function(x) { setNames(list(getFeatureStepNames(x)), x$desc$scenario_id) })
+reg = runLlamaModels(asscenarios, feature.steps.list = fs, pre = normalize,
   classifiers = classif, regr = regr, clusterers = cluster)
 
-# reg = runLlamaModels(asscenarios, feature.steps.list = feature.steps.list,
+# reg = runLlamaModels(asscenarios, feature.steps.list = fs,
   # classifiers = list(makeLearner("classif.rpart")))
 
 # jobs should be run with 2gig mem
