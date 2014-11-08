@@ -45,6 +45,26 @@ convertToLlama = function(asscenario, measure, feature.steps) {
   return(ldf)
 }
 
+#' Bakes presolving stuff into a LLAMA data frame.
+#'
+#' Determines whether any of the feature groups in the LLAMA data frame
+#' presolve any of the instances. If so, the performances of all algorithms
+#' in the portfolio are set to the runtime of the first used feature group
+#' that presolves the respective instance. Furthermore, the success of all
+#' algorithms on those instances is set to true.
+#'
+#' These modifications are done on the main LLAMA data and on any test splits.
+#' They are *not* done on the training data. This function should only ever be
+#' used to evaluate the performance of an actual selector that uses features
+#' (i.e. not VBS or single best). Using it in polite company is to be avoided.
+#'
+#' @param asscenario [\code{\link{ASScenario}}]\cr
+#'   Algorithm selection scenario.
+#' @param ldf [\code{LLAMA data frame}]\cr
+#'   LLAMA data frame to modify.
+#' @return The LLAMA data frame with presolving baked into the algorithm
+#'        performances.
+#' @export
 fixFeckingPresolve = function(asscenario, ldf) {
     presolvedGroups = names(asscenario$feature.runstatus)[apply(asscenario$feature.runstatus, 2, function(x) { any(x == "presolved") })] 
     usedGroups = subset(names(asscenario$desc$feature_steps), sapply(names(asscenario$desc$feature_steps),
