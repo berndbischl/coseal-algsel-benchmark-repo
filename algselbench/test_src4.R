@@ -28,7 +28,11 @@ doNestedCVWithTuning = function(asscenario, ldf, timeout, learner, par.set, llam
     outer.split.ldf$test = list(ldf$test[[i]])
     outer.preds[[i]] = llama.fun(learner2, data = outer.split.ldf, pre = pre)
   }
-  return(outer.preds)
+  retval = outer.preds[[1]]
+  retval$predictions = lapply(outer.preds, function(x) { x$predictions[[1]] })
+  retval$train = lapply(outer.preds, function(x) { x$train[[1]] })
+  retval$test = lapply(outer.preds, function(x) { x$test[[1]] })
+  return(retval)
 }
 
 tuneLlamaModel = function(asscenario, learner, par.set, cv.splits, llama.fun, pre, maxit = 10) {
