@@ -30,8 +30,6 @@ doNestedCVWithTuning = function(asscenario, ldf, timeout, learner, par.set, llam
   }
   retval = outer.preds[[1]]
   retval$predictions = lapply(outer.preds, function(x) { x$predictions[[1]] })
-  retval$train = lapply(outer.preds, function(x) { x$train[[1]] })
-  retval$test = lapply(outer.preds, function(x) { x$test[[1]] })
   return(retval)
 }
 
@@ -61,7 +59,6 @@ llama.cv = convertToLlamaCVFolds(ast)
 z = doNestedCVWithTuning(ast, llama.cv, 100, learner, ps, classify, pre = normalize, maxit = 2L)
 
 # z = tuneLlamaModel(learner, ps, llama.cv, classify, pre = normalize, maxit = 2L)
-print(z)
-
+print(successes(llama.cv, z))
 
 
