@@ -9,7 +9,7 @@ load_all()
 
 
 
-doNestedCVWithTuning = function(learner, par.set, data, llama.fun, pre, maxit = 10L) {
+doNestedCVWithTuning = function(asscenario, learner, par.set, ldf, llama.fun, pre, maxit = 10L) {
   # desc = asscenario$desc
   # cutoff = desc$algorithm_cutoff_time
   # timeout = if (desc$performance_type[[1L]] == "runtime" && !is.na(cutoff))
@@ -19,13 +19,18 @@ doNestedCVWithTuning = function(learner, par.set, data, llama.fun, pre, maxit = 
 
   for (i in 1:length(llama.cv)) {
     print(i)
-    test = llama.cv[[i]]
-    train = llama.cv[-i]
-    parvals = tuneLlamaModel(learner, par.set, data, llama.fun, pre, maxit)
+    ldf2 = ldf
+    ldf2$data = ldf$train[[i]]
+    ldf3 = cvFolds(ldf2)
+    parvals = tuneLlamaModel(asscenario, learner, par.set, ldf3, llama.fun, pre, maxit)
+    learner = setHyperPars(learner, par.vals = parvals)
+    p = llama.fun(learner, data = ldf, pre = pre)
+    ldf4 = fixFeckingPresolve(asscenario, ldf3)
+    par10 = mean(parscores(ldf4, p, timeout = timeout))
   }
 }
 
-tuneLlamaModel = function(learner, par.set, cv.splits, llama.fun, pre, maxit = 10) {
+tuneLlamaModel = function(asscenario, learner, par.set, cv.splits, llama.fun, pre, maxit = 10) {
   timeout = 100
   des = generateRandomDesign(maxit, par.set)
   des.list = dfRowsToList(des, par.set)
@@ -33,7 +38,8 @@ tuneLlamaModel = function(learner, par.set, cv.splits, llama.fun, pre, maxit = 1
     print(x)
     learner = setHyperPars(learner, par.vals = x)
     p = llama.fun(learner, data = cv.splits, pre = pre)
-    par10 = mean(parscores(cv.splits, p, timeout = timeout))
+    ldf = fixFeckingPresolve(asscenario, cv.splits)
+    par10 = mean(parscores(ldf, p, timeout = timeout))
   })
   print(ys)
   best.i = getMinIndex(ys)
