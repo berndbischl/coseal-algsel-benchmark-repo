@@ -11,7 +11,7 @@ ast = parseASScenario("/home/bischl/cos/coseal/data/QBF-2011")
 doNestedCVWithTuning = function(asscenario, ldf, timeout, learner, par.set, llama.fun, pre,
   maxit = 10L, n.inner.folds = 2L) {
 
-  n.outer.folds = length(ldf)
+  n.outer.folds = length(ldf$test)
   outer.preds = vector("list", n.outer.folds)
 
   for (i in 1:n.outer.folds) {
