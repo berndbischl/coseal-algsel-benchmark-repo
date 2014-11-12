@@ -20,22 +20,27 @@
 #' @param baselines [\code{character}]\cr
 #'   Vector of characters, defining the baseline models.
 #'   Default is c("vbs", "singleBest", "singleBestByPar", "singleBestBySuccesses").
-#' @param classifiers [(list of) \code{\link[mlr]{Learner}}]\cr
-#'   Classification learners.
+#' @param learners [list of \code{\link[mlr]{Learner}}]\cr
+#'   mlr learners to use for modeling.
 #'   Default is none.
-#' @param regressors [(list of) \code{\link[mlr]{Learner}}]\cr
-#'   Regression learners.
+#' @param par.sets [list of \code{\link[ParamSet]{ParamSet}}]\cr
+#'   Param sets for learners to tune via random search.
+#'   Pass an empty param set, if you want no tuning.
+#'   Must be in of same length as \code{learners} and in the same order.
 #'   Default is none.
-#' @param clusterers [(list of) \code{\link[mlr]{Learner}}]\cr
-#'   Cluster learners.
-#'   Default is none.
+#' @param rs.iters [\code{integer(1)}]\cr
+#'   Number of iterations for random search hyperparameter tuning.
+#'   Default is 100.
+#' @param n.inner.folds [\code{integer(1)}]\cr
+#'   Number of cross-validation folds for inner CV in hyperparameter tuning.
+#'   Default is 2L.
 #' @param pre [\code{function}]\cr
 #'   A function (e.g. normalize) to preprocess the feature data.
 #'   By default no preprocessing is done.
 #' @return BatchExperiments registry.
 #' @export
-runLlamaModels = function(asscenarios, feature.steps.list = NULL, baselines,
- classifiers = list(), regressors = list(), clusterers = list(), pre) {
+runLlamaModels = function(asscenarios, feature.steps.list = NULL, baselines = NULL,
+  learners = list(), par.sets = list(), rs.iters = 100L, n.inner.folds = 2L, pre) {
 
   asscenarios = ensureVector(asscenarios, 1L, cl = "ASScenario")
   assertList(asscenarios, types = "ASScenario")
@@ -53,32 +58,30 @@ runLlamaModels = function(asscenarios, feature.steps.list = NULL, baselines,
   # sort in correct order
   feature.steps.list = feature.steps.list[scenario.ids]
 
+  # models and defaults
+  baselines.all = c("vbs", "singleBest", "singleBestByPar", "singleBestBySuccesses")
+
+  # check model args
+  if (is.null(baselines)) {
+    baselines = baselines.all
+  } else {
+    assertCharacter(baselines, any.missing = FALSE)
+    assertSubset(baselines, baselines.all)
+  }
+
+  assertList(learners, types = "Learner")
+  learner.ids = extractSubList(learners, "id")
+  assertList(par.sets, types = "ParamSet", len = length(learners))
+
+  rs.iters = asInt(rs.iters, lower = 1L)
+  n.inner.folds = asInt(n.inner.folds, lower = 2L)
+
   if (missing(pre)) {
     pre = function(x, y = NULL) {
       list(features = x)
     }
   }
 
-  # models and defaults
-  baselines.all = c("vbs", "singleBest", "singleBestByPar", "singleBestBySuccesses")
-
-  # check model args
-  if (missing(baselines))
-    baselines = baselines.all
-  else
-    assertSubset(baselines, baselines.all)
-
-  checkLearners = function(lrns, type, arg.name) {
-    lrns = ensureVector(lrns, n = 1L, cl = "Learner")
-    assertList(lrns, types = "Learner")
-    types = extractSubList(lrns, "type")
-    if (any(types != type))
-      stopf("%s: All learners must be of type '%s'!", arg.name, type)
-    lrns
-  }
-  classifiers = checkLearners(classifiers, "classif", "classifiers")
-  regressors = checkLearners(regressors, "regr", "regressors")
-  clusterers = checkLearners(clusterers, "cluster", "clusterers")
 
   packs = c("RWeka", "llama", "methods", "mlr", "BatchExperiments")
   requirePackages(packs, why = "runLlamaModels")
@@ -102,13 +105,16 @@ runLlamaModels = function(asscenarios, feature.steps.list = NULL, baselines,
     }
     addProblem(reg, id = desc$scenario_id,
       static = list(
+        asscenario = asscenario,
         feature.steps = feature.steps.list[[desc$scenario_id]],
         timeout = timeout,
         llama.scenario = llama.scenarios[[i]],
         llama.cv = llama.cvs[[i]],
         n.algos = length(getAlgorithmNames(asscenario)),
+        rs.iters = rs.iters,
+        n.inner.folds = n.inner.folds,
         makeRes = function(data, p, timeout, addCosts) {
-          if(addCosts) {
+          if (addCosts) {
             data = fixFeckingPresolve(asscenario, data)
           }
           list(
@@ -122,19 +128,21 @@ runLlamaModels = function(asscenarios, feature.steps.list = NULL, baselines,
   }
 
   # add baselines to reg
-  addAlgorithm(reg, id = "baseline", fun = function(static, type) {
-    llama.fun = get(type, envir = asNamespace("llama"))
-    p = llama.fun(data = static$llama.scenario)
-    p = list(predictions = p)
-    # this is how LLAMA checks what type of argument is given to the evaluation function
-    attr(p, "hasPredictions") = TRUE
-    static$makeRes(static$llama.scenario, p, static$timeout, FALSE)
-  })
-  des = makeDesign("baseline", exhaustive = list(type = baselines))
-  addExperiments(reg, algo.designs = des)
+  if (length(baselines) > 0L) {
+    addAlgorithm(reg, id = "baseline", fun = function(static, type) {
+      llama.fun = get(type, envir = asNamespace("llama"))
+      p = llama.fun(data = static$llama.scenario)
+      p = list(predictions = p)
+      # this is how LLAMA checks what type of argument is given to the evaluation function
+      attr(p, "hasPredictions") = TRUE
+      static$makeRes(static$llama.scenario, p, static$timeout, FALSE)
+    })
+    des = makeDesign("baseline", exhaustive = list(type = baselines))
+    addExperiments(reg, algo.designs = des)
+  }
 
   # add real selectors
-  addLearnerAlgoAndExps = function(lrn) {
+  addLearnerAlgoAndExps = function(lrn, par.set) {
     # BE does not like the dots in mlr ids
     id = str_replace_all(lrn$id, "\\.", "_")
     addAlgorithm(reg, id = id, fun = function(static) {
@@ -143,13 +151,63 @@ runLlamaModels = function(asscenarios, feature.steps.list = NULL, baselines,
         regr = llama::regression,
         cluster = llama::cluster
       )
-      p = llama.fun(lrn, data = static$llama.cv, pre = pre)
+      p = if (isEmpty(par.set))
+        llama.fun(lrn, data = static$llama.cv, pre = pre)
+      else
+        doNestedCVWithTuning(static$asscenario, static$llama.cv, pre, static$timeout,
+          lrn, par.set, llama.fun, static$rs.iters, static$n.inner.folds)
       static$makeRes(static$llama.cv, p, static$timeout, TRUE)
     })
     addExperiments(reg, algo.designs = id)
   }
 
-  lapply(c(classifiers, regressors, clusterers), addLearnerAlgoAndExps)
+  if (length(learners) > 0L)
+    mapply(addLearnerAlgoAndExps, learners, par.sets)
 
   return(reg)
 }
+
+doNestedCVWithTuning = function(asscenario, ldf, pre, timeout, learner, par.set, llama.fun,
+  rs.iters, n.inner.folds) {
+
+  n.outer.folds = length(ldf$test)
+  outer.preds = vector("list", n.outer.folds)
+
+  for (i in 1:n.outer.folds) {
+    ldf2 = ldf
+    ldf2$data = ldf$train[[i]]
+    ldf3 = cvFolds(ldf2, nfolds = n.inner.folds, stratify = FALSE)
+    parvals = tuneLlamaModel(asscenario, ldf3, pre, timeout, learner, par.set, llama.fun, rs.iters)
+
+    # now fit only on outer trainining set with best params and predict outer test set
+    learner2 = setHyperPars(learner, par.vals = parvals)
+    outer.split.ldf = ldf
+    outer.split.ldf$train = list(ldf$train[[i]])
+    outer.split.ldf$test = list(ldf$test[[i]])
+    outer.preds[[i]] = llama.fun(learner2, data = outer.split.ldf, pre = pre)
+  }
+  retval = outer.preds[[1]]
+  retval$predictions = lapply(outer.preds, function(x) { x$predictions[[1]] })
+  return(retval)
+}
+
+tuneLlamaModel = function(asscenario, cv.splits, pre, timeout, learner, par.set, llama.fun, rs.iters) {
+  des = generateRandomDesign(rs.iters, par.set)
+  des.list = dfRowsToList(des, par.set)
+  ys = vnapply(des.list, function(x) {
+    learner = setHyperPars(learner, par.vals = x)
+    p = llama.fun(learner, data = cv.splits, pre = pre)
+    ldf = fixFeckingPresolve(asscenario, cv.splits)
+    par10 = mean(parscores(ldf, p, timeout = timeout))
+    messagef("[Tune]: %s : par10 = %g", paramValueToString(par.set, x), par10)
+    return(par10)
+  })
+  best.i = getMinIndex(ys)
+  best.parvals = des.list[[best.i]]
+  messagef("[Best]: %s : par10 = %g", paramValueToString(par.set, best.parvals), ys[best.i])
+  return(best.parvals)
+}
+
+
+
+
