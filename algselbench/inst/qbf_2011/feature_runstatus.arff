@@ -2,7 +2,7 @@
 
 @ATTRIBUTE instance_id STRING
 @ATTRIBUTE repetition NUMERIC
-@ATTRIBUTE all_feats {ok, timeout, memout, presolved, crash, other}
+@ATTRIBUTE all_feats {ok, timeout, memout, presolved, crash, other, unknown}
 
 @DATA
 adder-10-sat-shuffled,1,ok

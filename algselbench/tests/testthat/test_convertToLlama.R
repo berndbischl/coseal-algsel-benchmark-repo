@@ -1,7 +1,7 @@
 context("convertToLlama")
 
 test_that("convertToLlama", {
-  llama.scenario = convertToLlama(testscenario3, add.feature.costs = FALSE)
+  llama.scenario = convertToLlama(testscenario3)
   expect_equal(llama.scenario$data$instance_id, as.factor(c("i1", "i2", "i3")))
   expect_equal(llama.scenario$data$f1, testscenario3$feature.values$f1)
   expect_equal(llama.scenario$data$f2, testscenario3$feature.values$f2)
@@ -13,37 +13,27 @@ test_that("convertToLlama", {
   expect_equal(llama.scenario$data$a2, c(50, 30, 100))
   expect_equal(llama.scenario$data$best, c("a1", "a2", "a1"))
 
-  llama.scenario = convertToLlama(testscenario3, add.feature.costs = TRUE)
-  expect_equal(llama.scenario$data$a1_success, c(TRUE, TRUE, TRUE))
-  expect_equal(llama.scenario$data$a2_success, c(TRUE, TRUE, FALSE))
-  expect_equal(llama.scenario$data$a1, c(60, 30, 80))
-  expect_equal(llama.scenario$data$a2, c(80, 30, 100))
-  expect_equal(llama.scenario$data$best, list("a1", c("a1", "a2"), "a1"))
-
-  llama.scenario = convertToLlama(testscenario1, add.feature.costs = FALSE)
+  llama.scenario = convertToLlama(testscenario1)
   cv = cvFolds(llama.scenario, nfolds = 2L)
   res = classify(classifier = makeLearner("classif.J48"), data = cv)
-  expect_warning({
-    llama.scenario = convertToLlama(testscenario1, add.feature.costs = TRUE)
-  }, "Adding always 0")
   cv = cvFolds(llama.scenario, nfolds = 2L)
   res = classify(classifier = makeLearner("classif.J48"), data = cv)
 
-  llama.scenario = convertToLlama(testscenario2, add.feature.costs = FALSE)
+  llama.scenario = convertToLlama(testscenario2)
   cv = cvFolds(llama.scenario, nfolds = 2L)
   res = classify(classifier = makeLearner("classif.J48"), data = cv)
-  llama.scenario = convertToLlama(testscenario2, add.feature.costs = TRUE)
+  llama.scenario = convertToLlama(testscenario2)
   cv = cvFolds(llama.scenario, nfolds = 2L)
   res = classify(classifier = makeLearner("classif.J48"), data = cv)
 })
 
 test_that("convertToLlama always sets best algorithm", {
   llama.scenario = convertToLlama(testscenario4)
-  expect_equal(llama.scenario$data$best, list("a1", c("a1", "a2"), "a1"))
+  expect_equal(llama.scenario$data$best, c("a1", "a2", "a2"))
 })
 
 test_that("convertToLlama parses real scenario correctly", {
-  llama.scenario = convertToLlama(testscenario1, add.feature.costs = FALSE)
+  llama.scenario = convertToLlama(testscenario1)
   iid1 = as.character(llama.scenario$data$instance_id)
   iid2 = as.character(testscenario1$algo.runs$instance_id)
   expect_true(setequal(iid1, iid2))
@@ -73,4 +63,23 @@ test_that("convertToLlama parses real scenario correctly", {
         "WOCCFN_WOCC", "WOCCEP_WOCCE",
         "WOCCEP_WOCCP", "WOCCFN_WOCCN"))
   expect_equal(length(llama.scenario$data$best), 1368)
+})
+
+test_that("convertToLlama handles costs correctly", {
+  llama.scenario = convertToLlama(testscenario2)
+  iid1 = as.character(llama.scenario$data$instance_id)
+  iid2 = as.character(testscenario2$algo.runs$instance_id)
+  expect_true(setequal(iid1, iid2))
+  expect_equal(llama.scenario$costGroups, testscenario2$desc$feature_steps)
+  expect_false("repetition" %in% llama.scenario$costs)
+})
+
+test_that("fixFeckingPresolve", {
+  llama.scenario1 = convertToLlama(testscenario2)
+  vbs1 = sum(parscores(llama.scenario1, vbs))
+  llama.scenario2 = fixFeckingPresolve(testscenario2, llama.scenario1)
+  vbs2 = sum(parscores(llama.scenario2, vbs))
+
+  # You would think so, wouldn't you. But no...
+  # expect_true(vbs2 < vbs1)
 })

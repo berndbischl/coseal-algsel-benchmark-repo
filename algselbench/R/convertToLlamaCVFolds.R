@@ -12,16 +12,13 @@
 #'   Which feature steps are allowed?
 #'   Default are the default feature steps or all steps
 #'   in case no defaults were defined.
-#' @param add.feature.costs [\code{logical(1)}]\cr
-#'   See \code{\link{convertToLlama}}.
-#'   Default is \code{TRUE}.
 #' @param cv.splits [\code{data.frame}]\cr
 #'   Data frame defining the split of the data into cross-validation folds,
 #'   as returned by \code{\link{createCVSplits}}.
 #'   Default are the splits \code{asscenario$cv.splits}
 #' @return Result of calling \code{\link[llama]{input}} with data partitioned into folds.
 #' @export
-convertToLlamaCVFolds = function(asscenario, measure, feature.steps, add.feature.costs = TRUE, cv.splits) {
+convertToLlamaCVFolds = function(asscenario, measure, feature.steps, cv.splits) {
   assertClass(asscenario, "ASScenario")
   if (missing(measure))
     measure = asscenario$desc$performance_measures[1]
@@ -39,23 +36,25 @@ convertToLlamaCVFolds = function(asscenario, measure, feature.steps, add.feature
 
   reps = max(cv.splits$repetition)
   if (reps > 1L)
-    stopf("llama can currently not handle CVs with repetitions, but you used reps = %i!", reps)
+    stopf("LLAMA does not handle repeated cross validations!")
 
   folds = cv.splits
 
   llamaFrame = convertToLlama(asscenario, measure = measure,
-    feature.steps = feature.steps, add.feature.costs = add.feature.costs)
+      feature.steps = feature.steps)
 
   nfolds = length(unique(folds$fold))
   rownames(folds) = folds$instance_id
   splitFactors = folds[match(llamaFrame$data$instance_id, folds$instance_id), "fold"]
   parts = split(llamaFrame$data, splitFactors)
 
-  return(c(llamaFrame,
+  retval = c(llamaFrame,
             list(train = lapply(1:nfolds, function(x) {
                     return(unsplit(parts[-x], folds$fold[folds$fold!=x]))
                 }),
                  test = lapply(1:nfolds, function(x) {
                     return(parts[[x]])
-                 }))))
+                 })))
+  attr(retval, "hasSplits") = TRUE
+  return(retval)
 }

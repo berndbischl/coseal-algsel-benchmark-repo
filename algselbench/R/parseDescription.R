@@ -46,17 +46,17 @@ parseDescription = function(path) {
     desc[[name]] <<- cast(val)
   }
 
-  convertField("performance_measures")
+  convertField("performance_measures", make.names)
   convertField("maximize", as.logical)
-  convertField("performance_type")
+  convertField("performance_type", make.names)
   convertField("algorithm_cutoff_time", as.numeric)
   convertField("algorithm_cutoff_memory", as.numeric)
   convertField("features_cutoff_time", as.numeric)
   convertField("features_cutoff_memory", as.numeric)
-  convertField("features_deterministic")
-  convertField("features_stochastic")
-  convertField("algorithms_deterministic")
-  convertField("algorithms_stochastic")
+  convertField("features_deterministic", make.names)
+  convertField("features_stochastic", make.names)
+  convertField("algorithms_deterministic", make.names)
+  convertField("algorithms_stochastic", make.names)
 
   desc$maximize = setNames(desc$maximize, desc$performance_measures)
   desc$performance_type = setNames(desc$performance_type, desc$performance_measures)
@@ -67,11 +67,11 @@ parseDescription = function(path) {
   feature.steps = list()
   for (i in f.steps) {
     #separate name and feature list section
-    step.name = str_split(ns[[i]], " ")[[1]][2]
+    step.name = make.names(str_split(ns[[i]], " ")[[1]][2])
     # split by comma and trim whitespace
     feats = str_split(desc[[i]], ",")[[1]]
     feats = sapply(feats, str_trim, USE.NAMES=FALSE)
-    feature.steps[[step.name]] = feats
+    feature.steps[[step.name]] = sapply(feats, make.names)
   }
   desc[f.steps] = NULL
   desc$feature_steps = feature.steps
