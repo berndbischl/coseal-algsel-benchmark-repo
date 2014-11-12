@@ -5,29 +5,30 @@ library(mlr)
 load_all()
 
 # ast = parseASScenario("/home/bischl/cos/coseal/data/sat12-rand")
-# ast = parseASScenario("/home/bischl/cos/coseal/data/QBF-2011")
+ast = parseASScenario("/home/bischl/cos/coseal/data/QBF-2011")
 
 
+doNestedCVWithTuning = function(asscenario, ldf, timeout, learner, par.set, llama.fun, pre,
+  maxit = 10L, n.inner.folds = 2L) {
 
-doNestedCVWithTuning = function(asscenario, learner, par.set, ldf, llama.fun, pre, maxit = 10L) {
-  # desc = asscenario$desc
-  # cutoff = desc$algorithm_cutoff_time
-  # timeout = if (desc$performance_type[[1L]] == "runtime" && !is.na(cutoff))
-    # cutoff
-  # else
-    # NULL
+  n.outer.folds = length(ldf)
+  outer.preds = vector("list", n.outer.folds)
 
-  for (i in 1:length(llama.cv)) {
+  for (i in 1:n.outer.folds) {
     print(i)
     ldf2 = ldf
     ldf2$data = ldf$train[[i]]
-    ldf3 = cvFolds(ldf2)
+    ldf3 = cvFolds(ldf2, nfolds = n.inner.folds, stratify = FALSE)
     parvals = tuneLlamaModel(asscenario, learner, par.set, ldf3, llama.fun, pre, maxit)
-    learner = setHyperPars(learner, par.vals = parvals)
-    p = llama.fun(learner, data = ldf, pre = pre)
-    ldf4 = fixFeckingPresolve(asscenario, ldf3)
-    par10 = mean(parscores(ldf4, p, timeout = timeout))
+
+    # now fit only on outer trainining set with best params and predict outer test set
+    learner2 = setHyperPars(learner, par.vals = parvals)
+    outer.split.ldf = ldf
+    outer.split.ldf$train = list(ldf$train[[i]])
+    outer.split.ldf$test = list(ldf$test[[i]])
+    outer.preds[[i]] = llama.fun(learner2, data = outer.split.ldf, pre = pre)
   }
+  return(outer.preds)
 }
 
 tuneLlamaModel = function(asscenario, learner, par.set, cv.splits, llama.fun, pre, maxit = 10) {
@@ -52,8 +53,10 @@ ps = makeParamSet(
   makeIntegerParam("minsplit", lower = 1, upper = 20)
 )
 
-llama.cv = convertToLlamaCVFolds(ast, add.feature.costs = FALSE)
-z = tuneLlamaModel(learner, ps, llama.cv, classify, pre = normalize, maxit = 2L)
+llama.cv = convertToLlamaCVFolds(ast)
+z = doNestedCVWithTuning(ast, llama.cv, 100, learner, ps, classify, pre = normalize, maxit = 2L)
+
+# z = tuneLlamaModel(learner, ps, llama.cv, classify, pre = normalize, maxit = 2L)
 print(z)
 
 
