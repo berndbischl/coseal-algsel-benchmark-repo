@@ -3,28 +3,35 @@
 \alias{runLlamaModels}
 \title{Creates a registry which can be used for running several Llama models on a cluster.}
 \usage{
-runLlamaModels(asscenarios, feature.steps.list, baselines,
-  classifiers = list(), regressors = list(), clusterers = list(), pre)
+runLlamaModels(asscenarios, feature.steps.list = NULL, baselines = NULL,
+  learners = list(), par.sets = list(), rs.iters = 100L,
+  n.inner.folds = 2L, pre)
 }
 \arguments{
-\item{asscenarios}{[\code{list}]\cr
-List of algorithm selection scenarios (\code{\link{ASScenario}}).}
+\item{asscenarios}{[(list of) \code{\link{ASScenario}}]\cr
+Algorithm selection scenarios.}
 
 \item{baselines}{[\code{character}]\cr
 Vector of characters, defining the baseline models.
 Default is c("vbs", "singleBest", "singleBestByPar", "singleBestBySuccesses").}
 
-\item{classifiers}{[list of \code{\link[mlr]{Learner}}]\cr
-Classification learners.
+\item{learners}{[list of \code{\link[mlr]{Learner}}]\cr
+mlr learners to use for modeling.
 Default is none.}
 
-\item{regressors}{[list of \code{\link[mlr]{Learner}}]\cr
-Regression learners.
+\item{par.sets}{[list of \code{\link[ParamSet]{ParamSet}}]\cr
+Param sets for learners to tune via random search.
+Pass an empty param set, if you want no tuning.
+Must be in of same length as \code{learners} and in the same order.
 Default is none.}
 
-\item{clusterers}{[list of \code{\link[mlr]{Learner}}]\cr
-Cluster learners.
-Default is none.}
+\item{rs.iters}{[\code{integer(1)}]\cr
+Number of iterations for random search hyperparameter tuning.
+Default is 100.}
+
+\item{n.inner.folds}{[\code{integer(1)}]\cr
+Number of cross-validation folds for inner CV in hyperparameter tuning.
+Default is 2L.}
 
 \item{pre}{[\code{function}]\cr
 A function (e.g. normalize) to preprocess the feature data.
@@ -32,7 +39,8 @@ By default no preprocessing is done.}
 
 \item{feature.steps}{[\code{list} of \code{character}]\cr
 Named list of feature steps we want to use.
-Must be named with scenario ids.}
+Must be named with scenario ids.
+Default is to take the default feature steps from the scenario.}
 }
 \value{
 BatchExperiments registry.

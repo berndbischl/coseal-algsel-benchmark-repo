@@ -3,8 +3,7 @@
 \alias{convertToLlamaCVFolds}
 \title{Convert an ASScenario scenario object to a llama data object with cross-validation folds.}
 \usage{
-convertToLlamaCVFolds(asscenario, measure, feature.steps,
-  add.feature.costs = TRUE, cv.splits)
+convertToLlamaCVFolds(asscenario, measure, feature.steps, cv.splits)
 }
 \arguments{
 \item{asscenario}{[\code{\link{ASScenario}}]\cr
@@ -18,10 +17,6 @@ Default is first measure in scenario.}
 Which feature steps are allowed?
 Default are the default feature steps or all steps
 in case no defaults were defined.}
-
-\item{add.feature.costs}{[\code{logical(1)}]\cr
-See \code{\link{convertToLlama}}.
-Default is \code{TRUE}.}
 
 \item{cv.splits}{[\code{data.frame}]\cr
 Data frame defining the split of the data into cross-validation folds,

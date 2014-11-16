@@ -4,7 +4,7 @@
 \alias{convertToMlr}
 \title{Convert an ASScenario scenario object to a llama data object.}
 \usage{
-convertToLlama(asscenario, measure, feature.steps, add.feature.costs = TRUE)
+convertToLlama(asscenario, measure, feature.steps)
 
 convertToMlr(asscenario, measure, feature.steps, add.feature.costs = TRUE)
 }
@@ -20,15 +20,6 @@ Default is first measure in scenario.}
 Which feature steps are allowed?
 Default are the default feature steps or all steps
 in case no defaults were defined.}
-
-\item{add.feature.costs}{[\code{logical(1)}]\cr
-If costs for features are present in runtime scenarios, should they be added to the algorithm costs
-(because in reality you would  have to pay them)? Whether the algorithms hit the cutoff runtime
-is also recalculated in this case.
-Adding the feature costs should not be done for the
-baseline models, but only for proper prognostic models.
-If no costs are present, 0 is added as cost and a warning is issued.
-Default is \code{TRUE}.}
 }
 \value{
 Result of calling \code{\link[llama]{input}}.

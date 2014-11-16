@@ -13,7 +13,7 @@ source("convertResultsToXTable.R")
 data.dir =  normalizePath(file.path(coseal.svn.dir, "data"))
 scenario.dirs = list.files(data.dir, full = TRUE)
 # avoid bbob and machine learning for now
-scenario.dirs = scenario.dirs[!str_detect(scenario.dirs, "BBOB|MACHINE")]
+scenario.dirs = scenario.dirs[!str_detect(scenario.dirs, "BBOB|MACHINE|PROTEUS")]
 # scenario.dirs = scenario.dirs[1]
 rhtml.dir = normalizePath("../Rhtml")
 html.dir = normalizePath("../html")
@@ -79,7 +79,8 @@ try({
     }
 
     # create all subpages and copy readme
-    knitIt("scenario_index", "index")
+    knitIt("index")
+#     knitIt("scenario_index", "index")
     file.copy(file.path(scenario.dir, "readme.txt"), out.dir)
     knitIt("data_files")
     knitIt("algos")
