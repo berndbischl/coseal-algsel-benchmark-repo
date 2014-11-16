@@ -96,35 +96,34 @@ solver always has a misclassification penalty of zero.</li>
 
 <p>
 
-<!-- html table generated in R 3.1.0 by xtable 1.7-3 package -->
-<!-- Wed May  7 15:00:48 2014 -->
-<TABLE border=1>
-<TR> <TH> algo </TH> <TH> model </TH> <TH> succ </TH> <TH> par10 </TH> <TH> mcp </TH>  </TR>
-  <TR> <TD> baseline </TD> <TD> vbs </TD> <TD>  0.701 </TD> <TD> 3662.241 </TD> <TD>  0.000 </TD> </TR>
-  <TR> <TD> baseline </TD> <TD> singleBest </TD> <TD>  0.348 </TD> <TD> 7882.393 </TD> <TD> 404.246 </TD> </TR>
-  <TR> <TD> baseline </TD> <TD> singleBestByPar </TD> <TD> <b><FONT COLOR="#00FF00"> 0.477</FONT></b> </TD> <TD> <b><FONT COLOR="#00FF00">6338.901</FONT></b> </TD> <TD> <b><FONT COLOR="#00FF00">254.757</FONT></b> </TD> </TR>
-  <TR> <TD> baseline </TD> <TD> singleBestBySuccesses </TD> <TD> <b><FONT COLOR="#00FF00"> 0.477</FONT></b> </TD> <TD> <b><FONT COLOR="#00FF00">6338.901</FONT></b> </TD> <TD> <b><FONT COLOR="#00FF00">254.757</FONT></b> </TD> </TR>
-  <TR> <TD> classif </TD> <TD> meta/AdaBoostM1 </TD> <TD>  0.472 </TD> <TD> 6408.151 </TD> <TD> 249.150 </TD> </TR>
-  <TR> <TD> classif </TD> <TD> bayes/BayesNet </TD> <TD>  0.583 </TD> <TD> 5084.882 </TD> <TD> 122.752 </TD> </TR>
-  <TR> <TD> classif </TD> <TD> lazy/IBk </TD> <TD>  0.617 </TD> <TD> 4688.221 </TD> <TD> 92.192 </TD> </TR>
-  <TR> <TD> classif </TD> <TD> rules/OneR </TD> <TD>  0.518 </TD> <TD> 5864.419 </TD> <TD> 198.247 </TD> </TR>
-  <TR> <TD> classif </TD> <TD> trees/RandomTree </TD> <TD>  0.609 </TD> <TD> 4776.721 </TD> <TD> 96.207 </TD> </TR>
-  <TR> <TD> classif </TD> <TD> trees/J48 </TD> <TD>  0.596 </TD> <TD> 4928.165 </TD> <TD> 106.843 </TD> </TR>
-  <TR> <TD> classif </TD> <TD> rules/JRip </TD> <TD>  0.561 </TD> <TD> 5355.749 </TD> <TD> 154.244 </TD> </TR>
-  <TR> <TD> classif </TD> <TD> classif.ctree </TD> <TD>  0.550 </TD> <TD> 5478.330 </TD> <TD> 164.179 </TD> </TR>
-  <TR> <TD> classif </TD> <TD> classif.ksvm </TD> <TD>  0.550 </TD> <TD> 5482.914 </TD> <TD> 168.763 </TD> </TR>
-  <TR> <TD> classif </TD> <TD> classif.naiveBayes </TD> <TD>  0.532 </TD> <TD> 5684.669 </TD> <TD> 173.387 </TD> </TR>
-  <TR> <TD> classif </TD> <TD> classif.randomForest </TD> <TD> <b><FONT COLOR="#FFAAAA"> 0.630</FONT></b> </TD> <TD> <b><FONT COLOR="#FFAAAA">4528.243</FONT></b> </TD> <TD> <b><FONT COLOR="#FFAAAA">73.023</FONT></b> </TD> </TR>
-  <TR> <TD> classif </TD> <TD> classif.rpart </TD> <TD>  0.563 </TD> <TD> 5319.075 </TD> <TD> 145.733 </TD> </TR>
-  <TR> <TD> regr </TD> <TD> regr.lm </TD> <TD> <b><FONT COLOR="#FFAAAA"> 0.619</FONT></b> </TD> <TD> <b><FONT COLOR="#FFAAAA">4655.247</FONT></b> </TD> <TD> <b><FONT COLOR="#FFAAAA">87.380</FONT></b> </TD> </TR>
-  <TR> <TD> regr </TD> <TD> regr.rpart </TD> <TD>  0.559 </TD> <TD> 5360.441 </TD> <TD> 144.855 </TD> </TR>
-  <TR> <TD> regr </TD> <TD> regr.randomForest </TD> <TD> <b><FONT COLOR="#FF0000"> 0.647</FONT></b> </TD> <TD> <b><FONT COLOR="#FF0000">4329.539</FONT></b> </TD> <TD> <b><FONT COLOR="#FF0000">57.370</FONT></b> </TD> </TR>
-  <TR> <TD> regr </TD> <TD> regr.earth </TD> <TD>  0.601 </TD> <TD> 4870.717 </TD> <TD> 105.718 </TD> </TR>
-  <TR> <TD> cluster </TD> <TD> EM </TD> <TD> <b><FONT COLOR="#00FF00"> 0.473</FONT></b> </TD> <TD> <b><FONT COLOR="#00FF00">6391.859</FONT></b> </TD> <TD> <b><FONT COLOR="#00FF00">246.939</FONT></b> </TD> </TR>
-  <TR> <TD> cluster </TD> <TD> FarthestFirst </TD> <TD>  0.472 </TD> <TD> 6408.151 </TD> <TD> 249.150 </TD> </TR>
-  <TR> <TD> cluster </TD> <TD> SimpleKMeans </TD> <TD>  0.472 </TD> <TD> 6408.151 </TD> <TD> 249.150 </TD> </TR>
-   </TABLE>
-
+<!-- html table generated in R 3.0.2 by xtable 1.7-4 package -->
+<!-- Sun Nov 16 15:33:01 2014 -->
+<table border=1>
+<tr> <th> algo </th> <th> model </th> <th> succ </th> <th> par10 </th> <th> mcp </th>  </tr>
+  <tr> <td> baseline </td> <td> vbs </td> <td>  0.701 </td> <td> 3662.241 </td> <td>  0.000 </td> </tr>
+  <tr> <td> baseline </td> <td> singleBest </td> <td>  0.348 </td> <td> 7882.393 </td> <td> 404.246 </td> </tr>
+  <tr> <td> baseline </td> <td> singleBestByPar </td> <td> <b><FONT COLOR="#00FF00"> 0.477</FONT></b> </td> <td> <b><FONT COLOR="#00FF00">6338.901</FONT></b> </td> <td> <b><FONT COLOR="#00FF00">254.757</FONT></b> </td> </tr>
+  <tr> <td> baseline </td> <td> singleBestBySuccesses </td> <td> <b><FONT COLOR="#00FF00"> 0.477</FONT></b> </td> <td> <b><FONT COLOR="#00FF00">6338.901</FONT></b> </td> <td> <b><FONT COLOR="#00FF00">254.757</FONT></b> </td> </tr>
+  <tr> <td> classif </td> <td> meta/AdaBoostM1 </td> <td>  0.472 </td> <td> 6408.151 </td> <td> 249.150 </td> </tr>
+  <tr> <td> classif </td> <td> bayes/BayesNet </td> <td>  0.583 </td> <td> 5084.882 </td> <td> 122.752 </td> </tr>
+  <tr> <td> classif </td> <td> lazy/IBk </td> <td>  0.617 </td> <td> 4688.221 </td> <td> 92.192 </td> </tr>
+  <tr> <td> classif </td> <td> rules/OneR </td> <td>  0.518 </td> <td> 5864.419 </td> <td> 198.247 </td> </tr>
+  <tr> <td> classif </td> <td> trees/RandomTree </td> <td>  0.609 </td> <td> 4776.721 </td> <td> 96.207 </td> </tr>
+  <tr> <td> classif </td> <td> trees/J48 </td> <td>  0.596 </td> <td> 4928.165 </td> <td> 106.843 </td> </tr>
+  <tr> <td> classif </td> <td> rules/JRip </td> <td>  0.561 </td> <td> 5355.749 </td> <td> 154.244 </td> </tr>
+  <tr> <td> classif </td> <td> classif.ctree </td> <td>  0.550 </td> <td> 5478.330 </td> <td> 164.179 </td> </tr>
+  <tr> <td> classif </td> <td> classif.ksvm </td> <td>  0.550 </td> <td> 5482.914 </td> <td> 168.763 </td> </tr>
+  <tr> <td> classif </td> <td> classif.naiveBayes </td> <td>  0.532 </td> <td> 5684.669 </td> <td> 173.387 </td> </tr>
+  <tr> <td> classif </td> <td> classif.randomForest </td> <td> <b><FONT COLOR="#FFAAAA"> 0.630</FONT></b> </td> <td> <b><FONT COLOR="#FFAAAA">4528.243</FONT></b> </td> <td> <b><FONT COLOR="#FFAAAA">73.023</FONT></b> </td> </tr>
+  <tr> <td> classif </td> <td> classif.rpart </td> <td>  0.563 </td> <td> 5319.075 </td> <td> 145.733 </td> </tr>
+  <tr> <td> regr </td> <td> regr.lm </td> <td> <b><FONT COLOR="#FFAAAA"> 0.619</FONT></b> </td> <td> <b><FONT COLOR="#FFAAAA">4655.247</FONT></b> </td> <td> <b><FONT COLOR="#FFAAAA">87.380</FONT></b> </td> </tr>
+  <tr> <td> regr </td> <td> regr.rpart </td> <td>  0.559 </td> <td> 5360.441 </td> <td> 144.855 </td> </tr>
+  <tr> <td> regr </td> <td> regr.randomForest </td> <td> <b><FONT COLOR="#FF0000"> 0.647</FONT></b> </td> <td> <b><FONT COLOR="#FF0000">4329.539</FONT></b> </td> <td> <b><FONT COLOR="#FF0000">57.370</FONT></b> </td> </tr>
+  <tr> <td> regr </td> <td> regr.earth </td> <td>  0.601 </td> <td> 4870.717 </td> <td> 105.718 </td> </tr>
+  <tr> <td> cluster </td> <td> EM </td> <td> <b><FONT COLOR="#00FF00"> 0.473</FONT></b> </td> <td> <b><FONT COLOR="#00FF00">6391.859</FONT></b> </td> <td> <b><FONT COLOR="#00FF00">246.939</FONT></b> </td> </tr>
+  <tr> <td> cluster </td> <td> FarthestFirst </td> <td>  0.472 </td> <td> 6408.151 </td> <td> 249.150 </td> </tr>
+  <tr> <td> cluster </td> <td> SimpleKMeans </td> <td>  0.472 </td> <td> 6408.151 </td> <td> 249.150 </td> </tr>
+   </table>
 
 
 <p>
@@ -132,17 +131,16 @@ solver always has a misclassification penalty of zero.</li>
 
 The following default feature steps were used for model building:
 <p>
-<code class="knitr inline">Pre_featuretime, Basic_featuretime, KLB_featuretime, CG_featuretime</code>
+<code class="knitr inline">Pre, Basic, KLB, CG, DIAMETER, cl, sp, ls_saps, ls_gsat, lobjois</code>
 <p>
 Number of presolved instances: <code class="knitr inline">5</code>
 <p>
-The cost for using the feature steps (adapted for presolving) is: <code class="knitr inline">3.7613 &times; 10<sup>4</sup></code>
-or on average: <code class="knitr inline">49.0386</code>
+The cost for using the feature steps (adapted for presolving) is: <code class="knitr inline">3.761259 &times; 10<sup>4</sup></code>
+or on average: <code class="knitr inline">49.0385789</code>
 <p>
-The feature steps correspond to the following <code class="knitr inline">50</code> / <code class="knitr inline">115</code> features:
+The feature steps correspond to the following <code class="knitr inline">115</code> / <code class="knitr inline">115</code> features:
 <p>
-nvarsOrig, nclausesOrig, nvars, nclauses, reducedVars, <br>reducedClauses, vars_clauses_ratio, POSNEG_RATIO_CLAUSE_mean, POSNEG_RATIO_CLAUSE_coeff_variation, POSNEG_RATIO_CLAUSE_min, <br>POSNEG_RATIO_CLAUSE_max, POSNEG_RATIO_CLAUSE_entropy, VCG_CLAUSE_mean, VCG_CLAUSE_coeff_variation, VCG_CLAUSE_min, <br>VCG_CLAUSE_max, VCG_CLAUSE_entropy, UNARY, BINARYp, TRINARYp, <br>VCG_VAR_mean, VCG_VAR_coeff_variation, VCG_VAR_min, VCG_VAR_max, VCG_VAR_entropy, <br>POSNEG_RATIO_VAR_mean, POSNEG_RATIO_VAR_stdev, POSNEG_RATIO_VAR_min, POSNEG_RATIO_VAR_max, POSNEG_RATIO_VAR_entropy, <br>HORNY_VAR_mean, HORNY_VAR_coeff_variation, HORNY_VAR_min, HORNY_VAR_max, HORNY_VAR_entropy, <br>horn_clauses_fraction, VG_mean, VG_coeff_variation, VG_min, VG_max, <br>CG_mean, CG_coeff_variation, CG_min, CG_max, CG_entropy, <br>cluster_coeff_mean, cluster_coeff_coeff_variation, cluster_coeff_min, cluster_coeff_max, cluster_coeff_entropy, <br>
-
+nvarsOrig, nclausesOrig, nvars, nclauses, reducedVars, <br>reducedClauses, vars_clauses_ratio, POSNEG_RATIO_CLAUSE_mean, POSNEG_RATIO_CLAUSE_coeff_variation, POSNEG_RATIO_CLAUSE_min, <br>POSNEG_RATIO_CLAUSE_max, POSNEG_RATIO_CLAUSE_entropy, VCG_CLAUSE_mean, VCG_CLAUSE_coeff_variation, VCG_CLAUSE_min, <br>VCG_CLAUSE_max, VCG_CLAUSE_entropy, UNARY, BINARYp, TRINARYp, <br>VCG_VAR_mean, VCG_VAR_coeff_variation, VCG_VAR_min, VCG_VAR_max, VCG_VAR_entropy, <br>POSNEG_RATIO_VAR_mean, POSNEG_RATIO_VAR_stdev, POSNEG_RATIO_VAR_min, POSNEG_RATIO_VAR_max, POSNEG_RATIO_VAR_entropy, <br>HORNY_VAR_mean, HORNY_VAR_coeff_variation, HORNY_VAR_min, HORNY_VAR_max, HORNY_VAR_entropy, <br>horn_clauses_fraction, VG_mean, VG_coeff_variation, VG_min, VG_max, <br>CG_mean, CG_coeff_variation, CG_min, CG_max, CG_entropy, <br>cluster_coeff_mean, cluster_coeff_coeff_variation, cluster_coeff_min, cluster_coeff_max, cluster_coeff_entropy, <br>DIAMETER_mean, DIAMETER_coeff_variation, DIAMETER_min, DIAMETER_max, DIAMETER_entropy, <br>cl_num_mean, cl_num_coeff_variation, cl_num_min, cl_num_max, cl_num_q90, <br>cl_num_q10, cl_num_q75, cl_num_q25, cl_num_q50, cl_size_mean, <br>cl_size_coeff_variation, cl_size_min, cl_size_max, cl_size_q90, cl_size_q10, <br>cl_size_q75, cl_size_q25, cl_size_q50, SP_bias_mean, SP_bias_coeff_variation, <br>SP_bias_min, SP_bias_max, SP_bias_q90, SP_bias_q10, SP_bias_q75, <br>SP_bias_q25, SP_bias_q50, SP_unconstraint_mean, SP_unconstraint_coeff_variation, SP_unconstraint_min, <br>SP_unconstraint_max, SP_unconstraint_q90, SP_unconstraint_q10, SP_unconstraint_q75, SP_unconstraint_q25, <br>SP_unconstraint_q50, saps_BestSolution_Mean, saps_BestSolution_CoeffVariance, saps_FirstLocalMinStep_Mean, saps_FirstLocalMinStep_CoeffVariance, <br>saps_FirstLocalMinStep_Median, saps_FirstLocalMinStep_Q10, saps_FirstLocalMinStep_Q90, saps_BestAvgImprovement_Mean, saps_BestAvgImprovement_CoeffVariance, <br>saps_FirstLocalMinRatio_Mean, saps_FirstLocalMinRatio_CoeffVariance, gsat_BestSolution_Mean, gsat_BestSolution_CoeffVariance, gsat_FirstLocalMinStep_Mean, <br>gsat_FirstLocalMinStep_CoeffVariance, gsat_FirstLocalMinStep_Median, gsat_FirstLocalMinStep_Q10, gsat_FirstLocalMinStep_Q90, gsat_BestAvgImprovement_Mean, <br>gsat_BestAvgImprovement_CoeffVariance, gsat_FirstLocalMinRatio_Mean, gsat_FirstLocalMinRatio_CoeffVariance, lobjois_mean_depth_over_vars, lobjois_log_num_nodes_over_vars, <br>
 <p>
 
 </body>

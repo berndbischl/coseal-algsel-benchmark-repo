@@ -63,55 +63,133 @@
   font-weight: bold;
 }
 </style>
-<title>Scenario overview</title>
+<title>Algorithm selection scenarios</title>
 </head>
 <body>
 
 
-<h1>Scenario PREMARSHALLING-ASTAR-2013</h1>
+<h1>Algorithm Selection Benchmark Library</h1>
 
-<div class="chunk" id="unnamed-chunk-1"><div class="rcode"><div class="output"><pre class="knitr r">## Scenario id                           : PREMARSHALLING-ASTAR-2013
-## Performance measures                  : runtime
-## Performance types                     : runtime
-## Algorithm cutoff time                 : 3600
-## Algorithm cutoff mem                  : 5120
-## Feature cutoff time                   : 30
-## Feature cutoff mem                    : 512
-## Nr. of instances                      : 527
-## Features (deterministic)       ( 16)  : stacks, tiers, stack-tier-ratio, container-density, empty...
-## Features (stochastic)                 : -
-## Feature repetitions                   : 1 - 1
-## Feature costs                         : No
-## Algo. (deterministic)          (  4)  : astar-symmulgt-transmul, astar-symmullt-transmul, idastar...
-## Algo. (stochastic)                    : -
-## Algo. repetitions                     : 1 - 1
-## Algo. runs (inst x algo x rep)        : 2108
-## Feature steps                         : all
-## CV repetitions                        : 1
-## CV folds                              : 10
-</pre></div>
-</div></div>
+<br>
 
+<table border=1 cellpadding=10>
+<tr>
+  <th>Scenario Name</th>
+  <th>Instances</th>
+  <th>Algorithms</th>
+  <th>Features</th>
+  <th>Type</th>
+  <th>Stoch. Feat.</th>
+  <th>Stoch. Alg.</th>
+  <th>Feature Costs</th>
+</tr>
 
-<ul>
+<tr>
+<td>
+<a href='http://berndbischl.github.io/coseal-algsel-benchmark-repo/scenario-pages/ASP-POTASSCO/index.html'>ASP-POTASSCO</a>
+</td>
+<td align='right'>
+1294
+</td>
+<td align='right'>
+11
+</td>
+<td align='right'>
+138
+</td>
+<td align='right'>
+runtime
+</td>
+<td align='right'>
+FALSE, max. reps = 1
+</td>
+<td align='right'>
+FALSE, max. reps = 1
+</td>
+<td align='right'>
+TRUE
+</td>
+</tr>
+<tr>
+<td>
+<a href='http://berndbischl.github.io/coseal-algsel-benchmark-repo/scenario-pages/CSP-2010/index.html'>CSP-2010</a>
+</td>
+<td align='right'>
+2024
+</td>
+<td align='right'>
+2
+</td>
+<td align='right'>
+86
+</td>
+<td align='right'>
+runtime
+</td>
+<td align='right'>
+TRUE, max. reps = 1
+</td>
+<td align='right'>
+FALSE, max. reps = 1
+</td>
+<td align='right'>
+FALSE
+</td>
+</tr>
+<tr>
+<td>
+<a href='http://berndbischl.github.io/coseal-algsel-benchmark-repo/scenario-pages/MAXSAT12-PMS/index.html'>MAXSAT12-PMS</a>
+</td>
+<td align='right'>
+876
+</td>
+<td align='right'>
+6
+</td>
+<td align='right'>
+37
+</td>
+<td align='right'>
+runtime
+</td>
+<td align='right'>
+FALSE, max. reps = 1
+</td>
+<td align='right'>
+FALSE, max. reps = 1
+</td>
+<td align='right'>
+TRUE
+</td>
+</tr>
+<tr>
+<td>
+<a href='http://berndbischl.github.io/coseal-algsel-benchmark-repo/scenario-pages/PREMARSHALLING-ASTAR-2013/index.html'>PREMARSHALLING-ASTAR-2013</a>
+</td>
+<td align='right'>
+527
+</td>
+<td align='right'>
+4
+</td>
+<td align='right'>
+16
+</td>
+<td align='right'>
+runtime
+</td>
+<td align='right'>
+FALSE, max. reps = 1
+</td>
+<td align='right'>
+FALSE, max. reps = 1
+</td>
+<td align='right'>
+FALSE
+</td>
+</tr>
 
-  <li> <a href="readme.txt">README</a>
-
-  <li> <a href="data_files.html">Download files</a>
-
-  <li> <a href="algos.html">Algorithm overview</a>
-
-  <li> <a href="features.html">Feature overview</a>
-
-  <li> <a href="llama.html">Benchmark results</a>
-
-  <li> <a href="config.html">Config</a>
-
-  <li> <a href="validator.html">Validator output</a>
-
-</ul>
-
-<a href="../index.html">Back to scenario list</a>
+</table>
 
 </body>
 </html>

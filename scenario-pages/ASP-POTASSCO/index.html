@@ -63,55 +63,55 @@
   font-weight: bold;
 }
 </style>
-<title>Scenario overview</title>
+<title>Algorithm selection scenarios</title>
 </head>
 <body>
 
 
-<h1>Scenario ASP-POTASSCO</h1>
+<h1>Algorithm Selection Benchmark Library</h1>
 
-<div class="chunk" id="unnamed-chunk-1"><div class="rcode"><div class="output"><pre class="knitr r">## Scenario id                           : ASP-POTASSCO
-## Performance measures                  : runtime
-## Performance types                     : runtime
-## Algorithm cutoff time                 : 600
-## Algorithm cutoff mem                  : NA
-## Feature cutoff time                   : 600
-## Feature cutoff mem                    : NA
-## Nr. of instances                      : 1294
-## Features (deterministic)       (138)  : Frac_Neg_Body, Frac_Pos_Body, Frac_Unary_Rules, Frac_Bina...
-## Features (stochastic)                 : -
-## Feature repetitions                   : 1 - 1
-## Feature costs                         : Yes
-## Algo. (deterministic)          ( 11)  : clasp/2.1.3/h3-n1, clasp/2.1.3/h5-n1, clasp/2.1.3/h6-n1, ...
-## Algo. (stochastic)                    : -
-## Algo. repetitions                     : 1 - 1
-## Algo. runs (inst x algo x rep)        : 14234
-## Feature steps                  (  5)  : Static, Dynamic-1, Dynamic-2, Dynamic-3, Dynamic-4
-## CV repetitions                        : 1
-## CV folds                              : 10
-</pre></div>
-</div></div>
+<br>
 
+<table border=1 cellpadding=10>
+<tr>
+  <th>Scenario Name</th>
+  <th>Instances</th>
+  <th>Algorithms</th>
+  <th>Features</th>
+  <th>Type</th>
+  <th>Stoch. Feat.</th>
+  <th>Stoch. Alg.</th>
+  <th>Feature Costs</th>
+</tr>
 
-<ul>
+<tr>
+<td>
+<a href='http://berndbischl.github.io/coseal-algsel-benchmark-repo/scenario-pages/ASP-POTASSCO/index.html'>ASP-POTASSCO</a>
+</td>
+<td align='right'>
+1294
+</td>
+<td align='right'>
+11
+</td>
+<td align='right'>
+138
+</td>
+<td align='right'>
+runtime
+</td>
+<td align='right'>
+FALSE, max. reps = 1
+</td>
+<td align='right'>
+FALSE, max. reps = 1
+</td>
+<td align='right'>
+TRUE
+</td>
+</tr>
 
-  <li> <a href="readme.txt">README</a>
-
-  <li> <a href="data_files.html">Download files</a>
-
-  <li> <a href="algos.html">Algorithm overview</a>
-
-  <li> <a href="features.html">Feature overview</a>
-
-  <li> <a href="llama.html">Benchmark results</a>
-
-  <li> <a href="config.html">Config</a>
-
-  <li> <a href="validator.html">Validator output</a>
-
-</ul>
-
-<a href="../index.html">Back to scenario list</a>
+</table>
 
 </body>
 </html>
