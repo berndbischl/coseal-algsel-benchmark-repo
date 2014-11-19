@@ -80,7 +80,7 @@ try({
 
     # create all subpages and copy readme
     knitIt("index")
-#     knitIt("scenario_index", "index")
+    knitIt("scenario_index", "index")
     file.copy(file.path(scenario.dir, "readme.txt"), out.dir)
     knitIt("data_files")
     knitIt("algos")
