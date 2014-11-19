@@ -63,289 +63,54 @@
   font-weight: bold;
 }
 </style>
-<title>Algorithm selection scenarios</title>
+<title>Scenario overview</title>
 </head>
 <body>
 
 
-<h1>Algorithm Selection Benchmark Library</h1>
+<h1>Scenario SAT12-HAND</h1>
 
-<br>
+<div class="chunk" id="unnamed-chunk-1"><div class="rcode"><div class="output"><pre class="knitr r">## Scenario id                           : SAT12-HAND
+## Performance measures                  : runtime
+## Performance types                     : runtime
+## Algorithm cutoff time                 : 1200
+## Algorithm cutoff mem                  : NA
+## Feature cutoff time                   : 1200
+## Feature cutoff mem                    : NA
+## Nr. of instances                      : 767
+## Features (deterministic)       (115)  : nvarsOrig, nclausesOrig, nvars, nclauses, reducedVars, re...
+## Features (stochastic)                 : -
+## Feature repetitions                   : 1 - 1
+## Feature costs                         : Yes
+## Algo. (deterministic)          ( 31)  : ebglucose, ebminisat, glucose2, glueminisat, lingeling, l...
+## Algo. (stochastic)                    : -
+## Algo. repetitions                     : 1 - 1
+## Algo. runs (inst x algo x rep)        : 23777
+## Feature steps                  ( 10)  : Pre, Basic, KLB, CG, DIAMETER, cl, sp, ls_saps, ls_gsat, ...
+## CV repetitions                        : 1
+## CV folds                              : 10
+</pre></div>
+</div></div>
 
-<table border=1 cellpadding=10>
-<tr>
-  <th>Scenario Name</th>
-  <th>Instances</th>
-  <th>Algorithms</th>
-  <th>Features</th>
-  <th>Type</th>
-  <th>Stoch. Feat.</th>
-  <th>Stoch. Alg.</th>
-  <th>Feature Costs</th>
-</tr>
+<ul>
 
-<tr>
-<td>
-<a href='http://berndbischl.github.io/coseal-algsel-benchmark-repo/scenario-pages/ASP-POTASSCO/index.html'>ASP-POTASSCO</a>
-</td>
-<td align='right'>
-1294
-</td>
-<td align='right'>
-11
-</td>
-<td align='right'>
-138
-</td>
-<td align='right'>
-runtime
-</td>
-<td align='right'>
-FALSE, max. reps = 1
-</td>
-<td align='right'>
-FALSE, max. reps = 1
-</td>
-<td align='right'>
-TRUE
-</td>
-</tr>
-<tr>
-<td>
-<a href='http://berndbischl.github.io/coseal-algsel-benchmark-repo/scenario-pages/CSP-2010/index.html'>CSP-2010</a>
-</td>
-<td align='right'>
-2024
-</td>
-<td align='right'>
-2
-</td>
-<td align='right'>
-86
-</td>
-<td align='right'>
-runtime
-</td>
-<td align='right'>
-TRUE, max. reps = 1
-</td>
-<td align='right'>
-FALSE, max. reps = 1
-</td>
-<td align='right'>
-FALSE
-</td>
-</tr>
-<tr>
-<td>
-<a href='http://berndbischl.github.io/coseal-algsel-benchmark-repo/scenario-pages/MAXSAT12-PMS/index.html'>MAXSAT12-PMS</a>
-</td>
-<td align='right'>
-876
-</td>
-<td align='right'>
-6
-</td>
-<td align='right'>
-37
-</td>
-<td align='right'>
-runtime
-</td>
-<td align='right'>
-FALSE, max. reps = 1
-</td>
-<td align='right'>
-FALSE, max. reps = 1
-</td>
-<td align='right'>
-TRUE
-</td>
-</tr>
-<tr>
-<td>
-<a href='http://berndbischl.github.io/coseal-algsel-benchmark-repo/scenario-pages/PREMARSHALLING-ASTAR-2013/index.html'>PREMARSHALLING-ASTAR-2013</a>
-</td>
-<td align='right'>
-527
-</td>
-<td align='right'>
-4
-</td>
-<td align='right'>
-16
-</td>
-<td align='right'>
-runtime
-</td>
-<td align='right'>
-FALSE, max. reps = 1
-</td>
-<td align='right'>
-FALSE, max. reps = 1
-</td>
-<td align='right'>
-FALSE
-</td>
-</tr>
-<tr>
-<td>
-<a href='http://berndbischl.github.io/coseal-algsel-benchmark-repo/scenario-pages/QBF-2011/index.html'>QBF-2011</a>
-</td>
-<td align='right'>
-1368
-</td>
-<td align='right'>
-5
-</td>
-<td align='right'>
-46
-</td>
-<td align='right'>
-runtime
-</td>
-<td align='right'>
-FALSE, max. reps = 1
-</td>
-<td align='right'>
-FALSE, max. reps = 1
-</td>
-<td align='right'>
-FALSE
-</td>
-</tr>
-<tr>
-<td>
-<a href='http://berndbischl.github.io/coseal-algsel-benchmark-repo/scenario-pages/SAT11-HAND/index.html'>SAT11-HAND</a>
-</td>
-<td align='right'>
-296
-</td>
-<td align='right'>
-15
-</td>
-<td align='right'>
-115
-</td>
-<td align='right'>
-runtime
-</td>
-<td align='right'>
-FALSE, max. reps = 1
-</td>
-<td align='right'>
-FALSE, max. reps = 1
-</td>
-<td align='right'>
-TRUE
-</td>
-</tr>
-<tr>
-<td>
-<a href='http://berndbischl.github.io/coseal-algsel-benchmark-repo/scenario-pages/SAT11-INDU/index.html'>SAT11-INDU</a>
-</td>
-<td align='right'>
-300
-</td>
-<td align='right'>
-18
-</td>
-<td align='right'>
-115
-</td>
-<td align='right'>
-runtime
-</td>
-<td align='right'>
-FALSE, max. reps = 1
-</td>
-<td align='right'>
-FALSE, max. reps = 1
-</td>
-<td align='right'>
-TRUE
-</td>
-</tr>
-<tr>
-<td>
-<a href='http://berndbischl.github.io/coseal-algsel-benchmark-repo/scenario-pages/SAT11-RAND/index.html'>SAT11-RAND</a>
-</td>
-<td align='right'>
-600
-</td>
-<td align='right'>
-9
-</td>
-<td align='right'>
-115
-</td>
-<td align='right'>
-runtime
-</td>
-<td align='right'>
-FALSE, max. reps = 1
-</td>
-<td align='right'>
-FALSE, max. reps = 1
-</td>
-<td align='right'>
-TRUE
-</td>
-</tr>
-<tr>
-<td>
-<a href='http://berndbischl.github.io/coseal-algsel-benchmark-repo/scenario-pages/SAT12-ALL/index.html'>SAT12-ALL</a>
-</td>
-<td align='right'>
-1614
-</td>
-<td align='right'>
-31
-</td>
-<td align='right'>
-115
-</td>
-<td align='right'>
-runtime
-</td>
-<td align='right'>
-FALSE, max. reps = 1
-</td>
-<td align='right'>
-FALSE, max. reps = 1
-</td>
-<td align='right'>
-TRUE
-</td>
-</tr>
-<tr>
-<td>
-<a href='http://berndbischl.github.io/coseal-algsel-benchmark-repo/scenario-pages/SAT12-HAND/index.html'>SAT12-HAND</a>
-</td>
-<td align='right'>
-767
-</td>
-<td align='right'>
-31
-</td>
-<td align='right'>
-115
-</td>
-<td align='right'>
-runtime
-</td>
-<td align='right'>
-FALSE, max. reps = 1
-</td>
-<td align='right'>
-FALSE, max. reps = 1
-</td>
-<td align='right'>
-TRUE
-</td>
-</tr>
+  <li> <a href="readme.txt">README</a>
 
-</table>
+  <li> <a href="data_files.html">Download files</a>
+
+  <li> <a href="algos.html">Algorithm overview</a>
+
+  <li> <a href="features.html">Feature overview</a>
+
+  <li> <a href="llama.html">Benchmark results</a>
+
+  <li> <a href="config.html">Config</a>
+
+  <li> <a href="validator.html">Validator output</a>
+
+</ul>
+
+<a href="../index.html">Back to scenario list</a>
 
 </body>
 </html>

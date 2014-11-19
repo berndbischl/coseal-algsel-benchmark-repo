@@ -63,81 +63,54 @@
   font-weight: bold;
 }
 </style>
-<title>Algorithm selection scenarios</title>
+<title>Scenario overview</title>
 </head>
 <body>
 
 
-<h1>Algorithm Selection Benchmark Library</h1>
+<h1>Scenario CSP-2010</h1>
 
-<br>
+<div class="chunk" id="unnamed-chunk-1"><div class="rcode"><div class="output"><pre class="knitr r">## Scenario id                           : CSP-2010
+## Performance measures                  : runtime
+## Performance types                     : runtime
+## Algorithm cutoff time                 : 5000
+## Algorithm cutoff mem                  : 4096
+## Feature cutoff time                   : NA
+## Feature cutoff mem                    : NA
+## Nr. of instances                      : 2024
+## Features (deterministic)       ( 72)  : stats_varcount, stats_var_bool, stats_var_discrete, stats...
+## Features (stochastic)          ( 14)  : stats_tightness_0, stats_tightness_25, stats_tightness_50...
+## Feature repetitions                   : 1 - 1
+## Feature costs                         : No
+## Algo. (deterministic)          (  2)  : standard, learning
+## Algo. (stochastic)                    : -
+## Algo. repetitions                     : 1 - 1
+## Algo. runs (inst x algo x rep)        : 4048
+## Feature steps                         : all_feats
+## CV repetitions                        : 1
+## CV folds                              : 10
+</pre></div>
+</div></div>
 
-<table border=1 cellpadding=10>
-<tr>
-  <th>Scenario Name</th>
-  <th>Instances</th>
-  <th>Algorithms</th>
-  <th>Features</th>
-  <th>Type</th>
-  <th>Stoch. Feat.</th>
-  <th>Stoch. Alg.</th>
-  <th>Feature Costs</th>
-</tr>
+<ul>
 
-<tr>
-<td>
-<a href='http://berndbischl.github.io/coseal-algsel-benchmark-repo/scenario-pages/ASP-POTASSCO/index.html'>ASP-POTASSCO</a>
-</td>
-<td align='right'>
-1294
-</td>
-<td align='right'>
-11
-</td>
-<td align='right'>
-138
-</td>
-<td align='right'>
-runtime
-</td>
-<td align='right'>
-FALSE, max. reps = 1
-</td>
-<td align='right'>
-FALSE, max. reps = 1
-</td>
-<td align='right'>
-TRUE
-</td>
-</tr>
-<tr>
-<td>
-<a href='http://berndbischl.github.io/coseal-algsel-benchmark-repo/scenario-pages/CSP-2010/index.html'>CSP-2010</a>
-</td>
-<td align='right'>
-2024
-</td>
-<td align='right'>
-2
-</td>
-<td align='right'>
-86
-</td>
-<td align='right'>
-runtime
-</td>
-<td align='right'>
-TRUE, max. reps = 1
-</td>
-<td align='right'>
-FALSE, max. reps = 1
-</td>
-<td align='right'>
-FALSE
-</td>
-</tr>
+  <li> <a href="readme.txt">README</a>
 
-</table>
+  <li> <a href="data_files.html">Download files</a>
+
+  <li> <a href="algos.html">Algorithm overview</a>
+
+  <li> <a href="features.html">Feature overview</a>
+
+  <li> <a href="llama.html">Benchmark results</a>
+
+  <li> <a href="config.html">Config</a>
+
+  <li> <a href="validator.html">Validator output</a>
+
+</ul>
+
+<a href="../index.html">Back to scenario list</a>
 
 </body>
 </html>
