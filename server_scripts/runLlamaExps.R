@@ -3,6 +3,7 @@ library(devtools)
 library(llama)
 library(stringr)
 library(mlr)
+library(ParamHelpers)
 load_all("../algselbench")
 source("defs.R")
 
@@ -13,63 +14,51 @@ print(ds.dirs)
 asscenarios = lapply(ds.dirs, parseASScenario)
 
 # untuned learners, so we can see whether tuning helped
-classif.untuned = list(
+learners = list(
+  # classif
   makeLearner("classif.rpart"),
   makeLearner("classif.randomForest"),
-  makeLearner("classif.ksvm")
-)
-
-regr.untuned = list(
+  makeLearner("classif.ksvm"),
+  # regr
   makeLearner("regr.lm"),
   makeLearner("regr.rpart"),
   makeLearner("regr.randomForest"),
-  makeLearner("regr.mars")
+  makeLearner("regr.mars"),
+  # cluster
+  makeLearner("cluster.XMeans", H = 30) # increase upper limit of clusters
 )
 
-cluster.untuned = list(
-  makeLearner("cluster.XMeans")
+par.sets = list(
+  # classif
+  classif.rpart = makeParamSet(),
+  classif.randomForest = makeParamSet(
+    makeIntegerParam("ntree", lower = 10, upper = 1000),
+    makeIntegerParam("mtry", lower = 1, upper = 30)
+  ),
+  classif.ksvm = makeParamSet(
+    makeNumericParam("C",     lower = -12, upper = 12, trafo = function(x) 2^x),
+    makeNumericParam("sigma", lower = -12, upper = 12, trafo = function(x) 2^x)
+  ),
+  # regr
+  regr.lm = makeParamSet(),
+  regr.rpart = makeParamSet(),
+  regr.randomForest = makeParamSet(
+    makeIntegerParam("ntree", lower = 10, upper = 1000),
+    makeIntegerParam("mtry", lower = 1, upper = 30)
+  ),
+  regr.mars = makeParamSet(
+    makeIntegerParam("degree", lower = 1, upper = 4),
+    makeIntegerParam("penalty", lower = 0.5, upper = 5),
+    makeLogicalParam("prune"),
+    makeLogicalParam("forward.step")
+  ),
+  # cluster
+  cluster.XMeans = makeParamSet()
 )
-
-# tuned learners
-# FIXME: the whole code here is crappy prototype!!!
-tune.svm = makeLearner("classif.ksvm")
-ps.svm = makeParamSet(
-  makeNumericParam("C",     lower = -12, upper = 12, trafo = function(x) 2^x),
-  makeNumericParam("sigma", lower = -12, upper = 12, trafo = function(x) 2^x)
-)
-ps.rf = makeParamSet(
-  makeIntegerParam("ntree", lower = 10, upper = 1000),
-  makeIntegerParam("mtry", lower = 1, upper = 10)
-)
-
-makeTuneW = function(cl, ps, measures) {
-  ctrl = makeTuneControlRandom(maxit = 10L)
-  inner = makeResampleDesc("CV", iters = 2L)
-  makeTuneWrapper(cl, resampling = inner, measures = measures, par.set = ps, control = ctrl)
-}
-
-classif.tuned = list(
-  makeTuneW("classif.ksvm", ps.svm, mmce),
-  makeTuneW("classif.randomForest", ps.rf, mmce)
-)
-
-regr.tuned = list(
-  makeTuneW("regr.randomForest", ps.rf, mse)
-)
-
-
-# merge tuned and untuned learners to one list
-classif = c(classif.untuned, classif.tuned)
-regr = c(regr.untuned, regr.tuned)
-cluster = cluster.untuned
-
 
 fs = sapply(asscenarios, function(x) { setNames(list(getFeatureStepNames(x)), x$desc$scenario_id) })
 reg = runLlamaModels(asscenarios, feature.steps.list = fs, pre = normalize,
-  classifiers = classif, regr = regr, clusterers = cluster)
-
-# reg = runLlamaModels(asscenarios, feature.steps.list = fs,
-  # classifiers = list(makeLearner("classif.rpart")))
+  learners = learners, par.sets = par.sets, rs.iters = 2L, n.inner.folds = 2L)
 
 # jobs should be run with 2gig mem
 # run time of all jobs
@@ -79,10 +68,11 @@ reg = runLlamaModels(asscenarios, feature.steps.list = fs, pre = normalize,
 # can be run on SLURM in a few hours in total
 
 # stop("we dont auto submit :)")
+
 submitJobs(reg, resources = list(memory = 2048))
 waitForJobs(reg)
 
 d = reduceResultsExperiments(reg, strings.as.factors = FALSE,
   impute.val = list(succ = 0, par10 = Inf, mcp = Inf))
-save2(file = "llama_results.RData", res = d)
+# save2(file = "llama_results.RData", res = d)
 
