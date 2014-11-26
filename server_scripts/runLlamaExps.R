@@ -4,6 +4,7 @@ library(llama)
 library(stringr)
 library(mlr)
 library(ParamHelpers)
+library(BatchExperiments)
 load_all("../algselbench")
 source("defs.R")
 
@@ -60,6 +61,8 @@ fs = sapply(asscenarios, function(x) { setNames(list(getFeatureStepNames(x)), x$
 reg = runLlamaModels(asscenarios, feature.steps.list = fs, pre = normalize,
   learners = learners, par.sets = par.sets, rs.iters = 2L, n.inner.folds = 2L)
 
+# testJob(reg, 6, external = TRUE)
+
 # jobs should be run with 2gig mem
 # run time of all jobs
 # summary(getJobInfo(reg)$time.running)
@@ -67,12 +70,11 @@ reg = runLlamaModels(asscenarios, feature.steps.list = fs, pre = normalize,
       # 9      18      30     161      50    6320
 # can be run on SLURM in a few hours in total
 
-# stop("we dont auto submit :)")
+stop("we dont auto submit :)")
 
 submitJobs(reg, resources = list(memory = 2048))
 waitForJobs(reg)
 
-d = reduceResultsExperiments(reg, strings.as.factors = FALSE,
-  impute.val = list(succ = 0, par10 = Inf, mcp = Inf))
+d = reduceResultsExperiments(reg, strings.as.factors = FALSE, impute.val = list(succ = 0, par10 = Inf, mcp = Inf))
 # save2(file = "llama_results.RData", res = d)
 

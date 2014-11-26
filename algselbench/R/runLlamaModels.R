@@ -194,7 +194,7 @@ doNestedCVWithTuning = function(asscenario, ldf, pre, timeout, learner, par.set,
 }
 
 tuneLlamaModel = function(asscenario, cv.splits, pre, timeout, learner, par.set, llama.fun, rs.iters) {
-  des = generateRandomDesign(rs.iters, par.set)
+  des = generateRandomDesign(rs.iters, par.set, trafo = TRUE)
   des.list = dfRowsToList(des, par.set)
   ys = vnapply(des.list, function(x) {
     learner = setHyperPars(learner, par.vals = x)
