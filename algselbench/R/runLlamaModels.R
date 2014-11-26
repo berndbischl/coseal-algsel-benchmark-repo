@@ -196,6 +196,7 @@ doNestedCVWithTuning = function(asscenario, ldf, pre, timeout, learner, par.set,
 tuneLlamaModel = function(asscenario, cv.splits, pre, timeout, learner, par.set, llama.fun, rs.iters) {
   des = generateRandomDesign(rs.iters, par.set, trafo = TRUE)
   des.list = dfRowsToList(des, par.set)
+  # FIXME: we currently do not handle failed tuning evals
   ys = vnapply(des.list, function(x) {
     learner = setHyperPars(learner, par.vals = x)
     p = llama.fun(learner, data = cv.splits, pre = pre)
@@ -204,6 +205,7 @@ tuneLlamaModel = function(asscenario, cv.splits, pre, timeout, learner, par.set,
     messagef("[Tune]: %s : par10 = %g", paramValueToString(par.set, x), par10)
     return(par10)
   })
+  # messagef"[Tune]: Tuning evals failed: %i", sum(is.na(ys))]
   best.i = getMinIndex(ys)
   best.parvals = des.list[[best.i]]
   messagef("[Best]: %s : par10 = %g", paramValueToString(par.set, best.parvals), ys[best.i])

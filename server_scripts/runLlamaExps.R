@@ -14,7 +14,6 @@ print(ds.dirs)
 # ds.dirs = ds.dirs[1]
 asscenarios = lapply(ds.dirs, parseASScenario)
 
-# untuned learners, so we can see whether tuning helped
 learners = list(
   # classif
   makeLearner("classif.rpart"),
@@ -24,7 +23,7 @@ learners = list(
   makeLearner("regr.lm"),
   makeLearner("regr.rpart"),
   makeLearner("regr.randomForest"),
-  makeLearner("regr.mars"),
+  # makeLearner("regr.mars")
   # cluster
   makeLearner("cluster.XMeans", H = 30) # increase upper limit of clusters
 )
@@ -47,12 +46,13 @@ par.sets = list(
     makeIntegerParam("ntree", lower = 10, upper = 1000),
     makeIntegerParam("mtry", lower = 1, upper = 30)
   ),
-  regr.mars = makeParamSet(
-    makeIntegerParam("degree", lower = 1, upper = 4),
-    makeIntegerParam("penalty", lower = 0.5, upper = 5),
-    makeLogicalParam("prune"),
-    makeLogicalParam("forward.step")
-  ),
+  # regr.earth = makeParamSet(
+  #   makeIntegerParam("degree", lower = 1, upper = 3)
+  #   makeNumericParam("penalty", lower = 2, upper = 4)
+  #   makeIntegerParam("penalty", lower = 0.5, upper = 5)
+  #   makeLogicalParam("prune"),
+  #   makeLogicalParam("forward.step")
+  # # )
   # cluster
   cluster.XMeans = makeParamSet()
 )
@@ -61,7 +61,7 @@ fs = sapply(asscenarios, function(x) { setNames(list(getFeatureStepNames(x)), x$
 reg = runLlamaModels(asscenarios, feature.steps.list = fs, pre = normalize,
   learners = learners, par.sets = par.sets, rs.iters = 2L, n.inner.folds = 2L)
 
-# testJob(reg, 6, external = TRUE)
+# testJob(reg, 5, external = FALSE)
 
 # jobs should be run with 2gig mem
 # run time of all jobs
@@ -70,11 +70,11 @@ reg = runLlamaModels(asscenarios, feature.steps.list = fs, pre = normalize,
       # 9      18      30     161      50    6320
 # can be run on SLURM in a few hours in total
 
-stop("we dont auto submit :)")
+# stop("we dont auto submit :)")
 
-submitJobs(reg, resources = list(memory = 2048))
-waitForJobs(reg)
+# submitJobs(reg, resources = list(memory = 2048))
+# waitForJobs(reg)
 
-d = reduceResultsExperiments(reg, strings.as.factors = FALSE, impute.val = list(succ = 0, par10 = Inf, mcp = Inf))
+# d = reduceResultsExperiments(reg, strings.as.factors = FALSE, impute.val = list(succ = 0, par10 = Inf, mcp = Inf))
 # save2(file = "llama_results.RData", res = d)
 
