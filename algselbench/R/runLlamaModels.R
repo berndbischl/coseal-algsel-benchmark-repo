@@ -83,7 +83,7 @@ runLlamaModels = function(asscenarios, feature.steps.list = NULL, baselines = NU
   }
 
 
-  packs = c("RWeka", "llama", "methods", "mlr", "BatchExperiments")
+  packs = c("RWeka", "llama", "methods", "ParamHelpers", "mlr", "BatchExperiments")
   requirePackages(packs, why = "runLlamaModels")
 
   llama.scenarios = mapply(convertToLlama, asscenario = asscenarios, feature.steps = feature.steps.list,
@@ -93,6 +93,8 @@ runLlamaModels = function(asscenarios, feature.steps.list = NULL, baselines = NU
   # FIXME:
   unlink("run_llama_models-files", recursive = TRUE)
   reg = makeExperimentRegistry("run_llama_models", packages = packs)
+  batchExport(reg, fixFeckingPresolve = fixFeckingPresolve, doNestedCVWithTuning = doNestedCVWithTuning,
+    tuneLlamaModel = tuneLlamaModel)
 
   for (i in seq_along(asscenarios)) {
     asscenario = asscenarios[[i]]
