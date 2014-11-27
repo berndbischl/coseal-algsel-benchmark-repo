@@ -79,16 +79,19 @@ fixFeckingPresolve = function(asscenario, ldf) {
                 pCosts[is.na(pCosts)] = 0
                 as.numeric(pCosts[1])
             })
-            rows = match(presolved$instance_id, ldf$data$instance_id)
-            ldf$data[rows,ldf$performance] = presolvedTimes
-            ldf$data[rows,ldf$success] = T
-            if(length(ldf$test) > 0) {
-                for(i in 1:length(ldf$test)) {
-                    rows = na.omit(match(presolved$instance_id, ldf$test[[i]]$instance_id))
-                    if(length(rows) > 0) {
-                        ts = presolvedTimes[na.omit(match(ldf$test[[i]]$instance_id, presolved$instance_id))]
-                        ldf$test[[i]][rows,ldf$performance] = ts
-                        ldf$test[[i]][rows,ldf$success] = T
+            rows = na.omit(match(presolved$instance_id, ldf$data$instance_id))
+            if(length(rows) > 0) {
+                ts = presolvedTimes[na.omit(match(ldf$data$instance_id, presolved$instance_id))]
+                ldf$data[rows,ldf$performance] = ts
+                ldf$data[rows,ldf$success] = T
+                if(length(ldf$test) > 0) {
+                    for(i in 1:length(ldf$test)) {
+                        rows = na.omit(match(presolved$instance_id, ldf$test[[i]]$instance_id))
+                        if(length(rows) > 0) {
+                            ts = presolvedTimes[na.omit(match(ldf$test[[i]]$instance_id, presolved$instance_id))]
+                            ldf$test[[i]][rows,ldf$performance] = ts
+                            ldf$test[[i]][rows,ldf$success] = T
+                        }
                     }
                 }
             }
