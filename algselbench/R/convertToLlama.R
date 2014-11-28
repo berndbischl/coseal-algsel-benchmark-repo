@@ -33,6 +33,26 @@ convertToLlama = function(asscenario, measure, feature.steps) {
       ldf = input(feats, cp$perf, successes = cp$successes,
           minimize = !asscenario$desc$maximize[measure])
   }
+  # ugly hack to fix bug in this LLAMA version -- FIXME: update to latest LLAMA version once released
+  optfun = if(ldf$minimize) { min } else { max }
+  ldf$data$best = apply(ldf$data, 1,
+      function(x) {
+          tosel = ldf$performance
+          if(length(ldf$success) > 0) {
+              nosuccs = sapply(ldf$success[which(x[ldf$success] == FALSE)], function(x) { unlist(strsplit(x, "_"))[1] })
+              tosel = setdiff(ldf$performance, nosuccs)
+          }
+          if(length(tosel) == 0) {
+              # nothing was able to solve this instance
+              NA
+          } else {
+              perfs = as.numeric(x[tosel])
+              tosel[which(perfs == optfun(perfs))]
+          }
+      })
+  # simplify...
+  names(ldf$data$best) = NULL
+
   # LLAMA set the best algorithm for instances that were not solved by anything to NA,
   # set those to the single best solver over the entire set
   sb = as.character(singleBest(ldf)[[1]]$algorithm)
