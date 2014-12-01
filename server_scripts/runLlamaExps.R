@@ -9,30 +9,30 @@ load_all("../algselbench")
 source("defs.R")
 
 ds.dirs = list.files(file.path(coseal.svn.dir, "data"), full.names = TRUE)
-ds.dirs = ds.dirs[!str_detect(ds.dirs, "BBOB|MACHINE")][6]
+ds.dirs = ds.dirs[!str_detect(ds.dirs, "BBOB|MACHINE")]
 print(ds.dirs)
 # ds.dirs = ds.dirs[1]
 asscenarios = lapply(ds.dirs, parseASScenario)
 
 learners = list(
   # classif
-  makeLearner("classif.rpart"),
+  #makeLearner("classif.rpart"),
   makeLearner("classif.randomForest"),
   makeLearner("classif.ksvm"),
   # regr
-  makeLearner("regr.lm"),
-  makeLearner("regr.rpart"),
-  makeLearner("regr.randomForest"),
+  #makeLearner("regr.lm"),
+  #makeLearner("regr.rpart"),
+  makeLearner("regr.randomForest")
   # makeLearner("regr.mars")
   # cluster
-  makeLearner("cluster.XMeans", H = 30) # increase upper limit of clusters
+  #makeLearner("cluster.XMeans", H = 30) # increase upper limit of clusters
 )
 
 par.sets = list(
   # classif
-  classif.rpart = makeParamSet(),
+  #classif.rpart = makeParamSet(),
   classif.randomForest = makeParamSet(
-    makeIntegerParam("ntree", lower = 10, upper = 1000),
+    makeIntegerParam("ntree", lower = 10, upper = 200),
     makeIntegerParam("mtry", lower = 1, upper = 30)
   ),
   classif.ksvm = makeParamSet(
@@ -40,12 +40,12 @@ par.sets = list(
     makeNumericParam("sigma", lower = -12, upper = 12, trafo = function(x) 2^x)
   ),
   # regr
-  regr.lm = makeParamSet(),
-  regr.rpart = makeParamSet(),
+  #regr.lm = makeParamSet(),
+  #regr.rpart = makeParamSet(),
   regr.randomForest = makeParamSet(
-    makeIntegerParam("ntree", lower = 10, upper = 1000),
+    makeIntegerParam("ntree", lower = 10, upper = 200),
     makeIntegerParam("mtry", lower = 1, upper = 30)
-  ),
+  )
   # regr.earth = makeParamSet(
   #   makeIntegerParam("degree", lower = 1, upper = 3)
   #   makeNumericParam("penalty", lower = 2, upper = 4)
@@ -54,7 +54,7 @@ par.sets = list(
   #   makeLogicalParam("forward.step")
   # # )
   # cluster
-  cluster.XMeans = makeParamSet()
+  #cluster.XMeans = makeParamSet()
 )
 
 fs = sapply(asscenarios, function(x) { setNames(list(getFeatureStepNames(x)), x$desc$scenario_id) })

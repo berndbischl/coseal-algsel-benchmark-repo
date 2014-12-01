@@ -197,14 +197,17 @@ tuneLlamaModel = function(asscenario, cv.splits, pre, timeout, learner, par.set,
   des = generateRandomDesign(rs.iters, par.set, trafo = TRUE)
   des.list = dfRowsToList(des, par.set)
   # FIXME: we currently do not handle failed tuning evals
-  ys = vnapply(des.list, function(x) {
+  requirePackages(c("parallelMap"), why = "tuneLlamaModel")
+  parallelStartMulticore(level = "algselbench.tuneLlamaModel")
+  ys = parallelMap(function(x) {
     learner = setHyperPars(learner, par.vals = x)
     p = llama.fun(learner, data = cv.splits, pre = pre)
     ldf = fixFeckingPresolve(asscenario, cv.splits)
     par10 = mean(parscores(ldf, p, timeout = timeout))
     messagef("[Tune]: %s : par10 = %g", paramValueToString(par.set, x), par10)
     return(par10)
-  })
+  }, des.list, simplify = TRUE, level = "algselbench.tuneLlamaModel")
+  parallelStop()
   # messagef"[Tune]: Tuning evals failed: %i", sum(is.na(ys))]
   best.i = getMinIndex(ys)
   best.parvals = des.list[[best.i]]
