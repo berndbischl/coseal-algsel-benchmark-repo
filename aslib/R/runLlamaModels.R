@@ -198,7 +198,7 @@ tuneLlamaModel = function(asscenario, cv.splits, pre, timeout, learner, par.set,
   des.list = dfRowsToList(des, par.set)
   # FIXME: we currently do not handle failed tuning evals
   requirePackages(c("parallelMap"), why = "tuneLlamaModel")
-  parallelStartMulticore(level = "algselbench.tuneLlamaModel")
+  parallelStartMulticore(level = "aslib.tuneLlamaModel")
   ys = parallelMap(function(x) {
     learner = setHyperPars(learner, par.vals = x)
     p = llama.fun(learner, data = cv.splits, pre = pre)
@@ -206,7 +206,7 @@ tuneLlamaModel = function(asscenario, cv.splits, pre, timeout, learner, par.set,
     par10 = mean(parscores(ldf, p, timeout = timeout))
     messagef("[Tune]: %s : par10 = %g", paramValueToString(par.set, x), par10)
     return(par10)
-  }, des.list, simplify = TRUE, level = "algselbench.tuneLlamaModel")
+  }, des.list, simplify = TRUE, level = "aslib.tuneLlamaModel")
   parallelStop()
   # messagef"[Tune]: Tuning evals failed: %i", sum(is.na(ys))]
   best.i = getMinIndex(ys)

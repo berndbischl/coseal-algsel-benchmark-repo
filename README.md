@@ -1,17 +1,17 @@
-coseal-algsel-benchmark-repo
+aslib-r
 ============================
 
-## R package algselbench
+## R package aslib
 
 * Offical CRAN release site:
-  http://cran.r-project.org/web/packages/algselbench/index.html
+  http://cran.r-project.org/web/packages/aslib/index.html
 
 * R Documentation in HTML:
-  http://www.rdocumentation.org/packages/algselbench
+  http://www.rdocumentation.org/packages/aslib
 
 * Run this in R to install the current GitHub version:
   ```splus
-  devtools::install_github("berndbischl/coseal-algsel-benchmark-repo/algselbench")
+  devtools::install_github("coseal/aslib-r/aslib")
   ```
 
 * [Further installation instructions](https://github.com/tudo-r/PackagesInfo/wiki/Installation-Information)
@@ -34,5 +34,5 @@ To run the validator:
 
 ## Available algorithm selection scenarios
 
-http://berndbischl.github.io/coseal-algsel-benchmark-repo/scenario-pages/index.html
+http://coseal.github.io/aslib-r/scenario-pages/index.html
 

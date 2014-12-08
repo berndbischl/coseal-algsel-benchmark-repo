@@ -5,7 +5,7 @@ library(stringr)
 library(mlr)
 library(ParamHelpers)
 library(BatchExperiments)
-load_all("../algselbench")
+load_all("../aslib")
 source("defs.R")
 
 ds.dirs = list.files(file.path(coseal.svn.dir, "data"), full.names = TRUE)

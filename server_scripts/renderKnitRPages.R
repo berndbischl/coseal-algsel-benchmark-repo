@@ -1,8 +1,8 @@
 library(knitr)
 library(ggplot2)
 library(xtable)
-# load_all("../algselbench")
-library(algselbench)
+# load_all("../aslib")
+library(aslib)
 library(BBmisc)
 library(stringr)
 source("defs.R")
@@ -24,7 +24,7 @@ old.wd = getwd()
 if (interactive()) {
   url.prefix =  sprintf("file://%s", html.dir)
 } else {
-  url.prefix = "http://berndbischl.github.io/coseal-algsel-benchmark-repo/scenario-pages"
+  url.prefix = "http://coseal.github.io/aslib-r/scenario-pages"
 }
 
 ee = new.env()

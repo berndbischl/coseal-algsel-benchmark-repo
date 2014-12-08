@@ -1,4 +1,4 @@
-library(algselbench)
+library(aslib)
 library(BBmisc)
 source("defs.R")
 

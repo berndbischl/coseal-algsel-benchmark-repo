@@ -1,4 +1,4 @@
-library(algselbench)
+library(aslib)
 
 makeEDAConfig = function(
   algo.perf.impute.zero.vals = FALSE,

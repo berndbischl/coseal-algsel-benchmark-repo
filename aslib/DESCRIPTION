@@ -1,10 +1,10 @@
-Package: algselbench
+Package: aslib
 Title: foo
 Description: foo
 Author: Bernd Bischl <bernd_bischl@gmx.net>
 Maintainer: Bernd Bischl <bernd_bischl@gmx.net>
-URL: https://github.com/berndbischl/coseal-algsel-benchmark-repo/
-BugReports: https://github.com/berndbischl/coseal-algsel-benchmark-repo/issues
+URL: https://github.com/coseal/aslib-r/
+BugReports: https://github.com/coseal/aslib-r/issues
 License: GPL-3
 Imports:
     BatchExperiments,

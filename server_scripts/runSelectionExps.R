@@ -4,7 +4,7 @@ library(llama)
 library(stringr)
 library(BatchExperiments)
 library(checkmate)
-load_all("../algselbench")
+load_all("../aslib")
 source("defs.R")
 
 source("searchSequential.R")
