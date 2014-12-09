@@ -16,7 +16,7 @@ aslib-r
 
 * [Further installation instructions](https://github.com/tudo-r/PackagesInfo/wiki/Installation-Information)
 
-* Travis CI: [![Build Status](https://travis-ci.org/berndbischl/coseal-algsel-benchmark-repo.png)](https://travis-ci.org/berndbischl/coseal-algsel-benchmark-repo)
+* Travis CI: [![Build Status](https://travis-ci.org/coseal/aslib-r.png)](https://travis-ci.org/coseal/aslib-r)
 
 
 ## Validating the structure of a benchmark data set
