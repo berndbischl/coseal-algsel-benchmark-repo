@@ -86,12 +86,12 @@ convertToLlama = function(asscenario, measure, feature.steps) {
 #'        performances.
 #' @export
 fixFeckingPresolve = function(asscenario, ldf) {
-    presolvedGroups = names(asscenario$feature.runstatus)[apply(asscenario$feature.runstatus, 2, function(x) { any(x == "presolved") })] 
+    presolvedGroups = names(asscenario$feature.runstatus)[apply(asscenario$feature.runstatus, 2, function(x) { any(x == "presolved") })]
     usedGroups = subset(names(asscenario$desc$feature_steps), sapply(names(asscenario$desc$feature_steps),
         function(x) { length(intersect(asscenario$desc$feature_steps[[x]], ldf$features)) > 0 }))
     # are we using any of the feature steps that cause presolving?
     if(length(intersect(presolvedGroups, usedGroups)) > 0) {
-        presolved = asscenario$feature.runstatus[apply(asscenario$feature.runstatus[,usedGroups], 1, function(x) { any(x == "presolved") }),]
+        presolved = asscenario$feature.runstatus[apply(subset(asscenario$feature.runstatus, TRUE, usedGroups), 1, function(x) { any(x == "presolved") }),]
         if(nrow(presolved) > 0) {
             presolvedTimes = sapply(rownames(presolved), function(x) {
                 pCosts = subset(asscenario$feature.costs[x,], T, presolved[x,] == "presolved")
