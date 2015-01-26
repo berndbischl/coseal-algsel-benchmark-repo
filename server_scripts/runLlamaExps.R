@@ -16,36 +16,36 @@ asscenarios = lapply(ds.dirs, parseASScenario)
 
 learners = list(
   # classif
-  #makeLearner("classif.rpart"),
-  makeLearner("classif.randomForest"),
-  makeLearner("classif.ksvm"),
+  makeLearner("classif.rpart"),
+  #makeLearner("classif.randomForest"),
+  #makeLearner("classif.ksvm"),
   # regr
-  #makeLearner("regr.lm"),
-  #makeLearner("regr.rpart"),
-  makeLearner("regr.randomForest")
+  makeLearner("regr.lm"),
+  makeLearner("regr.rpart"),
+  #makeLearner("regr.randomForest")
   # makeLearner("regr.mars")
   # cluster
-  #makeLearner("cluster.XMeans", H = 30) # increase upper limit of clusters
+  makeLearner("cluster.XMeans", H = 30) # increase upper limit of clusters
 )
 
 par.sets = list(
   # classif
-  #classif.rpart = makeParamSet(),
-  classif.randomForest = makeParamSet(
-    makeIntegerParam("ntree", lower = 10, upper = 200),
-    makeIntegerParam("mtry", lower = 1, upper = 30)
-  ),
-  classif.ksvm = makeParamSet(
-    makeNumericParam("C",     lower = -12, upper = 12, trafo = function(x) 2^x),
-    makeNumericParam("sigma", lower = -12, upper = 12, trafo = function(x) 2^x)
-  ),
+  classif.rpart = makeParamSet(),
+  #classif.randomForest = makeParamSet(
+  #  makeIntegerParam("ntree", lower = 10, upper = 200),
+  #  makeIntegerParam("mtry", lower = 1, upper = 30)
+  #),
+  #classif.ksvm = makeParamSet(
+  #  makeNumericParam("C",     lower = -12, upper = 12, trafo = function(x) 2^x),
+  #  makeNumericParam("sigma", lower = -12, upper = 12, trafo = function(x) 2^x)
+  #),
   # regr
-  #regr.lm = makeParamSet(),
-  #regr.rpart = makeParamSet(),
-  regr.randomForest = makeParamSet(
-    makeIntegerParam("ntree", lower = 10, upper = 200),
-    makeIntegerParam("mtry", lower = 1, upper = 30)
-  )
+  regr.lm = makeParamSet(),
+  regr.rpart = makeParamSet(),
+  #regr.randomForest = makeParamSet(
+  #  makeIntegerParam("ntree", lower = 10, upper = 200),
+  #  makeIntegerParam("mtry", lower = 1, upper = 30)
+  #)
   # regr.earth = makeParamSet(
   #   makeIntegerParam("degree", lower = 1, upper = 3)
   #   makeNumericParam("penalty", lower = 2, upper = 4)
@@ -54,12 +54,12 @@ par.sets = list(
   #   makeLogicalParam("forward.step")
   # # )
   # cluster
-  #cluster.XMeans = makeParamSet()
+  cluster.XMeans = makeParamSet()
 )
 
 fs = sapply(asscenarios, function(x) { setNames(list(getFeatureStepNames(x)), x$desc$scenario_id) })
 reg = runLlamaModels(asscenarios, feature.steps.list = fs, pre = normalize,
-  learners = learners, par.sets = par.sets, rs.iters = 2L, n.inner.folds = 2L)
+  learners = learners, par.sets = par.sets, rs.iters = 250L, n.inner.folds = 3L)
 
 # testJob(reg, 5, external = FALSE)
 
@@ -72,7 +72,7 @@ reg = runLlamaModels(asscenarios, feature.steps.list = fs, pre = normalize,
 
 # stop("we dont auto submit :)")
 
-# submitJobs(reg, resources = list(memory = 2048))
+submitJobs(reg)
 # waitForJobs(reg)
 
 # d = reduceResultsExperiments(reg, strings.as.factors = FALSE, impute.val = list(succ = 0, par10 = Inf, mcp = Inf))
