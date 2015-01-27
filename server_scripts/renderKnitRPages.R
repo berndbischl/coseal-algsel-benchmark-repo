@@ -1,8 +1,9 @@
 library(knitr)
 library(ggplot2)
 library(xtable)
-# load_all("../aslib")
-library(aslib)
+library(devtools)
+load_all("../aslib")
+#library(aslib)
 library(BBmisc)
 library(stringr)
 source("defs.R")
@@ -10,10 +11,10 @@ source("eda_config.R")
 source("shortenPathsInValidator.R")
 source("convertResultsToXTable.R")
 
-data.dir =  normalizePath(file.path(coseal.svn.dir, "data"))
-scenario.dirs = list.files(data.dir, full = TRUE)
+data.dir =  normalizePath(coseal.data.dir)
+scenario.dirs = list.dirs(data.dir, recursive = FALSE)
 # avoid bbob and machine learning for now
-scenario.dirs = scenario.dirs[!str_detect(scenario.dirs, "BBOB|MACHINE|PROTEUS")]
+scenario.dirs = scenario.dirs[!str_detect(scenario.dirs, "BBOB|MACHINE|MZN")]
 # scenario.dirs = scenario.dirs[1]
 rhtml.dir = normalizePath("../Rhtml")
 html.dir = normalizePath("../html")
