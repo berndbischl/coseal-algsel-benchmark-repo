@@ -11,7 +11,7 @@ test_that("convertToLlama", {
   expect_equal(llama.scenario$data$a2_success, c(TRUE, TRUE, FALSE))
   expect_equal(llama.scenario$data$a1, c(30, 90, 70))
   expect_equal(llama.scenario$data$a2, c(50, 30, 100))
-  expect_equal(llama.scenario$data$best, c("a1", "a2", "a1"))
+  expect_equal(llama.scenario$best, c("a1", "a2", "a1"))
 
   llama.scenario = convertToLlama(testscenario1)
   cv = cvFolds(llama.scenario, nfolds = 2L)
@@ -29,7 +29,7 @@ test_that("convertToLlama", {
 
 test_that("convertToLlama always sets best algorithm", {
   llama.scenario = convertToLlama(testscenario4)
-  expect_equal(llama.scenario$data$best, c("a1", "a2", "a2"))
+  expect_equal(llama.scenario$best, c("a1", "a2", "a2"))
 })
 
 test_that("convertToLlama parses real scenario correctly", {
@@ -62,7 +62,7 @@ test_that("convertToLlama parses real scenario correctly", {
         "WOCCN_WOCC", "WOCCEP_WOCC",
         "WOCCFN_WOCC", "WOCCEP_WOCCE",
         "WOCCEP_WOCCP", "WOCCFN_WOCCN"))
-  expect_equal(length(llama.scenario$data$best), 1368)
+  expect_equal(length(llama.scenario$best), 1368)
 })
 
 test_that("convertToLlama handles costs correctly", {

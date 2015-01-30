@@ -28,37 +28,18 @@ convertToLlama = function(asscenario, measure, feature.steps) {
       costs = list(groups=asscenario$desc$feature_steps[feature.steps],
           values=asscenario$feature.costs[,names(asscenario$feature.costs)[-2]])
       ldf = input(feats, cp$perf, successes = cp$successes,
-          minimize = !asscenario$desc$maximize[measure], costs = costs)
+          minimize = as.logical(!asscenario$desc$maximize[measure]), costs = costs)
   } else {
       ldf = input(feats, cp$perf, successes = cp$successes,
-          minimize = !asscenario$desc$maximize[measure])
+          minimize = as.logical(!asscenario$desc$maximize[measure]))
   }
-  # ugly hack to fix bug in this LLAMA version -- FIXME: update to latest LLAMA version once released
-  optfun = if(ldf$minimize) { min } else { max }
-  ldf$data$best = apply(ldf$data, 1,
-      function(x) {
-          tosel = ldf$performance
-          if(length(ldf$success) > 0) {
-              nosuccs = sapply(ldf$success[which(x[ldf$success] == FALSE)], function(x) { unlist(strsplit(x, "_"))[1] })
-              tosel = setdiff(ldf$performance, nosuccs)
-          }
-          if(length(tosel) == 0) {
-              # nothing was able to solve this instance
-              NA
-          } else {
-              perfs = as.numeric(x[tosel])
-              tosel[which(perfs == optfun(perfs))]
-          }
-      })
-  # simplify...
-  names(ldf$data$best) = NULL
 
   # LLAMA set the best algorithm for instances that were not solved by anything to NA,
   # set those to the single best solver over the entire set
-  sb = as.character(singleBest(ldf)[[1]]$algorithm)
-  for(i in seq_along(ldf$data$best)) {
-    if(all(sapply(ldf$data$best[[i]], is.na))) {
-        ldf$data$best[[i]] = sb
+  sb = as.character(singleBest(ldf)[1,]$algorithm)
+  for(i in seq_along(ldf$best)) {
+    if(all(sapply(ldf$best[[i]], is.na))) {
+        ldf$best[[i]] = sb
     }
   }
 
@@ -106,11 +87,11 @@ fixFeckingPresolve = function(asscenario, ldf) {
                 ldf$data[rows,ldf$success] = T
                 if(length(ldf$test) > 0) {
                     for(i in 1:length(ldf$test)) {
-                        rows = na.omit(match(presolved$instance_id, ldf$test[[i]]$instance_id))
+                        rows = na.omit(match(presolved$instance_id, ldf$data[ldf$test[[i]],]$instance_id))
                         if(length(rows) > 0) {
-                            ts = presolvedTimes[na.omit(match(ldf$test[[i]]$instance_id, presolved$instance_id))]
-                            ldf$test[[i]][rows,ldf$performance] = ts
-                            ldf$test[[i]][rows,ldf$success] = T
+                            ts = presolvedTimes[na.omit(match(ldf$data[ldf$test[[i]],]$instance_id, presolved$instance_id))]
+                            ldf$data[ldf$test[[i]],][rows,ldf$performance] = ts
+                            ldf$data[ldf$test[[i]],][rows,ldf$success] = T
                         }
                     }
                 }

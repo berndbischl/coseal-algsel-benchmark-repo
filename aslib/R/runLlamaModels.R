@@ -177,7 +177,7 @@ doNestedCVWithTuning = function(asscenario, ldf, pre, timeout, learner, par.set,
 
   for (i in 1:n.outer.folds) {
     ldf2 = ldf
-    ldf2$data = ldf$train[[i]]
+    ldf2$data = ldf$data[ldf$train[[i]],]
     ldf3 = cvFolds(ldf2, nfolds = n.inner.folds, stratify = FALSE)
     parvals = tuneLlamaModel(asscenario, ldf3, pre, timeout, learner, par.set, llama.fun, rs.iters)
 

@@ -46,7 +46,7 @@ convertToLlamaCVFolds = function(asscenario, measure, feature.steps, cv.splits) 
   nfolds = length(unique(folds$fold))
   rownames(folds) = folds$instance_id
   splitFactors = folds[match(llamaFrame$data$instance_id, folds$instance_id), "fold"]
-  parts = split(llamaFrame$data, splitFactors)
+  parts = split(1:nrow(llamaFrame$data), splitFactors)
 
   retval = c(llamaFrame,
             list(train = lapply(1:nfolds, function(x) {
@@ -55,6 +55,7 @@ convertToLlamaCVFolds = function(asscenario, measure, feature.steps, cv.splits) 
                  test = lapply(1:nfolds, function(x) {
                     return(parts[[x]])
                  })))
+  class(retval) = "llama.data"
   attr(retval, "hasSplits") = TRUE
   return(retval)
 }
