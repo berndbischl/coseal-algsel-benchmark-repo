@@ -16,13 +16,13 @@ Imports:
     ggplot2,
     llama,
     mlr,
+    ParamHelpers,
     parallelMap,
     plyr,
     reshape2,
     RWeka,
     stringr
 Suggests:
-    ParamHelpers,
     testthat
 LazyData: yes
 ByteCompile: yes
