@@ -6,5 +6,7 @@ makeR
 Makefile
 README.md
 run_llama_models-files
-test_all.R
-test_src.R
+^demo.R
+^mytest.*.R
+^test.*.R
+^todo-files

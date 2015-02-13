@@ -3,8 +3,10 @@ Title: Interface to the algorithm selection benchmark library
 Description: Provides an interface to the algorithm selection benchmark library
     at http://aslib.net and the LLAMA package for building algorithm selection
     models.
-Author: Bernd Bischl <bernd_bischl@gmx.net>, Lars Kotthoff <lars.kotthoff@insight-centre.org>
-Maintainer: Bernd Bischl <bernd_bischl@gmx.net>, Lars Kotthoff <lars.kotthoff@insight-centre.org>
+Author: Bernd Bischl <bernd_bischl@gmx.net>, Lars Kotthoff
+    <lars.kotthoff@insight-centre.org>
+Maintainer: Bernd Bischl <bernd_bischl@gmx.net>, Lars Kotthoff
+    <lars.kotthoff@insight-centre.org>
 URL: https://github.com/coseal/aslib-r/
 BugReports: https://github.com/coseal/aslib-r/issues
 License: GPL-3
@@ -17,8 +19,8 @@ Imports:
     ggplot2,
     llama,
     mlr,
-    ParamHelpers,
     parallelMap,
+    ParamHelpers,
     plyr,
     reshape2,
     RWeka,
