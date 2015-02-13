@@ -4,7 +4,7 @@ library(llama)
 library(stringr)
 library(BatchExperiments)
 library(checkmate)
-load_all("../aslib")
+library(aslib)
 source("defs.R")
 
 source("searchSequential.R")
@@ -24,6 +24,7 @@ reg = makeRegistry("run_selection_exps", seed = 123,
 )
 
 
+# FIXME: we need to store the names of all features and solvers in the result in the correct order!
 batchMap(reg, fun = function(ast) {
   ctrl = makeSSControl(method = "sfs")
   ldf = convertToLlamaCVFolds(ast)
@@ -40,5 +41,18 @@ batchMap(reg, fun = function(ast) {
 
 submitJobs(reg)
 waitForJobs(reg)
+library(BatchExperiments)
+
+# enrich results with all feat names and solver names posthoc, see FIXME above...
+reg = loadRegistry("run_selection_exps-files")
+res = loadResults(reg)
+for (i in 1:length(res)) {
+  r = res[[i]]
+  ast = Filter(function(ast) ast$desc$scenario_id == r$id, asscenarios)[[1L]]
+  ldf = convertToLlamaCVFolds(ast)
+  r$all.feats = ldf$features
+  r$all.solvers = ldf$performance
+  res[[i]] = r
+}
 
 save2(file = "selection_results.RData", res = res)
