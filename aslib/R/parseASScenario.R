@@ -138,7 +138,7 @@ parseASScenario = function(path) {
   )
 }
 
-#' @S3method print ASScenario
+#' @export
 print.ASScenario = function(x, ...) {
   d = x$desc
   printField1 = function(name, val) {

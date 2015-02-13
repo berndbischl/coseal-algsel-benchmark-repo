@@ -12,6 +12,11 @@ runLlamaModels(asscenarios, feature.steps.list = NULL, baselines = NULL,
 \item{asscenarios}{[(list of) \code{\link{ASScenario}}]\cr
 Algorithm selection scenarios.}
 
+\item{feature.steps.list}{[\code{list} of \code{character}]\cr
+Named list of feature steps we want to use.
+Must be named with scenario ids.
+Default is to take the default feature steps from the scenario.}
+
 \item{baselines}{[\code{character}]\cr
 Vector of characters, defining the baseline models.
 Default is c("vbs", "singleBest", "singleBestByPar", "singleBestBySuccesses").}
@@ -37,11 +42,6 @@ Default is 2L.}
 \item{pre}{[\code{function}]\cr
 A function (e.g. normalize) to preprocess the feature data.
 By default no preprocessing is done.}
-
-\item{feature.steps}{[\code{list} of \code{character}]\cr
-Named list of feature steps we want to use.
-Must be named with scenario ids.
-Default is to take the default feature steps from the scenario.}
 }
 \value{
 BatchExperiments registry.

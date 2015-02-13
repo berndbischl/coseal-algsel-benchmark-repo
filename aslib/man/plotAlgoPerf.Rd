@@ -36,6 +36,10 @@ Default is FALSE.}
 \item{log}{[\code{logical(1)}]\cr
 Should the performance values be log10-transformed in the plot?
 Default is FALSE.}
+
+\item{impute.failed.runs}{[\code{logical(1)}]\cr
+Should runtimes for failed runs be imputed?
+Default is TRUE}
 }
 \value{
 ggplot2 plot object.

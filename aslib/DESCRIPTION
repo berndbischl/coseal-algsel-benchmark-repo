@@ -22,6 +22,7 @@ Imports:
     RWeka,
     stringr
 Suggests:
+    ParamHelpers,
     testthat
 LazyData: yes
 ByteCompile: yes
