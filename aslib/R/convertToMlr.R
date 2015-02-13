@@ -1,5 +1,4 @@
-#' @rdname convertToLlama
-#' @export
+# @export
 convertToMlr = function(asscenario, measure, feature.steps, add.feature.costs = TRUE) {
   ch = convertToCheck(asscenario, measure, feature.steps, add.feature.costs)
   desc = asscenario$desc

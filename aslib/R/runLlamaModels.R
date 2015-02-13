@@ -23,7 +23,7 @@
 #' @param learners [list of \code{\link[mlr]{Learner}}]\cr
 #'   mlr learners to use for modeling.
 #'   Default is none.
-#' @param par.sets [list of \code{\link[ParamSet]{ParamSet}}]\cr
+#' @param par.sets [list of \code{\link[ParamHelpers]{ParamSet}}]\cr
 #'   Param sets for learners to tune via random search.
 #'   Pass an empty param set, if you want no tuning.
 #'   Must be in of same length as \code{learners} and in the same order.
