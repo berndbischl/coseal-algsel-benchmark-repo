@@ -13,7 +13,7 @@
 #'
 #' @param asscenarios [(list of) \code{\link{ASScenario}}]\cr
 #'   Algorithm selection scenarios.
-#' @param feature.steps [\code{list} of \code{character}]\cr
+#' @param feature.steps.list [\code{list} of \code{character}]\cr
 #'   Named list of feature steps we want to use.
 #'   Must be named with scenario ids.
 #'   Default is to take the default feature steps from the scenario.

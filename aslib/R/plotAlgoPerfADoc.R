@@ -20,6 +20,9 @@
 #'   This allows to take the logarithm later on, handy for subsequent visualizations.
 #'   Note that this really only makes sense for non-negative measures!
 #'   Default is FALSE.
+#' @param impute.failed.runs [\code{logical(1)}]\cr
+#'   Should runtimes for failed runs be imputed?
+#'   Default is TRUE
 #' @param log [\code{logical(1)}]\cr
 #'   Should the performance values be log10-transformed in the plot?
 #'   Default is FALSE.
