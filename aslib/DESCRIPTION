@@ -10,6 +10,7 @@ BugReports: https://github.com/coseal/aslib-r/issues
 License: GPL-3
 Imports:
     BatchExperiments,
+    BatchJobs,
     BBmisc,
     checkmate,
     corrplot,

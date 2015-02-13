@@ -10,7 +10,6 @@
 #'   Name of benchmark data set.
 #' @return [\code{\link{ASScenario}}]. Description object.
 #' @export
-#' @aliases ASScenario
 getCosealASScenario = function(name) {
     res = system2("svn", c("help", "2>&1"), stdout = "/dev/null")
     if(res == 127) stop("Need subversion commandline client!")

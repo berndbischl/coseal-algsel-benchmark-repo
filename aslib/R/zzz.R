@@ -1,6 +1,7 @@
 #' @import BatchExperiments
-#' @importFrom BBmisc makeS3Obj addClasses sortByCol setColNames dropNamed rangeVal ensureVector which.first convertMatrixType warningf extractSubList seq_row collapse requirePackages
-#' @importFrom ParamHelpers makeParamSet
+#' @import BatchJobs
+#' @importFrom BBmisc makeS3Obj addClasses sortByCol setColNames dropNamed rangeVal ensureVector which.first convertMatrixType warningf extractSubList seq_row collapse requirePackages stopf catf clipString messagef getMinIndex
+#' @import ParamHelpers
 #' @import checkmate
 #' @import corrplot
 #' @import ggplot2
