@@ -1,5 +1,6 @@
 #' @import BatchExperiments
-#' @import BBmisc
+#' @importFrom BBmisc makeS3Obj addClasses sortByCol setColNames dropNamed rangeVal ensureVector which.first convertMatrixType warningf extractSubList seq_row collapse requirePackages
+#' @importFrom ParamHelpers makeParamSet
 #' @import checkmate
 #' @import corrplot
 #' @import ggplot2
