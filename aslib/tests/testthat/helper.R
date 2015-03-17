@@ -19,7 +19,8 @@ makeTestScenario3 = function() {
     feature_steps = list(
       s1 = c("f1", "f2"),
       s2 = c("f2", "f3")
-    )
+    ),
+    default_steps = c("s1", "s2")
   )
 
   rs1 = c("ok", "presolved", "crash")

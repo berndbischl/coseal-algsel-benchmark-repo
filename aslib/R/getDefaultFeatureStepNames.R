@@ -6,9 +6,7 @@
 #' @export
 getDefaultFeatureStepNames = function(asscenario) {
   assertClass(asscenario, "ASScenario")
-  if (is.null(asscenario$desc$default_steps))
-    return(names(asscenario$desc$feature_steps))
-  else
-    return(asscenario$desc$default_steps)
+  assertVector(asscenario$desc$default_steps)
+  return(asscenario$desc$default_steps)
 }
 
