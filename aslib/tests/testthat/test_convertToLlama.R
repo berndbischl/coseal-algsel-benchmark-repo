@@ -70,7 +70,8 @@ test_that("convertToLlama handles costs correctly", {
   iid1 = as.character(llama.scenario$data$instance_id)
   iid2 = as.character(testscenario2$algo.runs$instance_id)
   expect_true(setequal(iid1, iid2))
-  expect_equal(llama.scenario$costGroups, testscenario2$desc$feature_steps)
+  default_groups = testscenario2$desc$feature_steps[sapply(names(testscenario2$desc$feature_steps), function(x) { x %in% testscenario2$desc$default_steps })]
+  expect_equal(llama.scenario$costGroups, default_groups)
   expect_false("repetition" %in% llama.scenario$costs)
 })
 

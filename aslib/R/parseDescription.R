@@ -61,6 +61,12 @@ parseDescription = function(path) {
   desc$maximize = setNames(desc$maximize, desc$performance_measures)
   desc$performance_type = setNames(desc$performance_type, desc$performance_measures)
 
+  # handle default features
+  if(!is.null(desc$default_steps)) {
+      desc$default_steps = sapply(str_split(desc$default_steps, ",")[[1]], str_trim, USE.NAMES = FALSE)
+      desc$default_steps = sapply(desc$default_steps, make.names)
+  }
+
   # handle groups
   ns = names(desc)
   f.steps = which(str_detect(ns, "^feature_step"))

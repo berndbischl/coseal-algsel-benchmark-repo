@@ -2,6 +2,8 @@ context("parseScenario")
 
 test_that("parseASScenario", {
   expect_true(inherits(testscenario1, "ASScenario"))
+
+  expect_true(is.vector(testscenario1$desc$default_steps))
 })
 
 test_that("parseASScenario checks feature runstatus levels", {
