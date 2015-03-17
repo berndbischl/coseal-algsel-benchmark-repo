@@ -33,6 +33,8 @@ parseDescription = function(path) {
   desc = as.list(str_trim(sapply(lines, function(x) x[2])))
   names(desc) = str_trim(sapply(lines, function(x) x[1]))
 
+  assertSubset(c("scenario_id", "performance_measures", "maximize", "performance_type", "algorithm_cutoff_time", "algorithm_cutoff_memory", "features_cutoff_time", "features_cutoff_memory", "features_deterministic", "features_stochastic", "algorithms_deterministic", "algorithms_stochastic", "number_of_feature_steps", "default_steps"), names(desc))
+
   # now handle all non-scalar strings and convert them to proper data types
 
   convertField = function(name, cast = as.character) {
@@ -47,6 +49,7 @@ parseDescription = function(path) {
   }
 
   convertField("performance_measures", make.names)
+  convertField("performance_type", make.names)
   convertField("maximize", as.logical)
   convertField("performance_type", make.names)
   convertField("algorithm_cutoff_time", as.numeric)
@@ -57,15 +60,11 @@ parseDescription = function(path) {
   convertField("features_stochastic", make.names)
   convertField("algorithms_deterministic", make.names)
   convertField("algorithms_stochastic", make.names)
+  convertField("default_steps", make.names)
+  convertField("number_of_feature_steps", as.numeric)
 
   desc$maximize = setNames(desc$maximize, desc$performance_measures)
   desc$performance_type = setNames(desc$performance_type, desc$performance_measures)
-
-  # handle default features
-  if(!is.null(desc$default_steps)) {
-      desc$default_steps = sapply(str_split(desc$default_steps, ",")[[1]], str_trim, USE.NAMES = FALSE)
-      desc$default_steps = sapply(desc$default_steps, make.names)
-  }
 
   # handle groups
   ns = names(desc)
