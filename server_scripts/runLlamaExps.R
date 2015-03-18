@@ -22,7 +22,7 @@ learners = list(
   # regr
   makeLearner("regr.lm"),
   makeLearner("regr.rpart"),
-  makeLearner("regr.randomForest")
+  makeLearner("regr.randomForest"),
   # makeLearner("regr.mars")
   # cluster
   makeLearner("cluster.XMeans", H = 30) # increase upper limit of clusters
