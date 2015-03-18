@@ -8,7 +8,7 @@ library(BatchExperiments)
 load_all("../aslib")
 source("defs.R")
 
-ds.dirs = list.files(file.path(coseal.svn.dir, "data"), full.names = TRUE)
+ds.dirs = list.files(file.path(coseal.data.dir, "data"), full.names = TRUE)
 ds.dirs = ds.dirs[!str_detect(ds.dirs, "BBOB|MACHINE")]
 print(ds.dirs)
 # ds.dirs = ds.dirs[1]
@@ -17,12 +17,12 @@ asscenarios = lapply(ds.dirs, parseASScenario)
 learners = list(
   # classif
   makeLearner("classif.rpart"),
-  #makeLearner("classif.randomForest"),
-  #makeLearner("classif.ksvm"),
+  makeLearner("classif.randomForest"),
+  makeLearner("classif.ksvm"),
   # regr
   makeLearner("regr.lm"),
   makeLearner("regr.rpart"),
-  #makeLearner("regr.randomForest")
+  makeLearner("regr.randomForest")
   # makeLearner("regr.mars")
   # cluster
   makeLearner("cluster.XMeans", H = 30) # increase upper limit of clusters
@@ -31,21 +31,21 @@ learners = list(
 par.sets = list(
   # classif
   classif.rpart = makeParamSet(),
-  #classif.randomForest = makeParamSet(
-  #  makeIntegerParam("ntree", lower = 10, upper = 200),
-  #  makeIntegerParam("mtry", lower = 1, upper = 30)
-  #),
-  #classif.ksvm = makeParamSet(
-  #  makeNumericParam("C",     lower = -12, upper = 12, trafo = function(x) 2^x),
-  #  makeNumericParam("sigma", lower = -12, upper = 12, trafo = function(x) 2^x)
-  #),
+  classif.randomForest = makeParamSet(
+    makeIntegerParam("ntree", lower = 10, upper = 200),
+    makeIntegerParam("mtry", lower = 1, upper = 30)
+  ),
+  classif.ksvm = makeParamSet(
+    makeNumericParam("C",     lower = -12, upper = 12, trafo = function(x) 2^x),
+    makeNumericParam("sigma", lower = -12, upper = 12, trafo = function(x) 2^x)
+  ),
   # regr
   regr.lm = makeParamSet(),
   regr.rpart = makeParamSet(),
-  #regr.randomForest = makeParamSet(
-  #  makeIntegerParam("ntree", lower = 10, upper = 200),
-  #  makeIntegerParam("mtry", lower = 1, upper = 30)
-  #)
+  regr.randomForest = makeParamSet(
+    makeIntegerParam("ntree", lower = 10, upper = 200),
+    makeIntegerParam("mtry", lower = 1, upper = 30)
+  ),
   # regr.earth = makeParamSet(
   #   makeIntegerParam("degree", lower = 1, upper = 3)
   #   makeNumericParam("penalty", lower = 2, upper = 4)
@@ -73,8 +73,7 @@ reg = runLlamaModels(asscenarios, feature.steps.list = fs, pre = normalize,
 # stop("we dont auto submit :)")
 
 submitJobs(reg)
-# waitForJobs(reg)
+waitForJobs(reg)
 
-# d = reduceResultsExperiments(reg, strings.as.factors = FALSE, impute.val = list(succ = 0, par10 = Inf, mcp = Inf))
-# save2(file = "llama_results.RData", res = d)
-
+d = reduceResultsExperiments(reg, strings.as.factors = FALSE, impute.val = list(succ = 0, par10 = Inf, mcp = Inf))
+save2(file = "llama_results.RData", res = d)
