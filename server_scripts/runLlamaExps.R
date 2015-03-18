@@ -57,8 +57,7 @@ par.sets = list(
   cluster.XMeans = makeParamSet()
 )
 
-fs = sapply(asscenarios, function(x) { setNames(list(getFeatureStepNames(x)), x$desc$scenario_id) })
-reg = runLlamaModels(asscenarios, feature.steps.list = fs, pre = normalize,
+reg = runLlamaModels(asscenarios, pre = normalize,
   learners = learners, par.sets = par.sets, rs.iters = 250L, n.inner.folds = 3L)
 
 # testJob(reg, 5, external = FALSE)
