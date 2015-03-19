@@ -74,5 +74,11 @@ reg = runLlamaModels(asscenarios, pre = normalize,
 submitJobs(reg)
 waitForJobs(reg)
 
-d = reduceResultsExperiments(reg, strings.as.factors = FALSE, impute.val = list(succ = 0, par10 = Inf, mcp = Inf))
-save2(file = "llama_results.RData", res = d)
+aggrShort = function(job, res) {
+    return(list(succ = res$succ, par10 = res$par10, mcp = res$mcp))
+}
+
+d = reduceResultsExperiments(reg, strings.as.factors = FALSE, fun = aggrShort,
+    impute.val = list(succ = 0, par10 = Inf, mcp = Inf))
+e = reduceResultsList(reg)
+save2(file = "llama_results.RData", res = d, resLong = e)

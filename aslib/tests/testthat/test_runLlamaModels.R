@@ -1,4 +1,7 @@
 context("runLlamaModels")
+aggrShort = function(job, res) {
+  return(list(succ = res$succ, par10 = res$par10, mcp = res$mcp))
+}
 
 test_that("runLlamaModels", {
   fs = setNames(list(getFeatureStepNames(testscenario1)), testscenario1$desc$scenario_id)
@@ -13,9 +16,13 @@ test_that("runLlamaModels", {
   waitForJobs(reg)
   errors = getErrorMessages(reg)
   expect_true(length(errors) == 0)
-  res = reduceResultsExperiments(reg)
+  res = reduceResultsExperiments(reg, fun = aggrShort)
   expect_true(is.data.frame(res) && nrow(res) == 4L)
   expect_true(abs(res[1,]$par10 - 8337.099) < .1)
+
+  resLong = reduceResultsList(reg)
+  expect_equal(length(resLong), 4)
+  expect_true(is.data.frame(resLong[[2]]$predictions))
 })
 
 test_that("runLlamaModels w/ costs", {
@@ -27,7 +34,7 @@ test_that("runLlamaModels w/ costs", {
   )
   submitJobs(reg)
   waitForJobs(reg)
-  res = reduceResultsExperiments(reg)
+  res = reduceResultsExperiments(reg, fun = aggrShort)
   expect_true(is.data.frame(res) && nrow(res) == 2L)
   expect_true(abs(res[1,]$par10 - 2221.497) < .1)
   # greater than without costs

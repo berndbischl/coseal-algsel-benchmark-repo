@@ -2,14 +2,9 @@
 #'
 #' @description
 #' It is likely that you need to install some additional R packages for this from CRAN or extra
-#' Weka learner. The latter can be one via e.g. \code{WPM("install-package", "XMeans")}.
+#' Weka learner. The latter can be done via e.g. \code{WPM("install-package", "XMeans")}.
 #'
 #' Feature costs are added for real prognostic models but not for baseline models.
-#'
-#' Machine learning models are run with their default settings.
-#' For the clusterers we set the number of clusters (N) to the number of algorithms in the scenario.
-#' Except for XMeans where we set the maximum number of clusters (H) in the same way, as
-#' a parameter for the number of clusters does not exist.
 #'
 #' @param asscenarios [(list of) \code{\link{ASScenario}}]\cr
 #'   Algorithm selection scenarios.
@@ -120,6 +115,7 @@ runLlamaModels = function(asscenarios, feature.steps.list = NULL, baselines = NU
             data = fixFeckingPresolve(asscenario, data)
           }
           list(
+            predictions = p$predictions,
             succ = mean(successes(data, p, timeout = timeout, addCosts = addCosts)),
             par10 = mean(parscores(data, p, timeout = timeout, addCosts = addCosts)),
             mcp = mean(misclassificationPenalties(data, p))
