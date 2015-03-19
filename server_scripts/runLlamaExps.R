@@ -8,10 +8,10 @@ library(BatchExperiments)
 load_all("../aslib")
 source("defs.R")
 
-ds.dirs = list.files(file.path(coseal.data.dir, "data"), full.names = TRUE)
+ds.dirs = list.files(coseal.data.dir, full.names = TRUE)
 ds.dirs = ds.dirs[!str_detect(ds.dirs, "BBOB|MACHINE")]
 print(ds.dirs)
-# ds.dirs = ds.dirs[1]
+#ds.dirs = list(ds.dirs[2])
 asscenarios = lapply(ds.dirs, parseASScenario)
 
 learners = list(
