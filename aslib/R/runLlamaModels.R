@@ -187,7 +187,7 @@ doNestedCVWithTuning = function(asscenario, ldf, pre, timeout, learner, par.set,
     outer.preds[[i]] = llama.fun(learner2, data = outer.split.ldf, pre = pre)
   }
   retval = outer.preds[[1]]
-  retval$predictions = lapply(outer.preds, function(x) { x$predictions[[1]] })
+  retval$predictions = do.call(rbind, lapply(outer.preds, function(x) { x$predictions }))
   return(retval)
 }
 
