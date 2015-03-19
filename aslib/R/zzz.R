@@ -1,4 +1,4 @@
-# import explicitly, because we have a nameclass for BBmisc::normalize and llama::normalize
+# import explicitly, because we have a name clash for BBmisc::normalize and llama::normalize
 #' @importFrom BBmisc makeS3Obj addClasses sortByCol setColNames dropNamed rangeVal ensureVector which.first convertMatrixType warningf extractSubList seq_row collapse requirePackages stopf catf clipString messagef getMinIndex
 
 #' @import BatchExperiments
