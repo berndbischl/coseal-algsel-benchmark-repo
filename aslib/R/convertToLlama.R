@@ -19,6 +19,9 @@ convertToLlama = function(asscenario, measure, feature.steps) {
   measure = ch$measure; feature.steps = ch$feature.steps
 
   feats = convertFeats(asscenario, with.instance.id = TRUE)
+  # subset to features used in default steps
+  tosel = intersect(names(feats), as.vector(unlist(asscenario$desc$feature_steps[feature.steps])))
+  feats = feats[c("instance_id", tosel)]
   cp = convertPerf(asscenario, measure = measure, feature.steps = feature.steps,
     add.feature.costs = FALSE, with.instance.id = TRUE)
 
@@ -26,7 +29,7 @@ convertToLlama = function(asscenario, measure, feature.steps) {
       # set all unknown feature costs (i.e. for feature steps that didn't run) to 0
       asscenario$feature.costs[is.na(asscenario$feature.costs)] = 0
       costs = list(groups=asscenario$desc$feature_steps[feature.steps],
-          values=asscenario$feature.costs[,names(asscenario$feature.costs)[-2]])
+          values=asscenario$feature.costs[,c("instance_id", feature.steps)])
       ldf = input(feats, cp$perf, successes = cp$successes,
           minimize = as.logical(!asscenario$desc$maximize[measure]), costs = costs)
   } else {

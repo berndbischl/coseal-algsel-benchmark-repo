@@ -75,6 +75,12 @@ test_that("convertToLlama handles costs correctly", {
   expect_false("repetition" %in% llama.scenario$costs)
 })
 
+test_that("convertToLlama respects cost groups", {
+  ldf = convertToLlama(testscenario5)
+
+  expect_equal(ldf$features, c("f1", "f2"))
+})
+
 test_that("fixFeckingPresolve", {
   llama.scenario1 = convertToLlama(testscenario2)
   vbs1 = sum(parscores(llama.scenario1, vbs))
