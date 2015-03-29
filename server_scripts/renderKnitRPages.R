@@ -32,7 +32,8 @@ ee = new.env()
 ee$data.dir = data.dir
 ee$scenario.dirs = scenario.dirs
 ee$url.prefix = url.prefix
-ee$llama.results = load2("llama_results.RData")
+res = load2("llama_results.RData")
+ee$llama.results = res$res
 ee$asscenarios = list()
 
 
