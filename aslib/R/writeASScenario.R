@@ -13,14 +13,14 @@ writeASScenario = function(asscenario, path = asscenario$desc$scenario_id) {
   oldwd = getwd()
   setwd(path)
 
-  # hrmpf
   desc.names = names(asscenario$desc)
-  desc.names = sapply(desc.names, function(x) {
-    if (x == "feature_steps") { "feature_step" }
-    else { paste(x, ":", sep = "") }
-  })
+  # hrmpf, handle this separately
+  desc.names = desc.names[-which(desc.names == "feature_steps")]
+  desc.names = sapply(desc.names, paste, ":", sep = "")
   desc.string = paste(desc.names, lapply(asscenario$desc, stringify),  collapse = "\n", sep = " ")
   cat(desc.string, file = "description.txt")
+  feat.step.string = paste("feature_step", paste(names(asscenario$desc$feature_steps), lapply(asscenario$desc$feature_steps, stringify), sep = ": "), collapse = "\n")
+  cat(feat.step.string, file = "description.txt", append = TRUE)
 
   write.arff(asscenario$feature.values, "feature_values.arff")
   write.arff(asscenario$feature.runstatus, "feature_runstatus.arff")
