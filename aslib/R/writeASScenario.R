@@ -24,7 +24,7 @@ writeASScenario = function(asscenario, path = asscenario$desc$scenario_id) {
 
   write.arff(asscenario$feature.values, "feature_values.arff")
   write.arff(asscenario$feature.runstatus, "feature_runstatus.arff")
-  if (!is.null(asscenario$feature_costs)) {
+  if (!is.null(asscenario$feature.costs)) {
     write.arff(asscenario$feature.costs, "feature_costs.arff")
   }
 
