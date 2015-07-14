@@ -10,6 +10,7 @@ writeASScenario = function(asscenario, path = asscenario$desc$scenario_id) {
   assertClass(asscenario, "ASScenario")
 
   dir.create(path)
+  oldwd = getwd()
   setwd(path)
 
   # hrmpf
@@ -27,11 +28,15 @@ writeASScenario = function(asscenario, path = asscenario$desc$scenario_id) {
     write.arff(asscenario$feature.costs, "feature_costs.arff")
   }
 
-  write.arff(asscenario$algo.runs, "algorithm_runs.arff")
+  if (!is.null(asscenario$algo.runs)) {
+    write.arff(asscenario$algo.runs, "algorithm_runs.arff")
+  }
 
   if (!is.null(asscenario$cv.splits)) {
     write.arff(asscenario$cv.splits, "cv.arff")
   }
+
+  setwd(oldwd)
 }
 
 stringify = function(thing) {
