@@ -51,7 +51,6 @@ parseDescription = function(path) {
   convertField("performance_measures", make.names)
   convertField("performance_type", make.names)
   convertField("maximize", as.logical)
-  convertField("performance_type", make.names)
   convertField("algorithm_cutoff_time", as.numeric)
   convertField("algorithm_cutoff_memory", as.numeric)
   convertField("features_cutoff_time", as.numeric)
