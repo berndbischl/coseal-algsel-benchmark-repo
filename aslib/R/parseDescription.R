@@ -16,8 +16,7 @@
 #' \item{features_stochastic [\code{character}]}{Names of features that are stochastic.}
 #' \item{algorithms_deterministic [\code{character}]}{Names of algorithms that are deterministic.}
 #' \item{algorithms_stochastic [\code{character}]}{Names of algorithms that are stochastic.}
-#' \item{feature_steps [named \code{list} of \code{character}]}{Names of feature processing steps and
-#'   as elements the features they influence.}
+#' \item{feature_steps [named \code{list} of \code{character}]}{Names of feature processing steps, the other feature steps they require, and the features they provide.}
 #' }
 #' @name ASScenarioDesc
 #' @rdname ASScenarioDesc
@@ -28,23 +27,19 @@ parseDescription = function(path) {
   assertDirectory(path, access = "r")
 
   # do not warn about EOL
-  lines = readLines(file.path(path, "description.txt"), warn = FALSE)
-  lines = str_split(lines, ":")
-  desc = as.list(str_trim(sapply(lines, function(x) x[2])))
-  names(desc) = str_trim(sapply(lines, function(x) x[1]))
+  desc = yaml.load_file(file.path(path, "description.txt"))
 
   assertSubset(c("scenario_id", "performance_measures", "maximize", "performance_type", "algorithm_cutoff_time", "algorithm_cutoff_memory", "features_cutoff_time", "features_cutoff_memory", "features_deterministic", "features_stochastic", "algorithms_deterministic", "algorithms_stochastic", "number_of_feature_steps", "default_steps"), names(desc))
 
   # now handle all non-scalar strings and convert them to proper data types
-
   convertField = function(name, cast = as.character) {
-    val = str_trim(desc[[name]])
+    val = desc[[name]]
     val = if (length(val) == 0L || val == "")
       character(0)
-    else if (val == "?")
+    else if (length(val) == 1 && val == "?")
       NA
     else
-      str_trim(str_split(val, ",")[[1]])
+      val
     desc[[name]] <<- cast(val)
   }
 
@@ -62,23 +57,15 @@ parseDescription = function(path) {
   convertField("default_steps", make.names)
   convertField("number_of_feature_steps", as.numeric)
 
+  names(desc$feature_steps) = make.names(names(desc$feature_steps))
+  lapply(desc$feature_steps, function(fs) {
+    fs$provides = make.names(fs$provides)
+    if (!is.null(fs$requires)) fs$requires = make.names(fs$requires)
+  })
+
   desc$maximize = setNames(desc$maximize, desc$performance_measures)
   desc$performance_type = setNames(desc$performance_type, desc$performance_measures)
 
-  # handle groups
-  ns = names(desc)
-  f.steps = which(str_detect(ns, "^feature_step"))
-  feature.steps = list()
-  for (i in f.steps) {
-    #separate name and feature list section
-    step.name = make.names(str_split(ns[[i]], " ")[[1]][2])
-    # split by comma and trim whitespace
-    feats = str_split(desc[[i]], ",")[[1]]
-    feats = sapply(feats, str_trim, USE.NAMES=FALSE)
-    feature.steps[[step.name]] = sapply(feats, make.names)
-  }
-  desc[f.steps] = NULL
-  desc$feature_steps = feature.steps
   addClasses(desc, "ASScenarioDesc")
 }
 

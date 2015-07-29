@@ -13,13 +13,8 @@ writeASScenario = function(asscenario, path = asscenario$desc$scenario_id) {
   oldwd = getwd()
   setwd(path)
 
-  desc.names = names(asscenario$desc)
-  # hrmpf, handle this separately
-  desc.names = desc.names[-which(desc.names == "feature_steps")]
-  desc.string = paste(desc.names, lapply(asscenario$desc[desc.names], stringify), collapse = "\n", sep = ": ")
-  cat(desc.string, file = "description.txt")
-  feat.step.string = paste("feature_step", paste(names(asscenario$desc$feature_steps), lapply(asscenario$desc$feature_steps, stringify), sep = ": "), collapse = "\n")
-  cat(paste("\n", feat.step.string, sep = ""), file = "description.txt", append = TRUE)
+  desc = lapply(asscenario$desc, yamlify)
+  cat(as.yaml(desc), file = "description.txt")
 
   write.arff(asscenario$feature.values, "feature_values.arff")
   write.arff(asscenario$feature.runstatus, "feature_runstatus.arff")
@@ -38,15 +33,9 @@ writeASScenario = function(asscenario, path = asscenario$desc$scenario_id) {
   setwd(oldwd)
 }
 
-stringify = function(thing) {
-  if(length(thing) == 0L) {
-    ""
-  } else if(is.list(thing)) {
-    paste(names(thing), lapply(thing, paste, collapse = ", "), sep = ": ")
-  } else if (length(thing) == 1L && is.na(thing)) {
+yamlify = function(thing) {
+  if (length(thing) == 1L && is.na(thing)) {
     "?"
-  } else if(is.vector(thing)) {
-    paste(thing, collapse = ", ")
   } else {
     thing
   }

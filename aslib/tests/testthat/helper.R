@@ -17,8 +17,8 @@ makeTestScenario3 = function() {
     algorithms_deterministic = c("a1", "a2"),
     algorithms_stochastic = character(0),
     feature_steps = list(
-      s1 = c("f1", "f2"),
-      s2 = c("f2", "f3")
+      s1 = list(provides = c("f1", "f2")),
+      s2 = list(provides = c("f2", "f3"))
     ),
     default_steps = c("s1", "s2")
   )

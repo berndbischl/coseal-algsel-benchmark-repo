@@ -17,7 +17,7 @@ getProvidedFeatures = function(asscenario, steps) {
   step.list = asscenario$desc$feature_steps
   allsteps = names(step.list)
   notsteps = setdiff(allsteps, steps)
-  notfeatures = Reduce(union, step.list[notsteps])
+  notfeatures = unlist(Reduce(union, step.list[notsteps]))
   return(setdiff(allfeats, notfeatures))
 }
 

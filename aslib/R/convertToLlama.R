@@ -3,6 +3,8 @@
 #' For features, mean values are computed across repetitions.
 #' For algorithms, repetitions are not supported at the moment and will result in an error.
 #'
+#' Note that feature step dependencies are currently not supported explicitly by LLAMA. The conversion checks that all dependencies are satisfied, but subsequent feature selection on the LLAMA data frame may not work as expected.
+#'
 #' @param asscenario [\code{\link{ASScenario}}]\cr
 #'   Algorithm selection scenario.
 #' @param measure [\code{character(1)}]\cr
@@ -18,9 +20,19 @@ convertToLlama = function(asscenario, measure, feature.steps) {
   ch = convertToCheck(asscenario, measure, feature.steps, TRUE)
   measure = ch$measure; feature.steps = ch$feature.steps
 
+  # check dependencies of requested feature steps
+  deps = unlist(lapply(asscenario$desc$feature_steps[feature.steps], function(d) d$requires))
+  for (d in deps) {
+    if (!(d %in% feature.steps)) {
+        stopf(paste("Feature step dependency", d, "not satisfied!"))
+    }
+  }
   feats = convertFeats(asscenario, with.instance.id = TRUE)
-  # subset to features used in default steps
-  tosel = intersect(names(feats), as.vector(unlist(asscenario$desc$feature_steps[feature.steps])))
+  # subset to features used in requested feature steps
+  tosel = as.vector(unlist(lapply(asscenario$desc$feature_steps[feature.steps], function(d) d$provides)))
+  # some features may have been removed by conversion/imputation
+  tosel = intersect(names(feats), tosel)
+
   feats = feats[c("instance_id", tosel)]
   cp = convertPerf(asscenario, measure = measure, feature.steps = feature.steps,
     add.feature.costs = FALSE, with.instance.id = TRUE)
@@ -28,7 +40,7 @@ convertToLlama = function(asscenario, measure, feature.steps) {
   if(!is.null(asscenario$feature.costs)) {
       # set all unknown feature costs (i.e. for feature steps that didn't run) to 0
       asscenario$feature.costs[is.na(asscenario$feature.costs)] = 0
-      costs = list(groups=asscenario$desc$feature_steps[feature.steps],
+      costs = list(groups = lapply(asscenario$desc$feature_steps[feature.steps], function(d) d$provides),
           values=asscenario$feature.costs[,c("instance_id", feature.steps)])
       ldf = input(feats, cp$perf, successes = cp$successes,
           minimize = as.logical(!asscenario$desc$maximize[measure]), costs = costs)
@@ -71,8 +83,11 @@ convertToLlama = function(asscenario, measure, feature.steps) {
 #' @export
 fixFeckingPresolve = function(asscenario, ldf) {
     presolvedGroups = names(asscenario$feature.runstatus)[apply(asscenario$feature.runstatus, 2, function(x) { any(x == "presolved") })]
-    usedGroups = subset(names(asscenario$desc$feature_steps), sapply(names(asscenario$desc$feature_steps),
-        function(x) { length(intersect(asscenario$desc$feature_steps[[x]], ldf$features)) > 0 }))
+    usedGroups = subset(names(asscenario$desc$feature_steps),
+        sapply(names(asscenario$desc$feature_steps),
+            function(x) {
+                length(intersect(asscenario$desc$feature_steps[[x]]$provides, ldf$features)) > 0
+            }))
     # are we using any of the feature steps that cause presolving?
     if(length(intersect(presolvedGroups, usedGroups)) > 0) {
         presolved = asscenario$feature.runstatus[apply(subset(asscenario$feature.runstatus, TRUE, usedGroups), 1, function(x) { any(x == "presolved") }),]
