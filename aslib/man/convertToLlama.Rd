@@ -26,4 +26,7 @@ Result of calling \code{\link[llama]{input}}.
 For features, mean values are computed across repetitions.
 For algorithms, repetitions are not supported at the moment and will result in an error.
 }
+\details{
+Note that feature step dependencies are currently not supported explicitly by LLAMA. The conversion checks that all dependencies are satisfied, but subsequent feature selection on the LLAMA data frame may not work as expected.
+}
 

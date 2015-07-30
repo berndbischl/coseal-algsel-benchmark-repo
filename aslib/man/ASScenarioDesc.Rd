@@ -21,8 +21,7 @@ Object members
 \item{features_stochastic [\code{character}]}{Names of features that are stochastic.}
 \item{algorithms_deterministic [\code{character}]}{Names of algorithms that are deterministic.}
 \item{algorithms_stochastic [\code{character}]}{Names of algorithms that are stochastic.}
-\item{feature_steps [named \code{list} of \code{character}]}{Names of feature processing steps and
-  as elements the features they influence.}
+\item{feature_steps [named \code{list} of \code{character}]}{Names of feature processing steps, the other feature steps they require, and the features they provide.}
 }
 }
 
