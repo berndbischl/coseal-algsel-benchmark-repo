@@ -14,6 +14,7 @@
 #' @import reshape2
 #' @import RWeka
 #' @import stringr
+#' @import yaml
 NULL
 
 .onAttach <-
