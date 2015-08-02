@@ -13,7 +13,7 @@
 <!--begin.rcode, echo = FALSE, results = "asis"
 
   fs = list.files(scenario.dir)
-  coseal.svn.prefix = "http://coseal.googlecode.com/svn/trunk/data"
+  coseal.svn.prefix = "https://raw.githubusercontent.com/coseal/aslib_data/master"
   for (f in fs) {
     bn = basename(scenario.dir)
     url = sprintf("%s/%s/%s", coseal.svn.prefix, bn, f)
