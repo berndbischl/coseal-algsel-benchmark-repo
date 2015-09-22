@@ -36,7 +36,11 @@ convertPerf = function(asscenario, measure, feature.steps, add.feature.costs, wi
     # recalculate successes wrt to new perf vals and cutoff. we spent more time due to feat costs
     successes = successes & perf <= cutoff
   } else {
-    impute.val = 10 * max(perf, na.rm = TRUE)
+    if(desc$maximize[measure]) {
+        impute.val = min(perf, na.rm = TRUE)
+    } else {
+        impute.val = max(perf, na.rm = TRUE)
+    }
   }
   perf[!successes] = impute.val
   
