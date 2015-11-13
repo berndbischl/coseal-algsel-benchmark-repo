@@ -54,6 +54,7 @@
 #'   Path to directory of benchmark data set.
 #' @return [\code{\link{ASScenario}}]. Description object.
 #' @export
+#' @seealso \code{\link{writeASScenario}}
 #' @aliases ASScenario
 parseASScenario = function(path) {
   assertDirectory(path, access = "r")

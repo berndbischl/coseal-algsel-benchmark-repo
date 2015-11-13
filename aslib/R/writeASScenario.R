@@ -1,11 +1,16 @@
 #' @title Writes an algorithm selection scenario to a directory.
 #'
+#' @description
+#' Splits an algorithm selection scenario into description, feature
+#' values / runstatus / costs, algorithm performance and cv splits and
+#' saves those data sets as single ARFF files in the given directory.
+#'
 #' @param asscenario [\code{\link{ASScenario}}]\cr
 #'   Algorithm selection scenario.
 #' @param path [\code{character(1)}]\cr
 #'   Path to write scenario to. Default is the name of the scenario.
 #' @export
-#' @aliases ASScenario
+#' @seealso \code{\link{parseASScenario}}
 writeASScenario = function(asscenario, path = asscenario$desc$scenario_id) {
   assertClass(asscenario, "ASScenario")
 

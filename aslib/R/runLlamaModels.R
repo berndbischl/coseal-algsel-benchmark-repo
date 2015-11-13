@@ -29,13 +29,10 @@
 #' @param n.inner.folds [\code{integer(1)}]\cr
 #'   Number of cross-validation folds for inner CV in hyperparameter tuning.
 #'   Default is 2L.
-#' @param pre [\code{function}]\cr
-#'   A function (e.g. normalize) to preprocess the feature data.
-#'   By default no preprocessing is done.
 #' @return BatchExperiments registry.
 #' @export
 runLlamaModels = function(asscenarios, feature.steps.list = NULL, baselines = NULL,
-  learners = list(), par.sets = list(), rs.iters = 100L, n.inner.folds = 2L, pre) {
+  learners = list(), par.sets = list(), rs.iters = 100L, n.inner.folds = 2L) {
 
   asscenarios = ensureVector(asscenarios, 1L, cl = "ASScenario")
   assertList(asscenarios, types = "ASScenario")
@@ -71,18 +68,11 @@ runLlamaModels = function(asscenarios, feature.steps.list = NULL, baselines = NU
   rs.iters = asInt(rs.iters, lower = 1L)
   n.inner.folds = asInt(n.inner.folds, lower = 2L)
 
-  if (missing(pre)) {
-    pre = function(x, y = NULL) {
-      list(features = x)
-    }
-  }
-
-
   packs = c("RWeka", "llama", "methods", "ParamHelpers", "mlr", "BatchExperiments")
   requirePackages(packs, why = "runLlamaModels")
 
-  llama.scenarios = mapply(convertToLlama, asscenario = asscenarios, feature.steps = feature.steps.list,
-    SIMPLIFY = FALSE)
+  llama.scenarios = mapply(convertToLlama, asscenario = asscenarios,
+    feature.steps = feature.steps.list, SIMPLIFY = FALSE)
   llama.cvs = lapply(asscenarios, convertToLlamaCVFolds)
 
   # FIXME:
@@ -149,6 +139,13 @@ runLlamaModels = function(asscenarios, feature.steps.list = NULL, baselines = NU
         regr = llama::regression,
         cluster = llama::cluster
       )
+      if (lrn$type == "cluster") {
+        pre = llama::normalize
+      } else {
+        pre = function(x, y = NULL) {
+          list(features = x)
+        }
+      }
       p = if (isEmpty(par.set))
         llama.fun(lrn, data = static$llama.cv, pre = pre)
       else

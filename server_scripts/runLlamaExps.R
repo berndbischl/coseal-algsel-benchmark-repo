@@ -9,7 +9,7 @@ load_all("../aslib")
 source("defs.R")
 
 ds.dirs = list.files(coseal.data.dir, full.names = TRUE)
-ds.dirs = ds.dirs[!str_detect(ds.dirs, "BBOB|MACHINE")]
+ds.dirs = ds.dirs[!str_detect(ds.dirs, "BBOB|MZN-2013|MACHINE|README.md|MAXSAT15-PMS-INDU|SAT15-INDU")]
 print(ds.dirs)
 #ds.dirs = list(ds.dirs[2])
 asscenarios = lapply(ds.dirs, parseASScenario)
@@ -27,6 +27,12 @@ learners = list(
   # cluster
   makeLearner("cluster.XMeans", H = 30) # increase upper limit of clusters
 )
+
+wrapped.learners = lapply(learners, function(learner) {
+  makeImputeWrapper(learner = learner,
+    classes = list(numeric = imputeMean(), integer = imputeMean(), logical = imputeMode(),
+      factor = imputeConstant("NA"), character = imputeConstant("NA")))
+})
 
 par.sets = list(
   # classif
@@ -57,8 +63,8 @@ par.sets = list(
   cluster.XMeans = makeParamSet()
 )
 
-reg = runLlamaModels(asscenarios, pre = normalize,
-  learners = learners, par.sets = par.sets, rs.iters = 250L, n.inner.folds = 3L)
+reg = runLlamaModels(asscenarios, learners = wrapped.learners,
+  par.sets = par.sets, rs.iters = 250L, n.inner.folds = 3L)
 
 # testJob(reg, 5, external = FALSE)
 
