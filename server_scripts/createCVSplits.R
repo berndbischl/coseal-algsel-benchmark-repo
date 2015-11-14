@@ -18,6 +18,8 @@ createCVSplitFiles = function(scenario.dirs, coseal.data.dir, overwrite = FALSE,
     if (file.exists(fn)) {
       if (!overwrite)
         stopf("CV file already exist: %s", fn)
+      else
+        unlink(fn)
       if (warn)
         warningf("CV file already exist: %s", fn)
     }
