@@ -3,8 +3,10 @@ Title: Interface to the algorithm selection benchmark library
 Description: Provides an interface to the algorithm selection benchmark library
     at http://aslib.net and the LLAMA package for building algorithm selection
     models.
-Author: Bernd Bischl <bernd_bischl@gmx.net>, Lars Kotthoff <larsko@cs.ubc.ca>
-Maintainer: Bernd Bischl <bernd_bischl@gmx.net>, Lars Kotthoff <larsko@cs.ubc.ca>
+Author: Bernd Bischl <bernd_bischl@gmx.net>, Lars Kotthoff <larsko@cs.ubc.ca>,
+    Pascal Kerschke <kerschke@uni-muenster.de> [ctb]
+Maintainer: Bernd Bischl <bernd_bischl@gmx.net>, Lars Kotthoff
+    <larsko@cs.ubc.ca>
 URL: https://github.com/coseal/aslib-r/
 BugReports: https://github.com/coseal/aslib-r/issues
 License: GPL-3
@@ -29,3 +31,4 @@ Suggests:
 LazyData: yes
 ByteCompile: yes
 Version: 0.1
+RoxygenNote: 5.0.0

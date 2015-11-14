@@ -34,12 +34,11 @@ parseDescription = function(path) {
   # now handle all non-scalar strings and convert them to proper data types
   convertField = function(name, cast = as.character) {
     val = desc[[name]]
-    val = if (length(val) == 0L || val == "")
-      character(0)
-    else if (length(val) == 1 && val == "?")
-      NA
-    else
-      val
+    if (length(val) == 0L || val == "") {
+      val = character(0)
+    } else if (length(val) == 1 && val == "?") {
+      val = NA
+    }
     desc[[name]] <<- cast(val)
   }
 
@@ -58,9 +57,11 @@ parseDescription = function(path) {
   convertField("number_of_feature_steps", as.numeric)
 
   names(desc$feature_steps) = make.names(names(desc$feature_steps))
-  lapply(desc$feature_steps, function(fs) {
+  desc$feature_steps = lapply(desc$feature_steps, function(fs) {
+    fs$requires = make.names(fs$requires)
     fs$provides = make.names(fs$provides)
     if (!is.null(fs$requires)) fs$requires = make.names(fs$requires)
+    return(fs)
   })
 
   desc$maximize = setNames(desc$maximize, desc$performance_measures)

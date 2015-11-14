@@ -20,10 +20,8 @@ convertFeats = function(asscenario, feature.steps, with.instance.id) {
   # the feature would still be completely constant if we impute just with mean
   # THIS CHANGES IF WE CREATE  DUMMIES FOR NAs LIKE WE SHOULD!
   feats = removeConstScenFeats(feats)
-
-  # impute feature values
-  feats = impute(feats, target = character(0), classes = list(numeric = imputeMean()))$data
   if (!with.instance.id)
     feats$instance_id = NULL
+
   return(feats)
 }
