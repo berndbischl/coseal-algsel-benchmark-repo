@@ -9,7 +9,7 @@ load_all("../aslib")
 source("defs.R")
 
 ds.dirs = list.files(coseal.data.dir, full.names = TRUE)
-ds.dirs = ds.dirs[!str_detect(ds.dirs, "BBOB|MZN-2013|MACHINE|README.md")]
+ds.dirs = ds.dirs[!str_detect(ds.dirs, "BBOB|MACHINE|README.md")]
 print(ds.dirs)
 #ds.dirs = list(ds.dirs[2])
 asscenarios = lapply(ds.dirs, parseASScenario)
