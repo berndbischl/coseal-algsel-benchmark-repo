@@ -11,7 +11,7 @@ source("searchSequential.R")
 source("searchSequentialObjective.R")
 
 ds.dirs = list.files(coseal.data.dir, full.names = TRUE)
-ds.dirs = ds.dirs[!str_detect(ds.dirs, "BBOB|MACHINE")]
+ds.dirs = ds.dirs[!str_detect(ds.dirs, "BBOB|MACHINE|README.md")]
 # ds.dirs = ds.dirs[4]
 print(ds.dirs)
 #ds.dirs = ds.dirs[7]
@@ -23,6 +23,9 @@ reg = makeRegistry("run_selection_exps", seed = 123,
   src.files = c("searchSequential.R", "searchSequentialObjective.R")
 )
 
+learner = makeImputeWrapper(learner = makeLearner("regr.randomForest"),
+    classes = list(numeric = imputeMean(), integer = imputeMean(), logical = imputeMode(),
+      factor = imputeConstant("NA"), character = imputeConstant("NA")))
 
 # FIXME: we need to store the names of all features and solvers in the result in the correct order!
 batchMap(reg, fun = function(ast) {
@@ -31,10 +34,10 @@ batchMap(reg, fun = function(ast) {
   n.bits = length(ldf$features)
   parallelStartMulticore(cpus = 16L)
   feats = searchSequential(searchSequentialObjectiveFeatures, n.bits, control = ctrl, scenario = ast, ldf = ldf,
-    llama.model.fun = regression, mlr.learner = makeLearner("regr.randomForest"))
+    llama.model.fun = regression, mlr.learner = learner)
   n.bits = length(ldf$performance)
   solvs = searchSequential(searchSequentialObjectiveSolvers, n.bits, control = ctrl, scenario = ast, ldf = ldf,
-    llama.model.fun = regression, mlr.learner = makeLearner("regr.randomForest"))
+    llama.model.fun = regression, mlr.learner = learner)
   parallelStop()
   list(id = ast$desc$scenario_id, feats = feats, solvs = solvs)
 }, asscenarios)
