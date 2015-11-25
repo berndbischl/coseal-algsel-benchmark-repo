@@ -1,9 +1,13 @@
 convertToCheck = function(asscenario, measure, feature.steps, add.feature.costs) {
   assertClass(asscenario, "ASScenario")
-  if (missing(measure))
-    measure = asscenario$desc$performance_measures[1]
-  else
+  if (missing(measure)) {
+    if (length(asscenario$desc$performance_measures) > 1L) {
+        warningf("More than one performance measure, taking the first one.")
+    }
+    measure = asscenario$desc$performance_measures[1L]
+  } else {
     assertString(measure)
+  }
   allsteps = names(asscenario$desc$feature_steps)
   if (missing(feature.steps))
     feature.steps = getDefaultFeatureStepNames(asscenario)
