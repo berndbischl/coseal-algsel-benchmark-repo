@@ -37,32 +37,21 @@ test_that("convertToLlama parses real scenario correctly", {
   iid1 = as.character(llama.scenario$data$instance_id)
   iid2 = as.character(testscenario1$algo.runs$instance_id)
   expect_true(setequal(iid1, iid2))
-  expect_equal(llama.scenario$performance, c("X2clsQ", "quantor", "QuBE", "sKizzo", "sSolve"))
-  expect_equal(llama.scenario$success, c("X2clsQ_success", "quantor_success", "QuBE_success", "sKizzo_success", "sSolve_success"))
-  expect_equal(llama.scenario$features, c( "EXIST_VARS", "FORALL_VARS",
-        "TOTAL_VARS", "CLAUSES",
-        "LITERALS", "EXIST_SET",
-        "FORALL_SET", "TOTAL_SET",
-        "UNARY_CLAUSES", "BINARY_CLAUSES",
-        "TERNARY_MORE_CLAUSES", "POS_HORN",
-        "NEG_HORN", "EXIST_LIT_PER_CLAUSE",
-        "FORALL_LIT_PER_CLAUSE", "EXIST_VARS_PER_SET",
-        "FORALL_POS_LITS_PER_CLAUSE", "FORALL_NEG_LITS_PER_CLAUSE",
-        "OCCS_POS_NO_PER_VAR", "OCCS_FORALL_NO_PER_VAR",
-        "OCCS_FORALL_POS_NO_PER_VAR", "W_OCCS_POS_NO_PER_VAR",
-        "W_OCCS_FORALL_NO_PER_VAR", "W_OCCS_FORALL_POS_NO_PER_VAR",
-        "W_PRODUCTS", "LITN_LIT",
-        "LITEP_LIT", "LITEN_LITE",
-        "LITEN_LITN", "LITFN_LIT",
-        "LITFP_LITFN", "OCCP_OCCN",
-        "OCCE_OCC", "OCCEN_OCC",
-        "OCCFP_OCCF", "OCCEN_OCCE",
-        "OCCEN_OCCN", "OCCFP_OCCFN",
-        "TERMORE_CLAUSE", "NEG_HORN_CLAUSE",
-        "WOCCN_WOCC", "WOCCEP_WOCC",
-        "WOCCFN_WOCC", "WOCCEP_WOCCE",
-        "WOCCEP_WOCCP", "WOCCFN_WOCCN"))
+  expect_equal(llama.scenario$performance, testscenario1$desc$algorithms_deterministic)
+  expect_equal(llama.scenario$success, paste0(testscenario1$desc$algorithms_deterministic, "_success"))
+  expect_equal(llama.scenario$features, testscenario1$desc$features_deterministic)
   expect_equal(length(llama.scenario$best), 1368)
+})
+
+test_that("convertToLlama parses real scenario correctly take 2", {
+  llama.scenario = convertToLlama(testscenario2, feature.steps = names(sapply(testscenario2$desc$feature_steps, function(x) x$provides)))
+  iid1 = as.character(llama.scenario$data$instance_id)
+  iid2 = as.character(testscenario2$algo.runs$instance_id)
+  expect_true(setequal(iid1, iid2))
+  expect_equal(llama.scenario$performance, testscenario2$desc$algorithms_deterministic)
+  expect_equal(llama.scenario$success, paste0(testscenario2$desc$algorithms_deterministic, "_success"))
+  expect_equal(length(llama.scenario$features), 113)
+  expect_equal(length(llama.scenario$best), 1167)
 })
 
 test_that("convertToLlama handles costs correctly", {
