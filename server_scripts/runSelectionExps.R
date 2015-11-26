@@ -32,8 +32,10 @@ batchMap(reg, fun = function(ast) {
   ctrl = makeSSControl(method = "sfs")
   ldf = convertToLlamaCVFolds(ast)
   n.bits = length(ldf$features)
+  ldf.features = convertToLlamaCVFolds(ast, feature.steps = names(sapply(ast$desc$feature_steps, function(x) x$provides)))
+  n.bits.features = length(ldf.features$features)
   parallelStartMulticore(cpus = 16L)
-  feats = searchSequential(searchSequentialObjectiveFeatures, n.bits, control = ctrl, scenario = ast, ldf = ldf,
+  feats = searchSequential(searchSequentialObjectiveFeatures, n.bits.features, control = ctrl, scenario = ast, ldf = ldf.features,
     llama.model.fun = regression, mlr.learner = learner)
   n.bits = length(ldf$performance)
   solvs = searchSequential(searchSequentialObjectiveSolvers, n.bits, control = ctrl, scenario = ast, ldf = ldf,
