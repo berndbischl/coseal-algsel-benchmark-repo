@@ -32,7 +32,7 @@ batchMap(reg, fun = function(ast) {
   ctrl = makeSSControl(method = "sfs")
   ldf = convertToLlamaCVFolds(ast)
   n.bits = length(ldf$features)
-  ldf.features = convertToLlamaCVFolds(ast, feature.steps = names(sapply(ast$desc$feature_steps, function(x) x$provides)))
+  ldf.features = convertToLlamaCVFolds(ast, feature.steps = names(lapply(ast$desc$feature_steps, function(x) x$provides)))
   n.bits.features = length(ldf.features$features)
   parallelStartMulticore(cpus = 16L)
   feats = searchSequential(searchSequentialObjectiveFeatures, n.bits.features, control = ctrl, scenario = ast, ldf = ldf.features,
