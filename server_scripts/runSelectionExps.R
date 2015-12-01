@@ -54,7 +54,7 @@ res = loadResults(reg)
 for (i in 1:length(res)) {
   r = res[[i]]
   ast = Filter(function(ast) ast$desc$scenario_id == r$id, asscenarios)[[1L]]
-  ldf = convertToLlamaCVFolds(ast)
+  ldf = convertToLlamaCVFolds(ast, feature.steps = names(lapply(ast$desc$feature_steps, function(x) x$provides)))
   r$all.feats = ldf$features
   r$all.solvers = ldf$performance
   res[[i]] = r
