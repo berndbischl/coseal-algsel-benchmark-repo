@@ -24,11 +24,11 @@
 #' @param hclust.method [\code{character(1)}]\cr
 #'   Method for hierarchical clustering. Only useful, when \code{order.method}
 #'   is set to \dQuote{hclust}, otherwise ignored.
-#'   Possible values are: \dQuote{ward}, \dQuote{single},
+#'   Possible values are: \dQuote{ward.D2}, \dQuote{single},
 #'   \dQuote{complete}, \dQuote{average}, \dQuote{mcquitty}, \dQuote{median} and
 #'   \dQuote{centroid}.
 #'   See \code{\link[corrplot]{corrMatOrder}}.
-#'   Default is \dQuote{ward}.
+#'   Default is \dQuote{ward.D2}.
 #' @param cor.method [\code{character(1)}]\cr
 #'   Method to be used for calculating the correlation between the algorithms.
 #'   Possible values are \dQuote{pearson}, \dQuote{kendall} and \dQuote{spearman}.
@@ -36,12 +36,12 @@
 #'   Default is \dQuote{spearman}.
 #' @return See \code{\link[corrplot]{corrplot}}.
 #' @export
-plotAlgoCorMatrix = function(asscenario, measure, order.method = "hclust", hclust.method = "ward",
+plotAlgoCorMatrix = function(asscenario, measure, order.method = "hclust", hclust.method = "ward.D2",
   cor.method = "spearman") {
 
   assertChoice(order.method, choices = c("hclust", "FPC", "AOE", "original", "alphabet"))
   assertChoice(hclust.method, choices =
-    c("ward", "single", "complete", "average", "mcquitty", "median", "centroid"))
+    c("ward.D2", "single", "complete", "average", "mcquitty", "median", "centroid"))
   assertChoice(cor.method, choices = c("pearson", "kendall", "spearman"))
 
   z = getEDAAlgoPerf(asscenario, measure, impute.failed.runs = TRUE, jitter = FALSE,

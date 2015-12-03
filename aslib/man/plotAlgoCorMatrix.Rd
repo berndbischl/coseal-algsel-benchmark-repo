@@ -5,7 +5,7 @@
 \title{Plots the correlation matrix of the algorithms.}
 \usage{
 plotAlgoCorMatrix(asscenario, measure, order.method = "hclust",
-  hclust.method = "ward", cor.method = "spearman")
+  hclust.method = "ward.D2", cor.method = "spearman")
 }
 \arguments{
 \item{asscenario}{[\code{\link{ASScenario}}]\cr
@@ -27,11 +27,11 @@ Default is \dQuote{hclust}.}
 \item{hclust.method}{[\code{character(1)}]\cr
 Method for hierarchical clustering. Only useful, when \code{order.method}
 is set to \dQuote{hclust}, otherwise ignored.
-Possible values are: \dQuote{ward}, \dQuote{single},
+Possible values are: \dQuote{ward.D2}, \dQuote{single},
 \dQuote{complete}, \dQuote{average}, \dQuote{mcquitty}, \dQuote{median} and
 \dQuote{centroid}.
 See \code{\link[corrplot]{corrMatOrder}}.
-Default is \dQuote{ward}.}
+Default is \dQuote{ward.D2}.}
 
 \item{cor.method}{[\code{character(1)}]\cr
 Method to be used for calculating the correlation between the algorithms.
