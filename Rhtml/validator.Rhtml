@@ -9,7 +9,7 @@
 <h1>Output of data validator</h1>
 
 <!--begin.rcode
-  fn.main = file.path(coseal.data.dir, "data_check_tool_python/src/main.py")
+  fn.main = file.path(aslib.validator.dir, "data_check_tool_python/src/main.py")
   args = c(fn.main, sprintf("--dir %s", scenario.dir))
   s = system3("python", args, stdout = TRUE, stderr = TRUE)
   s = shortenPathsInValidator(s, scenario.dir)

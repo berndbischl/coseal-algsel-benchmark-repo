@@ -41,13 +41,41 @@ plotAlgoCorMatrix = function(asscenario, measure, order.method = "hclust", hclus
 
   assertChoice(order.method, choices = c("hclust", "FPC", "AOE", "original", "alphabet"))
   assertChoice(hclust.method, choices =
-    c("ward.D2", "single", "complete", "average", "mcquitty", "median", "centroid"))
+    c("ward.D", "ward.D2", "single", "complete", "average", "mcquitty", "median", "centroid"))
   assertChoice(cor.method, choices = c("pearson", "kendall", "spearman"))
 
   z = getEDAAlgoPerf(asscenario, measure, impute.failed.runs = TRUE, jitter = FALSE,
     impute.zero.vals = FALSE, check.log = FALSE, format = "wide", with.instance.id = FALSE)
 
   cor.matrix = cor(z$data, method = cor.method)
-  ind = corrMatOrder(cor.matrix, order = order.method, hclust.method = hclust.method)
+  ind = aslibCorrMatOrder(cor.matrix, order = order.method, hclust.method = hclust.method)
   corrplot(cor.matrix[ind, ind], method = "shade")
+}
+
+## helper function, which is basically identical to corrplot::corrMatOrder, but already
+## uses "ward.D" and "ward.D2" instead of the old "ward"
+aslibCorrMatOrder = function (corr, order = c("AOE", "FPC", "hclust", "alphabet"), 
+  hclust.method = c("complete", "ward.D", "ward.D2", "single", "average", "mcquitty", "median", "centroid")) {
+
+  order = match.arg(order)
+  hclust.method = match.arg(hclust.method)
+  if (order == "AOE") {
+    x.eigen = eigen(corr)$vectors[, 1:2]
+    e1 = x.eigen[, 1]
+    e2 = x.eigen[, 2]
+    alpha = ifelse(e1 > 0, atan(e2/e1), atan(e2/e1) + pi)
+    ord = order(alpha)
+  }
+  if (order == "FPC") {
+    x.eigen = eigen(corr)$vectors[, 1:2]
+    e1 = x.eigen[, 1]
+    ord = order(e1)
+  }
+  if (order == "alphabet") {
+    ord = sort(rownames(corr))
+  }
+  if (order == "hclust") {
+    ord = order.dendrogram(as.dendrogram(hclust(as.dist(1 - corr), method = hclust.method)))
+  }
+  return(ord)
 }
