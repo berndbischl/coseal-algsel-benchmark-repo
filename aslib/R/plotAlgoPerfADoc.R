@@ -22,7 +22,11 @@
 #'   Default is FALSE.
 #' @param impute.failed.runs [\code{logical(1)}]\cr
 #'   Should runtimes for failed runs be imputed?
-#'   Default is TRUE
+#'   Default is TRUE.
+#' @param rm.censored.runs [\code{logical(1)}]\cr
+#'   Should runtimes for censored runs (i.e. runs that have hitted the walltime) be
+#'   removed (and eventually be imputed along with the remaining NAs)?
+#'   Default is TRUE.
 #' @param log [\code{logical(1)}]\cr
 #'   Should the performance values be log10-transformed in the plot?
 #'   Default is FALSE.

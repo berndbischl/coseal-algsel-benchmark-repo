@@ -57,8 +57,9 @@ An algorithm (A) is considered to be superior to an other algorithm (B), if it h
 <br>
 <br>
 
+<h1>Visualisations</h1>
 <b><FONT COLOR = "#FF0000"> Important note w.r.t. some of the following plots:</b><br>
-If appropriate, we imputed performance values for failed runs.
+If appropriate, we imputed performance values for failed or censored runs.
 We used max + 0.3 * (max - min), in case of minimization problems,
 or min - 0.3 * (max - min), in case of maximization problems.<br>
 In addition, a small noise is added to the imputed values (except for the cluster matrix,
@@ -68,20 +69,25 @@ based on correlations, which is shown at the end of this page). </FONT>
 
 <h2> Boxplots of performance values </h2>
 
-<br>Performance values with imputation.<br>
+<br>Imputing the performance values of failed or censored runs (as described in the red note at the beginning of this section):<br>
 <!--begin.rcode
-  plotAlgoPerfBoxplots(asscenario, impute.zero.vals = config$algo.perf.impute.zero.vals, log = config$algo.perf.log)
+  plotAlgoPerfBoxplots(asscenario, impute.zero.vals = config$algo.perf.impute.zero.vals, log = config$algo.perf.log, impute.failed.runs = TRUE)
+end.rcode-->
+
+<br>Discarding the performance values of failed or censored runs:<br>
+<!--begin.rcode
+  plotAlgoPerfBoxplots(asscenario, impute.zero.vals = config$algo.perf.impute.zero.vals, log = config$algo.perf.log, impute.failed.runs = FALSE)
 end.rcode-->
 
 <br>
 <h2> Estimated densitities of performance values </h2>
 
-<br>Performance values with imputation.<br>
+<br>Imputing the performance values of failed or censored runs (as described in the red note at the beginning of this section):<br>
 <!--begin.rcode
   plotAlgoPerfDensities(asscenario, impute.zero.vals = config$algo.perf.impute.zero.vals, log = config$algo.perf.log, impute.failed.runs = TRUE)
 end.rcode-->
 
-<br>Performance values without imputation.<br>
+<br>Discarding the performance values of failed or censored runs:<br>
 <!--begin.rcode
   plotAlgoPerfDensities(asscenario, impute.zero.vals = config$algo.perf.impute.zero.vals, log = config$algo.perf.log, impute.failed.runs = FALSE)
 end.rcode-->
@@ -89,16 +95,22 @@ end.rcode-->
 
 <h2> Estimated cumulative distribution functions of performance values </h2>
 
-<br>Performance values without imputation.<br>
+<br>Imputing the performance values of failed runs (as described in the red note at the beginning of this section):<br>
+<!--begin.rcode
+  plotAlgoPerfCDFs(asscenario, impute.zero.vals = config$algo.perf.impute.zero.vals, log = config$algo.perf.log, rm.censored.runs = FALSE)
+end.rcode-->
+
+<br>Discarding the performance values of failed or censored runs:<br>
 <!--begin.rcode
   plotAlgoPerfCDFs(asscenario, impute.zero.vals = config$algo.perf.impute.zero.vals, log = config$algo.perf.log)
 end.rcode-->
 
+
 <br>
 <h2> Scatterplot matrix of the performance values </h2>
 The figure underneath shows pairwise scatterplots of the performance values.<br>
-<br>
-Performance values with imputation.<br>
+
+<br>Imputing the performance values of failed and censored runs (as described in the red note at the beginning of this section):<br>
 
 <!--begin.rcode, results = "asis"
   plotAlgoPerfScatterMatrix(asscenario, impute.zero.vals = config$algo.perf.impute.zero.vals, log = config$algo.perf.log)

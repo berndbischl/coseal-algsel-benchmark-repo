@@ -9,15 +9,16 @@
 \title{EDA plots for performance values of algorithms across all instances.}
 \usage{
 plotAlgoPerfBoxplots(asscenario, measure, impute.zero.vals = FALSE,
-  log = FALSE)
+  log = FALSE, impute.failed.runs = TRUE, rm.censored.runs = TRUE)
 
-plotAlgoPerfCDFs(asscenario, measure, impute.zero.vals = FALSE, log = FALSE)
+plotAlgoPerfCDFs(asscenario, measure, impute.zero.vals = FALSE, log = FALSE,
+  rm.censored.runs = TRUE)
 
 plotAlgoPerfDensities(asscenario, measure, impute.failed.runs = TRUE,
-  impute.zero.vals = FALSE, log = FALSE)
+  impute.zero.vals = FALSE, log = FALSE, rm.censored.runs = TRUE)
 
 plotAlgoPerfScatterMatrix(asscenario, measure, impute.zero.vals = FALSE,
-  log = FALSE)
+  log = FALSE, rm.censored.runs = TRUE)
 }
 \arguments{
 \item{asscenario}{[\code{\link{ASScenario}}]\cr
@@ -39,7 +40,12 @@ Default is FALSE.}
 
 \item{impute.failed.runs}{[\code{logical(1)}]\cr
 Should runtimes for failed runs be imputed?
-Default is TRUE}
+Default is TRUE.}
+
+\item{rm.censored.runs}{[\code{logical(1)}]\cr
+Should runtimes for censored runs (i.e. runs that have hitted the walltime) be
+removed (and eventually be imputed along with the remaining NAs)?
+Default is TRUE.}
 }
 \value{
 ggplot2 plot object.
