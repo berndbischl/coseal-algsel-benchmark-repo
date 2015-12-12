@@ -191,15 +191,20 @@ doNestedCVWithTuning = function(asscenario, ldf, pre, timeout, learner, par.set,
 tuneLlamaModel = function(asscenario, cv.splits, pre, timeout, learner, par.set, llama.fun, rs.iters) {
   des = generateRandomDesign(rs.iters, par.set, trafo = TRUE)
   des.list = dfRowsToList(des, par.set)
-  # FIXME: we currently do not handle failed tuning evals
   requirePackages(c("parallelMap"), why = "tuneLlamaModel")
   parallelStartMulticore()
   ys = parallelMap(function(x) {
-    learner = setHyperPars(learner, par.vals = x)
-    p = llama.fun(learner, data = cv.splits, pre = pre)
-    ldf = fixFeckingPresolve(asscenario, cv.splits)
-    par10 = mean(parscores(ldf, p, timeout = timeout))
-    messagef("[Tune]: %s : par10 = %g", paramValueToString(par.set, x), par10)
+    par10 = try({
+      learner = setHyperPars(learner, par.vals = x)
+      p = llama.fun(learner, data = cv.splits, pre = pre)
+      ldf = fixFeckingPresolve(asscenario, cv.splits)
+      par10 = mean(parscores(ldf, p, timeout = timeout))
+      messagef("[Tune]: %s : par10 = %g", paramValueToString(par.set, x), par10)
+      return(par10)
+    })
+    if(inherits(par10, "try-error")) {
+      par10 = NA
+    }
     return(par10)
   }, des.list, simplify = TRUE)
   parallelStop()
