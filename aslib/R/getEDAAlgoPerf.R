@@ -4,8 +4,7 @@
 #  - returns in wide or long format
 #  - returns also range of orig data and how often runs where successful
 
-
-getEDAAlgoPerf = function(asscenario, measure, impute.failed.runs,  jitter,
+getEDAAlgoPerf = function(asscenario, measure, impute.failed.runs, jitter,
   impute.zero.vals, check.log, format, with.instance.id) {
 
   assertClass(asscenario, "ASScenario")
@@ -21,7 +20,7 @@ getEDAAlgoPerf = function(asscenario, measure, impute.failed.runs,  jitter,
   origdata = asscenario$algo.runs
   range = range(origdata[, measure], na.rm = TRUE)
   success.rate = ddply(origdata, "algorithm", function(d) {
-    mean(!is.na(d[, measure]))
+    mean(as.character(d$runstatus) == "ok")
   })
   success.rate = setNames(success.rate$V1, success.rate$algorithm)
 
@@ -54,5 +53,3 @@ getEDAAlgoPerf = function(asscenario, measure, impute.failed.runs,  jitter,
   list(data = data, measure = measure, range = range,
     success.rate = success.rate)
 }
-
-
