@@ -10,7 +10,7 @@ test_that("runLlamaModels", {
     learners = list(makeLearner("classif.J48"),
                  makeLearner("regr.rpart"),
                  makeLearner("cluster.SimpleKMeans")),
-    par.sets = list(makeParamSet(), makeParamSet(), makeParamSet())
+    par.sets = list(ParamHelpers::makeParamSet(), ParamHelpers::makeParamSet(), ParamHelpers::makeParamSet())
   )
   submitJobs(reg)
   waitForJobs(reg)
@@ -30,7 +30,7 @@ test_that("runLlamaModels w/ costs", {
   reg = runLlamaModels(list(testscenario2), feature.steps.list = fs,
     baselines = "vbs",
     learners = list(makeLearner("classif.OneR")),
-    par.sets = list(makeParamSet())
+    par.sets = list(ParamHelpers::makeParamSet())
   )
   submitJobs(reg)
   waitForJobs(reg)
