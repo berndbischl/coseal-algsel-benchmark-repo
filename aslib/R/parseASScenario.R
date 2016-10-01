@@ -102,6 +102,7 @@ parseASScenario = function(path) {
   algo.runs = read.arff(file.path(path, "algorithm_runs.arff"))
   colnames(algo.runs) = make.names(colnames(algo.runs))
   algo.runs$algorithm = make.names(algo.runs$algorithm)
+  algo.runs = sortByCol(algo.runs, c("instance_id", "repetition"))
 
   ### build algo.runstatus
   algo.runstatus = dcast(algo.runs, instance_id + repetition ~ algorithm, value.var = "runstatus")
