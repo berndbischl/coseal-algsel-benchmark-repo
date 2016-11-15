@@ -14,8 +14,9 @@ makeTestScenario3 = function() {
     algorithm_cutoff_time = 100,
     features_deterministic = c("f1", "f2", "f3"),
     features_stochastic = character(0),
-    algorithms_deterministic = c("a1", "a2"),
-    algorithms_stochastic = character(0),
+    metainfo_algorithms = list(
+      a1 = list(configuration = "", deterministic = TRUE),
+      a2 = list(configuration = "", deterministic = TRUE)),
     feature_steps = list(
       s1 = list(provides = c("f1", "f2")),
       s2 = list(provides = c("f2", "f3"))
