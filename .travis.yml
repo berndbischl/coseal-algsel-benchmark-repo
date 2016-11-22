@@ -19,6 +19,8 @@ r_check_args: "--as-cran --run-donttest"
 
 r_packages:
   - roxygen2
+  - rpart
+  - RWeka
 
 before_install:
   - cd aslib
