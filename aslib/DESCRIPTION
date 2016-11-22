@@ -26,7 +26,8 @@ Imports:
     stringr,
     yaml
 Suggests:
-    testthat
+    testthat,
+    rpart
 LazyData: yes
 ByteCompile: yes
 Version: 0.1
