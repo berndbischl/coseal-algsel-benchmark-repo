@@ -1,6 +1,7 @@
 context("convertToLlama")
 
 test_that("convertToLlama", {
+  skip_on_cran()
   llama.scenario = convertToLlama(testscenario3)
   expect_equal(llama.scenario$data$instance_id, as.factor(c("i1", "i2", "i3")))
   expect_equal(llama.scenario$data$f1, testscenario3$feature.values$f1)
@@ -13,18 +14,22 @@ test_that("convertToLlama", {
   expect_equal(llama.scenario$data$a2, c(50, 30, 100))
   expect_equal(llama.scenario$best, c("a1", "a2", "a1"))
 
+  lrn = makeLearner("classif.rpart")
+
+  print(parallelMap::parallelGetRegisteredLevels())
+
   llama.scenario = convertToLlama(testscenario1)
   cv = cvFolds(llama.scenario, nfolds = 2L)
-  res = classify(classifier = makeLearner("classif.J48"), data = cv)
+  res = classify(classifier = lrn, data = cv)
   cv = cvFolds(llama.scenario, nfolds = 2L)
-  res = classify(classifier = makeLearner("classif.J48"), data = cv)
+  res = classify(classifier = lrn, data = cv)
 
   llama.scenario = convertToLlama(testscenario2)
   cv = cvFolds(llama.scenario, nfolds = 2L)
-  res = classify(classifier = makeLearner("classif.J48"), data = cv)
+  res = classify(classifier = lrn, data = cv)
   llama.scenario = convertToLlama(testscenario2)
   cv = cvFolds(llama.scenario, nfolds = 2L)
-  res = classify(classifier = makeLearner("classif.J48"), data = cv)
+  res = classify(classifier = lrn, data = cv)
 })
 
 test_that("convertToLlama always sets best algorithm", {
@@ -59,7 +64,7 @@ test_that("convertToLlama handles costs correctly", {
   iid1 = as.character(llama.scenario$data$instance_id)
   iid2 = as.character(testscenario2$algo.runs$instance_id)
   expect_true(setequal(iid1, iid2))
-  default_groups = lapply(testscenario2$desc$feature_steps[vlapply(names(testscenario2$desc$feature_steps), function(x) { x %in% testscenario2$desc$default_steps })], function(d) d$provides)
+  default_groups = lapply(testscenario2$desc$feature_steps[BBmisc::vlapply(names(testscenario2$desc$feature_steps), function(x) { x %in% testscenario2$desc$default_steps })], function(d) d$provides)
   for(n in names(default_groups)) {
       expect_equal(llama.scenario$costGroups[n], default_groups[n])
   }

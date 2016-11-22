@@ -1,6 +1,5 @@
-INST_DIR = file.path("..", "..", "inst")
-testscenario1 = parseASScenario(file.path(INST_DIR, "qbf_2011"))
-testscenario2 = parseASScenario(file.path(INST_DIR, "sat12-indu"))
+testscenario1 = parseASScenario(file.path("qbf_2011"))
+testscenario2 = parseASScenario(file.path("sat12-indu"))
 
 makeTestScenario3 = function() {
 

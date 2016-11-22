@@ -17,8 +17,6 @@ Object members
 \item{algorithm_cutoff_memory [\code{numeric(1)}]}{Cutoff memory for an algorithm run.}
 \item{features_cutoff_time [\code{numeric(1)}]}{Cutoff time for a feature run.}
 \item{features_cutoff_memory [\code{numeric(1)}]}{Cutoff memory for a feature run.}
-\item{algorithms_deterministic [\code{character}]}{Names of algorithms that are deterministic.}
-\item{algorithms_stochastic [\code{character}]}{Names of algorithms that are stochastic.}
 \item{feature_steps [named \code{list} of \code{character}]}{Names of feature processing steps, the other feature steps they require, and the features they provide.}
 \item{metainfo_algorithms [named \code{list} of lists of \code{character}]}{Names of algorithms and meta-information about them.}
 }

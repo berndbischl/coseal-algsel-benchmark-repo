@@ -83,10 +83,10 @@ test_that("parseASScenario2", {
 })
 
 test_that("parseASScenario checks feature runstatus levels", {
-  expect_error(parseASScenario(file.path(INST_DIR, "broken-status-levels")),
+  expect_error(parseASScenario(file.path("broken-status-levels")),
     "Feature runstatus file contains illegal levels:")
 })
 
 test_that("parseASScenario verifies that all instances appear in CV", {
-  expect_error(parseASScenario(file.path(INST_DIR, "broken-cv"), "Fold allocations given for"))
+  expect_error(parseASScenario(file.path("broken-cv"), "Fold allocations given for"))
 })

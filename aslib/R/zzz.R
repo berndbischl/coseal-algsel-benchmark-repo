@@ -6,12 +6,14 @@
 #' @import checkmate
 #' @import corrplot
 #' @import ggplot2
+#' @import graphics
 #' @import llama
 #' @import mlr
 #' @import parallelMap
 #' @import plyr
 #' @import reshape2
 #' @import RWeka
+#' @import stats
 #' @import stringr
 #' @import yaml
 NULL
