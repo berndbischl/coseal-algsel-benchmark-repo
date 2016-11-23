@@ -1,8 +1,9 @@
 Package: aslib
 Title: Interface to the Algorithm Selection Benchmark Library
 Description: Provides an interface to the algorithm selection benchmark library
-    at http://www.aslib.net and the LLAMA package for building algorithm selection
-    models.
+    at <http://www.aslib.net> and the 'LLAMA' package
+    (<https://cran.r-project.org/web/packages/llama/index.html>) for building
+    algorithm selection models.
 Author: Bernd Bischl <bernd_bischl@gmx.net>, Lars Kotthoff <larsko@cs.ubc.ca>,
     Pascal Kerschke <kerschke@uni-muenster.de> [ctb]
 Maintainer: Lars Kotthoff <larsko@cs.ubc.ca>
