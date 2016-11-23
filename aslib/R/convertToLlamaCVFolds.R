@@ -50,7 +50,7 @@ convertToLlamaCVFolds = function(asscenario, measure, feature.steps, cv.splits) 
 
   retval = c(llamaFrame,
             list(train = lapply(1:nfolds, function(x) {
-                    return(unsplit(parts[-x], folds$fold[folds$fold!=x]))
+                    return(unlist(parts[-x]))
                 }),
                  test = lapply(1:nfolds, function(x) {
                     return(parts[[x]])
