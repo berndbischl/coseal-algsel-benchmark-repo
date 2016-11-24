@@ -53,6 +53,10 @@
 #' @param path [\code{character(1)}]\cr
 #'   Path to directory of benchmark data set.
 #' @return [\code{\link{ASScenario}}]. Description object.
+#' @examples
+#' \dontrun{
+#'   sc = parseASScenario("/path/to/scenario")
+#' }
 #' @export
 #' @seealso \code{\link{writeASScenario}}
 #' @aliases ASScenario
