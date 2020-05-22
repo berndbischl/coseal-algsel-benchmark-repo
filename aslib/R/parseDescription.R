@@ -31,7 +31,7 @@ parseDescription = function(path) {
   # now handle all non-scalar strings and convert them to proper data types
   convertField = function(name, cast = as.character) {
     val = desc[[name]]
-    if (length(val) == 0L || val == "") {
+    if (length(val) == 0L || all(val == "")) {
       val = character(0)
     } else if (length(val) == 1 && val == "?") {
       val = NA
