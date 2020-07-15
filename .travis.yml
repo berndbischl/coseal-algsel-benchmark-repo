@@ -23,15 +23,12 @@ r_packages:
 before_install:
   - cd aslib
 
-before_script:
-  - R --no-save <<< 'library("devtools"); document()'
-
 after_failure:
   - ./travis-tool.sh dump_logs
 
 notifications:
   email:
     recipients:
-      - larsko@cs.ubc.ca
+      - larsko@uwyo.edu
 on_success: change
 on_failure: always
